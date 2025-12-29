@@ -9,74 +9,70 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-// Import routes and middlewares
 import routes from './presentation/routes/index.js';
 import { errorHandler } from './presentation/middlewares/errorHandler.js';
 
-// Load environment variables
 dotenv.config();
 
-// Create Express app
 const app = express();
 
-// Security middleware - Helmet sets various HTTP headers for security
-app.use(helmet());
-
-// CORS middleware - Allow cross-origin requests from frontend
+// CORS must be configured BEFORE Helmet
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
   : [
       'http://localhost:3000',
+      'http://localhost:5173',
       'https://marinalarissa.github.io'
     ];
 
-app.use(cors({
+console.log('[CORS] Allowed origins:', allowedOrigins);
+
+const corsOptions = {
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    return callback(new Error('Not allowed by CORS'));
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    console.warn(`[CORS] Blocked origin: ${origin}`);
+    return callback(null, false);
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: false,
+  optionsSuccessStatus: 204,
+  preflightContinue: false,
+};
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
+
+// Helmet AFTER CORS - configured to not interfere with cross-origin requests
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+  crossOriginOpenerPolicy: { policy: 'unsafe-none' },
 }));
 
-app.options('*', cors());
-
-// Body parser middleware - Parse JSON request bodies
-app.use(express.json({ limit: '10mb' })); // Limit payload size for security
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Logging middleware - Log HTTP requests (only in development)
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-// Root route - redirect to API health check
 app.get('/', (req, res) => {
   res.redirect('/api/health');
 });
 
-// Mount API routes
 app.use('/api', routes);
 
-// Error handler middleware (MUST be last)
 app.use(errorHandler);
 
-// Start server (only if not in test environment)
 const PORT = process.env.PORT || 3001;
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
-    console.log(`🚀 Site da Luci API running on port ${PORT}`);
-    console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`Site da Luci API running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Health check: http://localhost:${PORT}/api/health`);
   });
 }
 
-// Export app for testing
 export default app;
