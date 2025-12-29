@@ -2,23 +2,32 @@
 
 > Modern fullstack web application providing tools for TIBIA players
 
-[![Phase](https://img.shields.io/badge/Phase-1%20Complete-success)](https://github.com)
-[![Tests](https://img.shields.io/badge/Tests-49%2F49%20Passing-brightgreen)](https://github.com)
-[![Coverage](https://img.shields.io/badge/Coverage-98.12%25-brightgreen)](https://github.com)
+[![Phase](https://img.shields.io/badge/Phase-3%20Complete-success)](https://github.com)
+[![Tests](https://img.shields.io/badge/Tests-64%2F64%20Passing-brightgreen)](https://github.com)
+[![Coverage](https://img.shields.io/badge/Coverage-95.65%25-brightgreen)](https://github.com)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![Live](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://marinaralarissa.github.io/site-da-luci)
+[![API](https://img.shields.io/badge/API-Render-green)](https://site-da-luci-api.onrender.com/api/health)
 
 ## 📋 Project Overview
 
 **Site da Luci** is a comprehensive web application designed to help TIBIA game players with various tools and calculators. The first tool is a **Loot Split Calculator** that fairly distributes hunting session profits among team members.
 
-### Key Features (Phase 1)
+### 🌐 Live Application
+
+- **Frontend**: [https://marinaralarissa.github.io/site-da-luci](https://marinaralarissa.github.io/site-da-luci)
+- **Backend API**: [https://site-da-luci-api.onrender.com](https://site-da-luci-api.onrender.com)
+- **API Health Check**: [https://site-da-luci-api.onrender.com/api/health](https://site-da-luci-api.onrender.com/api/health)
+
+### Key Features
 
 - ✅ **Loot Split Calculator**: Fair distribution algorithm using greedy two-pointer technique
 - ✅ **Clean Architecture**: 4-layer architecture for scalability and maintainability
-- ✅ **TDD Approach**: 98.12% test coverage with comprehensive test suite
+- ✅ **TDD Approach**: 95.65% test coverage with comprehensive test suite (64 tests)
 - ✅ **TIBIA Format Support**: Parses native TIBIA client loot data
-- 🔄 **React Frontend**: Coming in Phase 3
-- 🔄 **REST API**: Coming in Phase 2
+- ✅ **React Frontend**: Modern UI with Material-UI components
+- ✅ **REST API**: Express backend with validation and error handling
+- ✅ **Deployed**: Frontend on GitHub Pages, Backend on Render
 
 ## 🏗️ Architecture
 
@@ -145,14 +154,14 @@ npm run test:coverage
 ### Running Tests
 
 ```bash
-# Backend unit tests
+# Backend unit and integration tests
 cd backend
 npm test
 
 # Expected output:
-# Test Suites: 6 passed, 6 total
-# Tests:       49 passed, 49 total
-# Coverage:    98.12%
+# Test Suites: 9 passed, 9 total
+# Tests:       64 passed, 64 total
+# Coverage:    95.65%
 ```
 
 ## 🧪 Test Coverage
@@ -160,9 +169,10 @@ npm test
 | Component | Coverage | Tests |
 |-----------|----------|-------|
 | Domain Entities | 100% | 18 tests |
-| Use Cases | 98.5% | 22 tests |
-| Parsers | 95% | 9 tests |
-| **Total** | **98.12%** | **49 tests** |
+| Application Use Cases | 98.5% | 22 tests |
+| Infrastructure Parsers | 95% | 9 tests |
+| Presentation API | 92% | 15 tests |
+| **Total** | **95.65%** | **64 tests** |
 
 ## 📊 Development Progress
 
@@ -176,31 +186,32 @@ npm test
 - [x] Comprehensive test suite (49 tests)
 - [x] TDD compliance (tests first, code second)
 
-### 🔄 Phase 2: Backend API (Next)
+### ✅ Phase 2: Backend API (COMPLETE)
 
-- [ ] Express server setup
-- [ ] REST API endpoints (`POST /api/loot-split/calculate`)
-- [ ] Request validation middleware
-- [ ] Error handling middleware
-- [ ] Integration tests with Supertest
-- [ ] API documentation (Swagger/OpenAPI)
+- [x] Express server setup
+- [x] REST API endpoints (`POST /api/loot-split/calculate`)
+- [x] Request validation middleware
+- [x] Error handling middleware
+- [x] Integration tests with Supertest (15 tests)
+- [x] CORS configuration for production
 
-### 🔄 Phase 3: Frontend (Planned)
+### ✅ Phase 3: Frontend (COMPLETE)
 
-- [ ] React app with Create React App
-- [ ] UI components (Sidebar, Calculator, TransferList)
-- [ ] API service layer (Axios)
-- [ ] Custom hooks (useLootSplit)
-- [ ] Cypress E2E tests
-- [ ] Responsive design with TailwindCSS
+- [x] React app with Create React App
+- [x] UI components (Sidebar, Calculator, TransferList)
+- [x] API service layer (Axios)
+- [x] Custom hooks (useLootSplit)
+- [x] Material-UI design system
+- [x] Responsive layout for all screen sizes
 
-### 🔄 Phase 4: Deployment (Future)
+### ✅ Phase 4: Deployment (COMPLETE)
 
-- [ ] MongoDB Atlas integration
-- [ ] Backend deployment to Render
-- [ ] Frontend deployment to GitHub Pages
-- [ ] CI/CD with GitHub Actions
-- [ ] Environment configuration
+- [x] Backend deployment to Render
+- [x] Frontend deployment to GitHub Pages
+- [x] Environment configuration (.env files)
+- [x] CORS configuration for cross-origin requests
+- [x] Health check endpoint
+- [x] Deployment documentation (DEPLOY.md)
 
 ## 🎮 How It Works
 
@@ -265,6 +276,94 @@ transfer 3912667 to Young Vex
 [📋 Copy to Clipboard]
 ```
 
+## 🧪 Testing with Postman
+
+You can test the API directly using Postman or curl:
+
+### API Endpoint
+```
+POST https://site-da-luci-api.onrender.com/api/loot-split/calculate
+```
+
+### Request Headers
+```
+Content-Type: application/json
+```
+
+### Request Body (Example)
+```json
+{
+  "rawText": "Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53\nSession: 03:08h\nLoot Type: Leader\nLoot: 12,937,605\nSupplies: 1,051,291\nBalance: 11,886,314\n\nLofi Shades (Leader)\n  Loot: 12,120,799\n  Supplies: 179,781\n  Balance: 11,941,018\n  Damage: 17,660,082\n  Healing: 785,634\n\nLuciana Burks\n  Loot: 277,020\n  Supplies: 381,162\n  Balance: -104,142\n  Damage: 17,145,590\n  Healing: 9,169,753\n\nYoung Vex\n  Loot: 539,786\n  Supplies: 490,348\n  Balance: 49,438\n  Damage: 18,737,566\n  Healing: 2,666,860"
+}
+```
+
+### Expected Response (200 OK)
+```json
+{
+  "success": true,
+  "data": {
+    "session": {
+      "startDate": "2025-12-25T17:48:04.000Z",
+      "endDate": "2025-12-25T20:56:53.000Z",
+      "duration": "03:08h",
+      "lootType": "Leader",
+      "totalLoot": 12937605,
+      "totalSupplies": 1051291,
+      "totalBalance": 11886314
+    },
+    "players": [
+      {
+        "name": "Lofi Shades",
+        "isLeader": true,
+        "loot": 12120799,
+        "supplies": 179781,
+        "balance": 11941018,
+        "damage": 17660082,
+        "healing": 785634
+      },
+      {
+        "name": "Luciana Burks",
+        "isLeader": false,
+        "loot": 277020,
+        "supplies": 381162,
+        "balance": -104142,
+        "damage": 17145590,
+        "healing": 9169753
+      },
+      {
+        "name": "Young Vex",
+        "isLeader": false,
+        "loot": 539786,
+        "supplies": 490348,
+        "balance": 49438,
+        "damage": 18737566,
+        "healing": 2666860
+      }
+    ],
+    "transfers": [
+      {
+        "from": "Lofi Shades",
+        "to": "Luciana Burks",
+        "amount": 4066247
+      },
+      {
+        "from": "Lofi Shades",
+        "to": "Young Vex",
+        "amount": 3912667
+      }
+    ],
+    "fairShare": 3962105
+  }
+}
+```
+
+### Using curl
+```bash
+curl -X POST https://site-da-luci-api.onrender.com/api/loot-split/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"rawText":"Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53\nSession: 03:08h\nLoot Type: Leader\nLoot: 12,937,605\nSupplies: 1,051,291\nBalance: 11,886,314\n\nLofi Shades (Leader)\n  Loot: 12,120,799\n  Supplies: 179,781\n  Balance: 11,941,018\n  Damage: 17,660,082\n  Healing: 785,634\n\nLuciana Burks\n  Loot: 277,020\n  Supplies: 381,162\n  Balance: -104,142\n  Damage: 17,145,590\n  Healing: 9,169,753\n\nYoung Vex\n  Loot: 539,786\n  Supplies: 490,348\n  Balance: 49,438\n  Damage: 18,737,566\n  Healing: 2,666,860"}'
+```
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -294,32 +393,16 @@ transfer 3912667 to Young Vex
 - [Backend README](backend/README.md)
 - [Frontend README](frontend/README.md) (Phase 3)
 
-## 🤝 Contributing
+## 🎯 About This Project
 
-This is a **Personal Development Plan (PDI)** project. Contributions are welcome after Phase 3 is complete.
+This is a **Personal Development Plan (PDI)** solo project focused on learning fullstack development with modern patterns and best practices.
 
-### Development Workflow
+### Development Principles
 
 1. **TDD First**: Write tests BEFORE implementation
-2. **Clean Architecture**: Respect layer boundaries
-3. **Code Quality**: ESLint + Prettier configured
-4. **Commit Messages**: Follow Conventional Commits
-
-### Running Quality Checks
-
-```bash
-# Linting
-npm run lint
-
-# Format code
-npm run format
-
-# Run all tests
-npm test
-
-# Coverage report
-npm run test:coverage
-```
+2. **Clean Architecture**: Respect layer boundaries and dependency rules
+3. **Code Quality**: Comprehensive test coverage and consistent style
+4. **Modern Stack**: React, Express, Material-UI, Jest
 
 ## 📝 License
 
@@ -327,7 +410,7 @@ MIT License - See [LICENSE](LICENSE) file for details
 
 ## 👨‍💻 Author
 
-**PDI Project** - Learning fullstack development with modern patterns
+**Marina Larissa Carpes Röhrig** - Personal Development Plan (PDI) project focused on fullstack development
 
 ## 🙏 Acknowledgments
 
@@ -337,6 +420,6 @@ MIT License - See [LICENSE](LICENSE) file for details
 
 ---
 
-**Status**: 🟢 Phase 1 Complete | 🔄 Phase 2 In Progress
+**Status**: 🟢 All Phases Complete | ✅ Deployed to Production
 
-**Last Updated**: 2025-12-26
+**Last Updated**: 2025-12-28
