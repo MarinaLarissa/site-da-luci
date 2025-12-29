@@ -44,15 +44,23 @@ export function getRoleColor(role) {
 /**
  * Get role label for display
  * @param {string} role - Player role
+ * @param {function} t - Translation function from react-i18next
  * @returns {string} Display label
  */
-export function getRoleLabel(role) {
-  switch (role) {
-    case 'creditor':
-      return 'Creditor (has excess)';
-    case 'debtor':
-      return 'Debtor (needs money)';
-    default:
-      return 'Neutral';
+export function getRoleLabel(role, t) {
+  // If translation function not provided, return default English labels
+  if (!t) {
+    switch (role) {
+      case 'creditor':
+        return 'Creditor (has excess)';
+      case 'debtor':
+        return 'Debtor (needs money)';
+      default:
+        return 'Neutral';
+    }
   }
+
+  // Use translation function
+  const roleKey = `roles.${role}`;
+  return t(roleKey);
 }

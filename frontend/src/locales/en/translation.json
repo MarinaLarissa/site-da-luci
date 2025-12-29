@@ -1,0 +1,67 @@
+{
+  "app": {
+    "title": "Loot Split Calculator"
+  },
+  "sidebar": {
+    "title": "Site da Luci",
+    "subtitle": "TIBIA Player Tools",
+    "nav": {
+      "lootSplit": "Loot Split Calculator",
+      "statistics": "Statistics (Coming Soon)",
+      "partyAnalyzer": "Party Analyzer (Coming Soon)"
+    },
+    "footer": "Made for TIBIA players"
+  },
+  "calculator": {
+    "title": "Loot Split Calculator",
+    "subtitle": "Calculate loot distribution for your TIBIA party hunts",
+    "inputSection": {
+      "title": "Enter Loot Data",
+      "description": "Paste your TIBIA loot session data below (copy from Party Hunt Analyzer)",
+      "placeholder": "Paste your loot data here...",
+      "calculateButton": "Calculate Split",
+      "calculatingButton": "Calculating...",
+      "loadExampleButton": "Load Example"
+    },
+    "resultsSection": {
+      "title": "Results",
+      "summary": {
+        "totalBalance": "Total Balance",
+        "fairShare": "Fair Share",
+        "profitPerHour": "Profit/Hour",
+        "duration": "Duration",
+        "activePlayers": "Active Players",
+        "tooltips": {
+          "totalBalance": "Total Loot - Total Supplies",
+          "fairShare": "Total Balance ÷ Number of Active Players",
+          "profitPerHour": "Fair Share ÷ Session Duration",
+          "duration": "Total hunting session duration",
+          "activePlayers": "Number of players who participated"
+        }
+      },
+      "playerList": {
+        "title": "Players",
+        "leaderBadge": "👑 Leader",
+        "balance": "Balance",
+        "netBalance": "Net Balance",
+        "difference": "Difference"
+      },
+      "transferList": {
+        "title": "Transfers",
+        "noTransfers": "No transfers needed! All players are balanced.",
+        "copyButton": "Copy Transfer Commands",
+        "copiedButton": "✓ Copied!"
+      }
+    },
+    "loading": "Calculating loot split...",
+    "error": {
+      "generic": "An error occurred. Please try again.",
+      "invalidData": "Invalid loot data format. Please check your input."
+    }
+  },
+  "roles": {
+    "creditor": "Creditor (has excess)",
+    "debtor": "Debtor (needs money)",
+    "neutral": "Neutral"
+  }
+}

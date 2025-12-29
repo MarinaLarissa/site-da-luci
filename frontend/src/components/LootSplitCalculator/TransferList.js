@@ -3,10 +3,12 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { formatGold } from '../../utils/formatters';
 import './TransferList.css';
 
 export default function TransferList({ transfers, copyableText }) {
+  const { t } = useTranslation();
   const [copiedIndex, setCopiedIndex] = useState(null);
 
   const handleCopyTransfer = (transfer, index) => {
@@ -20,15 +22,15 @@ export default function TransferList({ transfers, copyableText }) {
   if (!transfers || transfers.length === 0) {
     return (
       <div className="transfer-list">
-        <h3 className="list-title">Transfers</h3>
-        <p className="no-transfers">No transfers needed - loot is already balanced!</p>
+        <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
+        <p className="no-transfers">{t('calculator.resultsSection.transferList.noTransfers')}</p>
       </div>
     );
   }
 
   return (
     <div className="transfer-list">
-      <h3 className="list-title">Transfers</h3>
+      <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
 
       <div className="transfer-items">
         {transfers.map((transfer, index) => (
@@ -51,7 +53,7 @@ export default function TransferList({ transfers, copyableText }) {
             <div className="transfer-to">{transfer.to}</div>
             <div className="transfer-amount">{formatGold(transfer.amount)}</div>
             {copiedIndex === index && (
-              <div className="transfer-copied-indicator">✓ Copiado!</div>
+              <div className="transfer-copied-indicator">{t('calculator.resultsSection.transferList.copiedButton')}</div>
             )}
           </div>
         ))}

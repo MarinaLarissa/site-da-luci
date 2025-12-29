@@ -1,0 +1,67 @@
+{
+  "app": {
+    "title": "Calculadora de Divisão de Loot"
+  },
+  "sidebar": {
+    "title": "Site da Luci",
+    "subtitle": "Ferramentas para Jogadores de TIBIA",
+    "nav": {
+      "lootSplit": "Calculadora de Divisão de Loot",
+      "statistics": "Estatísticas (Em Breve)",
+      "partyAnalyzer": "Analisador de Party (Em Breve)"
+    },
+    "footer": "Feito para jogadores de TIBIA"
+  },
+  "calculator": {
+    "title": "Calculadora de Divisão de Loot",
+    "subtitle": "Calcule a distribuição de loot para suas caçadas em party no TIBIA",
+    "inputSection": {
+      "title": "Inserir Dados de Loot",
+      "description": "Cole os dados da sua sessão de loot do TIBIA abaixo (copie do Party Hunt Analyzer)",
+      "placeholder": "Cole seus dados de loot aqui...",
+      "calculateButton": "Calcular Divisão",
+      "calculatingButton": "Calculando...",
+      "loadExampleButton": "Carregar Exemplo"
+    },
+    "resultsSection": {
+      "title": "Resultados",
+      "summary": {
+        "totalBalance": "Saldo Total",
+        "fairShare": "Divisão Justa",
+        "profitPerHour": "Lucro/Hora",
+        "duration": "Duração",
+        "activePlayers": "Jogadores Ativos",
+        "tooltips": {
+          "totalBalance": "Loot Total - Suprimentos Totais",
+          "fairShare": "Saldo Total ÷ Número de Jogadores Ativos",
+          "profitPerHour": "Divisão Justa ÷ Duração da Sessão",
+          "duration": "Duração total da sessão de caçada",
+          "activePlayers": "Número de jogadores que participaram"
+        }
+      },
+      "playerList": {
+        "title": "Jogadores",
+        "leaderBadge": "👑 Líder",
+        "balance": "Saldo",
+        "netBalance": "Saldo Líquido",
+        "difference": "Diferença"
+      },
+      "transferList": {
+        "title": "Transferências",
+        "noTransfers": "Nenhuma transferência necessária! Todos os jogadores estão equilibrados.",
+        "copyButton": "Copiar Comandos de Transferência",
+        "copiedButton": "✓ Copiado!"
+      }
+    },
+    "loading": "Calculando divisão de loot...",
+    "error": {
+      "generic": "Ocorreu um erro. Por favor, tente novamente.",
+      "invalidData": "Formato de dados de loot inválido. Por favor, verifique sua entrada."
+    }
+  },
+  "roles": {
+    "creditor": "Credor (tem excesso)",
+    "debtor": "Devedor (precisa de dinheiro)",
+    "neutral": "Neutro"
+  }
+}

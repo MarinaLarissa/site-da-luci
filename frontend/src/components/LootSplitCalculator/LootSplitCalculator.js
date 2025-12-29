@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLootSplit } from '../../hooks/useLootSplit';
 import InputSection from './InputSection';
 import ResultsSection from './ResultsSection';
@@ -11,6 +12,7 @@ import ErrorMessage from '../common/ErrorMessage';
 import './LootSplitCalculator.css';
 
 export default function LootSplitCalculator() {
+  const { t } = useTranslation();
   const {
     input,
     setInput,
@@ -25,9 +27,9 @@ export default function LootSplitCalculator() {
   return (
     <div className="loot-split-calculator">
       <div className="calculator-header">
-        <h1 className="calculator-title">Loot Split Calculator</h1>
+        <h1 className="calculator-title">{t('calculator.title')}</h1>
         <p className="calculator-description">
-          Calculate fair loot distribution for your TIBIA party hunts
+          {t('calculator.subtitle')}
         </p>
       </div>
 
@@ -44,7 +46,7 @@ export default function LootSplitCalculator() {
       />
 
       {/* Loading state */}
-      {loading && <LoadingSpinner message="Calculating loot split..." />}
+      {loading && <LoadingSpinner message={t('calculator.loading')} />}
 
       {/* Results section */}
       {!loading && results && <ResultsSection results={results} />}
