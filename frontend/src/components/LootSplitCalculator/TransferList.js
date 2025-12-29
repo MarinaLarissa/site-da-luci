@@ -4,16 +4,16 @@
 
 import React, { useState } from 'react';
 import { formatGold } from '../../utils/formatters';
-import Button from '../common/Button';
 import './TransferList.css';
 
 export default function TransferList({ transfers, copyableText }) {
-  const [copied, setCopied] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(copyableText).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+  const handleCopyTransfer = (transfer, index) => {
+    const command = `transfer ${transfer.amount} to ${transfer.to}`;
+    navigator.clipboard.writeText(command).then(() => {
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
     });
   };
 
@@ -28,20 +28,31 @@ export default function TransferList({ transfers, copyableText }) {
 
   return (
     <div className="transfer-list">
-      <div className="transfer-header">
-        <h3 className="list-title">Transfers</h3>
-        <Button variant="secondary" onClick={handleCopy}>
-          {copied ? '✓ Copied!' : '📋 Copy Commands'}
-        </Button>
-      </div>
+      <h3 className="list-title">Transfers</h3>
 
       <div className="transfer-items">
         {transfers.map((transfer, index) => (
-          <div key={index} className="transfer-item">
+          <div
+            key={index}
+            className={`transfer-item ${copiedIndex === index ? 'copied' : ''}`}
+            onClick={() => handleCopyTransfer(transfer, index)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Copy transfer: ${transfer.from} to ${transfer.to} ${formatGold(transfer.amount)}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCopyTransfer(transfer, index);
+              }
+            }}
+          >
             <div className="transfer-from">{transfer.from}</div>
             <div className="transfer-arrow">→</div>
             <div className="transfer-to">{transfer.to}</div>
             <div className="transfer-amount">{formatGold(transfer.amount)}</div>
+            {copiedIndex === index && (
+              <div className="transfer-copied-indicator">✓ Copiado!</div>
+            )}
           </div>
         ))}
       </div>
