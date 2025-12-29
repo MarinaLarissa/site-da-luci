@@ -6,7 +6,7 @@
 [![Tests](https://img.shields.io/badge/Tests-64%2F64%20Passing-brightgreen)](https://github.com)
 [![Coverage](https://img.shields.io/badge/Coverage-95.65%25-brightgreen)](https://github.com)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
-[![Live](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://marinaralarissa.github.io/site-da-luci)
+[![Live](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://marinalarissa.github.io/site-da-luci)
 [![API](https://img.shields.io/badge/API-Render-green)](https://site-da-luci-api.onrender.com/api/health)
 
 ## 📋 Project Overview
@@ -15,7 +15,7 @@
 
 ### 🌐 Live Application
 
-- **Frontend**: [https://marinaralarissa.github.io/site-da-luci](https://marinaralarissa.github.io/site-da-luci)
+- **Frontend**: [https://marinalarissa.github.io/site-da-luci](https://marinalarissa.github.io/site-da-luci)
 - **Backend API**: [https://site-da-luci-api.onrender.com](https://site-da-luci-api.onrender.com)
 - **API Health Check**: [https://site-da-luci-api.onrender.com/api/health](https://site-da-luci-api.onrender.com/api/health)
 

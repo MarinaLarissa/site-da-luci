@@ -44,7 +44,7 @@ git push origin main
 **Environment Variables:**
 - `NODE_ENV` = `production`
 - `PORT` = `3001` (Render will override this automatically)
-- `FRONTEND_URL` = `https://marinaralarissa.github.io/site-da-luci`
+- `FRONTEND_URL` = `https://marinalarissa.github.io/site-da-luci`
 
 5. Clique em **"Create Web Service"**
 
@@ -114,7 +114,7 @@ Este comando irá:
 GitHub Pages leva ~2-5 minutos para publicar. Acesse:
 
 ```
-https://marinaralarissa.github.io/site-da-luci
+https://marinalarissa.github.io/site-da-luci
 ```
 
 ---
@@ -123,7 +123,7 @@ https://marinaralarissa.github.io/site-da-luci
 
 ### 1. Testar Frontend
 
-1. Acesse: `https://marinaralarissa.github.io/site-da-luci`
+1. Acesse: `https://marinalarissa.github.io/site-da-luci`
 2. Clique em **"Load Example"**
 3. Clique em **"Calculate Split"**
 4. Verifique se os resultados aparecem corretamente
@@ -177,7 +177,7 @@ npm run deploy
 ### Página em branco no GitHub Pages
 
 **Causa**: `homepage` incorreto no `package.json`
-**Solução**: Verifique se está `https://marinaralarissa.github.io/site-da-luci`
+**Solução**: Verifique se está `https://marinalarissa.github.io/site-da-luci`
 
 ### Build falha no Render
 
@@ -202,7 +202,7 @@ npm run deploy
 ## 🎉 Deploy Completo!
 
 Sua aplicação está online:
-- **Frontend**: https://marinaralarissa.github.io/site-da-luci
+- **Frontend**: https://marinalarissa.github.io/site-da-luci
 - **Backend**: https://site-da-luci-api.onrender.com
 - **API Health**: https://site-da-luci-api.onrender.com/api/health
 
