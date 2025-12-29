@@ -12,7 +12,7 @@
 .calculator-title {
   font-size: 36px;
   font-weight: 700;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -23,6 +23,37 @@
   color: #9E9E9E;
   font-size: 18px;
   margin: 0;
+}
+
+/* Floating button for hunt history */
+.btn-open-history {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-open-history:hover {
+  background: #1565c0;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-open-history:active {
+  transform: scale(1.05);
 }
 
 /* Responsive */

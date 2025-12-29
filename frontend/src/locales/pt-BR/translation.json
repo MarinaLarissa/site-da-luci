@@ -52,6 +52,15 @@
         "noTransfers": "Nenhuma transferência necessária! Todos os jogadores estão equilibrados.",
         "copyButton": "Copiar Comandos de Transferência",
         "copiedButton": "✓ Copiado!"
+      },
+      "damageHealing": {
+        "title": "Estatísticas de Dano & Cura",
+        "damage": "Dano",
+        "healing": "Cura",
+        "tooltips": {
+          "actualDamage": "Dano real causado",
+          "actualHealing": "Cura real realizada"
+        }
       }
     },
     "loading": "Calculando divisão de loot...",
@@ -66,5 +75,36 @@
     "creditor": "Credor (tem excesso)",
     "debtor": "Devedor (precisa de dinheiro)",
     "neutral": "Neutro"
+  },
+  "huntHistory": {
+    "title": "Histórico de Caçadas",
+    "openButton": "Abrir histórico de caçadas",
+    "closeButton": "Fechar",
+    "listTitle": "Caçadas Recentes",
+    "emptyState": "Nenhuma caçada registrada ainda. Complete um cálculo para começar a construir seu histórico!",
+    "huntCount": "{{count}} de {{max}} caçadas salvas",
+    "limitWarning": "Limite atingido! Caçadas mais antigas serão removidas ao adicionar novas.",
+    "confirmDelete": "Tem certeza que deseja excluir esta caçada?",
+    "confirmClearAll": "Tem certeza que deseja limpar todo o histórico? Esta ação não pode ser desfeita!",
+    "deleteButton": "Excluir caçada",
+    "expandButton": "Expandir detalhes",
+    "collapseButton": "Recolher detalhes",
+    "details": {
+      "summary": "Resumo",
+      "players": "Jogadores"
+    },
+    "controls": {
+      "exportTitle": "Opções de Exportação",
+      "exportAll": "Exportar todas as caçadas",
+      "exportLastN": "Exportar últimas N caçadas",
+      "exportDateRange": "Exportar por período",
+      "huntsLabel": "caçadas",
+      "startDate": "Data inicial",
+      "endDate": "Data final",
+      "exportButton": "Exportar JSON",
+      "dangerZone": "Zona de Perigo",
+      "clearAllButton": "Limpar Todo Histórico",
+      "clearWarning": "⚠️ Isto irá deletar permanentemente todo o histórico!"
+    }
   }
 }

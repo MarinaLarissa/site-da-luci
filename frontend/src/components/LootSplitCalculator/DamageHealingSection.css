@@ -1,0 +1,117 @@
+/**
+ * Damage and Healing Section Styles
+ */
+
+.damage-healing-section {
+  margin-top: 2rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.damage-healing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.damage-healing-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.damage-healing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-name-header {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.leader-indicator {
+  color: #c39bd3;
+  font-size: 0.9rem;
+}
+
+.stats-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: #f5f5f5;
+  transition: background 0.2s ease;
+  cursor: help;
+}
+
+.stat-item:hover {
+  background: #e3f2fd;
+}
+
+.stat-item.damage:hover {
+  background: #ffebee;
+}
+
+.stat-item.healing:hover {
+  background: #e8f5e9;
+}
+
+.stat-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  flex: 1;
+}
+
+.stat-percent {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1976d2;
+}
+
+.stat-item.damage .stat-percent {
+  color: #d32f2f;
+}
+
+.stat-item.healing .stat-percent {
+  color: #388e3c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .damage-healing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+}

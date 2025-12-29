@@ -52,6 +52,15 @@
         "noTransfers": "No transfers needed! All players are balanced.",
         "copyButton": "Copy Transfer Commands",
         "copiedButton": "✓ Copied!"
+      },
+      "damageHealing": {
+        "title": "Damage & Healing Statistics",
+        "damage": "Damage",
+        "healing": "Healing",
+        "tooltips": {
+          "actualDamage": "Actual damage dealt",
+          "actualHealing": "Actual healing done"
+        }
       }
     },
     "loading": "Calculating loot split...",
@@ -66,5 +75,36 @@
     "creditor": "Creditor (has excess)",
     "debtor": "Debtor (needs money)",
     "neutral": "Neutral"
+  },
+  "huntHistory": {
+    "title": "Hunt History",
+    "openButton": "Open hunt history",
+    "closeButton": "Close",
+    "listTitle": "Recent Hunts",
+    "emptyState": "No hunts recorded yet. Complete a calculation to start building your history!",
+    "huntCount": "{{count}} of {{max}} hunts saved",
+    "limitWarning": "Limit reached! Oldest hunts will be removed when adding new ones.",
+    "confirmDelete": "Are you sure you want to delete this hunt?",
+    "confirmClearAll": "Are you sure you want to clear all hunt history? This action cannot be undone!",
+    "deleteButton": "Delete hunt",
+    "expandButton": "Expand details",
+    "collapseButton": "Collapse details",
+    "details": {
+      "summary": "Summary",
+      "players": "Players"
+    },
+    "controls": {
+      "exportTitle": "Export Options",
+      "exportAll": "Export all hunts",
+      "exportLastN": "Export last N hunts",
+      "exportDateRange": "Export by date range",
+      "huntsLabel": "hunts",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "exportButton": "Export JSON",
+      "dangerZone": "Danger Zone",
+      "clearAllButton": "Clear All History",
+      "clearWarning": "⚠️ This will permanently delete all hunt history!"
+    }
   }
 }

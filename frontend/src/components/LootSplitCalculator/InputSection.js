@@ -23,7 +23,7 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder={t('calculator.inputSection.placeholder')}
-        rows={15}
+        rows={3}
         disabled={loading}
       />
 

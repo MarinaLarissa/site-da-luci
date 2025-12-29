@@ -16,19 +16,19 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
   color: #1a1a2e;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(195, 155, 211, 0.4);
 }
 
 .btn-secondary {
   background-color: #2d2d44;
-  color: #FFD700;
-  border: 2px solid #FFD700;
+  color: #c39bd3;
+  border: 2px solid #c39bd3;
 }
 
 .btn-secondary:hover:not(:disabled) {

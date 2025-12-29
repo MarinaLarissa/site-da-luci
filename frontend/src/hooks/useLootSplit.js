@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { calculateLootSplit } from '../services/api';
+import { saveHunt } from '../services/huntHistory';
 
 export function useLootSplit() {
   const { t } = useTranslation();
@@ -36,6 +37,8 @@ export function useLootSplit() {
       // Check if response is successful
       if (response.success) {
         setResults(response.data);
+        // Save to hunt history
+        saveHunt(response.data, input);
       } else {
         setError(response.error?.message || t('calculator.error.failedCalculation'));
       }

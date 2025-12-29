@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { formatGold, formatDuration } from '../../utils/formatters';
 import PlayerList from './PlayerList';
 import TransferList from './TransferList';
+import DamageHealingSection from './DamageHealingSection';
 import Tooltip from '../common/Tooltip';
 import './ResultsSection.css';
 
@@ -22,10 +23,7 @@ export default function ResultsSection({ results }) {
     <div className="results-section">
       <h2 className="section-title">{t('calculator.resultsSection.title')}</h2>
 
-      {/* Transfer list - First priority for user action */}
-      <TransferList transfers={transfers} copyableText={copyableText} />
-
-      {/* Summary cards */}
+      {/* Summary cards - Overview first */}
       <div className="summary-grid">
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.totalBalance')} position="top">
           <div className="summary-card">
@@ -63,8 +61,14 @@ export default function ResultsSection({ results }) {
         </Tooltip>
       </div>
 
+      {/* Transfer list - Action items */}
+      <TransferList transfers={transfers} copyableText={copyableText} />
+
       {/* Player list */}
       <PlayerList players={players} />
+
+      {/* Damage and Healing statistics */}
+      <DamageHealingSection players={players} />
     </div>
   );
 }

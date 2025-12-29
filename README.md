@@ -415,6 +415,7 @@ MIT License - See [LICENSE](LICENSE) file for details
 ## 🙏 Acknowledgments
 
 - TIBIA game by CipSoft
+- TIBIA game sprites used in this project are from [TibiaWiki Brasil](https://www.tibiawiki.com.br/wiki/)
 - Clean Architecture by Robert C. Martin
 - TDD methodology
 

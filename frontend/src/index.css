@@ -11,9 +11,9 @@
   --color-text-light: #FFFFFF;
 
   /* Colors - Accent */
-  --color-accent-gold: #FFD700;
-  --color-accent-gold-hover: #FFA500;
-  --color-accent-gold-light: rgba(255, 215, 0, 0.2);
+  --color-accent-gold: #c39bd3;
+  --color-accent-gold-hover: #b388c7;
+  --color-accent-gold-light: rgba(195, 155, 211, 0.2);
 
   /* Colors - Status */
   --color-success: #4CAF50;
