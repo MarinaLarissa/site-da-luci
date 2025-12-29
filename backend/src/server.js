@@ -38,10 +38,10 @@ app.use(cors({
       callback(null, false);
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  optionsSuccessStatus: 200
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: false,
+  optionsSuccessStatus: 204
 }));
 
 // Body parser middleware - Parse JSON request bodies
