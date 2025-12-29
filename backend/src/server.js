@@ -25,7 +25,7 @@ app.use(helmet());
 // CORS middleware - Allow cross-origin requests from frontend
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
-  : ['http://localhost:3000'];
+  : ['http://localhost:3000', 'https://marinaralarissa.github.io'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -35,7 +35,7 @@ app.use(cors({
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(null, false);
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
