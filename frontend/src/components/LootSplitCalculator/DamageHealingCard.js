@@ -20,11 +20,6 @@ export default function DamageHealingCard({ player, totalDamage, totalHealing })
 
   return (
     <div className="damage-healing-card">
-      <div className="player-name-header">
-        {player.name}
-        {player.isLeader && <span className="leader-indicator">★</span>}
-      </div>
-
       <div className="stats-row">
         <Tooltip
           text={`${t('calculator.resultsSection.damageHealing.tooltips.actualDamage')}: ${formatGold(player.damage || 0)}`}

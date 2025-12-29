@@ -190,14 +190,6 @@
   background: #e3f2fd;
 }
 
-.player-stat.damage:hover {
-  background: #ffebee;
-}
-
-.player-stat.healing:hover {
-  background: #e8f5e9;
-}
-
 .player-stat .stat-label {
   font-size: 0.8rem;
   color: #666;
@@ -216,15 +208,7 @@
 .player-stat .stat-value {
   font-weight: 600;
   font-size: 0.95rem;
-  color: #333;
-}
-
-.player-stat.damage .stat-value {
-  color: #d32f2f;
-}
-
-.player-stat.healing .stat-value {
-  color: #388e3c;
+  color: #9E9E9E;
 }
 
 /* Responsive */
