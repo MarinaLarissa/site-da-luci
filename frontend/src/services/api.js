@@ -4,9 +4,19 @@
 
 import axios from 'axios';
 
+// Determine API base URL based on environment
+const getBaseURL = () => {
+  // In production, use the environment variable or fallback to Render URL
+  if (process.env.NODE_ENV === 'production') {
+    return process.env.REACT_APP_API_URL || 'https://site-da-luci-api.onrender.com/api';
+  }
+  // In development, use proxy (configured in package.json)
+  return '/api';
+};
+
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: '/api', // Proxy will redirect to http://localhost:3001/api
+  baseURL: getBaseURL(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
