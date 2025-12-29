@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGold, formatDuration } from '../../utils/formatters';
 import PlayerList from './PlayerList';
@@ -20,6 +21,9 @@ export default function ResultsSection({ results }) {
   return (
     <div className="results-section">
       <h2 className="section-title">{t('calculator.resultsSection.title')}</h2>
+
+      {/* Transfer list - First priority for user action */}
+      <TransferList transfers={transfers} copyableText={copyableText} />
 
       {/* Summary cards */}
       <div className="summary-grid">
@@ -61,9 +65,15 @@ export default function ResultsSection({ results }) {
 
       {/* Player list */}
       <PlayerList players={players} />
-
-      {/* Transfer list */}
-      <TransferList transfers={transfers} copyableText={copyableText} />
     </div>
   );
 }
+
+ResultsSection.propTypes = {
+  results: PropTypes.shape({
+    summary: PropTypes.object.isRequired,
+    players: PropTypes.array.isRequired,
+    transfers: PropTypes.array.isRequired,
+    copyableText: PropTypes.string.isRequired
+  })
+};

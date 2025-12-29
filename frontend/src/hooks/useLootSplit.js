@@ -3,9 +3,11 @@
  */
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { calculateLootSplit } from '../services/api';
 
 export function useLootSplit() {
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +23,7 @@ export function useLootSplit() {
 
     // Validate input
     if (!input.trim()) {
-      setError('Please enter loot data');
+      setError(t('calculator.error.emptyInput'));
       return;
     }
 
@@ -35,7 +37,7 @@ export function useLootSplit() {
       if (response.success) {
         setResults(response.data);
       } else {
-        setError(response.error?.message || 'Failed to calculate loot split');
+        setError(response.error?.message || t('calculator.error.failedCalculation'));
       }
     } catch (err) {
       setError(err.message);

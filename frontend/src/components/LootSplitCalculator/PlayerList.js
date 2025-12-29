@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGold, getRoleColor, getRoleLabel } from '../../utils/formatters';
 import './PlayerList.css';
@@ -54,3 +55,14 @@ export default function PlayerList({ players }) {
     </div>
   );
 }
+
+PlayerList.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    isLeader: PropTypes.bool,
+    role: PropTypes.string,
+    balance: PropTypes.number.isRequired,
+    netBalance: PropTypes.number.isRequired,
+    difference: PropTypes.number.isRequired
+  })).isRequired
+};

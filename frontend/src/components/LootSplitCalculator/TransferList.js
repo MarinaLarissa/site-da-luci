@@ -3,6 +3,7 @@
  */
 
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGold } from '../../utils/formatters';
 import './TransferList.css';
@@ -31,6 +32,7 @@ export default function TransferList({ transfers, copyableText }) {
   return (
     <div className="transfer-list">
       <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
+      <p className="transfer-instruction">{t('calculator.resultsSection.transferList.instruction')}</p>
 
       <div className="transfer-items">
         {transfers.map((transfer, index) => (
@@ -66,3 +68,12 @@ export default function TransferList({ transfers, copyableText }) {
     </div>
   );
 }
+
+TransferList.propTypes = {
+  transfers: PropTypes.arrayOf(PropTypes.shape({
+    from: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired
+  })),
+  copyableText: PropTypes.string.isRequired
+};

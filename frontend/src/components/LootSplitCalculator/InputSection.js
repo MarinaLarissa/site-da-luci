@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
 import './InputSection.css';
@@ -37,3 +38,11 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
     </div>
   );
 }
+
+InputSection.propTypes = {
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
+  onCalculate: PropTypes.func.isRequired,
+  onLoadExample: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired
+};

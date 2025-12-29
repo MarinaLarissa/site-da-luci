@@ -17,8 +17,8 @@
     "subtitle": "Calculate loot distribution for your TIBIA party hunts",
     "inputSection": {
       "title": "Enter Loot Data",
-      "description": "Paste your TIBIA loot session data below (copy from Party Hunt Analyzer)",
-      "placeholder": "Paste your loot data here...",
+      "description": "Paste your TIBIA data below (copy from Party Hunt Analyzer)",
+      "placeholder": "Paste your TIBIA data below (copy from Party Hunt Analyzer)",
       "calculateButton": "Calculate Split",
       "calculatingButton": "Calculating...",
       "loadExampleButton": "Load Example"
@@ -48,6 +48,7 @@
       },
       "transferList": {
         "title": "Transfers",
+        "instruction": "Click on a card below to copy the transfer command",
         "noTransfers": "No transfers needed! All players are balanced.",
         "copyButton": "Copy Transfer Commands",
         "copiedButton": "✓ Copied!"
@@ -56,7 +57,9 @@
     "loading": "Calculating loot split...",
     "error": {
       "generic": "An error occurred. Please try again.",
-      "invalidData": "Invalid loot data format. Please check your input."
+      "invalidData": "Invalid loot data format. Please check your input.",
+      "emptyInput": "Please enter loot data",
+      "failedCalculation": "Failed to calculate loot split"
     }
   },
   "roles": {
