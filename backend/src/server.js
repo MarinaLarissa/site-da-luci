@@ -23,10 +23,27 @@ const app = express();
 app.use(helmet());
 
 // CORS middleware - Allow cross-origin requests from frontend
+const allowedOrigins = [
+  'https://marinaralarissa.github.io',
+  'http://localhost:3000', // Development
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*', // In production, set specific frontend URL
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, Postman, curl)
+    if (!origin) return callback(null, true);
+
+    // Check if origin is allowed or if it's a subdomain of GitHub Pages
+    if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 // Body parser middleware - Parse JSON request bodies
