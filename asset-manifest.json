@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/site-da-luci/static/css/main.812dc6c0.css",
-    "main.js": "/site-da-luci/static/js/main.d194e533.js",
+    "main.css": "/site-da-luci/static/css/main.f054b17e.css",
+    "main.js": "/site-da-luci/static/js/main.9bfdac14.js",
     "static/js/453.20359781.chunk.js": "/site-da-luci/static/js/453.20359781.chunk.js",
     "index.html": "/site-da-luci/index.html",
-    "main.812dc6c0.css.map": "/site-da-luci/static/css/main.812dc6c0.css.map",
-    "main.d194e533.js.map": "/site-da-luci/static/js/main.d194e533.js.map",
+    "main.f054b17e.css.map": "/site-da-luci/static/css/main.f054b17e.css.map",
+    "main.9bfdac14.js.map": "/site-da-luci/static/js/main.9bfdac14.js.map",
     "453.20359781.chunk.js.map": "/site-da-luci/static/js/453.20359781.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.812dc6c0.css",
-    "static/js/main.d194e533.js"
+    "static/css/main.f054b17e.css",
+    "static/js/main.9bfdac14.js"
   ]
 }
