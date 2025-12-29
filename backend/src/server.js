@@ -25,24 +25,27 @@ app.use(helmet());
 // CORS middleware - Allow cross-origin requests from frontend
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
-  : ['http://localhost:3000', 'https://marinaralarissa.github.io'];
+  : [
+      'http://localhost:3000',
+      'https://marinalarissa.github.io'
+    ];
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, false);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
+
+    return callback(new Error('Not allowed by CORS'));
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: false,
-  optionsSuccessStatus: 204
 }));
+
+app.options('*', cors());
 
 // Body parser middleware - Parse JSON request bodies
 app.use(express.json({ limit: '10mb' })); // Limit payload size for security
