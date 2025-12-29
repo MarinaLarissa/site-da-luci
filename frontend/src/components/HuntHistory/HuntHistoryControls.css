@@ -42,6 +42,10 @@
   font-size: 0.95rem;
 }
 
+.radio-label span {
+  color: #333;
+}
+
 .radio-label input[type="radio"] {
   cursor: pointer;
   width: 18px;

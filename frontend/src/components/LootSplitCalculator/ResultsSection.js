@@ -9,6 +9,7 @@ import { formatGold, formatDuration } from '../../utils/formatters';
 import PlayerList from './PlayerList';
 import TransferList from './TransferList';
 import DamageHealingSection from './DamageHealingSection';
+import PlayerStatsRow from './PlayerStatsRow';
 import Tooltip from '../common/Tooltip';
 import './ResultsSection.css';
 
@@ -18,6 +19,10 @@ export default function ResultsSection({ results }) {
   if (!results) return null;
 
   const { summary, players, transfers, copyableText } = results;
+
+  // Calculate total damage and healing for percentage calculation
+  const totalDamage = players.reduce((sum, player) => sum + (player.damage || 0), 0);
+  const totalHealing = players.reduce((sum, player) => sum + (player.healing || 0), 0);
 
   return (
     <div className="results-section">
@@ -64,11 +69,24 @@ export default function ResultsSection({ results }) {
       {/* Transfer list - Action items */}
       <TransferList transfers={transfers} copyableText={copyableText} />
 
-      {/* Player list */}
-      <PlayerList players={players} />
+      {/* Desktop layout: side-by-side rows (Player card | Damage/Healing card) */}
+      <div className="desktop-layout">
+        <h3 className="stats-section-title">{t('calculator.resultsSection.playerList.title')}</h3>
+        {players.map((player, index) => (
+          <PlayerStatsRow
+            key={index}
+            player={player}
+            totalDamage={totalDamage}
+            totalHealing={totalHealing}
+          />
+        ))}
+      </div>
 
-      {/* Damage and Healing statistics */}
-      <DamageHealingSection players={players} />
+      {/* Mobile layout: separate sections (preserve current stacking) */}
+      <div className="mobile-layout">
+        <PlayerList players={players} />
+        <DamageHealingSection players={players} />
+      </div>
     </div>
   );
 }

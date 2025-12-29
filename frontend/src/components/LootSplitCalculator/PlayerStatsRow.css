@@ -1,0 +1,26 @@
+/**
+ * Player stats row styles - Side-by-side layout for desktop
+ */
+
+/* Desktop: side by side with left indentation */
+.player-stats-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.player-card-wrapper {
+  flex: 1;
+  padding-left: 2rem; /* Left indentation as requested */
+}
+
+.damage-healing-card-wrapper {
+  flex: 1;
+}
+
+/* Mobile: hide PlayerStatsRow, use separate sections instead */
+@media (max-width: 768px) {
+  .player-stats-row {
+    display: none;
+  }
+}

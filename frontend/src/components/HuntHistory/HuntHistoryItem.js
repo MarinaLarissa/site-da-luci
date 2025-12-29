@@ -55,7 +55,6 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
           </button>
           <button
             className="btn-expand"
-            onClick={toggleExpand}
             aria-label={expanded ? t('huntHistory.collapseButton') : t('huntHistory.expandButton')}
           >
             {expanded ? '−' : '+'}

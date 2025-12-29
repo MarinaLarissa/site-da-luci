@@ -41,9 +41,37 @@
   font-weight: 700;
 }
 
+/* Desktop layout: show side-by-side rows */
+.desktop-layout {
+  display: block;
+  margin-top: 24px;
+}
+
+/* Mobile layout: hide on desktop */
+.mobile-layout {
+  display: none;
+}
+
+/* Section title for player statistics */
+.stats-section-title {
+  font-size: 20px;
+  color: #c39bd3;
+  margin: 0 0 16px 0;
+  font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .summary-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Mobile: hide desktop layout, show mobile layout */
+  .desktop-layout {
+    display: none;
+  }
+
+  .mobile-layout {
+    display: block;
   }
 }

@@ -127,6 +127,8 @@ export function formatResponse(lootSession, transfers) {
       difference: Math.round(difference),
       isActive: player.isActive,
       role: role,
+      damage: player.damage || 0,
+      healing: player.healing || 0,
     };
   });
 

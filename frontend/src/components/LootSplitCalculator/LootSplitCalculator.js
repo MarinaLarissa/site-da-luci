@@ -15,16 +15,6 @@ import './LootSplitCalculator.css';
 
 export default function LootSplitCalculator() {
   const { t } = useTranslation();
-  const {
-    input,
-    setInput,
-    loading,
-    error,
-    results,
-    handleCalculate,
-    handleReset,
-    loadExampleData,
-  } = useLootSplit();
 
   const {
     hunts,
@@ -34,8 +24,20 @@ export default function LootSplitCalculator() {
     deleteHunt,
     clearHistory,
     handleExportJSON,
-    updateExportOptions
+    updateExportOptions,
+    loadHunts
   } = useHuntHistory();
+
+  const {
+    input,
+    setInput,
+    loading,
+    error,
+    results,
+    handleCalculate,
+    handleReset,
+    loadExampleData,
+  } = useLootSplit(loadHunts);
 
   return (
     <div className="loot-split-calculator">
@@ -71,7 +73,8 @@ export default function LootSplitCalculator() {
         aria-label={t('huntHistory.openButton')}
         title={t('huntHistory.openButton')}
       >
-        📜
+        <span className="btn-icon">📜</span>
+        <span className="btn-text">Histórico</span>
       </button>
 
       {/* Hunt History Drawer */}

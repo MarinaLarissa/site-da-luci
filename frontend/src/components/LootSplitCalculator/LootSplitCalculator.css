@@ -30,13 +30,13 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 60px;
+  min-width: 60px;
   height: 60px;
+  padding: 0 1.2rem;
   background: #1976d2;
   color: white;
   border: none;
-  border-radius: 50%;
-  font-size: 1.8rem;
+  border-radius: 30px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -44,6 +44,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.btn-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .btn-open-history:hover {
@@ -68,5 +80,17 @@
 
   .calculator-description {
     font-size: 16px;
+  }
+
+  /* Hide button text on mobile, show icon only */
+  .btn-text {
+    display: none;
+  }
+
+  .btn-open-history {
+    width: 60px;
+    min-width: 60px;
+    padding: 0;
+    border-radius: 50%;
   }
 }
