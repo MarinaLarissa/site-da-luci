@@ -1,0 +1,41 @@
+/* Loot Split Calculator styles */
+.loot-split-calculator {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.calculator-header {
+  margin-bottom: 32px;
+}
+
+.calculator-title {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 12px 0;
+}
+
+.calculator-description {
+  color: #9E9E9E;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loot-split-calculator {
+    padding: 16px;
+  }
+
+  .calculator-title {
+    font-size: 28px;
+  }
+
+  .calculator-description {
+    font-size: 16px;
+  }
+}

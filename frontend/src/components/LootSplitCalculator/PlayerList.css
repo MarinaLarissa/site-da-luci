@@ -1,0 +1,83 @@
+/* Player list styles */
+.player-list {
+  margin-top: 24px;
+}
+
+.list-title {
+  font-size: 20px;
+  color: #FFD700;
+  margin: 0 0 16px 0;
+  font-weight: 600;
+}
+
+.player-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.player-card {
+  background-color: #0f1620;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-2px);
+  border-color: #FFD700;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #E0E0E0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.leader-badge {
+  font-size: 14px;
+  background-color: rgba(255, 215, 0, 0.2);
+  color: #FFD700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.player-role {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.player-stats {
+  display: grid;
+  gap: 8px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  color: #9E9E9E;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #E0E0E0;
+  font-size: 14px;
+  font-weight: 600;
+}

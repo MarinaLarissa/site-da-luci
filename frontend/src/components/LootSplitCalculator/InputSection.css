@@ -1,0 +1,60 @@
+/* Input section styles */
+.input-section {
+  background-color: #16213e;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.section-title {
+  font-size: 24px;
+  color: #FFD700;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.section-description {
+  color: #9E9E9E;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+
+.loot-input {
+  width: 100%;
+  padding: 16px;
+  background-color: #0f1620;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.loot-input:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.loot-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loot-input::placeholder {
+  color: #616161;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+}

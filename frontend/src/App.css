@@ -1,0 +1,24 @@
+/* Main app layout */
+.app {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0f0e17;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  background: linear-gradient(180deg, #0f0e17 0%, #1a1a2e 100%);
+  min-height: 100vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
