@@ -38,6 +38,11 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
+// Root route - redirect to API health check
+app.get('/', (req, res) => {
+  res.redirect('/api/health');
+});
+
 // Mount API routes
 app.use('/api', routes);
 
