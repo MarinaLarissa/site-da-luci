@@ -137,7 +137,7 @@
       }
     },
     "results": {
-      "title": "Análise da Caçada",
+      "title": "Resultados da Hunt",
       "sessionInfo": {
         "title": "Informações da Sessão",
         "character": "Personagem",
@@ -145,19 +145,25 @@
         "sessionTime": "Horário da Sessão"
       },
       "lootStats": {
-        "title": "Loot e Suprimentos",
+        "title": "Loot & Supplies",
         "loot": "Loot Total",
-        "supplies": "Suprimentos Totais",
-        "balance": "Saldo Original"
+        "supplies": "Supplies Usados",
+        "balance": "Balance Original"
       },
       "costsBreakdown": {
-        "title": "Detalhamento de Custos Adicionais",
+        "title": "Custos Adicionais",
         "imbuementCosts": "Custos de Imbuements",
         "customItems": "Itens Customizados",
-        "totalAdditionalCosts": "Custos Adicionais Totais"
+        "totalAdditionalCosts": "Custos Adicionais Totais",
+        "tooltips": {
+          "gpCosts": "Custos diretos em GP (sem conversão de tokens)",
+          "gtCosts": "{{total}} GT × {{price}} GP/GT = {{result}} GP",
+          "stCosts": "{{total}} ST × {{price}} GP/ST = {{result}} GP (proporcional a {{huntHours}} hrs de hunt)",
+          "totalCosts": "Total: {{gpTotal}} GP + {{gtTotal}} GP (GT) + {{stTotal}} GP (ST) = {{finalTotal}} GP"
+        }
       },
       "finalBalance": {
-        "title": "Saldo Final",
+        "title": "Balance Final Ajustado",
         "profitPerHour": "Lucro por hora"
       },
       "combatStats": {
@@ -166,13 +172,14 @@
         "healing": "Cura Total"
       }
     },
-    "calculateButton": "Calcular Saldo Final",
-    "resetButton": "Resetar Tudo",
+    "calculateButton": "Calcular Balance Ajustado",
+    "resetButton": "Limpar",
     "errors": {
       "noSessionData": "Por favor, insira os dados da sessão primeiro",
       "invalidSessionData": "Formato de dados da sessão inválido",
       "multiplePlayersError": "Analisador de Caçada Solo requer exatamente 1 jogador. Encontrados {{count}} jogadores.",
-      "parseError": "Erro ao analisar dados da sessão"
+      "parseError": "Erro ao analisar dados da sessão",
+      "missingSilverTokenPrice": "⚠️ Você adicionou Ring Bis mas não definiu o preço do Silver Token. Por favor, informe o valor do Silver Token para calcular corretamente."
     }
   },
   "roles": {

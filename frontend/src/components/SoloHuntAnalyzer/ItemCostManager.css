@@ -51,6 +51,18 @@
   border-color: #c39bd3;
 }
 
+.token-price-row input.error {
+  border-color: #f44336;
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+}
+
+.token-price-row.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  padding: 12px;
+  border-radius: 6px;
+}
+
 .token-price-row .unit {
   color: #9E9E9E;
   font-weight: 600;

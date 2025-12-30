@@ -137,7 +137,7 @@
       }
     },
     "results": {
-      "title": "Hunt Analysis",
+      "title": "Hunt Results",
       "sessionInfo": {
         "title": "Session Information",
         "character": "Character",
@@ -147,17 +147,23 @@
       "lootStats": {
         "title": "Loot & Supplies",
         "loot": "Total Loot",
-        "supplies": "Total Supplies",
+        "supplies": "Supplies Used",
         "balance": "Original Balance"
       },
       "costsBreakdown": {
-        "title": "Additional Costs Breakdown",
+        "title": "Additional Costs",
         "imbuementCosts": "Imbuement Costs",
         "customItems": "Custom Items",
-        "totalAdditionalCosts": "Total Additional Costs"
+        "totalAdditionalCosts": "Total Additional Costs",
+        "tooltips": {
+          "gpCosts": "Direct GP costs (no token conversion)",
+          "gtCosts": "{{total}} GT × {{price}} GP/GT = {{result}} GP",
+          "stCosts": "{{total}} ST × {{price}} GP/ST = {{result}} GP (proportional to {{huntHours}} hrs hunt)",
+          "totalCosts": "Total: {{gpTotal}} GP + {{gtTotal}} GP (GT) + {{stTotal}} GP (ST) = {{finalTotal}} GP"
+        }
       },
       "finalBalance": {
-        "title": "Final Balance",
+        "title": "Adjusted Final Balance",
         "profitPerHour": "Profit per hour"
       },
       "combatStats": {
@@ -166,13 +172,14 @@
         "healing": "Total Healing"
       }
     },
-    "calculateButton": "Calculate Final Balance",
-    "resetButton": "Reset All",
+    "calculateButton": "Calculate Adjusted Balance",
+    "resetButton": "Clear",
     "errors": {
       "noSessionData": "Please enter session data first",
       "invalidSessionData": "Invalid session data format",
       "multiplePlayersError": "Solo Hunt Analyzer requires exactly 1 player. Found {{count}} players.",
-      "parseError": "Error parsing session data"
+      "parseError": "Error parsing session data",
+      "missingSilverTokenPrice": "⚠️ You added Ring Bis but didn't set the Silver Token price. Please enter the Silver Token value to calculate correctly."
     }
   },
   "roles": {

@@ -18,15 +18,14 @@
   margin-bottom: 24px;
 }
 
-/* Emoji icon - remove gradient clipping to show emoji properly */
+/* Emoji icon - completely isolate from parent gradient */
 .results-icon {
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: inherit;
-  background-clip: unset;
-  color: #c39bd3;
-  display: inline-block;
+  all: initial;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 28px;
   margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .result-card {
@@ -109,11 +108,20 @@
   font-size: 14px;
   color: #9E9E9E;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .stat-value {
   font-size: 20px;
   font-weight: 700;
+  text-align: center;
+}
+
+.stat-detail {
+  font-size: 12px;
+  color: #9E9E9E;
+  margin-top: 4px;
+  text-align: center;
 }
 
 .stat-item.positive .stat-value {
@@ -126,6 +134,21 @@
 
 .stat-item.neutral .stat-value {
   color: #c39bd3;
+}
+
+.stat-item.total-cost {
+  background-color: rgba(244, 67, 54, 0.15);
+  border: 2px solid rgba(244, 67, 54, 0.4);
+}
+
+.stat-item.total-cost .stat-label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.stat-item.total-cost .stat-value {
+  font-size: 22px;
+  font-weight: 800;
 }
 
 /* Costs Breakdown */

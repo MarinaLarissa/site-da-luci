@@ -32,7 +32,8 @@ export default function ItemCostManager({
   goldTokenPrice,
   setGoldTokenPrice,
   silverTokenPrice,
-  setSilverTokenPrice
+  setSilverTokenPrice,
+  silverTokenError = false
 }) {
   const { t } = useTranslation();
   const [showImbuementModal, setShowImbuementModal] = useState(false);
@@ -320,7 +321,7 @@ export default function ItemCostManager({
           <span className="unit">GP</span>
         </div>
 
-        <div className="token-price-row">
+        <div className={`token-price-row ${silverTokenError ? 'error' : ''}`}>
           <img src={silverTokenIcon} alt="Silver Token" className="token-icon" />
           <label htmlFor="silver-token-price-input">Silver Token:</label>
           <input
@@ -331,6 +332,7 @@ export default function ItemCostManager({
             placeholder="Ex: 15000"
             min="0"
             aria-label="Preço do Silver Token em GP"
+            className={silverTokenError ? 'error' : ''}
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -811,4 +813,5 @@ ItemCostManager.propTypes = {
   setGoldTokenPrice: PropTypes.func.isRequired,
   silverTokenPrice: PropTypes.number.isRequired,
   setSilverTokenPrice: PropTypes.func.isRequired,
+  silverTokenError: PropTypes.bool,
 };

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-// import { useTranslation } from 'react-i18next'; // TODO: Add i18n support
+import { useTranslation } from 'react-i18next';
 import SessionDataInput from './SessionDataInput';
 import ItemCostManager from './ItemCostManager';
 import SoloHuntResults from './SoloHuntResults';
@@ -13,7 +13,7 @@ import ErrorMessage from '../common/ErrorMessage';
 import './SoloHuntAnalyzer.css';
 
 export default function SoloHuntAnalyzer() {
-  // const { t } = useTranslation(); // TODO: Add i18n support later
+  const { t } = useTranslation();
 
   // Session data state
   const [sessionData, setSessionData] = useState('');
@@ -28,6 +28,7 @@ export default function SoloHuntAnalyzer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
+  const [silverTokenError, setSilverTokenError] = useState(false);
 
   /**
    * Parse session data (single player only)
@@ -132,10 +133,19 @@ export default function SoloHuntAnalyzer() {
    */
   const handleCalculate = () => {
     if (!parsedSession) {
-      setError('Primeiro processe os dados da sessão.');
+      setError(t('soloHuntAnalyzer.errors.noSessionData'));
       return;
     }
 
+    // Validate Silver Token price if Ring Bis is added
+    const hasRingBis = customItems.some(item => item.name === 'Ring Bis');
+    if (hasRingBis && silverTokenPrice === 0) {
+      setError(t('soloHuntAnalyzer.errors.missingSilverTokenPrice'));
+      setSilverTokenError(true);
+      return;
+    }
+
+    setSilverTokenError(false);
     setLoading(true);
 
     try {
@@ -233,9 +243,9 @@ export default function SoloHuntAnalyzer() {
   return (
     <div className="solo-hunt-analyzer">
       <div className="calculator-header">
-        <h1 className="calculator-title">Solo Hunt Analyzer</h1>
+        <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
         <p className="calculator-description">
-          Analise suas hunts solo e calcule o balance real considerando custos de imbuements e outros itens.
+          {t('soloHuntAnalyzer.subtitle')}
         </p>
       </div>
 
@@ -259,6 +269,7 @@ export default function SoloHuntAnalyzer() {
           setGoldTokenPrice={setGoldTokenPrice}
           silverTokenPrice={silverTokenPrice}
           setSilverTokenPrice={setSilverTokenPrice}
+          silverTokenError={silverTokenError}
         />
       )}
 
@@ -270,13 +281,13 @@ export default function SoloHuntAnalyzer() {
             onClick={handleCalculate}
             disabled={loading}
           >
-            Calcular Balance Ajustado
+            {t('soloHuntAnalyzer.calculateButton')}
           </button>
           <button
             className="btn btn-secondary"
             onClick={handleReset}
           >
-            Limpar
+            {t('soloHuntAnalyzer.resetButton')}
           </button>
         </div>
       )}
