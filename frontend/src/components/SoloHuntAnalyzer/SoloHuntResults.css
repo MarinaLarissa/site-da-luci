@@ -1,0 +1,242 @@
+/**
+ * Solo Hunt Results Styles
+ * Following LootSplitCalculator color scheme
+ */
+
+.solo-hunt-results {
+  margin-top: 24px;
+}
+
+.results-title {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.result-card {
+  background-color: #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(195, 155, 211, 0.15);
+}
+
+.result-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #c39bd3;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(195, 155, 211, 0.2);
+}
+
+/* Session Info */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-item .label {
+  font-size: 14px;
+  color: #9E9E9E;
+  font-weight: 500;
+}
+
+.info-item .value {
+  font-size: 16px;
+  color: #E0E0E0;
+  font-weight: 600;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-item {
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-item.positive {
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.stat-item.negative {
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.stat-item.neutral {
+  background-color: rgba(195, 155, 211, 0.1);
+  border: 1px solid rgba(195, 155, 211, 0.3);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #9E9E9E;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stat-item.positive .stat-value {
+  color: #4CAF50;
+}
+
+.stat-item.negative .stat-value {
+  color: #f44336;
+}
+
+.stat-item.neutral .stat-value {
+  color: #c39bd3;
+}
+
+/* Costs Breakdown */
+.costs-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  color: #E0E0E0;
+}
+
+.cost-row.total-cost {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(195, 155, 211, 0.3);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cost-value {
+  font-weight: 600;
+  color: #f44336;
+}
+
+/* Final Balance */
+.final-balance {
+  text-align: center;
+}
+
+.final-balance.positive {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+  border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.final-balance.negative {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+  border: 2px solid rgba(244, 67, 54, 0.3);
+}
+
+.final-balance h3 {
+  font-size: 24px;
+  border-bottom: none;
+}
+
+.final-balance-value {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 16px 0;
+}
+
+.final-balance.positive .final-balance-value {
+  color: #4CAF50;
+}
+
+.final-balance.negative .final-balance-value {
+  color: #f44336;
+}
+
+.profit-per-hour {
+  font-size: 20px;
+  font-weight: 600;
+  color: #9E9E9E;
+  margin-top: 8px;
+}
+
+/* Combat Stats */
+.combat-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.combat-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: rgba(195, 155, 211, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+}
+
+.combat-stat .label {
+  font-weight: 500;
+  color: #9E9E9E;
+}
+
+.combat-stat .value {
+  font-weight: 700;
+  color: #c39bd3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .results-title {
+    font-size: 24px;
+  }
+
+  .result-card {
+    padding: 16px;
+  }
+
+  .result-card h3 {
+    font-size: 18px;
+  }
+
+  .final-balance-value {
+    font-size: 36px;
+  }
+
+  .profit-per-hour {
+    font-size: 18px;
+  }
+
+  .stats-grid,
+  .combat-stats,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -6,7 +6,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './Sidebar.css';
 
-export default function Sidebar() {
+export default function Sidebar({ activePage, onNavigate }) {
   const { t } = useTranslation();
 
   return (
@@ -17,9 +17,19 @@ export default function Sidebar() {
       </div>
 
       <nav className="sidebar-nav">
-        <div className="nav-item active">
+        <div
+          className={`nav-item ${activePage === 'loot-split' ? 'active' : ''}`}
+          onClick={() => onNavigate('loot-split')}
+        >
           <span className="nav-icon">💰</span>
           <span className="nav-label">{t('sidebar.nav.lootSplit')}</span>
+        </div>
+        <div
+          className={`nav-item ${activePage === 'solo-hunt' ? 'active' : ''}`}
+          onClick={() => onNavigate('solo-hunt')}
+        >
+          <span className="nav-icon">🎯</span>
+          <span className="nav-label">{t('sidebar.nav.soloHunt')}</span>
         </div>
         <div className="nav-item disabled">
           <span className="nav-icon">📊</span>

@@ -1,0 +1,391 @@
+/**
+ * Item Cost Manager Styles
+ * Following LootSplitCalculator color scheme
+ */
+
+.item-cost-manager {
+  background-color: #16213e;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+}
+
+/* Token Prices Section */
+.token-prices-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: rgba(195, 155, 211, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(195, 155, 211, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.token-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.token-price-row label {
+  font-weight: 600;
+  color: #c39bd3;
+  min-width: 100px;
+}
+
+.token-price-row input {
+  padding: 8px 12px;
+  border: 2px solid rgba(195, 155, 211, 0.3);
+  border-radius: 6px;
+  font-size: 14px;
+  width: 150px;
+  background-color: #0f1620;
+  color: #E0E0E0;
+  transition: border-color 0.3s ease;
+}
+
+.token-price-row input:focus {
+  outline: none;
+  border-color: #c39bd3;
+}
+
+.token-price-row .unit {
+  color: #9E9E9E;
+  font-weight: 600;
+}
+
+.token-icon {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+}
+
+.token-icon-inline {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+  image-rendering: pixelated;
+}
+
+.coin-icon-small {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+}
+
+.coin-icon-inline {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+  image-rendering: pixelated;
+}
+
+.add-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.items-list {
+  margin-top: 24px;
+}
+
+.items-list h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #c39bd3;
+  font-weight: 600;
+}
+
+.items-table {
+  background-color: #0f1620;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+}
+
+.items-header,
+.items-row {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 0.8fr 1fr 1.5fr 0.5fr;
+  gap: 8px;
+  padding: 12px 16px;
+  align-items: center;
+}
+
+.items-header {
+  background-color: rgba(195, 155, 211, 0.2);
+  color: #c39bd3;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.items-row {
+  background-color: #16213e;
+  border-bottom: 1px solid rgba(195, 155, 211, 0.1);
+}
+
+.items-row:hover {
+  background-color: rgba(195, 155, 211, 0.05);
+}
+
+.item-name {
+  font-weight: 500;
+  color: #E0E0E0;
+}
+
+/* Hierarchical styles for parent/child items */
+.parent-row {
+  background-color: rgba(195, 155, 211, 0.15);
+  border-left: 3px solid #c39bd3;
+  font-weight: 600;
+}
+
+.parent-row:hover {
+  background-color: rgba(195, 155, 211, 0.2);
+}
+
+.child-row {
+  background-color: rgba(195, 155, 211, 0.05);
+  border-left: 3px solid rgba(195, 155, 211, 0.3);
+  margin-left: 20px;
+  font-size: 13px;
+}
+
+.child-row:hover {
+  background-color: rgba(195, 155, 211, 0.08);
+}
+
+.child-item-name {
+  padding-left: 20px;
+  color: #B0B0B0;
+  font-weight: 400;
+}
+
+.price-input,
+.price-type-select {
+  padding: 6px 8px;
+  border: 1px solid rgba(195, 155, 211, 0.3);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #0f1620;
+  color: #E0E0E0;
+  transition: border-color 0.3s ease;
+}
+
+.price-input:focus,
+.price-type-select:focus {
+  outline: none;
+  border-color: #c39bd3;
+}
+
+.item-total {
+  font-weight: 600;
+  color: #c39bd3;
+}
+
+.item-source {
+  font-size: 12px;
+  color: #9E9E9E;
+  font-style: italic;
+}
+
+.btn-remove {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  transition: transform 0.2s ease;
+  color: #9E9E9E;
+}
+
+.btn-remove:hover {
+  transform: scale(1.2);
+  color: #f44336;
+}
+
+.cost-summary {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(195, 155, 211, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(195, 155, 211, 0.3);
+}
+
+.cost-summary p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #E0E0E0;
+}
+
+.cost-summary strong {
+  color: #c39bd3;
+}
+
+.cost-summary .total-final {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(195, 155, 211, 0.3);
+  font-size: 20px;
+  color: #c39bd3;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 14, 23, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #16213e;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(195, 155, 211, 0.3);
+}
+
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #c39bd3;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #c39bd3;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid rgba(195, 155, 211, 0.3);
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #0f1620;
+  color: #E0E0E0;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #c39bd3;
+}
+
+.imbuement-items-preview {
+  background-color: rgba(195, 155, 211, 0.05);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+}
+
+.imbuement-items-preview h4 {
+  margin-bottom: 8px;
+  color: #c39bd3;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.imbuement-items-preview p {
+  margin: 4px 0;
+  color: #9E9E9E;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Scrollbar for modal */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #0f1620;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #c39bd3;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #b388c7;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .items-header,
+  .items-row {
+    grid-template-columns: 1.5fr 0.5fr 1fr 0.8fr 1fr 1fr 0.5fr;
+    font-size: 13px;
+  }
+
+  .add-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .item-cost-manager {
+    padding: 16px;
+  }
+
+  .gold-token-price-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .items-table {
+    overflow-x: auto;
+  }
+
+  .items-header,
+  .items-row {
+    min-width: 600px;
+    font-size: 12px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}

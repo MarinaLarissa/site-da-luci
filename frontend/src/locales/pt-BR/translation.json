@@ -7,6 +7,7 @@
     "subtitle": "Ferramentas para Jogadores de TIBIA",
     "nav": {
       "lootSplit": "Calculadora de Divisão de Loot",
+      "soloHunt": "Analisador de Caçada Solo",
       "statistics": "Estatísticas (Em Breve)",
       "partyAnalyzer": "Analisador de Party (Em Breve)"
     },
@@ -69,6 +70,104 @@
       "invalidData": "Formato de dados de loot inválido. Por favor, verifique sua entrada.",
       "emptyInput": "Por favor, insira os dados de loot",
       "failedCalculation": "Falha ao calcular divisão de loot"
+    }
+  },
+  "soloHuntAnalyzer": {
+    "title": "Analisador de Caçada Solo",
+    "subtitle": "Analise suas caçadas solo com rastreamento detalhado de custos",
+    "sessionInput": {
+      "title": "Inserir Dados da Sessão",
+      "description": "Cole os dados da sessão do TIBIA abaixo (deve ser de uma caçada solo com exatamente 1 jogador)",
+      "placeholder": "Session data: 00:00 to 01:30\nLoot: 150,000 gold\nSupplies: 45,000 gold\nBalance: 105,000 gold\n\nSeuPersonagem\n\tLoot: 150,000\n\tSupplies: 45,000\n\tBalance: 105,000\n\tDamage: 450,000\n\tHealing: 25,000",
+      "parseButton": "Analisar Dados da Sessão",
+      "clearButton": "Limpar"
+    },
+    "itemCostManager": {
+      "title": "Custos Adicionais",
+      "goldTokenPriceLabel": "Preço do Gold Token",
+      "goldTokenPriceUnit": "GP por GT",
+      "addImbuementButton": "Adicionar Imbuement",
+      "addCustomItemButton": "Adicionar Item Customizado",
+      "itemsListTitle": "Itens de Custo",
+      "tableHeaders": {
+        "item": "Item",
+        "quantity": "Qtd",
+        "unitPrice": "Preço Unit.",
+        "priceType": "Tipo",
+        "total": "Total (GP)",
+        "source": "Origem",
+        "actions": "Ações"
+      },
+      "costSummary": {
+        "gpCosts": "Custos em GP",
+        "gtCosts": "Custos em GT",
+        "gtConverted": "GT Convertido para GP",
+        "totalCost": "Custo Adicional Total"
+      },
+      "addImbuementModal": {
+        "title": "Adicionar Imbuement",
+        "imbuementLabel": "Selecionar Imbuement",
+        "tierLabel": "Selecionar Tier",
+        "tiers": {
+          "basic": "Básico",
+          "intricate": "Intrincado",
+          "powerful": "Poderoso"
+        },
+        "itemsPreviewTitle": "Itens Necessários",
+        "cancelButton": "Cancelar",
+        "addButton": "Adicionar Imbuement"
+      },
+      "addCustomItemModal": {
+        "title": "Adicionar Item Customizado",
+        "itemNameLabel": "Nome do Item",
+        "quantityLabel": "Quantidade",
+        "unitPriceLabel": "Preço Unitário",
+        "priceTypeLabel": "Tipo de Preço",
+        "priceTypes": {
+          "gp": "GP (Gold Pieces)",
+          "gt": "GT (Gold Tokens)"
+        },
+        "cancelButton": "Cancelar",
+        "addButton": "Adicionar Item"
+      }
+    },
+    "results": {
+      "title": "Análise da Caçada",
+      "sessionInfo": {
+        "title": "Informações da Sessão",
+        "character": "Personagem",
+        "duration": "Duração",
+        "sessionTime": "Horário da Sessão"
+      },
+      "lootStats": {
+        "title": "Loot e Suprimentos",
+        "loot": "Loot Total",
+        "supplies": "Suprimentos Totais",
+        "balance": "Saldo Original"
+      },
+      "costsBreakdown": {
+        "title": "Detalhamento de Custos Adicionais",
+        "imbuementCosts": "Custos de Imbuements",
+        "customItems": "Itens Customizados",
+        "totalAdditionalCosts": "Custos Adicionais Totais"
+      },
+      "finalBalance": {
+        "title": "Saldo Final",
+        "profitPerHour": "Lucro por hora"
+      },
+      "combatStats": {
+        "title": "Estatísticas de Combate",
+        "damage": "Dano Total",
+        "healing": "Cura Total"
+      }
+    },
+    "calculateButton": "Calcular Saldo Final",
+    "resetButton": "Resetar Tudo",
+    "errors": {
+      "noSessionData": "Por favor, insira os dados da sessão primeiro",
+      "invalidSessionData": "Formato de dados da sessão inválido",
+      "multiplePlayersError": "Analisador de Caçada Solo requer exatamente 1 jogador. Encontrados {{count}} jogadores.",
+      "parseError": "Erro ao analisar dados da sessão"
     }
   },
   "roles": {

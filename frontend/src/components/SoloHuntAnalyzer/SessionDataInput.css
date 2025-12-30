@@ -1,0 +1,104 @@
+/**
+ * Session Data Input Styles
+ * Following LootSplitCalculator/InputSection color scheme
+ */
+
+.session-data-input {
+  background-color: #16213e;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(195, 155, 211, 0.2);
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #c39bd3;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.section-description {
+  color: #9E9E9E;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+
+.session-textarea {
+  width: 100%;
+  padding: 16px;
+  background-color: #0f1620;
+  border: 2px solid rgba(195, 155, 211, 0.3);
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.session-textarea:focus {
+  outline: none;
+  border-color: #c39bd3;
+}
+
+.session-textarea::placeholder {
+  color: #616161;
+}
+
+.input-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.parsed-session-info {
+  background-color: rgba(195, 155, 211, 0.1);
+  border: 1px solid rgba(195, 155, 211, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.parsed-session-info h3 {
+  color: #c39bd3;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.session-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.session-summary p {
+  margin: 4px 0;
+  color: #E0E0E0;
+  font-size: 14px;
+}
+
+.session-summary strong {
+  color: #c39bd3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .session-data-input {
+    padding: 16px;
+  }
+
+  .input-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .session-summary {
+    grid-template-columns: 1fr;
+  }
+}

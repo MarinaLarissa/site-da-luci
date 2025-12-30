@@ -7,6 +7,7 @@
     "subtitle": "TIBIA Player Tools",
     "nav": {
       "lootSplit": "Loot Split Calculator",
+      "soloHunt": "Solo Hunt Analyzer",
       "statistics": "Statistics (Coming Soon)",
       "partyAnalyzer": "Party Analyzer (Coming Soon)"
     },
@@ -69,6 +70,104 @@
       "invalidData": "Invalid loot data format. Please check your input.",
       "emptyInput": "Please enter loot data",
       "failedCalculation": "Failed to calculate loot split"
+    }
+  },
+  "soloHuntAnalyzer": {
+    "title": "Solo Hunt Analyzer",
+    "subtitle": "Analyze your solo hunting sessions with detailed cost tracking",
+    "sessionInput": {
+      "title": "Enter Session Data",
+      "description": "Paste your TIBIA session data below (must be from a solo hunt with exactly 1 player)",
+      "placeholder": "Session data: 00:00 to 01:30\nLoot: 150,000 gold\nSupplies: 45,000 gold\nBalance: 105,000 gold\n\nYourCharacter\n\tLoot: 150,000\n\tSupplies: 45,000\n\tBalance: 105,000\n\tDamage: 450,000\n\tHealing: 25,000",
+      "parseButton": "Parse Session Data",
+      "clearButton": "Clear"
+    },
+    "itemCostManager": {
+      "title": "Additional Costs",
+      "goldTokenPriceLabel": "Gold Token Price",
+      "goldTokenPriceUnit": "GP per GT",
+      "addImbuementButton": "Add Imbuement",
+      "addCustomItemButton": "Add Custom Item",
+      "itemsListTitle": "Cost Items",
+      "tableHeaders": {
+        "item": "Item",
+        "quantity": "Qty",
+        "unitPrice": "Unit Price",
+        "priceType": "Type",
+        "total": "Total (GP)",
+        "source": "Source",
+        "actions": "Actions"
+      },
+      "costSummary": {
+        "gpCosts": "GP Costs",
+        "gtCosts": "GT Costs",
+        "gtConverted": "GT Converted to GP",
+        "totalCost": "Total Additional Cost"
+      },
+      "addImbuementModal": {
+        "title": "Add Imbuement",
+        "imbuementLabel": "Select Imbuement",
+        "tierLabel": "Select Tier",
+        "tiers": {
+          "basic": "Basic",
+          "intricate": "Intricate",
+          "powerful": "Powerful"
+        },
+        "itemsPreviewTitle": "Required Items",
+        "cancelButton": "Cancel",
+        "addButton": "Add Imbuement"
+      },
+      "addCustomItemModal": {
+        "title": "Add Custom Item",
+        "itemNameLabel": "Item Name",
+        "quantityLabel": "Quantity",
+        "unitPriceLabel": "Unit Price",
+        "priceTypeLabel": "Price Type",
+        "priceTypes": {
+          "gp": "GP (Gold Pieces)",
+          "gt": "GT (Gold Tokens)"
+        },
+        "cancelButton": "Cancel",
+        "addButton": "Add Item"
+      }
+    },
+    "results": {
+      "title": "Hunt Analysis",
+      "sessionInfo": {
+        "title": "Session Information",
+        "character": "Character",
+        "duration": "Duration",
+        "sessionTime": "Session Time"
+      },
+      "lootStats": {
+        "title": "Loot & Supplies",
+        "loot": "Total Loot",
+        "supplies": "Total Supplies",
+        "balance": "Original Balance"
+      },
+      "costsBreakdown": {
+        "title": "Additional Costs Breakdown",
+        "imbuementCosts": "Imbuement Costs",
+        "customItems": "Custom Items",
+        "totalAdditionalCosts": "Total Additional Costs"
+      },
+      "finalBalance": {
+        "title": "Final Balance",
+        "profitPerHour": "Profit per hour"
+      },
+      "combatStats": {
+        "title": "Combat Statistics",
+        "damage": "Total Damage",
+        "healing": "Total Healing"
+      }
+    },
+    "calculateButton": "Calculate Final Balance",
+    "resetButton": "Reset All",
+    "errors": {
+      "noSessionData": "Please enter session data first",
+      "invalidSessionData": "Invalid session data format",
+      "multiplePlayersError": "Solo Hunt Analyzer requires exactly 1 player. Found {{count}} players.",
+      "parseError": "Error parsing session data"
     }
   },
   "roles": {
