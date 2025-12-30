@@ -106,6 +106,28 @@ export default function SoloHuntAnalyzer() {
   };
 
   /**
+   * Parse hunt duration to hours (decimal)
+   * Formats: "HH:MMh" (e.g. "03:31h") or "MM:SS" (e.g. "45:30")
+   */
+  const parseDurationToHours = (durationStr) => {
+    if (!durationStr) return 0;
+
+    // Format "HH:MMh" (hours)
+    if (durationStr.includes('h')) {
+      const parts = durationStr.split(':');
+      const hours = parseInt(parts[0], 10) || 0;
+      const minutes = parts[1] ? parseInt(parts[1].replace('h', ''), 10) : 0;
+      return hours + minutes / 60;
+    }
+
+    // Format "MM:SS" (minutes:seconds)
+    const parts = durationStr.split(':');
+    const minutes = parseInt(parts[0], 10) || 0;
+    const seconds = parts[1] ? parseInt(parts[1], 10) : 0;
+    return (minutes + seconds / 60) / 60;
+  };
+
+  /**
    * Calculate final results with item costs
    */
   const handleCalculate = () => {
@@ -117,18 +139,34 @@ export default function SoloHuntAnalyzer() {
     setLoading(true);
 
     try {
-      // Calculate total cost of custom items
+      // Parse hunt duration
+      const huntDurationHours = parseDurationToHours(parsedSession.duration);
+
+      // Calculate total cost of custom items (with proportional cost based on item duration)
       let totalCostGP = 0;
       let totalCostGT = 0;
       let totalCostST = 0;
 
       customItems.forEach(item => {
+        // Calculate proportional cost based on item duration
+        // If item has itemDuration (e.g., 20hrs for imbuements, 3hrs for Ring Bis):
+        //   cost = (hunt_duration / item_duration) * item_cost
+        // If no itemDuration (custom items): use full cost
+        let costMultiplier = 1.0;
+        if (item.itemDuration && huntDurationHours > 0) {
+          costMultiplier = huntDurationHours / item.itemDuration;
+          // Cap at 1.0 (max 100% of cost even if hunt is longer than item duration)
+          costMultiplier = Math.min(costMultiplier, 1.0);
+        }
+
+        const itemCost = item.unitPrice * item.quantity * costMultiplier;
+
         if (item.priceType === 'GP') {
-          totalCostGP += item.unitPrice * item.quantity;
+          totalCostGP += itemCost;
         } else if (item.priceType === 'GT') {
-          totalCostGT += item.unitPrice * item.quantity;
+          totalCostGT += itemCost;
         } else if (item.priceType === 'ST') {
-          totalCostST += item.unitPrice * item.quantity;
+          totalCostST += itemCost;
         }
       });
 

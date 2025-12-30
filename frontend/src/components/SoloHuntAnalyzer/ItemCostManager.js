@@ -36,6 +36,9 @@ export default function ItemCostManager({
   const [showImbuementModal, setShowImbuementModal] = useState(false);
   const [showCustomItemModal, setShowCustomItemModal] = useState(false);
 
+  // Collapse state - track which parent items are collapsed (start all collapsed)
+  const [collapsedItems, setCollapsedItems] = useState(new Set());
+
   // Imbuement selection state
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedImbuement, setSelectedImbuement] = useState('');
@@ -85,11 +88,12 @@ export default function ItemCostManager({
               id: Date.now() + Math.random(),
               name: item.name,
               quantity: item.quantity,
+              baseQuantity: item.quantity, // Store base quantity for multiplying when parent quantity changes
               unitPrice: 0,
               priceType: 'GP',
-              source: `${imbuement.name} (${tierName})`,
               parentId: parentId,
               isChild: true,
+              itemDuration: 20, // Imbuement materials last 20 hours (same as imbuement)
             });
           });
         }
@@ -103,12 +107,13 @@ export default function ItemCostManager({
         id: Date.now() + Math.random(),
         name: `${selectedTier.charAt(0).toUpperCase() + selectedTier.slice(1)} Imbuement Service`,
         quantity: 1,
+        baseQuantity: 1, // Store base quantity for multiplying when parent quantity changes
         unitPrice: fixedCost,
         priceType: 'GP',
-        source: `Fixed service cost`,
         parentId: parentId,
         isChild: true,
         isFixedCost: true,
+        itemDuration: 20, // Imbuement service cost lasts 20 hours
       });
     }
 
@@ -120,9 +125,9 @@ export default function ItemCostManager({
       quantity: 1,
       unitPrice: gtPayment,
       priceType: 'GT',
-      source: `${tierName} ${imbuement.name}`,
       isParent: true,
       hasChildren: childItems.length > 0,
+      itemDuration: 20, // Imbuements last 20 hours
     };
 
     // Add parent first, then children
@@ -131,11 +136,35 @@ export default function ItemCostManager({
 
     setCustomItems([...customItems, ...newItems]);
 
+    // Auto-collapse new parent item (start collapsed)
+    if (childItems.length > 0) {
+      setCollapsedItems(prev => new Set([...prev, parentId]));
+    }
+
     // Reset selection
     setSelectedImbuement('');
     setSelectedTier('powerful');
     setGtPayment(0);
     setShowImbuementModal(false);
+  };
+
+  /**
+   * Add Ring Bis preset
+   * Ring Bis costs 5 ST to recharge and lasts 3 hours
+   */
+  const handleAddRingBis = () => {
+    const newItem = {
+      id: Date.now(),
+      name: 'Ring Bis',
+      quantity: 1,
+      unitPrice: 5,
+      priceType: 'ST',
+      itemDuration: 3, // Ring Bis lasts 3 hours
+      isParent: true,
+      hasChildren: false,
+    };
+
+    setCustomItems([...customItems, newItem]);
   };
 
   /**
@@ -150,7 +179,6 @@ export default function ItemCostManager({
       quantity: customItemQuantity,
       unitPrice: customItemPrice,
       priceType: customItemPriceType,
-      source: 'Custom',
     };
 
     setCustomItems([...customItems, newItem]);
@@ -181,6 +209,46 @@ export default function ItemCostManager({
     setCustomItems(customItems.filter(item =>
       item.id !== itemId && item.parentId !== itemId
     ));
+    // Remove from collapsed items if it exists
+    setCollapsedItems(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(itemId);
+      return newSet;
+    });
+  };
+
+  /**
+   * Toggle collapse state for a parent item
+   */
+  const toggleItemCollapse = (parentId) => {
+    setCollapsedItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(parentId)) {
+        newSet.delete(parentId); // Expand
+      } else {
+        newSet.add(parentId); // Collapse
+      }
+      return newSet;
+    });
+  };
+
+  /**
+   * Update parent imbuement quantity and propagate to children
+   */
+  const handleUpdateParentQuantity = (parentId, newQuantity) => {
+    if (newQuantity < 1) return; // Don't allow quantity < 1
+
+    setCustomItems(customItems.map(item => {
+      // Update parent quantity
+      if (item.id === parentId) {
+        return { ...item, quantity: newQuantity };
+      }
+      // Update children quantities (multiply baseQuantity by parent quantity)
+      if (item.parentId === parentId && item.baseQuantity !== undefined) {
+        return { ...item, quantity: item.baseQuantity * newQuantity };
+      }
+      return item;
+    }));
   };
 
   /**
@@ -276,6 +344,13 @@ export default function ItemCostManager({
           + Adicionar Imbuement
         </button>
         <button
+          className="btn btn-primary"
+          onClick={handleAddRingBis}
+          title="Ring Bis (5 ST, dura 3hrs)"
+        >
+          + Adicionar Ring Bis
+        </button>
+        <button
           className="btn btn-secondary"
           onClick={() => setShowCustomItemModal(true)}
         >
@@ -294,7 +369,6 @@ export default function ItemCostManager({
               <div>Preço Unit.</div>
               <div>Tipo</div>
               <div>Total</div>
-              <div>Origem</div>
               <div></div>
             </div>
             {customItems.map(item => {
@@ -316,12 +390,54 @@ export default function ItemCostManager({
 
               const totalCostGP = item.isParent ? childrenGPCost + itemCostInGP : itemCostInGP;
 
+              const isCollapsed = collapsedItems.has(item.id);
+
               return (
                 <React.Fragment key={item.id}>
                   {/* Parent or standalone item row */}
                   <div className={`items-row ${item.isParent ? 'parent-row' : ''}`}>
-                    <div className="item-name">{item.name}</div>
-                    <div>{item.quantity}</div>
+                    <div className="item-name">
+                      {item.isParent && item.hasChildren && (
+                        <button
+                          className="btn-collapse"
+                          onClick={() => toggleItemCollapse(item.id)}
+                          aria-label={isCollapsed ? 'Expandir itens' : 'Recolher itens'}
+                          title={isCollapsed ? 'Clique para expandir e editar preços dos itens' : 'Recolher itens'}
+                        >
+                          {isCollapsed ? '▶' : '▼'}
+                        </button>
+                      )}
+                      <span>{item.name}</span>
+                      {item.isParent && item.hasChildren && isCollapsed && (
+                        <span className="collapsed-hint"> (clique para expandir)</span>
+                      )}
+                    </div>
+                    <div>
+                      {item.isParent ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <button
+                            className="btn-quantity"
+                            onClick={() => handleUpdateParentQuantity(item.id, item.quantity - 1)}
+                            disabled={item.quantity <= 1}
+                            aria-label="Diminuir quantidade"
+                            title="Diminuir quantidade"
+                          >
+                            -
+                          </button>
+                          <span style={{ minWidth: '30px', textAlign: 'center' }}>{item.quantity}</span>
+                          <button
+                            className="btn-quantity"
+                            onClick={() => handleUpdateParentQuantity(item.id, item.quantity + 1)}
+                            aria-label="Aumentar quantidade"
+                            title="Aumentar quantidade"
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
+                        item.quantity
+                      )}
+                    </div>
                     <div>
                       {item.isParent ? '-' : (
                         <input
@@ -355,7 +471,6 @@ export default function ItemCostManager({
                         </span>
                       )}
                     </div>
-                    <div className="item-source">{item.source}</div>
                     <div>
                       <button
                         className="btn-remove"
@@ -369,8 +484,8 @@ export default function ItemCostManager({
                     </div>
                   </div>
 
-                  {/* Render children if this is a parent */}
-                  {item.isParent && customItems
+                  {/* Render children if this is a parent and it's expanded */}
+                  {item.isParent && !isCollapsed && customItems
                     .filter(child => child.parentId === item.id)
                     .map(child => (
                       <div key={child.id} className="items-row child-row">
@@ -389,7 +504,6 @@ export default function ItemCostManager({
                         <div className="item-total">
                           {(child.unitPrice * child.quantity).toLocaleString('pt-BR')} GP
                         </div>
-                        <div className="item-source">-</div>
                         <div></div>
                       </div>
                     ))
@@ -674,12 +788,13 @@ ItemCostManager.propTypes = {
       quantity: PropTypes.number.isRequired,
       unitPrice: PropTypes.number.isRequired,
       priceType: PropTypes.oneOf(['GP', 'GT', 'ST']).isRequired,
-      source: PropTypes.string,
       parentId: PropTypes.number,
       isChild: PropTypes.bool,
       isParent: PropTypes.bool,
       hasChildren: PropTypes.bool,
       isFixedCost: PropTypes.bool,
+      itemDuration: PropTypes.number, // Duration in hours (20 for imbuements, 3 for Ring Bis, null for custom items)
+      baseQuantity: PropTypes.number, // Base quantity per 1 parent item (used for child items to calculate total when parent quantity changes)
     })
   ).isRequired,
   setCustomItems: PropTypes.func.isRequired,

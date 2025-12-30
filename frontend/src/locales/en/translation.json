@@ -97,7 +97,6 @@
         "unitPrice": "Unit Price",
         "priceType": "Type",
         "total": "Total (GP)",
-        "source": "Source",
         "actions": "Actions"
       },
       "costSummary": {
