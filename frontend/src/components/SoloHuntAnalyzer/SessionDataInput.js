@@ -38,7 +38,7 @@ Lofi Shades (Leader)
         value={sessionData}
         onChange={(e) => setSessionData(e.target.value)}
         placeholder="Cole aqui os dados da sessão do TIBIA..."
-        rows={12}
+        rows={3}
       />
 
       <div className="input-actions">

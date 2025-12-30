@@ -18,6 +18,17 @@
   margin-bottom: 24px;
 }
 
+/* Emoji icon - remove gradient clipping to show emoji properly */
+.results-icon {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: inherit;
+  background-clip: unset;
+  color: #c39bd3;
+  display: inline-block;
+  margin-right: 8px;
+}
+
 .result-card {
   background-color: #16213e;
   border-radius: 12px;

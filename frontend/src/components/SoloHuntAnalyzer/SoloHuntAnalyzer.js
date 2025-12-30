@@ -151,15 +151,20 @@ export default function SoloHuntAnalyzer() {
         // Calculate proportional cost based on item duration
         // If item has itemDuration (e.g., 20hrs for imbuements, 3hrs for Ring Bis):
         //   cost = (hunt_duration / item_duration) * item_cost
-        // If no itemDuration (custom items): use full cost
+        //   Examples:
+        //   - Hunt 2hrs, Ring Bis 3hrs → 2/3 = 0.67 = 67% of cost
+        //   - Hunt 6hrs, Ring Bis 3hrs → 6/3 = 2.0 = 200% of cost (used 2x Ring Bis)
+        //   - Hunt 3hrs, Imbuement 20hrs → 3/20 = 0.15 = 15% of cost
+        // If no itemDuration (custom items): use full cost (1.0 multiplier)
+        // Round UP to avoid fractional GP (always charge at least 1 GP if hunt used any portion)
         let costMultiplier = 1.0;
         if (item.itemDuration && huntDurationHours > 0) {
           costMultiplier = huntDurationHours / item.itemDuration;
-          // Cap at 1.0 (max 100% of cost even if hunt is longer than item duration)
-          costMultiplier = Math.min(costMultiplier, 1.0);
+          // NO CAP: If hunt is 6hrs and Ring Bis lasts 3hrs, charge 2x (used 2 rings)
         }
 
-        const itemCost = item.unitPrice * item.quantity * costMultiplier;
+        // Calculate item cost and round UP (Math.ceil) to avoid decimal GP values
+        const itemCost = Math.ceil(item.unitPrice * item.quantity * costMultiplier);
 
         if (item.priceType === 'GP') {
           totalCostGP += itemCost;

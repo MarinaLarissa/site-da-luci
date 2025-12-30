@@ -28,7 +28,9 @@ export default function SoloHuntResults({ results }) {
 
   return (
     <div className="solo-hunt-results">
-      <h2 className="results-title">📊 Resultados da Hunt</h2>
+      <h2 className="results-title">
+        <span className="results-icon">📊</span> Resultados da Hunt
+      </h2>
 
       {/* Session Info Card */}
       <div className="result-card">

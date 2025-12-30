@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { IMBUEMENTS, getAllCategories, getImbuementsByCategory } from '../../data/imbuements';
 import './ItemCostManager.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
@@ -33,6 +34,7 @@ export default function ItemCostManager({
   silverTokenPrice,
   setSilverTokenPrice
 }) {
+  const { t } = useTranslation();
   const [showImbuementModal, setShowImbuementModal] = useState(false);
   const [showCustomItemModal, setShowCustomItemModal] = useState(false);
 
@@ -341,20 +343,20 @@ export default function ItemCostManager({
           className="btn btn-primary"
           onClick={() => setShowImbuementModal(true)}
         >
-          + Adicionar Imbuement
+          + {t('soloHuntAnalyzer.itemCostManager.addImbuementButton')}
         </button>
         <button
           className="btn btn-primary"
           onClick={handleAddRingBis}
           title="Ring Bis (5 ST, dura 3hrs)"
         >
-          + Adicionar Ring Bis
+          + {t('soloHuntAnalyzer.itemCostManager.addRingBisButton')}
         </button>
         <button
           className="btn btn-secondary"
           onClick={() => setShowCustomItemModal(true)}
         >
-          + Adicionar Item Custom
+          + {t('soloHuntAnalyzer.itemCostManager.addCustomItemButton')}
         </button>
       </div>
 
@@ -409,7 +411,14 @@ export default function ItemCostManager({
                       )}
                       <span>{item.name}</span>
                       {item.isParent && item.hasChildren && isCollapsed && (
-                        <span className="collapsed-hint"> (clique para expandir)</span>
+                        <span
+                          className="collapsed-hint"
+                          onClick={() => toggleItemCollapse(item.id)}
+                          style={{ cursor: 'pointer' }}
+                          title="Clique para expandir e editar preços dos itens"
+                        >
+                          {' '}(clique para expandir)
+                        </span>
                       )}
                     </div>
                     <div>
@@ -560,7 +569,7 @@ export default function ItemCostManager({
             aria-labelledby="imbuement-modal-title"
             aria-modal="true"
           >
-            <h3 id="imbuement-modal-title">Adicionar Imbuement</h3>
+            <h3 id="imbuement-modal-title">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.title')}</h3>
 
             <div className="form-group">
               <label>Categoria:</label>

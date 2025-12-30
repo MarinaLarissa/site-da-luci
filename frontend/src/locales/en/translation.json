@@ -89,6 +89,7 @@
       "silverTokenPriceLabel": "Silver Token Price",
       "silverTokenPriceUnit": "GP per ST",
       "addImbuementButton": "Add Imbuement",
+      "addRingBisButton": "Add Ring Bis",
       "addCustomItemButton": "Add Custom Item",
       "itemsListTitle": "Cost Items",
       "tableHeaders": {
