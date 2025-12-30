@@ -86,6 +86,8 @@
       "title": "Additional Costs",
       "goldTokenPriceLabel": "Gold Token Price",
       "goldTokenPriceUnit": "GP per GT",
+      "silverTokenPriceLabel": "Silver Token Price",
+      "silverTokenPriceUnit": "GP per ST",
       "addImbuementButton": "Add Imbuement",
       "addCustomItemButton": "Add Custom Item",
       "itemsListTitle": "Cost Items",
@@ -102,6 +104,8 @@
         "gpCosts": "GP Costs",
         "gtCosts": "GT Costs",
         "gtConverted": "GT Converted to GP",
+        "stCosts": "ST Costs",
+        "stConverted": "ST Converted to GP",
         "totalCost": "Total Additional Cost"
       },
       "addImbuementModal": {
@@ -125,7 +129,8 @@
         "priceTypeLabel": "Price Type",
         "priceTypes": {
           "gp": "GP (Gold Pieces)",
-          "gt": "GT (Gold Tokens)"
+          "gt": "GT (Gold Tokens)",
+          "st": "ST (Silver Tokens)"
         },
         "cancelButton": "Cancel",
         "addButton": "Add Item"
