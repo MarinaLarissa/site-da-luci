@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SessionDataInput.css';
 
 export default function SessionDataInput({ sessionData, setSessionData, onParse, parsedSession }) {
@@ -72,3 +73,22 @@ Lofi Shades (Leader)
     </div>
   );
 }
+
+// PropTypes validation
+SessionDataInput.propTypes = {
+  sessionData: PropTypes.string.isRequired,
+  setSessionData: PropTypes.func.isRequired,
+  onParse: PropTypes.func.isRequired,
+  parsedSession: PropTypes.shape({
+    sessionInfo: PropTypes.string,
+    duration: PropTypes.string,
+    player: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      loot: PropTypes.number.isRequired,
+      supplies: PropTypes.number.isRequired,
+      balance: PropTypes.number.isRequired,
+      damage: PropTypes.number,
+      healing: PropTypes.number,
+    }).isRequired,
+  }),
+};

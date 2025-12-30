@@ -120,12 +120,15 @@ export default function SoloHuntAnalyzer() {
       // Calculate total cost of custom items
       let totalCostGP = 0;
       let totalCostGT = 0;
+      let totalCostST = 0;
 
       customItems.forEach(item => {
         if (item.priceType === 'GP') {
           totalCostGP += item.unitPrice * item.quantity;
         } else if (item.priceType === 'GT') {
           totalCostGT += item.unitPrice * item.quantity;
+        } else if (item.priceType === 'ST') {
+          totalCostST += item.unitPrice * item.quantity;
         }
       });
 
@@ -138,6 +141,15 @@ export default function SoloHuntAnalyzer() {
         return;
       }
 
+      // Convert ST to GP if ST price is defined
+      if (totalCostST > 0 && silverTokenPrice > 0) {
+        totalCostGP += totalCostST * silverTokenPrice;
+      } else if (totalCostST > 0 && silverTokenPrice === 0) {
+        setError('Você adicionou itens com custo em ST, mas não definiu o preço do Silver Token.');
+        setLoading(false);
+        return;
+      }
+
       // Calculate adjusted balance
       const adjustedBalance = parsedSession.player.balance - totalCostGP;
 
@@ -146,7 +158,9 @@ export default function SoloHuntAnalyzer() {
         costs: {
           totalGP: totalCostGP,
           totalGT: totalCostGT,
+          totalST: totalCostST,
           goldTokenPrice,
+          silverTokenPrice,
           items: customItems,
         },
         adjustedBalance,

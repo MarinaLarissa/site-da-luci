@@ -1,9 +1,10 @@
 /**
  * Item Cost Manager Component
- * Allows user to add imbuement presets or custom items with costs (GP/GT)
+ * Allows user to add imbuement presets or custom items with costs (GP/GT/ST)
  */
 
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { IMBUEMENTS, getAllCategories, getImbuementsByCategory } from '../../data/imbuements';
 import './ItemCostManager.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
@@ -13,11 +14,15 @@ import coinsIcon from '../../assets/tibia/coins.png';
 // Only these imbuements can be paid with GT
 const GT_ELIGIBLE_IMBUEMENTS = ['void', 'vampirism', 'strike'];
 
-// Fixed imbuement costs by tier
+/**
+ * Fixed imbuement service costs by tier (as of December 2024)
+ * These are the NPC costs for applying imbuements in Tibia
+ * Source: https://tibia.fandom.com/wiki/Imbuements
+ */
 const IMBUEMENT_FIXED_COSTS = {
-  basic: 7500,
-  intricate: 60000,
-  powerful: 250000,
+  basic: 7500,      // Basic tier service cost (7.5k GP)
+  intricate: 60000,  // Intricate tier service cost (60k GP)
+  powerful: 250000,  // Powerful tier service cost (250k GP)
 };
 
 export default function ItemCostManager({
@@ -231,14 +236,15 @@ export default function ItemCostManager({
       <div className="token-prices-section">
         <div className="token-price-row">
           <img src={goldTokenIcon} alt="Gold Token" className="token-icon" />
-          <label htmlFor="gt-price">Gold Token:</label>
+          <label htmlFor="gold-token-price-input">Gold Token:</label>
           <input
-            id="gt-price"
+            id="gold-token-price-input"
             type="number"
             value={goldTokenPrice}
             onChange={(e) => setGoldTokenPrice(parseFloat(e.target.value) || 0)}
             placeholder="Ex: 45000"
             min="0"
+            aria-label="Preço do Gold Token em GP"
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -246,14 +252,15 @@ export default function ItemCostManager({
 
         <div className="token-price-row">
           <img src={silverTokenIcon} alt="Silver Token" className="token-icon" />
-          <label htmlFor="st-price">Silver Token:</label>
+          <label htmlFor="silver-token-price-input">Silver Token:</label>
           <input
-            id="st-price"
+            id="silver-token-price-input"
             type="number"
             value={silverTokenPrice}
             onChange={(e) => setSilverTokenPrice(parseFloat(e.target.value) || 0)}
             placeholder="Ex: 15000"
             min="0"
+            aria-label="Preço do Silver Token em GP"
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -353,9 +360,11 @@ export default function ItemCostManager({
                       <button
                         className="btn-remove"
                         onClick={() => handleRemoveItem(item.id)}
-                        title="Remover item"
+                        aria-label={`Remover ${item.name}`}
+                        title={`Remover ${item.name}`}
                       >
-                        🗑️
+                        <span aria-hidden="true">🗑️</span>
+                        <span className="sr-only">Remover</span>
                       </button>
                     </div>
                   </div>
@@ -424,9 +433,20 @@ export default function ItemCostManager({
 
       {/* Imbuement Modal */}
       {showImbuementModal && (
-        <div className="modal-overlay" onClick={() => setShowImbuementModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>Adicionar Imbuement</h3>
+        <div
+          className="modal-overlay"
+          onClick={() => setShowImbuementModal(false)}
+          role="presentation"
+          aria-label="Fechar modal"
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-labelledby="imbuement-modal-title"
+            aria-modal="true"
+          >
+            <h3 id="imbuement-modal-title">Adicionar Imbuement</h3>
 
             <div className="form-group">
               <label>Categoria:</label>
@@ -566,9 +586,20 @@ export default function ItemCostManager({
 
       {/* Custom Item Modal */}
       {showCustomItemModal && (
-        <div className="modal-overlay" onClick={() => setShowCustomItemModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>Adicionar Item Custom</h3>
+        <div
+          className="modal-overlay"
+          onClick={() => setShowCustomItemModal(false)}
+          role="presentation"
+          aria-label="Fechar modal"
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-labelledby="custom-item-modal-title"
+            aria-modal="true"
+          >
+            <h3 id="custom-item-modal-title">Adicionar Item Custom</h3>
 
             <div className="form-group">
               <label>Nome do Item:</label>
@@ -633,3 +664,27 @@ export default function ItemCostManager({
     </div>
   );
 }
+
+// PropTypes validation
+ItemCostManager.propTypes = {
+  customItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+      unitPrice: PropTypes.number.isRequired,
+      priceType: PropTypes.oneOf(['GP', 'GT', 'ST']).isRequired,
+      source: PropTypes.string,
+      parentId: PropTypes.number,
+      isChild: PropTypes.bool,
+      isParent: PropTypes.bool,
+      hasChildren: PropTypes.bool,
+      isFixedCost: PropTypes.bool,
+    })
+  ).isRequired,
+  setCustomItems: PropTypes.func.isRequired,
+  goldTokenPrice: PropTypes.number.isRequired,
+  setGoldTokenPrice: PropTypes.func.isRequired,
+  silverTokenPrice: PropTypes.number.isRequired,
+  setSilverTokenPrice: PropTypes.func.isRequired,
+};

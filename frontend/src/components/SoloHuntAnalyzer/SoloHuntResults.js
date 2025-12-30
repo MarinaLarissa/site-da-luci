@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SoloHuntResults.css';
 
 export default function SoloHuntResults({ results }) {
@@ -90,9 +91,23 @@ export default function SoloHuntResults({ results }) {
                 )}
               </>
             )}
+            {costs.totalST > 0 && (
+              <>
+                <div className="cost-row">
+                  <span>Total em ST:</span>
+                  <span className="cost-value">-{costs.totalST.toLocaleString('pt-BR')} ST</span>
+                </div>
+                {costs.silverTokenPrice > 0 && (
+                  <div className="cost-row">
+                    <span>ST convertido (@ {costs.silverTokenPrice.toLocaleString('pt-BR')} GP/ST):</span>
+                    <span className="cost-value">-{(costs.totalST * costs.silverTokenPrice).toLocaleString('pt-BR')} GP</span>
+                  </div>
+                )}
+              </>
+            )}
             <div className="cost-row total-cost">
               <span>Custo Total Adicional:</span>
-              <span className="cost-value">-{(costs.totalGP + (costs.totalGT * costs.goldTokenPrice)).toLocaleString('pt-BR')} GP</span>
+              <span className="cost-value">-{(costs.totalGP + (costs.totalGT * costs.goldTokenPrice) + (costs.totalST * costs.silverTokenPrice)).toLocaleString('pt-BR')} GP</span>
             </div>
           </div>
         </div>
@@ -132,3 +147,30 @@ export default function SoloHuntResults({ results }) {
     </div>
   );
 }
+
+// PropTypes validation
+SoloHuntResults.propTypes = {
+  results: PropTypes.shape({
+    session: PropTypes.shape({
+      sessionInfo: PropTypes.string,
+      duration: PropTypes.string,
+      player: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        loot: PropTypes.number.isRequired,
+        supplies: PropTypes.number.isRequired,
+        balance: PropTypes.number.isRequired,
+        damage: PropTypes.number,
+        healing: PropTypes.number,
+      }).isRequired,
+    }).isRequired,
+    costs: PropTypes.shape({
+      totalGP: PropTypes.number.isRequired,
+      totalGT: PropTypes.number.isRequired,
+      totalST: PropTypes.number.isRequired,
+      goldTokenPrice: PropTypes.number.isRequired,
+      silverTokenPrice: PropTypes.number.isRequired,
+      items: PropTypes.array.isRequired,
+    }).isRequired,
+    adjustedBalance: PropTypes.number.isRequired,
+  }).isRequired,
+};
