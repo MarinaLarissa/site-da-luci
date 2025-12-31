@@ -106,7 +106,7 @@
         "gtConverted": "GT Converted to GP",
         "stCosts": "ST Costs",
         "stConverted": "ST Converted to GP",
-        "totalCost": "Total Additional Cost"
+        "totalCost": "Fee and items in GP"
       },
       "addImbuementModal": {
         "title": "Add Imbuement",
@@ -174,9 +174,11 @@
     },
     "configManager": {
       "title": "Saved Configurations",
-      "description": "Save and load your favorite item configurations",
+      "description": "Save and load your configs",
       "saveButton": "Save Configuration",
       "selectConfig": "Select a configuration...",
+      "editButton": "Edit configuration",
+      "duplicateButton": "Duplicate configuration",
       "deleteButton": "Delete configuration",
       "clearAllButton": "Clear All",
       "savedCount": "{{count}} saved configuration",
@@ -194,11 +196,18 @@
         "confirmButton": "Save",
         "cancelButton": "Cancel"
       },
+      "editModal": {
+        "title": "Edit Configuration",
+        "nameLabel": "Configuration Name",
+        "namePlaceholder": "E.g: Hunt Roshamuul Powerful",
+        "confirmButton": "Save",
+        "cancelButton": "Cancel"
+      },
       "errors": {
         "saveFailed": "Error saving configuration. Check available browser storage space."
       }
     },
-    "calculateButton": "Calculate Adjusted Balance",
+    "calculateButton": "Calculate Balance",
     "resetButton": "Clear",
     "errors": {
       "noSessionData": "Please enter session data first",
@@ -214,7 +223,7 @@
     "neutral": "Neutral"
   },
   "huntHistory": {
-    "title": "Hunt History",
+    "title": "History",
     "openButton": "Open hunt history",
     "closeButton": "Close",
     "listTitle": "Recent Hunts",

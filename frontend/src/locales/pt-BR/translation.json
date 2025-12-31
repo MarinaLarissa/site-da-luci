@@ -106,7 +106,7 @@
         "gtConverted": "GT Convertido para GP",
         "stCosts": "Custos em ST",
         "stConverted": "ST Convertido para GP",
-        "totalCost": "Custo Adicional Total"
+        "totalCost": "Fees e itens em GP"
       },
       "addImbuementModal": {
         "title": "Adicionar Imbuement",
@@ -174,9 +174,11 @@
     },
     "configManager": {
       "title": "Configurações Salvas",
-      "description": "Salve e carregue suas configurações de itens favoritas",
+      "description": "Salve e carregue suas configurações",
       "saveButton": "Salvar Configuração",
       "selectConfig": "Selecione uma configuração...",
+      "editButton": "Editar configuração",
+      "duplicateButton": "Duplicar configuração",
       "deleteButton": "Deletar configuração",
       "clearAllButton": "Limpar Todas",
       "savedCount": "{{count}} configuração salva",
@@ -194,11 +196,18 @@
         "confirmButton": "Salvar",
         "cancelButton": "Cancelar"
       },
+      "editModal": {
+        "title": "Editar Configuração",
+        "nameLabel": "Nome da Configuração",
+        "namePlaceholder": "Ex: Hunt Roshamuul Powerful",
+        "confirmButton": "Salvar",
+        "cancelButton": "Cancelar"
+      },
       "errors": {
         "saveFailed": "Erro ao salvar configuração. Verifique o espaço disponível no navegador."
       }
     },
-    "calculateButton": "Calcular Balance Ajustado",
+    "calculateButton": "Calcular Balance",
     "resetButton": "Limpar",
     "errors": {
       "noSessionData": "Por favor, insira os dados da sessão primeiro",
@@ -214,7 +223,7 @@
     "neutral": "Neutro"
   },
   "huntHistory": {
-    "title": "Histórico de Caçadas",
+    "title": "Histórico",
     "openButton": "Abrir histórico de caçadas",
     "closeButton": "Fechar",
     "listTitle": "Caçadas Recentes",

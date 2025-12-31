@@ -3,15 +3,18 @@
  * Analyzes solo hunt sessions with custom item costs (GP/GT)
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SessionDataInput from './SessionDataInput';
 import ItemCostManager from './ItemCostManager';
 import ConfigurationManager from './ConfigurationManager';
 import SoloHuntResults from './SoloHuntResults';
+import HuntHistory from './HuntHistory';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
 import './SoloHuntAnalyzer.css';
+
+const TOKEN_PRICES_STORAGE_KEY = 'solo-hunt-token-prices';
 
 export default function SoloHuntAnalyzer() {
   const { t } = useTranslation();
@@ -20,16 +23,44 @@ export default function SoloHuntAnalyzer() {
   const [sessionData, setSessionData] = useState('');
   const [parsedSession, setParsedSession] = useState(null);
 
+  // Load token prices from localStorage
+  const loadTokenPrices = () => {
+    try {
+      const saved = localStorage.getItem(TOKEN_PRICES_STORAGE_KEY);
+      if (saved) {
+        const { goldTokenPrice, silverTokenPrice } = JSON.parse(saved);
+        return { goldTokenPrice: goldTokenPrice || 0, silverTokenPrice: silverTokenPrice || 0 };
+      }
+    } catch (error) {
+      console.error('Error loading token prices:', error);
+    }
+    return { goldTokenPrice: 0, silverTokenPrice: 0 };
+  };
+
+  const initialPrices = loadTokenPrices();
+
   // Item costs state
   const [customItems, setCustomItems] = useState([]);
-  const [goldTokenPrice, setGoldTokenPrice] = useState(0);
-  const [silverTokenPrice, setSilverTokenPrice] = useState(0);
+  const [goldTokenPrice, setGoldTokenPrice] = useState(initialPrices.goldTokenPrice);
+  const [silverTokenPrice, setSilverTokenPrice] = useState(initialPrices.silverTokenPrice);
 
   // UI state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [silverTokenError, setSilverTokenError] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [saveHuntToHistory, setSaveHuntToHistory] = useState(null);
+
+  // Save token prices to localStorage whenever they change
+  useEffect(() => {
+    try {
+      const prices = { goldTokenPrice, silverTokenPrice };
+      localStorage.setItem(TOKEN_PRICES_STORAGE_KEY, JSON.stringify(prices));
+    } catch (error) {
+      console.error('Error saving token prices:', error);
+    }
+  }, [goldTokenPrice, silverTokenPrice]);
 
   /**
    * Parse session data (single player only)
@@ -220,6 +251,21 @@ export default function SoloHuntAnalyzer() {
         adjustedBalance,
       });
 
+      // Save to hunt history
+      if (saveHuntToHistory) {
+        const huntData = {
+          playerName: parsedSession.player.name,
+          duration: parsedSession.duration,
+          loot: parsedSession.player.loot,
+          supplies: parsedSession.player.supplies,
+          balance: parsedSession.player.balance,
+          totalCost: totalCostGP,
+          adjustedBalance,
+          profitPerHour: huntDurationHours > 0 ? Math.round(adjustedBalance / huntDurationHours) : 0,
+        };
+        saveHuntToHistory(huntData);
+      }
+
       setError(null);
     } catch (err) {
       setError('Erro ao calcular resultado: ' + err.message);
@@ -244,10 +290,21 @@ export default function SoloHuntAnalyzer() {
   return (
     <div className="solo-hunt-analyzer">
       <div className="calculator-header">
-        <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
-        <p className="calculator-description">
-          {t('soloHuntAnalyzer.subtitle')}
-        </p>
+        <div className="header-content">
+          <div>
+            <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
+            <p className="calculator-description">
+              {t('soloHuntAnalyzer.subtitle')}
+            </p>
+          </div>
+          <button
+            className="btn btn-secondary btn-history"
+            onClick={() => setIsHistoryOpen(true)}
+            title={t('huntHistory.openButton')}
+          >
+            📜 {t('huntHistory.title')}
+          </button>
+        </div>
       </div>
 
       {/* Error message */}
@@ -310,6 +367,13 @@ export default function SoloHuntAnalyzer() {
 
       {/* Results section */}
       {!loading && results && <SoloHuntResults results={results} />}
+
+      {/* Hunt History */}
+      <HuntHistory
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        onAddHunt={setSaveHuntToHistory}
+      />
     </div>
   );
 }

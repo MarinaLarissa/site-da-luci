@@ -111,7 +111,6 @@ export default function SoloHuntResults({ results }) {
                 <div className="stat-item negative">
                   <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gtConverted')}</div>
                   <div className="stat-value">-{(costs.totalGT * costs.goldTokenPrice).toLocaleString('pt-BR')} GP</div>
-                  <div className="stat-detail">{costs.totalGT} GT × {costs.goldTokenPrice.toLocaleString('pt-BR')} GP</div>
                 </div>
               </Tooltip>
             )}
@@ -129,7 +128,6 @@ export default function SoloHuntResults({ results }) {
                 <div className="stat-item negative">
                   <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}</div>
                   <div className="stat-value">-{(costs.totalST * costs.silverTokenPrice).toLocaleString('pt-BR')} GP</div>
-                  <div className="stat-detail">{costs.totalST} ST × {costs.silverTokenPrice.toLocaleString('pt-BR')} GP</div>
                 </div>
               </Tooltip>
             )}
