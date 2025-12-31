@@ -139,6 +139,18 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
     }
   }, [onAddHunt, saveHunt]);
 
+  // ESC key handler to close modal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (

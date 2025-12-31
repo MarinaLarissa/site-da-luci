@@ -12,9 +12,8 @@ import SoloHuntResults from './SoloHuntResults';
 import HuntHistory from './HuntHistory';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
+import { STORAGE_KEYS, parseDurationToHours } from '../../utils/huntUtils';
 import './SoloHuntAnalyzer.css';
-
-const TOKEN_PRICES_STORAGE_KEY = 'solo-hunt-token-prices';
 
 export default function SoloHuntAnalyzer() {
   const { t } = useTranslation();
@@ -26,7 +25,7 @@ export default function SoloHuntAnalyzer() {
   // Load token prices from localStorage
   const loadTokenPrices = () => {
     try {
-      const saved = localStorage.getItem(TOKEN_PRICES_STORAGE_KEY);
+      const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
       if (saved) {
         const { goldTokenPrice, silverTokenPrice } = JSON.parse(saved);
         return { goldTokenPrice: goldTokenPrice || 0, silverTokenPrice: silverTokenPrice || 0 };
@@ -53,14 +52,30 @@ export default function SoloHuntAnalyzer() {
   const [saveHuntToHistory, setSaveHuntToHistory] = useState(null);
 
   // Save token prices to localStorage whenever they change
+  // Optimization: Skip saving during initial load
+  const [hasLoadedPrices, setHasLoadedPrices] = useState(false);
+
   useEffect(() => {
+    // Skip saving during initial load
+    if (!hasLoadedPrices) {
+      setHasLoadedPrices(true);
+      return;
+    }
+
     try {
       const prices = { goldTokenPrice, silverTokenPrice };
-      localStorage.setItem(TOKEN_PRICES_STORAGE_KEY, JSON.stringify(prices));
+      localStorage.setItem(STORAGE_KEYS.TOKEN_PRICES, JSON.stringify(prices));
     } catch (error) {
       console.error('Error saving token prices:', error);
     }
-  }, [goldTokenPrice, silverTokenPrice]);
+  }, [goldTokenPrice, silverTokenPrice, hasLoadedPrices]);
+
+  // Scroll to top when error appears
+  useEffect(() => {
+    if (error) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [error]);
 
   /**
    * Parse session data (single player only)
@@ -136,28 +151,6 @@ export default function SoloHuntAnalyzer() {
       setError('Erro ao processar dados da sessão: ' + err.message);
       setParsedSession(null);
     }
-  };
-
-  /**
-   * Parse hunt duration to hours (decimal)
-   * Formats: "HH:MMh" (e.g. "03:31h") or "MM:SS" (e.g. "45:30")
-   */
-  const parseDurationToHours = (durationStr) => {
-    if (!durationStr) return 0;
-
-    // Format "HH:MMh" (hours)
-    if (durationStr.includes('h')) {
-      const parts = durationStr.split(':');
-      const hours = parseInt(parts[0], 10) || 0;
-      const minutes = parts[1] ? parseInt(parts[1].replace('h', ''), 10) : 0;
-      return hours + minutes / 60;
-    }
-
-    // Format "MM:SS" (minutes:seconds)
-    const parts = durationStr.split(':');
-    const minutes = parseInt(parts[0], 10) || 0;
-    const seconds = parts[1] ? parseInt(parts[1], 10) : 0;
-    return (minutes + seconds / 60) / 60;
   };
 
   /**

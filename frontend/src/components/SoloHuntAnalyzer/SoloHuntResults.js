@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '../common/Tooltip';
+import { parseDurationToHours } from '../../utils/huntUtils';
 import './SoloHuntResults.css';
 
 export default function SoloHuntResults({ results }) {
@@ -14,28 +15,7 @@ export default function SoloHuntResults({ results }) {
   const { session, costs, adjustedBalance } = results;
   const { player } = session;
 
-  // Parse hunt duration to hours
-  const parseDurationToHours = () => {
-    const durationStr = session.duration;
-    let hours = 0;
-
-    if (durationStr.includes('h')) {
-      const parts = durationStr.split(':');
-      const hourPart = parseInt(parts[0], 10);
-      const minPart = parts[1] ? parseInt(parts[1].replace('h', ''), 10) : 0;
-      hours = hourPart + minPart / 60;
-    } else {
-      // Format "MM:SS" (minutes:seconds)
-      const parts = durationStr.split(':');
-      const minutes = parseInt(parts[0], 10) || 0;
-      const seconds = parts[1] ? parseInt(parts[1], 10) : 0;
-      hours = (minutes + seconds / 60) / 60;
-    }
-
-    return hours;
-  };
-
-  const huntHours = parseDurationToHours();
+  const huntHours = parseDurationToHours(session.duration);
 
   const profitPerHour = () => {
     return huntHours > 0 ? (adjustedBalance / huntHours).toFixed(0) : 0;
