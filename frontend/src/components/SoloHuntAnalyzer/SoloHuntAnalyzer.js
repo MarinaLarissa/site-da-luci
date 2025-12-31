@@ -49,7 +49,11 @@ export default function SoloHuntAnalyzer() {
   const [results, setResults] = useState(null);
   const [silverTokenError, setSilverTokenError] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-  const [saveHuntToHistory, setSaveHuntToHistory] = useState(null);
+
+    const [saveHuntToHistory, setSaveHuntToHistory] = useState(null);
+
+  // Use ref instead of state to avoid React functional update issues
+ // const saveHuntToHistoryRef = useRef(null);
 
   // Save token prices to localStorage whenever they change
   // Optimization: Skip saving during initial load
@@ -256,7 +260,12 @@ export default function SoloHuntAnalyzer() {
           adjustedBalance,
           profitPerHour: huntDurationHours > 0 ? Math.round(adjustedBalance / huntDurationHours) : 0,
         };
-        saveHuntToHistory(huntData);
+        console.log('Calling saveHuntToHistory with data:', huntData);
+        // saveHuntToHistory is double-wrapped: () => (huntData) => saveHunt(huntData)
+        // First call gets the inner function, second call executes saveHunt
+        saveHuntToHistory()(huntData);
+      } else {
+        console.warn('saveHuntToHistory is not defined yet');
       }
 
       setError(null);

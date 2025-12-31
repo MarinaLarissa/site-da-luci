@@ -16,10 +16,20 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
   const [huntHistory, setHuntHistory] = useState([]);
   const [expandedHuntId, setExpandedHuntId] = useState(null);
 
+  // Fallback locale if i18n.language is undefined
+  const locale = i18n.language || 'pt-BR';
+
   // Load history from localStorage on mount
   useEffect(() => {
     loadHistory();
   }, []);
+
+  // Reload history when modal opens (to sync with localStorage after save)
+  useEffect(() => {
+    if (isOpen) {
+      loadHistory();
+    }
+  }, [isOpen]);
 
   /**
    * Load hunt history from localStorage
@@ -29,10 +39,16 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
       const saved = localStorage.getItem(HISTORY_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        setHuntHistory(Array.isArray(parsed) ? parsed : []);
+        // Validate and filter out corrupted entries
+        const validHunts = Array.isArray(parsed)
+          ? parsed.filter(hunt => hunt && typeof hunt === 'object' && hunt.id)
+          : [];
+        setHuntHistory(validHunts);
       }
     } catch (error) {
       console.error('Error loading hunt history:', error);
+      // Clear corrupted data
+      localStorage.removeItem(HISTORY_STORAGE_KEY);
       setHuntHistory([]);
     }
   };
@@ -42,6 +58,29 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
    * Using useCallback to prevent unnecessary re-renders
    */
   const saveHunt = useCallback((huntData) => {
+    console.log('=== saveHunt called ===');
+    console.trace('Call stack:');
+
+    // Validate hunt data before saving (prevent empty/invalid hunts)
+    if (!huntData) {
+      console.warn('Hunt data is null/undefined - skipping save');
+      return;
+    }
+
+    if (!huntData.playerName || huntData.playerName.trim() === '') {
+      console.warn('Hunt data missing playerName - skipping save:', huntData);
+      return;
+    }
+
+    if (typeof huntData.loot !== 'number' ||
+        typeof huntData.supplies !== 'number' ||
+        typeof huntData.balance !== 'number') {
+      console.warn('Hunt data has invalid numeric values - skipping save:', huntData);
+      return;
+    }
+
+    console.log('Saving hunt to history:', huntData);
+
     const newHunt = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
@@ -133,9 +172,10 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
   };
 
   // Expose saveHunt method to parent via prop
+  // IMPORTANT: Double-wrap to prevent React functional update while maintaining closure
   useEffect(() => {
     if (onAddHunt) {
-      onAddHunt(saveHunt);
+      onAddHunt(() => (huntData) => saveHunt(huntData));
     }
   }, [onAddHunt, saveHunt]);
 
@@ -192,19 +232,19 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
               <p>{t('huntHistory.emptyState')}</p>
             </div>
           ) : (
-            huntHistory.map((hunt) => (
+            huntHistory.filter(hunt => hunt && hunt.id).map((hunt) => (
               <div key={hunt.id} className="hunt-card">
                 <div className="hunt-summary" onClick={() => toggleExpand(hunt.id)}>
                   <div className="hunt-info">
-                    <div className="hunt-character">{hunt.playerName}</div>
+                    <div className="hunt-character">{hunt.playerName || 'Unknown'}</div>
                     <div className="hunt-date">
-                      {new Date(hunt.timestamp).toLocaleString(i18n.language)}
+                      {hunt.timestamp ? new Date(hunt.timestamp).toLocaleString(locale) : 'N/A'}
                     </div>
                   </div>
                   <div className="hunt-balance">
-                    <span className={hunt.adjustedBalance >= 0 ? 'positive' : 'negative'}>
-                      {hunt.adjustedBalance >= 0 ? '+' : ''}
-                      {hunt.adjustedBalance.toLocaleString(i18n.language)} GP
+                    <span className={(hunt.adjustedBalance || 0) >= 0 ? 'positive' : 'negative'}>
+                      {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}
+                      {(hunt.adjustedBalance || 0).toLocaleString(locale)} GP
                     </span>
                   </div>
                   <button
@@ -220,29 +260,29 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                     <div className="details-grid">
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.duration')}:</span>
-                        <span className="value">{hunt.duration}</span>
+                        <span className="value">{hunt.duration || 'N/A'}</span>
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
-                        <span className="value positive">+{hunt.loot.toLocaleString(i18n.language)} GP</span>
+                        <span className="value positive">+{(hunt.loot || 0).toLocaleString(locale)} GP</span>
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
-                        <span className="value negative">-{hunt.supplies.toLocaleString(i18n.language)} GP</span>
+                        <span className="value negative">-{(hunt.supplies || 0).toLocaleString(locale)} GP</span>
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
-                        <span className="value">{hunt.balance.toLocaleString(i18n.language)} GP</span>
+                        <span className="value">{(hunt.balance || 0).toLocaleString(locale)} GP</span>
                       </div>
-                      {hunt.totalCost > 0 && (
+                      {(hunt.totalCost || 0) > 0 && (
                         <div className="detail-item">
                           <span className="label">{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCost')}:</span>
-                          <span className="value negative">-{hunt.totalCost.toLocaleString(i18n.language)} GP</span>
+                          <span className="value negative">-{(hunt.totalCost || 0).toLocaleString(locale)} GP</span>
                         </div>
                       )}
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
-                        <span className="value">{hunt.profitPerHour.toLocaleString(i18n.language)} GP/h</span>
+                        <span className="value">{(hunt.profitPerHour || 0).toLocaleString(locale)} GP/h</span>
                       </div>
                     </div>
 
