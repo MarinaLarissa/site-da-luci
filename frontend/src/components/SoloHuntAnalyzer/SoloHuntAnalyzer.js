@@ -195,74 +195,95 @@ export default function SoloHuntAnalyzer() {
       const huntDurationHours = parseDurationToHours(parsedSession.duration);
 
       // Calculate total cost of custom items (with proportional cost based on item duration)
-      let totalCostGP = 0;
-      let totalCostGT = 0;
-      let totalCostST = 0;
+      let totalCostGP = 0; // Total proportional cost for this hunt
+      let totalGpPerHour = 0; // GP per hour (for items with itemDuration only)
+      let totalCostGP_nonProportional = 0; // For items without itemDuration
+      let partialGP = 0; // Direct GP costs (not from token conversion)
+      let totalGT = 0; // Total GT used
+      let totalST = 0; // Total ST used
 
       customItems.forEach(item => {
-        // Calculate proportional cost based on item duration
-        // If item has itemDuration (e.g., 20hrs for imbuements, 3hrs for Ring Bis):
-        //   cost = (hunt_duration / item_duration) * item_cost
-        //   Examples:
-        //   - Hunt 2hrs, Ring Bis 3hrs → 2/3 = 0.67 = 67% of cost
-        //   - Hunt 6hrs, Ring Bis 3hrs → 6/3 = 2.0 = 200% of cost (used 2x Ring Bis)
-        //   - Hunt 3hrs, Imbuement 20hrs → 3/20 = 0.15 = 15% of cost
-        // If no itemDuration (custom items): use full cost (1.0 multiplier)
-        // Round UP to avoid fractional GP (always charge at least 1 GP if hunt used any portion)
-        let costMultiplier = 1.0;
+        // Calculate base cost in the item's currency (before GP conversion)
+        const baseCost = item.unitPrice * item.quantity;
+
         if (item.itemDuration && huntDurationHours > 0) {
-          costMultiplier = huntDurationHours / item.itemDuration;
-          // NO CAP: If hunt is 6hrs and Ring Bis lasts 3hrs, charge 2x (used 2 rings)
-        }
+          // For items with duration (Ring Bis, Imbuements):
+          // 1. Convert to GP first (if needed)
+          // 2. Calculate cost per hour: (baseCost in GP) / itemDuration
+          // 3. Calculate proportional cost: costPerHour * huntDurationHours
 
-        // Calculate item cost and round UP (Math.ceil) to avoid decimal GP values
-        const itemCost = Math.ceil(item.unitPrice * item.quantity * costMultiplier);
+          let baseCostGP = baseCost;
+          if (item.priceType === 'GT') {
+            if (goldTokenPrice === 0) {
+              setError(t('soloHuntAnalyzer.errors.missingGoldTokenPrice'));
+              setLoading(false);
+              return;
+            }
+            baseCostGP = baseCost * goldTokenPrice;
+            totalGT += baseCost; // Store original GT amount for display
+          } else if (item.priceType === 'ST') {
+            if (silverTokenPrice === 0) {
+              setError(t('soloHuntAnalyzer.errors.missingSilverTokenPriceForItems'));
+              setLoading(false);
+              return;
+            }
+            baseCostGP = baseCost * silverTokenPrice;
+            totalST += baseCost; // Store original ST amount for display
+          } else if (item.priceType === 'GP') {
+            partialGP += Math.ceil((baseCost / item.itemDuration) * huntDurationHours);
+          }
 
-        if (item.priceType === 'GP') {
-          totalCostGP += itemCost;
-        } else if (item.priceType === 'GT') {
-          totalCostGT += itemCost;
-        } else if (item.priceType === 'ST') {
-          totalCostST += itemCost;
+          // Calculate GP per hour and proportional cost
+          const costPerHourGP = baseCostGP / item.itemDuration;
+          const proportionalCost = Math.ceil(costPerHourGP * huntDurationHours);
+
+          totalGpPerHour += costPerHourGP;
+          totalCostGP += proportionalCost;
+        } else {
+          // For custom items without duration: use full cost
+          if (item.priceType === 'GP') {
+            totalCostGP_nonProportional += baseCost;
+            partialGP += baseCost;
+          } else if (item.priceType === 'GT') {
+            if (goldTokenPrice === 0) {
+              setError(t('soloHuntAnalyzer.errors.missingGoldTokenPrice'));
+              setLoading(false);
+              return;
+            }
+            totalCostGP_nonProportional += baseCost * goldTokenPrice;
+            totalGT += baseCost;
+          } else if (item.priceType === 'ST') {
+            if (silverTokenPrice === 0) {
+              setError(t('soloHuntAnalyzer.errors.missingSilverTokenPriceForItems'));
+              setLoading(false);
+              return;
+            }
+            totalCostGP_nonProportional += baseCost * silverTokenPrice;
+            totalST += baseCost;
+          }
         }
       });
 
-      // Convert GT to GP if GT price is defined
-      if (totalCostGT > 0 && goldTokenPrice > 0) {
-        totalCostGP += totalCostGT * goldTokenPrice;
-      } else if (totalCostGT > 0 && goldTokenPrice === 0) {
-        setError(t('soloHuntAnalyzer.errors.missingGoldTokenPrice'));
-        setLoading(false);
-        return;
-      }
-
-      // Convert ST to GP if ST price is defined
-      if (totalCostST > 0 && silverTokenPrice > 0) {
-        totalCostGP += totalCostST * silverTokenPrice;
-      } else if (totalCostST > 0 && silverTokenPrice === 0) {
-        setError(t('soloHuntAnalyzer.errors.missingSilverTokenPriceForItems'));
-        setLoading(false);
-        return;
-      }
+      // Add non-proportional costs to total
+      totalCostGP += totalCostGP_nonProportional;
 
       // Calculate additional metrics
       const totalSupplies = parsedSession.player.supplies + totalCostGP;
       const adjustedBalance = parsedSession.player.balance - totalCostGP;
-      const gpPerHour = huntDurationHours > 0 ? totalCostGP / huntDurationHours : 0;
       const profitPerHour = huntDurationHours > 0 ? adjustedBalance / huntDurationHours : 0;
       const suppliesPerHour = huntDurationHours > 0 ? totalSupplies / huntDurationHours : 0;
 
       setResults({
         session: parsedSession,
         costs: {
-          totalGP: totalCostGP,
-          totalGT: totalCostGT,
-          totalST: totalCostST,
+          partialGP, // Direct GP costs (without token conversion)
+          totalGT, // Total GT used (in GT, not converted)
+          totalST, // Total ST used (in ST, not converted)
           goldTokenPrice,
           silverTokenPrice,
           items: customItems,
-          gpPerHour,
-          additionalCost: totalCostGP,
+          gpPerHour: totalGpPerHour, // GP per hour (only for items with itemDuration)
+          additionalCost: totalCostGP, // Total proportional cost for this hunt
         },
         totalSupplies,
         adjustedBalance,

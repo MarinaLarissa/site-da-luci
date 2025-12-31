@@ -115,12 +115,14 @@
         "partialGPTooltip": "Custos diretos em GP (sem conversão de tokens)",
         "gtCosts": "Total em GT",
         "gtConverted": "GT convertido para GP",
+        "gtConvertedTooltip": "GT qty × GT value",
         "stCosts": "Total em ST",
         "stConverted": "ST convertido para GP",
+        "stConvertedTooltip": "ST qty × ST value",
         "gpPerHour": "GP adicional por hora",
-        "gpPerHourTooltip": "Custo adicional médio por hora (soma de todos os itens proporcionais)",
+        "gpPerHourTooltip": "(Item total cost / Item duration)",
         "additionalCost": "Custo adicional de itens",
-        "additionalCostTooltip": "Custo proporcional total desta hunt (GP por hora × duração da hunt)"
+        "additionalCostTooltip": "GP per hour × Hunt duration"
       },
       "addImbuementModal": {
         "title": "Adicionar Imbuement",

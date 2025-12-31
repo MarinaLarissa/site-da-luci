@@ -68,24 +68,17 @@ export default function SoloHuntResults({ results }) {
         <div className="result-card">
           <h3>{t('soloHuntAnalyzer.results.costsBreakdown.title')}</h3>
           <div className="stats-grid">
-            {costs.totalGP > 0 && (
+            {costs.partialGP > 0 && (
               <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')} position="top">
                 <div className="stat-item negative">
                   <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.partialGP')}</div>
-                  <div className="stat-value">-{costs.totalGP.toLocaleString('pt-BR')} GP</div>
+                  <div className="stat-value">-{costs.partialGP.toLocaleString('pt-BR')} GP</div>
                 </div>
               </Tooltip>
             )}
 
             {costs.totalGT > 0 && (
-              <Tooltip
-                text={t('soloHuntAnalyzer.results.costsBreakdown.tooltips.gtCosts', {
-                  total: costs.totalGT,
-                  price: costs.goldTokenPrice,
-                  result: (costs.totalGT * costs.goldTokenPrice)
-                })}
-                position="top"
-              >
+              <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.gtConvertedTooltip')} position="top">
                 <div className="stat-item negative">
                   <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gtConverted')}</div>
                   <div className="stat-value">-{(costs.totalGT * costs.goldTokenPrice).toLocaleString('pt-BR')} GP</div>
@@ -94,15 +87,7 @@ export default function SoloHuntResults({ results }) {
             )}
 
             {costs.totalST > 0 && (
-              <Tooltip
-                text={t('soloHuntAnalyzer.results.costsBreakdown.tooltips.stCosts', {
-                  total: costs.totalST,
-                  price: costs.silverTokenPrice,
-                  result: (costs.totalST * costs.silverTokenPrice),
-                  huntHours: huntHours.toFixed(2)
-                })}
-                position="top"
-              >
+              <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.stConvertedTooltip')} position="top">
                 <div className="stat-item negative">
                   <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}</div>
                   <div className="stat-value">-{(costs.totalST * costs.silverTokenPrice).toLocaleString('pt-BR')} GP</div>

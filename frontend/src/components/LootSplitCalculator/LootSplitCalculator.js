@@ -74,7 +74,7 @@ export default function LootSplitCalculator() {
         title={t('huntHistory.openButton')}
       >
         <span className="btn-icon">📜</span>
-        <span className="btn-text">Histórico</span>
+        <span className="btn-text">{t('huntHistory.title')}</span>
       </button>
 
       {/* Hunt History Drawer */}

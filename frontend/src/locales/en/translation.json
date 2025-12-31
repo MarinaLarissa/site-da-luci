@@ -167,12 +167,14 @@
         "partialGPTooltip": "Direct GP costs (without token conversion)",
         "gtCosts": "Total GT",
         "gtConverted": "GT converted to GP",
+        "gtConvertedTooltip": "GT qty × GT value",
         "stCosts": "Total ST",
         "stConverted": "ST converted to GP",
+        "stConvertedTooltip": "ST qty × ST value",
         "gpPerHour": "Additional GP per hour",
-        "gpPerHourTooltip": "Average additional cost per hour (sum of all proportional items)",
+        "gpPerHourTooltip": "(Item total cost / Item duration)",
         "additionalCost": "Additional cost of items",
-        "additionalCostTooltip": "Total proportional cost for this hunt (GP per hour × hunt duration)"
+        "additionalCostTooltip": "GP per hour × Hunt duration"
       }
     },
     "results": {
