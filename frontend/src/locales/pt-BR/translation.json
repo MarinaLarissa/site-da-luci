@@ -172,6 +172,32 @@
         "healing": "Cura Total"
       }
     },
+    "configManager": {
+      "title": "Configurações Salvas",
+      "description": "Salve e carregue suas configurações de itens favoritas",
+      "saveButton": "Salvar Configuração",
+      "selectConfig": "Selecione uma configuração...",
+      "deleteButton": "Deletar configuração",
+      "clearAllButton": "Limpar Todas",
+      "savedCount": "{{count}} configuração salva",
+      "savedCount_plural": "{{count}} configurações salvas",
+      "noItemsToSave": "Adicione itens antes de salvar uma configuração",
+      "confirmDelete": "Tem certeza que deseja deletar esta configuração?",
+      "confirmClearAll": "Tem certeza que deseja deletar TODAS as configurações? Esta ação não pode ser desfeita!",
+      "closeModal": "Fechar modal",
+      "saveModal": {
+        "title": "Salvar Configuração",
+        "nameLabel": "Nome da Configuração",
+        "namePlaceholder": "Ex: Hunt Roshamuul Powerful",
+        "preview": "O que será salvo",
+        "itemsCount": "itens",
+        "confirmButton": "Salvar",
+        "cancelButton": "Cancelar"
+      },
+      "errors": {
+        "saveFailed": "Erro ao salvar configuração. Verifique o espaço disponível no navegador."
+      }
+    },
     "calculateButton": "Calcular Balance Ajustado",
     "resetButton": "Limpar",
     "errors": {

@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SessionDataInput from './SessionDataInput';
 import ItemCostManager from './ItemCostManager';
+import ConfigurationManager from './ConfigurationManager';
 import SoloHuntResults from './SoloHuntResults';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
@@ -270,6 +271,18 @@ export default function SoloHuntAnalyzer() {
           silverTokenPrice={silverTokenPrice}
           setSilverTokenPrice={setSilverTokenPrice}
           silverTokenError={silverTokenError}
+        />
+      )}
+
+      {/* Configuration Manager (save/load configurations) */}
+      {parsedSession && (
+        <ConfigurationManager
+          customItems={customItems}
+          setCustomItems={setCustomItems}
+          goldTokenPrice={goldTokenPrice}
+          setGoldTokenPrice={setGoldTokenPrice}
+          silverTokenPrice={silverTokenPrice}
+          setSilverTokenPrice={setSilverTokenPrice}
         />
       )}
 
