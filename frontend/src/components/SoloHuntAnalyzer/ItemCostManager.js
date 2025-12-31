@@ -298,16 +298,17 @@ export default function ItemCostManager({
 
   return (
     <div className="item-cost-manager">
-      <h2 className="section-title">Custos Adicionais</h2>
+      <h2 className="section-title">{t('soloHuntAnalyzer.itemCostManager.title')}</h2>
+
       <p className="section-description">
-        Adicione imbuements ou itens customizados que você gastou durante a hunt.
+        {t('soloHuntAnalyzer.itemCostManager.sectionDescription')}
       </p>
 
-      {/* Token Prices */}
-      <div className="token-prices-section">
+          {/* Token Prices */}
+          <div className="token-prices-section">
         <div className="token-price-row">
           <img src={goldTokenIcon} alt="Gold Token" className="token-icon" />
-          <label htmlFor="gold-token-price-input">Gold Token:</label>
+          <label htmlFor="gold-token-price-input">{t('soloHuntAnalyzer.itemCostManager.goldTokenLabel')}</label>
           <input
             id="gold-token-price-input"
             type="number"
@@ -315,7 +316,7 @@ export default function ItemCostManager({
             onChange={(e) => setGoldTokenPrice(parseFloat(e.target.value) || 0)}
             placeholder="Ex: 45000"
             min="0"
-            aria-label="Preço do Gold Token em GP"
+            aria-label={t('soloHuntAnalyzer.itemCostManager.goldTokenAriaLabel')}
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -323,7 +324,7 @@ export default function ItemCostManager({
 
         <div className={`token-price-row ${silverTokenError ? 'error' : ''}`}>
           <img src={silverTokenIcon} alt="Silver Token" className="token-icon" />
-          <label htmlFor="silver-token-price-input">Silver Token:</label>
+          <label htmlFor="silver-token-price-input">{t('soloHuntAnalyzer.itemCostManager.silverTokenLabel')}</label>
           <input
             id="silver-token-price-input"
             type="number"
@@ -331,7 +332,7 @@ export default function ItemCostManager({
             onChange={(e) => setSilverTokenPrice(parseFloat(e.target.value) || 0)}
             placeholder="Ex: 15000"
             min="0"
-            aria-label="Preço do Silver Token em GP"
+            aria-label={t('soloHuntAnalyzer.itemCostManager.silverTokenAriaLabel')}
             className={silverTokenError ? 'error' : ''}
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
@@ -350,7 +351,7 @@ export default function ItemCostManager({
         <button
           className="btn btn-primary"
           onClick={handleAddRingBis}
-          title="Ring Bis (5 ST, dura 3hrs)"
+          title={t('soloHuntAnalyzer.itemCostManager.ringBisTooltip')}
         >
           + {t('soloHuntAnalyzer.itemCostManager.addRingBisButton')}
         </button>
@@ -365,14 +366,14 @@ export default function ItemCostManager({
       {/* Items list */}
       {customItems.length > 0 && (
         <div className="items-list">
-          <h3>Itens Adicionados</h3>
+          <h3>{t('soloHuntAnalyzer.itemCostManager.itemsListTitle')}</h3>
           <div className="items-table">
             <div className="items-header">
-              <div>Item</div>
-              <div>Qtd</div>
-              <div>Preço Unit.</div>
-              <div>Tipo</div>
-              <div>Total</div>
+              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.item')}</div>
+              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.quantity')}</div>
+              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.unitPrice')}</div>
+              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.priceType')}</div>
+              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.total')}</div>
               <div></div>
             </div>
             {customItems.map(item => {
@@ -405,8 +406,8 @@ export default function ItemCostManager({
                         <button
                           className="btn-collapse"
                           onClick={() => toggleItemCollapse(item.id)}
-                          aria-label={isCollapsed ? 'Expandir itens' : 'Recolher itens'}
-                          title={isCollapsed ? 'Clique para expandir e editar preços dos itens' : 'Recolher itens'}
+                          aria-label={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandItems') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
+                          title={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
                         >
                           {isCollapsed ? '▶' : '▼'}
                         </button>
@@ -417,9 +418,9 @@ export default function ItemCostManager({
                           className="collapsed-hint"
                           onClick={() => toggleItemCollapse(item.id)}
                           style={{ cursor: 'pointer' }}
-                          title="Clique para expandir e editar preços dos itens"
+                          title={t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit')}
                         >
-                          {' '}(clique para expandir)
+                          {' '}{t('soloHuntAnalyzer.itemCostManager.itemsList.clickToExpand')}
                         </span>
                       )}
                     </div>
@@ -430,8 +431,8 @@ export default function ItemCostManager({
                             className="btn-quantity"
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
-                            aria-label="Diminuir quantidade"
-                            title="Diminuir quantidade"
+                            aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
+                            title={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
                           >
                             -
                           </button>
@@ -439,8 +440,8 @@ export default function ItemCostManager({
                           <button
                             className="btn-quantity"
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity + 1)}
-                            aria-label="Aumentar quantidade"
-                            title="Aumentar quantidade"
+                            aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
+                            title={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
                           >
                             +
                           </button>
@@ -486,11 +487,11 @@ export default function ItemCostManager({
                       <button
                         className="btn-remove"
                         onClick={() => handleRemoveItem(item.id)}
-                        aria-label={`Remover ${item.name}`}
-                        title={`Remover ${item.name}`}
+                        aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
+                        title={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
                       >
                         <span aria-hidden="true">🗑️</span>
-                        <span className="sr-only">Remover</span>
+                        <span className="sr-only">{t('soloHuntAnalyzer.itemCostManager.itemsList.removeItem')}</span>
                       </button>
                     </div>
                   </div>
@@ -526,32 +527,43 @@ export default function ItemCostManager({
 
           {/* Total cost summary */}
           <div className="cost-summary">
-            <p>
-              <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-              <strong>Total em GP:</strong> {totalGP.toLocaleString('pt-BR')} GP
-            </p>
-            <p>
-              <img src={goldTokenIcon} alt="GT" className="token-icon-inline" />
-              <strong>Total em GT:</strong> {totalGT.toLocaleString('pt-BR')} GT
-            </p>
+            {/* Partial GP - Only show if there are direct GP costs */}
+            {totalGP > 0 && (
+              <p title={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')}>
+                <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.partialGP')}:</strong> {totalGP.toLocaleString('pt-BR')} GP
+              </p>
+            )}
+
+            {/* GT Costs */}
+            {totalGT > 0 && (
+              <p>
+                <img src={goldTokenIcon} alt="GT" className="token-icon-inline" />
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtCosts')}:</strong> {totalGT} GT
+              </p>
+            )}
+
+            {/* ST Costs */}
+            {totalST > 0 && (
+              <p>
+                <img src={silverTokenIcon} alt="ST" className="token-icon-inline" />
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.stCosts')}:</strong> {totalST} ST
+              </p>
+            )}
+
+            {/* GT Converted */}
             {goldTokenPrice > 0 && totalGT > 0 && (
               <p>
-                <strong>GT convertido para GP:</strong> {(totalGT * goldTokenPrice).toLocaleString('pt-BR')} GP
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtConverted')}:</strong> {(totalGT * goldTokenPrice).toLocaleString('pt-BR')} GP
               </p>
             )}
-            <p>
-              <img src={silverTokenIcon} alt="ST" className="token-icon-inline" />
-              <strong>Total em ST:</strong> {totalST.toLocaleString('pt-BR')} ST
-            </p>
+
+            {/* ST Converted */}
             {silverTokenPrice > 0 && totalST > 0 && (
               <p>
-                <strong>ST convertido para GP:</strong> {(totalST * silverTokenPrice).toLocaleString('pt-BR')} GP
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}:</strong> {(totalST * silverTokenPrice).toLocaleString('pt-BR')} GP
               </p>
             )}
-            <p className="total-final">
-              <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-              <strong>Custo Total:</strong> {(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).toLocaleString('pt-BR')} GP
-            </p>
           </div>
         </div>
       )}
@@ -562,7 +574,7 @@ export default function ItemCostManager({
           className="modal-overlay"
           onClick={() => setShowImbuementModal(false)}
           role="presentation"
-          aria-label="Fechar modal"
+          aria-label={t('soloHuntAnalyzer.itemCostManager.addImbuementModal.closeModal')}
         >
           <div
             className="modal-content"
@@ -574,7 +586,7 @@ export default function ItemCostManager({
             <h3 id="imbuement-modal-title">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.title')}</h3>
 
             <div className="form-group">
-              <label>Categoria:</label>
+              <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.categoryLabel')}</label>
               <select
                 value={selectedCategory}
                 onChange={(e) => {
@@ -582,7 +594,7 @@ export default function ItemCostManager({
                   setSelectedImbuement('');
                 }}
               >
-                <option value="">Selecione uma categoria</option>
+                <option value="">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.selectCategory')}</option>
                 {getAllCategories().map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
@@ -591,12 +603,12 @@ export default function ItemCostManager({
 
             {selectedCategory && (
               <div className="form-group">
-                <label>Imbuement:</label>
+                <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.imbuementLabel')}</label>
                 <select
                   value={selectedImbuement}
                   onChange={(e) => setSelectedImbuement(e.target.value)}
                 >
-                  <option value="">Selecione um imbuement</option>
+                  <option value="">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.selectImbuement')}</option>
                   {availableImbuements.map(imb => (
                     <option key={imb.id} value={imb.id}>
                       {imb.name} - {imb.description}
@@ -608,7 +620,7 @@ export default function ItemCostManager({
 
             {selectedImbuement && (
               <div className="form-group">
-                <label>Tier:</label>
+                <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tierLabel')}</label>
                 <select
                   value={selectedTier}
                   onChange={(e) => {
@@ -616,29 +628,29 @@ export default function ItemCostManager({
                     setGtPayment(0); // Reset GT payment when tier changes
                   }}
                 >
-                  <option value="basic">Basic</option>
-                  <option value="intricate">Intricate</option>
-                  <option value="powerful">Powerful</option>
+                  <option value="basic">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.basic')}</option>
+                  <option value="intricate">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.intricate')}</option>
+                  <option value="powerful">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.powerful')}</option>
                 </select>
               </div>
             )}
 
             {selectedImbuement && GT_ELIGIBLE_IMBUEMENTS.includes(selectedImbuement) && (
               <div className="form-group">
-                <label>Pagar com Gold Token (GT):</label>
+                <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentLabel')}</label>
                 <select
                   value={gtPayment}
                   onChange={(e) => setGtPayment(parseInt(e.target.value))}
                 >
-                  <option value={0}>0 GT (todos os itens em GP)</option>
+                  <option value={0}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.none')}</option>
                   {(selectedTier === 'basic' || selectedTier === 'intricate' || selectedTier === 'powerful') && (
-                    <option value={2}>2 GT (cobre tier basic)</option>
+                    <option value={2}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.basic')}</option>
                   )}
                   {(selectedTier === 'intricate' || selectedTier === 'powerful') && (
-                    <option value={4}>4 GT (cobre basic + intricate)</option>
+                    <option value={4}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.basicIntricate')}</option>
                   )}
                   {selectedTier === 'powerful' && (
-                    <option value={6}>6 GT (cobre todos os itens)</option>
+                    <option value={6}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.all')}</option>
                   )}
                 </select>
               </div>
@@ -646,7 +658,7 @@ export default function ItemCostManager({
 
             {selectedImbuement && (
               <div className="imbuement-items-preview">
-                <h4>Itens necessários:</h4>
+                <h4>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.itemsPreviewTitle')}</h4>
                 {(() => {
                   const imbuement = IMBUEMENTS.find(imb => imb.id === selectedImbuement);
                   if (!imbuement) return null;
@@ -664,7 +676,7 @@ export default function ItemCostManager({
                     <>
                       {gtPayment > 0 && (
                         <p key="gt-payment" style={{ color: '#c39bd3', fontWeight: 'bold' }}>
-                          • {gtPayment} GT (pagamento do imbuement)
+                          • {gtPayment} GT ({t('soloHuntAnalyzer.itemCostManager.addImbuementModal.itemsPreviewPayment')})
                         </p>
                       )}
                       {tiersToShow.map(tierName => {
@@ -680,7 +692,7 @@ export default function ItemCostManager({
                             }}
                           >
                             • {item.quantity}x {item.name} ({tierName})
-                            {isCoveredByGT && ' - coberto por GT'}
+                            {isCoveredByGT && ` - ${t('soloHuntAnalyzer.itemCostManager.addImbuementModal.coveredByGT')}`}
                           </p>
                         ));
                       })}
@@ -696,13 +708,13 @@ export default function ItemCostManager({
                 onClick={handleAddImbuement}
                 disabled={!selectedImbuement}
               >
-                Adicionar
+                {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.addButton')}
               </button>
               <button
                 className="btn btn-secondary"
                 onClick={() => setShowImbuementModal(false)}
               >
-                Cancelar
+                {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.cancelButton')}
               </button>
             </div>
           </div>
@@ -715,7 +727,7 @@ export default function ItemCostManager({
           className="modal-overlay"
           onClick={() => setShowCustomItemModal(false)}
           role="presentation"
-          aria-label="Fechar modal"
+          aria-label={t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.closeModal')}
         >
           <div
             className="modal-content"
@@ -724,20 +736,20 @@ export default function ItemCostManager({
             aria-labelledby="custom-item-modal-title"
             aria-modal="true"
           >
-            <h3 id="custom-item-modal-title">Adicionar Item Custom</h3>
+            <h3 id="custom-item-modal-title">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.title')}</h3>
 
             <div className="form-group">
-              <label>Nome do Item:</label>
+              <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNameLabel')}</label>
               <input
                 type="text"
                 value={customItemName}
                 onChange={(e) => setCustomItemName(e.target.value)}
-                placeholder="Ex: Exercise Rod"
+                placeholder={t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNamePlaceholder')}
               />
             </div>
 
             <div className="form-group">
-              <label>Quantidade:</label>
+              <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.quantityLabel')}</label>
               <input
                 type="number"
                 value={customItemQuantity}
@@ -747,7 +759,7 @@ export default function ItemCostManager({
             </div>
 
             <div className="form-group">
-              <label>Preço Unitário:</label>
+              <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.unitPriceLabel')}</label>
               <input
                 type="number"
                 value={customItemPrice}
@@ -757,14 +769,14 @@ export default function ItemCostManager({
             </div>
 
             <div className="form-group">
-              <label>Tipo de Moeda:</label>
+              <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypeLabel')}</label>
               <select
                 value={customItemPriceType}
                 onChange={(e) => setCustomItemPriceType(e.target.value)}
               >
-                <option value="GP">GP (Gold Pieces)</option>
-                <option value="GT">GT (Gold Token)</option>
-                <option value="ST">ST (Silver Token)</option>
+                <option value="GP">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.gp')}</option>
+                <option value="GT">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.gt')}</option>
+                <option value="ST">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.st')}</option>
               </select>
             </div>
 
@@ -774,13 +786,13 @@ export default function ItemCostManager({
                 onClick={handleAddCustomItem}
                 disabled={!customItemName.trim()}
               >
-                Adicionar
+                {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.addButton')}
               </button>
               <button
                 className="btn btn-secondary"
                 onClick={() => setShowCustomItemModal(false)}
               >
-                Cancelar
+                {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.cancelButton')}
               </button>
             </div>
           </div>
@@ -813,5 +825,5 @@ ItemCostManager.propTypes = {
   setGoldTokenPrice: PropTypes.func.isRequired,
   silverTokenPrice: PropTypes.number.isRequired,
   setSilverTokenPrice: PropTypes.func.isRequired,
-  silverTokenError: PropTypes.bool,
+  silverTokenError: PropTypes.bool
 };

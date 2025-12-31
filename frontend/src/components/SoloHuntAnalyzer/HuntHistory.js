@@ -272,6 +272,12 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         </div>
                       )}
                       <div className="detail-item">
+                        <span className="label">{t('soloHuntAnalyzer.results.finalBalance.totalProfit')}:</span>
+                        <span className={(hunt.adjustedBalance || 0) >= 0 ? 'value positive' : 'value negative'}>
+                          {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}{(hunt.adjustedBalance || 0).toLocaleString(locale)} GP
+                        </span>
+                      </div>
+                      <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
                         <span className="value">{(hunt.profitPerHour || 0).toLocaleString(locale)} GP/h</span>
                       </div>

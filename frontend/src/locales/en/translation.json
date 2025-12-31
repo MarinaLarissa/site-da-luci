@@ -76,22 +76,84 @@
     "title": "Solo Hunt Analyzer",
     "subtitle": "Analyze your solo hunting sessions with detailed cost tracking",
     "sessionInput": {
-      "title": "Enter Session Data",
-      "description": "Paste your TIBIA session data below (must be from a solo hunt with exactly 1 player)",
-      "placeholder": "Session data: 00:00 to 01:30\nLoot: 150,000 gold\nSupplies: 45,000 gold\nBalance: 105,000 gold\n\nYourCharacter\n\tLoot: 150,000\n\tSupplies: 45,000\n\tBalance: 105,000\n\tDamage: 450,000\n\tHealing: 25,000",
-      "parseButton": "Parse Session Data",
-      "clearButton": "Clear"
+      "title": "Session Data",
+      "description": "Paste your solo session data below.",
+      "onePlayerOnly": "Only 1 player allowed.",
+      "placeholder": "Paste TIBIA session data here...",
+      "parseButton": "Process Data",
+      "loadExampleButton": "Load Example",
+      "sessionProcessed": "✅ Session processed"
     },
     "itemCostManager": {
       "title": "Additional Costs",
+      "sectionDescription": "Add imbuements or custom items you spent during the hunt.",
+      "goldTokenLabel": "Gold Token:",
+      "goldTokenAriaLabel": "Gold Token price in GP",
+      "silverTokenLabel": "Silver Token:",
+      "silverTokenAriaLabel": "Silver Token price in GP",
       "goldTokenPriceLabel": "Gold Token Price",
       "goldTokenPriceUnit": "GP per GT",
       "silverTokenPriceLabel": "Silver Token Price",
       "silverTokenPriceUnit": "GP per ST",
       "addImbuementButton": "Add Imbuement",
       "addRingBisButton": "Add Ring Bis",
+      "ringBisTooltip": "Ring Bis (5 ST, lasts 3hrs)",
       "addCustomItemButton": "Add Custom Item",
-      "itemsListTitle": "Cost Items",
+      "editItemsButton": "✏️ Edit Items",
+      "itemsSummary": "{{count}} {{count, plural, one {item added} other {items added}}}",
+      "itemsListTitle": "Items Added",
+      "addImbuementModal": {
+        "title": "Add Imbuement",
+        "categoryLabel": "Category:",
+        "selectCategory": "Select a category",
+        "imbuementLabel": "Imbuement:",
+        "selectImbuement": "Select an imbuement",
+        "tierLabel": "Tier:",
+        "tiers": {
+          "basic": "Basic",
+          "intricate": "Intricate",
+          "powerful": "Powerful"
+        },
+        "gtPaymentLabel": "Pay with Gold Token (GT):",
+        "gtPaymentOptions": {
+          "none": "0 GT (all items in GP)",
+          "basic": "2 GT (covers basic tier)",
+          "basicIntricate": "4 GT (covers basic + intricate)",
+          "all": "6 GT (covers all items)"
+        },
+        "itemsPreviewTitle": "Required Items",
+        "itemsPreviewPayment": "imbuement payment",
+        "coveredByGT": "covered by GT",
+        "cancelButton": "Cancel",
+        "addButton": "Add",
+        "closeModal": "Close modal"
+      },
+      "addCustomItemModal": {
+        "title": "Add Custom Item",
+        "itemNameLabel": "Item Name:",
+        "itemNamePlaceholder": "Ex: Exercise Rod",
+        "quantityLabel": "Quantity:",
+        "unitPriceLabel": "Unit Price:",
+        "priceTypeLabel": "Currency Type:",
+        "priceTypes": {
+          "gp": "GP (Gold Pieces)",
+          "gt": "GT (Gold Token)",
+          "st": "ST (Silver Token)"
+        },
+        "cancelButton": "Cancel",
+        "addButton": "Add",
+        "closeModal": "Close modal"
+      },
+      "itemsList": {
+        "expandToEdit": "Click to expand and edit item prices",
+        "collapseItems": "Collapse items",
+        "expandItems": "Expand items",
+        "clickToExpand": "(click to expand)",
+        "decreaseQuantity": "Decrease quantity",
+        "increaseQuantity": "Increase quantity",
+        "removeItem": "Remove",
+        "removeItemAria": "Remove {{itemName}}"
+      },
       "tableHeaders": {
         "item": "Item",
         "quantity": "Qty",
@@ -101,39 +163,16 @@
         "actions": "Actions"
       },
       "costSummary": {
-        "gpCosts": "GP Costs",
-        "gtCosts": "GT Costs",
-        "gtConverted": "GT Converted to GP",
-        "stCosts": "ST Costs",
-        "stConverted": "ST Converted to GP",
-        "totalCost": "Fee and items in GP"
-      },
-      "addImbuementModal": {
-        "title": "Add Imbuement",
-        "imbuementLabel": "Select Imbuement",
-        "tierLabel": "Select Tier",
-        "tiers": {
-          "basic": "Basic",
-          "intricate": "Intricate",
-          "powerful": "Powerful"
-        },
-        "itemsPreviewTitle": "Required Items",
-        "cancelButton": "Cancel",
-        "addButton": "Add Imbuement"
-      },
-      "addCustomItemModal": {
-        "title": "Add Custom Item",
-        "itemNameLabel": "Item Name",
-        "quantityLabel": "Quantity",
-        "unitPriceLabel": "Unit Price",
-        "priceTypeLabel": "Price Type",
-        "priceTypes": {
-          "gp": "GP (Gold Pieces)",
-          "gt": "GT (Gold Tokens)",
-          "st": "ST (Silver Tokens)"
-        },
-        "cancelButton": "Cancel",
-        "addButton": "Add Item"
+        "partialGP": "Partial GP",
+        "partialGPTooltip": "Direct GP costs (without token conversion)",
+        "gtCosts": "Total GT",
+        "gtConverted": "GT converted to GP",
+        "stCosts": "Total ST",
+        "stConverted": "ST converted to GP",
+        "gpPerHour": "Additional GP per hour",
+        "gpPerHourTooltip": "Average additional cost per hour (sum of all proportional items)",
+        "additionalCost": "Additional cost of items",
+        "additionalCostTooltip": "Total proportional cost for this hunt (GP per hour × hunt duration)"
       }
     },
     "results": {
@@ -148,7 +187,8 @@
         "title": "Loot & Supplies",
         "loot": "Total Loot",
         "supplies": "Supplies Used",
-        "balance": "Original Balance"
+        "balance": "Balance",
+        "balanceTooltip": "Loot - Supplies"
       },
       "costsBreakdown": {
         "title": "Additional Costs",
@@ -163,8 +203,15 @@
         }
       },
       "finalBalance": {
-        "title": "Adjusted Final Balance",
-        "profitPerHour": "Profit per hour"
+        "title": "Final Balance",
+        "finalBalanceTooltip": "Balance - Total Supplies",
+        "totalSupplies": "Total Supplies",
+        "totalSuppliesTooltip": "Supplies used + Additional cost of items",
+        "profitPerHour": "Profit per hour",
+        "suppliesPerHour": "Supplies per hour",
+        "costPerHour": "Cost per hour",
+        "costThisHunt": "Cost this hunt",
+        "totalProfit": "Total profit"
       },
       "combatStats": {
         "title": "Combat Statistics",
@@ -209,7 +256,7 @@
       }
     },
     "calculateButton": "Calculate Balance",
-    "resetButton": "Clear",
+    "resetButton": "Register another Hunt",
     "calculating": "Calculating...",
     "errors": {
       "noSessionData": "Please enter session data first",

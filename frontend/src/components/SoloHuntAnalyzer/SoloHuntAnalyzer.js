@@ -49,9 +49,11 @@ export default function SoloHuntAnalyzer() {
   const [results, setResults] = useState(null);
   const [silverTokenError, setSilverTokenError] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [hasCalculated, setHasCalculated] = useState(false);
 
   // Use ref instead of state to avoid React functional update issues
   const saveHuntToHistoryRef = useRef(null);
+  const resultsRef = useRef(null);
 
   // Save token prices to localStorage whenever they change
   // Optimization: Skip saving during initial load
@@ -78,6 +80,18 @@ export default function SoloHuntAnalyzer() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [error]);
+
+  // Clear results and re-enable calculate button when items are modified after calculation
+  // This prevents stale results and prompts user to recalculate
+  useEffect(() => {
+    if (results && customItems.length > 0) {
+      setResults(null);
+    }
+    // Re-enable calculate button when items are edited/added
+    if (hasCalculated) {
+      setHasCalculated(false);
+    }
+  }, [customItems]);
 
   /**
    * Parse session data (single player only)
@@ -174,6 +188,7 @@ export default function SoloHuntAnalyzer() {
 
     setSilverTokenError(false);
     setLoading(true);
+    setHasCalculated(true);
 
     try {
       // Parse hunt duration
@@ -230,8 +245,12 @@ export default function SoloHuntAnalyzer() {
         return;
       }
 
-      // Calculate adjusted balance
+      // Calculate additional metrics
+      const totalSupplies = parsedSession.player.supplies + totalCostGP;
       const adjustedBalance = parsedSession.player.balance - totalCostGP;
+      const gpPerHour = huntDurationHours > 0 ? totalCostGP / huntDurationHours : 0;
+      const profitPerHour = huntDurationHours > 0 ? adjustedBalance / huntDurationHours : 0;
+      const suppliesPerHour = huntDurationHours > 0 ? totalSupplies / huntDurationHours : 0;
 
       setResults({
         session: parsedSession,
@@ -242,8 +261,13 @@ export default function SoloHuntAnalyzer() {
           goldTokenPrice,
           silverTokenPrice,
           items: customItems,
+          gpPerHour,
+          additionalCost: totalCostGP,
         },
+        totalSupplies,
         adjustedBalance,
+        profitPerHour,
+        suppliesPerHour,
       });
 
       // Save to hunt history
@@ -262,6 +286,13 @@ export default function SoloHuntAnalyzer() {
       }
 
       setError(null);
+
+      // Scroll to results section
+      setTimeout(() => {
+        if (resultsRef.current) {
+          resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     } catch (err) {
       setError(t('soloHuntAnalyzer.errors.calculationError', { message: err.message }));
     } finally {
@@ -280,27 +311,27 @@ export default function SoloHuntAnalyzer() {
     setSilverTokenPrice(0);
     setResults(null);
     setError(null);
+    setHasCalculated(false);
   };
 
   return (
     <div className="solo-hunt-analyzer">
       <div className="calculator-header">
-        <div className="header-content">
-          <div>
-            <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
-            <p className="calculator-description">
-              {t('soloHuntAnalyzer.subtitle')}
-            </p>
-          </div>
-          <button
-            className="btn btn-secondary btn-history"
-            onClick={() => setIsHistoryOpen(true)}
-            title={t('huntHistory.openButton')}
-          >
-            📜 {t('huntHistory.title')}
-          </button>
-        </div>
+        <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
+        <p className="calculator-description">
+          {t('soloHuntAnalyzer.subtitle')}
+        </p>
       </div>
+
+      {/* Fixed History Button */}
+      <button
+        className="btn-open-history"
+        onClick={() => setIsHistoryOpen(true)}
+        title={t('huntHistory.openButton')}
+      >
+        <span className="btn-icon">📜</span>
+        <span className="btn-text">{t('huntHistory.title')}</span>
+      </button>
 
       {/* Error message */}
       {error && <ErrorMessage message={error} />}
@@ -344,7 +375,7 @@ export default function SoloHuntAnalyzer() {
           <button
             className="btn btn-primary"
             onClick={handleCalculate}
-            disabled={loading}
+            disabled={loading || hasCalculated}
           >
             {t('soloHuntAnalyzer.calculateButton')}
           </button>
@@ -361,7 +392,11 @@ export default function SoloHuntAnalyzer() {
       {loading && <LoadingSpinner message={t('soloHuntAnalyzer.calculating')} />}
 
       {/* Results section */}
-      {!loading && results && <SoloHuntResults results={results} />}
+      {!loading && results && (
+        <div ref={resultsRef}>
+          <SoloHuntResults results={results} />
+        </div>
+      )}
 
       {/* Hunt History */}
       <HuntHistory

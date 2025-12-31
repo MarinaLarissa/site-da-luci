@@ -5,9 +5,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import './SessionDataInput.css';
 
 export default function SessionDataInput({ sessionData, setSessionData, onParse, parsedSession }) {
+  const { t } = useTranslation();
   const handleLoadExample = () => {
     const example = `Session data: From 2025-12-28, 17:30:17 to 2025-12-28, 21:01:41
 Session: 03:31h
@@ -28,16 +30,16 @@ Lofi Shades (Leader)
 
   return (
     <div className="session-data-input">
-      <h2 className="section-title">Dados da Sessão</h2>
+      <h2 className="section-title">{t('soloHuntAnalyzer.sessionInput.title')}</h2>
       <p className="section-description">
-        Cole os dados da sua sessão solo abaixo. <strong>Apenas 1 jogador é permitido.</strong>
+        {t('soloHuntAnalyzer.sessionInput.description')} <strong>{t('soloHuntAnalyzer.sessionInput.onePlayerOnly')}</strong>
       </p>
 
       <textarea
         className="session-textarea"
         value={sessionData}
         onChange={(e) => setSessionData(e.target.value)}
-        placeholder="Cole aqui os dados da sessão do TIBIA..."
+        placeholder={t('soloHuntAnalyzer.sessionInput.placeholder')}
         rows={3}
       />
 
@@ -47,27 +49,20 @@ Lofi Shades (Leader)
           onClick={onParse}
           disabled={!sessionData.trim()}
         >
-          Processar Dados
+          {t('soloHuntAnalyzer.sessionInput.parseButton')}
         </button>
         <button
           className="btn btn-secondary"
           onClick={handleLoadExample}
         >
-          Carregar Exemplo
+          {t('soloHuntAnalyzer.sessionInput.loadExampleButton')}
         </button>
       </div>
 
       {/* Show parsed session info */}
       {parsedSession && (
         <div className="parsed-session-info">
-          <h3>✅ Sessão Processada</h3>
-          <div className="session-summary">
-            <p><strong>Jogador:</strong> {parsedSession.player.name}</p>
-            <p><strong>Duração:</strong> {parsedSession.duration}</p>
-            <p><strong>Loot:</strong> {parsedSession.player.loot.toLocaleString('pt-BR')} GP</p>
-            <p><strong>Supplies:</strong> {parsedSession.player.supplies.toLocaleString('pt-BR')} GP</p>
-            <p><strong>Balance Original:</strong> {parsedSession.player.balance.toLocaleString('pt-BR')} GP</p>
-          </div>
+          <p>{t('soloHuntAnalyzer.sessionInput.sessionProcessed')}</p>
         </div>
       )}
     </div>

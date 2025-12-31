@@ -13,16 +13,47 @@
   margin-bottom: 32px;
 }
 
-.header-content {
+/* Fixed History Button */
+.btn-open-history {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  min-width: 60px;
+  height: 60px;
+  padding: 0 1.2rem;
+  background: linear-gradient(135deg, #c39bd3, #b388c7);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 998;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.btn-history {
+.btn-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.btn-text {
+  font-size: 0.95rem;
+  font-weight: 600;
   white-space: nowrap;
-  flex-shrink: 0;
+}
+
+.btn-open-history:hover {
+  background: linear-gradient(135deg, #b388c7, #9d6fb0);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(195, 155, 211, 0.4);
+}
+
+.btn-open-history:active {
+  transform: scale(1.05);
 }
 
 .calculator-title {
@@ -107,5 +138,17 @@
 
   .btn {
     width: 100%;
+  }
+
+  /* Hide button text on mobile, show icon only */
+  .btn-text {
+    display: none;
+  }
+
+  .btn-open-history {
+    width: 60px;
+    min-width: 60px;
+    padding: 0;
+    border-radius: 50%;
   }
 }

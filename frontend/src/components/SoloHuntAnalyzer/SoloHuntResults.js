@@ -12,14 +12,10 @@ import './SoloHuntResults.css';
 
 export default function SoloHuntResults({ results }) {
   const { t } = useTranslation();
-  const { session, costs, adjustedBalance } = results;
+  const { session, costs, adjustedBalance, totalSupplies, profitPerHour, suppliesPerHour } = results;
   const { player } = session;
 
   const huntHours = parseDurationToHours(session.duration);
-
-  const profitPerHour = () => {
-    return huntHours > 0 ? (adjustedBalance / huntHours).toFixed(0) : 0;
-  };
 
   return (
     <div className="solo-hunt-results">
@@ -58,10 +54,12 @@ export default function SoloHuntResults({ results }) {
             <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.supplies')}</div>
             <div className="stat-value">-{player.supplies.toLocaleString('pt-BR')} GP</div>
           </div>
-          <div className="stat-item neutral">
-            <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.balance')}</div>
-            <div className="stat-value">{player.balance.toLocaleString('pt-BR')} GP</div>
-          </div>
+          <Tooltip text={t('soloHuntAnalyzer.results.lootStats.balanceTooltip')} position="top">
+            <div className="stat-item neutral">
+              <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.balance')}</div>
+              <div className="stat-value">{player.balance.toLocaleString('pt-BR')} GP</div>
+            </div>
+          </Tooltip>
         </div>
       </div>
 
@@ -71,9 +69,9 @@ export default function SoloHuntResults({ results }) {
           <h3>{t('soloHuntAnalyzer.results.costsBreakdown.title')}</h3>
           <div className="stats-grid">
             {costs.totalGP > 0 && (
-              <Tooltip text={t('soloHuntAnalyzer.results.costsBreakdown.tooltips.gpCosts')} position="top">
+              <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')} position="top">
                 <div className="stat-item negative">
-                  <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gpCosts')}</div>
+                  <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.partialGP')}</div>
                   <div className="stat-value">-{costs.totalGP.toLocaleString('pt-BR')} GP</div>
                 </div>
               </Tooltip>
@@ -112,18 +110,17 @@ export default function SoloHuntResults({ results }) {
               </Tooltip>
             )}
 
-            <Tooltip
-              text={t('soloHuntAnalyzer.results.costsBreakdown.tooltips.totalCosts', {
-                gpTotal: costs.totalGP,
-                gtTotal: costs.totalGT * costs.goldTokenPrice,
-                stTotal: costs.totalST * costs.silverTokenPrice,
-                finalTotal: (costs.totalGP + (costs.totalGT * costs.goldTokenPrice) + (costs.totalST * costs.silverTokenPrice))
-              })}
-              position="top"
-            >
+            <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHourTooltip')} position="top">
+              <div className="stat-item neutral">
+                <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHour')}</div>
+                <div className="stat-value">{costs.gpPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h</div>
+              </div>
+            </Tooltip>
+
+            <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCostTooltip')} position="top">
               <div className="stat-item total-cost">
-                <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCost')}</div>
-                <div className="stat-value">-{(costs.totalGP + (costs.totalGT * costs.goldTokenPrice) + (costs.totalST * costs.silverTokenPrice)).toLocaleString('pt-BR')} GP</div>
+                <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCost')}</div>
+                <div className="stat-value">-{costs.additionalCost.toLocaleString('pt-BR')} GP</div>
               </div>
             </Tooltip>
           </div>
@@ -132,35 +129,23 @@ export default function SoloHuntResults({ results }) {
 
       {/* Final Balance Card */}
       <div className={`result-card final-balance ${adjustedBalance >= 0 ? 'positive' : 'negative'}`}>
-        <h3>💰 {t('soloHuntAnalyzer.results.finalBalance.title')}</h3>
+        <h3 title={t('soloHuntAnalyzer.results.finalBalance.finalBalanceTooltip')}>
+          💰 {t('soloHuntAnalyzer.results.finalBalance.title')}
+        </h3>
         <div className="final-balance-value">
           {adjustedBalance >= 0 ? '+' : ''}{adjustedBalance.toLocaleString('pt-BR')} GP
         </div>
+        <div className="profit-per-hour" title={t('soloHuntAnalyzer.results.finalBalance.totalSuppliesTooltip')}>
+          📦 {t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}: -{totalSupplies.toLocaleString('pt-BR')} GP
+        </div>
         <div className="profit-per-hour">
-          {adjustedBalance >= 0 ? '📈' : '📉'} {profitPerHour().toLocaleString('pt-BR')} GP/h
+          {adjustedBalance >= 0 ? '📈' : '📉'} {t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}: {profitPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
+        </div>
+        <div className="profit-per-hour">
+          📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}: {suppliesPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
         </div>
       </div>
 
-      {/* Combat Stats Card */}
-      {(player.damage || player.healing) && (
-        <div className="result-card">
-          <h3>{t('soloHuntAnalyzer.results.combatStats.title')}</h3>
-          <div className="combat-stats">
-            {player.damage > 0 && (
-              <div className="combat-stat">
-                <span className="label">{t('soloHuntAnalyzer.results.combatStats.damage')}:</span>
-                <span className="value">{player.damage.toLocaleString('pt-BR')}</span>
-              </div>
-            )}
-            {player.healing > 0 && (
-              <div className="combat-stat">
-                <span className="label">{t('soloHuntAnalyzer.results.combatStats.healing')}:</span>
-                <span className="value">{player.healing.toLocaleString('pt-BR')}</span>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -186,6 +171,8 @@ SoloHuntResults.propTypes = {
       totalST: PropTypes.number.isRequired,
       goldTokenPrice: PropTypes.number.isRequired,
       silverTokenPrice: PropTypes.number.isRequired,
+      gpPerHour: PropTypes.number.isRequired,
+      additionalCost: PropTypes.number.isRequired,
       items: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
@@ -197,6 +184,9 @@ SoloHuntResults.propTypes = {
         })
       ).isRequired,
     }).isRequired,
+    totalSupplies: PropTypes.number.isRequired,
     adjustedBalance: PropTypes.number.isRequired,
+    profitPerHour: PropTypes.number.isRequired,
+    suppliesPerHour: PropTypes.number.isRequired,
   }).isRequired,
 };

@@ -33,8 +33,8 @@
   min-width: 60px;
   height: 60px;
   padding: 0 1.2rem;
-  background: #1976d2;
-  color: white;
+  background: linear-gradient(135deg, #c39bd3, #b388c7);
+  color: #1a1a2e;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -59,9 +59,9 @@
 }
 
 .btn-open-history:hover {
-  background: #1565c0;
+  background: linear-gradient(135deg, #b388c7, #9d6fb0);
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px rgba(195, 155, 211, 0.4);
 }
 
 .btn-open-history:active {
