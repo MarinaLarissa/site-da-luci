@@ -58,28 +58,20 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
    * Using useCallback to prevent unnecessary re-renders
    */
   const saveHunt = useCallback((huntData) => {
-    console.log('=== saveHunt called ===');
-    console.trace('Call stack:');
-
     // Validate hunt data before saving (prevent empty/invalid hunts)
     if (!huntData) {
-      console.warn('Hunt data is null/undefined - skipping save');
       return;
     }
 
     if (!huntData.playerName || huntData.playerName.trim() === '') {
-      console.warn('Hunt data missing playerName - skipping save:', huntData);
       return;
     }
 
     if (typeof huntData.loot !== 'number' ||
         typeof huntData.supplies !== 'number' ||
         typeof huntData.balance !== 'number') {
-      console.warn('Hunt data has invalid numeric values - skipping save:', huntData);
       return;
     }
-
-    console.log('Saving hunt to history:', huntData);
 
     const newHunt = {
       id: Date.now(),
@@ -172,10 +164,9 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
   };
 
   // Expose saveHunt method to parent via prop
-  // IMPORTANT: Double-wrap to prevent React functional update while maintaining closure
   useEffect(() => {
     if (onAddHunt) {
-      onAddHunt(() => (huntData) => saveHunt(huntData));
+      onAddHunt(saveHunt);
     }
   }, [onAddHunt, saveHunt]);
 

@@ -3,7 +3,7 @@
  * Analyzes solo hunt sessions with custom item costs (GP/GT)
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import SessionDataInput from './SessionDataInput';
 import ItemCostManager from './ItemCostManager';
@@ -50,10 +50,8 @@ export default function SoloHuntAnalyzer() {
   const [silverTokenError, setSilverTokenError] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
-    const [saveHuntToHistory, setSaveHuntToHistory] = useState(null);
-
   // Use ref instead of state to avoid React functional update issues
- // const saveHuntToHistoryRef = useRef(null);
+  const saveHuntToHistoryRef = useRef(null);
 
   // Save token prices to localStorage whenever they change
   // Optimization: Skip saving during initial load
@@ -249,7 +247,7 @@ export default function SoloHuntAnalyzer() {
       });
 
       // Save to hunt history
-      if (saveHuntToHistory) {
+      if (saveHuntToHistoryRef.current) {
         const huntData = {
           playerName: parsedSession.player.name,
           duration: parsedSession.duration,
@@ -260,12 +258,7 @@ export default function SoloHuntAnalyzer() {
           adjustedBalance,
           profitPerHour: huntDurationHours > 0 ? Math.round(adjustedBalance / huntDurationHours) : 0,
         };
-        console.log('Calling saveHuntToHistory with data:', huntData);
-        // saveHuntToHistory is double-wrapped: () => (huntData) => saveHunt(huntData)
-        // First call gets the inner function, second call executes saveHunt
-        saveHuntToHistory()(huntData);
-      } else {
-        console.warn('saveHuntToHistory is not defined yet');
+        saveHuntToHistoryRef.current(huntData);
       }
 
       setError(null);
@@ -374,7 +367,7 @@ export default function SoloHuntAnalyzer() {
       <HuntHistory
         isOpen={isHistoryOpen}
         onClose={() => setIsHistoryOpen(false)}
-        onAddHunt={setSaveHuntToHistory}
+        onAddHunt={(fn) => { saveHuntToHistoryRef.current = fn; }}
       />
     </div>
   );
