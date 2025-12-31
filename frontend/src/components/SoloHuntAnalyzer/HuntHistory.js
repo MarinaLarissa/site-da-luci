@@ -71,7 +71,7 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
         return prevHistory; // Return previous state on error
       }
     });
-  }, []);
+  }, [t]);
 
   /**
    * Delete a hunt from history

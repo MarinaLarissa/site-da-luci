@@ -210,12 +210,18 @@
     },
     "calculateButton": "Calcular Balance",
     "resetButton": "Limpar",
+    "calculating": "Calculando...",
     "errors": {
       "noSessionData": "Por favor, insira os dados da sessão primeiro",
       "invalidSessionData": "Formato de dados da sessão inválido",
       "multiplePlayersError": "Analisador de Caçada Solo requer exatamente 1 jogador. Encontrados {{count}} jogadores.",
       "parseError": "Erro ao analisar dados da sessão",
-      "missingSilverTokenPrice": "⚠️ Você adicionou Ring Bis mas não definiu o preço do Silver Token. Por favor, informe o valor do Silver Token para calcular corretamente."
+      "missingSilverTokenPrice": "⚠️ Você adicionou Ring Bis mas não definiu o preço do Silver Token. Por favor, informe o valor do Silver Token para calcular corretamente.",
+      "emptySessionData": "Por favor, insira os dados da sessão.",
+      "multiplePlayersDetected": "Detectados {{count}} jogadores. Este analisador aceita apenas 1 jogador.",
+      "missingGoldTokenPrice": "Você adicionou itens com custo em GT, mas não definiu o preço do Gold Token.",
+      "missingSilverTokenPriceForItems": "Você adicionou itens com custo em ST, mas não definiu o preço do Silver Token.",
+      "calculationError": "Erro ao calcular resultado: {{message}}"
     }
   },
   "roles": {

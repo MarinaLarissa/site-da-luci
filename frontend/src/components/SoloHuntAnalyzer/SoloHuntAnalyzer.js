@@ -85,7 +85,7 @@ export default function SoloHuntAnalyzer() {
       setError(null);
 
       if (!sessionData.trim()) {
-        setError('Por favor, insira os dados da sessão.');
+        setError(t('soloHuntAnalyzer.errors.emptySessionData'));
         return;
       }
 
@@ -111,7 +111,7 @@ export default function SoloHuntAnalyzer() {
       );
 
       if (playerBlocks.length !== 1) {
-        setError(`Detectados ${playerBlocks.length} jogadores. Este analisador aceita apenas 1 jogador.`);
+        setError(t('soloHuntAnalyzer.errors.multiplePlayersDetected', { count: playerBlocks.length }));
         return;
       }
 
@@ -148,7 +148,7 @@ export default function SoloHuntAnalyzer() {
       setParsedSession(parsed);
       setError(null);
     } catch (err) {
-      setError('Erro ao processar dados da sessão: ' + err.message);
+      setError(t('soloHuntAnalyzer.errors.parseError') + ': ' + err.message);
       setParsedSession(null);
     }
   };
@@ -214,7 +214,7 @@ export default function SoloHuntAnalyzer() {
       if (totalCostGT > 0 && goldTokenPrice > 0) {
         totalCostGP += totalCostGT * goldTokenPrice;
       } else if (totalCostGT > 0 && goldTokenPrice === 0) {
-        setError('Você adicionou itens com custo em GT, mas não definiu o preço do Gold Token.');
+        setError(t('soloHuntAnalyzer.errors.missingGoldTokenPrice'));
         setLoading(false);
         return;
       }
@@ -223,7 +223,7 @@ export default function SoloHuntAnalyzer() {
       if (totalCostST > 0 && silverTokenPrice > 0) {
         totalCostGP += totalCostST * silverTokenPrice;
       } else if (totalCostST > 0 && silverTokenPrice === 0) {
-        setError('Você adicionou itens com custo em ST, mas não definiu o preço do Silver Token.');
+        setError(t('soloHuntAnalyzer.errors.missingSilverTokenPriceForItems'));
         setLoading(false);
         return;
       }
@@ -261,7 +261,7 @@ export default function SoloHuntAnalyzer() {
 
       setError(null);
     } catch (err) {
-      setError('Erro ao calcular resultado: ' + err.message);
+      setError(t('soloHuntAnalyzer.errors.calculationError', { message: err.message }));
     } finally {
       setLoading(false);
     }
@@ -356,7 +356,7 @@ export default function SoloHuntAnalyzer() {
       )}
 
       {/* Loading state */}
-      {loading && <LoadingSpinner message="Calculando..." />}
+      {loading && <LoadingSpinner message={t('soloHuntAnalyzer.calculating')} />}
 
       {/* Results section */}
       {!loading && results && <SoloHuntResults results={results} />}

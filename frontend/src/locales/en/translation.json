@@ -210,12 +210,18 @@
     },
     "calculateButton": "Calculate Balance",
     "resetButton": "Clear",
+    "calculating": "Calculating...",
     "errors": {
       "noSessionData": "Please enter session data first",
       "invalidSessionData": "Invalid session data format",
       "multiplePlayersError": "Solo Hunt Analyzer requires exactly 1 player. Found {{count}} players.",
       "parseError": "Error parsing session data",
-      "missingSilverTokenPrice": "⚠️ You added Ring Bis but didn't set the Silver Token price. Please enter the Silver Token value to calculate correctly."
+      "missingSilverTokenPrice": "⚠️ You added Ring Bis but didn't set the Silver Token price. Please enter the Silver Token value to calculate correctly.",
+      "emptySessionData": "Please enter session data.",
+      "multiplePlayersDetected": "Detected {{count}} players. This analyzer accepts only 1 player.",
+      "missingGoldTokenPrice": "You added items with GT cost, but didn't set the Gold Token price.",
+      "missingSilverTokenPriceForItems": "You added items with ST cost, but didn't set the Silver Token price.",
+      "calculationError": "Error calculating result: {{message}}"
     }
   },
   "roles": {
