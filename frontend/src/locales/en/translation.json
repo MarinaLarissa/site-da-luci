@@ -204,7 +204,8 @@
         "cancelButton": "Cancel"
       },
       "errors": {
-        "saveFailed": "Error saving configuration. Check available browser storage space."
+        "quotaExceeded": "Storage limit reached! Please delete old configurations.",
+        "saveFailed": "Error saving configuration. Please try again."
       }
     },
     "calculateButton": "Calculate Balance",
@@ -251,6 +252,10 @@
       "dangerZone": "Danger Zone",
       "clearAllButton": "Clear All History",
       "clearWarning": "⚠️ This will permanently delete all hunt history!"
+    },
+    "errors": {
+      "quotaExceeded": "Storage limit reached! Please delete old hunts or export your history.",
+      "saveFailed": "Failed to save hunt. Please try again."
     }
   }
 }

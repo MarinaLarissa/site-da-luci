@@ -204,7 +204,8 @@
         "cancelButton": "Cancelar"
       },
       "errors": {
-        "saveFailed": "Erro ao salvar configuração. Verifique o espaço disponível no navegador."
+        "quotaExceeded": "Limite de armazenamento atingido! Por favor, delete configurações antigas.",
+        "saveFailed": "Erro ao salvar configuração. Por favor, tente novamente."
       }
     },
     "calculateButton": "Calcular Balance",
@@ -251,6 +252,10 @@
       "dangerZone": "Zona de Perigo",
       "clearAllButton": "Limpar Todo Histórico",
       "clearWarning": "⚠️ Isto irá deletar permanentemente todo o histórico!"
+    },
+    "errors": {
+      "quotaExceeded": "Limite de armazenamento atingido! Por favor, delete caçadas antigas ou exporte seu histórico.",
+      "saveFailed": "Erro ao salvar caçada. Por favor, tente novamente."
     }
   }
 }

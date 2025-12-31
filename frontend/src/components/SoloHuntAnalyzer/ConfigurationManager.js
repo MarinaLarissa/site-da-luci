@@ -74,7 +74,12 @@ export default function ConfigurationManager({
       setShowSaveModal(false);
     } catch (error) {
       console.error('Error saving configuration:', error);
-      alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+
+      if (error.name === 'QuotaExceededError') {
+        alert(t('soloHuntAnalyzer.configManager.errors.quotaExceeded'));
+      } else {
+        alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+      }
     }
   };
 
@@ -152,7 +157,12 @@ export default function ConfigurationManager({
       setConfigurations(updatedConfigs);
     } catch (error) {
       console.error('Error duplicating configuration:', error);
-      alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+
+      if (error.name === 'QuotaExceededError') {
+        alert(t('soloHuntAnalyzer.configManager.errors.quotaExceeded'));
+      } else {
+        alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+      }
     }
   };
 
@@ -190,7 +200,12 @@ export default function ConfigurationManager({
       setEditingConfigName('');
     } catch (error) {
       console.error('Error editing configuration:', error);
-      alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+
+      if (error.name === 'QuotaExceededError') {
+        alert(t('soloHuntAnalyzer.configManager.errors.quotaExceeded'));
+      } else {
+        alert(t('soloHuntAnalyzer.configManager.errors.saveFailed'));
+      }
     }
   };
 
@@ -418,7 +433,16 @@ export default function ConfigurationManager({
 }
 
 ConfigurationManager.propTypes = {
-  customItems: PropTypes.array.isRequired,
+  customItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string.isRequired,
+      unitPrice: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+      priceType: PropTypes.oneOf(['GP', 'GT', 'ST']).isRequired,
+      itemDuration: PropTypes.number, // optional for custom items
+    })
+  ).isRequired,
   setCustomItems: PropTypes.func.isRequired,
   goldTokenPrice: PropTypes.number.isRequired,
   setGoldTokenPrice: PropTypes.func.isRequired,

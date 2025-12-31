@@ -206,7 +206,16 @@ SoloHuntResults.propTypes = {
       totalST: PropTypes.number.isRequired,
       goldTokenPrice: PropTypes.number.isRequired,
       silverTokenPrice: PropTypes.number.isRequired,
-      items: PropTypes.array.isRequired,
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string.isRequired,
+          unitPrice: PropTypes.number.isRequired,
+          quantity: PropTypes.number.isRequired,
+          priceType: PropTypes.oneOf(['GP', 'GT', 'ST']).isRequired,
+          itemDuration: PropTypes.number,
+        })
+      ).isRequired,
     }).isRequired,
     adjustedBalance: PropTypes.number.isRequired,
   }).isRequired,

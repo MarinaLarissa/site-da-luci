@@ -3,7 +3,7 @@
  * Displays history of solo hunts with export/delete functionality
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import './HuntHistory.css';
@@ -12,7 +12,7 @@ const HISTORY_STORAGE_KEY = 'solo-hunt-history';
 const MAX_HISTORY_ITEMS = 50;
 
 export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [huntHistory, setHuntHistory] = useState([]);
   const [expandedHuntId, setExpandedHuntId] = useState(null);
 
@@ -39,28 +39,39 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
 
   /**
    * Save a new hunt to history (called from parent)
+   * Using useCallback to prevent unnecessary re-renders
    */
-  const saveHunt = (huntData) => {
+  const saveHunt = useCallback((huntData) => {
     const newHunt = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
       ...huntData,
     };
 
-    let updatedHistory = [newHunt, ...huntHistory];
+    setHuntHistory(prevHistory => {
+      let updatedHistory = [newHunt, ...prevHistory];
 
-    // Keep only last MAX_HISTORY_ITEMS
-    if (updatedHistory.length > MAX_HISTORY_ITEMS) {
-      updatedHistory = updatedHistory.slice(0, MAX_HISTORY_ITEMS);
-    }
+      // Keep only last MAX_HISTORY_ITEMS
+      if (updatedHistory.length > MAX_HISTORY_ITEMS) {
+        updatedHistory = updatedHistory.slice(0, MAX_HISTORY_ITEMS);
+      }
 
-    try {
-      localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updatedHistory));
-      setHuntHistory(updatedHistory);
-    } catch (error) {
-      console.error('Error saving hunt to history:', error);
-    }
-  };
+      try {
+        localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updatedHistory));
+        return updatedHistory;
+      } catch (error) {
+        console.error('Error saving hunt to history:', error);
+
+        if (error.name === 'QuotaExceededError') {
+          alert(t('huntHistory.errors.quotaExceeded'));
+        } else {
+          alert(t('huntHistory.errors.saveFailed'));
+        }
+
+        return prevHistory; // Return previous state on error
+      }
+    });
+  }, []);
 
   /**
    * Delete a hunt from history
@@ -126,7 +137,7 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
     if (onAddHunt) {
       onAddHunt(saveHunt);
     }
-  }, [onAddHunt, huntHistory]);
+  }, [onAddHunt, saveHunt]);
 
   if (!isOpen) return null;
 
@@ -175,13 +186,13 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                   <div className="hunt-info">
                     <div className="hunt-character">{hunt.playerName}</div>
                     <div className="hunt-date">
-                      {new Date(hunt.timestamp).toLocaleString('pt-BR')}
+                      {new Date(hunt.timestamp).toLocaleString(i18n.language)}
                     </div>
                   </div>
                   <div className="hunt-balance">
                     <span className={hunt.adjustedBalance >= 0 ? 'positive' : 'negative'}>
                       {hunt.adjustedBalance >= 0 ? '+' : ''}
-                      {hunt.adjustedBalance.toLocaleString('pt-BR')} GP
+                      {hunt.adjustedBalance.toLocaleString(i18n.language)} GP
                     </span>
                   </div>
                   <button
@@ -201,25 +212,25 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
-                        <span className="value positive">+{hunt.loot.toLocaleString('pt-BR')} GP</span>
+                        <span className="value positive">+{hunt.loot.toLocaleString(i18n.language)} GP</span>
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
-                        <span className="value negative">-{hunt.supplies.toLocaleString('pt-BR')} GP</span>
+                        <span className="value negative">-{hunt.supplies.toLocaleString(i18n.language)} GP</span>
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
-                        <span className="value">{hunt.balance.toLocaleString('pt-BR')} GP</span>
+                        <span className="value">{hunt.balance.toLocaleString(i18n.language)} GP</span>
                       </div>
                       {hunt.totalCost > 0 && (
                         <div className="detail-item">
                           <span className="label">{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCost')}:</span>
-                          <span className="value negative">-{hunt.totalCost.toLocaleString('pt-BR')} GP</span>
+                          <span className="value negative">-{hunt.totalCost.toLocaleString(i18n.language)} GP</span>
                         </div>
                       )}
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
-                        <span className="value">{hunt.profitPerHour.toLocaleString('pt-BR')} GP/h</span>
+                        <span className="value">{hunt.profitPerHour.toLocaleString(i18n.language)} GP/h</span>
                       </div>
                     </div>
 
