@@ -70,13 +70,12 @@ describe('TransferList', () => {
   });
 
   test('displays copyable TIBIA commands', () => {
-    const { container } = render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     expect(screen.getByText('TIBIA Commands:')).toBeInTheDocument();
 
-    const commandsText = container.querySelector('.commands-text');
+    const commandsText = screen.getByText(mockCopyableText);
     expect(commandsText).toBeInTheDocument();
-    expect(commandsText.textContent).toBe(mockCopyableText);
   });
 
   test('copies transfer to clipboard when clicked', async () => {

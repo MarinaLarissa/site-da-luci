@@ -12,6 +12,15 @@
  * Usage:
  *   node scripts/validate-i18n.js
  *   npm run validate-i18n
+ *
+ * Unused Keys Warning:
+ *   The script reports unused keys as warnings (not errors). Unused keys may be:
+ *   - Reserved for future features (keep them)
+ *   - Generic error messages (good practice to keep)
+ *   - Used dynamically via template literals (not detected by static analysis)
+ *   - Truly unused (safe to remove)
+ *
+ *   Strategy: Review the list and remove only keys that are confirmed as unnecessary.
  */
 
 const fs = require('fs');
@@ -223,7 +232,12 @@ function validateTranslations() {
     // Show unused keys as warnings (optional)
     if (unusedPtBRKeys.length > 0) {
       console.log(`${colors.yellow}⚠ Warning: ${unusedPtBRKeys.length} unused keys in pt-BR${colors.reset}`);
-      console.log(`${colors.gray}(These keys exist in translation files but are not used in code)${colors.reset}\n`);
+      console.log(`${colors.gray}(These keys exist in translation files but are not used in code)${colors.reset}`);
+      console.log(`${colors.gray}Unused keys:${colors.reset}`);
+      unusedPtBRKeys.forEach(key => {
+        console.log(`  ${colors.yellow}-${colors.reset} ${key}`);
+      });
+      console.log('');
     }
 
     process.exit(0);

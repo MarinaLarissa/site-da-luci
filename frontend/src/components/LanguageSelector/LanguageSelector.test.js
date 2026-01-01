@@ -55,6 +55,6 @@ describe('LanguageSelector', () => {
 
     // Button should be focusable by default
     button.focus();
-    expect(document.activeElement).toBe(button);
+    expect(button).toHaveFocus();
   });
 });

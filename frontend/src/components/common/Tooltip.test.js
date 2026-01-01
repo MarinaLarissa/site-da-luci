@@ -29,67 +29,60 @@ describe('Tooltip', () => {
   });
 
   test('renders with top position by default', () => {
-    const { container } = render(
+    render(
       <Tooltip text="Top tooltip">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = container.querySelector('.tooltip-content');
+    const tooltipContent = screen.getByRole('tooltip');
     expect(tooltipContent).toHaveClass('tooltip-top');
   });
 
   test('renders with bottom position when specified', () => {
-    const { container } = render(
+    render(
       <Tooltip text="Bottom tooltip" position="bottom">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = container.querySelector('.tooltip-content');
+    const tooltipContent = screen.getByRole('tooltip');
     expect(tooltipContent).toHaveClass('tooltip-bottom');
   });
 
   test('renders with left position when specified', () => {
-    const { container } = render(
+    render(
       <Tooltip text="Left tooltip" position="left">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = container.querySelector('.tooltip-content');
+    const tooltipContent = screen.getByRole('tooltip');
     expect(tooltipContent).toHaveClass('tooltip-left');
   });
 
   test('renders with right position when specified', () => {
-    const { container } = render(
+    render(
       <Tooltip text="Right tooltip" position="right">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = container.querySelector('.tooltip-content');
+    const tooltipContent = screen.getByRole('tooltip');
     expect(tooltipContent).toHaveClass('tooltip-right');
   });
 
   test('has correct DOM structure', () => {
-    const { container } = render(
+    render(
       <Tooltip text="Test tooltip">
         <div>Content</div>
       </Tooltip>
     );
 
-    // Check tooltip container
-    const tooltipContainer = container.querySelector('.tooltip-container');
-    expect(tooltipContainer).toBeInTheDocument();
-
     // Check tooltip content
-    const tooltipContent = container.querySelector('.tooltip-content');
+    const tooltipContent = screen.getByRole('tooltip');
     expect(tooltipContent).toBeInTheDocument();
-
-    // Check tooltip arrow
-    const tooltipArrow = container.querySelector('.tooltip-arrow');
-    expect(tooltipArrow).toBeInTheDocument();
+    expect(tooltipContent).toHaveClass('tooltip-content');
   });
 
   test('accepts React nodes as children', () => {

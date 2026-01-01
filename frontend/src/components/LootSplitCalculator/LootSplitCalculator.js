@@ -35,7 +35,6 @@ export default function LootSplitCalculator() {
     error,
     results,
     handleCalculate,
-    handleReset,
     loadExampleData,
   } = useLootSplit(loadHunts);
 
