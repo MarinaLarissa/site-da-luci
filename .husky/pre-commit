@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Get the root directory of the repository
+ROOT_DIR=$(git rev-parse --show-toplevel)
+
 # Validate translation keys before commit
 echo "🔍 Validating translation keys..."
-cd frontend && npm run validate-i18n
+cd "$ROOT_DIR/frontend" && npm run validate-i18n
 
 if [ $? -ne 0 ]; then
   echo "❌ Translation validation failed! Fix missing keys before committing."
@@ -14,6 +17,6 @@ echo "✅ Translation validation passed"
 
 # Run lint-staged for frontend
 echo "🧹 Running lint-staged..."
-cd frontend && npx lint-staged
+cd "$ROOT_DIR/frontend" && npx lint-staged
 
 echo "✅ Pre-commit checks complete"
