@@ -23,6 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
+    "validate-i18n": "node scripts/validate-i18n.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

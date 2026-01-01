@@ -267,7 +267,7 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                       </div>
                       {(hunt.totalCost || 0) > 0 && (
                         <div className="detail-item">
-                          <span className="label">{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCost')}:</span>
+                          <span className="label">{t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCost')}:</span>
                           <span className="value negative">-{(hunt.totalCost || 0).toLocaleString(locale)} GP</span>
                         </div>
                       )}
