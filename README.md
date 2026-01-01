@@ -2,12 +2,14 @@
 
 > Modern fullstack web application providing tools for TIBIA players
 
-[![Phase](https://img.shields.io/badge/Phase-3%20Complete-success)](https://github.com)
+[![Phase](https://img.shields.io/badge/Phase-4%20Complete-success)](https://github.com)
 [![Tests](https://img.shields.io/badge/Tests-64%2F64%20Passing-brightgreen)](https://github.com)
 [![Coverage](https://img.shields.io/badge/Coverage-95.65%25-brightgreen)](https://github.com)
-[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![i18n](https://img.shields.io/badge/i18n-198%20keys%20validated-success)](https://github.com)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#)
 [![Live](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://marinalarissa.github.io/site-da-luci)
 [![API](https://img.shields.io/badge/API-Render-green)](https://site-da-luci-api.onrender.com/api/health)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/marinalarissa/site-da-luci/actions)
 
 ## 📋 Project Overview
 
@@ -22,12 +24,15 @@
 ### Key Features
 
 - ✅ **Loot Split Calculator**: Fair distribution algorithm using greedy two-pointer technique
+- ✅ **Solo Hunt Analyzer**: Individual hunt session analysis with item cost tracking
+- ✅ **i18n Support**: Multilingual (Portuguese/English) with automated validation
 - ✅ **Clean Architecture**: 4-layer architecture for scalability and maintainability
 - ✅ **TDD Approach**: 95.65% test coverage with comprehensive test suite (64 tests)
 - ✅ **TIBIA Format Support**: Parses native TIBIA client loot data
 - ✅ **React Frontend**: Modern UI with Material-UI components
 - ✅ **REST API**: Express backend with validation and error handling
 - ✅ **Deployed**: Frontend on GitHub Pages, Backend on Render
+- ✅ **CI/CD**: GitHub Actions with translation validation and linting
 
 ## 🏗️ Architecture
 
@@ -134,21 +139,64 @@ site-da-luci/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/site-da-luci.git
+git clone https://github.com/marinalarissa/site-da-luci.git
 cd site-da-luci
 
-# Install backend dependencies
-cd backend
+# Install root dependencies (husky, etc.)
 npm install
 
-# Run tests
-npm test
+# Install frontend dependencies
+cd frontend
+npm install
 
-# Watch mode (auto-rerun on file changes)
-npm run test:watch
+# Install backend dependencies
+cd ../backend
+npm install
+```
 
-# Coverage report
-npm run test:coverage
+### Development Workflow
+
+#### Frontend Development
+
+```bash
+# From project root
+npm run frontend:dev       # Start dev server
+npm run frontend:build     # Build for production
+npm run frontend:lint      # Run ESLint
+npm run frontend:validate-i18n  # Validate translation keys
+```
+
+#### Backend Development
+
+```bash
+# From project root
+npm run backend:dev        # Start dev server
+npm run backend:test       # Run tests
+npm run backend:coverage   # Generate coverage report
+```
+
+### Pre-Commit Hooks (Husky)
+
+This project uses **Husky** to automatically validate code before commits:
+
+✅ **Translation Validation**: Ensures all i18n keys exist in both pt-BR and en files
+✅ **ESLint Auto-Fix**: Automatically fixes linting issues on staged files
+
+**First-time setup**:
+```bash
+# Husky hooks are automatically installed after npm install
+# If needed, run:
+npm run prepare
+```
+
+**What happens on git commit**:
+1. 🔍 Validates 198 translation keys across pt-BR and en files
+2. 🧹 Runs ESLint --fix on staged .js/.jsx files
+3. ✅ Commits only if all checks pass
+
+**To bypass hooks** (not recommended):
+```bash
+git commit --no-verify -m "message"
 ```
 
 ### Running Tests
@@ -379,19 +427,26 @@ curl -X POST https://site-da-luci-api.onrender.com/api/loot-split/calculate \
 - **Styling**: TailwindCSS
 - **Testing**: Cypress (E2E), React Testing Library
 
-### DevOps (Phase 4)
-- **CI/CD**: GitHub Actions
+### DevOps & CI/CD
+- **CI Pipeline**: GitHub Actions
+  - Translation key validation (i18n)
+  - ESLint checks with auto-fix
+  - Backend test suite (64 tests)
+  - Frontend build validation
+- **Pre-Commit Hooks**: Husky + lint-staged
 - **Backend Hosting**: Render
 - **Frontend Hosting**: GitHub Pages
-- **Monitoring**: (TBD)
+- **Monitoring**: Health check endpoint
 
 ## 📖 Documentation
 
 - [Business Rules (PDI)](docs/PDI.md) - Complete requirements and business logic
+- [Backend README](backend/README.md) - Backend API documentation
+- [Frontend README](frontend/README.md) - Frontend setup and development
+<!-- TODO: Add architecture and ADR documentation
 - [Clean Architecture Guide](docs/architecture/clean-architecture.md)
 - [ADR-001: Loot Split Algorithm](docs/decisions/ADR-001-loot-split-algorithm.md)
-- [Backend README](backend/README.md)
-- [Frontend README](frontend/README.md) (Phase 3)
+-->
 
 ## 🎯 About This Project
 

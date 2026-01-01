@@ -29,6 +29,12 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -49,6 +55,8 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
   }
 }

@@ -1,0 +1,30 @@
+{
+  "name": "site-da-luci",
+  "version": "1.0.0",
+  "description": "TIBIA tools - Loot Split Calculator and more",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "prepare": "husky",
+    "frontend:dev": "cd frontend && npm start",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:test": "cd frontend && npm test",
+    "frontend:lint": "cd frontend && npm run lint",
+    "frontend:validate-i18n": "cd frontend && npm run validate-i18n",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:test": "cd backend && npm test",
+    "backend:coverage": "cd backend && npm run test:coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marinalarissa/site-da-luci.git"
+  },
+  "author": "Marina Larissa Carpes Röhrig",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

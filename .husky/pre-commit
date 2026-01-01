@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Validate translation keys before commit
+echo "🔍 Validating translation keys..."
+cd frontend && npm run validate-i18n
+
+if [ $? -ne 0 ]; then
+  echo "❌ Translation validation failed! Fix missing keys before committing."
+  exit 1
+fi
+
+echo "✅ Translation validation passed"
+
+# Run lint-staged for frontend
+echo "🧹 Running lint-staged..."
+cd frontend && npx lint-staged
+
+echo "✅ Pre-commit checks complete"
