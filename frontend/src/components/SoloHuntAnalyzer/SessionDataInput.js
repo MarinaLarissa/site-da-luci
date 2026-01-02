@@ -10,9 +10,10 @@ import './SessionDataInput.css';
 
 export default function SessionDataInput({ sessionData, setSessionData, onParse, parsedSession }) {
   const { t } = useTranslation();
-  const handleLoadExample = () => {
-    const example = `Session data: From 2025-12-28, 17:30:17 to 2025-12-28, 21:01:41
-Session: 03:31h
+
+  const handleLoadExample3h = () => {
+    const example = `Session data: From 2025-12-28, 17:00:00 to 2025-12-28, 20:00:00
+Session: 03:00h
 Loot Type: Leader
 Loot: 16,048,186
 Supplies: 1,943,593
@@ -24,6 +25,24 @@ Lofi Shades (Leader)
 \tBalance: 14,093,709
 \tDamage: 16,030,727
 \tHealing: 378,775`;
+
+    setSessionData(example);
+  };
+
+  const handleLoadExample2h30 = () => {
+    const example = `Session data: From 2025-12-28, 17:00:00 to 2025-12-28, 19:30:00
+Session: 02:30h
+Loot Type: Leader
+Loot: 13,373,488
+Supplies: 1,619,661
+Balance: 11,753,827
+
+Lofi Shades (Leader)
+\tLoot: 11,927,832
+\tSupplies: 183,075
+\tBalance: 11,744,757
+\tDamage: 13,359,106
+\tHealing: 315,646`;
 
     setSessionData(example);
   };
@@ -55,9 +74,15 @@ Lofi Shades (Leader)
         </button>
         <button
           className="btn btn-secondary"
-          onClick={handleLoadExample}
+          onClick={handleLoadExample3h}
         >
-          {t('soloHuntAnalyzer.sessionInput.loadExampleButton')}
+          {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (3:00h)
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={handleLoadExample2h30}
+        >
+          {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (2:30h)
         </button>
       </div>
 

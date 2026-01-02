@@ -88,7 +88,7 @@ export default function SoloHuntResults({ results }) {
             <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHourTooltip')} position="top">
               <div className="stat-item negative">
                 <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHour')}</div>
-                <div className="stat-value">{costs.gpPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h</div>
+                <div className="stat-value">-{costs.gpPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h</div>
               </div>
             </Tooltip>
 
@@ -107,8 +107,11 @@ export default function SoloHuntResults({ results }) {
         <h3 title={t('soloHuntAnalyzer.results.finalBalance.finalBalanceTooltip')}>
           💰 {t('soloHuntAnalyzer.results.finalBalance.title')}
         </h3>
-        <div className="final-balance-value">
-          {adjustedBalance >= 0 ? '+' : ''}{adjustedBalance.toLocaleString('pt-BR')} GP
+        <div className="profit-per-hour">
+          📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesUsed')}: -{player.supplies.toLocaleString('pt-BR')} GP
+        </div>
+        <div className="profit-per-hour">
+          💳 {t('soloHuntAnalyzer.results.finalBalance.additionalCost')}: -{costs.additionalCost.toLocaleString('pt-BR')} GP
         </div>
         <div className="profit-per-hour" title={t('soloHuntAnalyzer.results.finalBalance.totalSuppliesTooltip')}>
           📦 {t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}: -{totalSupplies.toLocaleString('pt-BR')} GP
@@ -118,6 +121,9 @@ export default function SoloHuntResults({ results }) {
         </div>
         <div className="profit-per-hour">
           📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}: -{suppliesPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
+        </div>
+        <div className="final-balance-value">
+          {adjustedBalance >= 0 ? '+' : ''}{adjustedBalance.toLocaleString('pt-BR')} GP
         </div>
       </div>
 

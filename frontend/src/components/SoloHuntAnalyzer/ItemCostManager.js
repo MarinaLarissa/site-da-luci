@@ -11,6 +11,11 @@ import './ItemCostManager.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import silverTokenIcon from '../../assets/tibia/silver_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
+import arborealRingIcon from '../../assets/tibia/arboreal_ring.gif';
+import alicornRingIcon from '../../assets/tibia/alicorn_ring.gif';
+import arcanomancerSigilIcon from '../../assets/tibia/Arcanomancer_Sigil.gif';
+import etherealRingIcon from '../../assets/tibia/Ethereal_Ring.gif';
+import spiritthornRingIcon from '../../assets/tibia/Spiritthorn_Ring.gif';
 
 // Only these imbuements can be paid with GT
 const GT_ELIGIBLE_IMBUEMENTS = ['void', 'vampirism', 'strike'];
@@ -47,9 +52,13 @@ export default function ItemCostManager({
   const { t } = useTranslation();
   const [showImbuementModal, setShowImbuementModal] = useState(false);
   const [showCustomItemModal, setShowCustomItemModal] = useState(false);
+  const [showRingBisModal, setShowRingBisModal] = useState(false);
 
   // Collapse state - track which parent items are collapsed (start all collapsed)
   const [collapsedItems, setCollapsedItems] = useState(new Set());
+
+  // Ring Bis selection state
+  const [selectedRing, setSelectedRing] = useState('');
 
   // Imbuement selection state
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -161,13 +170,15 @@ export default function ItemCostManager({
   };
 
   /**
-   * Add Ring Bis preset
+   * Add Ring Bis preset with selected vocation
    * Ring Bis costs 5 ST to recharge and lasts 3 hours
    */
   const handleAddRingBis = () => {
+    if (!selectedRing) return;
+
     const newItem = {
       id: Date.now(),
-      name: 'Ring Bis',
+      name: selectedRing,
       quantity: 1,
       unitPrice: 5,
       priceType: 'ST',
@@ -177,6 +188,8 @@ export default function ItemCostManager({
     };
 
     setCustomItems([...customItems, newItem]);
+    setSelectedRing('');
+    setShowRingBisModal(false);
   };
 
   /**
@@ -462,7 +475,7 @@ export default function ItemCostManager({
         </button>
         <button
           className="btn btn-primary"
-          onClick={handleAddRingBis}
+          onClick={() => setShowRingBisModal(true)}
           title={t('soloHuntAnalyzer.itemCostManager.ringBisTooltip')}
           data-cy="solo-hunt-button-add-ringbis"
         >
@@ -918,6 +931,108 @@ export default function ItemCostManager({
                 onClick={() => setShowCustomItemModal(false)}
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.cancelButton')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Ring Bis Selection Modal */}
+      {showRingBisModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowRingBisModal(false)}
+          role="presentation"
+          aria-label="Close Ring Bis selection modal"
+        >
+          <div
+            className="modal-content ring-bis-modal"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-labelledby="ring-bis-modal-title"
+            aria-modal="true"
+          >
+            <h3 id="ring-bis-modal-title">Select your Bis Ring</h3>
+            <p className="modal-description">Choose the Bis Ring for your vocation</p>
+
+            <div className="ring-selection-grid">
+              <div
+                className={`ring-option ${selectedRing === 'Arboreal Ring' ? 'selected' : ''}`}
+                onClick={() => setSelectedRing('Arboreal Ring')}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Arboreal Ring')}
+              >
+                <img src={arborealRingIcon} alt="Arboreal Ring" className="ring-icon" />
+                <span className="ring-name">Arboreal Ring</span>
+                <span className="ring-vocation">Druid</span>
+              </div>
+
+              <div
+                className={`ring-option ${selectedRing === 'Alicorn Ring' ? 'selected' : ''}`}
+                onClick={() => setSelectedRing('Alicorn Ring')}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Alicorn Ring')}
+              >
+                <img src={alicornRingIcon} alt="Alicorn Ring" className="ring-icon" />
+                <span className="ring-name">Alicorn Ring</span>
+                <span className="ring-vocation">Paladin</span>
+              </div>
+
+              <div
+                className={`ring-option ${selectedRing === 'Arcanomancer Sigil' ? 'selected' : ''}`}
+                onClick={() => setSelectedRing('Arcanomancer Sigil')}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Arcanomancer Sigil')}
+              >
+                <img src={arcanomancerSigilIcon} alt="Arcanomancer Sigil" className="ring-icon" />
+                <span className="ring-name">Arcanomancer Sigil</span>
+                <span className="ring-vocation">Sorcerer</span>
+              </div>
+
+              <div
+                className={`ring-option ${selectedRing === 'Ethereal Ring' ? 'selected' : ''}`}
+                onClick={() => setSelectedRing('Ethereal Ring')}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Ethereal Ring')}
+              >
+                <img src={etherealRingIcon} alt="Ethereal Ring" className="ring-icon" />
+                <span className="ring-name">Ethereal Ring</span>
+                <span className="ring-vocation">Knight</span>
+              </div>
+
+              <div
+                className={`ring-option ${selectedRing === 'Spiritthorn Ring' ? 'selected' : ''}`}
+                onClick={() => setSelectedRing('Spiritthorn Ring')}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Spiritthorn Ring')}
+              >
+                <img src={spiritthornRingIcon} alt="Spiritthorn Ring" className="ring-icon" />
+                <span className="ring-name">Spiritthorn Ring</span>
+                <span className="ring-vocation">All Vocations</span>
+              </div>
+            </div>
+
+            <div className="modal-actions">
+              <button
+                className="btn btn-primary"
+                onClick={handleAddRingBis}
+                disabled={!selectedRing}
+              >
+                Add Ring
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setShowRingBisModal(false);
+                  setSelectedRing('');
+                }}
+              >
+                Cancel
               </button>
             </div>
           </div>

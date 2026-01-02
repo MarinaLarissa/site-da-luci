@@ -337,10 +337,10 @@ export default function ConfigurationManager({
               <ul className="preview-list">
                 <li>📦 {customItems.length} {t('soloHuntAnalyzer.configManager.saveModal.itemsCount')}</li>
                 {goldTokenPrice > 0 && (
-                  <li>🪙 GT: {goldTokenPrice.toLocaleString('pt-BR')} GP</li>
+                  <li>GT: {goldTokenPrice.toLocaleString('pt-BR')} GP</li>
                 )}
                 {silverTokenPrice > 0 && (
-                  <li>⚪ ST: {silverTokenPrice.toLocaleString('pt-BR')} GP</li>
+                  <li>ST: {silverTokenPrice.toLocaleString('pt-BR')} GP</li>
                 )}
               </ul>
             </div>

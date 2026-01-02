@@ -221,7 +221,9 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
               return;
             }
             baseCostGP = baseCost * goldTokenPrice;
-            totalGT += baseCost; // Store original GT amount for display
+            // Store proportional GT amount (not full amount)
+            const proportionalGT = baseCost * (huntDurationHours / item.itemDuration);
+            totalGT += proportionalGT;
           } else if (item.priceType === 'ST') {
             if (silverTokenPrice === 0) {
               setError(t('soloHuntAnalyzer.errors.missingSilverTokenPriceForItems'));
@@ -229,7 +231,9 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
               return;
             }
             baseCostGP = baseCost * silverTokenPrice;
-            totalST += baseCost; // Store original ST amount for display
+            // Store proportional ST amount (not full amount)
+            const proportionalST = baseCost * (huntDurationHours / item.itemDuration);
+            totalST += proportionalST;
           } else if (item.priceType === 'GP') {
             partialGP += Math.ceil((baseCost / item.itemDuration) * huntDurationHours);
           }
