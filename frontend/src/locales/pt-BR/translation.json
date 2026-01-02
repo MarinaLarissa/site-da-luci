@@ -122,7 +122,9 @@
         "gpPerHour": "GP adicional por hora",
         "gpPerHourTooltip": "(Item total cost / Item duration)",
         "additionalCost": "Custo adicional de itens",
-        "additionalCostTooltip": "GP per hour × Hunt duration"
+        "additionalCostTooltip": "GP per hour × Hunt duration",
+        "totalGP": "Total (GP)",
+        "totalGPTooltip": "Custo total em GP (Partial GP + GT convertido + ST convertido)"
       },
       "addImbuementModal": {
         "title": "Adicionar Imbuement",

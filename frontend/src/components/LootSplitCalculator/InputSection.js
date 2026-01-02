@@ -25,10 +25,11 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         placeholder={t('calculator.inputSection.placeholder')}
         rows={3}
         disabled={loading}
+        data-cy="loot-calculator-input-session"
       />
 
       <div className="button-group">
-        <Button onClick={onCalculate} disabled={loading || !input.trim()}>
+        <Button onClick={onCalculate} disabled={loading || !input.trim()} data-cy="loot-calculator-button-calculate">
           {loading ? t('calculator.inputSection.calculatingButton') : t('calculator.inputSection.calculateButton')}
         </Button>
         <Button variant="secondary" onClick={onLoadExample} disabled={loading}>

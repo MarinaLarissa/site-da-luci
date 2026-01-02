@@ -3,6 +3,12 @@
  * Following LootSplitCalculator color scheme
  */
 
+/* CSS Custom Properties for Grid Configuration */
+:root {
+  --items-grid-columns: 2fr 0.5fr 1fr 0.5fr;
+  --items-grid-columns-tablet: 1.5fr 0.5fr 1fr 0.5fr;
+}
+
 .item-cost-manager {
   background-color: #16213e;
   border-radius: 12px;
@@ -136,7 +142,7 @@
 .items-header,
 .items-row {
   display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 0.8fr 1fr 0.5fr;
+  grid-template-columns: var(--items-grid-columns);
   gap: 8px;
   padding: 12px 16px;
   align-items: center;
@@ -191,6 +197,11 @@
   font-weight: 400;
 }
 
+.child-price-label {
+  font-size: 0.85em;
+  color: #888;
+}
+
 .price-input,
 .price-type-select {
   padding: 6px 8px;
@@ -200,6 +211,10 @@
   background-color: #0f1620;
   color: #E0E0E0;
   transition: border-color 0.3s ease;
+}
+
+.price-type-select {
+  width: 60px;
 }
 
 .price-input:focus,
@@ -288,6 +303,39 @@
 .item-name {
   display: flex;
   align-items: center;
+}
+
+/* Utility classes for controls */
+.quantity-controls,
+.price-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-display {
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Hybrid price display (GT/ST + GP) */
+.hybrid-price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.token-price,
+.gp-price {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.price-separator {
+  color: #9E9E9E;
+  font-weight: 500;
 }
 
 .cost-summary {
@@ -429,7 +477,7 @@
 @media (max-width: 968px) {
   .items-header,
   .items-row {
-    grid-template-columns: 1.5fr 0.5fr 1fr 0.8fr 1fr 0.5fr;
+    grid-template-columns: var(--items-grid-columns-tablet);
     font-size: 13px;
   }
 

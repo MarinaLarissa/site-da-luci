@@ -23,6 +23,7 @@ export default function LanguageSelector() {
       onClick={toggleLanguage}
       aria-label={`Switch to ${isEnglish ? 'Portuguese' : 'English'}`}
       title={`Switch to ${isEnglish ? 'Portuguese' : 'English'}`}
+      data-cy="language-toggle-button"
     >
       <span className="flag-icon">{isEnglish ? '🇺🇸' : '🇧🇷'}</span>
       <span className="lang-code">{isEnglish ? 'EN' : 'PT'}</span>

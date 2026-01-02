@@ -25,7 +25,7 @@ export default function ResultsSection({ results }) {
   const totalHealing = players.reduce((sum, player) => sum + (player.healing || 0), 0);
 
   return (
-    <div className="results-section">
+    <div className="results-section" data-cy="loot-calculator-results">
       <h2 className="section-title">{t('calculator.resultsSection.title')}</h2>
 
       {/* Summary cards - Overview first */}

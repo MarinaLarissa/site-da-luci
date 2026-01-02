@@ -22,7 +22,7 @@ export default function TransferList({ transfers, copyableText }) {
 
   if (!transfers || transfers.length === 0) {
     return (
-      <div className="transfer-list">
+      <div className="transfer-list" data-cy="transfer-list">
         <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
         <p className="no-transfers">{t('calculator.resultsSection.transferList.noTransfers')}</p>
       </div>
@@ -30,7 +30,7 @@ export default function TransferList({ transfers, copyableText }) {
   }
 
   return (
-    <div className="transfer-list">
+    <div className="transfer-list" data-cy="transfer-list">
       <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
       <p className="transfer-instruction">{t('calculator.resultsSection.transferList.instruction')}</p>
 

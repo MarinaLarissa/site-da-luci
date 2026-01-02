@@ -198,6 +198,7 @@ export default function SoloHuntAnalyzer() {
       let totalCostGP = 0; // Total proportional cost for this hunt
       let totalGpPerHour = 0; // GP per hour (for items with itemDuration only)
       let totalCostGP_nonProportional = 0; // For items without itemDuration
+      let proportionalCostOnly = 0; // Only items with duration (for history)
       let partialGP = 0; // Direct GP costs (not from token conversion)
       let totalGT = 0; // Total GT used
       let totalST = 0; // Total ST used
@@ -239,6 +240,7 @@ export default function SoloHuntAnalyzer() {
 
           totalGpPerHour += costPerHourGP;
           totalCostGP += proportionalCost;
+          proportionalCostOnly += proportionalCost; // Track proportional costs separately
         } else {
           // For custom items without duration: use full cost
           if (item.priceType === 'GP') {
@@ -299,7 +301,7 @@ export default function SoloHuntAnalyzer() {
           loot: parsedSession.player.loot,
           supplies: parsedSession.player.supplies,
           balance: parsedSession.player.balance,
-          totalCost: totalCostGP,
+          totalCost: proportionalCostOnly, // Only proportional costs (items with duration)
           adjustedBalance,
           profitPerHour: huntDurationHours > 0 ? Math.round(adjustedBalance / huntDurationHours) : 0,
         };
@@ -349,6 +351,7 @@ export default function SoloHuntAnalyzer() {
         className="btn-open-history"
         onClick={() => setIsHistoryOpen(true)}
         title={t('huntHistory.openButton')}
+        data-cy="hunt-history-button-open"
       >
         <span className="btn-icon">📜</span>
         <span className="btn-text">{t('huntHistory.title')}</span>
@@ -397,6 +400,7 @@ export default function SoloHuntAnalyzer() {
             className="btn btn-primary"
             onClick={handleCalculate}
             disabled={loading || hasCalculated}
+            data-cy="solo-hunt-button-calculate"
           >
             {t('soloHuntAnalyzer.calculateButton')}
           </button>

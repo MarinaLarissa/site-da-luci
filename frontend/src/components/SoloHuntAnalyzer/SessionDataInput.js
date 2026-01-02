@@ -41,6 +41,7 @@ Lofi Shades (Leader)
         onChange={(e) => setSessionData(e.target.value)}
         placeholder={t('soloHuntAnalyzer.sessionInput.placeholder')}
         rows={3}
+        data-cy="solo-hunt-input-session"
       />
 
       <div className="input-actions">
@@ -48,6 +49,7 @@ Lofi Shades (Leader)
           className="btn btn-primary"
           onClick={onParse}
           disabled={!sessionData.trim()}
+          data-cy="solo-hunt-button-parse"
         >
           {t('soloHuntAnalyzer.sessionInput.parseButton')}
         </button>

@@ -16,6 +16,15 @@ import coinsIcon from '../../assets/tibia/coins.png';
 const GT_ELIGIBLE_IMBUEMENTS = ['void', 'vampirism', 'strike'];
 
 /**
+ * Item duration constants (in hours)
+ * Used for proportional cost calculation
+ */
+const DURATION = {
+  IMBUEMENT: 20,  // Imbuements last 20 hours
+  RING_BIS: 3,    // Ring Bis lasts 3 hours
+};
+
+/**
  * Fixed imbuement service costs by tier (as of December 2024)
  * These are the NPC costs for applying imbuements in Tibia
  * Source: https://tibia.fandom.com/wiki/Imbuements
@@ -96,7 +105,7 @@ export default function ItemCostManager({
               priceType: 'GP',
               parentId: parentId,
               isChild: true,
-              itemDuration: 20, // Imbuement materials last 20 hours (same as imbuement)
+              itemDuration: DURATION.IMBUEMENT,
             });
           });
         }
@@ -116,7 +125,7 @@ export default function ItemCostManager({
         parentId: parentId,
         isChild: true,
         isFixedCost: true,
-        itemDuration: 20, // Imbuement service cost lasts 20 hours
+        itemDuration: DURATION.IMBUEMENT,
       });
     }
 
@@ -130,7 +139,7 @@ export default function ItemCostManager({
       priceType: 'GT',
       isParent: true,
       hasChildren: childItems.length > 0,
-      itemDuration: 20, // Imbuements last 20 hours
+      itemDuration: DURATION.IMBUEMENT,
     };
 
     // Add parent first, then children
@@ -162,7 +171,7 @@ export default function ItemCostManager({
       quantity: 1,
       unitPrice: 5,
       priceType: 'ST',
-      itemDuration: 3, // Ring Bis lasts 3 hours
+      itemDuration: DURATION.RING_BIS,
       isParent: true,
       hasChildren: false,
     };
@@ -317,6 +326,7 @@ export default function ItemCostManager({
             placeholder="Ex: 45000"
             min="0"
             aria-label={t('soloHuntAnalyzer.itemCostManager.goldTokenAriaLabel')}
+            data-cy="solo-hunt-input-gt-price"
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -334,6 +344,7 @@ export default function ItemCostManager({
             min="0"
             aria-label={t('soloHuntAnalyzer.itemCostManager.silverTokenAriaLabel')}
             className={silverTokenError ? 'error' : ''}
+            data-cy="solo-hunt-input-st-price"
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
@@ -345,6 +356,7 @@ export default function ItemCostManager({
         <button
           className="btn btn-primary"
           onClick={() => setShowImbuementModal(true)}
+          data-cy="solo-hunt-button-add-imbuement"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addImbuementButton')}
         </button>
@@ -352,12 +364,14 @@ export default function ItemCostManager({
           className="btn btn-primary"
           onClick={handleAddRingBis}
           title={t('soloHuntAnalyzer.itemCostManager.ringBisTooltip')}
+          data-cy="solo-hunt-button-add-ringbis"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addRingBisButton')}
         </button>
         <button
           className="btn btn-secondary"
           onClick={() => setShowCustomItemModal(true)}
+          data-cy="solo-hunt-button-add-custom-item"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addCustomItemButton')}
         </button>
@@ -372,8 +386,6 @@ export default function ItemCostManager({
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.item')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.quantity')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.unitPrice')}</div>
-              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.priceType')}</div>
-              <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.total')}</div>
               <div></div>
             </div>
             {customItems.map(item => {
@@ -426,7 +438,7 @@ export default function ItemCostManager({
                     </div>
                     <div>
                       {item.isParent ? (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div className="quantity-controls">
                           <button
                             className="btn-quantity"
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity - 1)}
@@ -436,7 +448,7 @@ export default function ItemCostManager({
                           >
                             -
                           </button>
-                          <span style={{ minWidth: '30px', textAlign: 'center' }}>{item.quantity}</span>
+                          <span className="quantity-display">{item.quantity}</span>
                           <button
                             className="btn-quantity"
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity + 1)}
@@ -451,36 +463,48 @@ export default function ItemCostManager({
                       )}
                     </div>
                     <div>
-                      {item.isParent ? '-' : (
-                        <input
-                          type="number"
-                          value={item.unitPrice}
-                          onChange={(e) => handleUpdateItemPrice(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
-                          min="0"
-                          className="price-input"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      {item.isParent ? '-' : (
-                        <select
-                          value={item.priceType}
-                          onChange={(e) => handleUpdateItemPrice(item.id, 'priceType', e.target.value)}
-                          className="price-type-select"
-                        >
-                          <option value="GP">GP</option>
-                          <option value="GT">GT</option>
-                          <option value="ST">ST</option>
-                        </select>
-                      )}
-                    </div>
-                    <div className="item-total">
-                      <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-                      {totalCostGP.toLocaleString('pt-BR')} GP
-                      {item.isParent && item.unitPrice > 0 && (
-                        <span style={{ fontSize: '0.85em', color: '#c39bd3', display: 'block' }}>
-                          ({item.unitPrice} {item.priceType})
-                        </span>
+                      {item.isParent ? (
+                        <div className="hybrid-price">
+                          {item.unitPrice > 0 && (
+                            <span className="token-price">
+                              <img
+                                src={item.priceType === 'GT' ? goldTokenIcon : silverTokenIcon}
+                                alt={item.priceType}
+                                className="token-icon-inline"
+                              />
+                              {item.unitPrice} {item.priceType}
+                            </span>
+                          )}
+                          {childrenGPCost > 0 && (
+                            <>
+                              {item.unitPrice > 0 && <span className="price-separator"> + </span>}
+                              <span className="gp-price">
+                                <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
+                                {(childrenGPCost / item.quantity).toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP
+                              </span>
+                            </>
+                          )}
+                          {item.unitPrice === 0 && childrenGPCost === 0 && <span>-</span>}
+                        </div>
+                      ) : (
+                        <div className="price-controls">
+                          <input
+                            type="number"
+                            value={item.unitPrice}
+                            onChange={(e) => handleUpdateItemPrice(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                            min="0"
+                            className="price-input"
+                          />
+                          <select
+                            value={item.priceType}
+                            onChange={(e) => handleUpdateItemPrice(item.id, 'priceType', e.target.value)}
+                            className="price-type-select"
+                          >
+                            <option value="GP">GP</option>
+                            <option value="GT">GT</option>
+                            <option value="ST">ST</option>
+                          </select>
+                        </div>
                       )}
                     </div>
                     <div>
@@ -504,17 +528,16 @@ export default function ItemCostManager({
                         <div className="item-name child-item-name">↳ {child.name}</div>
                         <div>{child.quantity}</div>
                         <div>
-                          <input
-                            type="number"
-                            value={child.unitPrice}
-                            onChange={(e) => handleUpdateItemPrice(child.id, 'unitPrice', parseFloat(e.target.value) || 0)}
-                            min="0"
-                            className="price-input"
-                          />
-                        </div>
-                        <div>GP</div>
-                        <div className="item-total">
-                          {(child.unitPrice * child.quantity).toLocaleString('pt-BR')} GP
+                          <div className="price-controls">
+                            <input
+                              type="number"
+                              value={child.unitPrice}
+                              onChange={(e) => handleUpdateItemPrice(child.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                              min="0"
+                              className="price-input"
+                            />
+                            <span className="child-price-label">GP</span>
+                          </div>
                         </div>
                         <div></div>
                       </div>
@@ -564,6 +587,12 @@ export default function ItemCostManager({
                 <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}:</strong> {(totalST * silverTokenPrice).toLocaleString('pt-BR')} GP
               </p>
             )}
+
+            {/* Total (GP) */}
+            <p className="total-final" title={t('soloHuntAnalyzer.itemCostManager.costSummary.totalGPTooltip')}>
+              <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
+              <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalGP')}:</strong> {(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).toLocaleString('pt-BR')} GP
+            </p>
           </div>
         </div>
       )}

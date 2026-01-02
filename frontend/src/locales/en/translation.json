@@ -174,7 +174,9 @@
         "gpPerHour": "Additional GP per hour",
         "gpPerHourTooltip": "(Item total cost / Item duration)",
         "additionalCost": "Additional cost of items",
-        "additionalCostTooltip": "GP per hour × Hunt duration"
+        "additionalCostTooltip": "GP per hour × Hunt duration",
+        "totalGP": "Total (GP)",
+        "totalGPTooltip": "Total cost in GP (Partial GP + GT converted + ST converted)"
       }
     },
     "results": {

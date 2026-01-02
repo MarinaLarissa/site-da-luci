@@ -18,7 +18,7 @@ export default function SoloHuntResults({ results }) {
   const huntHours = parseDurationToHours(session.duration);
 
   return (
-    <div className="solo-hunt-results">
+    <div className="solo-hunt-results" data-cy="solo-hunt-results">
       <h2 className="results-title">
         <span className="results-icon">📊</span> {t('soloHuntAnalyzer.results.title')}
       </h2>
@@ -39,25 +39,18 @@ export default function SoloHuntResults({ results }) {
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.sessionTime')}:</span>
             <span className="value">{session.sessionInfo}</span>
           </div>
-        </div>
-      </div>
-
-      {/* Loot & Supplies Card */}
-      <div className="result-card">
-        <h3>{t('soloHuntAnalyzer.results.lootStats.title')}</h3>
-        <div className="stats-grid">
-          <div className="stat-item positive">
-            <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.loot')}</div>
-            <div className="stat-value">+{player.loot.toLocaleString('pt-BR')} GP</div>
+          <div className="info-item">
+            <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
+            <span className="value positive">+{player.loot.toLocaleString('pt-BR')} GP</span>
           </div>
-          <div className="stat-item negative">
-            <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.supplies')}</div>
-            <div className="stat-value">-{player.supplies.toLocaleString('pt-BR')} GP</div>
+          <div className="info-item">
+            <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
+            <span className="value negative">-{player.supplies.toLocaleString('pt-BR')} GP</span>
           </div>
           <Tooltip text={t('soloHuntAnalyzer.results.lootStats.balanceTooltip')} position="top">
-            <div className="stat-item neutral">
-              <div className="stat-label">{t('soloHuntAnalyzer.results.lootStats.balance')}</div>
-              <div className="stat-value">{player.balance.toLocaleString('pt-BR')} GP</div>
+            <div className="info-item">
+              <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
+              <span className="value neutral">{player.balance.toLocaleString('pt-BR')} GP</span>
             </div>
           </Tooltip>
         </div>
@@ -96,14 +89,14 @@ export default function SoloHuntResults({ results }) {
             )}
 
             <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHourTooltip')} position="top">
-              <div className="stat-item neutral">
+              <div className="stat-item negative">
                 <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.gpPerHour')}</div>
                 <div className="stat-value">{costs.gpPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h</div>
               </div>
             </Tooltip>
 
             <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCostTooltip')} position="top">
-              <div className="stat-item total-cost">
+              <div className="stat-item negative">
                 <div className="stat-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCost')}</div>
                 <div className="stat-value">-{costs.additionalCost.toLocaleString('pt-BR')} GP</div>
               </div>

@@ -71,6 +71,7 @@ export default function LootSplitCalculator() {
         onClick={toggleDrawer}
         aria-label={t('huntHistory.openButton')}
         title={t('huntHistory.openButton')}
+        data-cy="hunt-history-button-open"
       >
         <span className="btn-icon">📜</span>
         <span className="btn-text">{t('huntHistory.title')}</span>
