@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import SessionDataInput from './SessionDataInput';
 import ItemCostManager from './ItemCostManager';
@@ -15,33 +16,30 @@ import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS, parseDurationToHours } from '../../utils/huntUtils';
 import './SoloHuntAnalyzer.css';
 
-export default function SoloHuntAnalyzer() {
+export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) {
   const { t } = useTranslation();
 
   // Session data state
   const [sessionData, setSessionData] = useState('');
   const [parsedSession, setParsedSession] = useState(null);
 
-  // Load token prices from localStorage
-  const loadTokenPrices = () => {
+  // Load silver token price from localStorage (gold token is now shared via props)
+  const loadSilverTokenPrice = () => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
       if (saved) {
-        const { goldTokenPrice, silverTokenPrice } = JSON.parse(saved);
-        return { goldTokenPrice: goldTokenPrice || 0, silverTokenPrice: silverTokenPrice || 0 };
+        const { silverTokenPrice } = JSON.parse(saved);
+        return silverTokenPrice || 0;
       }
     } catch (error) {
-      console.error('Error loading token prices:', error);
+      console.error('Error loading silver token price:', error);
     }
-    return { goldTokenPrice: 0, silverTokenPrice: 0 };
+    return 0;
   };
 
-  const initialPrices = loadTokenPrices();
-
-  // Item costs state
+  // Item costs state (gold token price is now shared via props)
   const [customItems, setCustomItems] = useState([]);
-  const [goldTokenPrice, setGoldTokenPrice] = useState(initialPrices.goldTokenPrice);
-  const [silverTokenPrice, setSilverTokenPrice] = useState(initialPrices.silverTokenPrice);
+  const [silverTokenPrice, setSilverTokenPrice] = useState(loadSilverTokenPrice());
 
   // UI state
   const [loading, setLoading] = useState(false);
@@ -55,8 +53,8 @@ export default function SoloHuntAnalyzer() {
   const saveHuntToHistoryRef = useRef(null);
   const resultsRef = useRef(null);
 
-  // Save token prices to localStorage whenever they change
-  // Optimization: Skip saving during initial load
+  // Save silver token price to localStorage whenever it changes
+  // (Gold token price is saved by App.js)
   const [hasLoadedPrices, setHasLoadedPrices] = useState(false);
 
   useEffect(() => {
@@ -67,12 +65,14 @@ export default function SoloHuntAnalyzer() {
     }
 
     try {
-      const prices = { goldTokenPrice, silverTokenPrice };
+      const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
+      const prices = saved ? JSON.parse(saved) : {};
+      prices.silverTokenPrice = silverTokenPrice;
       localStorage.setItem(STORAGE_KEYS.TOKEN_PRICES, JSON.stringify(prices));
     } catch (error) {
-      console.error('Error saving token prices:', error);
+      console.error('Error saving silver token price:', error);
     }
-  }, [goldTokenPrice, silverTokenPrice, hasLoadedPrices]);
+  }, [silverTokenPrice, hasLoadedPrices]);
 
   // Scroll to top when error appears
   useEffect(() => {
@@ -281,7 +281,7 @@ export default function SoloHuntAnalyzer() {
           partialGP, // Direct GP costs (without token conversion)
           totalGT, // Total GT used (in GT, not converted)
           totalST, // Total ST used (in ST, not converted)
-          goldTokenPrice,
+          goldTokenPrice: goldTokenPrice,
           silverTokenPrice,
           items: customItems,
           gpPerHour: totalGpPerHour, // GP per hour (only for items with itemDuration)
@@ -432,3 +432,8 @@ export default function SoloHuntAnalyzer() {
     </div>
   );
 }
+
+SoloHuntAnalyzer.propTypes = {
+  goldTokenPrice: PropTypes.number.isRequired,
+  setGoldTokenPrice: PropTypes.func.isRequired,
+};

@@ -8,6 +8,7 @@
     "nav": {
       "lootSplit": "Loot Split Calculator",
       "soloHunt": "Solo Hunt Analyzer",
+      "imbuementCalc": "Imbuement Efficiency Calculator",
       "statistics": "Statistics (Coming Soon)",
       "partyAnalyzer": "Party Analyzer (Coming Soon)"
     },
@@ -313,6 +314,20 @@
     "errors": {
       "quotaExceeded": "Storage limit reached! Please delete old hunts or export your history.",
       "saveFailed": "Failed to save hunt. Please try again."
+    }
+  },
+  "imbuementCalculator": {
+    "title": "Imbuement Efficiency Calculator",
+    "description": "Find out if it's more cost-effective to buy Gold Tokens and exchange for items, or buy items directly from the market.",
+    "goldTokenPrice": "Gold Token Price",
+    "copyItemName": "Copy item name",
+    "copyToAnalyzer": "Copy to Analyzer",
+    "placeholders": {
+      "itemPrice": "Unit price in GP"
+    },
+    "tooltips": {
+      "gtCost": "Cost using Gold Tokens (converted to GP)",
+      "gpCost": "Cost buying items directly from market + service fee"
     }
   }
 }

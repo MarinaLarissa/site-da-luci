@@ -1,0 +1,416 @@
+/**
+ * Imbuement Effective Calculator Styles
+ * Following site color scheme with purple gradients
+ */
+
+:root {
+  /* Primary purple theme colors (matching SoloHuntAnalyzer) */
+  --imbuement-primary-light: #c39bd3;
+  --imbuement-primary-dark: #b388c7;
+  --imbuement-primary-darker: #9d6fb0;
+
+  /* Background colors - DARK THEME */
+  --imbuement-bg-main: #0f0e17;
+  --imbuement-bg-dark: #1a1a2e;
+  --imbuement-bg-darker: #16213e;
+  --imbuement-bg-card: #16213e;
+  --imbuement-bg-input: #0f0e17;
+  --imbuement-bg-hover: rgba(195, 155, 211, 0.1);
+
+  /* Text colors - LIGHT for dark theme */
+  --imbuement-text-primary: #f0f0f0;
+  --imbuement-text-secondary: #c39bd3;
+  --imbuement-text-muted: #9E9E9E;
+  --imbuement-text-label: #b8b8b8;
+
+  /* Border colors - darker */
+  --imbuement-border-light: rgba(195, 155, 211, 0.2);
+  --imbuement-border-medium: rgba(195, 155, 211, 0.3);
+
+  /* Success colors - adapted for dark */
+  --imbuement-success: #10b981;
+  --imbuement-success-bg: rgba(16, 185, 129, 0.1);
+
+  /* Warning colors - adapted for dark */
+  --imbuement-warning-bg: rgba(251, 191, 36, 0.1);
+  --imbuement-warning-border: #fbbf24;
+  --imbuement-warning-text: #fbbf24;
+
+  /* Accent colors */
+  --imbuement-accent-gold: #ffd700;
+}
+
+.imbuement-calculator {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--imbuement-primary-light) 0%, var(--imbuement-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 12px 0;
+}
+
+.page-description {
+  font-size: 18px;
+  color: var(--imbuement-text-muted);
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+/* GT Price Section */
+.gt-price-section {
+  background: linear-gradient(135deg, var(--imbuement-primary-light) 0%, var(--imbuement-primary-dark) 100%);
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gt-price-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--imbuement-bg-dark);
+}
+
+.gt-price-input {
+  width: 140px;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: var(--imbuement-bg-dark);
+  color: var(--imbuement-text-primary);
+  border: 2px solid var(--imbuement-border-medium);
+  border-radius: 8px;
+  text-align: right;
+  transition: all 0.2s;
+}
+
+.gt-price-input:focus {
+  outline: none;
+  border-color: var(--imbuement-accent-gold);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+/* Imbuements Grid */
+.imbuements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Imbuement Block */
+.imbuement-block {
+  background: var(--imbuement-bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--imbuement-border-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.imbuement-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(195, 155, 211, 0.2);
+}
+
+.imbuement-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--imbuement-text-primary);
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 2px solid var(--imbuement-primary-dark);
+  padding-bottom: 12px;
+}
+
+.imbuement-description {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--imbuement-text-secondary);
+  font-style: italic;
+}
+
+/* Item Prices Section */
+.item-prices {
+  margin-top: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-input-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 120px 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--imbuement-bg-input);
+  transition: background 0.2s;
+}
+
+.price-input-row:hover {
+  background: var(--imbuement-bg-hover);
+  border: 1px solid var(--imbuement-border-medium);
+}
+
+.btn-copy-item {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--imbuement-primary-dark);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-copy-item:hover {
+  background: var(--imbuement-primary-darker);
+  transform: scale(1.05);
+}
+
+.btn-copy-item:active {
+  transform: scale(0.95);
+}
+
+.price-input-row label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--imbuement-text-label);
+}
+
+.price-input-row input {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--imbuement-bg-darker);
+  border: 1px solid var(--imbuement-border-medium);
+  border-radius: 6px;
+  text-align: right;
+  color: var(--imbuement-text-primary);
+  transition: border-color 0.2s;
+}
+
+.price-input-row input:focus {
+  outline: none;
+  border-color: var(--imbuement-primary-dark);
+  box-shadow: 0 0 0 3px rgba(195, 155, 211, 0.2);
+}
+
+.gp-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--imbuement-text-muted);
+}
+
+/* Calculations Section */
+.calculations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calculation-row {
+  background: var(--imbuement-bg-input);
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid var(--imbuement-primary-dark);
+}
+
+.tier-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--imbuement-text-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Cost Comparison */
+.cost-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cost-option {
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--imbuement-bg-darker);
+  border: 2px solid var(--imbuement-border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.cost-option.best {
+  border-color: var(--imbuement-success);
+  background: var(--imbuement-success-bg);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.cost-option.best::after {
+  content: '✓ Best';
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--imbuement-success);
+  margin-top: 4px;
+}
+
+.cost-option span:first-of-type {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--imbuement-text-primary);
+}
+
+.cost-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--imbuement-primary-dark);
+}
+
+/* Savings */
+.savings {
+  background: var(--imbuement-warning-bg);
+  border: 1px solid var(--imbuement-warning-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--imbuement-warning-text);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Copy to Analyzer Button */
+.btn-copy-to-analyzer {
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, var(--imbuement-primary-light) 0%, var(--imbuement-primary-dark) 100%);
+  color: var(--imbuement-bg-dark);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-copy-to-analyzer:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-copy-to-analyzer:active {
+  transform: translateY(0);
+}
+
+/* Tier Toggle Buttons */
+.tier-toggles {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.btn-toggle-tier {
+  padding: 8px 16px;
+  background: var(--imbuement-bg-darker);
+  color: var(--imbuement-text-secondary);
+  border: 1px solid var(--imbuement-border-medium);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-toggle-tier:hover {
+  background: var(--imbuement-bg-hover);
+  border-color: var(--imbuement-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-toggle-tier.active {
+  background: linear-gradient(135deg, var(--imbuement-primary-light) 0%, var(--imbuement-primary-dark) 100%);
+  color: var(--imbuement-bg-dark);
+  border-color: transparent;
+}
+
+/* Icons */
+.icon-inline {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.icon-small {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .imbuements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .imbuement-calculator {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .gt-price-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .gt-price-input {
+    width: 100%;
+  }
+
+  .cost-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .price-input-row {
+    grid-template-columns: 32px 1fr;
+    gap: 8px;
+  }
+
+  .price-input-row input {
+    grid-column: 1 / -1;
+  }
+}

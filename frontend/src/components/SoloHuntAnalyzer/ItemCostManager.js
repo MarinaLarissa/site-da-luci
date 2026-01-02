@@ -180,6 +180,106 @@ export default function ItemCostManager({
   };
 
   /**
+   * Paste configuration from Imbuement Calculator
+   * Parses clipboard content and adds items automatically
+   */
+  const handlePasteFromImbuementCalc = async () => {
+    try {
+      const clipboardText = await navigator.clipboard.readText();
+
+      // Parse the configuration text
+      // Format: "Powerful Vampirism Imbuement:\n- Use 6 GT (X GP equivalent)\n" or
+      // "Powerful Vampirism Imbuement:\n- Buy items directly (market prices only):\n  - 5x Item: X GP\nTotal: X GP"
+
+      const lines = clipboardText.split('\n');
+      if (lines.length === 0) return;
+
+      // Extract imbuement name from first line
+      const titleMatch = lines[0].match(/^(Basic|Intricate|Powerful)\s+(.+)\s+Imbuement:$/);
+      if (!titleMatch) {
+        alert('Invalid format. Please copy from Imbuement Calculator.');
+        return;
+      }
+
+      const tier = titleMatch[1];
+      const imbuementName = titleMatch[2];
+      const parentId = Date.now() + Math.random();
+
+      // Check if it's GT payment or item purchase
+      const isGTPayment = lines[1]?.includes('Use') && lines[1]?.includes('GT');
+
+      if (isGTPayment) {
+        // GT payment method
+        const gtMatch = lines[1].match(/Use (\d+) GT \(([\d,.]+) GP equivalent\)/);
+        if (!gtMatch) return;
+
+        const gtAmount = parseInt(gtMatch[1]);
+
+        // Add as single item with GT payment
+        const newItem = {
+          id: parentId,
+          name: `${tier} ${imbuementName} Imbuement`,
+          quantity: 1,
+          unitPrice: gtAmount,
+          priceType: 'GT',
+          proportionalDuration: DURATION.IMBUEMENT,
+        };
+
+        setCustomItems([...customItems, newItem]);
+      } else {
+        // Market items payment
+        const childItems = [];
+
+        for (let i = 2; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (!line || line.startsWith('Total:') || line.startsWith('- Buy')) continue;
+
+          // Match pattern: "  - 5x Item Name: 1.000 GP"
+          const itemMatch = line.match(/^\s*-\s*(\d+)x\s+(.+?):\s+([\d,.]+)\s+GP$/);
+          if (itemMatch) {
+            const quantity = parseInt(itemMatch[1]);
+            const itemName = itemMatch[2];
+            const totalCost = parseFloat(itemMatch[3].replace(/\./g, '').replace(',', '.'));
+            const unitPrice = totalCost / quantity;
+
+            childItems.push({
+              id: Date.now() + Math.random(),
+              name: itemName,
+              quantity: quantity,
+              baseQuantity: quantity,
+              unitPrice: unitPrice,
+              priceType: 'GP',
+              proportionalDuration: DURATION.IMBUEMENT,
+              parentId: parentId,
+            });
+          }
+        }
+
+        if (childItems.length > 0) {
+          // Add parent item
+          const parentItem = {
+            id: parentId,
+            name: `${tier} ${imbuementName} Imbuement`,
+            quantity: 1,
+            unitPrice: 0,
+            priceType: 'GP',
+            proportionalDuration: DURATION.IMBUEMENT,
+            isParent: true,
+            hasChildren: true,
+          };
+
+          setCustomItems([...customItems, parentItem, ...childItems]);
+        }
+      }
+
+      alert('Items pasted successfully from Imbuement Calculator!');
+    } catch (error) {
+      console.error('Failed to paste from clipboard:', error);
+      alert('Failed to paste. Make sure you copied from Imbuement Calculator first.');
+    }
+  };
+
+  /**
    * Add custom item
    */
   const handleAddCustomItem = () => {

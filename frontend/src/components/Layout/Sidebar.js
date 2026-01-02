@@ -31,6 +31,13 @@ export default function Sidebar({ activePage, onNavigate }) {
           <span className="nav-icon">🎯</span>
           <span className="nav-label">{t('sidebar.nav.soloHunt')}</span>
         </div>
+        <div
+          className={`nav-item ${activePage === 'imbuement-calc' ? 'active' : ''}`}
+          onClick={() => onNavigate('imbuement-calc')}
+        >
+          <span className="nav-icon">⚗️</span>
+          <span className="nav-label">{t('sidebar.nav.imbuementCalc')}</span>
+        </div>
         <div className="nav-item disabled">
           <span className="nav-icon">📊</span>
           <span className="nav-label">{t('sidebar.nav.statistics')}</span>

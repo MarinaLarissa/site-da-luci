@@ -8,6 +8,7 @@
     "nav": {
       "lootSplit": "Calculadora de Divisão de Loot",
       "soloHunt": "Analisador de Caçada Solo",
+      "imbuementCalc": "Calculadora de Eficiência de Imbuement",
       "statistics": "Estatísticas (Em Breve)",
       "partyAnalyzer": "Analisador de Party (Em Breve)"
     },
@@ -313,6 +314,20 @@
     "errors": {
       "quotaExceeded": "Limite de armazenamento atingido! Por favor, delete caçadas antigas ou exporte seu histórico.",
       "saveFailed": "Erro ao salvar caçada. Por favor, tente novamente."
+    }
+  },
+  "imbuementCalculator": {
+    "title": "Calculadora de Eficiência de Imbuement",
+    "description": "Descubra se é mais vantajoso comprar Gold Tokens e trocar por itens, ou comprar os itens diretamente no market.",
+    "goldTokenPrice": "Preço do Gold Token",
+    "copyItemName": "Copiar nome do item",
+    "copyToAnalyzer": "Copiar para Analisador",
+    "placeholders": {
+      "itemPrice": "Preço unitário em GP"
+    },
+    "tooltips": {
+      "gtCost": "Custo usando Gold Tokens (convertido para GP)",
+      "gpCost": "Custo comprando itens diretamente no market + taxa de serviço"
     }
   }
 }
