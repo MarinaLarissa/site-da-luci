@@ -475,6 +475,14 @@ export default function ItemCostManager({
         >
           + {t('soloHuntAnalyzer.itemCostManager.addCustomItemButton')}
         </button>
+        <button
+          className="btn btn-secondary"
+          onClick={handlePasteFromImbuementCalc}
+          title="Paste configuration from Imbuement Calculator"
+          data-cy="solo-hunt-button-paste-imbuement"
+        >
+          📋 Paste from Imbuement Calc
+        </button>
       </div>
 
       {/* Items list */}
