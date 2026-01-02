@@ -107,12 +107,6 @@ export default function SoloHuntResults({ results }) {
         <h3 title={t('soloHuntAnalyzer.results.finalBalance.finalBalanceTooltip')}>
           💰 {t('soloHuntAnalyzer.results.finalBalance.title')}
         </h3>
-        <div className="profit-per-hour">
-          📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesUsed')}: -{player.supplies.toLocaleString('pt-BR')} GP
-        </div>
-        <div className="profit-per-hour">
-          💳 {t('soloHuntAnalyzer.results.finalBalance.additionalCost')}: -{costs.additionalCost.toLocaleString('pt-BR')} GP
-        </div>
         <div className="profit-per-hour" title={t('soloHuntAnalyzer.results.finalBalance.totalSuppliesTooltip')}>
           📦 {t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}: -{totalSupplies.toLocaleString('pt-BR')} GP
         </div>

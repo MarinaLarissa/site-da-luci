@@ -178,6 +178,27 @@
         "increaseQuantity": "Aumentar quantidade",
         "removeItem": "Remover",
         "removeItemAria": "Remover {{itemName}}"
+      },
+      "ringBisModal": {
+        "title": "Selecione seu Bis Ring",
+        "description": "Escolha o Bis Ring da sua vocação",
+        "rings": {
+          "arborealRing": "Arboreal Ring",
+          "alicornRing": "Alicorn Ring",
+          "arcanomancerSigil": "Arcanomancer Sigil",
+          "etherealRing": "Ethereal Ring",
+          "spiritthornRing": "Spiritthorn Ring"
+        },
+        "vocations": {
+          "druid": "Druida",
+          "paladin": "Paladino",
+          "sorcerer": "Feiticeiro",
+          "knight": "Cavaleiro",
+          "allVocations": "Todas as Vocações"
+        },
+        "addButton": "Adicionar Ring",
+        "cancelButton": "Cancelar",
+        "closeModal": "Fechar modal"
       }
     },
     "results": {
@@ -235,8 +256,8 @@
       "duplicateButton": "Duplicar configuração",
       "deleteButton": "Deletar configuração",
       "clearAllButton": "Limpar Todas",
-      "savedCount": "configuração salva",
-      "savedCount_plural": "configurações salvas",
+      "savedCount": "{{count}} configuração salva",
+      "savedCount_plural": "{{count}} configurações salvas",
       "noItemsToSave": "Adicione itens antes de salvar uma configuração",
       "confirmDelete": "Tem certeza que deseja deletar esta configuração?",
       "confirmClearAll": "Tem certeza que deseja deletar TODAS as configurações? Esta ação não pode ser desfeita!",

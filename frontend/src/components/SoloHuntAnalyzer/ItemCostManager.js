@@ -943,7 +943,7 @@ export default function ItemCostManager({
           className="modal-overlay"
           onClick={() => setShowRingBisModal(false)}
           role="presentation"
-          aria-label="Close Ring Bis selection modal"
+          aria-label={t('soloHuntAnalyzer.itemCostManager.ringBisModal.closeModal')}
         >
           <div
             className="modal-content ring-bis-modal"
@@ -952,68 +952,93 @@ export default function ItemCostManager({
             aria-labelledby="ring-bis-modal-title"
             aria-modal="true"
           >
-            <h3 id="ring-bis-modal-title">Select your Bis Ring</h3>
-            <p className="modal-description">Choose the Bis Ring for your vocation</p>
+            <h3 id="ring-bis-modal-title">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.title')}</h3>
+            <p className="ring-bis-modal__description">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.description')}</p>
 
-            <div className="ring-selection-grid">
+            <div className="ring-bis-modal__grid">
               <div
-                className={`ring-option ${selectedRing === 'Arboreal Ring' ? 'selected' : ''}`}
-                onClick={() => setSelectedRing('Arboreal Ring')}
+                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing') ? 'ring-bis-modal__option--selected' : ''}`}
+                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'))}
                 role="button"
                 tabIndex={0}
-                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Arboreal Ring')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'));
+                  }
+                }}
               >
-                <img src={arborealRingIcon} alt="Arboreal Ring" className="ring-icon" />
-                <span className="ring-name">Arboreal Ring</span>
-                <span className="ring-vocation">Druid</span>
+                <img src={arborealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')} className="ring-bis-modal__icon" />
+                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.druid')}</span>
               </div>
 
               <div
-                className={`ring-option ${selectedRing === 'Alicorn Ring' ? 'selected' : ''}`}
-                onClick={() => setSelectedRing('Alicorn Ring')}
+                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing') ? 'ring-bis-modal__option--selected' : ''}`}
+                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'))}
                 role="button"
                 tabIndex={0}
-                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Alicorn Ring')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'));
+                  }
+                }}
               >
-                <img src={alicornRingIcon} alt="Alicorn Ring" className="ring-icon" />
-                <span className="ring-name">Alicorn Ring</span>
-                <span className="ring-vocation">Paladin</span>
+                <img src={alicornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')} className="ring-bis-modal__icon" />
+                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.paladin')}</span>
               </div>
 
               <div
-                className={`ring-option ${selectedRing === 'Arcanomancer Sigil' ? 'selected' : ''}`}
-                onClick={() => setSelectedRing('Arcanomancer Sigil')}
+                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil') ? 'ring-bis-modal__option--selected' : ''}`}
+                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'))}
                 role="button"
                 tabIndex={0}
-                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Arcanomancer Sigil')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'));
+                  }
+                }}
               >
-                <img src={arcanomancerSigilIcon} alt="Arcanomancer Sigil" className="ring-icon" />
-                <span className="ring-name">Arcanomancer Sigil</span>
-                <span className="ring-vocation">Sorcerer</span>
+                <img src={arcanomancerSigilIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')} className="ring-bis-modal__icon" />
+                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.sorcerer')}</span>
               </div>
 
               <div
-                className={`ring-option ${selectedRing === 'Ethereal Ring' ? 'selected' : ''}`}
-                onClick={() => setSelectedRing('Ethereal Ring')}
+                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing') ? 'ring-bis-modal__option--selected' : ''}`}
+                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'))}
                 role="button"
                 tabIndex={0}
-                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Ethereal Ring')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'));
+                  }
+                }}
               >
-                <img src={etherealRingIcon} alt="Ethereal Ring" className="ring-icon" />
-                <span className="ring-name">Ethereal Ring</span>
-                <span className="ring-vocation">Knight</span>
+                <img src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} className="ring-bis-modal__icon" />
+                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</span>
               </div>
 
               <div
-                className={`ring-option ${selectedRing === 'Spiritthorn Ring' ? 'selected' : ''}`}
-                onClick={() => setSelectedRing('Spiritthorn Ring')}
+                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing') ? 'ring-bis-modal__option--selected' : ''}`}
+                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'))}
                 role="button"
                 tabIndex={0}
-                onKeyPress={(e) => e.key === 'Enter' && setSelectedRing('Spiritthorn Ring')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'));
+                  }
+                }}
               >
-                <img src={spiritthornRingIcon} alt="Spiritthorn Ring" className="ring-icon" />
-                <span className="ring-name">Spiritthorn Ring</span>
-                <span className="ring-vocation">All Vocations</span>
+                <img src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} className="ring-bis-modal__icon" />
+                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.allVocations')}</span>
               </div>
             </div>
 
@@ -1023,7 +1048,7 @@ export default function ItemCostManager({
                 onClick={handleAddRingBis}
                 disabled={!selectedRing}
               >
-                Add Ring
+                {t('soloHuntAnalyzer.itemCostManager.ringBisModal.addButton')}
               </button>
               <button
                 className="btn btn-secondary"
@@ -1032,7 +1057,7 @@ export default function ItemCostManager({
                   setSelectedRing('');
                 }}
               >
-                Cancel
+                {t('soloHuntAnalyzer.itemCostManager.ringBisModal.cancelButton')}
               </button>
             </div>
           </div>

@@ -178,6 +178,27 @@
         "additionalCostTooltip": "GP per hour × Hunt duration",
         "totalGP": "Total (GP)",
         "totalGPTooltip": "Total cost in GP = Partial GP + Gold Token to GP + Silver Token to GP"
+      },
+      "ringBisModal": {
+        "title": "Select your Bis Ring",
+        "description": "Choose the Bis Ring for your vocation",
+        "rings": {
+          "arborealRing": "Arboreal Ring",
+          "alicornRing": "Alicorn Ring",
+          "arcanomancerSigil": "Arcanomancer Sigil",
+          "etherealRing": "Ethereal Ring",
+          "spiritthornRing": "Spiritthorn Ring"
+        },
+        "vocations": {
+          "druid": "Druid",
+          "paladin": "Paladin",
+          "sorcerer": "Sorcerer",
+          "knight": "Knight",
+          "allVocations": "All Vocations"
+        },
+        "addButton": "Add Ring",
+        "cancelButton": "Cancel",
+        "closeModal": "Close modal"
       }
     },
     "results": {
@@ -235,8 +256,8 @@
       "duplicateButton": "Duplicate configuration",
       "deleteButton": "Delete configuration",
       "clearAllButton": "Clear All",
-      "savedCount": "saved config",
-      "savedCount_plural": "saved configurations",
+      "savedCount": "{{count}} saved config",
+      "savedCount_plural": "{{count}} saved configurations",
       "noItemsToSave": "Add items before saving a configuration",
       "confirmDelete": "Are you sure you want to delete this configuration?",
       "confirmClearAll": "Are you sure you want to delete ALL configurations? This action cannot be undone!",

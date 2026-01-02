@@ -16,6 +16,15 @@ import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS, parseDurationToHours } from '../../utils/huntUtils';
 import './SoloHuntAnalyzer.css';
 
+// Ring Bis item names for validation
+const RING_BIS_NAMES = [
+  'Arboreal Ring',
+  'Alicorn Ring',
+  'Arcanomancer Sigil',
+  'Ethereal Ring',
+  'Spiritthorn Ring'
+];
+
 export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) {
   const { t } = useTranslation();
 
@@ -179,7 +188,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     }
 
     // Validate Silver Token price if Ring Bis is added
-    const hasRingBis = customItems.some(item => item.name === 'Ring Bis');
+    const hasRingBis = customItems.some(item => RING_BIS_NAMES.includes(item.name));
     if (hasRingBis && silverTokenPrice === 0) {
       setError(t('soloHuntAnalyzer.errors.missingSilverTokenPrice'));
       setSilverTokenError(true);
