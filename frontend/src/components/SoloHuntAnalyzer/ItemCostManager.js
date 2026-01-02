@@ -395,18 +395,6 @@ export default function ItemCostManager({
               // Render parent item
               const childrenGPCost = item.isParent ? calculateChildrenGPCost(item.id) : 0;
 
-              // Convert token prices to GP
-              let itemCostInGP = 0;
-              if (item.priceType === 'GP') {
-                itemCostInGP = item.unitPrice * item.quantity;
-              } else if (item.priceType === 'GT') {
-                itemCostInGP = item.unitPrice * goldTokenPrice * item.quantity;
-              } else if (item.priceType === 'ST') {
-                itemCostInGP = item.unitPrice * silverTokenPrice * item.quantity;
-              }
-
-              const totalCostGP = item.isParent ? childrenGPCost + itemCostInGP : itemCostInGP;
-
               const isCollapsed = collapsedItems.has(item.id);
 
               return (

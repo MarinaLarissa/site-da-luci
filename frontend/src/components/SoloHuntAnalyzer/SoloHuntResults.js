@@ -7,15 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '../common/Tooltip';
-import { parseDurationToHours } from '../../utils/huntUtils';
 import './SoloHuntResults.css';
 
 export default function SoloHuntResults({ results }) {
   const { t } = useTranslation();
   const { session, costs, adjustedBalance, totalSupplies, profitPerHour, suppliesPerHour } = results;
   const { player } = session;
-
-  const huntHours = parseDurationToHours(session.duration);
 
   return (
     <div className="solo-hunt-results" data-cy="solo-hunt-results">
