@@ -65,14 +65,15 @@
 
 /* GT Price Section */
 .gt-price-section {
-  background: linear-gradient(135deg, var(--imbuement-primary-light) 0%, var(--imbuement-primary-dark) 100%);
+  background: var(--imbuement-bg-card);
   padding: 20px 24px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 32px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--imbuement-border-light);
 }
 
 .gt-price-label {
@@ -81,7 +82,7 @@
   gap: 8px;
   font-size: 18px;
   font-weight: 600;
-  color: var(--imbuement-bg-dark);
+  color: var(--imbuement-text-primary);
 }
 
 .gt-price-input {

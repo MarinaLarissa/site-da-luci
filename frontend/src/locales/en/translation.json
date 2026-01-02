@@ -165,19 +165,19 @@
       },
       "costSummary": {
         "partialGP": "Partial GP",
-        "partialGPTooltip": "Direct GP costs (without token conversion)",
+        "partialGPTooltip": "Direct GP costs without token conversion",
         "gtCosts": "Total GT",
-        "gtConverted": "GT converted to GP",
-        "gtConvertedTooltip": "GT qty × GT value",
+        "gtConverted": "Gold Token to GP",
+        "gtConvertedTooltip": "GT quantity × GT value",
         "stCosts": "Total ST",
-        "stConverted": "ST converted to GP",
-        "stConvertedTooltip": "ST qty × ST value",
+        "stConverted": "Silver Token to GP",
+        "stConvertedTooltip": "ST quantity × ST value",
         "gpPerHour": "Additional GP per hour",
-        "gpPerHourTooltip": "(Item total cost / Item duration)",
-        "additionalCost": "Additional cost of items",
+        "gpPerHourTooltip": "Total item cost ÷ Item duration",
+        "additionalCost": "Additional cost",
         "additionalCostTooltip": "GP per hour × Hunt duration",
         "totalGP": "Total (GP)",
-        "totalGPTooltip": "Total cost in GP (Partial GP + GT converted + ST converted)"
+        "totalGPTooltip": "Total cost in GP = Partial GP + Gold Token to GP + Silver Token to GP"
       }
     },
     "results": {
@@ -322,6 +322,11 @@
     "goldTokenPrice": "Gold Token Price",
     "copyItemName": "Copy item name",
     "copyToAnalyzer": "Copy to Analyzer",
+    "best": "✓ Best",
+    "showIntricate": "+ Show Intricate",
+    "hideIntricate": "− Hide Intricate",
+    "showBasic": "+ Show Basic",
+    "hideBasic": "− Hide Basic",
     "placeholders": {
       "itemPrice": "Unit price in GP"
     },

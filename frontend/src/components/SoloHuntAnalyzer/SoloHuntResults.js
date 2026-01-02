@@ -117,7 +117,7 @@ export default function SoloHuntResults({ results }) {
           {adjustedBalance >= 0 ? '📈' : '📉'} {t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}: {profitPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
         </div>
         <div className="profit-per-hour">
-          📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}: {suppliesPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
+          📦 {t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}: -{suppliesPerHour.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP/h
         </div>
       </div>
 

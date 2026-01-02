@@ -207,13 +207,13 @@ export default function ImbuementBlock({
             className={`btn-toggle-tier ${showIntricate ? 'active' : ''}`}
             onClick={() => setShowIntricate(!showIntricate)}
           >
-            {showIntricate ? '− Hide Intricate' : '+ Show Intricate'}
+            {showIntricate ? t('imbuementCalculator.hideIntricate') : t('imbuementCalculator.showIntricate')}
           </button>
           <button
             className={`btn-toggle-tier ${showBasic ? 'active' : ''}`}
             onClick={() => setShowBasic(!showBasic)}
           >
-            {showBasic ? '− Hide Basic' : '+ Show Basic'}
+            {showBasic ? t('imbuementCalculator.hideBasic') : t('imbuementCalculator.showBasic')}
           </button>
         </div>
       </div>

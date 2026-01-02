@@ -112,20 +112,20 @@
         "actions": "Ações"
       },
       "costSummary": {
-        "partialGP": "Partial GP",
-        "partialGPTooltip": "Custos diretos em GP (sem conversão de tokens)",
+        "partialGP": "GP Parcial",
+        "partialGPTooltip": "Custos diretos em GP sem conversão de tokens",
         "gtCosts": "Total em GT",
-        "gtConverted": "GT convertido para GP",
-        "gtConvertedTooltip": "GT qty × GT value",
+        "gtConverted": "Gold Token to GP",
+        "gtConvertedTooltip": "Quantidade de GT × Valor do GT",
         "stCosts": "Total em ST",
-        "stConverted": "ST convertido para GP",
-        "stConvertedTooltip": "ST qty × ST value",
+        "stConverted": "Silver Token to GP",
+        "stConvertedTooltip": "Quantidade de ST × Valor do ST",
         "gpPerHour": "GP adicional por hora",
-        "gpPerHourTooltip": "(Item total cost / Item duration)",
-        "additionalCost": "Custo adicional de itens",
-        "additionalCostTooltip": "GP per hour × Hunt duration",
+        "gpPerHourTooltip": "Custo total do item ÷ Duração do item",
+        "additionalCost": "Additional cost",
+        "additionalCostTooltip": "GP por hora × Duração da hunt",
         "totalGP": "Total (GP)",
-        "totalGPTooltip": "Custo total em GP (Partial GP + GT convertido + ST convertido)"
+        "totalGPTooltip": "Custo total em GP = GP Parcial + Gold Token to GP + Silver Token to GP"
       },
       "addImbuementModal": {
         "title": "Adicionar Imbuement",
@@ -322,6 +322,11 @@
     "goldTokenPrice": "Preço do Gold Token",
     "copyItemName": "Copiar nome do item",
     "copyToAnalyzer": "Copiar para Analisador",
+    "best": "✓ Melhor",
+    "showIntricate": "+ Mostrar Intricate",
+    "hideIntricate": "− Esconder Intricate",
+    "showBasic": "+ Mostrar Basic",
+    "hideBasic": "− Esconder Basic",
     "placeholders": {
       "itemPrice": "Preço unitário em GP"
     },
