@@ -267,7 +267,7 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                       </div>
                       {(hunt.totalCost || 0) > 0 && (
                         <div className="detail-item">
-                          <span className="label">{t('soloHuntAnalyzer.itemCostManager.costSummary.additionalCost')}:</span>
+                          <span className="label">{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}:</span>
                           <span className="value negative">-{(hunt.totalCost || 0).toLocaleString(locale)} GP</span>
                         </div>
                       )}
@@ -281,6 +281,20 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
                         <span className="value">{(hunt.profitPerHour || 0).toLocaleString(locale)} GP/h</span>
                       </div>
+                      {hunt.tcTotal !== null && hunt.tcTotal !== undefined && (
+                        <div className="detail-item">
+                          <span className="label">{t('soloHuntAnalyzer.results.finalBalance.tcTotal')}:</span>
+                          <span className={hunt.tcTotal >= 0 ? 'value positive' : 'value negative'}>
+                            {hunt.tcTotal >= 0 ? '+' : ''}{(hunt.tcTotal || 0).toLocaleString(locale)} TC
+                          </span>
+                        </div>
+                      )}
+                      {hunt.tcPerHour !== null && hunt.tcPerHour !== undefined && (
+                        <div className="detail-item">
+                          <span className="label">{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}:</span>
+                          <span className="value">{(hunt.tcPerHour || 0).toLocaleString(locale)} TC/h</span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="hunt-actions">

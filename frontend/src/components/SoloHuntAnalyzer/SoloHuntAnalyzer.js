@@ -32,23 +32,28 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   const [sessionData, setSessionData] = useState('');
   const [parsedSession, setParsedSession] = useState(null);
 
-  // Load silver token price from localStorage (gold token is now shared via props)
-  const loadSilverTokenPrice = () => {
+  // Load silver token and tibia coin prices from localStorage (gold token is now shared via props)
+  const loadTokenPrices = () => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
       if (saved) {
-        const { silverTokenPrice } = JSON.parse(saved);
-        return silverTokenPrice || 0;
+        const prices = JSON.parse(saved);
+        return {
+          silverTokenPrice: prices.silverTokenPrice || 0,
+          tibiaCoinPrice: prices.tibiaCoinPrice || 0
+        };
       }
     } catch (error) {
-      console.error('Error loading silver token price:', error);
+      console.error('Error loading token prices:', error);
     }
-    return 0;
+    return { silverTokenPrice: 0, tibiaCoinPrice: 0 };
   };
 
   // Item costs state (gold token price is now shared via props)
   const [customItems, setCustomItems] = useState([]);
-  const [silverTokenPrice, setSilverTokenPrice] = useState(loadSilverTokenPrice());
+  const loadedPrices = loadTokenPrices();
+  const [silverTokenPrice, setSilverTokenPrice] = useState(loadedPrices.silverTokenPrice);
+  const [tibiaCoinPrice, setTibiaCoinPrice] = useState(loadedPrices.tibiaCoinPrice);
 
   // UI state
   const [loading, setLoading] = useState(false);
@@ -57,12 +62,13 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   const [silverTokenError, setSilverTokenError] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [hasCalculated, setHasCalculated] = useState(false);
+  const [needsRecalculation, setNeedsRecalculation] = useState(false);
 
   // Use ref instead of state to avoid React functional update issues
   const saveHuntToHistoryRef = useRef(null);
   const resultsRef = useRef(null);
 
-  // Save silver token price to localStorage whenever it changes
+  // Save silver token and tibia coin prices to localStorage whenever they change
   // (Gold token price is saved by App.js)
   const [hasLoadedPrices, setHasLoadedPrices] = useState(false);
 
@@ -77,11 +83,12 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
       const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
       const prices = saved ? JSON.parse(saved) : {};
       prices.silverTokenPrice = silverTokenPrice;
+      prices.tibiaCoinPrice = tibiaCoinPrice;
       localStorage.setItem(STORAGE_KEYS.TOKEN_PRICES, JSON.stringify(prices));
     } catch (error) {
-      console.error('Error saving silver token price:', error);
+      console.error('Error saving token prices:', error);
     }
-  }, [silverTokenPrice, hasLoadedPrices]);
+  }, [silverTokenPrice, tibiaCoinPrice, hasLoadedPrices]);
 
   // Scroll to top when error appears
   useEffect(() => {
@@ -99,8 +106,16 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     // Re-enable calculate button when items are edited/added
     if (hasCalculated) {
       setHasCalculated(false);
+      setNeedsRecalculation(true);
     }
   }, [customItems]);
+
+  // Detect price changes and set needsRecalculation
+  useEffect(() => {
+    if (hasCalculated) {
+      setNeedsRecalculation(true);
+    }
+  }, [goldTokenPrice, silverTokenPrice, tibiaCoinPrice]);
 
   /**
    * Parse session data (single player only)
@@ -198,6 +213,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     setSilverTokenError(false);
     setLoading(true);
     setHasCalculated(true);
+    setNeedsRecalculation(false);
 
     try {
       // Parse hunt duration
@@ -288,6 +304,10 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
       const profitPerHour = huntDurationHours > 0 ? adjustedBalance / huntDurationHours : 0;
       const suppliesPerHour = huntDurationHours > 0 ? totalSupplies / huntDurationHours : 0;
 
+      // Calculate TC metrics (only if tibiaCoinPrice is set)
+      const tcTotal = tibiaCoinPrice > 0 ? adjustedBalance / tibiaCoinPrice : 0;
+      const tcPerHour = huntDurationHours > 0 && tibiaCoinPrice > 0 ? tcTotal / huntDurationHours : 0;
+
       setResults({
         session: parsedSession,
         costs: {
@@ -296,6 +316,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
           totalST, // Total ST used (in ST, not converted)
           goldTokenPrice: goldTokenPrice,
           silverTokenPrice,
+          tibiaCoinPrice,
           items: customItems,
           gpPerHour: totalGpPerHour, // GP per hour (only for items with itemDuration)
           additionalCost: totalCostGP, // Total proportional cost for this hunt
@@ -304,6 +325,8 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
         adjustedBalance,
         profitPerHour,
         suppliesPerHour,
+        tcTotal,
+        tcPerHour,
       });
 
       // Save to hunt history
@@ -317,6 +340,9 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
           totalCost: proportionalCostOnly, // Only proportional costs (items with duration)
           adjustedBalance,
           profitPerHour: huntDurationHours > 0 ? Math.round(adjustedBalance / huntDurationHours) : 0,
+          tcTotal: tibiaCoinPrice > 0 ? Math.floor(tcTotal) : null,
+          tcPerHour: tibiaCoinPrice > 0 ? Math.floor(tcPerHour) : null,
+          tibiaCoinPrice: tibiaCoinPrice > 0 ? tibiaCoinPrice : null,
         };
         saveHuntToHistoryRef.current(huntData);
       }
@@ -345,9 +371,11 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     setCustomItems([]);
     setGoldTokenPrice(0);
     setSilverTokenPrice(0);
+    setTibiaCoinPrice(0);
     setResults(null);
     setError(null);
     setHasCalculated(false);
+    setNeedsRecalculation(false);
   };
 
   return (
@@ -390,7 +418,10 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
           setGoldTokenPrice={setGoldTokenPrice}
           silverTokenPrice={silverTokenPrice}
           setSilverTokenPrice={setSilverTokenPrice}
+          tibiaCoinPrice={tibiaCoinPrice}
+          setTibiaCoinPrice={setTibiaCoinPrice}
           silverTokenError={silverTokenError}
+          needsRecalculation={needsRecalculation}
         />
       )}
 

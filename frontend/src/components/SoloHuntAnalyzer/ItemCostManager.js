@@ -11,6 +11,7 @@ import './ItemCostManager.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import silverTokenIcon from '../../assets/tibia/silver_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
+import tibiaCoinIcon from '../../assets/tibia/tibia_coin.gif';
 import arborealRingIcon from '../../assets/tibia/arboreal_ring.gif';
 import alicornRingIcon from '../../assets/tibia/alicorn_ring.gif';
 import arcanomancerSigilIcon from '../../assets/tibia/arcanomancer_sigil.gif';
@@ -40,6 +41,12 @@ const IMBUEMENT_FIXED_COSTS = {
   powerful: 250000,  // Powerful tier service cost (250k GP)
 };
 
+/**
+ * Item Cost Manager Component
+ * @param {Object} props - Component props
+ * @param {boolean} props.needsRecalculation - Boolean flag indicating if user modified prices/items after calculation.
+ *                                             When true, shows warning banner to recalculate balance.
+ */
 export default function ItemCostManager({
   customItems,
   setCustomItems,
@@ -47,7 +54,10 @@ export default function ItemCostManager({
   setGoldTokenPrice,
   silverTokenPrice,
   setSilverTokenPrice,
-  silverTokenError = false
+  tibiaCoinPrice,
+  setTibiaCoinPrice,
+  silverTokenError = false,
+  needsRecalculation = false
 }) {
   const { t } = useTranslation();
   const [showImbuementModal, setShowImbuementModal] = useState(false);
@@ -462,7 +472,31 @@ export default function ItemCostManager({
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
         </div>
+
+        <div className="token-price-row">
+          <img src={tibiaCoinIcon} alt="Tibia Coin" className="token-icon" />
+          <label htmlFor="tibia-coin-price-input">{t('soloHuntAnalyzer.itemCostManager.tibiaCoinLabel')}</label>
+          <input
+            id="tibia-coin-price-input"
+            type="number"
+            value={tibiaCoinPrice}
+            onChange={(e) => setTibiaCoinPrice(parseFloat(e.target.value) || 0)}
+            placeholder="Ex: 45000"
+            min="0"
+            aria-label={t('soloHuntAnalyzer.itemCostManager.tibiaCoinAriaLabel')}
+            data-cy="solo-hunt-input-tc-price"
+          />
+          <img src={coinsIcon} alt="GP" className="coin-icon-small" />
+          <span className="unit">GP</span>
+        </div>
       </div>
+
+      {/* Recalculation indicator */}
+      {needsRecalculation && (
+        <div className="recalculation-indicator">
+          {t('soloHuntAnalyzer.itemCostManager.recalculationWarning')}
+        </div>
+      )}
 
       {/* Add buttons */}
       <div className="add-buttons">
@@ -1021,7 +1055,7 @@ export default function ItemCostManager({
               >
                 <img src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} className="ring-bis-modal__icon" />
                 <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.monk')}</span>
               </div>
 
               <div
@@ -1038,7 +1072,7 @@ export default function ItemCostManager({
               >
                 <img src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} className="ring-bis-modal__icon" />
                 <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.allVocations')}</span>
+                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</span>
               </div>
             </div>
 
@@ -1090,5 +1124,8 @@ ItemCostManager.propTypes = {
   setGoldTokenPrice: PropTypes.func.isRequired,
   silverTokenPrice: PropTypes.number.isRequired,
   setSilverTokenPrice: PropTypes.func.isRequired,
-  silverTokenError: PropTypes.bool
+  tibiaCoinPrice: PropTypes.number.isRequired,
+  setTibiaCoinPrice: PropTypes.func.isRequired,
+  silverTokenError: PropTypes.bool,
+  needsRecalculation: PropTypes.bool
 };
