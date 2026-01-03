@@ -13,9 +13,9 @@ import silverTokenIcon from '../../assets/tibia/silver_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
 import arborealRingIcon from '../../assets/tibia/arboreal_ring.gif';
 import alicornRingIcon from '../../assets/tibia/alicorn_ring.gif';
-import arcanomancerSigilIcon from '../../assets/tibia/Arcanomancer_Sigil.gif';
-import etherealRingIcon from '../../assets/tibia/Ethereal_Ring.gif';
-import spiritthornRingIcon from '../../assets/tibia/Spiritthorn_Ring.gif';
+import arcanomancerSigilIcon from '../../assets/tibia/arcanomancer_sigil.gif';
+import etherealRingIcon from '../../assets/tibia/ethereal_ring.gif';
+import spiritthornRingIcon from '../../assets/tibia/spiritthorn_ring.gif';
 
 // Only these imbuements can be paid with GT
 const GT_ELIGIBLE_IMBUEMENTS = ['void', 'vampirism', 'strike'];
