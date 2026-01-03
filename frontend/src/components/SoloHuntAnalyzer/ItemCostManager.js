@@ -67,6 +67,25 @@ export default function ItemCostManager({
   // Collapse state - track which parent items are collapsed (start all collapsed)
   const [collapsedItems, setCollapsedItems] = useState(new Set());
 
+  /**
+   * Feature 1: Collapse all parent items when configuration is loaded
+   * When customItems changes (e.g., from loading a saved configuration),
+   * automatically collapse all parent items to save visual space
+   */
+  React.useEffect(() => {
+    if (customItems.length > 0) {
+      // Identify all parent items (items that have children)
+      const parentIds = customItems
+        .filter(item => item.isParent && item.hasChildren)
+        .map(item => item.id);
+
+      // Set all parent items as collapsed
+      if (parentIds.length > 0) {
+        setCollapsedItems(new Set(parentIds));
+      }
+    }
+  }, [customItems.length]); // Only trigger when items array length changes (new config loaded)
+
   // Ring Bis selection state
   const [selectedRing, setSelectedRing] = useState('');
 

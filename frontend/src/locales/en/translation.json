@@ -372,6 +372,24 @@
     "tooltips": {
       "gtCost": "Cost using Gold Tokens (converted to GP)",
       "gpCost": "Cost buying items directly from market + service fee"
+    },
+    "copyPaste": {
+      "copyButton": "Copy Imbuements",
+      "copyButtonTitle": "Copy selected imbuements to clipboard",
+      "pasteButton": "Paste Imbuements",
+      "pasteButtonTitle": "Paste imbuements from clipboard",
+      "modalTitle": "Select Imbuements to Copy",
+      "modalDescription": "Select 1 to 3 imbuements to copy. Data will be saved to clipboard as JSON.",
+      "copySelected": "Copy Selected",
+      "cancel": "Cancel",
+      "closeModal": "Close modal",
+      "selectAtLeastOne": "Please select at least 1 imbuement to copy.",
+      "copySuccess": "✓ Imbuements copied successfully!",
+      "copyError": "Error copying imbuements. Check browser permissions.",
+      "pasteSuccess": "✓ {{count}} imbuement(s) pasted successfully!",
+      "pasteError": "Error pasting imbuements. Check if clipboard contains valid data.",
+      "invalidFormat": "Invalid format. Please copy imbuements from the Imbuement Calculator first.",
+      "pastedInfo": "Pasted imbuements"
     }
   }
 }

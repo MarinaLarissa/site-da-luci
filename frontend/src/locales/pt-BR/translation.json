@@ -372,6 +372,24 @@
     "tooltips": {
       "gtCost": "Custo usando Gold Tokens (convertido para GP)",
       "gpCost": "Custo comprando itens diretamente no market + taxa de serviço"
+    },
+    "copyPaste": {
+      "copyButton": "Copiar Imbuements",
+      "copyButtonTitle": "Copiar imbuements selecionados para clipboard",
+      "pasteButton": "Colar Imbuements",
+      "pasteButtonTitle": "Colar imbuements do clipboard",
+      "modalTitle": "Selecionar Imbuements para Copiar",
+      "modalDescription": "Selecione 1 a 3 imbuements para copiar. Os dados serão salvos no clipboard como JSON.",
+      "copySelected": "Copiar Selecionados",
+      "cancel": "Cancelar",
+      "closeModal": "Fechar modal",
+      "selectAtLeastOne": "Selecione pelo menos 1 imbuement para copiar.",
+      "copySuccess": "✓ Imbuements copiados com sucesso!",
+      "copyError": "Erro ao copiar imbuements. Verifique as permissões do navegador.",
+      "pasteSuccess": "✓ {{count}} imbuement(s) colado(s) com sucesso!",
+      "pasteError": "Erro ao colar imbuements. Verifique se o clipboard contém dados válidos.",
+      "invalidFormat": "Formato inválido. Por favor, copie imbuements da Calculadora de Imbuements primeiro.",
+      "pastedInfo": "Imbuements colados"
     }
   }
 }
