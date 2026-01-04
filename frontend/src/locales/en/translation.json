@@ -105,6 +105,7 @@
       "ringBisTooltip": "Ring Bis (5 ST, lasts 3hrs)",
       "addCustomItemButton": "Add Custom Item",
       "editItemsButton": "✏️ Edit Items",
+      "pasteFromImbuementCalcButton": "📋 Paste from Imbuement Calc",
       "itemsSummary": "{{count}} {{count, plural, one {item added} other {items added}}}",
       "itemsListTitle": "Items Added",
       "addImbuementModal": {
@@ -389,7 +390,8 @@
       "pasteSuccess": "✓ {{count}} imbuement(s) pasted successfully!",
       "pasteError": "Error pasting imbuements. Check if clipboard contains valid data.",
       "invalidFormat": "Invalid format. Please copy imbuements from the Imbuement Calculator first.",
-      "pastedInfo": "Pasted imbuements"
+      "pastedInfo": "Pasted imbuements",
+      "pasteManualPrompt": "Clipboard API not available. Please paste the JSON data here:"
     }
   }
 }

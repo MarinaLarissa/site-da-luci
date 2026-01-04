@@ -272,15 +272,34 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       imbuements: imbuementsToCopy,
     };
 
+    const jsonString = JSON.stringify(clipboardData, null, 2);
+
     try {
-      await navigator.clipboard.writeText(JSON.stringify(clipboardData, null, 2));
+      await navigator.clipboard.writeText(jsonString);
       setCopyFeedback(t('imbuementCalculator.copyPaste.copySuccess'));
       setTimeout(() => setCopyFeedback(null), 3000);
       setShowCopyModal(false);
       setSelectedImbuementsToCopy([]);
     } catch (error) {
       console.error('Failed to copy imbuements:', error);
-      alert(t('imbuementCalculator.copyPaste.copyError'));
+      // Fallback for non-HTTPS contexts or older browsers
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = jsonString;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setCopyFeedback(t('imbuementCalculator.copyPaste.copySuccess'));
+        setTimeout(() => setCopyFeedback(null), 3000);
+        setShowCopyModal(false);
+        setSelectedImbuementsToCopy([]);
+      } catch (fallbackError) {
+        console.error('Fallback copy failed:', fallbackError);
+        alert(t('imbuementCalculator.copyPaste.copyError'));
+      }
     }
   };
 
@@ -289,8 +308,24 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
    * Reads JSON from clipboard and applies item prices + GT price
    */
   const handlePasteImbuements = async () => {
+    let clipboardText = '';
+
     try {
-      const clipboardText = await navigator.clipboard.readText();
+      clipboardText = await navigator.clipboard.readText();
+    } catch (error) {
+      console.error('Failed to read from clipboard:', error);
+      // Fallback: Ask user to paste manually
+      clipboardText = window.prompt(
+        t('imbuementCalculator.copyPaste.pasteManualPrompt') ||
+          'Clipboard API not available. Please paste the JSON data here:'
+      );
+
+      if (!clipboardText) {
+        return; // User cancelled
+      }
+    }
+
+    try {
       const data = JSON.parse(clipboardText);
 
       // Validate JSON structure
@@ -302,6 +337,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       // Apply imbuement data to current state
       // Since we're pasting item costs, we reconstruct item prices from the pasted data
       let appliedCount = 0;
+      const newItemPrices = { ...itemPrices };
 
       data.imbuements.forEach(imb => {
         const imbuement = Object.values(GT_IMBUEMENTS).find(
@@ -311,10 +347,37 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         if (!imbuement) return;
 
         // If method was 'gp', we can back-calculate item prices
-        // If method was 'gt', we just note it but don't change item prices
-        // For simplicity, we'll just show a summary and let user manually adjust
+        // We distribute the total itemCost evenly among all items based on quantity
+        if (imb.method === 'gp' && imb.itemCost > 0) {
+          const tiers = ['basic', 'intricate', 'powerful'];
+          const tierIndex = tiers.indexOf(imb.tier);
+
+          // For each tier up to the selected tier
+          for (let i = 0; i <= tierIndex; i++) {
+            const currentTier = tiers[i];
+            const items = imbuement.items[currentTier];
+
+            if (!items || items.length === 0) continue;
+
+            // Calculate total quantity for this tier
+            const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
+            // Calculate unit price (total cost / total quantity)
+            // This is an approximation assuming all items have same price
+            const unitPrice = totalQuantity > 0 ? imb.itemCost / totalQuantity : 0;
+
+            // Apply price to each item in this tier
+            items.forEach(item => {
+              newItemPrices[item.name] = Math.round(unitPrice);
+            });
+          }
+        }
+
         appliedCount++;
       });
+
+      // Update state with new prices
+      setItemPrices(newItemPrices);
 
       setPasteFeedback(
         t('imbuementCalculator.copyPaste.pasteSuccess', { count: appliedCount })

@@ -85,6 +85,9 @@ export default function ItemCostManager({
       }
     }
   }, [customItems.length]); // Only trigger when items array length changes (new config loaded)
+  // Known limitation: If config is overwritten with same item count, this won't trigger.
+  // This is an acceptable edge case - manual collapse/expand still works.
+  // Alternative: Use deep comparison or hash, but adds complexity for minimal UX gain.
 
   // Ring Bis selection state
   const [selectedRing, setSelectedRing] = useState('');
@@ -547,7 +550,7 @@ export default function ItemCostManager({
           title="Paste configuration from Imbuement Calculator"
           data-cy="solo-hunt-button-paste-imbuement"
         >
-          📋 Paste from Imbuement Calc
+          {t('soloHuntAnalyzer.itemCostManager.pasteFromImbuementCalcButton')}
         </button>
       </div>
 
