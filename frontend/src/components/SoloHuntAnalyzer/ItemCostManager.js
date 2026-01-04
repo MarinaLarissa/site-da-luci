@@ -95,6 +95,7 @@ export default function ItemCostManager({
         setCollapsedItems(new Set(parentIds));
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customItems.length]); // Only trigger when items array length changes (new config loaded)
   // Known limitation: If config is overwritten with same item count, this won't trigger.
   // This is an acceptable edge case - manual collapse/expand still works.

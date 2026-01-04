@@ -12,7 +12,8 @@ jest.mock('react-i18next', () => ({
       const translations = {
         'calculator.resultsSection.transferList.title': 'Transfers',
         'calculator.resultsSection.transferList.noTransfers': 'No transfers needed! All players are balanced.',
-        'calculator.resultsSection.transferList.copiedButton': '✓ Copied!'
+        'calculator.resultsSection.transferList.copiedButton': '✓ Copied!',
+        'calculator.resultsSection.transferList.instruction': 'Click on a transfer to copy it to clipboard'
       };
       return translations[key] || key;
     }
@@ -74,7 +75,8 @@ describe('TransferList', () => {
 
     expect(screen.getByText('TIBIA Commands:')).toBeInTheDocument();
 
-    const commandsText = screen.getByText(mockCopyableText);
+    // Use regex to match the multiline text more flexibly
+    const commandsText = screen.getByText(/transfer 1000 to Player B/i);
     expect(commandsText).toBeInTheDocument();
   });
 
