@@ -14,6 +14,7 @@ import HuntHistory from './HuntHistory';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS } from '../../utils/huntUtils';
+import { calculateSoloHunt } from '../../services/api';
 import './SoloHuntAnalyzer.css';
 
 // Ring Bis item names for validation
@@ -195,6 +196,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
 
   /**
    * Calculate final results with item costs (Backend API)
+   * Uses centralized API service following Loot Split Calculator pattern
    */
   const handleCalculate = async () => {
     if (!parsedSession) {
@@ -216,69 +218,33 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     setNeedsRecalculation(false);
 
     try {
-      // P2 Fix: Check online status before making request
-      if (!navigator.onLine) {
-        throw new Error(t('soloHuntAnalyzer.errors.offlineError'));
+      // Call centralized API service (handles all error cases internally)
+      const data = await calculateSoloHunt(parsedSession, customItems, {
+        goldTokenPrice,
+        silverTokenPrice,
+        tibiaCoinPrice,
+      });
+
+      if (!data.success) {
+        throw new Error(data.error || 'Invalid response from server');
       }
 
-      // P2 Fix: Add timeout to fetch request (10 seconds)
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      // Set results from backend
+      setResults(data.data);
 
-      try {
-        // Call backend API for calculation
-        const response = await fetch('/api/solo-hunt/calculate', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            parsedSession,
-            customItems,
-            goldTokenPrice,
-            silverTokenPrice,
-            tibiaCoinPrice,
-          }),
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeoutId);
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || 'Calculation failed');
-        }
-
-        if (!data.success) {
-          throw new Error(data.error || 'Invalid response from server');
-        }
-
-        // Set results from backend
-        setResults(data.data);
-
-        // Save to hunt history
-        if (saveHuntToHistoryRef.current && data.data.huntData) {
-          saveHuntToHistoryRef.current(data.data.huntData);
-        }
-
-        setError(null);
-
-        // Scroll to results section
-        setTimeout(() => {
-          if (resultsRef.current) {
-            resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      } catch (fetchErr) {
-        clearTimeout(timeoutId);
-
-        // P2 Fix: Handle timeout specifically
-        if (fetchErr.name === 'AbortError') {
-          throw new Error(t('soloHuntAnalyzer.errors.timeoutError'));
-        }
-        throw fetchErr;
+      // Save to hunt history
+      if (saveHuntToHistoryRef.current && data.data.huntData) {
+        saveHuntToHistoryRef.current(data.data.huntData);
       }
+
+      setError(null);
+
+      // Scroll to results section
+      setTimeout(() => {
+        if (resultsRef.current) {
+          resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     } catch (err) {
       console.error('Calculation error:', err);
       setError(t('soloHuntAnalyzer.errors.calculationError', { message: err.message }));

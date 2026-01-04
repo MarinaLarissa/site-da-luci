@@ -48,4 +48,37 @@ export async function calculateLootSplit(rawText) {
   }
 }
 
+/**
+ * Calculate solo hunt balance with custom item costs
+ * @param {Object} parsedSession - Parsed session data
+ * @param {Array} customItems - Custom items with costs
+ * @param {Object} prices - Token and coin prices
+ * @returns {Promise<Object>} API response with calculation results
+ */
+export async function calculateSoloHunt(parsedSession, customItems, prices) {
+  try {
+    const response = await api.post('/solo-hunt/calculate', {
+      parsedSession,
+      customItems,
+      goldTokenPrice: prices.goldTokenPrice,
+      silverTokenPrice: prices.silverTokenPrice,
+      tibiaCoinPrice: prices.tibiaCoinPrice,
+    });
+    return response.data;
+  } catch (error) {
+    // Transform API error into user-friendly message (same pattern as calculateLootSplit)
+    if (error.response) {
+      // Server responded with error
+      const errorMessage = error.response.data?.error || 'Server error occurred';
+      throw new Error(errorMessage);
+    } else if (error.request) {
+      // Request was made but no response
+      throw new Error('Unable to connect to server. Please check if the backend is running.');
+    } else {
+      // Other errors (including timeout)
+      throw new Error(error.message || 'An unexpected error occurred');
+    }
+  }
+}
+
 export default api;
