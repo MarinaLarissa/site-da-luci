@@ -36,8 +36,10 @@ tmp/
 temp/
 *.tmp
 
-# MongoDB
-data/
+# MongoDB (root data directory only)
+/data/
+# Allow frontend source data
+!frontend/src/data/
 
 # Logs
 logs/

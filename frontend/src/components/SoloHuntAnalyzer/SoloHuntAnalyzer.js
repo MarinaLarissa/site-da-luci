@@ -108,14 +108,14 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
       setHasCalculated(false);
       setNeedsRecalculation(true);
     }
-  }, [customItems]);
+  }, [customItems, hasCalculated, results]);
 
   // Detect price changes and set needsRecalculation
   useEffect(() => {
     if (hasCalculated) {
       setNeedsRecalculation(true);
     }
-  }, [goldTokenPrice, silverTokenPrice, tibiaCoinPrice]);
+  }, [goldTokenPrice, silverTokenPrice, tibiaCoinPrice, hasCalculated]);
 
   /**
    * Parse session data (single player only)
@@ -216,47 +216,69 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     setNeedsRecalculation(false);
 
     try {
-      // Call backend API for calculation
-      const response = await fetch('/api/solo-hunt/calculate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          parsedSession,
-          customItems,
-          goldTokenPrice,
-          silverTokenPrice,
-          tibiaCoinPrice,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Calculation failed');
+      // P2 Fix: Check online status before making request
+      if (!navigator.onLine) {
+        throw new Error(t('soloHuntAnalyzer.errors.offlineError'));
       }
 
-      if (!data.success) {
-        throw new Error(data.error || 'Invalid response from server');
-      }
+      // P2 Fix: Add timeout to fetch request (10 seconds)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      // Set results from backend
-      setResults(data.data);
+      try {
+        // Call backend API for calculation
+        const response = await fetch('/api/solo-hunt/calculate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            parsedSession,
+            customItems,
+            goldTokenPrice,
+            silverTokenPrice,
+            tibiaCoinPrice,
+          }),
+          signal: controller.signal,
+        });
 
-      // Save to hunt history
-      if (saveHuntToHistoryRef.current && data.data.huntData) {
-        saveHuntToHistoryRef.current(data.data.huntData);
-      }
+        clearTimeout(timeoutId);
 
-      setError(null);
+        const data = await response.json();
 
-      // Scroll to results section
-      setTimeout(() => {
-        if (resultsRef.current) {
-          resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (!response.ok) {
+          throw new Error(data.error || 'Calculation failed');
         }
-      }, 100);
+
+        if (!data.success) {
+          throw new Error(data.error || 'Invalid response from server');
+        }
+
+        // Set results from backend
+        setResults(data.data);
+
+        // Save to hunt history
+        if (saveHuntToHistoryRef.current && data.data.huntData) {
+          saveHuntToHistoryRef.current(data.data.huntData);
+        }
+
+        setError(null);
+
+        // Scroll to results section
+        setTimeout(() => {
+          if (resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      } catch (fetchErr) {
+        clearTimeout(timeoutId);
+
+        // P2 Fix: Handle timeout specifically
+        if (fetchErr.name === 'AbortError') {
+          throw new Error(t('soloHuntAnalyzer.errors.timeoutError'));
+        }
+        throw fetchErr;
+      }
     } catch (err) {
       console.error('Calculation error:', err);
       setError(t('soloHuntAnalyzer.errors.calculationError', { message: err.message }));
