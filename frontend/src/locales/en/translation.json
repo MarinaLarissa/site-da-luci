@@ -313,7 +313,9 @@
       "multiplePlayersDetected": "Detected {{count}} players. This analyzer accepts only 1 player.",
       "missingGoldTokenPrice": "You added items with GT cost, but didn't set the Gold Token price.",
       "missingSilverTokenPriceForItems": "You added items with ST cost, but didn't set the Silver Token price.",
-      "calculationError": "Error calculating result: {{message}}"
+      "calculationError": "Error calculating result: {{message}}",
+      "timeoutError": "Request timed out while connecting to server. Please check your connection and try again.",
+      "offlineError": "You are offline. Please check your internet connection."
     }
   },
   "roles": {

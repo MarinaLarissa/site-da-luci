@@ -313,7 +313,9 @@
       "multiplePlayersDetected": "Detectados {{count}} jogadores. Este analisador aceita apenas 1 jogador.",
       "missingGoldTokenPrice": "Você adicionou itens com custo em GT, mas não definiu o preço do Gold Token.",
       "missingSilverTokenPriceForItems": "Você adicionou itens com custo em ST, mas não definiu o preço do Silver Token.",
-      "calculationError": "Erro ao calcular resultado: {{message}}"
+      "calculationError": "Erro ao calcular resultado: {{message}}",
+      "timeoutError": "Tempo esgotado ao conectar ao servidor. Verifique sua conexão e tente novamente.",
+      "offlineError": "Você está offline. Por favor, verifique sua conexão com a internet."
     }
   },
   "roles": {
