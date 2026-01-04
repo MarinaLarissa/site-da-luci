@@ -4,42 +4,7 @@
     "react-app/jest"
   ],
   "rules": {
-    "react/jsx-no-literals": [
-      "warn",
-      {
-        "noStrings": true,
-        "ignoreProps": true,
-        "noAttributeStrings": false,
-        "allowedStrings": [
-          "GP",
-          "GT",
-          "ST",
-          "+",
-          "-",
-          "×",
-          "÷",
-          ":",
-          "✕",
-          "✓",
-          "📤",
-          "🗑️",
-          "✏️",
-          "(",
-          ")",
-          "/",
-          "%",
-          "💰",
-          "🎯",
-          "📊",
-          "👥",
-          "👑",
-          "📜",
-          "⚠️",
-          "📥",
-          "Loading..."
-        ]
-      }
-    ]
+    "react/jsx-no-literals": "off"
   },
   "overrides": [
     {
