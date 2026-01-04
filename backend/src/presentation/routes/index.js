@@ -5,11 +5,15 @@
 
 import express from 'express';
 import lootSplitRoutes from './loot-split.routes.js';
+import soloHuntRoutes from './solo-hunt.routes.js';
 
 const router = express.Router();
 
 // Mount loot split routes at /api/loot-split
 router.use('/loot-split', lootSplitRoutes);
+
+// Mount solo hunt routes at /api/solo-hunt
+router.use('/solo-hunt', soloHuntRoutes);
 
 // Health check endpoint (optional)
 router.get('/health', (req, res) => {

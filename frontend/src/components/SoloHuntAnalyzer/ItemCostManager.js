@@ -31,6 +31,17 @@ const DURATION = {
 };
 
 /**
+ * Ring Bis icon mapping
+ */
+const RING_ICONS = {
+  'Arboreal Ring': arborealRingIcon,
+  'Alicorn Ring': alicornRingIcon,
+  'Arcanomancer Sigil': arcanomancerSigilIcon,
+  'Ethereal Ring': etherealRingIcon,
+  'Spiritthorn Ring': spiritthornRingIcon,
+};
+
+/**
  * Fixed imbuement service costs by tier (as of December 2024)
  * These are the NPC costs for applying imbuements in Tibia
  * Source: https://tibia.fandom.com/wiki/Imbuements
@@ -590,6 +601,14 @@ export default function ItemCostManager({
                         </button>
                       )}
                       <span>{item.name}</span>
+                      {RING_ICONS[item.name] && (
+                        <img
+                          src={RING_ICONS[item.name]}
+                          alt={item.name}
+                          className="ring-icon-inline"
+                          style={{ marginLeft: '8px', width: '20px', height: '20px', verticalAlign: 'middle' }}
+                        />
+                      )}
                       {item.isParent && item.hasChildren && isCollapsed && (
                         <span
                           className="collapsed-hint"
