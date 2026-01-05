@@ -8,7 +8,7 @@
     "backend"
   ],
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky || true",
     "frontend:dev": "cd frontend && npm start",
     "frontend:build": "cd frontend && npm run build",
     "frontend:test": "cd frontend && npm test",
