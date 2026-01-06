@@ -216,13 +216,15 @@ export default function ItemCostManager({
   /**
    * Add Ring Bis preset with selected vocation
    * Ring Bis costs 5 ST to recharge and lasts 3 hours
+   * @param {string} ringName - Optional ring name. If provided, adds directly. Otherwise uses selectedRing state.
    */
-  const handleAddRingBis = () => {
-    if (!selectedRing) return;
+  const handleAddRingBis = (ringName = null) => {
+    const ring = ringName || selectedRing;
+    if (!ring) return;
 
     const newItem = {
       id: Date.now(),
-      name: selectedRing,
+      name: ring,
       quantity: 1,
       unitPrice: 5,
       priceType: 'ST',
@@ -237,24 +239,129 @@ export default function ItemCostManager({
   };
 
   /**
+   * Copy imbuement item prices to clipboard for Efficiency Calculator
+   * Exports values of Vampirism, Void, Strike items to JSON
+   */
+  const handleCopyToEfficiencyCalc = async () => {
+    try {
+      // Extract item prices from customItems for GT-eligible imbuements
+      const imbuementItems = {
+        'Vampire Teeth': 0,
+        'Bloody Pincers': 0,
+        'Piece of Dead Brain': 0,
+        'Rope Belt': 0,
+        'Silencer Claws': 0,
+        'Some Grimeleech Wings': 0,
+        'Protective Charm': 0,
+        'Sabretooth': 0,
+        'Vexclaw Talon': 0,
+      };
+
+      // Find items in customItems and extract their unitPrice
+      customItems.forEach(item => {
+        if (imbuementItems.hasOwnProperty(item.name)) {
+          imbuementItems[item.name] = item.unitPrice || 0;
+        }
+      });
+
+      const clipboardData = {
+        type: 'tibia_imbuement_prices',
+        version: '1.0',
+        source: 'solo_hunt_analyzer',
+        goldTokenPrice: goldTokenPrice,
+        itemPrices: imbuementItems,
+      };
+
+      const jsonString = JSON.stringify(clipboardData, null, 2);
+      await navigator.clipboard.writeText(jsonString);
+
+      alert('Valores dos imbuements copiados! Cole no Imbuement Efficiency Calculator.');
+    } catch (error) {
+      console.error('Failed to copy imbuement prices:', error);
+      alert('Falha ao copiar valores. Verifique as permissões do navegador.');
+    }
+  };
+
+  /**
    * Paste configuration from Imbuement Calculator
-   * Parses clipboard content and adds items automatically
+   * Accepts JSON format from Imbuement Efficiency Calculator
    */
   const handlePasteFromImbuementCalc = async () => {
     try {
       const clipboardText = await navigator.clipboard.readText();
 
-      // Parse the configuration text
-      // Format: "Powerful Vampirism Imbuement:\n- Use 6 GT (X GP equivalent)\n" or
-      // "Powerful Vampirism Imbuement:\n- Buy items directly (market prices only):\n  - 5x Item: X GP\nTotal: X GP"
+      // Try to parse as JSON first (new format)
+      try {
+        const data = JSON.parse(clipboardText);
 
+        // Check if it's from Imbuement Calculator
+        if (data.type === 'tibia_imbuements' && Array.isArray(data.imbuements)) {
+          // Process each imbuement
+          const newItems = [];
+
+          data.imbuements.forEach(imb => {
+            const parentId = Date.now() + Math.random();
+
+            if (imb.method === 'gt') {
+              // GT payment method
+              const newItem = {
+                id: parentId,
+                name: `${imb.tier.charAt(0).toUpperCase() + imb.tier.slice(1)} ${imb.category} Imbuement`,
+                quantity: 1,
+                unitPrice: imb.gtAmount,
+                priceType: 'GT',
+                itemDuration: imb.duration || 20,
+                isParent: true,
+                hasChildren: false,
+              };
+              newItems.push(newItem);
+            } else if (imb.method === 'gp') {
+              // Market items method - add as parent with service cost as child
+              const parentItem = {
+                id: parentId,
+                name: `${imb.tier.charAt(0).toUpperCase() + imb.tier.slice(1)} ${imb.category} Imbuement`,
+                quantity: 1,
+                unitPrice: 0,
+                priceType: 'GP',
+                itemDuration: imb.duration || 20,
+                isParent: true,
+                hasChildren: true,
+              };
+
+              const serviceCostItem = {
+                id: Date.now() + Math.random() + 0.1,
+                name: `${imb.tier.charAt(0).toUpperCase() + imb.tier.slice(1)} Imbuement Service`,
+                quantity: 1,
+                baseQuantity: 1,
+                unitPrice: imb.feeCost,
+                priceType: 'GP',
+                parentId: parentId,
+                isChild: true,
+                isFixedCost: true,
+                itemDuration: imb.duration || 20,
+              };
+
+              newItems.push(parentItem, serviceCostItem);
+            }
+          });
+
+          if (newItems.length > 0) {
+            setCustomItems([...customItems, ...newItems]);
+            alert(`${data.imbuements.length} imbuement(s) adicionado(s) do Imbuement Calculator!`);
+          }
+          return;
+        }
+      } catch (jsonError) {
+        // Not JSON, try old text format
+      }
+
+      // Old text format parsing (backwards compatibility)
       const lines = clipboardText.split('\n');
       if (lines.length === 0) return;
 
-      // Extract imbuement name from first line
       const titleMatch = lines[0].match(/^(Basic|Intricate|Powerful)\s+(.+)\s+Imbuement:$/);
       if (!titleMatch) {
-        alert('Invalid format. Please copy from Imbuement Calculator.');
+        alert('Formato inválido. Cole dados do Imbuement Calculator (JSON ou texto).');
         return;
       }
 
@@ -555,6 +662,14 @@ export default function ItemCostManager({
           data-cy="solo-hunt-button-add-custom-item"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addCustomItemButton')}
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={handleCopyToEfficiencyCalc}
+          title="Copiar valores dos imbuements para o Efficiency Calculator"
+          data-cy="solo-hunt-button-copy-to-efficiency"
+        >
+          📋 Copiar Imbuements
         </button>
         <button
           className="btn btn-secondary"
@@ -1034,13 +1149,13 @@ export default function ItemCostManager({
             <div className="ring-bis-modal__grid">
               <div
                 className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing') ? 'ring-bis-modal__option--selected' : ''}`}
-                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'))}
+                onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'))}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'));
+                    handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'));
                   }
                 }}
               >
@@ -1051,13 +1166,13 @@ export default function ItemCostManager({
 
               <div
                 className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing') ? 'ring-bis-modal__option--selected' : ''}`}
-                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'))}
+                onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'))}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'));
+                    handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'));
                   }
                 }}
               >
@@ -1068,13 +1183,13 @@ export default function ItemCostManager({
 
               <div
                 className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil') ? 'ring-bis-modal__option--selected' : ''}`}
-                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'))}
+                onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'))}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'));
+                    handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'));
                   }
                 }}
               >
@@ -1085,13 +1200,13 @@ export default function ItemCostManager({
 
               <div
                 className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing') ? 'ring-bis-modal__option--selected' : ''}`}
-                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'))}
+                onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'))}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'));
+                    handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'));
                   }
                 }}
               >
@@ -1102,13 +1217,13 @@ export default function ItemCostManager({
 
               <div
                 className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing') ? 'ring-bis-modal__option--selected' : ''}`}
-                onClick={() => setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'))}
+                onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'))}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedRing(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'));
+                    handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'));
                   }
                 }}
               >
@@ -1119,13 +1234,6 @@ export default function ItemCostManager({
             </div>
 
             <div className="modal-actions">
-              <button
-                className="btn btn-primary"
-                onClick={handleAddRingBis}
-                disabled={!selectedRing}
-              >
-                {t('soloHuntAnalyzer.itemCostManager.ringBisModal.addButton')}
-              </button>
               <button
                 className="btn btn-secondary"
                 onClick={() => {

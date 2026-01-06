@@ -82,8 +82,6 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
   const [copiedConfig, setCopiedConfig] = useState(null);
 
   // Feature 2: Copy/Paste imbuements state
-  const [showCopyModal, setShowCopyModal] = useState(false);
-  const [selectedImbuementsToCopy, setSelectedImbuementsToCopy] = useState([]);
   const [copyFeedback, setCopyFeedback] = useState(null);
   const [pasteFeedback, setPasteFeedback] = useState(null);
 
@@ -120,21 +118,48 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
     };
   }, [itemPrices]);
 
+  // Check if all market items for a tier are filled (required for BEST comparison)
+  const areAllItemsFilled = useMemo(() => {
+    return (imbuementId, tier) => {
+      const imbuement = GT_IMBUEMENTS[imbuementId];
+      const tiers = ['basic', 'intricate', 'powerful'];
+      const tierIndex = tiers.indexOf(tier);
+
+      // Check all items up to selected tier
+      for (let i = 0; i <= tierIndex; i++) {
+        const currentTier = tiers[i];
+        const items = imbuement.items[currentTier];
+
+        // If any item has price = 0, return false
+        for (const item of items) {
+          if (!itemPrices[item.name] || itemPrices[item.name] === 0) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    };
+  }, [itemPrices]);
+
   // Determine which method is cheaper - memoized for performance
   const getBestOption = useMemo(() => {
     return (imbuementId, tier) => {
       const gtCost = calculateGTCost(imbuementId, tier);
       const gpCost = calculateGPCost(imbuementId, tier);
 
+      // If not all market items are filled, don't show BEST highlight
+      const allItemsFilled = areAllItemsFilled(imbuementId, tier);
+
       if (gtCost === 0 && gpCost === 0) {
         return { method: 'none', gtCost, gpCost, savings: 0 };
       }
 
       if (gtCost === 0) {
-        return { method: 'gp', gtCost, gpCost, savings: 0 };
+        return { method: allItemsFilled ? 'gp' : 'none', gtCost, gpCost, savings: 0 };
       }
 
-      if (gpCost === 0) {
+      if (gpCost === 0 || !allItemsFilled) {
         return { method: 'gt', gtCost, gpCost, savings: 0 };
       }
 
@@ -144,7 +169,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         return { method: 'gp', gtCost, gpCost, savings: gtCost - gpCost };
       }
     };
-  }, [calculateGTCost, calculateGPCost]);
+  }, [calculateGTCost, calculateGPCost, areAllItemsFilled]);
 
   // Copy item name to clipboard with error handling
   const copyItemName = async (itemName) => {
@@ -240,31 +265,50 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
   /**
    * Feature 2: Copy selected imbuements to clipboard
-   * Allows user to select 1-3 imbuements and copy their configuration to clipboard as JSON
+   * Asks user for each imbuement (Vampirism, Void, Strike) with best option explanation
    */
   const handleCopyImbuements = async () => {
-    if (selectedImbuementsToCopy.length === 0) {
-      alert(t('imbuementCalculator.copyPaste.selectAtLeastOne'));
-      return;
-    }
+    const imbuementsToCopy = [];
+    const tier = 'powerful'; // Always use powerful tier for Solo Hunt Analyzer
 
-    const imbuementsToCopy = selectedImbuementsToCopy.map(key => {
-      const [imbuementId, tier] = key.split('-');
-      const imbuement = GT_IMBUEMENTS[imbuementId];
+    // Ask for each imbuement
+    for (const [imbuementId, imbuement] of Object.entries(GT_IMBUEMENTS)) {
       const bestOption = getBestOption(imbuementId, tier);
 
-      return {
-        category: imbuement.name,
-        imbuement: `${imbuement.name} (${imbuement.description})`,
-        tier: tier,
-        duration: 20,
-        itemCost: bestOption.gpCost,
-        feeCost: SERVICE_COSTS[tier],
-        method: bestOption.method,
-        gtAmount: imbuement.gtCost[tier],
-        gtCost: bestOption.gtCost,
-      };
-    });
+      // Determine best method description
+      let bestMethodText = '';
+      if (bestOption.method === 'gt') {
+        bestMethodText = `${imbuement.gtCost[tier]} GT (${bestOption.gtCost.toLocaleString('pt-BR')} GP)`;
+      } else if (bestOption.method === 'gp') {
+        bestMethodText = `Market Items (${bestOption.gpCost.toLocaleString('pt-BR')} GP)`;
+      } else {
+        bestMethodText = 'Preencha os valores dos items primeiro';
+      }
+
+      // Ask user if they want to copy this imbuement
+      const userConfirmed = window.confirm(
+        `Copiar ${imbuement.name}?\n\nMelhor opção: ${bestMethodText}`
+      );
+
+      if (userConfirmed) {
+        imbuementsToCopy.push({
+          category: imbuement.name,
+          imbuement: `${imbuement.name} (${imbuement.description})`,
+          tier: tier,
+          duration: 20,
+          itemCost: bestOption.gpCost,
+          feeCost: SERVICE_COSTS[tier],
+          method: bestOption.method,
+          gtAmount: imbuement.gtCost[tier],
+          gtCost: bestOption.gtCost,
+        });
+      }
+    }
+
+    if (imbuementsToCopy.length === 0) {
+      alert('Nenhum imbuement selecionado para copiar.');
+      return;
+    }
 
     const clipboardData = {
       type: 'tibia_imbuements',
@@ -276,10 +320,8 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
     try {
       await navigator.clipboard.writeText(jsonString);
-      setCopyFeedback(t('imbuementCalculator.copyPaste.copySuccess'));
+      setCopyFeedback(`${imbuementsToCopy.length} imbuement(s) copiado(s) com sucesso!`);
       setTimeout(() => setCopyFeedback(null), 3000);
-      setShowCopyModal(false);
-      setSelectedImbuementsToCopy([]);
     } catch (error) {
       console.error('Failed to copy imbuements:', error);
       // Fallback for non-HTTPS contexts or older browsers
@@ -292,20 +334,18 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        setCopyFeedback(t('imbuementCalculator.copyPaste.copySuccess'));
+        setCopyFeedback(`${imbuementsToCopy.length} imbuement(s) copiado(s) com sucesso!`);
         setTimeout(() => setCopyFeedback(null), 3000);
-        setShowCopyModal(false);
-        setSelectedImbuementsToCopy([]);
       } catch (fallbackError) {
         console.error('Fallback copy failed:', fallbackError);
-        alert(t('imbuementCalculator.copyPaste.copyError'));
+        alert('Falha ao copiar. Por favor, tente novamente.');
       }
     }
   };
 
   /**
    * Feature 2: Paste imbuements from clipboard
-   * Reads JSON from clipboard and applies item prices + GT price
+   * Reads JSON from Solo Hunt Analyzer and applies item prices + GT price
    */
   const handlePasteImbuements = async () => {
     let clipboardText = '';
@@ -316,8 +356,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       console.error('Failed to read from clipboard:', error);
       // Fallback: Ask user to paste manually
       clipboardText = window.prompt(
-        t('imbuementCalculator.copyPaste.pasteManualPrompt') ||
-          'Clipboard API not available. Please paste the JSON data here:'
+        'Clipboard API not available. Please paste the JSON data here:'
       );
 
       if (!clipboardText) {
@@ -328,14 +367,38 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
     try {
       const data = JSON.parse(clipboardText);
 
-      // Validate JSON structure
-      if (data.type !== 'tibia_imbuements' || !Array.isArray(data.imbuements)) {
-        alert(t('imbuementCalculator.copyPaste.invalidFormat'));
+      // Check if data is from Solo Hunt Analyzer (new format)
+      if (data.type === 'tibia_imbuement_prices' && data.source === 'solo_hunt_analyzer') {
+        // Apply item prices from Solo Hunt Analyzer
+        const newItemPrices = { ...itemPrices };
+
+        // Copy all item prices
+        Object.keys(data.itemPrices).forEach(itemName => {
+          if (newItemPrices.hasOwnProperty(itemName)) {
+            newItemPrices[itemName] = data.itemPrices[itemName] || 0;
+          }
+        });
+
+        // Update state
+        setItemPrices(newItemPrices);
+        if (data.goldTokenPrice && data.goldTokenPrice > 0) {
+          setGoldTokenPrice(data.goldTokenPrice);
+        }
+
+        setPasteFeedback('Valores colados do Solo Hunt Analyzer com sucesso!');
+        setTimeout(() => setPasteFeedback(null), 3000);
+
+        alert('Valores dos imbuements importados do Solo Hunt Analyzer!');
         return;
       }
 
-      // Apply imbuement data to current state
-      // Since we're pasting item costs, we reconstruct item prices from the pasted data
+      // Old format validation (for backwards compatibility)
+      if (data.type !== 'tibia_imbuements' || !Array.isArray(data.imbuements)) {
+        alert('Formato inválido. Cole dados do Solo Hunt Analyzer ou Imbuement Calculator.');
+        return;
+      }
+
+      // Apply imbuement data from old format (kept for backwards compatibility)
       let appliedCount = 0;
       const newItemPrices = { ...itemPrices };
 
@@ -346,27 +409,19 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
         if (!imbuement) return;
 
-        // If method was 'gp', we can back-calculate item prices
-        // We distribute the total itemCost evenly among all items based on quantity
         if (imb.method === 'gp' && imb.itemCost > 0) {
           const tiers = ['basic', 'intricate', 'powerful'];
           const tierIndex = tiers.indexOf(imb.tier);
 
-          // For each tier up to the selected tier
           for (let i = 0; i <= tierIndex; i++) {
             const currentTier = tiers[i];
             const items = imbuement.items[currentTier];
 
             if (!items || items.length === 0) continue;
 
-            // Calculate total quantity for this tier
             const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-
-            // Calculate unit price (total cost / total quantity)
-            // This is an approximation assuming all items have same price
             const unitPrice = totalQuantity > 0 ? imb.itemCost / totalQuantity : 0;
 
-            // Apply price to each item in this tier
             items.forEach(item => {
               newItemPrices[item.name] = Math.round(unitPrice);
             });
@@ -376,17 +431,12 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         appliedCount++;
       });
 
-      // Update state with new prices
       setItemPrices(newItemPrices);
-
-      setPasteFeedback(
-        t('imbuementCalculator.copyPaste.pasteSuccess', { count: appliedCount })
-      );
+      setPasteFeedback(`${appliedCount} imbuement(s) colado(s) com sucesso!`);
       setTimeout(() => setPasteFeedback(null), 5000);
 
-      // Show info alert with what was pasted
       alert(
-        `${t('imbuementCalculator.copyPaste.pastedInfo')}:\n\n` +
+        `Imbuements importados:\n\n` +
         data.imbuements.map(
           imb => `• ${imb.imbuement} (${imb.tier}): ${imb.method === 'gt' ? `${imb.gtAmount} GT` : `${imb.itemCost.toLocaleString('pt-BR')} GP`}`
         ).join('\n')
@@ -394,21 +444,10 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
     } catch (error) {
       console.error('Failed to paste imbuements:', error);
-      alert(t('imbuementCalculator.copyPaste.pasteError'));
+      alert('Falha ao colar. Verifique o formato dos dados.');
     }
   };
 
-  /**
-   * Toggle imbuement selection for copying
-   */
-  const toggleImbuementSelection = (imbuementId, tier) => {
-    const key = `${imbuementId}-${tier}`;
-    setSelectedImbuementsToCopy(prev =>
-      prev.includes(key)
-        ? prev.filter(k => k !== key)
-        : [...prev, key]
-    );
-  };
 
   return (
     <div className="imbuement-calculator">
@@ -436,7 +475,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       <div className="copy-paste-section">
         <button
           className="btn btn-secondary"
-          onClick={() => setShowCopyModal(true)}
+          onClick={handleCopyImbuements}
           title={t('imbuementCalculator.copyPaste.copyButtonTitle')}
         >
           📋 {t('imbuementCalculator.copyPaste.copyButton')}
@@ -458,12 +497,8 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           imbuement={GT_IMBUEMENTS.vampirism}
           itemPrices={itemPrices}
           copiedItem={copiedItem}
-          copiedConfig={copiedConfig}
           onPriceChange={handlePriceChange}
           onCopyItemName={copyItemName}
-          onCopyToAnalyzer={copyToAnalyzer}
-          calculateGTCost={calculateGTCost}
-          calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
         />
         <ImbuementBlock
@@ -492,81 +527,6 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         />
       </div>
 
-      {/* Copy Imbuements Modal */}
-      {showCopyModal && (
-        <div
-          className="modal-overlay"
-          onClick={() => setShowCopyModal(false)}
-          role="presentation"
-          aria-label={t('imbuementCalculator.copyPaste.closeModal')}
-        >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-labelledby="copy-imbuements-modal-title"
-            aria-modal="true"
-          >
-            <h3 id="copy-imbuements-modal-title">
-              {t('imbuementCalculator.copyPaste.modalTitle')}
-            </h3>
-            <p className="modal-description">
-              {t('imbuementCalculator.copyPaste.modalDescription')}
-            </p>
-
-            <div className="imbuements-selection">
-              {Object.entries(GT_IMBUEMENTS).map(([imbuementId, imbuement]) => (
-                <div key={imbuementId} className="imbuement-selection-block">
-                  <h4>{imbuement.name} ({imbuement.description})</h4>
-                  <div className="tier-checkboxes">
-                    {['powerful', 'intricate', 'basic'].map(tier => {
-                      const key = `${imbuementId}-${tier}`;
-                      const bestOption = getBestOption(imbuementId, tier);
-                      return (
-                        <label key={tier} className="checkbox-label">
-                          <input
-                            type="checkbox"
-                            checked={selectedImbuementsToCopy.includes(key)}
-                            onChange={() => toggleImbuementSelection(imbuementId, tier)}
-                          />
-                          <span className="tier-name">
-                            {tier.charAt(0).toUpperCase() + tier.slice(1)}
-                          </span>
-                          <span className="tier-cost">
-                            {bestOption.method === 'gt'
-                              ? `${imbuement.gtCost[tier]} GT (${bestOption.gtCost.toLocaleString('pt-BR')} GP)`
-                              : `${bestOption.gpCost.toLocaleString('pt-BR')} GP`
-                            }
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="modal-actions">
-              <button
-                className="btn btn-primary"
-                onClick={handleCopyImbuements}
-                disabled={selectedImbuementsToCopy.length === 0}
-              >
-                {t('imbuementCalculator.copyPaste.copySelected')} ({selectedImbuementsToCopy.length})
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => {
-                  setShowCopyModal(false);
-                  setSelectedImbuementsToCopy([]);
-                }}
-              >
-                {t('imbuementCalculator.copyPaste.cancel')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -13,12 +13,8 @@ export default function ImbuementBlock({
   imbuement,
   itemPrices,
   copiedItem,
-  copiedConfig,
   onPriceChange,
   onCopyItemName,
-  onCopyToAnalyzer,
-  calculateGTCost,
-  calculateGPCost,
   getBestOption,
 }) {
   const { t } = useTranslation();
@@ -27,7 +23,7 @@ export default function ImbuementBlock({
   const [showIntricate, setShowIntricate] = useState(false);
   const [showBasic, setShowBasic] = useState(false);
 
-  const tiers = ['powerful', 'intricate', 'basic']; // Order: powerful first (most common)
+  const tiers = ['basic', 'intricate', 'powerful']; // Order: basic → intricate → powerful (top to bottom)
 
   return (
     <div className="imbuement-block">
@@ -99,14 +95,6 @@ export default function ImbuementBlock({
                   💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {bestOption.method === 'gt' ? 'GT' : 'Market'}
                 </div>
               )}
-
-              <button
-                className="btn-copy-to-analyzer"
-                onClick={() => onCopyToAnalyzer(imbuement.id, tier)}
-                title={t('imbuementCalculator.copyToAnalyzer')}
-              >
-                {copiedConfig === `${imbuement.id}-${tier}` ? '✓ Copied!' : t('imbuementCalculator.copyToAnalyzer')}
-              </button>
             </div>
           );
         })()}
@@ -144,14 +132,6 @@ export default function ImbuementBlock({
                   💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {bestOption.method === 'gt' ? 'GT' : 'Market'}
                 </div>
               )}
-
-              <button
-                className="btn-copy-to-analyzer"
-                onClick={() => onCopyToAnalyzer(imbuement.id, tier)}
-                title={t('imbuementCalculator.copyToAnalyzer')}
-              >
-                {copiedConfig === `${imbuement.id}-${tier}` ? '✓ Copied!' : t('imbuementCalculator.copyToAnalyzer')}
-              </button>
             </div>
           );
         })()}
@@ -189,14 +169,6 @@ export default function ImbuementBlock({
                   💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {bestOption.method === 'gt' ? 'GT' : 'Market'}
                 </div>
               )}
-
-              <button
-                className="btn-copy-to-analyzer"
-                onClick={() => onCopyToAnalyzer(imbuement.id, tier)}
-                title={t('imbuementCalculator.copyToAnalyzer')}
-              >
-                {copiedConfig === `${imbuement.id}-${tier}` ? '✓ Copied!' : t('imbuementCalculator.copyToAnalyzer')}
-              </button>
             </div>
           );
         })()}
@@ -231,11 +203,7 @@ ImbuementBlock.propTypes = {
   }).isRequired,
   itemPrices: PropTypes.object.isRequired,
   copiedItem: PropTypes.string,
-  copiedConfig: PropTypes.string,
   onPriceChange: PropTypes.func.isRequired,
   onCopyItemName: PropTypes.func.isRequired,
-  onCopyToAnalyzer: PropTypes.func.isRequired,
-  calculateGTCost: PropTypes.func.isRequired,
-  calculateGPCost: PropTypes.func.isRequired,
   getBestOption: PropTypes.func.isRequired,
 };

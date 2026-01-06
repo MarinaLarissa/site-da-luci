@@ -68,6 +68,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   // Use ref instead of state to avoid React functional update issues
   const saveHuntToHistoryRef = useRef(null);
   const resultsRef = useRef(null);
+  const hasCalculatedRef = useRef(hasCalculated);
 
   // Save silver token and tibia coin prices to localStorage whenever they change
   // (Gold token price is saved by App.js)
@@ -98,25 +99,36 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
     }
   }, [error]);
 
+  // Keep refs in sync with state
+  useEffect(() => {
+    hasCalculatedRef.current = hasCalculated;
+  }, [hasCalculated]);
+
+  useEffect(() => {
+    resultsRef.current = results;
+  }, [results]);
+
   // Clear results and re-enable calculate button when items are modified after calculation
   // This prevents stale results and prompts user to recalculate
   useEffect(() => {
-    if (results && customItems.length > 0) {
+    if (resultsRef.current && customItems.length > 0) {
       setResults(null);
     }
     // Re-enable calculate button when items are edited/added
-    if (hasCalculated) {
+    if (hasCalculatedRef.current) {
       setHasCalculated(false);
       setNeedsRecalculation(true);
     }
-  }, [customItems, hasCalculated, results]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [customItems]); // Only customItems in dependencies - using refs for hasCalculated and results
 
   // Detect price changes and set needsRecalculation
   useEffect(() => {
-    if (hasCalculated) {
+    if (hasCalculatedRef.current) {
       setNeedsRecalculation(true);
     }
-  }, [goldTokenPrice, silverTokenPrice, tibiaCoinPrice, hasCalculated]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [goldTokenPrice, silverTokenPrice, tibiaCoinPrice]); // Only prices in dependencies - using ref for hasCalculated
 
   /**
    * Parse session data (single player only)
