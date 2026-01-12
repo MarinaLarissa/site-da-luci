@@ -48,6 +48,9 @@ const GT_IMBUEMENTS = {
   },
 };
 
+// Tier order constant (used throughout calculations)
+const TIER_ORDER = ['basic', 'intricate', 'powerful'];
+
 // Fixed service fees - NPC fees charged by Imbuing Shrines (NOT customizable)
 // These are official Tibia values and cannot be changed by the user
 const SERVICE_FEES = {
@@ -102,17 +105,16 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       let totalItemCost = 0;
 
       // Calculate cumulative items cost (basic, basic+intricate, basic+intricate+powerful)
-      const tiers = ['basic', 'intricate', 'powerful'];
+      const tiers = TIER_ORDER;
       const tierIndex = tiers.indexOf(tier);
 
       for (let i = 0; i <= tierIndex; i++) {
         const currentTier = tiers[i];
         const items = imbuement.items[currentTier];
 
-        // eslint-disable-next-line no-loop-func
-        items.forEach(item => {
+        for (const item of items) {
           totalItemCost += item.quantity * (itemPrices[item.name] || 0);
-        });
+        }
       }
 
       // Add service fee (same fee applies to both GT and Market options)
@@ -125,7 +127,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
   const calculateHybridCost = useMemo(() => {
     return (imbuementId, tier, gtTiers) => {
       const imbuement = GT_IMBUEMENTS[imbuementId];
-      const tiers = ['basic', 'intricate', 'powerful'];
+      const tiers = TIER_ORDER;
       const tierIndex = tiers.indexOf(tier);
 
       let totalGTCost = 0;
@@ -142,9 +144,9 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         } else {
           // Buy this tier items on market
           const items = imbuement.items[currentTier];
-          items.forEach(item => {
+          for (const item of items) {
             totalItemCost += item.quantity * (itemPrices[item.name] || 0);
-          });
+          }
         }
       }
 
@@ -158,7 +160,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
   const areAllItemsFilled = useMemo(() => {
     return (imbuementId, tier) => {
       const imbuement = GT_IMBUEMENTS[imbuementId];
-      const tiers = ['basic', 'intricate', 'powerful'];
+      const tiers = TIER_ORDER;
       const tierIndex = tiers.indexOf(tier);
 
       // Check all items up to selected tier
@@ -181,7 +183,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
   // Determine which method is cheaper (comparing 4 options: Full GT, Full Market, 2 Hybrids) - memoized for performance
   const getBestOption = useMemo(() => {
     return (imbuementId, tier) => {
-      const tiers = ['basic', 'intricate', 'powerful'];
+      const tiers = TIER_ORDER;
       const tierIndex = tiers.indexOf(tier);
 
       // If not all market items are filled, don't show BEST highlight
@@ -313,18 +315,17 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       config += `- Use ${imbuement.gtCost[tier]} GT (${bestOption.gtCost.toLocaleString('pt-BR')} GP equivalent)\n`;
     } else {
       config += `- Buy items directly (market prices only):\n`;
-      const tiers = ['basic', 'intricate', 'powerful'];
+      const tiers = TIER_ORDER;
       const tierIndex = tiers.indexOf(tier);
 
       for (let i = 0; i <= tierIndex; i++) {
         const currentTier = tiers[i];
         const items = imbuement.items[currentTier];
 
-        // eslint-disable-next-line no-loop-func
-        items.forEach(item => {
+        for (const item of items) {
           const itemCost = item.quantity * (itemPrices[item.name] || 0);
           config += `  - ${item.quantity}x ${item.name}: ${itemCost.toLocaleString('pt-BR')} GP\n`;
-        });
+        }
       }
       // Service fee is NOT included in calculation
     }
@@ -395,16 +396,15 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         // Calculate item cost WITHOUT service fee for Solo Hunt Analyzer compatibility
         const imbuementData = GT_IMBUEMENTS[imbuementId];
         let itemsOnlyGPCost = 0;
-        const tiers = ['basic', 'intricate', 'powerful'];
+        const tiers = TIER_ORDER;
         const tierIndex = tiers.indexOf(tier);
 
         for (let i = 0; i <= tierIndex; i++) {
           const currentTier = tiers[i];
           const items = imbuementData.items[currentTier];
-          // eslint-disable-next-line no-loop-func
-          items.forEach(item => {
+          for (const item of items) {
             itemsOnlyGPCost += item.quantity * (itemPrices[item.name] || 0);
-          });
+          }
         }
 
         imbuementsToCopy.push({
@@ -526,7 +526,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
         if (!imbuement) return;
 
         if (imb.method === 'gp' && imb.itemCost > 0) {
-          const tiers = ['basic', 'intricate', 'powerful'];
+          const tiers = TIER_ORDER;
           const tierIndex = tiers.indexOf(imb.tier);
 
           for (let i = 0; i <= tierIndex; i++) {
@@ -618,7 +618,6 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onPriceChange={handlePriceChange}
           onCopyItemName={copyItemName}
           getBestOption={getBestOption}
-          calculateGTCost={calculateGTCost}
           calculateGPCost={calculateGPCost}
         />
         <ImbuementBlock
@@ -631,7 +630,6 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onPriceChange={handlePriceChange}
           onCopyItemName={copyItemName}
           onCopyToAnalyzer={copyToAnalyzer}
-          calculateGTCost={calculateGTCost}
           calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
         />
@@ -645,7 +643,6 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onPriceChange={handlePriceChange}
           onCopyItemName={copyItemName}
           onCopyToAnalyzer={copyToAnalyzer}
-          calculateGTCost={calculateGTCost}
           calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
         />

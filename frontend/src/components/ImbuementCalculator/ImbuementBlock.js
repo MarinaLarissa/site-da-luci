@@ -3,7 +3,7 @@
  * Displays a single imbuement with price inputs and tier calculations
  */
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
@@ -18,7 +18,6 @@ export default function ImbuementBlock({
   onPriceChange,
   onCopyItemName,
   getBestOption,
-  calculateGTCost,
   calculateGPCost,
 }) {
   const { t } = useTranslation();
@@ -27,7 +26,9 @@ export default function ImbuementBlock({
   const [showIntricate, setShowIntricate] = useState(false);
   const [showBasic, setShowBasic] = useState(false);
 
-  const tiers = ['basic', 'intricate', 'powerful']; // Order: basic → intricate → powerful (top to bottom)
+  // Tier order constant (matches ImbuementCalculator.js)
+  const TIER_ORDER = ['basic', 'intricate', 'powerful'];
+  const tiers = TIER_ORDER; // Order: basic → intricate → powerful (top to bottom)
 
   // Validation: Check if GT price AND all required item prices are filled for a tier
   const isValidForBestComparison = (tier) => {
@@ -52,48 +53,51 @@ export default function ImbuementBlock({
     return true;
   };
 
-  // Helper function to calculate cumulative item quantities for tooltip
-  const getCumulativeQuantity = (itemName, tier) => {
-    const tierIndex = tiers.indexOf(tier);
-    let total = 0;
+  // Helper function to calculate cumulative item quantities for tooltip (memoized)
+  const getCumulativeQuantity = useMemo(() => {
+    return (itemName, tier) => {
+      const tierIndex = tiers.indexOf(tier);
+      let total = 0;
 
-    for (let i = 0; i <= tierIndex; i++) {
-      const currentTier = tiers[i];
-      const items = imbuement.items[currentTier];
-      const item = items.find(it => it.name === itemName);
-      if (item) {
-        total += item.quantity;
+      for (let i = 0; i <= tierIndex; i++) {
+        const currentTier = tiers[i];
+        const items = imbuement.items[currentTier];
+        const item = items.find(it => it.name === itemName);
+        if (item) {
+          total += item.quantity;
+        }
       }
-    }
 
-    return total;
-  };
+      return total;
+    };
+  }, [imbuement.items, tiers]);
 
-  // Helper function to get items cost breakdown (without service fee)
-  const getItemsCostBreakdown = (tier) => {
-    const tierIndex = tiers.indexOf(tier);
-    let totalCost = 0;
-    const breakdown = [];
+  // Helper function to get items cost breakdown (without service fee) (memoized)
+  const getItemsCostBreakdown = useMemo(() => {
+    return (tier) => {
+      const tierIndex = tiers.indexOf(tier);
+      let totalCost = 0;
+      const breakdown = [];
 
-    for (let i = 0; i <= tierIndex; i++) {
-      const currentTier = tiers[i];
-      const items = imbuement.items[currentTier];
+      for (let i = 0; i <= tierIndex; i++) {
+        const currentTier = tiers[i];
+        const items = imbuement.items[currentTier];
 
-      // eslint-disable-next-line no-loop-func
-      items.forEach(item => {
-        const itemCost = item.quantity * (itemPrices[item.name] || 0);
-        totalCost += itemCost;
-        breakdown.push({
-          name: item.name,
-          quantity: item.quantity,
-          unitPrice: itemPrices[item.name] || 0,
-          totalCost: itemCost,
-        });
-      });
-    }
+        for (const item of items) {
+          const itemCost = item.quantity * (itemPrices[item.name] || 0);
+          totalCost += itemCost;
+          breakdown.push({
+            name: item.name,
+            quantity: item.quantity,
+            unitPrice: itemPrices[item.name] || 0,
+            totalCost: itemCost,
+          });
+        }
+      }
 
-    return { totalCost, breakdown };
-  };
+      return { totalCost, breakdown };
+    };
+  }, [itemPrices, imbuement.items, tiers]);
 
   return (
     <div className="imbuement-block">
@@ -146,7 +150,7 @@ export default function ImbuementBlock({
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
           const itemsBreakdown = getItemsCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
-          const gtCostWithoutFee = (imbuement.gtCost[tier] * (calculateGTCost(imbuement.id, tier) - serviceFee)) / imbuement.gtCost[tier] || 0;
+          const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
@@ -230,7 +234,7 @@ export default function ImbuementBlock({
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
           const itemsBreakdown = getItemsCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
-          const gtCostWithoutFee = (imbuement.gtCost[tier] * (calculateGTCost(imbuement.id, tier) - serviceFee)) / imbuement.gtCost[tier] || 0;
+          const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
@@ -314,7 +318,7 @@ export default function ImbuementBlock({
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
           const itemsBreakdown = getItemsCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
-          const gtCostWithoutFee = (imbuement.gtCost[tier] * (calculateGTCost(imbuement.id, tier) - serviceFee)) / imbuement.gtCost[tier] || 0;
+          const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
@@ -416,8 +420,15 @@ ImbuementBlock.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    items: PropTypes.object.isRequired,
-    gtCost: PropTypes.object.isRequired,
+    items: PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          quantity: PropTypes.number.isRequired,
+        })
+      )
+    ).isRequired,
+    gtCost: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
   itemPrices: PropTypes.object.isRequired,
   serviceFees: PropTypes.object.isRequired,
@@ -426,6 +437,5 @@ ImbuementBlock.propTypes = {
   onPriceChange: PropTypes.func.isRequired,
   onCopyItemName: PropTypes.func.isRequired,
   getBestOption: PropTypes.func.isRequired,
-  calculateGTCost: PropTypes.func.isRequired,
   calculateGPCost: PropTypes.func.isRequired,
 };
