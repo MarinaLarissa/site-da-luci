@@ -394,6 +394,20 @@
       "invalidFormat": "Formato inválido. Por favor, copie imbuements da Calculadora de Imbuements primeiro.",
       "pastedInfo": "Imbuements colados",
       "pasteManualPrompt": "API de Clipboard não disponível. Por favor, cole os dados JSON aqui:"
+    },
+    "hybridScenarios": {
+      "bestOptionBadge": "⭐ Melhor Opção",
+      "fullGT": "Todos com GT",
+      "fullMarket": "Todos no Market",
+      "hybrid1": "Híbrido (Basic com GT + resto no Market)",
+      "hybrid2": "Híbrido (Basic+Intricate com GT + Powerful no Market)",
+      "descriptions": {
+        "fullGT": "Todas as tiers compradas com Gold Token",
+        "fullMarket": "Todas as tiers compradas no market",
+        "hybrid1": "Tier Basic com GT + resto no market",
+        "hybrid2": "Basic e Intricate com GT + Powerful no market"
+      },
+      "totalCost": "Custo Total"
     }
   }
 }

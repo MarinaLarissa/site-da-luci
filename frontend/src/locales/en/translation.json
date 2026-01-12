@@ -394,6 +394,20 @@
       "invalidFormat": "Invalid format. Please copy imbuements from the Imbuement Calculator first.",
       "pastedInfo": "Pasted imbuements",
       "pasteManualPrompt": "Clipboard API not available. Please paste the JSON data here:"
+    },
+    "hybridScenarios": {
+      "bestOptionBadge": "⭐ Best Option",
+      "fullGT": "Full GT",
+      "fullMarket": "Full Market",
+      "hybrid1": "Hybrid (Basic GT + rest Market)",
+      "hybrid2": "Hybrid (Basic+Intricate GT + Powerful Market)",
+      "descriptions": {
+        "fullGT": "All tiers with GT",
+        "fullMarket": "All tiers on market",
+        "hybrid1": "Basic tier with GT + rest on market",
+        "hybrid2": "Basic and Intricate with GT + Powerful on market"
+      },
+      "totalCost": "Total Cost"
     }
   }
 }

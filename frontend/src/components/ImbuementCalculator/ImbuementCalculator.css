@@ -411,6 +411,84 @@
   margin-bottom: 12px;
 }
 
+/* Best Option Highlight (Hybrid Scenarios) */
+.best-option-highlight {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border: 2px solid var(--imbuement-success);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.best-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--imbuement-success);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.best-option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.best-option-content strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--imbuement-success);
+}
+
+.best-option-description {
+  font-size: 13px;
+  color: var(--imbuement-text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.best-option-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--imbuement-bg-darker);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.best-option-cost .cost-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--imbuement-text-muted);
+}
+
+.best-option-cost .cost-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--imbuement-success);
+}
+
 /* Copy to Analyzer Button */
 .btn-copy-to-analyzer {
   width: 100%;
