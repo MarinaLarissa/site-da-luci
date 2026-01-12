@@ -373,8 +373,8 @@
       "itemPrice": "Unit price in GP"
     },
     "tooltips": {
-      "gtCost": "Cost using Gold Tokens (converted to GP)",
-      "gpCost": "Cost buying items directly from market + service fee"
+      "gtCost": "Cost using Gold Tokens (converted to GP) + Service Fee",
+      "gpCost": "Cost buying items directly from market + Service Fee"
     },
     "copyPaste": {
       "copyButton": "Copy Imbuements",
