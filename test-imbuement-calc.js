@@ -52,8 +52,8 @@ function calculateGTCost(tier) {
   const gtAmount = VAMPIRISM[tier].gtCost;
   const gtCostInGP = gtAmount * GT_PRICE;
   const serviceFee = tier === 'basic' ? SERVICE_FEE_BASIC :
-                     tier === 'intricate' ? SERVICE_FEE_INTRICATE :
-                     SERVICE_FEE_POWERFUL;
+    tier === 'intricate' ? SERVICE_FEE_INTRICATE :
+      SERVICE_FEE_POWERFUL;
   return gtCostInGP + serviceFee;
 }
 
@@ -62,14 +62,14 @@ function calculateMarketCost(tier) {
 
   VAMPIRISM[tier].items.forEach(item => {
     const price = item.name === 'Vampire Teeth' ? VAMPIRE_TEETH_PRICE :
-                  item.name === 'Bloody Pincers' ? BLOODY_PINCER_PRICE :
-                  PIECE_DEAD_BRAIN_PRICE;
+      item.name === 'Bloody Pincers' ? BLOODY_PINCER_PRICE :
+        PIECE_DEAD_BRAIN_PRICE;
     itemsCost += item.quantity * price;
   });
 
   const serviceFee = tier === 'basic' ? SERVICE_FEE_BASIC :
-                     tier === 'intricate' ? SERVICE_FEE_INTRICATE :
-                     SERVICE_FEE_POWERFUL;
+    tier === 'intricate' ? SERVICE_FEE_INTRICATE :
+      SERVICE_FEE_POWERFUL;
   return itemsCost + serviceFee;
 }
 
@@ -97,14 +97,14 @@ console.log(`  Service Fee (Powerful): ${formatGP(SERVICE_FEE_POWERFUL)} gp`);
   const gtCost = calculateGTCost(tier);
   const marketCost = calculateMarketCost(tier);
   const gtCostWithoutFee = gtCost - (tier === 'basic' ? SERVICE_FEE_BASIC :
-                                     tier === 'intricate' ? SERVICE_FEE_INTRICATE :
-                                     SERVICE_FEE_POWERFUL);
+    tier === 'intricate' ? SERVICE_FEE_INTRICATE :
+      SERVICE_FEE_POWERFUL);
   const marketCostWithoutFee = marketCost - (tier === 'basic' ? SERVICE_FEE_BASIC :
-                                             tier === 'intricate' ? SERVICE_FEE_INTRICATE :
-                                             SERVICE_FEE_POWERFUL);
+    tier === 'intricate' ? SERVICE_FEE_INTRICATE :
+      SERVICE_FEE_POWERFUL);
   const serviceFee = tier === 'basic' ? SERVICE_FEE_BASIC :
-                     tier === 'intricate' ? SERVICE_FEE_INTRICATE :
-                     SERVICE_FEE_POWERFUL;
+    tier === 'intricate' ? SERVICE_FEE_INTRICATE :
+      SERVICE_FEE_POWERFUL;
 
   console.log('\n📊 COST WITH GT:');
   console.log(`  GT Cost: (${VAMPIRISM[tier].gtCost} × ${formatGP(GT_PRICE)}) = ${formatGP(gtCostWithoutFee)} gp`);
@@ -114,8 +114,8 @@ console.log(`  Service Fee (Powerful): ${formatGP(SERVICE_FEE_POWERFUL)} gp`);
   console.log('\n📊 COST WITH MARKET:');
   VAMPIRISM[tier].items.forEach(item => {
     const price = item.name === 'Vampire Teeth' ? VAMPIRE_TEETH_PRICE :
-                  item.name === 'Bloody Pincers' ? BLOODY_PINCER_PRICE :
-                  PIECE_DEAD_BRAIN_PRICE;
+      item.name === 'Bloody Pincers' ? BLOODY_PINCER_PRICE :
+        PIECE_DEAD_BRAIN_PRICE;
     const itemCost = item.quantity * price;
     console.log(`  ${item.name}: (${item.quantity} × ${formatGP(price)}) = ${formatGP(itemCost)} gp`);
   });
