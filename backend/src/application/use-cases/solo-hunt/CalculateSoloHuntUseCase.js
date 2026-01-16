@@ -6,9 +6,23 @@
 
 /**
  * Parse duration string to hours
- * Examples: "2h 30m" -> 2.5, "1h 45m 30s" -> 1.758
+ * Examples:
+ * - "2h 30m" -> 2.5
+ * - "1h 45m 30s" -> 1.758
+ * - "03:00h" -> 3.0 (HH:MM format)
+ * - "02:45:30h" -> 2.758 (HH:MM:SS format)
  */
 function parseDurationToHours(durationStr) {
+  // Check for colon-based format first (HH:MM:SSh or HH:MMh)
+  const colonFormatMatch = durationStr.match(/(\d+):(\d+)(?::(\d+))?h/);
+  if (colonFormatMatch) {
+    const hours = parseInt(colonFormatMatch[1], 10);
+    const minutes = parseInt(colonFormatMatch[2], 10);
+    const seconds = colonFormatMatch[3] ? parseInt(colonFormatMatch[3], 10) : 0;
+    return hours + minutes / 60 + seconds / 3600;
+  }
+
+  // Fallback to space-separated format (2h 30m 15s)
   const hoursMatch = durationStr.match(/(\d+)h/);
   const minutesMatch = durationStr.match(/(\d+)m/);
   const secondsMatch = durationStr.match(/(\d+)s/);
@@ -31,6 +45,7 @@ class CalculateSoloHuntUseCase {
    * @param {Number} input.goldTokenPrice - GP per Gold Token
    * @param {Number} input.silverTokenPrice - GP per Silver Token
    * @param {Number} input.tibiaCoinPrice - GP per Tibia Coin
+   * @param {Number} input.tibiaCoinSellPrice - Real money per Tibia Coin (USD/TC)
    * @returns {Object} Calculation results
    */
   execute(input) {
@@ -40,6 +55,7 @@ class CalculateSoloHuntUseCase {
       goldTokenPrice,
       silverTokenPrice,
       tibiaCoinPrice,
+      tibiaCoinSellPrice,
     } = input;
 
     // Validate inputs
@@ -149,6 +165,19 @@ class CalculateSoloHuntUseCase {
     const tcPerHour =
       huntDurationHours > 0 && tibiaCoinPrice > 0 ? tcTotal / huntDurationHours : 0;
 
+    // Debug logging (temporary - remove after debugging)
+    console.log('[CalculateSoloHuntUseCase] Debug metrics:', {
+      huntDurationHours,
+      adjustedBalance,
+      tibiaCoinPrice,
+      profitPerHour,
+      tcTotal,
+      tcPerHour,
+    });
+
+    // Calculate Money Maked (real money earned from selling TC)
+    const moneyMaked = tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0 ? tcTotal * tibiaCoinSellPrice : 0;
+
     // Return results
     return {
       session: parsedSession,
@@ -159,6 +188,7 @@ class CalculateSoloHuntUseCase {
         goldTokenPrice,
         silverTokenPrice,
         tibiaCoinPrice,
+        tibiaCoinSellPrice, // Add tibiaCoinSellPrice to costs object
         items: customItems,
         gpPerHour: totalGpPerHour, // GP per hour (only for items with itemDuration)
         additionalCost: totalCostGP, // Total proportional cost for this hunt
@@ -169,6 +199,7 @@ class CalculateSoloHuntUseCase {
       suppliesPerHour,
       tcTotal,
       tcPerHour,
+      moneyMaked,
       // Additional data for hunt history
       huntData: {
         playerName: parsedSession.player.name,
@@ -182,6 +213,8 @@ class CalculateSoloHuntUseCase {
         tcTotal: tibiaCoinPrice > 0 ? Math.floor(tcTotal) : null,
         tcPerHour: tibiaCoinPrice > 0 ? Math.floor(tcPerHour) : null,
         tibiaCoinPrice: tibiaCoinPrice > 0 ? tibiaCoinPrice : null,
+        moneyMaked: tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0 ? parseFloat(moneyMaked.toFixed(2)) : null,
+        tibiaCoinSellPrice: tibiaCoinSellPrice > 0 ? tibiaCoinSellPrice : null,
       },
     };
   }

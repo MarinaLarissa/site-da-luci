@@ -6,6 +6,7 @@
 import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { formatGPValue } from '../../utils/formatters';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
 
@@ -166,7 +167,13 @@ export default function ImbuementBlock({
                     <p className="best-option-description">{bestOption.description}</p>
                     <div className="best-option-cost">
                       <span className="cost-label">Total Cost:</span>
-                      <span className="cost-value">{bestOption.cost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                          {formatGPValue(bestOption.cost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -179,15 +186,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">GT Cost:</span>
-                      <span className="breakdown-value">{gtCostWithoutFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                          {formatGPValue(gtCostWithoutFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gtCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                          {formatGPValue(bestOption.gtCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -198,15 +223,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">Items Cost:</span>
-                      <span className="breakdown-value">{itemsBreakdown.totalCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                          {formatGPValue(itemsBreakdown.totalCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gpCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                          {formatGPValue(bestOption.gpCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -214,7 +257,13 @@ export default function ImbuementBlock({
 
               {isValid && bestOption.savings > 0 && (
                 <div className="savings">
-                  💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {
+                  💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
+                    <span title={formatGPValue(bestOption.savings).full}>
+                      {formatGPValue(bestOption.savings).formatted}
+                    </span>
+                  ) : (
+                    formatGPValue(bestOption.savings).formatted
+                  )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
                     bestOption.method === 'hybrid1' ? 'Hybrid (Basic GT + rest Market)' :
@@ -250,7 +299,13 @@ export default function ImbuementBlock({
                     <p className="best-option-description">{bestOption.description}</p>
                     <div className="best-option-cost">
                       <span className="cost-label">Total Cost:</span>
-                      <span className="cost-value">{bestOption.cost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                          {formatGPValue(bestOption.cost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -263,15 +318,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">GT Cost:</span>
-                      <span className="breakdown-value">{gtCostWithoutFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                          {formatGPValue(gtCostWithoutFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gtCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                          {formatGPValue(bestOption.gtCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -282,15 +355,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">Items Cost:</span>
-                      <span className="breakdown-value">{itemsBreakdown.totalCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                          {formatGPValue(itemsBreakdown.totalCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gpCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                          {formatGPValue(bestOption.gpCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -298,7 +389,13 @@ export default function ImbuementBlock({
 
               {isValid && bestOption.savings > 0 && (
                 <div className="savings">
-                  💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {
+                  💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
+                    <span title={formatGPValue(bestOption.savings).full}>
+                      {formatGPValue(bestOption.savings).formatted}
+                    </span>
+                  ) : (
+                    formatGPValue(bestOption.savings).formatted
+                  )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
                     bestOption.method === 'hybrid1' ? 'Hybrid (Basic GT + rest Market)' :
@@ -334,7 +431,13 @@ export default function ImbuementBlock({
                     <p className="best-option-description">{bestOption.description}</p>
                     <div className="best-option-cost">
                       <span className="cost-label">Total Cost:</span>
-                      <span className="cost-value">{bestOption.cost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                          {formatGPValue(bestOption.cost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -347,15 +450,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">GT Cost:</span>
-                      <span className="breakdown-value">{gtCostWithoutFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                          {formatGPValue(gtCostWithoutFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gtCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                          {formatGPValue(bestOption.gtCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -366,15 +487,33 @@ export default function ImbuementBlock({
                   <div className="cost-breakdown">
                     <div className="breakdown-line">
                       <span className="breakdown-label">Items Cost:</span>
-                      <span className="breakdown-value">{itemsBreakdown.totalCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                          {formatGPValue(itemsBreakdown.totalCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line">
                       <span className="breakdown-label">+ Service Fee:</span>
-                      <span className="breakdown-value">{serviceFee.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(serviceFee).formatted.includes('kk') ? (
+                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                          {formatGPValue(serviceFee).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                      )}
                     </div>
                     <div className="breakdown-line total">
                       <span className="breakdown-label">Total:</span>
-                      <span className="cost-value">{bestOption.gpCost.toLocaleString('pt-BR')} GP</span>
+                      {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
+                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                          {formatGPValue(bestOption.gpCost).formatted} GP
+                        </span>
+                      ) : (
+                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -382,7 +521,13 @@ export default function ImbuementBlock({
 
               {isValid && bestOption.savings > 0 && (
                 <div className="savings">
-                  💰 Save {bestOption.savings.toLocaleString('pt-BR')} GP using {
+                  💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
+                    <span title={formatGPValue(bestOption.savings).full}>
+                      {formatGPValue(bestOption.savings).formatted}
+                    </span>
+                  ) : (
+                    formatGPValue(bestOption.savings).formatted
+                  )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
                     bestOption.method === 'hybrid1' ? 'Hybrid (Basic GT + rest Market)' :

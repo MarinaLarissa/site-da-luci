@@ -3,17 +3,52 @@
  */
 
 /**
- * Format gold amount using TIBIA "kk" notation
+ * Format gold amount using standardized notation
  * @param {number} amount - Gold amount to format
- * @returns {string} Formatted string (e.g., "11.89kk", "3.96k", "500")
+ * @returns {string} Formatted string (e.g., "4.69kk" for >= 1M, "100.000" for < 1M)
  */
 export function formatGold(amount) {
-  if (amount >= 1000000) {
-    return (amount / 1000000).toFixed(2) + 'kk';
-  } else if (amount >= 1000) {
-    return (amount / 1000).toFixed(2) + 'k';
+  if (!amount && amount !== 0) {
+    return '0';
   }
-  return amount.toString();
+
+  const numValue = typeof amount === 'string' ? parseFloat(amount) : amount;
+  const intValue = Math.floor(numValue);
+
+  // Values >= 1,000,000: use "kk" notation with 2 decimal places
+  if (intValue >= 1000000) {
+    return (numValue / 1000000).toFixed(2) + 'kk';
+  }
+
+  // Values < 1,000,000: show with thousand separators, no decimals
+  return intValue.toLocaleString('pt-BR');
+}
+
+/**
+ * Format GP/GP per hour values with standardized notation
+ * @param {number} value - GP value to format
+ * @returns {object} Object with { formatted, full } properties
+ * - formatted: Display value (e.g., "100.000" or "4.69kk")
+ * - full: Complete value for tooltip (e.g., "4.697.903")
+ */
+export function formatGPValue(value) {
+  if (!value && value !== 0) {
+    return { formatted: '0', full: '0' };
+  }
+
+  const numValue = typeof value === 'string' ? parseFloat(value) : value;
+  const intValue = Math.floor(numValue);
+
+  // Values up to 999,999: show with thousand separators, no decimals
+  if (intValue < 1000000) {
+    const formatted = intValue.toLocaleString('pt-BR');
+    return { formatted, full: formatted };
+  }
+
+  // Values >= 1,000,000: use "kk" notation with 2 decimal places
+  const kkValue = (numValue / 1000000).toFixed(2);
+  const full = intValue.toLocaleString('pt-BR');
+  return { formatted: `${kkValue}kk`, full };
 }
 
 /**

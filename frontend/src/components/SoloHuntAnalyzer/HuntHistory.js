@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { formatGPValue } from '../../utils/formatters';
 import './HuntHistory.css';
 
 const HISTORY_STORAGE_KEY = 'solo-hunt-history';
@@ -233,10 +234,20 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                     </div>
                   </div>
                   <div className="hunt-balance">
-                    <span className={(hunt.adjustedBalance || 0) >= 0 ? 'positive' : 'negative'}>
-                      {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}
-                      {(hunt.adjustedBalance || 0).toLocaleString(locale)} GP
-                    </span>
+                    {formatGPValue(hunt.adjustedBalance || 0).formatted.includes('kk') ? (
+                      <span
+                        className={(hunt.adjustedBalance || 0) >= 0 ? 'positive' : 'negative'}
+                        title={formatGPValue(hunt.adjustedBalance || 0).full}
+                      >
+                        {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}
+                        {formatGPValue(hunt.adjustedBalance || 0).formatted} GP
+                      </span>
+                    ) : (
+                      <span className={(hunt.adjustedBalance || 0) >= 0 ? 'positive' : 'negative'}>
+                        {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}
+                        {formatGPValue(hunt.adjustedBalance || 0).formatted} GP
+                      </span>
+                    )}
                   </div>
                   <button
                     className="btn-expand"
@@ -255,31 +266,70 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
-                        <span className="value positive">+{(hunt.loot || 0).toLocaleString(locale)} GP</span>
+                        {formatGPValue(hunt.loot || 0).formatted.includes('kk') ? (
+                          <span className="value positive" title={formatGPValue(hunt.loot || 0).full}>
+                            +{formatGPValue(hunt.loot || 0).formatted} GP
+                          </span>
+                        ) : (
+                          <span className="value positive">+{formatGPValue(hunt.loot || 0).formatted} GP</span>
+                        )}
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
-                        <span className="value negative">-{(hunt.supplies || 0).toLocaleString(locale)} GP</span>
+                        {formatGPValue(hunt.supplies || 0).formatted.includes('kk') ? (
+                          <span className="value negative" title={formatGPValue(hunt.supplies || 0).full}>
+                            -{formatGPValue(hunt.supplies || 0).formatted} GP
+                          </span>
+                        ) : (
+                          <span className="value negative">-{formatGPValue(hunt.supplies || 0).formatted} GP</span>
+                        )}
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
-                        <span className="value">{(hunt.balance || 0).toLocaleString(locale)} GP</span>
+                        {formatGPValue(hunt.balance || 0).formatted.includes('kk') ? (
+                          <span className="value" title={formatGPValue(hunt.balance || 0).full}>
+                            {formatGPValue(hunt.balance || 0).formatted} GP
+                          </span>
+                        ) : (
+                          <span className="value">{formatGPValue(hunt.balance || 0).formatted} GP</span>
+                        )}
                       </div>
                       {(hunt.totalCost || 0) > 0 && (
                         <div className="detail-item">
                           <span className="label">{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}:</span>
-                          <span className="value negative">-{(hunt.totalCost || 0).toLocaleString(locale)} GP</span>
+                          {formatGPValue(hunt.totalCost || 0).formatted.includes('kk') ? (
+                            <span className="value negative" title={formatGPValue(hunt.totalCost || 0).full}>
+                              -{formatGPValue(hunt.totalCost || 0).formatted} GP
+                            </span>
+                          ) : (
+                            <span className="value negative">-{formatGPValue(hunt.totalCost || 0).formatted} GP</span>
+                          )}
                         </div>
                       )}
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.totalProfit')}:</span>
-                        <span className={(hunt.adjustedBalance || 0) >= 0 ? 'value positive' : 'value negative'}>
-                          {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}{(hunt.adjustedBalance || 0).toLocaleString(locale)} GP
-                        </span>
+                        {formatGPValue(hunt.adjustedBalance || 0).formatted.includes('kk') ? (
+                          <span
+                            className={(hunt.adjustedBalance || 0) >= 0 ? 'value positive' : 'value negative'}
+                            title={formatGPValue(hunt.adjustedBalance || 0).full}
+                          >
+                            {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}{formatGPValue(hunt.adjustedBalance || 0).formatted} GP
+                          </span>
+                        ) : (
+                          <span className={(hunt.adjustedBalance || 0) >= 0 ? 'value positive' : 'value negative'}>
+                            {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}{formatGPValue(hunt.adjustedBalance || 0).formatted} GP
+                          </span>
+                        )}
                       </div>
                       <div className="detail-item">
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
-                        <span className="value">{(hunt.profitPerHour || 0).toLocaleString(locale)} GP/h</span>
+                        {formatGPValue(hunt.profitPerHour || 0).formatted.includes('kk') ? (
+                          <span className="value" title={formatGPValue(hunt.profitPerHour || 0).full}>
+                            {formatGPValue(hunt.profitPerHour || 0).formatted} GP/h
+                          </span>
+                        ) : (
+                          <span className="value">{formatGPValue(hunt.profitPerHour || 0).formatted} GP/h</span>
+                        )}
                       </div>
                       {hunt.tcTotal !== null && hunt.tcTotal !== undefined && (
                         <div className="detail-item">
@@ -293,6 +343,14 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         <div className="detail-item">
                           <span className="label">{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}:</span>
                           <span className="value">{(hunt.tcPerHour || 0).toLocaleString(locale)} TC/h</span>
+                        </div>
+                      )}
+                      {hunt.moneyMaked !== null && hunt.moneyMaked !== undefined && (
+                        <div className="detail-item">
+                          <span className="label">💵 Money Earned:</span>
+                          <span className={hunt.moneyMaked >= 0 ? 'value positive' : 'value negative'}>
+                            ${(hunt.moneyMaked || 0).toFixed(2)}
+                          </span>
                         </div>
                       )}
                     </div>

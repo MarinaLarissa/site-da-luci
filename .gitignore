@@ -35,6 +35,7 @@ out/
 tmp/
 temp/
 *.tmp
+*.nul
 
 # MongoDB (root data directory only)
 /data/

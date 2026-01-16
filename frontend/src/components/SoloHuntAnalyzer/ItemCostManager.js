@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { formatGPValue } from '../../utils/formatters';
 import { IMBUEMENTS, getAllCategories, getImbuementsByCategory } from '../../data/imbuements';
 import './ItemCostManager.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
@@ -67,6 +68,8 @@ export default function ItemCostManager({
   setSilverTokenPrice,
   tibiaCoinPrice,
   setTibiaCoinPrice,
+  tibiaCoinSellPrice,
+  setTibiaCoinSellPrice,
   silverTokenError = false,
   needsRecalculation = false
 }) {
@@ -630,6 +633,23 @@ export default function ItemCostManager({
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
         </div>
+
+        <div className="token-price-row" title="Valor de venda da Tibia Coin por dinheiro real">
+          <span className="token-icon">💵</span>
+          <label htmlFor="tibia-coin-sell-price-input">TC Sell Price</label>
+          <input
+            id="tibia-coin-sell-price-input"
+            type="number"
+            value={tibiaCoinSellPrice}
+            onChange={(e) => setTibiaCoinSellPrice(parseFloat(e.target.value) || 0)}
+            placeholder="Ex: 0.04"
+            min="0"
+            step="0.01"
+            aria-label="Tibia Coin Sell Price (real money per TC)"
+            data-cy="solo-hunt-input-tc-sell-price"
+          />
+          <span className="unit">$ / TC</span>
+        </div>
       </div>
 
       {/* Recalculation indicator */}
@@ -780,7 +800,13 @@ export default function ItemCostManager({
                               {item.unitPrice > 0 && <span className="price-separator"> + </span>}
                               <span className="gp-price">
                                 <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-                                {(childrenGPCost / item.quantity).toLocaleString('pt-BR', { maximumFractionDigits: 0 })} GP
+                                {formatGPValue(childrenGPCost / item.quantity).formatted.includes('kk') ? (
+                                  <span title={formatGPValue(childrenGPCost / item.quantity).full}>
+                                    {formatGPValue(childrenGPCost / item.quantity).formatted} GP
+                                  </span>
+                                ) : (
+                                  `${formatGPValue(childrenGPCost / item.quantity).formatted} GP`
+                                )}
                               </span>
                             </>
                           )}
@@ -854,7 +880,15 @@ export default function ItemCostManager({
             {totalGP > 0 && (
               <p title={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')}>
                 <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.partialGP')}:</strong> {totalGP.toLocaleString('pt-BR')} GP
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.partialGP')}:</strong> {
+                  formatGPValue(totalGP).formatted.includes('kk') ? (
+                    <span title={formatGPValue(totalGP).full}>
+                      {formatGPValue(totalGP).formatted} GP
+                    </span>
+                  ) : (
+                    `${formatGPValue(totalGP).formatted} GP`
+                  )
+                }
               </p>
             )}
 
@@ -877,21 +911,45 @@ export default function ItemCostManager({
             {/* GT Converted */}
             {goldTokenPrice > 0 && totalGT > 0 && (
               <p>
-                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtConverted')}:</strong> {(totalGT * goldTokenPrice).toLocaleString('pt-BR')} GP
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtConverted')}:</strong> {
+                  formatGPValue(totalGT * goldTokenPrice).formatted.includes('kk') ? (
+                    <span title={formatGPValue(totalGT * goldTokenPrice).full}>
+                      {formatGPValue(totalGT * goldTokenPrice).formatted} GP
+                    </span>
+                  ) : (
+                    `${formatGPValue(totalGT * goldTokenPrice).formatted} GP`
+                  )
+                }
               </p>
             )}
 
             {/* ST Converted */}
             {silverTokenPrice > 0 && totalST > 0 && (
               <p>
-                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}:</strong> {(totalST * silverTokenPrice).toLocaleString('pt-BR')} GP
+                <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.stConverted')}:</strong> {
+                  formatGPValue(totalST * silverTokenPrice).formatted.includes('kk') ? (
+                    <span title={formatGPValue(totalST * silverTokenPrice).full}>
+                      {formatGPValue(totalST * silverTokenPrice).formatted} GP
+                    </span>
+                  ) : (
+                    `${formatGPValue(totalST * silverTokenPrice).formatted} GP`
+                  )
+                }
               </p>
             )}
 
             {/* Total (GP) */}
             <p className="total-final" title={t('soloHuntAnalyzer.itemCostManager.costSummary.totalGPTooltip')}>
               <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
-              <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalGP')}:</strong> {(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).toLocaleString('pt-BR')} GP
+              <strong>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalGP')}:</strong> {
+                formatGPValue(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).formatted.includes('kk') ? (
+                  <span title={formatGPValue(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).full}>
+                    {formatGPValue(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).formatted} GP
+                  </span>
+                ) : (
+                  `${formatGPValue(totalGP + (totalGT * goldTokenPrice) + (totalST * silverTokenPrice)).formatted} GP`
+                )
+              }
             </p>
           </div>
         </div>
@@ -1276,6 +1334,8 @@ ItemCostManager.propTypes = {
   setSilverTokenPrice: PropTypes.func.isRequired,
   tibiaCoinPrice: PropTypes.number.isRequired,
   setTibiaCoinPrice: PropTypes.func.isRequired,
+  tibiaCoinSellPrice: PropTypes.number.isRequired,
+  setTibiaCoinSellPrice: PropTypes.func.isRequired,
   silverTokenError: PropTypes.bool,
   needsRecalculation: PropTypes.bool
 };

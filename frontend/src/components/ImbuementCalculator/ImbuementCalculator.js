@@ -7,6 +7,7 @@
 import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { formatGPValue } from '../../utils/formatters';
 import './ImbuementCalculator.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import ImbuementBlock from './ImbuementBlock';
@@ -312,7 +313,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
     let config = `${tierName} ${imbuement.name} Imbuement:\n`;
 
     if (bestOption.method === 'gt') {
-      config += `- Use ${imbuement.gtCost[tier]} GT (${bestOption.gtCost.toLocaleString('pt-BR')} GP equivalent)\n`;
+      config += `- Use ${imbuement.gtCost[tier]} GT (${formatGPValue(bestOption.gtCost).formatted} GP equivalent)\n`;
     } else {
       config += `- Buy items directly (market prices only):\n`;
       const tiers = TIER_ORDER;
@@ -324,13 +325,13 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
         for (const item of items) {
           const itemCost = item.quantity * (itemPrices[item.name] || 0);
-          config += `  - ${item.quantity}x ${item.name}: ${itemCost.toLocaleString('pt-BR')} GP\n`;
+          config += `  - ${item.quantity}x ${item.name}: ${formatGPValue(itemCost).formatted} GP\n`;
         }
       }
       // Service fee is NOT included in calculation
     }
 
-    config += `Total: ${Math.min(bestOption.gtCost, bestOption.gpCost).toLocaleString('pt-BR')} GP`;
+    config += `Total: ${formatGPValue(Math.min(bestOption.gtCost, bestOption.gpCost)).formatted} GP`;
 
     try {
       await navigator.clipboard.writeText(config);
@@ -380,9 +381,9 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       // Determine best method description
       let bestMethodText = '';
       if (bestOption.method === 'gt') {
-        bestMethodText = `${imbuement.gtCost[tier]} GT (${bestOption.gtCost.toLocaleString('pt-BR')} GP)`;
+        bestMethodText = `${imbuement.gtCost[tier]} GT (${formatGPValue(bestOption.gtCost).formatted} GP)`;
       } else if (bestOption.method === 'gp') {
-        bestMethodText = `Market Items (${bestOption.gpCost.toLocaleString('pt-BR')} GP)`;
+        bestMethodText = `Market Items (${formatGPValue(bestOption.gpCost).formatted} GP)`;
       } else {
         bestMethodText = 'Preencha os valores dos items primeiro';
       }
@@ -554,7 +555,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
       alert(
         `Imbuements importados:\n\n` +
         data.imbuements.map(
-          imb => `• ${imb.imbuement} (${imb.tier}): ${imb.method === 'gt' ? `${imb.gtAmount} GT` : `${imb.itemCost.toLocaleString('pt-BR')} GP`}`
+          imb => `• ${imb.imbuement} (${imb.tier}): ${imb.method === 'gt' ? `${imb.gtAmount} GT` : `${formatGPValue(imb.itemCost).formatted} GP`}`
         ).join('\n')
       );
 

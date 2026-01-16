@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { formatGPValue } from '../../utils/formatters';
 import './ConfigurationManager.css';
 
 const STORAGE_KEY = 'solo-hunt-configurations';
@@ -337,10 +338,10 @@ export default function ConfigurationManager({
               <ul className="preview-list">
                 <li>📦 {customItems.length} {t('soloHuntAnalyzer.configManager.saveModal.itemsCount')}</li>
                 {goldTokenPrice > 0 && (
-                  <li>GT: {goldTokenPrice.toLocaleString('pt-BR')} GP</li>
+                  <li>GT: {formatGPValue(goldTokenPrice).formatted} GP</li>
                 )}
                 {silverTokenPrice > 0 && (
-                  <li>ST: {silverTokenPrice.toLocaleString('pt-BR')} GP</li>
+                  <li>ST: {formatGPValue(silverTokenPrice).formatted} GP</li>
                 )}
               </ul>
             </div>
