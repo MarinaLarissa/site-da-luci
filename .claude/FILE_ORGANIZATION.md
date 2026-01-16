@@ -18,12 +18,43 @@
 ```
 site-da-luci/
 ├── .claude/
+│   ├── skills/              # Specialized skills for common tasks
+│   │   ├── index.md
+│   │   ├── README.md
+│   │   └── (skills to be created)
+│   ├── commands/            # Slash commands for quick workflows
+│   │   ├── index.md
+│   │   ├── README.md
+│   │   └── (commands to be created)
+│   ├── examples/            # Do's and Don'ts examples
+│   │   ├── index.md
+│   │   ├── README.md
+│   │   └── (examples to be created)
+│   ├── execution_plans/     # Implementation plans (10 tasks/200 tokens max)
+│   │   ├── index.md
+│   │   ├── README.md
+│   │   └── (plans to be created)
+│   ├── templates/           # Reusable code templates
+│   │   ├── index.md
+│   │   ├── README.md
+│   │   └── (templates to be created)
 │   ├── knowledge/           # Project-specific knowledge base
 │   │   ├── react_patterns.md
 │   │   ├── eslint_i18n_validation.md
-│   │   └── css_implementation_checklist.md
-│   └── logs/                # Session reports for this project
-│       └── architect-report-YYYY-MM-DD-HHmm.md
+│   │   ├── css_implementation_checklist.md
+│   │   ├── i18n_best_practices.md
+│   │   └── hardcoded-texts-to-translate.md
+│   ├── checklists/          # Pre-session checklists
+│   │   └── pre-session-i18n-checklist.md
+│   ├── docs/                # Technical documentation
+│   │   ├── cypress-testing-strategy.md
+│   │   └── solo-hunt-formulas.md
+│   ├── optimization/        # Performance optimization docs
+│   │   └── react-mode-context-optimization.md
+│   ├── logs/                # Session reports for this project
+│   │   └── architect-report-YYYY-MM-DD-HHmm.md
+│   ├── FILE_ORGANIZATION.md # This file
+│   └── FILE_LOCATION_GUARDRAIL.md
 ├── frontend/
 │   ├── scripts/
 │   │   └── validate-i18n.js
@@ -48,11 +79,18 @@ The `Projetos\.claude\FILE_POLICY.md` is specific to **nex-web-test** workflow:
 - **nex-web-test**: Has complex 6-layer architecture requiring strict separation
 - **site-da-luci**: Simple React project can use project-specific `.claude/`
 
-## Actions Taken (2026-01-01)
+## Actions Taken
 
+### 2026-01-01
 1. ✅ **Removed duplicate**: `Projetos\.claude\knowledge\react_patterns.md`
 2. ✅ **Kept in project**: All knowledge files in `site-da-luci\.claude\knowledge\`
 3. ✅ **Kept logs in project**: `site-da-luci\.claude\logs\`
+
+### 2026-01-16 (Workflow Improvement - Etapa 1)
+1. ✅ **Created structure**: Added 5 new folders (skills, commands, examples, execution_plans, templates)
+2. ✅ **Added index.md**: Each folder has inventory tracking (frontmatter + table)
+3. ✅ **Added README.md**: Each folder has usage instructions for AI and users
+4. ✅ **Updated FILE_ORGANIZATION.md**: Documented complete directory structure
 
 ## When to Use Global vs Project-Specific
 
@@ -79,6 +117,30 @@ The `Projetos\.claude\FILE_POLICY.md` is specific to **nex-web-test** workflow:
 
 ---
 
-**Last Updated**: 2026-01-01
-**Decision By**: Architect Agent
+## New Structure Benefits (2026-01-16)
+
+### Skills
+- **Purpose**: Specialized knowledge for recurring tasks (i18n validation, component generation, CSS theming)
+- **Benefit**: Consistent quality and patterns across implementations
+
+### Commands
+- **Purpose**: Quick workflows via slash commands (/implement, /validate-i18n, /generate-component)
+- **Benefit**: Faster execution of common tasks
+
+### Examples
+- **Purpose**: Do's and Don'ts for React, i18n, CSS
+- **Benefit**: Quick reference for best practices
+
+### Execution Plans
+- **Purpose**: Structured implementation plans (10 tasks/200 tokens max per step)
+- **Benefit**: Reduced context loss, granular commits (1 step = 1 commit)
+
+### Templates
+- **Purpose**: Reusable boilerplate code (components, hooks, tests)
+- **Benefit**: Faster scaffolding, consistent structure
+
+---
+
+**Last Updated**: 2026-01-16
+**Decision By**: meta-improver Agent
 **Status**: Active Policy for site-da-luci
