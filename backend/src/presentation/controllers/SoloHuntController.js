@@ -20,6 +20,7 @@ class SoloHuntController {
         goldTokenPrice,
         silverTokenPrice,
         tibiaCoinPrice,
+        tibiaCoinSellPrice,
       } = req.body;
 
       // Validate required fields
@@ -44,6 +45,7 @@ class SoloHuntController {
         goldTokenPrice: goldTokenPrice || 0,
         silverTokenPrice: silverTokenPrice || 0,
         tibiaCoinPrice: tibiaCoinPrice || 0,
+        tibiaCoinSellPrice: tibiaCoinSellPrice || 0,
       });
 
       // Return results

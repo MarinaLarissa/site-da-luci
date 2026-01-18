@@ -218,12 +218,12 @@ export default function SoloHuntResults({ results }) {
               )}
             </div>
             {costs.tibiaCoinPrice > 0 && (
-              <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcPerHourTooltip')} position="top">
-                <div className="balance-item">
-                  <span className="balance-label">{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}</span>
+              <div className="balance-item">
+                <span className="balance-label">{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}</span>
+                <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcPerHourTooltip')} position="top">
                   <span className="balance-value">{tcPerHour.toFixed(2)} TC/h</span>
-                </div>
-              </Tooltip>
+                </Tooltip>
+              </div>
             )}
             <div className="balance-item">
               <span className="balance-label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}</span>

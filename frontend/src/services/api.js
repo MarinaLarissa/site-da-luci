@@ -63,6 +63,7 @@ export async function calculateSoloHunt(parsedSession, customItems, prices) {
       goldTokenPrice: prices.goldTokenPrice,
       silverTokenPrice: prices.silverTokenPrice,
       tibiaCoinPrice: prices.tibiaCoinPrice,
+      tibiaCoinSellPrice: prices.tibiaCoinSellPrice,
     });
     return response.data;
   } catch (error) {

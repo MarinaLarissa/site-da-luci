@@ -350,12 +350,24 @@
   gap: 12px;
 }
 
+/* Tooltip wrapper inside balance-column - needs full width and block display */
+.balance-column > .tooltip-container {
+  display: block;
+  width: 100%;
+}
+
+/* Ensure balance-item inside tooltip also has full width */
+.balance-column > .tooltip-container > .balance-item {
+  width: 100%;
+}
+
 .balance-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid rgba(195, 155, 211, 0.1);
+  width: 100%;
 }
 
 .balance-label {
@@ -380,20 +392,33 @@
 
 /* Final Balance Highlights */
 .final-balance-highlights {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 16px;
   margin-top: 24px;
   padding-top: 24px;
   border-top: 2px solid rgba(195, 155, 211, 0.3);
 }
 
+/* Tooltip wrapper inside highlights - needs flex behavior */
+.final-balance-highlights > div {
+  display: flex;
+  flex: 1 1 180px;
+  min-width: 180px;
+  max-width: 280px;
+}
+
 .highlight-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 20px;
+  width: 100%;
   background-color: rgba(195, 155, 211, 0.08);
   border-radius: 12px;
   border: 2px solid rgba(195, 155, 211, 0.3);
@@ -521,7 +546,13 @@
   }
 
   .final-balance-highlights {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .final-balance-highlights > div {
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .highlight-value {
