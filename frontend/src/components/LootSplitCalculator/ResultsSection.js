@@ -10,7 +10,17 @@ import TransferList from './TransferList';
 import DamageHealingSection from './DamageHealingSection';
 import PlayerStatsRow from './PlayerStatsRow';
 import Tooltip from '../common/Tooltip';
-import './ResultsSection.css';
+import {
+  ResultsContainer,
+  SectionTitle,
+  SummaryGrid,
+  SummaryCard,
+  SummaryLabel,
+  SummaryValue,
+  DesktopLayout,
+  MobileLayout,
+  StatsSectionTitle,
+} from './ResultsSection.styles';
 
 export default function ResultsSection({ results }) {
   const { t } = useTranslation();
@@ -24,53 +34,53 @@ export default function ResultsSection({ results }) {
   const totalHealing = players.reduce((sum, player) => sum + (player.healing || 0), 0);
 
   return (
-    <div className="results-section" data-cy="loot-calculator-results">
-      <h2 className="section-title">{t('calculator.resultsSection.title')}</h2>
+    <ResultsContainer data-cy="loot-calculator-results">
+      <SectionTitle>{t('calculator.resultsSection.title')}</SectionTitle>
 
       {/* Summary cards - Overview first */}
-      <div className="summary-grid">
+      <SummaryGrid>
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.totalBalance')} position="top">
-          <div className="summary-card">
-            <div className="summary-label">{t('calculator.resultsSection.summary.totalBalance')}</div>
-            <div className="summary-value">{summary.totalBalanceFormatted}</div>
-          </div>
+          <SummaryCard>
+            <SummaryLabel>{t('calculator.resultsSection.summary.totalBalance')}</SummaryLabel>
+            <SummaryValue>{summary.totalBalanceFormatted}</SummaryValue>
+          </SummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.fairShare')} position="top">
-          <div className="summary-card">
-            <div className="summary-label">{t('calculator.resultsSection.summary.fairShare')}</div>
-            <div className="summary-value">{summary.fairShareFormatted}</div>
-          </div>
+          <SummaryCard>
+            <SummaryLabel>{t('calculator.resultsSection.summary.fairShare')}</SummaryLabel>
+            <SummaryValue>{summary.fairShareFormatted}</SummaryValue>
+          </SummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.profitPerHour')} position="top">
-          <div className="summary-card">
-            <div className="summary-label">{t('calculator.resultsSection.summary.profitPerHour')}</div>
-            <div className="summary-value">{summary.profitPerHourFormatted}</div>
-          </div>
+          <SummaryCard>
+            <SummaryLabel>{t('calculator.resultsSection.summary.profitPerHour')}</SummaryLabel>
+            <SummaryValue>{summary.profitPerHourFormatted}</SummaryValue>
+          </SummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.duration')} position="top">
-          <div className="summary-card">
-            <div className="summary-label">{t('calculator.resultsSection.summary.duration')}</div>
-            <div className="summary-value">{formatDuration(summary.duration)}</div>
-          </div>
+          <SummaryCard>
+            <SummaryLabel>{t('calculator.resultsSection.summary.duration')}</SummaryLabel>
+            <SummaryValue>{formatDuration(summary.duration)}</SummaryValue>
+          </SummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.activePlayers')} position="top">
-          <div className="summary-card">
-            <div className="summary-label">{t('calculator.resultsSection.summary.activePlayers')}</div>
-            <div className="summary-value">{summary.activePlayers}</div>
-          </div>
+          <SummaryCard>
+            <SummaryLabel>{t('calculator.resultsSection.summary.activePlayers')}</SummaryLabel>
+            <SummaryValue>{summary.activePlayers}</SummaryValue>
+          </SummaryCard>
         </Tooltip>
-      </div>
+      </SummaryGrid>
 
       {/* Transfer list - Action items */}
       <TransferList transfers={transfers} copyableText={copyableText} />
 
       {/* Desktop layout: side-by-side rows (Player card | Damage/Healing card) */}
-      <div className="desktop-layout">
-        <h3 className="stats-section-title">{t('calculator.resultsSection.playerList.title')}</h3>
+      <DesktopLayout>
+        <StatsSectionTitle>{t('calculator.resultsSection.playerList.title')}</StatsSectionTitle>
         {players.map((player, index) => (
           <PlayerStatsRow
             key={index}
@@ -79,14 +89,14 @@ export default function ResultsSection({ results }) {
             totalHealing={totalHealing}
           />
         ))}
-      </div>
+      </DesktopLayout>
 
       {/* Mobile layout: separate sections (preserve current stacking) */}
-      <div className="mobile-layout">
+      <MobileLayout>
         <PlayerList players={players} />
         <DamageHealingSection players={players} />
-      </div>
-    </div>
+      </MobileLayout>
+    </ResultsContainer>
   );
 }
 

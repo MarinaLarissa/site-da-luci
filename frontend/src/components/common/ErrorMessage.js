@@ -3,15 +3,15 @@
  */
 
 import React from 'react';
-import './ErrorMessage.css';
+import { ErrorContainer, ErrorIcon, ErrorText } from './ErrorMessage.styles';
 
 export default function ErrorMessage({ message }) {
   if (!message) return null;
 
   return (
-    <div className="error-message">
-      <span className="error-icon">⚠️</span>
-      <span className="error-text">{message}</span>
-    </div>
+    <ErrorContainer>
+      <ErrorIcon>⚠️</ErrorIcon>
+      <ErrorText>{message}</ErrorText>
+    </ErrorContainer>
   );
 }

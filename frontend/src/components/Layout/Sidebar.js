@@ -4,53 +4,70 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import './Sidebar.css';
+import {
+  SidebarContainer,
+  SidebarHeader,
+  SidebarTitle,
+  SidebarSubtitle,
+  SidebarNav,
+  NavItem,
+  NavIcon,
+  NavLabel,
+  SidebarFooter,
+  FooterText,
+} from './Sidebar.styles';
 
 export default function Sidebar({ activePage, onNavigate }) {
   const { t } = useTranslation();
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-header">
-        <h1 className="sidebar-title">{t('sidebar.title')}</h1>
-        <p className="sidebar-subtitle">{t('sidebar.subtitle')}</p>
-      </div>
+    <SidebarContainer>
+      <SidebarHeader>
+        <SidebarTitle>{t('sidebar.title')}</SidebarTitle>
+        <SidebarSubtitle>{t('sidebar.subtitle')}</SidebarSubtitle>
+      </SidebarHeader>
 
-      <nav className="sidebar-nav">
-        <div
-          className={`nav-item ${activePage === 'loot-split' ? 'active' : ''}`}
+      <SidebarNav>
+        <NavItem
+          $active={activePage === 'loot-split'}
           onClick={() => onNavigate('loot-split')}
         >
-          <span className="nav-icon">💰</span>
-          <span className="nav-label">{t('sidebar.nav.lootSplit')}</span>
-        </div>
-        <div
-          className={`nav-item ${activePage === 'solo-hunt' ? 'active' : ''}`}
+          <NavIcon>💰</NavIcon>
+          <NavLabel $active={activePage === 'loot-split'}>
+            {t('sidebar.nav.lootSplit')}
+          </NavLabel>
+        </NavItem>
+        <NavItem
+          $active={activePage === 'solo-hunt'}
           onClick={() => onNavigate('solo-hunt')}
         >
-          <span className="nav-icon">🎯</span>
-          <span className="nav-label">{t('sidebar.nav.soloHunt')}</span>
-        </div>
-        <div
-          className={`nav-item ${activePage === 'imbuement-calc' ? 'active' : ''}`}
+          <NavIcon>🎯</NavIcon>
+          <NavLabel $active={activePage === 'solo-hunt'}>
+            {t('sidebar.nav.soloHunt')}
+          </NavLabel>
+        </NavItem>
+        <NavItem
+          $active={activePage === 'imbuement-calc'}
           onClick={() => onNavigate('imbuement-calc')}
         >
-          <span className="nav-icon">⚗️</span>
-          <span className="nav-label">{t('sidebar.nav.imbuementCalc')}</span>
-        </div>
-        <div className="nav-item disabled">
-          <span className="nav-icon">📊</span>
-          <span className="nav-label">{t('sidebar.nav.statistics')}</span>
-        </div>
-        <div className="nav-item disabled">
-          <span className="nav-icon">👥</span>
-          <span className="nav-label">{t('sidebar.nav.partyAnalyzer')}</span>
-        </div>
-      </nav>
+          <NavIcon>⚗️</NavIcon>
+          <NavLabel $active={activePage === 'imbuement-calc'}>
+            {t('sidebar.nav.imbuementCalc')}
+          </NavLabel>
+        </NavItem>
+        <NavItem $disabled>
+          <NavIcon>📊</NavIcon>
+          <NavLabel>{t('sidebar.nav.statistics')}</NavLabel>
+        </NavItem>
+        <NavItem $disabled>
+          <NavIcon>👥</NavIcon>
+          <NavLabel>{t('sidebar.nav.partyAnalyzer')}</NavLabel>
+        </NavItem>
+      </SidebarNav>
 
-      <div className="sidebar-footer">
-        <p className="footer-text">{t('sidebar.footer')}</p>
-      </div>
-    </div>
+      <SidebarFooter>
+        <FooterText>{t('sidebar.footer')}</FooterText>
+      </SidebarFooter>
+    </SidebarContainer>
   );
 }

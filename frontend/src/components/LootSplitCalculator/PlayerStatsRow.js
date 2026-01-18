@@ -7,22 +7,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerCard from './PlayerCard';
 import DamageHealingCard from './DamageHealingCard';
-import './PlayerStatsRow.css';
+import {
+  StatsRowContainer,
+  PlayerCardWrapper,
+  DamageHealingCardWrapper,
+} from './PlayerStatsRow.styles';
 
 export default function PlayerStatsRow({ player, totalDamage, totalHealing }) {
   return (
-    <div className="player-stats-row">
-      <div className="player-card-wrapper">
+    <StatsRowContainer>
+      <PlayerCardWrapper>
         <PlayerCard player={player} />
-      </div>
-      <div className="damage-healing-card-wrapper">
+      </PlayerCardWrapper>
+      <DamageHealingCardWrapper>
         <DamageHealingCard
           player={player}
           totalDamage={totalDamage}
           totalHealing={totalHealing}
         />
-      </div>
-    </div>
+      </DamageHealingCardWrapper>
+    </StatsRowContainer>
   );
 }
 

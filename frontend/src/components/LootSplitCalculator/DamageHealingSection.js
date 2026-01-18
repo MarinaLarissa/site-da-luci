@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import DamageHealingCard from './DamageHealingCard';
-import './DamageHealingSection.css';
+import { SectionContainer, SectionSubtitle, DamageHealingGrid } from './DamageHealingSection.styles';
 
 export default function DamageHealingSection({ players }) {
   const { t } = useTranslation();
@@ -17,9 +17,9 @@ export default function DamageHealingSection({ players }) {
   const totalHealing = players.reduce((sum, player) => sum + (player.healing || 0), 0);
 
   return (
-    <div className="damage-healing-section">
-      <h3 className="section-subtitle">{t('calculator.resultsSection.damageHealing.title')}</h3>
-      <div className="damage-healing-grid">
+    <SectionContainer>
+      <SectionSubtitle>{t('calculator.resultsSection.damageHealing.title')}</SectionSubtitle>
+      <DamageHealingGrid>
         {players.map((player, index) => (
           <DamageHealingCard
             key={index}
@@ -28,8 +28,8 @@ export default function DamageHealingSection({ players }) {
             totalHealing={totalHealing}
           />
         ))}
-      </div>
-    </div>
+      </DamageHealingGrid>
+    </SectionContainer>
   );
 }
 

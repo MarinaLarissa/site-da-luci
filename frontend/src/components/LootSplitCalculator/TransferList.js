@@ -6,7 +6,22 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGold } from '../../utils/formatters';
-import './TransferList.css';
+import {
+  TransferListContainer,
+  ListTitle,
+  NoTransfers,
+  TransferInstruction,
+  TransferItems,
+  TransferItem,
+  TransferFrom,
+  TransferArrow,
+  TransferTo,
+  TransferAmount,
+  TransferCopiedIndicator,
+  TransferCommands,
+  CommandsTitle,
+  CommandsText,
+} from './TransferList.styles';
 
 export default function TransferList({ transfers, copyableText }) {
   const { t } = useTranslation();
@@ -22,23 +37,23 @@ export default function TransferList({ transfers, copyableText }) {
 
   if (!transfers || transfers.length === 0) {
     return (
-      <div className="transfer-list" data-cy="transfer-list">
-        <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
-        <p className="no-transfers">{t('calculator.resultsSection.transferList.noTransfers')}</p>
-      </div>
+      <TransferListContainer data-cy="transfer-list">
+        <ListTitle>{t('calculator.resultsSection.transferList.title')}</ListTitle>
+        <NoTransfers>{t('calculator.resultsSection.transferList.noTransfers')}</NoTransfers>
+      </TransferListContainer>
     );
   }
 
   return (
-    <div className="transfer-list" data-cy="transfer-list">
-      <h3 className="list-title">{t('calculator.resultsSection.transferList.title')}</h3>
-      <p className="transfer-instruction">{t('calculator.resultsSection.transferList.instruction')}</p>
+    <TransferListContainer data-cy="transfer-list">
+      <ListTitle>{t('calculator.resultsSection.transferList.title')}</ListTitle>
+      <TransferInstruction>{t('calculator.resultsSection.transferList.instruction')}</TransferInstruction>
 
-      <div className="transfer-items">
+      <TransferItems>
         {transfers.map((transfer, index) => (
-          <div
+          <TransferItem
             key={index}
-            className={`transfer-item ${copiedIndex === index ? 'copied' : ''}`}
+            $copied={copiedIndex === index}
             onClick={() => handleCopyTransfer(transfer, index)}
             role="button"
             tabIndex={0}
@@ -50,22 +65,22 @@ export default function TransferList({ transfers, copyableText }) {
               }
             }}
           >
-            <div className="transfer-from">{transfer.from}</div>
-            <div className="transfer-arrow">→</div>
-            <div className="transfer-to">{transfer.to}</div>
-            <div className="transfer-amount">{formatGold(transfer.amount)}</div>
+            <TransferFrom>{transfer.from}</TransferFrom>
+            <TransferArrow>→</TransferArrow>
+            <TransferTo>{transfer.to}</TransferTo>
+            <TransferAmount>{formatGold(transfer.amount)}</TransferAmount>
             {copiedIndex === index && (
-              <div className="transfer-copied-indicator">{t('calculator.resultsSection.transferList.copiedButton')}</div>
+              <TransferCopiedIndicator>{t('calculator.resultsSection.transferList.copiedButton')}</TransferCopiedIndicator>
             )}
-          </div>
+          </TransferItem>
         ))}
-      </div>
+      </TransferItems>
 
-      <div className="transfer-commands">
-        <h4 className="commands-title">TIBIA Commands:</h4>
-        <pre className="commands-text">{copyableText}</pre>
-      </div>
-    </div>
+      <TransferCommands>
+        <CommandsTitle>TIBIA Commands:</CommandsTitle>
+        <CommandsText>{copyableText}</CommandsText>
+      </TransferCommands>
+    </TransferListContainer>
   );
 }
 

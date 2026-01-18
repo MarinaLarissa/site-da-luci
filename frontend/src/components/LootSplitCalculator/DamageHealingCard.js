@@ -9,7 +9,14 @@ import { formatGold } from '../../utils/formatters';
 import Tooltip from '../common/Tooltip';
 import damageIcon from '../../assets/tibia/damage-icon.gif';
 import healingIcon from '../../assets/tibia/healing-icon.gif';
-import './DamageHealingCard.css';
+import {
+  CardContainer,
+  StatsRow,
+  StatItem,
+  StatIcon,
+  StatLabel,
+  StatPercent,
+} from './DamageHealingCard.styles';
 
 export default function DamageHealingCard({ player, totalDamage, totalHealing }) {
   const { t } = useTranslation();
@@ -19,31 +26,31 @@ export default function DamageHealingCard({ player, totalDamage, totalHealing })
   const healingPercent = totalHealing > 0 ? ((player.healing / totalHealing) * 100).toFixed(1) : 0;
 
   return (
-    <div className="damage-healing-card">
-      <div className="stats-row">
+    <CardContainer>
+      <StatsRow>
         <Tooltip
           text={`${t('calculator.resultsSection.damageHealing.tooltips.actualDamage')}: ${formatGold(player.damage || 0)}`}
           position="top"
         >
-          <div className="stat-item damage">
-            <img src={damageIcon} alt="Damage" className="stat-icon" />
-            <span className="stat-label">{t('calculator.resultsSection.damageHealing.damage')}:</span>
-            <span className="stat-percent">{damagePercent}%</span>
-          </div>
+          <StatItem>
+            <StatIcon src={damageIcon} alt="Damage" />
+            <StatLabel>{t('calculator.resultsSection.damageHealing.damage')}:</StatLabel>
+            <StatPercent>{damagePercent}%</StatPercent>
+          </StatItem>
         </Tooltip>
 
         <Tooltip
           text={`${t('calculator.resultsSection.damageHealing.tooltips.actualHealing')}: ${formatGold(player.healing || 0)}`}
           position="top"
         >
-          <div className="stat-item healing">
-            <img src={healingIcon} alt="Healing" className="stat-icon" />
-            <span className="stat-label">{t('calculator.resultsSection.damageHealing.healing')}:</span>
-            <span className="stat-percent">{healingPercent}%</span>
-          </div>
+          <StatItem>
+            <StatIcon src={healingIcon} alt="Healing" />
+            <StatLabel>{t('calculator.resultsSection.damageHealing.healing')}:</StatLabel>
+            <StatPercent>{healingPercent}%</StatPercent>
+          </StatItem>
         </Tooltip>
-      </div>
-    </div>
+      </StatsRow>
+    </CardContainer>
   );
 }
 

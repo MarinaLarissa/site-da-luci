@@ -3,13 +3,13 @@
  */
 
 import React from 'react';
-import './LoadingSpinner.css';
+import { SpinnerContainer, Spinner, LoadingMessage } from './LoadingSpinner.styles';
 
 export default function LoadingSpinner({ message = 'Calculating...' }) {
   return (
-    <div className="loading-spinner">
-      <div className="spinner"></div>
-      <p className="loading-message">{message}</p>
-    </div>
+    <SpinnerContainer>
+      <Spinner />
+      <LoadingMessage>{message}</LoadingMessage>
+    </SpinnerContainer>
   );
 }

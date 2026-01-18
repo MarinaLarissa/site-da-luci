@@ -3,17 +3,17 @@
  */
 
 import React from 'react';
-import './Button.css';
+import { StyledButton } from './Button.styles';
 
 export default function Button({ children, onClick, variant = 'primary', disabled = false, type = 'button' }) {
   return (
-    <button
+    <StyledButton
       type={type}
-      className={`btn btn-${variant}`}
+      $variant={variant}
       onClick={onClick}
       disabled={disabled}
     >
       {children}
-    </button>
+    </StyledButton>
   );
 }

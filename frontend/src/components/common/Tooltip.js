@@ -4,23 +4,23 @@
 
 import { useId } from 'react';
 import PropTypes from 'prop-types';
-import './Tooltip.css';
+import { TooltipContainer, TooltipContent, TooltipArrow } from './Tooltip.styles';
 
 export default function Tooltip({ children, text, position = 'top' }) {
   const tooltipId = useId();
 
   return (
-    <div className="tooltip-container" aria-describedby={tooltipId}>
+    <TooltipContainer aria-describedby={tooltipId}>
       {children}
-      <div
+      <TooltipContent
         id={tooltipId}
         role="tooltip"
-        className={`tooltip-content tooltip-${position}`}
+        $position={position}
       >
         {text}
-        <div className="tooltip-arrow"></div>
-      </div>
-    </div>
+        <TooltipArrow $position={position} />
+      </TooltipContent>
+    </TooltipContainer>
   );
 }
 

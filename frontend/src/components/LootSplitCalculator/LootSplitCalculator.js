@@ -11,7 +11,15 @@ import ResultsSection from './ResultsSection';
 import HuntHistoryDrawer from '../HuntHistory/HuntHistoryDrawer';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
-import './LootSplitCalculator.css';
+import {
+  CalculatorContainer,
+  CalculatorHeader,
+  CalculatorTitle,
+  CalculatorDescription,
+  FloatingButton,
+  ButtonIcon,
+  ButtonText,
+} from './LootSplitCalculator.styles';
 
 export default function LootSplitCalculator() {
   const { t } = useTranslation();
@@ -39,13 +47,13 @@ export default function LootSplitCalculator() {
   } = useLootSplit(loadHunts);
 
   return (
-    <div className="loot-split-calculator">
-      <div className="calculator-header">
-        <h1 className="calculator-title">{t('calculator.title')}</h1>
-        <p className="calculator-description">
+    <CalculatorContainer>
+      <CalculatorHeader>
+        <CalculatorTitle>{t('calculator.title')}</CalculatorTitle>
+        <CalculatorDescription>
           {t('calculator.subtitle')}
-        </p>
-      </div>
+        </CalculatorDescription>
+      </CalculatorHeader>
 
       {/* Error message */}
       {error && <ErrorMessage message={error} />}
@@ -66,16 +74,15 @@ export default function LootSplitCalculator() {
       {!loading && results && <ResultsSection results={results} />}
 
       {/* Floating button to open hunt history */}
-      <button
-        className="btn-open-history"
+      <FloatingButton
         onClick={toggleDrawer}
         aria-label={t('huntHistory.openButton')}
         title={t('huntHistory.openButton')}
         data-cy="hunt-history-button-open"
       >
-        <span className="btn-icon">📜</span>
-        <span className="btn-text">{t('huntHistory.title')}</span>
-      </button>
+        <ButtonIcon>📜</ButtonIcon>
+        <ButtonText>{t('huntHistory.title')}</ButtonText>
+      </FloatingButton>
 
       {/* Hunt History Drawer */}
       <HuntHistoryDrawer
@@ -88,6 +95,6 @@ export default function LootSplitCalculator() {
         onDeleteHunt={deleteHunt}
         onClearHistory={clearHistory}
       />
-    </div>
+    </CalculatorContainer>
   );
 }

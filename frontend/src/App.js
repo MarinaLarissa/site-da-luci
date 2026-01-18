@@ -10,7 +10,7 @@ import ImbuementCalculator from './components/ImbuementCalculator/ImbuementCalcu
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
-import './App.css';
+import { AppContainer, MainContent } from './App.styles';
 
 function App() {
   const [activePage, setActivePage] = useState('loot-split');
@@ -46,11 +46,11 @@ function App() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="app">
+      <AppContainer>
         <LanguageSelector />
         <Sidebar activePage={activePage} onNavigate={setActivePage} />
 
-        <main className="main-content">
+        <MainContent>
           {/* Content based on active page from sidebar */}
           {activePage === 'loot-split' && <LootSplitCalculator />}
           {activePage === 'solo-hunt' && (
@@ -65,8 +65,8 @@ function App() {
               setGoldTokenPrice={setSharedGoldTokenPrice}
             />
           )}
-        </main>
-      </div>
+        </MainContent>
+      </AppContainer>
     </Suspense>
   );
 }

@@ -6,20 +6,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import PlayerCard from './PlayerCard';
-import './PlayerList.css';
+import { PlayerListContainer, ListTitle, PlayerCards } from './PlayerList.styles';
 
 export default function PlayerList({ players }) {
   const { t } = useTranslation();
 
   return (
-    <div className="player-list">
-      <h3 className="list-title">{t('calculator.resultsSection.playerList.title')}</h3>
-      <div className="player-cards">
+    <PlayerListContainer>
+      <ListTitle>{t('calculator.resultsSection.playerList.title')}</ListTitle>
+      <PlayerCards>
         {players.map((player, index) => (
           <PlayerCard key={index} player={player} />
         ))}
-      </div>
-    </div>
+      </PlayerCards>
+    </PlayerListContainer>
   );
 }
 
