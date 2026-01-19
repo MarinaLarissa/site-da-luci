@@ -30,9 +30,19 @@ export const TokenPricesSection = styled.div`
   background-color: rgba(195, 155, 211, 0.1);
   border-radius: 8px;
   border: 1px solid rgba(195, 155, 211, 0.3);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
+
+  /* Layout: 2x2 grid
+     Row 1: GT (left) | TC (right)
+     Row 2: ST (left) | TC Sell Price (right)
+  */
+
+  /* Responsive: stack on mobile */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const TokenPriceRow = styled.div`

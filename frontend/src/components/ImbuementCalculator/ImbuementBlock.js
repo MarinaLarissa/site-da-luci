@@ -9,6 +9,33 @@ import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
+import {
+  ImbuementBlockContainer,
+  ImbuementTitle,
+  ImbuementDescription,
+  ItemPrices,
+  PriceInputRow,
+  CopyButton,
+  GPLabel,
+  Calculations,
+  CalculationRow,
+  TierName,
+  CostComparison,
+  CostOption,
+  CostValue,
+  CostBreakdown,
+  BreakdownLine,
+  BreakdownLabel,
+  BreakdownValue,
+  Savings,
+  BestOptionHighlight,
+  BestBadge,
+  BestOptionContent,
+  BestOptionDescription,
+  BestOptionCost,
+  TierToggles,
+  ToggleTierButton,
+} from './ImbuementBlock.styles';
 
 export default function ImbuementBlock({
   imbuement,
@@ -101,14 +128,14 @@ export default function ImbuementBlock({
   }, [itemPrices, imbuement.items, tiers]);
 
   return (
-    <div className="imbuement-block">
-      <h3 className="imbuement-title">
+    <ImbuementBlockContainer>
+      <ImbuementTitle>
         {imbuement.name}
-        <span className="imbuement-description">{imbuement.description}</span>
-      </h3>
+        <ImbuementDescription>{imbuement.description}</ImbuementDescription>
+      </ImbuementTitle>
 
       {/* Item Price Inputs */}
-      <div className="item-prices">
+      <ItemPrices>
         {tiers.map(tier => {
           const items = imbuement.items[tier];
           return items.map(item => {
@@ -116,15 +143,14 @@ export default function ImbuementBlock({
             const tooltipText = `${item.name}\n\nQuantities needed:\n• Basic: ${getCumulativeQuantity(item.name, 'basic')}\n• Intricate: ${getCumulativeQuantity(item.name, 'intricate')}\n• Powerful: ${getCumulativeQuantity(item.name, 'powerful')}`;
 
             return (
-              <div key={item.name} className="price-input-row" title={tooltipText}>
-                <button
-                  className="btn-copy-item"
+              <PriceInputRow key={item.name} title={tooltipText}>
+                <CopyButton
                   onClick={() => onCopyItemName(item.name)}
                   title={t('imbuementCalculator.copyItemName')}
                   aria-label={t('imbuementCalculator.copyItemName')}
                 >
                   {copiedItem === item.name ? '✓' : '📋'}
-                </button>
+                </CopyButton>
                 <label>
                   {item.name} ({cumulativeQty}x):
                 </label>
@@ -135,15 +161,15 @@ export default function ImbuementBlock({
                   onChange={(e) => onPriceChange(item.name, e.target.value)}
                   placeholder="0"
                 />
-                <span className="gp-label">GP</span>
-              </div>
+                <GPLabel>GP</GPLabel>
+              </PriceInputRow>
             );
           });
         })}
-      </div>
+      </ItemPrices>
 
       {/* Calculations per Tier */}
-      <div className="calculations">
+      <Calculations>
         {/* Powerful tier - always visible */}
         {(() => {
           const tier = 'powerful';
@@ -155,108 +181,108 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <div key={tier} className="calculation-row">
-              <h4 className="tier-name">{tierName}</h4>
+            <CalculationRow key={tier}>
+              <TierName>{tierName}</TierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <div className="best-option-highlight">
-                  <div className="best-badge">⭐ Best Option</div>
-                  <div className="best-option-content">
+                <BestOptionHighlight>
+                  <BestBadge>⭐ Best Option</BestBadge>
+                  <BestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <p className="best-option-description">{bestOption.description}</p>
-                    <div className="best-option-cost">
+                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
+                    <BestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                        <CostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BestOptionCost>
+                  </BestOptionContent>
+                </BestOptionHighlight>
               )}
 
-              <div className="cost-comparison">
-                <div className={`cost-option ${isValid && bestOption.method === 'gt' ? 'best' : ''}`}>
+              <CostComparison>
+                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">GT Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>GT Cost:</BreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
 
-                <div className={`cost-option ${isValid && bestOption.method === 'gp' ? 'best' : ''}`}>
+                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">Items Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>Items Cost:</BreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
+              </CostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <div className="savings">
+                <Savings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -270,9 +296,9 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </div>
+                </Savings>
               )}
-            </div>
+            </CalculationRow>
           );
         })()}
 
@@ -287,108 +313,108 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <div key={tier} className="calculation-row">
-              <h4 className="tier-name">{tierName}</h4>
+            <CalculationRow key={tier}>
+              <TierName>{tierName}</TierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <div className="best-option-highlight">
-                  <div className="best-badge">⭐ Best Option</div>
-                  <div className="best-option-content">
+                <BestOptionHighlight>
+                  <BestBadge>⭐ Best Option</BestBadge>
+                  <BestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <p className="best-option-description">{bestOption.description}</p>
-                    <div className="best-option-cost">
+                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
+                    <BestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                        <CostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BestOptionCost>
+                  </BestOptionContent>
+                </BestOptionHighlight>
               )}
 
-              <div className="cost-comparison">
-                <div className={`cost-option ${isValid && bestOption.method === 'gt' ? 'best' : ''}`}>
+              <CostComparison>
+                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">GT Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>GT Cost:</BreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
 
-                <div className={`cost-option ${isValid && bestOption.method === 'gp' ? 'best' : ''}`}>
+                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">Items Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>Items Cost:</BreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
+              </CostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <div className="savings">
+                <Savings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -402,9 +428,9 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </div>
+                </Savings>
               )}
-            </div>
+            </CalculationRow>
           );
         })()}
 
@@ -419,108 +445,108 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <div key={tier} className="calculation-row">
-              <h4 className="tier-name">{tierName}</h4>
+            <CalculationRow key={tier}>
+              <TierName>{tierName}</TierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <div className="best-option-highlight">
-                  <div className="best-badge">⭐ Best Option</div>
-                  <div className="best-option-content">
+                <BestOptionHighlight>
+                  <BestBadge>⭐ Best Option</BestBadge>
+                  <BestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <p className="best-option-description">{bestOption.description}</p>
-                    <div className="best-option-cost">
+                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
+                    <BestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.cost).full}>
+                        <CostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.cost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BestOptionCost>
+                  </BestOptionContent>
+                </BestOptionHighlight>
               )}
 
-              <div className="cost-comparison">
-                <div className={`cost-option ${isValid && bestOption.method === 'gt' ? 'best' : ''}`}>
+              <CostComparison>
+                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">GT Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>GT Cost:</BreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(gtCostWithoutFee).full}>
+                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(gtCostWithoutFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gtCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gtCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
 
-                <div className={`cost-option ${isValid && bestOption.method === 'gp' ? 'best' : ''}`}>
+                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <div className="cost-breakdown">
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">Items Cost:</span>
+                  <CostBreakdown>
+                    <BreakdownLine>
+                      <BreakdownLabel>Items Cost:</BreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(itemsBreakdown.totalCost).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line">
-                      <span className="breakdown-label">+ Service Fee:</span>
+                    </BreakdownLine>
+                    <BreakdownLine>
+                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <span className="breakdown-value" title={formatGPValue(serviceFee).full}>
+                        <BreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </span>
+                        </BreakdownValue>
                       ) : (
-                        <span className="breakdown-value">{formatGPValue(serviceFee).formatted} GP</span>
+                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
                       )}
-                    </div>
-                    <div className="breakdown-line total">
-                      <span className="breakdown-label">Total:</span>
+                    </BreakdownLine>
+                    <BreakdownLine $isTotal>
+                      <BreakdownLabel>Total:</BreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <span className="cost-value" title={formatGPValue(bestOption.gpCost).full}>
+                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </span>
+                        </CostValue>
                       ) : (
-                        <span className="cost-value">{formatGPValue(bestOption.gpCost).formatted} GP</span>
+                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </BreakdownLine>
+                  </CostBreakdown>
+                </CostOption>
+              </CostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <div className="savings">
+                <Savings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -534,29 +560,29 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </div>
+                </Savings>
               )}
-            </div>
+            </CalculationRow>
           );
         })()}
 
         {/* Toggle buttons for additional tiers */}
-        <div className="tier-toggles">
-          <button
-            className={`btn-toggle-tier ${showIntricate ? 'active' : ''}`}
+        <TierToggles>
+          <ToggleTierButton
+            $active={showIntricate}
             onClick={() => setShowIntricate(!showIntricate)}
           >
             {showIntricate ? t('imbuementCalculator.hideIntricate') : t('imbuementCalculator.showIntricate')}
-          </button>
-          <button
-            className={`btn-toggle-tier ${showBasic ? 'active' : ''}`}
+          </ToggleTierButton>
+          <ToggleTierButton
+            $active={showBasic}
             onClick={() => setShowBasic(!showBasic)}
           >
             {showBasic ? t('imbuementCalculator.hideBasic') : t('imbuementCalculator.showBasic')}
-          </button>
-        </div>
-      </div>
-    </div>
+          </ToggleTierButton>
+        </TierToggles>
+      </Calculations>
+    </ImbuementBlockContainer>
   );
 }
 

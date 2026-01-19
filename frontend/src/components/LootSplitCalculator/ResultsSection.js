@@ -2,6 +2,7 @@
  * Results section component
  */
 
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatDuration } from '../../utils/formatters';
@@ -24,6 +25,17 @@ import {
 
 export default function ResultsSection({ results }) {
   const { t } = useTranslation();
+  const transferListRef = useRef(null);
+
+  // Scroll to transfer list when results are calculated
+  useEffect(() => {
+    if (results && results.transfers && results.transfers.length > 0 && transferListRef.current) {
+      transferListRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, [results]);
 
   if (!results) return null;
 
@@ -76,7 +88,9 @@ export default function ResultsSection({ results }) {
       </SummaryGrid>
 
       {/* Transfer list - Action items */}
-      <TransferList transfers={transfers} copyableText={copyableText} />
+      <div ref={transferListRef}>
+        <TransferList transfers={transfers} copyableText={copyableText} />
+      </div>
 
       {/* Desktop layout: side-by-side rows (Player card | Damage/Healing card) */}
       <DesktopLayout>
