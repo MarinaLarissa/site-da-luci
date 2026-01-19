@@ -1,9 +1,9 @@
 # Migra CSS para Styled-Components - site-da-luci
 
 **Data de criacao**: 2026-01-18
-**Ultima atualizacao**: 2026-01-18
-**Status**: FASE 3 - Execucao em Andamento (67% - 20/30 etapas completas)
-**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory | 🔄 SoloHuntAnalyzer
+**Ultima atualizacao**: 2026-01-19
+**Status**: FASE 3 - Execucao em Andamento (87% - 26/30 etapas completas)
+**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory + SoloHuntAnalyzer | 🔄 ImbuementCalculator
 
 ---
 
@@ -733,24 +733,26 @@ App.js
 
 ---
 
-### ETAPA 26 - Migrar SoloHuntAnalyzer.css
+### ETAPA 26 - Migrar SoloHuntAnalyzer.css ✅
 **Commit**: `refactor(solo-hunt): migrate SoloHuntAnalyzer container to styled-components`
+**Status**: ✅ COMPLETO
+**Data**: 2026-01-19
 
 **To-do**:
-- [ ] Criar styled-components para SoloHuntAnalyzer
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para SoloHuntAnalyzer
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
-1. Ler conteudo de SoloHuntAnalyzer.css (154 linhas)
-2. Criar arquivo `SoloHuntAnalyzer.styles.js`
-3. Criar AnalyzerContainer styled-component
-4. Criar AnalyzerHeader styled-component
-5. Criar ContentArea styled-component
-6. Migrar media queries
-7. Substituir className por styled-components em SoloHuntAnalyzer.js
-8. Remover linha `import './SoloHuntAnalyzer.css'`
-9. Verificar layout geral
+1. ✅ Ler conteudo de SoloHuntAnalyzer.css (154 linhas)
+2. ✅ Criar arquivo `SoloHuntAnalyzer.styles.js`
+3. ✅ Criar AnalyzerContainer, CalculatorHeader, CalculatorTitle, CalculatorDescription
+4. ✅ Criar HistoryButton, ButtonIcon, ButtonText
+5. ✅ Criar ActionButtons, Button (com variantes primary/secondary)
+6. ✅ Migrar media queries
+7. ✅ Substituir className por styled-components em SoloHuntAnalyzer.js
+8. ✅ Remover linha `import './SoloHuntAnalyzer.css'`
+9. ✅ Verificar layout geral (ESLint: 0 erros)
 
 ---
 

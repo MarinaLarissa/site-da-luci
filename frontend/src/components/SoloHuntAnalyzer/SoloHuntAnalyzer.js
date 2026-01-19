@@ -15,7 +15,17 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS } from '../../utils/huntUtils';
 import { calculateSoloHunt } from '../../services/api';
-import './SoloHuntAnalyzer.css';
+import {
+  AnalyzerContainer,
+  CalculatorHeader,
+  CalculatorTitle,
+  CalculatorDescription,
+  HistoryButton,
+  ButtonIcon,
+  ButtonText,
+  ActionButtons,
+  Button,
+} from './SoloHuntAnalyzer.styles';
 
 // Ring Bis item names for validation
 const RING_BIS_NAMES = [
@@ -288,24 +298,23 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   };
 
   return (
-    <div className="solo-hunt-analyzer">
-      <div className="calculator-header">
-        <h1 className="calculator-title">{t('soloHuntAnalyzer.title')}</h1>
-        <p className="calculator-description">
+    <AnalyzerContainer>
+      <CalculatorHeader>
+        <CalculatorTitle>{t('soloHuntAnalyzer.title')}</CalculatorTitle>
+        <CalculatorDescription>
           {t('soloHuntAnalyzer.subtitle')}
-        </p>
-      </div>
+        </CalculatorDescription>
+      </CalculatorHeader>
 
       {/* Fixed History Button */}
-      <button
-        className="btn-open-history"
+      <HistoryButton
         onClick={() => setIsHistoryOpen(true)}
         title={t('huntHistory.openButton')}
         data-cy="hunt-history-button-open"
       >
-        <span className="btn-icon">📜</span>
-        <span className="btn-text">{t('huntHistory.title')}</span>
-      </button>
+        <ButtonIcon>📜</ButtonIcon>
+        <ButtonText>{t('huntHistory.title')}</ButtonText>
+      </HistoryButton>
 
       {/* Error message */}
       {error && <ErrorMessage message={error} />}
@@ -350,22 +359,22 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
 
       {/* Calculate button */}
       {parsedSession && (
-        <div className="action-buttons">
-          <button
-            className="btn btn-primary"
+        <ActionButtons>
+          <Button
+            variant="primary"
             onClick={handleCalculate}
             disabled={loading || hasCalculated}
             data-cy="solo-hunt-button-calculate"
           >
             {t('soloHuntAnalyzer.calculateButton')}
-          </button>
-          <button
-            className="btn btn-secondary"
+          </Button>
+          <Button
+            variant="secondary"
             onClick={handleReset}
           >
             {t('soloHuntAnalyzer.resetButton')}
-          </button>
-        </div>
+          </Button>
+        </ActionButtons>
       )}
 
       {/* Loading state */}
@@ -384,7 +393,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
         onClose={() => setIsHistoryOpen(false)}
         onAddHunt={(fn) => { saveHuntToHistoryRef.current = fn; }}
       />
-    </div>
+    </AnalyzerContainer>
   );
 }
 
