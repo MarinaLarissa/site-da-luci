@@ -7,7 +7,22 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
-import './ConfigurationManager.css';
+import Button from '../common/Button';
+import {
+  ConfigurationManagerContainer,
+  ConfigHeader,
+  ConfigDescription,
+  ConfigControls,
+  ConfigLoadSection,
+  ConfigSelect,
+  DangerButtonSmall,
+  SecondaryButtonSmall,
+  DangerButton,
+  ConfigCount,
+  ConfigPreview,
+  PreviewLabel,
+  PreviewList,
+} from './ConfigurationManager.styles';
 
 const STORAGE_KEY = 'solo-hunt-configurations';
 
@@ -211,30 +226,28 @@ export default function ConfigurationManager({
   };
 
   return (
-    <div className="configuration-manager">
-      <div className="config-header">
+    <ConfigurationManagerContainer>
+      <ConfigHeader>
         <h3>{t('soloHuntAnalyzer.configManager.title')}</h3>
-        <p className="config-description">
+        <ConfigDescription>
           {t('soloHuntAnalyzer.configManager.description')}
-        </p>
-      </div>
+        </ConfigDescription>
+      </ConfigHeader>
 
-      <div className="config-controls">
+      <ConfigControls>
         {/* Save Configuration Button */}
-        <button
-          className="btn btn-primary"
+        <Button
+          variant="primary"
           onClick={() => setShowSaveModal(true)}
           disabled={customItems.length === 0}
-          title={customItems.length === 0 ? t('soloHuntAnalyzer.configManager.noItemsToSave') : ''}
         >
           💾 {t('soloHuntAnalyzer.configManager.saveButton')}
-        </button>
+        </Button>
 
         {/* Load Configuration Dropdown */}
         {configurations.length > 0 && (
-          <div className="config-load-section">
-            <select
-              className="config-select"
+          <ConfigLoadSection>
+            <ConfigSelect
               value={selectedConfigId}
               onChange={(e) => handleLoadConfiguration(e.target.value)}
             >
@@ -244,52 +257,46 @@ export default function ConfigurationManager({
                   {config.name} ({new Date(config.createdAt).toLocaleDateString()})
                 </option>
               ))}
-            </select>
+            </ConfigSelect>
 
             {selectedConfigId && (
               <>
-                <button
-                  className="btn btn-secondary-small"
+                <SecondaryButtonSmall
                   onClick={() => handleOpenEditModal(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.editButton')}
                 >
                   ✏️
-                </button>
-                <button
-                  className="btn btn-secondary-small"
+                </SecondaryButtonSmall>
+                <SecondaryButtonSmall
                   onClick={() => handleDuplicateConfiguration(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.duplicateButton')}
                 >
                   📋
-                </button>
-                <button
-                  className="btn btn-danger-small"
+                </SecondaryButtonSmall>
+                <DangerButtonSmall
                   onClick={() => handleDeleteConfiguration(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.deleteButton')}
                 >
                   🗑️
-                </button>
+                </DangerButtonSmall>
               </>
             )}
-          </div>
+          </ConfigLoadSection>
         )}
 
         {/* Clear All Button */}
         {configurations.length > 0 && (
-          <button
-            className="btn btn-danger"
-            onClick={handleClearAll}
-          >
+          <DangerButton onClick={handleClearAll}>
             {t('soloHuntAnalyzer.configManager.clearAllButton')}
-          </button>
+          </DangerButton>
         )}
-      </div>
+      </ConfigControls>
 
       {/* Configuration Count */}
       {configurations.length > 0 && (
-        <div className="config-count">
+        <ConfigCount>
           {t('soloHuntAnalyzer.configManager.savedCount', { count: configurations.length })}
-        </div>
+        </ConfigCount>
       )}
 
       {/* Save Configuration Modal */}
@@ -331,11 +338,11 @@ export default function ConfigurationManager({
               />
             </div>
 
-            <div className="config-preview">
-              <p className="preview-label">
+            <ConfigPreview>
+              <PreviewLabel>
                 {t('soloHuntAnalyzer.configManager.saveModal.preview')}:
-              </p>
-              <ul className="preview-list">
+              </PreviewLabel>
+              <PreviewList>
                 <li>📦 {customItems.length} {t('soloHuntAnalyzer.configManager.saveModal.itemsCount')}</li>
                 {goldTokenPrice > 0 && (
                   <li>GT: {formatGPValue(goldTokenPrice).formatted} GP</li>
@@ -343,26 +350,26 @@ export default function ConfigurationManager({
                 {silverTokenPrice > 0 && (
                   <li>ST: {formatGPValue(silverTokenPrice).formatted} GP</li>
                 )}
-              </ul>
-            </div>
+              </PreviewList>
+            </ConfigPreview>
 
             <div className="modal-actions">
-              <button
-                className="btn btn-primary"
+              <Button
+                variant="primary"
                 onClick={handleSaveConfiguration}
                 disabled={!configName.trim()}
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.confirmButton')}
-              </button>
-              <button
-                className="btn btn-secondary"
+              </Button>
+              <Button
+                variant="secondary"
                 onClick={() => {
                   setShowSaveModal(false);
                   setConfigName('');
                 }}
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.cancelButton')}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -408,15 +415,15 @@ export default function ConfigurationManager({
             </div>
 
             <div className="modal-actions">
-              <button
-                className="btn btn-primary"
+              <Button
+                variant="primary"
                 onClick={handleSaveEditedName}
                 disabled={!editingConfigName.trim()}
               >
                 {t('soloHuntAnalyzer.configManager.editModal.confirmButton')}
-              </button>
-              <button
-                className="btn btn-secondary"
+              </Button>
+              <Button
+                variant="secondary"
                 onClick={() => {
                   setShowEditModal(false);
                   setEditingConfigId(null);
@@ -424,12 +431,12 @@ export default function ConfigurationManager({
                 }}
               >
                 {t('soloHuntAnalyzer.configManager.editModal.cancelButton')}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </ConfigurationManagerContainer>
   );
 }
 

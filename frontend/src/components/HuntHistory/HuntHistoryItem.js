@@ -10,7 +10,36 @@ import { formatGold, formatDuration } from '../../utils/formatters';
 import Tooltip from '../common/Tooltip';
 import damageIcon from '../../assets/tibia/damage-icon.gif';
 import healingIcon from '../../assets/tibia/healing-icon.gif';
-import './HuntHistoryItem.css';
+import {
+  HuntItemContainer,
+  HuntItemHeader,
+  HuntItemMain,
+  HuntDate,
+  DateText,
+  TimeText,
+  HuntSummary,
+  TotalBalance,
+  Duration,
+  HuntItemActions,
+  DeleteButton,
+  ExpandButton,
+  HuntItemDetails,
+  DetailsSection,
+  DetailsTitle,
+  DetailsGrid,
+  DetailItem,
+  DetailLabel,
+  DetailValue,
+  PlayersList,
+  PlayerDetailCard,
+  PlayerName,
+  LeaderBadge,
+  PlayerStatsGrid,
+  PlayerStat,
+  StatLabel,
+  StatIconInline,
+  StatValue,
+} from './HuntHistoryItem.styles';
 
 export default function HuntHistoryItem({ hunt, onDelete }) {
   const { t } = useTranslation();
@@ -33,99 +62,97 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
   const timeStr = huntDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <div className="hunt-history-item">
-      <div className="hunt-item-header" onClick={toggleExpand}>
-        <div className="hunt-item-main">
-          <div className="hunt-date">
-            <span className="date">{dateStr}</span>
-            <span className="time">{timeStr}</span>
-          </div>
-          <div className="hunt-summary">
-            <span className="total-balance">{hunt.summary.totalBalanceFormatted}</span>
-            <span className="duration">{formatDuration(hunt.summary.duration)}</span>
-          </div>
-        </div>
-        <div className="hunt-item-actions">
-          <button
-            className="btn-delete"
+    <HuntItemContainer>
+      <HuntItemHeader onClick={toggleExpand}>
+        <HuntItemMain>
+          <HuntDate>
+            <DateText>{dateStr}</DateText>
+            <TimeText>{timeStr}</TimeText>
+          </HuntDate>
+          <HuntSummary>
+            <TotalBalance>{hunt.summary.totalBalanceFormatted}</TotalBalance>
+            <Duration>{formatDuration(hunt.summary.duration)}</Duration>
+          </HuntSummary>
+        </HuntItemMain>
+        <HuntItemActions>
+          <DeleteButton
             onClick={handleDelete}
             aria-label={t('huntHistory.deleteButton')}
           >
             🗑️
-          </button>
-          <button
-            className="btn-expand"
+          </DeleteButton>
+          <ExpandButton
             aria-label={expanded ? t('huntHistory.collapseButton') : t('huntHistory.expandButton')}
           >
             {expanded ? '−' : '+'}
-          </button>
-        </div>
-      </div>
+          </ExpandButton>
+        </HuntItemActions>
+      </HuntItemHeader>
 
       {expanded && (
-        <div className="hunt-item-details">
-          <div className="details-section">
-            <h4 className="details-title">{t('huntHistory.details.summary')}</h4>
-            <div className="details-grid">
-              <div className="detail-item">
-                <span className="detail-label">{t('calculator.resultsSection.summary.fairShare')}:</span>
-                <span className="detail-value">{hunt.summary.fairShareFormatted}</span>
-              </div>
-              <div className="detail-item">
-                <span className="detail-label">{t('calculator.resultsSection.summary.profitPerHour')}:</span>
-                <span className="detail-value">{hunt.summary.profitPerHourFormatted}</span>
-              </div>
-              <div className="detail-item">
-                <span className="detail-label">{t('calculator.resultsSection.summary.activePlayers')}:</span>
-                <span className="detail-value">{hunt.summary.activePlayers}</span>
-              </div>
-            </div>
-          </div>
+        <HuntItemDetails>
+          <DetailsSection>
+            <DetailsTitle>{t('huntHistory.details.summary')}</DetailsTitle>
+            <DetailsGrid>
+              <DetailItem>
+                <DetailLabel>{t('calculator.resultsSection.summary.fairShare')}:</DetailLabel>
+                <DetailValue>{hunt.summary.fairShareFormatted}</DetailValue>
+              </DetailItem>
+              <DetailItem>
+                <DetailLabel>{t('calculator.resultsSection.summary.profitPerHour')}:</DetailLabel>
+                <DetailValue>{hunt.summary.profitPerHourFormatted}</DetailValue>
+              </DetailItem>
+              <DetailItem>
+                <DetailLabel>{t('calculator.resultsSection.summary.activePlayers')}:</DetailLabel>
+                <DetailValue>{hunt.summary.activePlayers}</DetailValue>
+              </DetailItem>
+            </DetailsGrid>
+          </DetailsSection>
 
-          <div className="details-section">
-            <h4 className="details-title">{t('huntHistory.details.players')}</h4>
-            <div className="players-list">
+          <DetailsSection>
+            <DetailsTitle>{t('huntHistory.details.players')}</DetailsTitle>
+            <PlayersList>
               {hunt.players.map((player, index) => (
-                <div key={index} className="player-detail-card">
-                  <div className="player-name">
+                <PlayerDetailCard key={index}>
+                  <PlayerName>
                     {player.name}
-                    {player.isLeader && <span className="leader-badge">👑</span>}
-                  </div>
-                  <div className="player-stats-grid">
-                    <div className="player-stat">
-                      <span className="stat-label">{t('calculator.resultsSection.playerList.balance')}:</span>
-                      <span className="stat-value">{formatGold(player.balance)}</span>
-                    </div>
+                    {player.isLeader && <LeaderBadge>👑</LeaderBadge>}
+                  </PlayerName>
+                  <PlayerStatsGrid>
+                    <PlayerStat>
+                      <StatLabel>{t('calculator.resultsSection.playerList.balance')}:</StatLabel>
+                      <StatValue>{formatGold(player.balance)}</StatValue>
+                    </PlayerStat>
                     <Tooltip
                       text={`${t('calculator.resultsSection.damageHealing.tooltips.actualDamage')}: ${formatGold(player.damage || 0)}`}
                       position="top"
                     >
-                      <div className="player-stat damage">
-                        <span className="stat-label">
-                          <img src={damageIcon} alt="Damage" className="stat-icon-inline" /> {t('calculator.resultsSection.damageHealing.damage')}:
-                        </span>
-                        <span className="stat-value">{player.damagePercent}%</span>
-                      </div>
+                      <PlayerStat>
+                        <StatLabel>
+                          <StatIconInline src={damageIcon} alt="Damage" /> {t('calculator.resultsSection.damageHealing.damage')}:
+                        </StatLabel>
+                        <StatValue>{player.damagePercent}%</StatValue>
+                      </PlayerStat>
                     </Tooltip>
                     <Tooltip
                       text={`${t('calculator.resultsSection.damageHealing.tooltips.actualHealing')}: ${formatGold(player.healing || 0)}`}
                       position="top"
                     >
-                      <div className="player-stat healing">
-                        <span className="stat-label">
-                          <img src={healingIcon} alt="Healing" className="stat-icon-inline" /> {t('calculator.resultsSection.damageHealing.healing')}:
-                        </span>
-                        <span className="stat-value">{player.healingPercent}%</span>
-                      </div>
+                      <PlayerStat>
+                        <StatLabel>
+                          <StatIconInline src={healingIcon} alt="Healing" /> {t('calculator.resultsSection.damageHealing.healing')}:
+                        </StatLabel>
+                        <StatValue>{player.healingPercent}%</StatValue>
+                      </PlayerStat>
                     </Tooltip>
-                  </div>
-                </div>
+                  </PlayerStatsGrid>
+                </PlayerDetailCard>
               ))}
-            </div>
-          </div>
-        </div>
+            </PlayersList>
+          </DetailsSection>
+        </HuntItemDetails>
       )}
-    </div>
+    </HuntItemContainer>
   );
 }
 

@@ -6,7 +6,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import './SessionDataInput.css';
+import Button from '../common/Button';
+import {
+  SessionDataInputContainer,
+  SectionTitle,
+  SectionDescription,
+  SessionTextarea,
+  InputActions,
+  ParsedSessionInfo,
+} from './SessionDataInput.styles';
 
 export default function SessionDataInput({ sessionData, setSessionData, onParse, parsedSession }) {
   const { t } = useTranslation();
@@ -48,14 +56,13 @@ Lofi Shades (Leader)
   };
 
   return (
-    <div className="session-data-input">
-      <h2 className="section-title">{t('soloHuntAnalyzer.sessionInput.title')}</h2>
-      <p className="section-description">
+    <SessionDataInputContainer>
+      <SectionTitle>{t('soloHuntAnalyzer.sessionInput.title')}</SectionTitle>
+      <SectionDescription>
         {t('soloHuntAnalyzer.sessionInput.description')} <strong>{t('soloHuntAnalyzer.sessionInput.onePlayerOnly')}</strong>
-      </p>
+      </SectionDescription>
 
-      <textarea
-        className="session-textarea"
+      <SessionTextarea
         value={sessionData}
         onChange={(e) => setSessionData(e.target.value)}
         placeholder={t('soloHuntAnalyzer.sessionInput.placeholder')}
@@ -63,36 +70,35 @@ Lofi Shades (Leader)
         data-cy="solo-hunt-input-session"
       />
 
-      <div className="input-actions">
-        <button
-          className="btn btn-primary"
+      <InputActions>
+        <Button
+          variant="primary"
           onClick={onParse}
           disabled={!sessionData.trim()}
-          data-cy="solo-hunt-button-parse"
         >
           {t('soloHuntAnalyzer.sessionInput.parseButton')}
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={handleLoadExample3h}
         >
           {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (3:00h)
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={handleLoadExample2h30}
         >
           {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (2:30h)
-        </button>
-      </div>
+        </Button>
+      </InputActions>
 
       {/* Show parsed session info */}
       {parsedSession && (
-        <div className="parsed-session-info">
+        <ParsedSessionInfo>
           <p>{t('soloHuntAnalyzer.sessionInput.sessionProcessed')}</p>
-        </div>
+        </ParsedSessionInfo>
       )}
-    </div>
+    </SessionDataInputContainer>
   );
 }
 

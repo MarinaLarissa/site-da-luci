@@ -1,7 +1,9 @@
 # Migra CSS para Styled-Components - site-da-luci
 
 **Data de criacao**: 2026-01-18
-**Status**: FASE 1 - Analise Concluida | FASE 2 - Plano Pendente
+**Ultima atualizacao**: 2026-01-18
+**Status**: FASE 3 - Execucao em Andamento (67% - 20/30 etapas completas)
+**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory | 🔄 SoloHuntAnalyzer
 
 ---
 
@@ -553,13 +555,14 @@ App.js
 
 ---
 
-### ETAPA 18 - Migrar HuntHistoryControls.css
+### ETAPA 18 - Migrar HuntHistoryControls.css ✅
 **Commit**: `refactor(hunt-history): migrate HuntHistoryControls to styled-components`
+**Status**: ✅ COMPLETO
 
 **To-do**:
-- [ ] Criar styled-components para HuntHistoryControls
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para HuntHistoryControls
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de HuntHistoryControls.css (164 linhas)
@@ -575,13 +578,14 @@ App.js
 
 ---
 
-### ETAPA 19 - Migrar HuntHistoryItem.css
+### ETAPA 19 - Migrar HuntHistoryItem.css ✅
 **Commit**: `refactor(hunt-history): migrate HuntHistoryItem to styled-components`
+**Status**: ✅ COMPLETO
 
 **To-do**:
-- [ ] Criar styled-components para HuntHistoryItem
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para HuntHistoryItem
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de HuntHistoryItem.css (235 linhas)
@@ -597,13 +601,14 @@ App.js
 
 ---
 
-### ETAPA 20 - Migrar HuntHistoryDrawer.css
+### ETAPA 20 - Migrar HuntHistoryDrawer.css ✅
 **Commit**: `refactor(hunt-history): migrate HuntHistoryDrawer to styled-components`
+**Status**: ✅ COMPLETO
 
 **To-do**:
-- [ ] Criar styled-components para HuntHistoryDrawer
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para HuntHistoryDrawer
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de HuntHistoryDrawer.css (178 linhas)

@@ -6,7 +6,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import './HuntHistoryControls.css';
+import {
+  ControlsContainer,
+  ControlsSection,
+  ControlsTitle,
+  ExportTypeSelector,
+  RadioLabel,
+  InputGroup,
+  NumberInput,
+  InputHint,
+  DateRangeInputs,
+  InputLabel,
+  DateInput,
+  ExportButton,
+  ClearAllButton,
+  WarningText,
+} from './HuntHistoryControls.styles';
 
 export default function HuntHistoryControls({
   exportOptions,
@@ -41,12 +56,12 @@ export default function HuntHistoryControls({
   };
 
   return (
-    <div className="hunt-history-controls">
-      <div className="controls-section">
-        <h4 className="controls-title">{t('huntHistory.controls.exportTitle')}</h4>
+    <ControlsContainer>
+      <ControlsSection>
+        <ControlsTitle>{t('huntHistory.controls.exportTitle')}</ControlsTitle>
 
-        <div className="export-type-selector">
-          <label className="radio-label">
+        <ExportTypeSelector>
+          <RadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -55,9 +70,9 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportAll')} ({totalHunts})</span>
-          </label>
+          </RadioLabel>
 
-          <label className="radio-label">
+          <RadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -66,22 +81,21 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportLastN')}</span>
-          </label>
+          </RadioLabel>
           {exportOptions.type === 'lastN' && (
-            <div className="input-group">
-              <input
+            <InputGroup>
+              <NumberInput
                 type="number"
                 min="1"
                 max={totalHunts}
                 value={exportOptions.count}
                 onChange={handleCountChange}
-                className="number-input"
               />
-              <span className="input-hint">{t('huntHistory.controls.huntsLabel')}</span>
-            </div>
+              <InputHint>{t('huntHistory.controls.huntsLabel')}</InputHint>
+            </InputGroup>
           )}
 
-          <label className="radio-label">
+          <RadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -90,44 +104,42 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportDateRange')}</span>
-          </label>
+          </RadioLabel>
           {exportOptions.type === 'dateRange' && (
-            <div className="date-range-inputs">
-              <div className="input-group">
-                <label className="input-label">{t('huntHistory.controls.startDate')}:</label>
-                <input
+            <DateRangeInputs>
+              <InputGroup>
+                <InputLabel>{t('huntHistory.controls.startDate')}:</InputLabel>
+                <DateInput
                   type="date"
                   value={exportOptions.startDate || ''}
                   onChange={handleStartDateChange}
-                  className="date-input"
                 />
-              </div>
-              <div className="input-group">
-                <label className="input-label">{t('huntHistory.controls.endDate')}:</label>
-                <input
+              </InputGroup>
+              <InputGroup>
+                <InputLabel>{t('huntHistory.controls.endDate')}:</InputLabel>
+                <DateInput
                   type="date"
                   value={exportOptions.endDate || ''}
                   onChange={handleEndDateChange}
-                  className="date-input"
                 />
-              </div>
-            </div>
+              </InputGroup>
+            </DateRangeInputs>
           )}
-        </div>
+        </ExportTypeSelector>
 
-        <button className="btn-export" onClick={onExport}>
+        <ExportButton onClick={onExport}>
           📥 {t('huntHistory.controls.exportButton')}
-        </button>
-      </div>
+        </ExportButton>
+      </ControlsSection>
 
-      <div className="controls-section danger-zone">
-        <h4 className="controls-title">{t('huntHistory.controls.dangerZone')}</h4>
-        <button className="btn-clear-all" onClick={handleClearHistory}>
+      <ControlsSection $dangerZone>
+        <ControlsTitle>{t('huntHistory.controls.dangerZone')}</ControlsTitle>
+        <ClearAllButton onClick={handleClearHistory}>
           🗑️ {t('huntHistory.controls.clearAllButton')}
-        </button>
-        <p className="warning-text">{t('huntHistory.controls.clearWarning')}</p>
-      </div>
-    </div>
+        </ClearAllButton>
+        <WarningText>{t('huntHistory.controls.clearWarning')}</WarningText>
+      </ControlsSection>
+    </ControlsContainer>
   );
 }
 
