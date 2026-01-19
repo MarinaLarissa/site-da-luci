@@ -2,8 +2,8 @@
 
 **Data de criacao**: 2026-01-18
 **Ultima atualizacao**: 2026-01-19
-**Status**: FASE 3 - Execucao em Andamento (90% - 27/30 etapas completas)
-**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory + SoloHuntAnalyzer + ImbuementCalculator | 🔄 Cleanup
+**Status**: FASE 3 - Execucao em Andamento (93% - 28/30 etapas completas)
+**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory + SoloHuntAnalyzer + ImbuementCalculator + utils.css | 🔄 Cleanup Final
 
 ---
 
@@ -780,22 +780,28 @@ App.js
 
 ---
 
-### ETAPA 28 - Decisao sobre utils.css
-**Commit**: `refactor(styles): handle utility classes migration`
+### ETAPA 28 - Decisao sobre utils.css ✅
+**Commit**: `chore(cleanup): remove unused utils.css file`
+**Status**: ✅ COMPLETO
+**Data**: 2026-01-19
 
 **To-do**:
-- [ ] Decidir destino do utils.css
-- [ ] Implementar solucao escolhida
-- [ ] Documentar decisao
+- [x] Decidir destino do utils.css
+- [x] Implementar solucao escolhida
+- [x] Documentar decisao
 
 **Subetapas**:
-1. Verificar se utils.css esta em uso em algum componente
-2. Se NAO usado: Remover arquivo
-3. Se USADO: Criar arquivo `utilities.js` com styled-components helpers
-4. Exportar funcoes utilitarias (spacing, flexbox, etc)
-5. Substituir usos de classes utilitarias por styled-components
-6. Remover utils.css
-7. Documentar decisao no plano
+1. ✅ Verificar se utils.css esta em uso (resultado: NAO usado)
+2. ✅ Confirmar que arquivo é orphan (0 imports encontrados)
+3. ✅ Decidir: REMOVER arquivo
+4. ✅ Remover frontend/src/utils.css (434 linhas)
+5. ✅ Documentar decisao
+
+**Decisao Final**: REMOVER arquivo
+- **Justificativa**: Arquivo orphan não utilizado (0 imports)
+- **Conteúdo**: Classes utilitárias estilo Tailwind (434 linhas)
+- **Alternativa**: styled-components fornece toda funcionalidade via props
+- **Resultado**: Mantém consistência 100% styled-components
 
 ---
 
