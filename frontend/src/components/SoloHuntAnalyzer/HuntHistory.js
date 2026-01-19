@@ -7,7 +7,28 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
-import './HuntHistory.css';
+import Button from '../common/Button';
+import {
+  HuntHistoryOverlay,
+  HuntHistoryPanel,
+  HuntHistoryHeader,
+  CloseButton,
+  HuntHistoryControls,
+  HuntCount,
+  HuntHistoryList,
+  EmptyState,
+  HuntCard,
+  HuntSummary,
+  HuntInfo,
+  HuntCharacter,
+  HuntDate,
+  HuntBalance,
+  ExpandButton,
+  HuntDetails,
+  DetailsGrid,
+  DetailItem,
+  HuntActions,
+} from './HuntHistory.styles';
 
 const HISTORY_STORAGE_KEY = 'solo-hunt-history';
 const MAX_HISTORY_ITEMS = 50;
@@ -186,54 +207,54 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
   if (!isOpen) return null;
 
   return (
-    <div className="hunt-history-overlay" onClick={onClose}>
-      <div className="hunt-history-panel" onClick={(e) => e.stopPropagation()}>
+    <HuntHistoryOverlay onClick={onClose}>
+      <HuntHistoryPanel onClick={(e) => e.stopPropagation()}>
         {/* Header */}
-        <div className="hunt-history-header">
+        <HuntHistoryHeader>
           <h2>{t('huntHistory.title')}</h2>
-          <button className="btn-close" onClick={onClose} aria-label={t('huntHistory.closeButton')}>
+          <CloseButton onClick={onClose} aria-label={t('huntHistory.closeButton')}>
             ✕
-          </button>
-        </div>
+          </CloseButton>
+        </HuntHistoryHeader>
 
         {/* Controls */}
-        <div className="hunt-history-controls">
+        <HuntHistoryControls>
           {huntHistory.length > 0 && (
             <>
-              <button className="btn btn-primary" onClick={handleExportJSON}>
+              <Button variant="primary" onClick={handleExportJSON}>
                 📤 {t('huntHistory.controls.exportButton')}
-              </button>
-              <button className="btn btn-danger" onClick={handleClearAll}>
+              </Button>
+              <Button variant="danger" onClick={handleClearAll}>
                 🗑️ {t('huntHistory.controls.clearAllButton')}
-              </button>
+              </Button>
             </>
           )}
-        </div>
+        </HuntHistoryControls>
 
         {/* Hunt Count */}
         {huntHistory.length > 0 && (
-          <div className="hunt-count">
+          <HuntCount>
             {t('huntHistory.huntCount', { count: huntHistory.length, max: MAX_HISTORY_ITEMS })}
-          </div>
+          </HuntCount>
         )}
 
         {/* Hunt List */}
-        <div className="hunt-history-list">
+        <HuntHistoryList>
           {huntHistory.length === 0 ? (
-            <div className="empty-state">
+            <EmptyState>
               <p>{t('huntHistory.emptyState')}</p>
-            </div>
+            </EmptyState>
           ) : (
             huntHistory.filter(hunt => hunt && hunt.id).map((hunt) => (
-              <div key={hunt.id} className="hunt-card">
-                <div className="hunt-summary" onClick={() => toggleExpand(hunt.id)}>
-                  <div className="hunt-info">
-                    <div className="hunt-character">{hunt.playerName || 'Unknown'}</div>
-                    <div className="hunt-date">
+              <HuntCard key={hunt.id}>
+                <HuntSummary onClick={() => toggleExpand(hunt.id)}>
+                  <HuntInfo>
+                    <HuntCharacter>{hunt.playerName || 'Unknown'}</HuntCharacter>
+                    <HuntDate>
                       {hunt.timestamp ? new Date(hunt.timestamp).toLocaleString(locale) : 'N/A'}
-                    </div>
-                  </div>
-                  <div className="hunt-balance">
+                    </HuntDate>
+                  </HuntInfo>
+                  <HuntBalance>
                     {formatGPValue(hunt.adjustedBalance || 0).formatted.includes('kk') ? (
                       <span
                         className={(hunt.adjustedBalance || 0) >= 0 ? 'positive' : 'negative'}
@@ -248,23 +269,22 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         {formatGPValue(hunt.adjustedBalance || 0).formatted} GP
                       </span>
                     )}
-                  </div>
-                  <button
-                    className="btn-expand"
+                  </HuntBalance>
+                  <ExpandButton
                     aria-label={expandedHuntId === hunt.id ? t('huntHistory.collapseButton') : t('huntHistory.expandButton')}
                   >
                     {expandedHuntId === hunt.id ? '▼' : '▶'}
-                  </button>
-                </div>
+                  </ExpandButton>
+                </HuntSummary>
 
                 {expandedHuntId === hunt.id && (
-                  <div className="hunt-details">
-                    <div className="details-grid">
-                      <div className="detail-item">
+                  <HuntDetails>
+                    <DetailsGrid>
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.duration')}:</span>
                         <span className="value">{hunt.duration || 'N/A'}</span>
-                      </div>
-                      <div className="detail-item">
+                      </DetailItem>
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
                         {formatGPValue(hunt.loot || 0).formatted.includes('kk') ? (
                           <span className="value positive" title={formatGPValue(hunt.loot || 0).full}>
@@ -273,8 +293,8 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         ) : (
                           <span className="value positive">+{formatGPValue(hunt.loot || 0).formatted} GP</span>
                         )}
-                      </div>
-                      <div className="detail-item">
+                      </DetailItem>
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
                         {formatGPValue(hunt.supplies || 0).formatted.includes('kk') ? (
                           <span className="value negative" title={formatGPValue(hunt.supplies || 0).full}>
@@ -283,8 +303,8 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         ) : (
                           <span className="value negative">-{formatGPValue(hunt.supplies || 0).formatted} GP</span>
                         )}
-                      </div>
-                      <div className="detail-item">
+                      </DetailItem>
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
                         {formatGPValue(hunt.balance || 0).formatted.includes('kk') ? (
                           <span className="value" title={formatGPValue(hunt.balance || 0).full}>
@@ -293,9 +313,9 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         ) : (
                           <span className="value">{formatGPValue(hunt.balance || 0).formatted} GP</span>
                         )}
-                      </div>
+                      </DetailItem>
                       {(hunt.totalCost || 0) > 0 && (
-                        <div className="detail-item">
+                        <DetailItem>
                           <span className="label">{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}:</span>
                           {formatGPValue(hunt.totalCost || 0).formatted.includes('kk') ? (
                             <span className="value negative" title={formatGPValue(hunt.totalCost || 0).full}>
@@ -304,9 +324,9 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                           ) : (
                             <span className="value negative">-{formatGPValue(hunt.totalCost || 0).formatted} GP</span>
                           )}
-                        </div>
+                        </DetailItem>
                       )}
-                      <div className="detail-item">
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.totalProfit')}:</span>
                         {formatGPValue(hunt.adjustedBalance || 0).formatted.includes('kk') ? (
                           <span
@@ -320,8 +340,8 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                             {(hunt.adjustedBalance || 0) >= 0 ? '+' : ''}{formatGPValue(hunt.adjustedBalance || 0).formatted} GP
                           </span>
                         )}
-                      </div>
-                      <div className="detail-item">
+                      </DetailItem>
+                      <DetailItem>
                         <span className="label">{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}:</span>
                         {formatGPValue(hunt.profitPerHour || 0).formatted.includes('kk') ? (
                           <span className="value" title={formatGPValue(hunt.profitPerHour || 0).full}>
@@ -330,48 +350,48 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         ) : (
                           <span className="value">{formatGPValue(hunt.profitPerHour || 0).formatted} GP/h</span>
                         )}
-                      </div>
+                      </DetailItem>
                       {hunt.tcTotal !== null && hunt.tcTotal !== undefined && (
-                        <div className="detail-item">
+                        <DetailItem>
                           <span className="label">{t('soloHuntAnalyzer.results.finalBalance.tcTotal')}:</span>
                           <span className={hunt.tcTotal >= 0 ? 'value positive' : 'value negative'}>
                             {hunt.tcTotal >= 0 ? '+' : ''}{(hunt.tcTotal || 0).toLocaleString(locale)} TC
                           </span>
-                        </div>
+                        </DetailItem>
                       )}
                       {hunt.tcPerHour !== null && hunt.tcPerHour !== undefined && (
-                        <div className="detail-item">
+                        <DetailItem>
                           <span className="label">{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}:</span>
                           <span className="value">{(hunt.tcPerHour || 0).toLocaleString(locale)} TC/h</span>
-                        </div>
+                        </DetailItem>
                       )}
                       {hunt.moneyMaked !== null && hunt.moneyMaked !== undefined && (
-                        <div className="detail-item">
+                        <DetailItem>
                           <span className="label">💵 Money Earned:</span>
                           <span className={hunt.moneyMaked >= 0 ? 'value positive' : 'value negative'}>
                             ${(hunt.moneyMaked || 0).toFixed(2)}
                           </span>
-                        </div>
+                        </DetailItem>
                       )}
-                    </div>
+                    </DetailsGrid>
 
-                    <div className="hunt-actions">
-                      <button
-                        className="btn btn-danger-small"
+                    <HuntActions>
+                      <Button
+                        variant="danger"
                         onClick={() => handleDeleteHunt(hunt.id)}
                         title={t('huntHistory.deleteButton')}
                       >
                         🗑️ {t('huntHistory.deleteButton')}
-                      </button>
-                    </div>
-                  </div>
+                      </Button>
+                    </HuntActions>
+                  </HuntDetails>
                 )}
-              </div>
+              </HuntCard>
             ))
           )}
-        </div>
-      </div>
-    </div>
+        </HuntHistoryList>
+      </HuntHistoryPanel>
+    </HuntHistoryOverlay>
   );
 }
 

@@ -8,7 +8,52 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
 import { IMBUEMENTS, getAllCategories, getImbuementsByCategory } from '../../data/imbuements';
-import './ItemCostManager.css';
+import Button from '../common/Button';
+import {
+  ItemCostManagerContainer,
+  TokenPricesSection,
+  TokenPriceRow,
+  TokenIcon,
+  TokenIconInline,
+  CoinIconSmall,
+  CoinIconInline,
+  ScreenReaderOnly,
+  AddButtons,
+  ItemsList,
+  ItemsTable,
+  ItemsHeader,
+  ItemsRow,
+  ItemName,
+  ChildPriceLabel,
+  PriceInput,
+  PriceTypeSelect,
+  ItemTotal,
+  ItemSource,
+  RemoveButton,
+  QuantityButton,
+  CollapseButton,
+  CollapsedHint,
+  QuantityControls,
+  PriceControls,
+  QuantityDisplay,
+  HybridPrice,
+  TokenPrice,
+  GPPrice,
+  PriceSeparator,
+  CostSummary,
+  ModalOverlay,
+  ModalContent,
+  FormGroup,
+  ImbuementItemsPreview,
+  ModalActions,
+  RingBISDescription,
+  RingBISGrid,
+  RingBISOption,
+  RingBISIcon,
+  RingBISName,
+  RingBISVocation,
+  RecalculationIndicator,
+} from './ItemCostManager.styles';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import silverTokenIcon from '../../assets/tibia/silver_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
@@ -573,7 +618,7 @@ export default function ItemCostManager({
     : [];
 
   return (
-    <div className="item-cost-manager">
+    <ItemCostManagerContainer>
       <h2 className="section-title">{t('soloHuntAnalyzer.itemCostManager.title')}</h2>
 
       <p className="section-description">
@@ -581,8 +626,8 @@ export default function ItemCostManager({
       </p>
 
           {/* Token Prices */}
-          <div className="token-prices-section">
-        <div className="token-price-row">
+          <TokenPricesSection>
+        <TokenPriceRow>
           <img src={goldTokenIcon} alt="Gold Token" className="token-icon" />
           <label htmlFor="gold-token-price-input">{t('soloHuntAnalyzer.itemCostManager.goldTokenLabel')}</label>
           <input
@@ -597,9 +642,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </div>
+        </TokenPriceRow>
 
-        <div className={`token-price-row ${silverTokenError ? 'error' : ''}`}>
+        <TokenPriceRow $error={silverTokenError}>
           <img src={silverTokenIcon} alt="Silver Token" className="token-icon" />
           <label htmlFor="silver-token-price-input">{t('soloHuntAnalyzer.itemCostManager.silverTokenLabel')}</label>
           <input
@@ -615,9 +660,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </div>
+        </TokenPriceRow>
 
-        <div className="token-price-row">
+        <TokenPriceRow>
           <img src={tibiaCoinIcon} alt="Tibia Coin" className="token-icon" />
           <label htmlFor="tibia-coin-price-input">{t('soloHuntAnalyzer.itemCostManager.tibiaCoinLabel')}</label>
           <input
@@ -632,9 +677,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </div>
+        </TokenPriceRow>
 
-        <div className="token-price-row" title="Valor de venda da Tibia Coin por dinheiro real">
+        <TokenPriceRow title="Valor de venda da Tibia Coin por dinheiro real">
           <span className="token-icon">💵</span>
           <label htmlFor="tibia-coin-sell-price-input">TC Sell Price</label>
           <input
@@ -649,69 +694,69 @@ export default function ItemCostManager({
             data-cy="solo-hunt-input-tc-sell-price"
           />
           <span className="unit">$ / TC</span>
-        </div>
-      </div>
+        </TokenPriceRow>
+      </TokenPricesSection>
 
       {/* Recalculation indicator */}
       {needsRecalculation && (
-        <div className="recalculation-indicator">
+        <RecalculationIndicator>
           {t('soloHuntAnalyzer.itemCostManager.recalculationWarning')}
-        </div>
+        </RecalculationIndicator>
       )}
 
       {/* Add buttons */}
-      <div className="add-buttons">
-        <button
-          className="btn btn-primary"
+      <AddButtons>
+        <Button
+          variant="primary"
           onClick={() => setShowImbuementModal(true)}
           data-cy="solo-hunt-button-add-imbuement"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addImbuementButton')}
-        </button>
-        <button
-          className="btn btn-primary"
+        </Button>
+        <Button
+          variant="primary"
           onClick={() => setShowRingBisModal(true)}
           title={t('soloHuntAnalyzer.itemCostManager.ringBisTooltip')}
           data-cy="solo-hunt-button-add-ringbis"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addRingBisButton')}
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={() => setShowCustomItemModal(true)}
           data-cy="solo-hunt-button-add-custom-item"
         >
           + {t('soloHuntAnalyzer.itemCostManager.addCustomItemButton')}
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={handleCopyToEfficiencyCalc}
           title="Copiar valores dos imbuements para o Efficiency Calculator"
           data-cy="solo-hunt-button-copy-to-efficiency"
         >
           📋 Copiar Imbuements
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={handlePasteFromImbuementCalc}
           title="Paste configuration from Imbuement Calculator"
           data-cy="solo-hunt-button-paste-imbuement"
         >
           {t('soloHuntAnalyzer.itemCostManager.pasteFromImbuementCalcButton')}
-        </button>
-      </div>
+        </Button>
+      </AddButtons>
 
       {/* Items list */}
       {customItems.length > 0 && (
-        <div className="items-list">
+        <ItemsList>
           <h3>{t('soloHuntAnalyzer.itemCostManager.itemsListTitle')}</h3>
-          <div className="items-table">
-            <div className="items-header">
+          <ItemsTable>
+            <ItemsHeader>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.item')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.quantity')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.unitPrice')}</div>
               <div></div>
-            </div>
+            </ItemsHeader>
             {customItems.map(item => {
               // Skip child items - they'll be rendered under their parent
               if (item.isChild) return null;
@@ -872,10 +917,10 @@ export default function ItemCostManager({
                 </React.Fragment>
               );
             })}
-          </div>
+          </ItemsTable>
 
           {/* Total cost summary */}
-          <div className="cost-summary">
+          <CostSummary>
             {/* Partial GP - Only show if there are direct GP costs */}
             {totalGP > 0 && (
               <p title={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')}>
@@ -951,20 +996,18 @@ export default function ItemCostManager({
                 )
               }
             </p>
-          </div>
-        </div>
+          </CostSummary>
+        </ItemsList>
       )}
 
       {/* Imbuement Modal */}
       {showImbuementModal && (
-        <div
-          className="modal-overlay"
+        <ModalOverlay
           onClick={() => setShowImbuementModal(false)}
           role="presentation"
           aria-label={t('soloHuntAnalyzer.itemCostManager.addImbuementModal.closeModal')}
         >
-          <div
-            className="modal-content"
+          <ModalContent
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-labelledby="imbuement-modal-title"
@@ -972,7 +1015,7 @@ export default function ItemCostManager({
           >
             <h3 id="imbuement-modal-title">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.title')}</h3>
 
-            <div className="form-group">
+            <FormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.categoryLabel')}</label>
               <select
                 value={selectedCategory}
@@ -986,10 +1029,10 @@ export default function ItemCostManager({
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
-            </div>
+            </FormGroup>
 
             {selectedCategory && (
-              <div className="form-group">
+              <FormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.imbuementLabel')}</label>
                 <select
                   value={selectedImbuement}
@@ -1002,11 +1045,11 @@ export default function ItemCostManager({
                     </option>
                   ))}
                 </select>
-              </div>
+              </FormGroup>
             )}
 
             {selectedImbuement && (
-              <div className="form-group">
+              <FormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tierLabel')}</label>
                 <select
                   value={selectedTier}
@@ -1019,11 +1062,11 @@ export default function ItemCostManager({
                   <option value="intricate">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.intricate')}</option>
                   <option value="powerful">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.powerful')}</option>
                 </select>
-              </div>
+              </FormGroup>
             )}
 
             {selectedImbuement && GT_ELIGIBLE_IMBUEMENTS.includes(selectedImbuement) && (
-              <div className="form-group">
+              <FormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentLabel')}</label>
                 <select
                   value={gtPayment}
@@ -1040,11 +1083,11 @@ export default function ItemCostManager({
                     <option value={6}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.all')}</option>
                   )}
                 </select>
-              </div>
+              </FormGroup>
             )}
 
             {selectedImbuement && (
-              <div className="imbuement-items-preview">
+              <ImbuementItemsPreview>
                 <h4>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.itemsPreviewTitle')}</h4>
                 {(() => {
                   const imbuement = IMBUEMENTS.find(imb => imb.id === selectedImbuement);
@@ -1086,38 +1129,36 @@ export default function ItemCostManager({
                     </>
                   );
                 })()}
-              </div>
+              </ImbuementItemsPreview>
             )}
 
-            <div className="modal-actions">
-              <button
-                className="btn btn-primary"
+            <ModalActions>
+              <Button
+                variant="primary"
                 onClick={handleAddImbuement}
                 disabled={!selectedImbuement}
               >
                 {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.addButton')}
-              </button>
-              <button
-                className="btn btn-secondary"
+              </Button>
+              <Button
+                variant="secondary"
                 onClick={() => setShowImbuementModal(false)}
               >
                 {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.cancelButton')}
-              </button>
-            </div>
-          </div>
-        </div>
+              </Button>
+            </ModalActions>
+          </ModalContent>
+        </ModalOverlay>
       )}
 
       {/* Custom Item Modal */}
       {showCustomItemModal && (
-        <div
-          className="modal-overlay"
+        <ModalOverlay
           onClick={() => setShowCustomItemModal(false)}
           role="presentation"
           aria-label={t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.closeModal')}
         >
-          <div
-            className="modal-content"
+          <ModalContent
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-labelledby="custom-item-modal-title"
@@ -1125,7 +1166,7 @@ export default function ItemCostManager({
           >
             <h3 id="custom-item-modal-title">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.title')}</h3>
 
-            <div className="form-group">
+            <FormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNameLabel')}</label>
               <input
                 type="text"
@@ -1133,9 +1174,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemName(e.target.value)}
                 placeholder={t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNamePlaceholder')}
               />
-            </div>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.quantityLabel')}</label>
               <input
                 type="number"
@@ -1143,9 +1184,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemQuantity(parseInt(e.target.value) || 1)}
                 min="1"
               />
-            </div>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.unitPriceLabel')}</label>
               <input
                 type="number"
@@ -1153,9 +1194,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemPrice(parseFloat(e.target.value) || 0)}
                 min="0"
               />
-            </div>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypeLabel')}</label>
               <select
                 value={customItemPriceType}
@@ -1165,48 +1206,47 @@ export default function ItemCostManager({
                 <option value="GT">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.gt')}</option>
                 <option value="ST">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.st')}</option>
               </select>
-            </div>
+            </FormGroup>
 
-            <div className="modal-actions">
-              <button
-                className="btn btn-primary"
+            <ModalActions>
+              <Button
+                variant="primary"
                 onClick={handleAddCustomItem}
                 disabled={!customItemName.trim()}
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.addButton')}
-              </button>
-              <button
-                className="btn btn-secondary"
+              </Button>
+              <Button
+                variant="secondary"
                 onClick={() => setShowCustomItemModal(false)}
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.cancelButton')}
-              </button>
-            </div>
-          </div>
-        </div>
+              </Button>
+            </ModalActions>
+          </ModalContent>
+        </ModalOverlay>
       )}
 
       {/* Ring Bis Selection Modal */}
       {showRingBisModal && (
-        <div
-          className="modal-overlay"
+        <ModalOverlay
           onClick={() => setShowRingBisModal(false)}
           role="presentation"
           aria-label={t('soloHuntAnalyzer.itemCostManager.ringBisModal.closeModal')}
         >
-          <div
-            className="modal-content ring-bis-modal"
+          <ModalContent
+            $wide
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-labelledby="ring-bis-modal-title"
             aria-modal="true"
           >
             <h3 id="ring-bis-modal-title">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.title')}</h3>
-            <p className="ring-bis-modal__description">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.description')}</p>
+            <RingBISDescription>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.description')}</RingBISDescription>
 
-            <div className="ring-bis-modal__grid">
-              <div
-                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing') ? 'ring-bis-modal__option--selected' : ''}`}
+            <RingBISGrid>
+              <RingBISOption
+                $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'))}
                 role="button"
                 tabIndex={0}
@@ -1217,13 +1257,13 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <img src={arborealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')} className="ring-bis-modal__icon" />
-                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.druid')}</span>
-              </div>
+                <RingBISIcon src={arborealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')} />
+                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}</RingBISName>
+                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.druid')}</RingBISVocation>
+              </RingBISOption>
 
-              <div
-                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing') ? 'ring-bis-modal__option--selected' : ''}`}
+              <RingBISOption
+                $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'))}
                 role="button"
                 tabIndex={0}
@@ -1234,13 +1274,13 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <img src={alicornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')} className="ring-bis-modal__icon" />
-                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.paladin')}</span>
-              </div>
+                <RingBISIcon src={alicornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')} />
+                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}</RingBISName>
+                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.paladin')}</RingBISVocation>
+              </RingBISOption>
 
-              <div
-                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil') ? 'ring-bis-modal__option--selected' : ''}`}
+              <RingBISOption
+                $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'))}
                 role="button"
                 tabIndex={0}
@@ -1251,13 +1291,13 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <img src={arcanomancerSigilIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')} className="ring-bis-modal__icon" />
-                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.sorcerer')}</span>
-              </div>
+                <RingBISIcon src={arcanomancerSigilIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')} />
+                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}</RingBISName>
+                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.sorcerer')}</RingBISVocation>
+              </RingBISOption>
 
-              <div
-                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing') ? 'ring-bis-modal__option--selected' : ''}`}
+              <RingBISOption
+                $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'))}
                 role="button"
                 tabIndex={0}
@@ -1268,13 +1308,13 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <img src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} className="ring-bis-modal__icon" />
-                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.monk')}</span>
-              </div>
+                <RingBISIcon src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} />
+                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</RingBISName>
+                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.monk')}</RingBISVocation>
+              </RingBISOption>
 
-              <div
-                className={`ring-bis-modal__option ${selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing') ? 'ring-bis-modal__option--selected' : ''}`}
+              <RingBISOption
+                $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'))}
                 role="button"
                 tabIndex={0}
@@ -1285,27 +1325,27 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <img src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} className="ring-bis-modal__icon" />
-                <span className="ring-bis-modal__ring-name">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</span>
-                <span className="ring-bis-modal__vocation">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</span>
-              </div>
-            </div>
+                <RingBISIcon src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} />
+                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</RingBISName>
+                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</RingBISVocation>
+              </RingBISOption>
+            </RingBISGrid>
 
-            <div className="modal-actions">
-              <button
-                className="btn btn-secondary"
+            <ModalActions>
+              <Button
+                variant="secondary"
                 onClick={() => {
                   setShowRingBisModal(false);
                   setSelectedRing('');
                 }}
               >
                 {t('soloHuntAnalyzer.itemCostManager.ringBisModal.cancelButton')}
-              </button>
-            </div>
-          </div>
-        </div>
+              </Button>
+            </ModalActions>
+          </ModalContent>
+        </ModalOverlay>
       )}
-    </div>
+    </ItemCostManagerContainer>
   );
 }
 

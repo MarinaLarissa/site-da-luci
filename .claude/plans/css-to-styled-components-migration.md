@@ -796,29 +796,33 @@ App.js
 ---
 
 ### ETAPA 29 - Limpeza de arquivos CSS
-**Commit**: `chore(cleanup): remove migrated CSS files`
+**Commit**: `chore(cleanup): remove migrated CSS files and migration comments`
 
 **To-do**:
 - [ ] Verificar que todos os CSS foram migrados
 - [ ] Remover arquivos CSS nao mais utilizados
+- [ ] Remover comentarios de migracao dos .styles.js
 - [ ] Atualizar estrutura de pastas
 
 **Subetapas**:
 1. Listar todos os arquivos .css restantes em src/
 2. Verificar que nenhum tem import ativo
 3. Remover cada arquivo CSS migrado
-4. Verificar que build funciona sem erros
-5. Verificar que aplicacao renderiza corretamente
-6. Commitar remocao
+4. Remover comentarios "Migrated from [Component].css" de todos os .styles.js
+5. Manter apenas comentarios funcionais (ex: "Main container", "Button variants")
+6. Verificar que build funciona sem erros
+7. Verificar que aplicacao renderiza corretamente
+8. Commitar remocao
 
 ---
 
-### ETAPA 30 - Validacao Final
+### ETAPA 30 - Validacao Final e Auditoria de Componentizacao
 **Commit**: `docs(migration): complete CSS to styled-components migration`
 
 **To-do**:
 - [ ] Executar testes
 - [ ] Validar visual em todos os componentes
+- [ ] Auditoria de componentizacao e reuso
 - [ ] Documentar migracao completa
 
 **Subetapas**:
@@ -827,7 +831,13 @@ App.js
 3. Executar `npm run lint` sem erros
 4. Verificar cada pagina/feature visualmente
 5. Confirmar que nao existem mais imports de .css
-6. Atualizar este documento com status COMPLETO
+6. **Auditoria de Componentizacao**:
+   - Identificar oportunidades de reuso (ex: textarea components entre SoloHunt e LootSplit)
+   - Criar componentes compostos com props para customizacao
+   - Documentar padroes de componentes reutilizaveis
+   - Simplificar compreensao do codigo sem prejudicar desempenho
+   - Exemplos: textareas, buttons, cards, modals com props
+7. Atualizar este documento com status COMPLETO
 
 ---
 
