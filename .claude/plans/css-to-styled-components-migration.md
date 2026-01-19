@@ -2,8 +2,8 @@
 
 **Data de criacao**: 2026-01-18
 **Ultima atualizacao**: 2026-01-19
-**Status**: FASE 3 - Execucao em Andamento (87% - 26/30 etapas completas)
-**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory + SoloHuntAnalyzer | 🔄 ImbuementCalculator
+**Status**: FASE 3 - Execucao em Andamento (90% - 27/30 etapas completas)
+**Progresso**: ✅ Setup + Core + LootSplit + HuntHistory + SoloHuntAnalyzer + ImbuementCalculator | 🔄 Cleanup
 
 ---
 
@@ -756,25 +756,27 @@ App.js
 
 ---
 
-### ETAPA 27 - Migrar ImbuementCalculator.css (MAIOR COMPLEXIDADE)
+### ETAPA 27 - Migrar ImbuementCalculator.css (MAIOR COMPLEXIDADE) ✅
 **Commit**: `refactor(imbuement): migrate ImbuementCalculator to styled-components`
+**Status**: ✅ COMPLETO
+**Data**: 2026-01-19
 
 **To-do**:
-- [ ] Criar styled-components para ImbuementCalculator
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para ImbuementCalculator
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
-1. Ler conteudo de ImbuementCalculator.css (782 linhas)
-2. Criar arquivo `ImbuementCalculator.styles.js`
-3. Criar CalculatorContainer styled-component
-4. Criar ImbuementGrid styled-component
-5. Criar ImbuementCard styled-component
-6. Criar CostDisplay styled-component
-7. Criar MaterialList styled-component
-8. Migrar cores e estados
-9. Migrar media queries
-10. Substituir className e remover CSS import
+1. ✅ Ler conteudo de ImbuementCalculator.css (782 linhas)
+2. ✅ Criar arquivo `ImbuementCalculator.styles.js` (380 linhas)
+3. ✅ Criar CalculatorContainer, PageTitle, PageDescription
+4. ✅ Criar GTPriceSection, GTPriceLabel, GTPriceInput
+5. ✅ Criar CopyPasteSection, FeedbackSuccess
+6. ✅ Criar ImbueingGrid (para os ImbuementBlocks)
+7. ✅ Criar Modal components (ModalOverlay, ModalContent, etc)
+8. ✅ Migrar cores, estados e animações (slideDown, fadeIn)
+9. ✅ Migrar media queries
+10. ✅ Substituir className e remover CSS import (ESLint: 0 erros)
 
 ---
 

@@ -8,9 +8,21 @@ import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
-import './ImbuementCalculator.css';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import ImbuementBlock from './ImbuementBlock';
+import {
+  CalculatorContainer,
+  PageTitle,
+  PageDescription,
+  GTPriceSection,
+  GTPriceLabel,
+  GTPriceInput,
+  CopyPasteSection,
+  FeedbackSuccess,
+  ImbueingGrid,
+  Button,
+  IconInline,
+} from './ImbuementCalculator.styles';
 
 // GT-eligible imbuements data (from imbuements.js)
 const GT_IMBUEMENTS = {
@@ -567,49 +579,48 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
 
   return (
-    <div className="imbuement-calculator">
-      <h1 className="page-title">{t('imbuementCalculator.title')}</h1>
-      <p className="page-description">{t('imbuementCalculator.description')}</p>
+    <CalculatorContainer>
+      <PageTitle>{t('imbuementCalculator.title')}</PageTitle>
+      <PageDescription>{t('imbuementCalculator.description')}</PageDescription>
 
       {/* Shared GT Price Input */}
-      <div className="gt-price-section">
-        <label className="gt-price-label">
-          <img src={goldTokenIcon} alt="GT" className="icon-inline" />
+      <GTPriceSection>
+        <GTPriceLabel>
+          <IconInline src={goldTokenIcon} alt="GT" />
           {t('imbuementCalculator.goldTokenPrice')}:
-        </label>
-        <input
+        </GTPriceLabel>
+        <GTPriceInput
           type="number"
           min="0"
           value={goldTokenPrice}
           onChange={(e) => setGoldTokenPrice(parseFloat(e.target.value) || 0)}
           placeholder="0"
-          className="gt-price-input"
         />
-        <span className="gp-label">GP</span>
-      </div>
+        <span style={{ fontSize: '12px', fontWeight: 600, color: '#9E9E9E' }}>GP</span>
+      </GTPriceSection>
 
       {/* Copy/Paste Buttons */}
-      <div className="copy-paste-section">
-        <button
-          className="btn btn-secondary"
+      <CopyPasteSection>
+        <Button
+          variant="secondary"
           onClick={handleCopyImbuements}
           title={t('imbuementCalculator.copyPaste.copyButtonTitle')}
         >
           📋 {t('imbuementCalculator.copyPaste.copyButton')}
-        </button>
-        <button
-          className="btn btn-secondary"
+        </Button>
+        <Button
+          variant="secondary"
           onClick={handlePasteImbuements}
           title={t('imbuementCalculator.copyPaste.pasteButtonTitle')}
         >
           📥 {t('imbuementCalculator.copyPaste.pasteButton')}
-        </button>
-        {copyFeedback && <span className="feedback-success">{copyFeedback}</span>}
-        {pasteFeedback && <span className="feedback-success">{pasteFeedback}</span>}
-      </div>
+        </Button>
+        {copyFeedback && <FeedbackSuccess>{copyFeedback}</FeedbackSuccess>}
+        {pasteFeedback && <FeedbackSuccess>{pasteFeedback}</FeedbackSuccess>}
+      </CopyPasteSection>
 
       {/* Imbuement Blocks */}
-      <div className="imbuements-grid">
+      <ImbueingGrid>
         <ImbuementBlock
           imbuement={GT_IMBUEMENTS.vampirism}
           itemPrices={itemPrices}
@@ -647,9 +658,9 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
         />
-      </div>
+      </ImbueingGrid>
 
-    </div>
+    </CalculatorContainer>
   );
 }
 
