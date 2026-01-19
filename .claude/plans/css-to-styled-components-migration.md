@@ -202,9 +202,9 @@ App.js
 **Commit**: `chore(deps): add styled-components`
 
 **To-do**:
-- [ ] Instalar styled-components no frontend
-- [ ] Verificar instalacao bem-sucedida
-- [ ] Criar arquivo de tema base
+- [x] Instalar styled-components no frontend
+- [x] Verificar instalacao bem-sucedida
+- [x] Criar arquivo de tema base
 
 **Subetapas**:
 1. Executar `npm install styled-components` no diretorio frontend
@@ -218,9 +218,9 @@ App.js
 **Commit**: `refactor(styles): migrate index.css to GlobalStyles`
 
 **To-do**:
-- [ ] Criar GlobalStyles com estilos globais
-- [ ] Aplicar GlobalStyles no index.js
-- [ ] Remover import do index.css
+- [x] Criar GlobalStyles com estilos globais
+- [x] Aplicar GlobalStyles no index.js
+- [x] Remover import do index.css
 
 **Subetapas**:
 1. Ler conteudo de index.css
@@ -237,9 +237,9 @@ App.js
 **Commit**: `refactor(app): migrate App.css to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para App
-- [ ] Substituir classNames no App.js
-- [ ] Remover import do App.css
+- [x] Criar styled-components para App
+- [x] Substituir classNames no App.js
+- [x] Remover import do App.css
 
 **Subetapas**:
 1. Ler conteudo de App.css
@@ -256,9 +256,9 @@ App.js
 **Commit**: `refactor(common): migrate Button to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para Button
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para Button
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de Button.css
@@ -275,9 +275,9 @@ App.js
 **Commit**: `refactor(common): migrate ErrorMessage to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para ErrorMessage
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para ErrorMessage
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de ErrorMessage.css
@@ -294,9 +294,9 @@ App.js
 **Commit**: `refactor(common): migrate LoadingSpinner to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components com keyframes
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components com keyframes
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de LoadingSpinner.css
@@ -314,9 +314,9 @@ App.js
 **Commit**: `refactor(common): migrate Tooltip to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para Tooltip
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para Tooltip
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de Tooltip.css (106 linhas)
@@ -335,9 +335,9 @@ App.js
 **Commit**: `refactor(layout): migrate Sidebar to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para Sidebar
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para Sidebar
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de Sidebar.css (100 linhas)
@@ -356,9 +356,9 @@ App.js
 **Commit**: `refactor(i18n): migrate LanguageSelector to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para LanguageSelector
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para LanguageSelector
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de LanguageSelector.css (57 linhas)
@@ -376,9 +376,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate PlayerList to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para PlayerList
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para PlayerList
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de PlayerList.css (16 linhas)
@@ -394,9 +394,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate PlayerStatsRow to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para PlayerStatsRow
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para PlayerStatsRow
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de PlayerStatsRow.css (26 linhas)
@@ -414,9 +414,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate PlayerCard to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para PlayerCard
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para PlayerCard
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de PlayerCard.css (68 linhas)
@@ -435,9 +435,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate DamageHealingSection to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para DamageHealingSection
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para DamageHealingSection
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de DamageHealingSection.css (32 linhas)
@@ -454,9 +454,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate DamageHealingCard to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para DamageHealingCard
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para DamageHealingCard
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de DamageHealingCard.css (73 linhas)
@@ -475,9 +475,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate InputSection to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para InputSection
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para InputSection
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de InputSection.css (60 linhas)
@@ -495,9 +495,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate ResultsSection to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para ResultsSection
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para ResultsSection
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de ResultsSection.css (77 linhas)
@@ -516,9 +516,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate TransferList to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para TransferList
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para TransferList
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de TransferList.css (149 linhas)
@@ -538,9 +538,9 @@ App.js
 **Commit**: `refactor(loot-split): migrate LootSplitCalculator to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para LootSplitCalculator
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para LootSplitCalculator
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de LootSplitCalculator.css (96 linhas)
@@ -628,9 +628,9 @@ App.js
 **Commit**: `refactor(solo-hunt): migrate SessionDataInput to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para SessionDataInput
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para SessionDataInput
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de SessionDataInput.css (104 linhas)
@@ -649,9 +649,9 @@ App.js
 **Commit**: `refactor(solo-hunt): migrate ConfigurationManager to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para ConfigurationManager
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para ConfigurationManager
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de ConfigurationManager.css (162 linhas)
@@ -671,9 +671,9 @@ App.js
 **Commit**: `refactor(solo-hunt): migrate internal HuntHistory to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para HuntHistory
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para HuntHistory
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de HuntHistory.css (252 linhas)
@@ -693,9 +693,9 @@ App.js
 **Commit**: `refactor(solo-hunt): migrate SoloHuntResults to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para SoloHuntResults
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para SoloHuntResults
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de SoloHuntResults.css (565 linhas)
@@ -715,9 +715,9 @@ App.js
 **Commit**: `refactor(solo-hunt): migrate ItemCostManager to styled-components`
 
 **To-do**:
-- [ ] Criar styled-components para ItemCostManager
-- [ ] Substituir classNames no componente
-- [ ] Remover import do CSS
+- [x] Criar styled-components para ItemCostManager
+- [x] Substituir classNames no componente
+- [x] Remover import do CSS
 
 **Subetapas**:
 1. Ler conteudo de ItemCostManager.css (608 linhas)
@@ -946,10 +946,10 @@ export const Title = styled.h2`
 
 **4. Validacao Obrigatoria por Etapa**
 Antes de commitar cada etapa:
-- [ ] `npm run lint` passa sem erros
-- [ ] `npm test` passa sem falhas
-- [ ] Build funciona: `npm run build`
-- [ ] Visual equivalente ao original
+- [x] `npm run lint` passa sem erros
+- [x] `npm test` passa sem falhas
+- [x] Build funciona: `npm run build`
+- [x] Visual equivalente ao original
 
 ### Riscos e Mitigacoes
 
