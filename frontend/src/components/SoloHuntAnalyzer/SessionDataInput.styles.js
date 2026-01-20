@@ -6,6 +6,9 @@
 
 import styled from 'styled-components';
 
+// ETAPA 33: Migrated to shared Typography components
+export { SectionTitle, SectionDescription } from '../common/styled';
+
 export const SessionDataInputContainer = styled.div`
   background-color: #16213e;
   padding: 24px;
@@ -17,19 +20,6 @@ export const SessionDataInputContainer = styled.div`
   @media (max-width: 768px) {
     padding: 16px;
   }
-`;
-
-export const SectionTitle = styled.h2`
-  font-size: 24px;
-  color: #c39bd3;
-  margin: 0 0 8px 0;
-  font-weight: 600;
-`;
-
-export const SectionDescription = styled.p`
-  color: #9e9e9e;
-  font-size: 14px;
-  margin: 0 0 20px 0;
 `;
 
 // SessionTextarea removed - now using shared Textarea component from common/styled

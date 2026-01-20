@@ -5,6 +5,9 @@
 
 import styled from 'styled-components';
 
+// ETAPA 33: Migrated to shared Typography components
+export { SectionTitle, SectionDescription } from '../common/styled';
+
 export const InputContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.card};
   padding: ${({ theme }) => theme.spacing.xl};
@@ -29,19 +32,7 @@ export const HelpText = styled.p`
   font-style: italic;
 `;
 
-export const SectionTitle = styled.h2`
-  font-size: 24px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.accent.gold};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-`;
-
-export const SectionDescription = styled.p`
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.text.secondary};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: 1.5;
-`;
+// SectionTitle and SectionDescription removed - now using shared components (imported above)
 
 export const ButtonGroup = styled.div`
   display: flex;

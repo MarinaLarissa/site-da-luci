@@ -25,17 +25,12 @@ export function formatGold(amount) {
  * @returns {object} Object with { formatted, full } properties (both contain the same formatted value)
  * - formatted: Display value (e.g., "4.690.000" or "100.000")
  * - full: Complete value (same as formatted, kept for backwards compatibility)
+ *
+ * NOTE: This function now delegates to formatGold() for DRY principle.
+ * The object return type is maintained for backwards compatibility.
  */
 export function formatGPValue(value) {
-  if (!value && value !== 0) {
-    return { formatted: '0', full: '0' };
-  }
-
-  const numValue = typeof value === 'string' ? parseFloat(value) : value;
-  const intValue = Math.floor(numValue);
-
-  // All values: show with thousand separators (pt-BR format), no decimals
-  const formatted = intValue.toLocaleString('pt-BR');
+  const formatted = formatGold(value);
   return { formatted, full: formatted };
 }
 
