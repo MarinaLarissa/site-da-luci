@@ -24,7 +24,7 @@ export const PlayerNameHeader = styled.div`
   font-weight: 600;
   font-size: 1.1rem;
   margin-bottom: 0.75rem;
-  color: #1976d2;
+  color: ${({ theme }) => theme.colors.accent.gold};
   display: flex;
   align-items: center;
   gap: 0.5rem;

@@ -6,7 +6,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.bg.secondary};
+  background-color: ${({ theme }) => theme.colors.bg.card};
   padding: 16px;
   border-radius: ${({ theme }) => theme.radius.md};
   border: 1px solid ${({ theme }) => theme.colors.accent.goldLight};
@@ -68,7 +68,11 @@ export const StatLabel = styled.span`
 `;
 
 export const StatValue = styled.span`
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme, $variant }) => {
+    if ($variant === 'positive') return theme.colors.success;
+    if ($variant === 'negative') return theme.colors.error;
+    return theme.colors.text.primary;
+  }};
   font-size: 14px;
   font-weight: 600;
 `;

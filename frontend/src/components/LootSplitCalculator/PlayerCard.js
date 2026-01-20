@@ -43,7 +43,7 @@ export default function PlayerCard({ player }) {
         </Stat>
         <Stat>
           <StatLabel>{t('calculator.resultsSection.playerList.difference')}:</StatLabel>
-          <StatValue style={{ color: player.difference >= 0 ? '#4CAF50' : '#f44336' }}>
+          <StatValue $variant={player.difference >= 0 ? 'positive' : 'negative'}>
             {player.difference >= 0 ? '+' : ''}
             {formatGold(Math.abs(player.difference))}
           </StatValue>

@@ -16,12 +16,13 @@ const primaryStyles = css`
 `;
 
 const secondaryStyles = css`
-  background-color: #2d2d44;
+  background-color: #16213e;
   color: #c39bd3;
-  border: 2px solid #c39bd3;
+  border: 1px solid rgba(195, 155, 211, 0.3);
 
   &:hover:not(:disabled) {
-    background-color: #3a3a55;
+    background-color: rgba(195, 155, 211, 0.1);
+    border-color: #c39bd3;
     transform: translateY(-2px);
   }
 `;
