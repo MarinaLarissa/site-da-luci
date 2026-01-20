@@ -77,10 +77,3 @@ export const StatsSectionTitle = styled.h3`
   margin: 0 0 ${({ theme }) => theme.spacing.lg} 0;
   font-weight: 600;
 `;
-
-export const SectionTitle = styled.h2`
-  font-size: 24px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.accent.gold};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-`;

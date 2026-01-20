@@ -11,9 +11,9 @@ import TransferList from './TransferList';
 import DamageHealingSection from './DamageHealingSection';
 import PlayerStatsRow from './PlayerStatsRow';
 import Tooltip from '../common/Tooltip';
+import { SectionTitle } from '../common/styled';
 import {
   ResultsContainer,
-  SectionTitle,
   SummaryGrid,
   SummaryCard,
   SummaryLabel,

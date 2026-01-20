@@ -432,68 +432,7 @@ export const CostSummary = styled.div`
   }
 `;
 
-/* Modal Styles */
-export const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(15, 14, 23, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-export const ModalContent = styled.div`
-  background-color: #16213e;
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(195, 155, 211, 0.3);
-
-  h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #c39bd3;
-    font-weight: 600;
-  }
-
-  /* Custom scrollbar */
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #0f1620;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #c39bd3;
-    border-radius: 4px;
-
-    &:hover {
-      background: #b388c7;
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    padding: 20px;
-  }
-
-  ${({ $wide }) =>
-    $wide &&
-    css`
-      max-width: 800px;
-    `}
-`;
+/* Modal Styles - ModalOverlay and ModalContent imported from common/styled */
 
 /* Form Groups */
 export const FormGroup = styled.div`

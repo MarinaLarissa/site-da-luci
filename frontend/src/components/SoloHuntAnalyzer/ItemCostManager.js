@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
 import { IMBUEMENTS, getAllCategories, getImbuementsByCategory } from '../../data/imbuements';
 import Button from '../common/Button';
+import { ModalOverlay, ModalContent } from '../common/styled';
 import {
   ItemCostManagerContainer,
   TokenPricesSection,
@@ -37,8 +38,6 @@ import {
   GPPrice,
   PriceSeparator,
   CostSummary,
-  ModalOverlay,
-  ModalContent,
   FormGroup,
   ImbuementItemsPreview,
   ModalActions,

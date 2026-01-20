@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
 import Button from '../common/Button';
+import { ModalOverlay, ModalContent } from '../common/styled';
 import {
   ConfigurationManagerContainer,
   ConfigHeader,
@@ -22,8 +23,6 @@ import {
   ConfigPreview,
   PreviewLabel,
   PreviewList,
-  ModalOverlay,
-  ModalContent,
   FormGroup,
   ConfigNameInput,
   ModalActions,

@@ -5,6 +5,9 @@
 
 import styled, { keyframes } from 'styled-components';
 
+// ETAPA 33: Migrated to shared Typography components
+export { PageTitle, PageDescription, SectionTitle, SectionDescription } from '../common/styled';
+
 /* Animations */
 const slideDown = keyframes`
   from {
@@ -39,26 +42,7 @@ export const CalculatorContainer = styled.div`
   }
 `;
 
-export const PageTitle = styled.h1`
-  font-size: 36px;
-  font-weight: 700;
-  background: ${({ theme }) => theme.gradients.primary};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 12px 0;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-  }
-`;
-
-export const PageDescription = styled.p`
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.text.muted};
-  margin: 0 0 32px 0;
-  line-height: 1.5;
-`;
+// PageTitle and PageDescription removed - using shared components (imported above)
 
 /* GT Price Section */
 export const GTPriceSection = styled.div`
@@ -121,19 +105,7 @@ export const ServiceFeeSection = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
-export const SectionTitle = styled.h2`
-  font-size: 20px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.text.primary};
-  margin: 0 0 8px 0;
-`;
-
-export const SectionDescription = styled.p`
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.text.muted};
-  margin: 0 0 16px 0;
-  line-height: 1.5;
-`;
+// SectionTitle and SectionDescription removed - using shared components (imported above)
 
 export const ServiceFeeInputs = styled.div`
   display: grid;
@@ -208,40 +180,7 @@ export const FeedbackSuccess = styled.span`
   animation: ${fadeIn} 0.3s ease-in;
 `;
 
-/* Modal */
-export const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 20px;
-`;
-
-export const ModalContent = styled.div`
-  background: ${({ theme }) => theme.colors.bg.card};
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border: 1px solid ${({ theme }) => theme.colors.border.medium};
-
-  h3 {
-    color: ${({ theme }) => theme.colors.text.primary};
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-`;
-
+/* Modal - specific components only (ModalOverlay and ModalContent imported from common/styled) */
 export const ModalDescription = styled.p`
   color: ${({ theme }) => theme.colors.text.muted};
   font-size: 14px;
