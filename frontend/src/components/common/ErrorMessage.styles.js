@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const ErrorContainer = styled.div`
+export const ErrorMessageContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -16,11 +16,11 @@ export const ErrorContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const ErrorIcon = styled.span`
+export const ErrorMessageIcon = styled.span`
   font-size: 24px;
 `;
 
-export const ErrorText = styled.span`
+export const ErrorMessageText = styled.span`
   color: #ff6b6b;
   font-size: 14px;
   font-weight: 500;
