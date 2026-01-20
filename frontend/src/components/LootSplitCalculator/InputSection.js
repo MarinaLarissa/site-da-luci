@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
 import { Textarea } from '../common/styled';
 import {
-  InputContainer,
+  InputSectionContainer,
   SectionTitle,
   SectionDescription,
   ButtonGroup,
@@ -18,7 +18,7 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
   const { t } = useTranslation();
 
   return (
-    <InputContainer>
+    <InputSectionContainer>
       <SectionTitle>{t('calculator.inputSection.title')}</SectionTitle>
       <SectionDescription>
         {t('calculator.inputSection.description')}
@@ -43,7 +43,7 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
           {t('calculator.inputSection.loadExampleButton')}
         </Button>
       </ButtonGroup>
-    </InputContainer>
+    </InputSectionContainer>
   );
 }
 
