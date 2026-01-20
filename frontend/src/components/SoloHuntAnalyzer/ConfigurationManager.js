@@ -22,6 +22,11 @@ import {
   ConfigPreview,
   PreviewLabel,
   PreviewList,
+  ModalOverlay,
+  ModalContent,
+  FormGroup,
+  ConfigNameInput,
+  ModalActions,
 } from './ConfigurationManager.styles';
 
 const STORAGE_KEY = 'solo-hunt-configurations';
@@ -301,14 +306,12 @@ export default function ConfigurationManager({
 
       {/* Save Configuration Modal */}
       {showSaveModal && (
-        <div
-          className="modal-overlay"
+        <ModalOverlay
           onClick={() => setShowSaveModal(false)}
           role="presentation"
           aria-label={t('soloHuntAnalyzer.configManager.closeModal')}
         >
-          <div
-            className="modal-content"
+          <ModalContent
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-labelledby="save-config-modal-title"
@@ -318,11 +321,11 @@ export default function ConfigurationManager({
               {t('soloHuntAnalyzer.configManager.saveModal.title')}
             </h3>
 
-            <div className="form-group">
+            <FormGroup>
               <label htmlFor="config-name-input">
                 {t('soloHuntAnalyzer.configManager.saveModal.nameLabel')}:
               </label>
-              <input
+              <ConfigNameInput
                 id="config-name-input"
                 type="text"
                 value={configName}
@@ -336,7 +339,7 @@ export default function ConfigurationManager({
                   }
                 }}
               />
-            </div>
+            </FormGroup>
 
             <ConfigPreview>
               <PreviewLabel>
@@ -353,7 +356,7 @@ export default function ConfigurationManager({
               </PreviewList>
             </ConfigPreview>
 
-            <div className="modal-actions">
+            <ModalActions>
               <Button
                 variant="primary"
                 onClick={handleSaveConfiguration}
@@ -370,21 +373,19 @@ export default function ConfigurationManager({
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.cancelButton')}
               </Button>
-            </div>
-          </div>
-        </div>
+            </ModalActions>
+          </ModalContent>
+        </ModalOverlay>
       )}
 
       {/* Edit Configuration Modal */}
       {showEditModal && (
-        <div
-          className="modal-overlay"
+        <ModalOverlay
           onClick={() => setShowEditModal(false)}
           role="presentation"
           aria-label={t('soloHuntAnalyzer.configManager.closeModal')}
         >
-          <div
-            className="modal-content"
+          <ModalContent
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-labelledby="edit-config-modal-title"
@@ -394,11 +395,11 @@ export default function ConfigurationManager({
               {t('soloHuntAnalyzer.configManager.editModal.title')}
             </h3>
 
-            <div className="form-group">
+            <FormGroup>
               <label htmlFor="edit-config-name-input">
                 {t('soloHuntAnalyzer.configManager.editModal.nameLabel')}:
               </label>
-              <input
+              <ConfigNameInput
                 id="edit-config-name-input"
                 type="text"
                 value={editingConfigName}
@@ -412,9 +413,9 @@ export default function ConfigurationManager({
                   }
                 }}
               />
-            </div>
+            </FormGroup>
 
-            <div className="modal-actions">
+            <ModalActions>
               <Button
                 variant="primary"
                 onClick={handleSaveEditedName}
@@ -432,9 +433,9 @@ export default function ConfigurationManager({
               >
                 {t('soloHuntAnalyzer.configManager.editModal.cancelButton')}
               </Button>
-            </div>
-          </div>
-        </div>
+            </ModalActions>
+          </ModalContent>
+        </ModalOverlay>
       )}
     </ConfigurationManagerContainer>
   );

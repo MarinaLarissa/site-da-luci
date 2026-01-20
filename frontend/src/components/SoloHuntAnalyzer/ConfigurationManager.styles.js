@@ -165,3 +165,87 @@ export const PreviewList = styled.ul`
     padding: 4px 0;
   }
 `;
+
+/* Modal Styles */
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+export const ModalContent = styled.div`
+  background-color: #16213e;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid rgba(195, 155, 211, 0.3);
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #c39bd3;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    width: 95%;
+    padding: 20px;
+  }
+`;
+
+export const FormGroup = styled.div`
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+  }
+`;
+
+export const ConfigNameInput = styled.input`
+  width: 100%;
+  padding: 10px 12px;
+  background: #0f1620;
+  color: #e0e0e0;
+  border: 1px solid rgba(195, 155, 211, 0.3);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+
+  &::placeholder {
+    color: #9e9e9e;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #c39bd3;
+  }
+
+  &:hover {
+    border-color: rgba(195, 155, 211, 0.5);
+  }
+`;
+
+export const ModalActions = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
