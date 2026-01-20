@@ -22,12 +22,13 @@ function App() {
       const saved = localStorage.getItem(STORAGE_KEYS.TOKEN_PRICES);
       if (saved) {
         const { goldTokenPrice } = JSON.parse(saved);
-        return goldTokenPrice || 0;
+        // Return empty string if not set or zero (UX: empty input fields)
+        return goldTokenPrice || '';
       }
     } catch (error) {
       console.error('Error loading gold token price:', error);
     }
-    return 0;
+    return '';
   };
 
   const [sharedGoldTokenPrice, setSharedGoldTokenPrice] = useState(loadGoldTokenPrice());

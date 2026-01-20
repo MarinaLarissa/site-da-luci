@@ -50,15 +50,15 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
       if (saved) {
         const prices = JSON.parse(saved);
         return {
-          silverTokenPrice: prices.silverTokenPrice || 0,
-          tibiaCoinPrice: prices.tibiaCoinPrice || 0,
-          tibiaCoinSellPrice: prices.tibiaCoinSellPrice || 0
+          silverTokenPrice: prices.silverTokenPrice || '',
+          tibiaCoinPrice: prices.tibiaCoinPrice || '',
+          tibiaCoinSellPrice: prices.tibiaCoinSellPrice || ''
         };
       }
     } catch (error) {
       console.error('Error loading token prices:', error);
     }
-    return { silverTokenPrice: 0, tibiaCoinPrice: 0, tibiaCoinSellPrice: 0 };
+    return { silverTokenPrice: '', tibiaCoinPrice: '', tibiaCoinSellPrice: '' };
   };
 
   // Item costs state (gold token price is now shared via props)
