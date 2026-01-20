@@ -376,6 +376,59 @@ export default function ItemCostManager({
                 hasChildren: true,
               };
 
+              // Find imbuement in IMBUEMENTS array to extract material items
+              const imbuementData = IMBUEMENTS.find(
+                gtImb => gtImb.name.toLowerCase() === imb.category.toLowerCase()
+              );
+
+              const childItems = [];
+
+              // Add material items as children
+              if (imbuementData && imbuementData.tiers) {
+                const tierOrder = ['basic', 'intricate', 'powerful'];
+                const selectedTierIndex = tierOrder.indexOf(imb.tier.toLowerCase());
+
+                // Cumulative tiers (basic for basic, basic+intricate for intricate, all for powerful)
+                const tiersToInclude = tierOrder.slice(0, selectedTierIndex + 1);
+
+                // Calculate total quantity of all items to distribute itemCost proportionally
+                let totalItemQuantity = 0;
+                tiersToInclude.forEach(tierName => {
+                  const tier = imbuementData.tiers[tierName];
+                  if (tier && tier.items) {
+                    tier.items.forEach(item => {
+                      totalItemQuantity += item.quantity;
+                    });
+                  }
+                });
+
+                // Create child items with proportional unit prices
+                tiersToInclude.forEach(tierName => {
+                  const tier = imbuementData.tiers[tierName];
+                  if (tier && tier.items) {
+                    tier.items.forEach(item => {
+                      // Calculate unit price proportionally based on total itemCost
+                      const unitPrice = totalItemQuantity > 0
+                        ? (imb.itemCost * item.quantity) / totalItemQuantity / item.quantity
+                        : 0;
+
+                      childItems.push({
+                        id: Date.now() + Math.random(),
+                        name: item.name,
+                        quantity: item.quantity,
+                        baseQuantity: item.quantity,
+                        unitPrice: unitPrice,
+                        priceType: 'GP',
+                        parentId: parentId,
+                        isChild: true,
+                        itemDuration: imb.duration || 20,
+                      });
+                    });
+                  }
+                });
+              }
+
+              // Add fixed service cost as child
               const serviceCostItem = {
                 id: Date.now() + Math.random() + 0.1,
                 name: `${imb.tier.charAt(0).toUpperCase() + imb.tier.slice(1)} Imbuement Service`,
@@ -389,7 +442,7 @@ export default function ItemCostManager({
                 itemDuration: imb.duration || 20,
               };
 
-              newItems.push(parentItem, serviceCostItem);
+              newItems.push(parentItem, ...childItems, serviceCostItem);
             }
           });
 

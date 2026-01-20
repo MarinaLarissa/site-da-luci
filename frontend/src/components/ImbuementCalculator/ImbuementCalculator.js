@@ -4,7 +4,7 @@
  * OR buy items directly from market for GP
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGPValue } from '../../utils/formatters';
@@ -72,24 +72,41 @@ const SERVICE_FEES = {
   powerful: 250000, // 250k GP
 };
 
+// LocalStorage key for item prices persistence
+const STORAGE_KEY = 'imbuementCalculator_itemPrices';
+
 export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice }) {
   const { t } = useTranslation();
 
-  // Item prices state (GP per unit)
-  const [itemPrices, setItemPrices] = useState({
-    // Vampirism
-    'Vampire Teeth': 0,
-    'Bloody Pincers': 0,
-    'Piece of Dead Brain': 0,
-    // Void
-    'Rope Belt': 0,
-    'Silencer Claws': 0,
-    'Some Grimeleech Wings': 0,
-    // Strike
-    'Protective Charm': 0,
-    'Sabretooth': 0,
-    'Vexclaw Talon': 0,
-  });
+  // Load item prices from localStorage on initial mount
+  const loadItemPrices = () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (error) {
+      console.error('Error loading item prices from localStorage:', error);
+    }
+    // Default values if nothing saved
+    return {
+      // Vampirism
+      'Vampire Teeth': 0,
+      'Bloody Pincers': 0,
+      'Piece of Dead Brain': 0,
+      // Void
+      'Rope Belt': 0,
+      'Silencer Claws': 0,
+      'Some Grimeleech Wings': 0,
+      // Strike
+      'Protective Charm': 0,
+      'Sabretooth': 0,
+      'Vexclaw Talon': 0,
+    };
+  };
+
+  // Item prices state (GP per unit) - initialized from localStorage
+  const [itemPrices, setItemPrices] = useState(loadItemPrices);
 
   // Clipboard feedback state
   // eslint-disable-next-line no-unused-vars
@@ -100,6 +117,15 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
   // Feature 2: Copy/Paste imbuements state
   const [copyFeedback, setCopyFeedback] = useState(null);
   const [pasteFeedback, setPasteFeedback] = useState(null);
+
+  // Save item prices to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(itemPrices));
+    } catch (error) {
+      console.error('Error saving item prices to localStorage:', error);
+    }
+  }, [itemPrices]);
 
   // Calculate cost via GT (in GP equivalent + service fee) - memoized for performance
   const calculateGTCost = useMemo(() => {

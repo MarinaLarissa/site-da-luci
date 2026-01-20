@@ -176,7 +176,8 @@ class CalculateSoloHuntUseCase {
     });
 
     // Calculate Money Maked (real money earned from selling TC)
-    const moneyMaked = tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0 ? tcTotal * tibiaCoinSellPrice : 0;
+    // TC Sell Price is for 250 TC, so divide by 250 to get price per 1 TC
+    const moneyMaked = tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0 ? (tibiaCoinSellPrice / 250) * tcTotal : 0;
 
     // Return results
     return {
