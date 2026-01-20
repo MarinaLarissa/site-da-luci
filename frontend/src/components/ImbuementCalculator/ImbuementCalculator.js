@@ -88,20 +88,20 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
     } catch (error) {
       console.error('Error loading item prices from localStorage:', error);
     }
-    // Default values if nothing saved
+    // Default values if nothing saved (empty strings for better UX)
     return {
       // Vampirism
-      'Vampire Teeth': 0,
-      'Bloody Pincers': 0,
-      'Piece of Dead Brain': 0,
+      'Vampire Teeth': '',
+      'Bloody Pincers': '',
+      'Piece of Dead Brain': '',
       // Void
-      'Rope Belt': 0,
-      'Silencer Claws': 0,
-      'Some Grimeleech Wings': 0,
+      'Rope Belt': '',
+      'Silencer Claws': '',
+      'Some Grimeleech Wings': '',
       // Strike
-      'Protective Charm': 0,
-      'Sabretooth': 0,
-      'Vexclaw Talon': 0,
+      'Protective Charm': '',
+      'Sabretooth': '',
+      'Vexclaw Talon': '',
     };
   };
 
