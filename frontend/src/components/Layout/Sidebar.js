@@ -10,11 +10,11 @@ import {
   SidebarTitle,
   SidebarSubtitle,
   SidebarNav,
-  NavItem,
-  NavIcon,
-  NavLabel,
+  SidebarNavItem,
+  SidebarNavIcon,
+  SidebarNavLabel,
   SidebarFooter,
-  FooterText,
+  SidebarFooterText,
 } from './Sidebar.styles';
 
 export default function Sidebar({ activePage, onNavigate }) {
@@ -28,45 +28,48 @@ export default function Sidebar({ activePage, onNavigate }) {
       </SidebarHeader>
 
       <SidebarNav>
-        <NavItem
+        <SidebarNavItem
           $active={activePage === 'loot-split'}
           onClick={() => onNavigate('loot-split')}
+          data-cy="sidebar-nav-loot-split"
         >
-          <NavIcon>💰</NavIcon>
-          <NavLabel $active={activePage === 'loot-split'}>
+          <SidebarNavIcon>💰</SidebarNavIcon>
+          <SidebarNavLabel $active={activePage === 'loot-split'}>
             {t('sidebar.nav.lootSplit')}
-          </NavLabel>
-        </NavItem>
-        <NavItem
+          </SidebarNavLabel>
+        </SidebarNavItem>
+        <SidebarNavItem
           $active={activePage === 'solo-hunt'}
           onClick={() => onNavigate('solo-hunt')}
+          data-cy="sidebar-nav-solo-hunt"
         >
-          <NavIcon>🎯</NavIcon>
-          <NavLabel $active={activePage === 'solo-hunt'}>
+          <SidebarNavIcon>🎯</SidebarNavIcon>
+          <SidebarNavLabel $active={activePage === 'solo-hunt'}>
             {t('sidebar.nav.soloHunt')}
-          </NavLabel>
-        </NavItem>
-        <NavItem
+          </SidebarNavLabel>
+        </SidebarNavItem>
+        <SidebarNavItem
           $active={activePage === 'imbuement-calc'}
           onClick={() => onNavigate('imbuement-calc')}
+          data-cy="sidebar-nav-imbuement-calc"
         >
-          <NavIcon>⚗️</NavIcon>
-          <NavLabel $active={activePage === 'imbuement-calc'}>
+          <SidebarNavIcon>⚗️</SidebarNavIcon>
+          <SidebarNavLabel $active={activePage === 'imbuement-calc'}>
             {t('sidebar.nav.imbuementCalc')}
-          </NavLabel>
-        </NavItem>
-        <NavItem $disabled>
-          <NavIcon>📊</NavIcon>
-          <NavLabel>{t('sidebar.nav.statistics')}</NavLabel>
-        </NavItem>
-        <NavItem $disabled>
-          <NavIcon>👥</NavIcon>
-          <NavLabel>{t('sidebar.nav.partyAnalyzer')}</NavLabel>
-        </NavItem>
+          </SidebarNavLabel>
+        </SidebarNavItem>
+        <SidebarNavItem $disabled>
+          <SidebarNavIcon>📊</SidebarNavIcon>
+          <SidebarNavLabel>{t('sidebar.nav.statistics')}</SidebarNavLabel>
+        </SidebarNavItem>
+        <SidebarNavItem $disabled>
+          <SidebarNavIcon>👥</SidebarNavIcon>
+          <SidebarNavLabel>{t('sidebar.nav.partyAnalyzer')}</SidebarNavLabel>
+        </SidebarNavItem>
       </SidebarNav>
 
       <SidebarFooter>
-        <FooterText>{t('sidebar.footer')}</FooterText>
+        <SidebarFooterText>{t('sidebar.footer')}</SidebarFooterText>
       </SidebarFooter>
     </SidebarContainer>
   );

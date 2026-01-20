@@ -52,7 +52,7 @@ export const SidebarNav = styled.nav`
   padding: 20px 0;
 `;
 
-export const NavItem = styled.div`
+export const SidebarNavItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -81,11 +81,11 @@ export const NavItem = styled.div`
   `}
 `;
 
-export const NavIcon = styled.span`
+export const SidebarNavIcon = styled.span`
   font-size: 20px;
 `;
 
-export const NavLabel = styled.span`
+export const SidebarNavLabel = styled.span`
   color: ${({ theme, $active }) =>
     $active ? theme.colors.accent.gold : theme.colors.text.primary};
   font-size: 16px;
@@ -98,7 +98,7 @@ export const SidebarFooter = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.accent.goldLight};
 `;
 
-export const FooterText = styled.p`
+export const SidebarFooterText = styled.p`
   color: #757575;
   font-size: 12px;
   text-align: center;
