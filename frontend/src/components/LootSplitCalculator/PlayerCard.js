@@ -7,49 +7,49 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { formatGold, getRoleColor, getRoleLabel } from '../../utils/formatters';
 import {
-  CardContainer,
-  PlayerHeader,
-  PlayerName,
-  LeaderBadge,
-  PlayerRole,
-  PlayerStats,
-  Stat,
-  StatLabel,
-  StatValue,
+  PlayerCardContainer,
+  PlayerCardHeader,
+  PlayerCardName,
+  PlayerCardLeaderBadge,
+  PlayerCardRole,
+  PlayerCardStats,
+  PlayerCardStat,
+  PlayerCardStatLabel,
+  PlayerCardStatValue,
 } from './PlayerCard.styles';
 
 export default function PlayerCard({ player }) {
   const { t } = useTranslation();
 
   return (
-    <CardContainer>
-      <PlayerHeader>
-        <PlayerName>
+    <PlayerCardContainer data-cy="player-card">
+      <PlayerCardHeader>
+        <PlayerCardName>
           {player.name}
-          {player.isLeader && <LeaderBadge>{t('calculator.resultsSection.playerList.leaderBadge')}</LeaderBadge>}
-        </PlayerName>
-        <PlayerRole style={{ color: getRoleColor(player.role) }}>
+          {player.isLeader && <PlayerCardLeaderBadge>{t('calculator.resultsSection.playerList.leaderBadge')}</PlayerCardLeaderBadge>}
+        </PlayerCardName>
+        <PlayerCardRole style={{ color: getRoleColor(player.role) }}>
           {getRoleLabel(player.role, t)}
-        </PlayerRole>
-      </PlayerHeader>
-      <PlayerStats>
-        <Stat>
-          <StatLabel>{t('calculator.resultsSection.playerList.balance')}:</StatLabel>
-          <StatValue>{formatGold(player.balance)}</StatValue>
-        </Stat>
-        <Stat>
-          <StatLabel>{t('calculator.resultsSection.playerList.netBalance')}:</StatLabel>
-          <StatValue>{formatGold(player.netBalance)}</StatValue>
-        </Stat>
-        <Stat>
-          <StatLabel>{t('calculator.resultsSection.playerList.difference')}:</StatLabel>
-          <StatValue $variant={player.difference >= 0 ? 'positive' : 'negative'}>
+        </PlayerCardRole>
+      </PlayerCardHeader>
+      <PlayerCardStats>
+        <PlayerCardStat>
+          <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.balance')}:</PlayerCardStatLabel>
+          <PlayerCardStatValue>{formatGold(player.balance)}</PlayerCardStatValue>
+        </PlayerCardStat>
+        <PlayerCardStat>
+          <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.netBalance')}:</PlayerCardStatLabel>
+          <PlayerCardStatValue>{formatGold(player.netBalance)}</PlayerCardStatValue>
+        </PlayerCardStat>
+        <PlayerCardStat>
+          <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.difference')}:</PlayerCardStatLabel>
+          <PlayerCardStatValue $variant={player.difference >= 0 ? 'positive' : 'negative'}>
             {player.difference >= 0 ? '+' : ''}
             {formatGold(Math.abs(player.difference))}
-          </StatValue>
-        </Stat>
-      </PlayerStats>
-    </CardContainer>
+          </PlayerCardStatValue>
+        </PlayerCardStat>
+      </PlayerCardStats>
+    </PlayerCardContainer>
   );
 }
 

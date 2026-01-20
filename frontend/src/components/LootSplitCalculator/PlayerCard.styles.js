@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
+export const PlayerCardContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.card};
   padding: 16px;
   border-radius: ${({ theme }) => theme.radius.md};
@@ -19,7 +19,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const PlayerHeader = styled.div`
+export const PlayerCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@ export const PlayerHeader = styled.div`
   gap: 8px;
 `;
 
-export const PlayerName = styled.div`
+export const PlayerCardName = styled.div`
   font-size: 1.1rem;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text.primary};
@@ -37,7 +37,7 @@ export const PlayerName = styled.div`
   gap: 8px;
 `;
 
-export const LeaderBadge = styled.span`
+export const PlayerCardLeaderBadge = styled.span`
   font-size: 14px;
   background-color: ${({ theme }) => theme.colors.accent.goldLight};
   color: ${({ theme }) => theme.colors.accent.gold};
@@ -46,28 +46,28 @@ export const LeaderBadge = styled.span`
   font-weight: 500;
 `;
 
-export const PlayerRole = styled.span`
+export const PlayerCardRole = styled.span`
   font-size: 14px;
   font-weight: 500;
 `;
 
-export const PlayerStats = styled.div`
+export const PlayerCardStats = styled.div`
   display: grid;
   gap: 8px;
 `;
 
-export const Stat = styled.div`
+export const PlayerCardStat = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const StatLabel = styled.span`
+export const PlayerCardStatLabel = styled.span`
   color: ${({ theme }) => theme.colors.text.secondary};
   font-size: 14px;
 `;
 
-export const StatValue = styled.span`
+export const PlayerCardStatValue = styled.span`
   color: ${({ theme, $variant }) => {
     if ($variant === 'positive') return theme.colors.success;
     if ($variant === 'negative') return theme.colors.error;
