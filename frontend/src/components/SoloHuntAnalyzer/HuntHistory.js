@@ -221,10 +221,10 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
         <HuntHistoryControls>
           {huntHistory.length > 0 && (
             <>
-              <Button variant="primary" onClick={handleExportJSON}>
+              <Button variant="primary" onClick={handleExportJSON} dataCy="hunt-history-button-export">
                 📤 {t('huntHistory.controls.exportButton')}
               </Button>
-              <Button variant="danger" onClick={handleClearAll}>
+              <Button variant="danger" onClick={handleClearAll} dataCy="hunt-history-button-clear-all">
                 🗑️ {t('huntHistory.controls.clearAllButton')}
               </Button>
             </>
@@ -380,6 +380,7 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                         variant="danger"
                         onClick={() => handleDeleteHunt(hunt.id)}
                         title={t('huntHistory.deleteButton')}
+                        dataCy="hunt-history-button-delete"
                       >
                         🗑️ {t('huntHistory.deleteButton')}
                       </Button>

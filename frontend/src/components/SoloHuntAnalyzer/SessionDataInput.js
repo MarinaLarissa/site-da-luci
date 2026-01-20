@@ -77,18 +77,21 @@ Lofi Shades (Leader)
           variant="primary"
           onClick={onParse}
           disabled={!sessionData.trim()}
+          dataCy="solo-hunt-button-parse"
         >
           {t('soloHuntAnalyzer.sessionInput.parseButton')}
         </Button>
         <Button
           variant="secondary"
           onClick={handleLoadExample3h}
+          dataCy="solo-hunt-button-load-example-3h"
         >
           {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (3:00h)
         </Button>
         <Button
           variant="secondary"
           onClick={handleLoadExample2h30}
+          dataCy="solo-hunt-button-load-example-2h30"
         >
           {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (2:30h)
         </Button>

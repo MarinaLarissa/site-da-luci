@@ -244,6 +244,7 @@ export default function ConfigurationManager({
           variant="primary"
           onClick={() => setShowSaveModal(true)}
           disabled={customItems.length === 0}
+          dataCy="config-manager-button-save"
         >
           💾 {t('soloHuntAnalyzer.configManager.saveButton')}
         </Button>
@@ -360,6 +361,7 @@ export default function ConfigurationManager({
                 variant="primary"
                 onClick={handleSaveConfiguration}
                 disabled={!configName.trim()}
+                dataCy="config-manager-button-save-confirm"
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.confirmButton')}
               </Button>
@@ -369,6 +371,7 @@ export default function ConfigurationManager({
                   setShowSaveModal(false);
                   setConfigName('');
                 }}
+                dataCy="config-manager-button-save-cancel"
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.cancelButton')}
               </Button>
@@ -419,6 +422,7 @@ export default function ConfigurationManager({
                 variant="primary"
                 onClick={handleSaveEditedName}
                 disabled={!editingConfigName.trim()}
+                dataCy="config-manager-button-edit-confirm"
               >
                 {t('soloHuntAnalyzer.configManager.editModal.confirmButton')}
               </Button>
@@ -429,6 +433,7 @@ export default function ConfigurationManager({
                   setEditingConfigId(null);
                   setEditingConfigName('');
                 }}
+                dataCy="config-manager-button-edit-cancel"
               >
                 {t('soloHuntAnalyzer.configManager.editModal.cancelButton')}
               </Button>

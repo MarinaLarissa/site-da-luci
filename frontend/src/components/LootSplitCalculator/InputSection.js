@@ -39,7 +39,7 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         <Button onClick={onCalculate} disabled={loading || !input.trim()} data-cy="loot-calculator-button-calculate">
           {loading ? t('calculator.inputSection.calculatingButton') : t('calculator.inputSection.calculateButton')}
         </Button>
-        <Button variant="secondary" onClick={onLoadExample} disabled={loading}>
+        <Button variant="secondary" onClick={onLoadExample} disabled={loading} dataCy="loot-calculator-button-load-example">
           {t('calculator.inputSection.loadExampleButton')}
         </Button>
       </ButtonGroup>

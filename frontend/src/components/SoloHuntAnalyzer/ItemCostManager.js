@@ -1175,12 +1175,14 @@ export default function ItemCostManager({
                 variant="primary"
                 onClick={handleAddImbuement}
                 disabled={!selectedImbuement}
+                dataCy="solo-hunt-button-add-imbuement-confirm"
               >
                 {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.addButton')}
               </Button>
               <Button
                 variant="secondary"
                 onClick={() => setShowImbuementModal(false)}
+                dataCy="solo-hunt-button-add-imbuement-cancel"
               >
                 {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.cancelButton')}
               </Button>
@@ -1251,12 +1253,14 @@ export default function ItemCostManager({
                 variant="primary"
                 onClick={handleAddCustomItem}
                 disabled={!customItemName.trim()}
+                dataCy="solo-hunt-button-add-custom-item-confirm"
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.addButton')}
               </Button>
               <Button
                 variant="secondary"
                 onClick={() => setShowCustomItemModal(false)}
+                dataCy="solo-hunt-button-add-custom-item-cancel"
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.cancelButton')}
               </Button>
@@ -1376,6 +1380,7 @@ export default function ItemCostManager({
                   setShowRingBisModal(false);
                   setSelectedRing('');
                 }}
+                dataCy="solo-hunt-button-add-ringbis-cancel"
               >
                 {t('soloHuntAnalyzer.itemCostManager.ringBisModal.cancelButton')}
               </Button>
