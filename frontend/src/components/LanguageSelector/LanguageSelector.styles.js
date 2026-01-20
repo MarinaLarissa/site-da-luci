@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const SelectorButton = styled.button`
+export const LanguageSelectorButton = styled.button`
   display: flex;
   align-items: center;
   gap: 6px;
@@ -43,7 +43,7 @@ export const SelectorButton = styled.button`
   }
 `;
 
-export const FlagIcon = styled.span`
+export const LanguageSelectorFlagIcon = styled.span`
   font-size: 18px;
   line-height: 1;
 
@@ -53,7 +53,7 @@ export const FlagIcon = styled.span`
   }
 `;
 
-export const LangCode = styled.span`
+export const LanguageSelectorLangCode = styled.span`
   font-size: 13px;
   letter-spacing: 0.5px;
 

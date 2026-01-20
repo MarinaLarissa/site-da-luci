@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { SelectorButton, FlagIcon, LangCode } from './LanguageSelector.styles';
+import { LanguageSelectorButton, LanguageSelectorFlagIcon, LanguageSelectorLangCode } from './LanguageSelector.styles';
 
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
@@ -18,14 +18,14 @@ export default function LanguageSelector() {
   const isEnglish = currentLang === 'en';
 
   return (
-    <SelectorButton
+    <LanguageSelectorButton
       onClick={toggleLanguage}
       aria-label={`Switch to ${isEnglish ? 'Portuguese' : 'English'}`}
       title={`Switch to ${isEnglish ? 'Portuguese' : 'English'}`}
       data-cy="language-toggle-button"
     >
-      <FlagIcon>{isEnglish ? '🇺🇸' : '🇧🇷'}</FlagIcon>
-      <LangCode>{isEnglish ? 'EN' : 'PT'}</LangCode>
-    </SelectorButton>
+      <LanguageSelectorFlagIcon>{isEnglish ? '🇺🇸' : '🇧🇷'}</LanguageSelectorFlagIcon>
+      <LanguageSelectorLangCode>{isEnglish ? 'EN' : 'PT'}</LanguageSelectorLangCode>
+    </LanguageSelectorButton>
   );
 }
