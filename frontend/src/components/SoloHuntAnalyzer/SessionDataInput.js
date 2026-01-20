@@ -7,11 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
+import { Textarea } from '../common/styled';
 import {
   SessionDataInputContainer,
   SectionTitle,
   SectionDescription,
-  SessionTextarea,
   InputActions,
   ParsedSessionInfo,
 } from './SessionDataInput.styles';
@@ -62,11 +62,13 @@ Lofi Shades (Leader)
         {t('soloHuntAnalyzer.sessionInput.description')} <strong>{t('soloHuntAnalyzer.sessionInput.onePlayerOnly')}</strong>
       </SectionDescription>
 
-      <SessionTextarea
+      <Textarea
         value={sessionData}
         onChange={(e) => setSessionData(e.target.value)}
         placeholder={t('soloHuntAnalyzer.sessionInput.placeholder')}
         rows={3}
+        $monospace={true}
+        $minHeight="150px"
         data-cy="solo-hunt-input-session"
       />
 

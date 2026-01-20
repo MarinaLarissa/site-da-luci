@@ -6,7 +6,7 @@
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.bg.secondary};
+  background-color: ${({ theme }) => theme.colors.bg.card};
   padding: ${({ theme }) => theme.spacing.xl};
   border-radius: ${({ theme }) => theme.radius.lg};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
@@ -20,28 +20,7 @@ export const InputLabel = styled.label`
   margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
-export const TextAreaStyled = styled.textarea`
-  width: 100%;
-  min-height: 200px;
-  padding: ${({ theme }) => theme.spacing.md};
-  background-color: ${({ theme }) => theme.colors.bg.primary};
-  border: 2px solid ${({ theme }) => theme.colors.accent.goldLight};
-  border-radius: ${({ theme }) => theme.radius.md};
-  color: ${({ theme }) => theme.colors.text.primary};
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 14px;
-  resize: vertical;
-  transition: border-color ${({ theme }) => theme.transitions.normal};
-
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.accent.gold};
-  }
-
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.text.secondary};
-  }
-`;
+// TextAreaStyled removed - now using shared Textarea component from common/styled
 
 export const HelpText = styled.p`
   font-size: 14px;

@@ -32,28 +32,7 @@ export const SectionDescription = styled.p`
   margin: 0 0 20px 0;
 `;
 
-export const SessionTextarea = styled.textarea`
-  width: 100%;
-  padding: 16px;
-  background-color: #0f1620;
-  border: 2px solid rgba(195, 155, 211, 0.3);
-  border-radius: 8px;
-  color: #e0e0e0;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  resize: none;
-  transition: border-color 0.3s ease;
-  margin-bottom: 16px;
-
-  &:focus {
-    outline: none;
-    border-color: #c39bd3;
-  }
-
-  &::placeholder {
-    color: #616161;
-  }
-`;
+// SessionTextarea removed - now using shared Textarea component from common/styled
 
 export const InputActions = styled.div`
   display: flex;

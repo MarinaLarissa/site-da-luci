@@ -6,11 +6,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
+import { Textarea } from '../common/styled';
 import {
   InputContainer,
   SectionTitle,
   SectionDescription,
-  TextAreaStyled,
   ButtonGroup,
 } from './InputSection.styles';
 
@@ -24,10 +24,12 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         {t('calculator.inputSection.description')}
       </SectionDescription>
 
-      <TextAreaStyled
+      <Textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder={t('calculator.inputSection.placeholder')}
+        $minHeight="200px"
+        $monospace={false}
         rows={3}
         disabled={loading}
         data-cy="loot-calculator-input-session"
