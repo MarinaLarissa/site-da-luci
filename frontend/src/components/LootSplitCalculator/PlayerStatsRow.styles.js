@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const StatsRowContainer = styled.div`
+export const PlayerStatsRowContainer = styled.div`
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
@@ -16,11 +16,11 @@ export const StatsRowContainer = styled.div`
   }
 `;
 
-export const PlayerCardWrapper = styled.div`
+export const PlayerStatsRowPlayerCardWrapper = styled.div`
   flex: 1;
   padding-left: 2rem; /* Left indentation as requested */
 `;
 
-export const DamageHealingCardWrapper = styled.div`
+export const PlayerStatsRowDamageHealingCardWrapper = styled.div`
   flex: 1;
 `;

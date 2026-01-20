@@ -8,25 +8,25 @@ import PropTypes from 'prop-types';
 import PlayerCard from './PlayerCard';
 import DamageHealingCard from './DamageHealingCard';
 import {
-  StatsRowContainer,
-  PlayerCardWrapper,
-  DamageHealingCardWrapper,
+  PlayerStatsRowContainer,
+  PlayerStatsRowPlayerCardWrapper,
+  PlayerStatsRowDamageHealingCardWrapper,
 } from './PlayerStatsRow.styles';
 
 export default function PlayerStatsRow({ player, totalDamage, totalHealing }) {
   return (
-    <StatsRowContainer>
-      <PlayerCardWrapper>
+    <PlayerStatsRowContainer data-cy="player-stats-row">
+      <PlayerStatsRowPlayerCardWrapper>
         <PlayerCard player={player} />
-      </PlayerCardWrapper>
-      <DamageHealingCardWrapper>
+      </PlayerStatsRowPlayerCardWrapper>
+      <PlayerStatsRowDamageHealingCardWrapper>
         <DamageHealingCard
           player={player}
           totalDamage={totalDamage}
           totalHealing={totalHealing}
         />
-      </DamageHealingCardWrapper>
-    </StatsRowContainer>
+      </PlayerStatsRowDamageHealingCardWrapper>
+    </PlayerStatsRowContainer>
   );
 }
 
