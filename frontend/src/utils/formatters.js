@@ -3,9 +3,9 @@
  */
 
 /**
- * Format gold amount using standardized notation
+ * Format gold amount with full value and thousand separators
  * @param {number} amount - Gold amount to format
- * @returns {string} Formatted string (e.g., "4.69kk" for >= 1M, "100.000" for < 1M)
+ * @returns {string} Formatted string (e.g., "4.690.000" or "100.000")
  */
 export function formatGold(amount) {
   if (!amount && amount !== 0) {
@@ -15,21 +15,16 @@ export function formatGold(amount) {
   const numValue = typeof amount === 'string' ? parseFloat(amount) : amount;
   const intValue = Math.floor(numValue);
 
-  // Values >= 1,000,000: use "kk" notation with 2 decimal places
-  if (intValue >= 1000000) {
-    return (numValue / 1000000).toFixed(2) + 'kk';
-  }
-
-  // Values < 1,000,000: show with thousand separators, no decimals
+  // All values: show with thousand separators (pt-BR format), no decimals
   return intValue.toLocaleString('pt-BR');
 }
 
 /**
- * Format GP/GP per hour values with standardized notation
+ * Format GP/GP per hour values with full value and thousand separators
  * @param {number} value - GP value to format
- * @returns {object} Object with { formatted, full } properties
- * - formatted: Display value (e.g., "100.000" or "4.69kk")
- * - full: Complete value for tooltip (e.g., "4.697.903")
+ * @returns {object} Object with { formatted, full } properties (both contain the same formatted value)
+ * - formatted: Display value (e.g., "4.690.000" or "100.000")
+ * - full: Complete value (same as formatted, kept for backwards compatibility)
  */
 export function formatGPValue(value) {
   if (!value && value !== 0) {
@@ -39,16 +34,9 @@ export function formatGPValue(value) {
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
   const intValue = Math.floor(numValue);
 
-  // Values up to 999,999: show with thousand separators, no decimals
-  if (intValue < 1000000) {
-    const formatted = intValue.toLocaleString('pt-BR');
-    return { formatted, full: formatted };
-  }
-
-  // Values >= 1,000,000: use "kk" notation with 2 decimal places
-  const kkValue = (numValue / 1000000).toFixed(2);
-  const full = intValue.toLocaleString('pt-BR');
-  return { formatted: `${kkValue}kk`, full };
+  // All values: show with thousand separators (pt-BR format), no decimals
+  const formatted = intValue.toLocaleString('pt-BR');
+  return { formatted, full: formatted };
 }
 
 /**
