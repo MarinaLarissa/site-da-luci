@@ -13,9 +13,7 @@ import {
   ItemCostManagerContainer,
   TokenPricesSection,
   TokenPriceRow,
-  TokenIcon,
   TokenIconInline,
-  CoinIconSmall,
   CoinIconInline,
   ScreenReaderOnly,
   AddButtons,
@@ -27,8 +25,6 @@ import {
   ChildPriceLabel,
   PriceInput,
   PriceTypeSelect,
-  ItemTotal,
-  ItemSource,
   RemoveButton,
   QuantityButton,
   CollapseButton,
@@ -161,7 +157,7 @@ export default function ItemCostManager({
   // Custom item state
   const [customItemName, setCustomItemName] = useState('');
   const [customItemQuantity, setCustomItemQuantity] = useState(1);
-  const [customItemPrice, setCustomItemPrice] = useState(0);
+  const [customItemPrice, setCustomItemPrice] = useState(''); // Empty string for better UX
   const [customItemPriceType, setCustomItemPriceType] = useState('GP');
 
   /**
@@ -822,82 +818,76 @@ export default function ItemCostManager({
               return (
                 <React.Fragment key={item.id}>
                   {/* Parent or standalone item row */}
-                  <div className={`items-row ${item.isParent ? 'parent-row' : ''}`}>
-                    <div className="item-name">
+                  <ItemsRow $parent={item.isParent}>
+                    <ItemName>
                       {item.isParent && item.hasChildren && (
-                        <button
-                          className="btn-collapse"
+                        <CollapseButton
                           onClick={() => toggleItemCollapse(item.id)}
                           aria-label={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandItems') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
                           title={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
                         >
                           {isCollapsed ? '▶' : '▼'}
-                        </button>
+                        </CollapseButton>
                       )}
                       <span>{item.name}</span>
                       {RING_ICONS[item.name] && (
-                        <img
+                        <TokenIconInline
                           src={RING_ICONS[item.name]}
                           alt={item.name}
-                          className="ring-icon-inline"
-                          style={{ marginLeft: '8px', width: '20px', height: '20px', verticalAlign: 'middle' }}
+                          style={{ marginLeft: '8px' }}
                         />
                       )}
                       {item.isParent && item.hasChildren && isCollapsed && (
-                        <span
-                          className="collapsed-hint"
+                        <CollapsedHint
                           onClick={() => toggleItemCollapse(item.id)}
                           style={{ cursor: 'pointer' }}
                           title={t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit')}
                         >
                           {' '}{t('soloHuntAnalyzer.itemCostManager.itemsList.clickToExpand')}
-                        </span>
+                        </CollapsedHint>
                       )}
-                    </div>
+                    </ItemName>
                     <div>
                       {item.isParent ? (
-                        <div className="quantity-controls">
-                          <button
-                            className="btn-quantity"
+                        <QuantityControls>
+                          <QuantityButton
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
                             aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
                             title={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
                           >
                             -
-                          </button>
-                          <span className="quantity-display">{item.quantity}</span>
-                          <button
-                            className="btn-quantity"
+                          </QuantityButton>
+                          <QuantityDisplay>{item.quantity}</QuantityDisplay>
+                          <QuantityButton
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity + 1)}
                             aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
                             title={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
                           >
                             +
-                          </button>
-                        </div>
+                          </QuantityButton>
+                        </QuantityControls>
                       ) : (
                         item.quantity
                       )}
                     </div>
                     <div>
                       {item.isParent ? (
-                        <div className="hybrid-price">
+                        <HybridPrice>
                           {item.unitPrice > 0 && (
-                            <span className="token-price">
-                              <img
+                            <TokenPrice>
+                              <TokenIconInline
                                 src={item.priceType === 'GT' ? goldTokenIcon : silverTokenIcon}
                                 alt={item.priceType}
-                                className="token-icon-inline"
                               />
                               {item.unitPrice} {item.priceType}
-                            </span>
+                            </TokenPrice>
                           )}
                           {childrenGPCost > 0 && (
                             <>
-                              {item.unitPrice > 0 && <span className="price-separator"> + </span>}
-                              <span className="gp-price">
-                                <img src={coinsIcon} alt="GP" className="coin-icon-inline" />
+                              {item.unitPrice > 0 && <PriceSeparator> + </PriceSeparator>}
+                              <GPPrice>
+                                <CoinIconInline src={coinsIcon} alt="GP" />
                                 {formatGPValue(childrenGPCost / item.quantity).formatted.includes('kk') ? (
                                   <span title={formatGPValue(childrenGPCost / item.quantity).full}>
                                     {formatGPValue(childrenGPCost / item.quantity).formatted} GP
@@ -905,66 +895,62 @@ export default function ItemCostManager({
                                 ) : (
                                   `${formatGPValue(childrenGPCost / item.quantity).formatted} GP`
                                 )}
-                              </span>
+                              </GPPrice>
                             </>
                           )}
                           {item.unitPrice === 0 && childrenGPCost === 0 && <span>-</span>}
-                        </div>
+                        </HybridPrice>
                       ) : (
-                        <div className="price-controls">
-                          <input
+                        <PriceControls>
+                          <PriceInput
                             type="number"
                             value={item.unitPrice}
                             onChange={(e) => handleUpdateItemPrice(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                             min="0"
-                            className="price-input"
                           />
-                          <select
+                          <PriceTypeSelect
                             value={item.priceType}
                             onChange={(e) => handleUpdateItemPrice(item.id, 'priceType', e.target.value)}
-                            className="price-type-select"
                           >
                             <option value="GP">GP</option>
                             <option value="GT">GT</option>
                             <option value="ST">ST</option>
-                          </select>
-                        </div>
+                          </PriceTypeSelect>
+                        </PriceControls>
                       )}
                     </div>
                     <div>
-                      <button
-                        className="btn-remove"
+                      <RemoveButton
                         onClick={() => handleRemoveItem(item.id)}
                         aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
                         title={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
                       >
                         <span aria-hidden="true">🗑️</span>
-                        <span className="sr-only">{t('soloHuntAnalyzer.itemCostManager.itemsList.removeItem')}</span>
-                      </button>
+                        <ScreenReaderOnly>{t('soloHuntAnalyzer.itemCostManager.itemsList.removeItem')}</ScreenReaderOnly>
+                      </RemoveButton>
                     </div>
-                  </div>
+                  </ItemsRow>
 
                   {/* Render children if this is a parent and it's expanded */}
                   {item.isParent && !isCollapsed && customItems
                     .filter(child => child.parentId === item.id)
                     .map(child => (
-                      <div key={child.id} className="items-row child-row">
-                        <div className="item-name child-item-name">↳ {child.name}</div>
+                      <ItemsRow key={child.id} $child>
+                        <ItemName $child>↳ {child.name}</ItemName>
                         <div>{child.quantity}</div>
                         <div>
-                          <div className="price-controls">
-                            <input
+                          <PriceControls>
+                            <PriceInput
                               type="number"
                               value={child.unitPrice}
                               onChange={(e) => handleUpdateItemPrice(child.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                               min="0"
-                              className="price-input"
                             />
-                            <span className="child-price-label">GP</span>
-                          </div>
+                            <ChildPriceLabel>GP</ChildPriceLabel>
+                          </PriceControls>
                         </div>
                         <div></div>
-                      </div>
+                      </ItemsRow>
                     ))
                   }
                 </React.Fragment>
