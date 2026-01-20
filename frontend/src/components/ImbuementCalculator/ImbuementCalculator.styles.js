@@ -1,36 +1,9 @@
 /**
  * Imbuement Effective Calculator Styled Components
- * Following site color scheme with purple gradients
+ * Migrated to use theme tokens - Phase 4 ETAPA 31
  */
 
 import styled, { keyframes } from 'styled-components';
-
-/* Theme Colors */
-const colors = {
-  primaryLight: '#c39bd3',
-  primaryDark: '#b388c7',
-  primaryDarker: '#9d6fb0',
-  bgMain: '#0f0e17',
-  bgDark: '#1a1a2e',
-  bgDarker: '#16213e',
-  bgCard: '#16213e',
-  bgInput: '#0f0e17',
-  bgHover: 'rgba(195, 155, 211, 0.1)',
-  textPrimary: '#f0f0f0',
-  textSecondary: '#c39bd3',
-  textMuted: '#9E9E9E',
-  textLabel: '#b8b8b8',
-  borderLight: 'rgba(195, 155, 211, 0.2)',
-  borderMedium: 'rgba(195, 155, 211, 0.3)',
-  success: '#10b981',
-  successBg: 'rgba(16, 185, 129, 0.1)',
-  warningBg: 'rgba(251, 191, 36, 0.1)',
-  warningBorder: '#fbbf24',
-  warningText: '#fbbf24',
-  accentGold: '#ffd700',
-};
-
-const gradientPrimary = `linear-gradient(135deg, ${colors.primaryLight} 0%, ${colors.primaryDark} 100%)`;
 
 /* Animations */
 const slideDown = keyframes`
@@ -69,7 +42,7 @@ export const CalculatorContainer = styled.div`
 export const PageTitle = styled.h1`
   font-size: 36px;
   font-weight: 700;
-  background: ${gradientPrimary};
+  background: ${({ theme }) => theme.gradients.primary};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -82,14 +55,14 @@ export const PageTitle = styled.h1`
 
 export const PageDescription = styled.p`
   font-size: 18px;
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
   margin: 0 0 32px 0;
   line-height: 1.5;
 `;
 
 /* GT Price Section */
 export const GTPriceSection = styled.div`
-  background: ${colors.bgCard};
+  background: ${({ theme }) => theme.colors.bg.card};
   padding: 20px 24px;
   border-radius: 12px;
   display: flex;
@@ -97,7 +70,7 @@ export const GTPriceSection = styled.div`
   gap: 12px;
   margin-bottom: 32px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  border: 1px solid ${colors.borderLight};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -112,7 +85,7 @@ export const GTPriceLabel = styled.label`
   gap: 8px;
   font-size: 18px;
   font-weight: 600;
-  color: ${colors.textPrimary};
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 export const GTPriceInput = styled.input`
@@ -120,16 +93,16 @@ export const GTPriceInput = styled.input`
   padding: 10px 16px;
   font-size: 18px;
   font-weight: 600;
-  background: ${colors.bgDark};
-  color: ${colors.textPrimary};
-  border: 2px solid ${colors.borderMedium};
+  background: ${({ theme }) => theme.colors.bg.dark};
+  color: ${({ theme }) => theme.colors.text.primary};
+  border: 2px solid ${({ theme }) => theme.colors.border.medium};
   border-radius: 8px;
   text-align: right;
   transition: all 0.2s;
 
   &:focus {
     outline: none;
-    border-color: ${colors.accentGold};
+    border-color: ${({ theme }) => theme.colors.accent.accentGold};
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
   }
 
@@ -140,24 +113,24 @@ export const GTPriceInput = styled.input`
 
 /* Service Fee Section */
 export const ServiceFeeSection = styled.div`
-  background: ${colors.bgCard};
+  background: ${({ theme }) => theme.colors.bg.card};
   padding: 20px 24px;
   border-radius: 12px;
   margin-bottom: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  border: 1px solid ${colors.borderLight};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
 export const SectionTitle = styled.h2`
   font-size: 20px;
   font-weight: 700;
-  color: ${colors.textPrimary};
+  color: ${({ theme }) => theme.colors.text.primary};
   margin: 0 0 8px 0;
 `;
 
 export const SectionDescription = styled.p`
   font-size: 14px;
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
   margin: 0 0 16px 0;
   line-height: 1.5;
 `;
@@ -172,16 +145,16 @@ export const FeeInputGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  background: ${colors.bgInput};
+  background: ${({ theme }) => theme.colors.bg.input};
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid ${colors.borderLight};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
 export const FeeLabel = styled.label`
   font-size: 14px;
   font-weight: 600;
-  color: ${colors.textLabel};
+  color: ${({ theme }) => theme.colors.text.label};
   min-width: 80px;
 `;
 
@@ -190,16 +163,16 @@ export const FeeInput = styled.input`
   padding: 8px 12px;
   font-size: 14px;
   font-weight: 600;
-  background: ${colors.bgDarker};
-  color: ${colors.textPrimary};
-  border: 1px solid ${colors.borderMedium};
+  background: ${({ theme }) => theme.colors.bg.darker};
+  color: ${({ theme }) => theme.colors.text.primary};
+  border: 1px solid ${({ theme }) => theme.colors.border.medium};
   border-radius: 6px;
   text-align: right;
   transition: all 0.2s;
 
   &:focus {
     outline: none;
-    border-color: ${colors.primaryDark};
+    border-color: ${({ theme }) => theme.colors.accent.primaryDark};
     box-shadow: 0 0 0 3px rgba(195, 155, 211, 0.2);
   }
 `;
@@ -223,13 +196,13 @@ export const CopyPasteSection = styled.div`
   align-items: center;
   margin-bottom: 24px;
   padding: 16px;
-  background: ${colors.bgCard};
+  background: ${({ theme }) => theme.colors.bg.card};
   border-radius: 8px;
-  border: 1px solid ${colors.borderLight};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
 export const FeedbackSuccess = styled.span`
-  color: ${colors.success};
+  color: ${({ theme }) => theme.colors.successAlt};
   font-weight: 600;
   font-size: 14px;
   animation: ${fadeIn} 0.3s ease-in;
@@ -251,7 +224,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background: ${colors.bgCard};
+  background: ${({ theme }) => theme.colors.bg.card};
   border-radius: 12px;
   padding: 32px;
   max-width: 600px;
@@ -259,10 +232,10 @@ export const ModalContent = styled.div`
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border: 1px solid ${colors.borderMedium};
+  border: 1px solid ${({ theme }) => theme.colors.border.medium};
 
   h3 {
-    color: ${colors.textPrimary};
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
@@ -270,7 +243,7 @@ export const ModalContent = styled.div`
 `;
 
 export const ModalDescription = styled.p`
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
   font-size: 14px;
   margin-bottom: 24px;
   line-height: 1.5;
@@ -285,13 +258,13 @@ export const ImbuementsSelection = styled.div`
 `;
 
 export const ImbuementSelectionBlock = styled.div`
-  background: ${colors.bgInput};
+  background: ${({ theme }) => theme.colors.bg.input};
   border-radius: 8px;
   padding: 16px;
-  border-left: 4px solid ${colors.primaryDark};
+  border-left: 4px solid ${({ theme }) => theme.colors.accent.primaryDark};
 
   h4 {
-    color: ${colors.textPrimary};
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -309,32 +282,32 @@ export const CheckboxLabel = styled.label`
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  background: ${colors.bgDarker};
+  background: ${({ theme }) => theme.colors.bg.darker};
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   border: 1px solid transparent;
 
   &:hover {
-    background: ${colors.bgHover};
-    border-color: ${colors.borderMedium};
+    background: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.border.medium};
   }
 
   input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: ${colors.primaryDark};
+    accent-color: ${({ theme }) => theme.colors.accent.primaryDark};
   }
 
   .tier-name {
     font-weight: 600;
-    color: ${colors.textPrimary};
+    color: ${({ theme }) => theme.colors.text.primary};
     min-width: 80px;
   }
 
   .tier-cost {
-    color: ${colors.textSecondary};
+    color: ${({ theme }) => theme.colors.accent.primary};
     font-size: 14px;
     margin-left: auto;
   }
@@ -358,8 +331,8 @@ export const Button = styled.button`
   border: none;
 
   ${props => props.variant === 'primary' && `
-    background: ${gradientPrimary};
-    color: ${colors.bgDark};
+    background: ${props.theme.gradients.primary};
+    color: ${props.theme.colors.bg.dark};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
     &:hover:not(:disabled) {
@@ -374,13 +347,13 @@ export const Button = styled.button`
   `}
 
   ${props => props.variant === 'secondary' && `
-    background: ${colors.bgDarker};
-    color: ${colors.textPrimary};
-    border: 1px solid ${colors.borderMedium};
+    background: ${props.theme.colors.bg.darker};
+    color: ${props.theme.colors.text.primary};
+    border: 1px solid ${props.theme.colors.border.medium};
 
     &:hover {
-      background: ${colors.bgHover};
-      border-color: ${colors.primaryDark};
+      background: ${props.theme.colors.bg.hover};
+      border-color: ${props.theme.colors.accent.primaryDark};
     }
   `}
 `;

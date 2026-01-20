@@ -1,38 +1,16 @@
 /**
  * Styled components for ImbuementBlock
+ * Migrated to use theme tokens - Phase 4 ETAPA 31
  */
 
 import styled from 'styled-components';
 
-const colors = {
-  primaryLight: '#c39bd3',
-  primaryDark: '#b388c7',
-  primaryDarker: '#9d6fb0',
-  bgDark: '#1a1a2e',
-  bgDarker: '#16213e',
-  bgInput: '#0f0e17',
-  bgHover: 'rgba(195, 155, 211, 0.1)',
-  textPrimary: '#f0f0f0',
-  textSecondary: '#c39bd3',
-  textMuted: '#9E9E9E',
-  textLabel: '#b8b8b8',
-  borderLight: 'rgba(195, 155, 211, 0.2)',
-  borderMedium: 'rgba(195, 155, 211, 0.3)',
-  success: '#10b981',
-  successBg: 'rgba(16, 185, 129, 0.1)',
-  warningBg: 'rgba(251, 191, 36, 0.1)',
-  warningBorder: '#fbbf24',
-  warningText: '#fbbf24',
-};
-
-const gradientPrimary = `linear-gradient(135deg, ${colors.primaryLight} 0%, ${colors.primaryDark} 100%)`;
-
 export const ImbuementBlockContainer = styled.div`
-  background: ${colors.bgDarker};
+  background: ${({ theme }) => theme.colors.bg.darker};
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid ${colors.borderLight};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
@@ -44,19 +22,19 @@ export const ImbuementBlockContainer = styled.div`
 export const ImbuementTitle = styled.h3`
   font-size: 24px;
   font-weight: 700;
-  color: ${colors.textPrimary};
+  color: ${({ theme }) => theme.colors.text.primary};
   margin-bottom: 8px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  border-bottom: 2px solid ${colors.primaryDark};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.accent.primaryDark};
   padding-bottom: 12px;
 `;
 
 export const ImbuementDescription = styled.span`
   font-size: 14px;
   font-weight: 400;
-  color: ${colors.textSecondary};
+  color: ${({ theme }) => theme.colors.accent.primary};
   font-style: italic;
 `;
 
@@ -75,34 +53,34 @@ export const PriceInputRow = styled.div`
   gap: 8px;
   padding: 8px;
   border-radius: 8px;
-  background: ${colors.bgInput};
+  background: ${({ theme }) => theme.colors.bg.input};
   transition: background 0.2s;
 
   &:hover {
-    background: ${colors.bgHover};
-    border: 1px solid ${colors.borderMedium};
+    background: ${({ theme }) => theme.colors.bg.hover};
+    border: 1px solid ${({ theme }) => theme.colors.border.medium};
   }
 
   label {
     font-size: 14px;
     font-weight: 500;
-    color: ${colors.textLabel};
+    color: ${({ theme }) => theme.colors.text.label};
   }
 
   input {
     padding: 8px 12px;
     font-size: 14px;
     font-weight: 600;
-    background: ${colors.bgDarker};
-    border: 1px solid ${colors.borderMedium};
+    background: ${({ theme }) => theme.colors.bg.darker};
+    border: 1px solid ${({ theme }) => theme.colors.border.medium};
     border-radius: 6px;
     text-align: right;
-    color: ${colors.textPrimary};
+    color: ${({ theme }) => theme.colors.text.primary};
     transition: border-color 0.2s;
 
     &:focus {
       outline: none;
-      border-color: ${colors.primaryDark};
+      border-color: ${({ theme }) => theme.colors.accent.primaryDark};
       box-shadow: 0 0 0 3px rgba(195, 155, 211, 0.2);
     }
   }
@@ -121,7 +99,7 @@ export const CopyButton = styled.button`
   width: 32px;
   height: 32px;
   border: none;
-  background: ${colors.primaryDark};
+  background: ${({ theme }) => theme.colors.accent.primaryDark};
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -132,7 +110,7 @@ export const CopyButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background: ${colors.primaryDarker};
+    background: ${({ theme }) => theme.colors.accent.primaryDarker};
     transform: scale(1.05);
   }
 
@@ -144,7 +122,7 @@ export const CopyButton = styled.button`
 export const GPLabel = styled.span`
   font-size: 12px;
   font-weight: 600;
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
 `;
 
 export const Calculations = styled.div`
@@ -154,16 +132,16 @@ export const Calculations = styled.div`
 `;
 
 export const CalculationRow = styled.div`
-  background: ${colors.bgInput};
+  background: ${({ theme }) => theme.colors.bg.input};
   border-radius: 8px;
   padding: 16px;
-  border-left: 4px solid ${colors.primaryDark};
+  border-left: 4px solid ${({ theme }) => theme.colors.accent.primaryDark};
 `;
 
 export const TierName = styled.div`
   font-size: 16px;
   font-weight: 700;
-  color: ${colors.textPrimary};
+  color: ${({ theme }) => theme.colors.text.primary};
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -179,8 +157,8 @@ export const CostComparison = styled.div`
 export const CostOption = styled.div`
   padding: 12px;
   border-radius: 8px;
-  background: ${colors.bgDarker};
-  border: 2px solid ${colors.borderLight};
+  background: ${({ theme }) => theme.colors.bg.darker};
+  border: 2px solid ${({ theme }) => theme.colors.border.light};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,15 +166,15 @@ export const CostOption = styled.div`
   transition: all 0.2s;
 
   ${props => props.$isBest && `
-    border-color: ${colors.success};
-    background: ${colors.successBg};
+    border-color: ${({ theme }) => theme.colors.successAlt};
+    background: ${({ theme }) => theme.colors.successBg};
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 
     &::after {
       content: '✓ Best';
       font-size: 12px;
       font-weight: 700;
-      color: ${colors.success};
+      color: ${({ theme }) => theme.colors.successAlt};
       margin-top: 4px;
     }
   `}
@@ -204,14 +182,14 @@ export const CostOption = styled.div`
   > span:first-of-type {
     font-size: 14px;
     font-weight: 600;
-    color: ${colors.textPrimary};
+    color: ${({ theme }) => theme.colors.text.primary};
   }
 `;
 
 export const CostValue = styled.span`
   font-size: 16px;
   font-weight: 700;
-  color: ${colors.primaryDark};
+  color: ${({ theme }) => theme.colors.accent.primaryDark};
 `;
 
 export const CostBreakdown = styled.div`
@@ -229,43 +207,43 @@ export const BreakdownLine = styled.div`
   padding: 4px 8px;
   font-size: 12px;
   border-radius: 4px;
-  background: ${colors.bgInput};
+  background: ${({ theme }) => theme.colors.bg.input};
 
   ${props => props.$isTotal && `
     font-weight: 700;
     margin-top: 4px;
     padding-top: 8px;
-    border-top: 1px solid ${colors.borderMedium};
+    border-top: 1px solid ${({ theme }) => theme.colors.border.medium};
     background: transparent;
   `}
 `;
 
 export const BreakdownLabel = styled.span`
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
   font-size: 11px;
 `;
 
 export const BreakdownValue = styled.span`
-  color: ${colors.textPrimary};
+  color: ${({ theme }) => theme.colors.text.primary};
   font-weight: 600;
   font-size: 12px;
 `;
 
 export const Savings = styled.div`
-  background: ${colors.warningBg};
-  border: 1px solid ${colors.warningBorder};
+  background: ${({ theme }) => theme.colors.warningBg};
+  border: 1px solid ${({ theme }) => theme.colors.warningBorder};
   border-radius: 6px;
   padding: 10px 12px;
   font-size: 14px;
   font-weight: 600;
-  color: ${colors.warningText};
+  color: ${({ theme }) => theme.colors.warningText};
   text-align: center;
   margin-bottom: 12px;
 `;
 
 export const BestOptionHighlight = styled.div`
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
-  border: 2px solid ${colors.success};
+  border: 2px solid ${({ theme }) => theme.colors.successAlt};
   border-radius: 10px;
   padding: 16px;
   margin-bottom: 16px;
@@ -288,7 +266,7 @@ export const BestBadge = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: ${colors.success};
+  background: ${({ theme }) => theme.colors.successAlt};
   color: white;
   font-size: 12px;
   font-weight: 700;
@@ -307,13 +285,13 @@ export const BestOptionContent = styled.div`
   strong {
     font-size: 16px;
     font-weight: 700;
-    color: ${colors.success};
+    color: ${({ theme }) => theme.colors.successAlt};
   }
 `;
 
 export const BestOptionDescription = styled.p`
   font-size: 13px;
-  color: ${colors.textMuted};
+  color: ${({ theme }) => theme.colors.text.muted};
   margin: 0;
   font-style: italic;
 `;
@@ -323,28 +301,28 @@ export const BestOptionCost = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: ${colors.bgDarker};
+  background: ${({ theme }) => theme.colors.bg.darker};
   border-radius: 6px;
   margin-top: 4px;
 
   .cost-label {
     font-size: 13px;
     font-weight: 600;
-    color: ${colors.textMuted};
+    color: ${({ theme }) => theme.colors.text.muted};
   }
 
   .cost-value {
     font-size: 18px;
     font-weight: 700;
-    color: ${colors.success};
+    color: ${({ theme }) => theme.colors.successAlt};
   }
 `;
 
 export const CopyToAnalyzerButton = styled.button`
   width: 100%;
   padding: 12px 16px;
-  background: ${gradientPrimary};
-  color: ${colors.bgDark};
+  background: ${({ theme }) => theme.gradients.primary};
+  color: ${({ theme }) => theme.colors.bg.dark};
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -372,9 +350,9 @@ export const TierToggles = styled.div`
 
 export const ToggleTierButton = styled.button`
   padding: 8px 16px;
-  background: ${colors.bgDarker};
-  color: ${colors.textSecondary};
-  border: 1px solid ${colors.borderMedium};
+  background: ${({ theme }) => theme.colors.bg.darker};
+  color: ${({ theme }) => theme.colors.accent.primary};
+  border: 1px solid ${({ theme }) => theme.colors.border.medium};
   border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
@@ -382,14 +360,14 @@ export const ToggleTierButton = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background: ${colors.bgHover};
-    border-color: ${colors.primaryDark};
+    background: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primaryDark};
     transform: translateY(-1px);
   }
 
   ${props => props.$active && `
-    background: ${gradientPrimary};
-    color: ${colors.bgDark};
+    background: ${({ theme }) => theme.gradients.primary};
+    color: ${({ theme }) => theme.colors.bg.dark};
     border-color: transparent;
   `}
 `;
