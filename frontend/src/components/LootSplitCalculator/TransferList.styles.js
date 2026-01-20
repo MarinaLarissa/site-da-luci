@@ -20,7 +20,7 @@ export const TransferListContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const ListTitle = styled.h3`
+export const TransferListTitle = styled.h3`
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-size: 20px;
   color: ${({ theme }) => theme.colors.accent.gold};
@@ -35,7 +35,7 @@ export const TransferInstruction = styled.p`
   font-style: italic;
 `;
 
-export const NoTransfers = styled.div`
+export const TransferListNoTransfers = styled.div`
   color: ${({ theme }) => theme.colors.success};
   font-size: 16px;
   text-align: center;
@@ -140,14 +140,14 @@ export const TransferCommands = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.accent.goldLight};
 `;
 
-export const CommandsTitle = styled.h4`
+export const TransferListCommandsTitle = styled.h4`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.text.secondary};
   margin: 0 0 ${({ theme }) => theme.spacing.md} 0;
   font-weight: 600;
 `;
 
-export const CommandsText = styled.pre`
+export const TransferListCommandsText = styled.pre`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 14px;
   color: ${({ theme }) => theme.colors.accent.gold};

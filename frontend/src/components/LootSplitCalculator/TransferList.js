@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { formatGold } from '../../utils/formatters';
 import {
   TransferListContainer,
-  ListTitle,
-  NoTransfers,
+  TransferListTitle,
+  TransferListNoTransfers,
   TransferInstruction,
   TransferItems,
   TransferItem,
@@ -19,8 +19,8 @@ import {
   TransferAmount,
   TransferCopiedIndicator,
   TransferCommands,
-  CommandsTitle,
-  CommandsText,
+  TransferListCommandsTitle,
+  TransferListCommandsText,
 } from './TransferList.styles';
 
 export default function TransferList({ transfers, copyableText }) {
@@ -38,15 +38,15 @@ export default function TransferList({ transfers, copyableText }) {
   if (!transfers || transfers.length === 0) {
     return (
       <TransferListContainer data-cy="transfer-list">
-        <ListTitle>{t('calculator.resultsSection.transferList.title')}</ListTitle>
-        <NoTransfers>{t('calculator.resultsSection.transferList.noTransfers')}</NoTransfers>
+        <TransferListTitle>{t('calculator.resultsSection.transferList.title')}</TransferListTitle>
+        <TransferListNoTransfers>{t('calculator.resultsSection.transferList.noTransfers')}</TransferListNoTransfers>
       </TransferListContainer>
     );
   }
 
   return (
     <TransferListContainer data-cy="transfer-list">
-      <ListTitle>{t('calculator.resultsSection.transferList.title')}</ListTitle>
+      <TransferListTitle>{t('calculator.resultsSection.transferList.title')}</TransferListTitle>
       <TransferInstruction>{t('calculator.resultsSection.transferList.instruction')}</TransferInstruction>
 
       <TransferItems>
@@ -58,6 +58,7 @@ export default function TransferList({ transfers, copyableText }) {
             role="button"
             tabIndex={0}
             aria-label={`Copy transfer: ${transfer.from} to ${transfer.to} ${formatGold(transfer.amount)}`}
+            data-cy={`transfer-item-${index}`}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -76,9 +77,9 @@ export default function TransferList({ transfers, copyableText }) {
         ))}
       </TransferItems>
 
-      <TransferCommands>
-        <CommandsTitle>TIBIA Commands:</CommandsTitle>
-        <CommandsText>{copyableText}</CommandsText>
+      <TransferCommands data-cy="transfer-commands">
+        <TransferListCommandsTitle>TIBIA Commands:</TransferListCommandsTitle>
+        <TransferListCommandsText>{copyableText}</TransferListCommandsText>
       </TransferCommands>
     </TransferListContainer>
   );
