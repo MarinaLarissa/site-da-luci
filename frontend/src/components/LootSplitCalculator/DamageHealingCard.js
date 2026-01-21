@@ -10,12 +10,12 @@ import Tooltip from '../common/Tooltip';
 import damageIcon from '../../assets/tibia/damage-icon.gif';
 import healingIcon from '../../assets/tibia/healing-icon.gif';
 import {
-  CardContainer,
-  StatsRow,
-  StatItem,
-  StatIcon,
-  StatLabel,
-  StatPercent,
+  DamageHealingCardContainer,
+  DamageHealingCardStatsRow,
+  DamageHealingCardStatItem,
+  DamageHealingCardStatIcon,
+  DamageHealingCardStatLabel,
+  DamageHealingCardStatPercent,
 } from './DamageHealingCard.styles';
 
 export default function DamageHealingCard({ player, totalDamage, totalHealing }) {
@@ -26,31 +26,31 @@ export default function DamageHealingCard({ player, totalDamage, totalHealing })
   const healingPercent = totalHealing > 0 ? ((player.healing / totalHealing) * 100).toFixed(1) : 0;
 
   return (
-    <CardContainer>
-      <StatsRow>
+    <DamageHealingCardContainer data-cy="damage-healing-card">
+      <DamageHealingCardStatsRow>
         <Tooltip
           text={`${t('calculator.resultsSection.damageHealing.tooltips.actualDamage')}: ${formatGold(player.damage || 0)}`}
           position="top"
         >
-          <StatItem>
-            <StatIcon src={damageIcon} alt="Damage" />
-            <StatLabel>{t('calculator.resultsSection.damageHealing.damage')}:</StatLabel>
-            <StatPercent>{damagePercent}%</StatPercent>
-          </StatItem>
+          <DamageHealingCardStatItem>
+            <DamageHealingCardStatIcon src={damageIcon} alt="Damage" />
+            <DamageHealingCardStatLabel>{t('calculator.resultsSection.damageHealing.damage')}:</DamageHealingCardStatLabel>
+            <DamageHealingCardStatPercent>{damagePercent}%</DamageHealingCardStatPercent>
+          </DamageHealingCardStatItem>
         </Tooltip>
 
         <Tooltip
           text={`${t('calculator.resultsSection.damageHealing.tooltips.actualHealing')}: ${formatGold(player.healing || 0)}`}
           position="top"
         >
-          <StatItem>
-            <StatIcon src={healingIcon} alt="Healing" />
-            <StatLabel>{t('calculator.resultsSection.damageHealing.healing')}:</StatLabel>
-            <StatPercent>{healingPercent}%</StatPercent>
-          </StatItem>
+          <DamageHealingCardStatItem>
+            <DamageHealingCardStatIcon src={healingIcon} alt="Healing" />
+            <DamageHealingCardStatLabel>{t('calculator.resultsSection.damageHealing.healing')}:</DamageHealingCardStatLabel>
+            <DamageHealingCardStatPercent>{healingPercent}%</DamageHealingCardStatPercent>
+          </DamageHealingCardStatItem>
         </Tooltip>
-      </StatsRow>
-    </CardContainer>
+      </DamageHealingCardStatsRow>
+    </DamageHealingCardContainer>
   );
 }
 

@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
+export const DamageHealingCardContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.secondary};
   border: 1px solid ${({ theme }) => theme.colors.accent.goldLight};
   border-radius: ${({ theme }) => theme.radius.md};
@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const PlayerNameHeader = styled.div`
+export const DamageHealingCardPlayerNameHeader = styled.div`
   font-weight: 600;
   font-size: 1.1rem;
   margin-bottom: 0.75rem;
@@ -30,18 +30,18 @@ export const PlayerNameHeader = styled.div`
   gap: 0.5rem;
 `;
 
-export const LeaderIndicator = styled.span`
+export const DamageHealingCardLeaderIndicator = styled.span`
   color: ${({ theme }) => theme.colors.accent.gold};
   font-size: 0.9rem;
 `;
 
-export const StatsRow = styled.div`
+export const DamageHealingCardStatsRow = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 `;
 
-export const StatItem = styled.div`
+export const DamageHealingCardStatItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -56,20 +56,20 @@ export const StatItem = styled.div`
   }
 `;
 
-export const StatIcon = styled.img`
+export const DamageHealingCardStatIcon = styled.img`
   width: 20px;
   height: 20px;
   object-fit: contain;
   vertical-align: middle;
 `;
 
-export const StatLabel = styled.span`
+export const DamageHealingCardStatLabel = styled.span`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.colors.text.secondary};
   flex: 1;
 `;
 
-export const StatPercent = styled.span`
+export const DamageHealingCardStatPercent = styled.span`
   font-weight: 600;
   font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.text.primary};
