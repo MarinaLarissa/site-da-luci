@@ -13,14 +13,14 @@ import PlayerStatsRow from './PlayerStatsRow';
 import Tooltip from '../common/Tooltip';
 import { SectionTitle } from '../common/styled';
 import {
-  ResultsContainer,
-  SummaryGrid,
-  SummaryCard,
-  SummaryLabel,
-  SummaryValue,
-  DesktopLayout,
-  MobileLayout,
-  StatsSectionTitle,
+  ResultsSectionContainer,
+  ResultsSectionSummaryGrid,
+  ResultsSectionSummaryCard,
+  ResultsSectionSummaryLabel,
+  ResultsSectionSummaryValue,
+  ResultsSectionDesktopLayout,
+  ResultsSectionMobileLayout,
+  ResultsSectionStatsSectionTitle,
 } from './ResultsSection.styles';
 
 export default function ResultsSection({ results }) {
@@ -46,46 +46,46 @@ export default function ResultsSection({ results }) {
   const totalHealing = players.reduce((sum, player) => sum + (player.healing || 0), 0);
 
   return (
-    <ResultsContainer data-cy="loot-calculator-results">
+    <ResultsSectionContainer data-cy="loot-calculator-results">
       <SectionTitle>{t('calculator.resultsSection.title')}</SectionTitle>
 
       {/* Summary cards - Overview first */}
-      <SummaryGrid>
+      <ResultsSectionSummaryGrid>
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.totalBalance')} position="top">
-          <SummaryCard>
-            <SummaryLabel>{t('calculator.resultsSection.summary.totalBalance')}</SummaryLabel>
-            <SummaryValue>{summary.totalBalanceFormatted}</SummaryValue>
-          </SummaryCard>
+          <ResultsSectionSummaryCard data-cy="summary-total-balance">
+            <ResultsSectionSummaryLabel>{t('calculator.resultsSection.summary.totalBalance')}</ResultsSectionSummaryLabel>
+            <ResultsSectionSummaryValue>{summary.totalBalanceFormatted}</ResultsSectionSummaryValue>
+          </ResultsSectionSummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.fairShare')} position="top">
-          <SummaryCard>
-            <SummaryLabel>{t('calculator.resultsSection.summary.fairShare')}</SummaryLabel>
-            <SummaryValue>{summary.fairShareFormatted}</SummaryValue>
-          </SummaryCard>
+          <ResultsSectionSummaryCard data-cy="summary-fair-share">
+            <ResultsSectionSummaryLabel>{t('calculator.resultsSection.summary.fairShare')}</ResultsSectionSummaryLabel>
+            <ResultsSectionSummaryValue>{summary.fairShareFormatted}</ResultsSectionSummaryValue>
+          </ResultsSectionSummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.profitPerHour')} position="top">
-          <SummaryCard>
-            <SummaryLabel>{t('calculator.resultsSection.summary.profitPerHour')}</SummaryLabel>
-            <SummaryValue>{summary.profitPerHourFormatted}</SummaryValue>
-          </SummaryCard>
+          <ResultsSectionSummaryCard data-cy="summary-profit-per-hour">
+            <ResultsSectionSummaryLabel>{t('calculator.resultsSection.summary.profitPerHour')}</ResultsSectionSummaryLabel>
+            <ResultsSectionSummaryValue>{summary.profitPerHourFormatted}</ResultsSectionSummaryValue>
+          </ResultsSectionSummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.duration')} position="top">
-          <SummaryCard>
-            <SummaryLabel>{t('calculator.resultsSection.summary.duration')}</SummaryLabel>
-            <SummaryValue>{formatDuration(summary.duration)}</SummaryValue>
-          </SummaryCard>
+          <ResultsSectionSummaryCard data-cy="summary-duration">
+            <ResultsSectionSummaryLabel>{t('calculator.resultsSection.summary.duration')}</ResultsSectionSummaryLabel>
+            <ResultsSectionSummaryValue>{formatDuration(summary.duration)}</ResultsSectionSummaryValue>
+          </ResultsSectionSummaryCard>
         </Tooltip>
 
         <Tooltip text={t('calculator.resultsSection.summary.tooltips.activePlayers')} position="top">
-          <SummaryCard>
-            <SummaryLabel>{t('calculator.resultsSection.summary.activePlayers')}</SummaryLabel>
-            <SummaryValue>{summary.activePlayers}</SummaryValue>
-          </SummaryCard>
+          <ResultsSectionSummaryCard data-cy="summary-active-players">
+            <ResultsSectionSummaryLabel>{t('calculator.resultsSection.summary.activePlayers')}</ResultsSectionSummaryLabel>
+            <ResultsSectionSummaryValue>{summary.activePlayers}</ResultsSectionSummaryValue>
+          </ResultsSectionSummaryCard>
         </Tooltip>
-      </SummaryGrid>
+      </ResultsSectionSummaryGrid>
 
       {/* Transfer list - Action items */}
       <div ref={transferListRef}>
@@ -93,8 +93,8 @@ export default function ResultsSection({ results }) {
       </div>
 
       {/* Desktop layout: side-by-side rows (Player card | Damage/Healing card) */}
-      <DesktopLayout>
-        <StatsSectionTitle>{t('calculator.resultsSection.playerList.title')}</StatsSectionTitle>
+      <ResultsSectionDesktopLayout>
+        <ResultsSectionStatsSectionTitle>{t('calculator.resultsSection.playerList.title')}</ResultsSectionStatsSectionTitle>
         {players.map((player, index) => (
           <PlayerStatsRow
             key={index}
@@ -103,14 +103,14 @@ export default function ResultsSection({ results }) {
             totalHealing={totalHealing}
           />
         ))}
-      </DesktopLayout>
+      </ResultsSectionDesktopLayout>
 
       {/* Mobile layout: separate sections (preserve current stacking) */}
-      <MobileLayout>
+      <ResultsSectionMobileLayout>
         <PlayerList players={players} />
         <DamageHealingSection players={players} />
-      </MobileLayout>
-    </ResultsContainer>
+      </ResultsSectionMobileLayout>
+    </ResultsSectionContainer>
   );
 }
 

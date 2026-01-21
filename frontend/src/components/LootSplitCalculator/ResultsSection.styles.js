@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const ResultsContainer = styled.div`
+export const ResultsSectionContainer = styled.div`
   background-color: #16213e;
   padding: ${({ theme }) => theme.spacing.xl};
   border-radius: ${({ theme }) => theme.radius.lg};
@@ -13,7 +13,7 @@ export const ResultsContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const SummaryGrid = styled.div`
+export const ResultsSectionSummaryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: ${({ theme }) => theme.spacing.lg};
@@ -25,7 +25,7 @@ export const SummaryGrid = styled.div`
   }
 `;
 
-export const SummaryCard = styled.div`
+export const ResultsSectionSummaryCard = styled.div`
   background: linear-gradient(135deg, #0f1620 0%, #1a1a2e 100%);
   padding: 20px;
   border-radius: ${({ theme }) => theme.radius.md};
@@ -39,20 +39,20 @@ export const SummaryCard = styled.div`
   }
 `;
 
-export const SummaryLabel = styled.div`
+export const ResultsSectionSummaryLabel = styled.div`
   color: ${({ theme }) => theme.colors.text.secondary};
   font-size: 14px;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-weight: 500;
 `;
 
-export const SummaryValue = styled.div`
+export const ResultsSectionSummaryValue = styled.div`
   color: ${({ theme }) => theme.colors.accent.gold};
   font-size: 28px;
   font-weight: 700;
 `;
 
-export const DesktopLayout = styled.div`
+export const ResultsSectionDesktopLayout = styled.div`
   display: block;
   margin-top: ${({ theme }) => theme.spacing.xl};
 
@@ -62,7 +62,7 @@ export const DesktopLayout = styled.div`
   }
 `;
 
-export const MobileLayout = styled.div`
+export const ResultsSectionMobileLayout = styled.div`
   display: none;
 
   /* Responsive */
@@ -71,7 +71,7 @@ export const MobileLayout = styled.div`
   }
 `;
 
-export const StatsSectionTitle = styled.h3`
+export const ResultsSectionStatsSectionTitle = styled.h3`
   font-size: 20px;
   color: ${({ theme }) => theme.colors.accent.gold};
   margin: 0 0 ${({ theme }) => theme.spacing.lg} 0;
