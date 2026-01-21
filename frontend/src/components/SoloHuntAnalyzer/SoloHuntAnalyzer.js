@@ -16,15 +16,15 @@ import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS } from '../../utils/huntUtils';
 import { calculateSoloHunt } from '../../services/api';
 import {
-  AnalyzerContainer,
-  CalculatorHeader,
-  CalculatorTitle,
-  CalculatorDescription,
-  HistoryButton,
-  ButtonIcon,
-  ButtonText,
-  ActionButtons,
-  Button,
+  SoloHuntAnalyzerContainer,
+  SoloHuntAnalyzerHeader,
+  SoloHuntAnalyzerTitle,
+  SoloHuntAnalyzerDescription,
+  SoloHuntAnalyzerHistoryButton,
+  SoloHuntAnalyzerButtonIcon,
+  SoloHuntAnalyzerButtonText,
+  SoloHuntAnalyzerActionButtons,
+  SoloHuntAnalyzerButton,
 } from './SoloHuntAnalyzer.styles';
 
 // Ring Bis item names for validation
@@ -298,23 +298,23 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   };
 
   return (
-    <AnalyzerContainer>
-      <CalculatorHeader>
-        <CalculatorTitle>{t('soloHuntAnalyzer.title')}</CalculatorTitle>
-        <CalculatorDescription>
+    <SoloHuntAnalyzerContainer data-cy="solo-hunt-analyzer">
+      <SoloHuntAnalyzerHeader>
+        <SoloHuntAnalyzerTitle>{t('soloHuntAnalyzer.title')}</SoloHuntAnalyzerTitle>
+        <SoloHuntAnalyzerDescription>
           {t('soloHuntAnalyzer.subtitle')}
-        </CalculatorDescription>
-      </CalculatorHeader>
+        </SoloHuntAnalyzerDescription>
+      </SoloHuntAnalyzerHeader>
 
       {/* Fixed History Button */}
-      <HistoryButton
+      <SoloHuntAnalyzerHistoryButton
         onClick={() => setIsHistoryOpen(true)}
         title={t('huntHistory.openButton')}
         data-cy="hunt-history-button-open"
       >
-        <ButtonIcon>📜</ButtonIcon>
-        <ButtonText>{t('huntHistory.title')}</ButtonText>
-      </HistoryButton>
+        <SoloHuntAnalyzerButtonIcon>📜</SoloHuntAnalyzerButtonIcon>
+        <SoloHuntAnalyzerButtonText>{t('huntHistory.title')}</SoloHuntAnalyzerButtonText>
+      </SoloHuntAnalyzerHistoryButton>
 
       {/* Error message */}
       {error && <ErrorMessage message={error} />}
@@ -359,22 +359,22 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
 
       {/* Calculate button */}
       {parsedSession && (
-        <ActionButtons>
-          <Button
+        <SoloHuntAnalyzerActionButtons>
+          <SoloHuntAnalyzerButton
             variant="primary"
             onClick={handleCalculate}
             disabled={loading || hasCalculated}
             data-cy="solo-hunt-button-calculate"
           >
             {t('soloHuntAnalyzer.calculateButton')}
-          </Button>
-          <Button
+          </SoloHuntAnalyzerButton>
+          <SoloHuntAnalyzerButton
             variant="secondary"
             onClick={handleReset}
           >
             {t('soloHuntAnalyzer.resetButton')}
-          </Button>
-        </ActionButtons>
+          </SoloHuntAnalyzerButton>
+        </SoloHuntAnalyzerActionButtons>
       )}
 
       {/* Loading state */}
@@ -393,7 +393,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
         onClose={() => setIsHistoryOpen(false)}
         onAddHunt={(fn) => { saveHuntToHistoryRef.current = fn; }}
       />
-    </AnalyzerContainer>
+    </SoloHuntAnalyzerContainer>
   );
 }
 

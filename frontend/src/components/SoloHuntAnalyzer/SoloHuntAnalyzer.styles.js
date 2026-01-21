@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const AnalyzerContainer = styled.div`
+export const SoloHuntAnalyzerContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
@@ -15,11 +15,11 @@ export const AnalyzerContainer = styled.div`
   }
 `;
 
-export const CalculatorHeader = styled.div`
+export const SoloHuntAnalyzerHeader = styled.div`
   margin-bottom: 32px;
 `;
 
-export const CalculatorTitle = styled.h1`
+export const SoloHuntAnalyzerTitle = styled.h1`
   font-size: 36px;
   font-weight: 700;
   background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
@@ -33,7 +33,7 @@ export const CalculatorTitle = styled.h1`
   }
 `;
 
-export const CalculatorDescription = styled.p`
+export const SoloHuntAnalyzerDescription = styled.p`
   color: #9E9E9E;
   font-size: 18px;
   margin: 0;
@@ -43,7 +43,7 @@ export const CalculatorDescription = styled.p`
   }
 `;
 
-export const HistoryButton = styled.button`
+export const SoloHuntAnalyzerHistoryButton = styled.button`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -81,12 +81,12 @@ export const HistoryButton = styled.button`
   }
 `;
 
-export const ButtonIcon = styled.span`
+export const SoloHuntAnalyzerButtonIcon = styled.span`
   font-size: 1.8rem;
   line-height: 1;
 `;
 
-export const ButtonText = styled.span`
+export const SoloHuntAnalyzerButtonText = styled.span`
   font-size: 0.95rem;
   font-weight: 600;
   white-space: nowrap;
@@ -96,7 +96,7 @@ export const ButtonText = styled.span`
   }
 `;
 
-export const ActionButtons = styled.div`
+export const SoloHuntAnalyzerActionButtons = styled.div`
   display: flex;
   gap: 12px;
   justify-content: center;
@@ -107,7 +107,7 @@ export const ActionButtons = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const SoloHuntAnalyzerButton = styled.button`
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
