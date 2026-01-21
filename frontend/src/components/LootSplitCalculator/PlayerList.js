@@ -6,19 +6,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import PlayerCard from './PlayerCard';
-import { PlayerListContainer, ListTitle, PlayerCards } from './PlayerList.styles';
+import { PlayerListContainer, PlayerListTitle, PlayerListCards } from './PlayerList.styles';
 
 export default function PlayerList({ players }) {
   const { t } = useTranslation();
 
   return (
-    <PlayerListContainer>
-      <ListTitle>{t('calculator.resultsSection.playerList.title')}</ListTitle>
-      <PlayerCards>
+    <PlayerListContainer data-cy="player-list">
+      <PlayerListTitle>{t('calculator.resultsSection.playerList.title')}</PlayerListTitle>
+      <PlayerListCards>
         {players.map((player, index) => (
           <PlayerCard key={index} player={player} />
         ))}
-      </PlayerCards>
+      </PlayerListCards>
     </PlayerListContainer>
   );
 }
