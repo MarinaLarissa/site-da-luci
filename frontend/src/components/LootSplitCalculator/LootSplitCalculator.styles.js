@@ -5,7 +5,7 @@
 
 import styled from 'styled-components';
 
-export const CalculatorContainer = styled.div`
+export const LootSplitCalculatorContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.xl};
@@ -16,11 +16,11 @@ export const CalculatorContainer = styled.div`
   }
 `;
 
-export const CalculatorHeader = styled.div`
+export const LootSplitCalculatorHeader = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing.xxl};
 `;
 
-export const CalculatorTitle = styled.h1`
+export const LootSplitCalculatorTitle = styled.h1`
   font-size: 36px;
   font-weight: 700;
   background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
@@ -35,7 +35,7 @@ export const CalculatorTitle = styled.h1`
   }
 `;
 
-export const CalculatorDescription = styled.p`
+export const LootSplitCalculatorDescription = styled.p`
   color: ${({ theme }) => theme.colors.text.secondary};
   font-size: 18px;
   margin: 0;
@@ -46,7 +46,7 @@ export const CalculatorDescription = styled.p`
   }
 `;
 
-export const FloatingButton = styled.button`
+export const LootSplitCalculatorFloatingButton = styled.button`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -85,12 +85,12 @@ export const FloatingButton = styled.button`
   }
 `;
 
-export const ButtonIcon = styled.span`
+export const LootSplitCalculatorButtonIcon = styled.span`
   font-size: 1.8rem;
   line-height: 1;
 `;
 
-export const ButtonText = styled.span`
+export const LootSplitCalculatorButtonText = styled.span`
   font-size: 0.95rem;
   font-weight: 600;
   white-space: nowrap;

@@ -12,13 +12,13 @@ import HuntHistoryDrawer from '../HuntHistory/HuntHistoryDrawer';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
 import {
-  CalculatorContainer,
-  CalculatorHeader,
-  CalculatorTitle,
-  CalculatorDescription,
-  FloatingButton,
-  ButtonIcon,
-  ButtonText,
+  LootSplitCalculatorContainer,
+  LootSplitCalculatorHeader,
+  LootSplitCalculatorTitle,
+  LootSplitCalculatorDescription,
+  LootSplitCalculatorFloatingButton,
+  LootSplitCalculatorButtonIcon,
+  LootSplitCalculatorButtonText,
 } from './LootSplitCalculator.styles';
 
 export default function LootSplitCalculator() {
@@ -47,13 +47,13 @@ export default function LootSplitCalculator() {
   } = useLootSplit(loadHunts);
 
   return (
-    <CalculatorContainer>
-      <CalculatorHeader>
-        <CalculatorTitle>{t('calculator.title')}</CalculatorTitle>
-        <CalculatorDescription>
+    <LootSplitCalculatorContainer data-cy="loot-calculator">
+      <LootSplitCalculatorHeader>
+        <LootSplitCalculatorTitle>{t('calculator.title')}</LootSplitCalculatorTitle>
+        <LootSplitCalculatorDescription>
           {t('calculator.subtitle')}
-        </CalculatorDescription>
-      </CalculatorHeader>
+        </LootSplitCalculatorDescription>
+      </LootSplitCalculatorHeader>
 
       {/* Error message */}
       {error && <ErrorMessage message={error} />}
@@ -74,15 +74,15 @@ export default function LootSplitCalculator() {
       {!loading && results && <ResultsSection results={results} />}
 
       {/* Floating button to open hunt history */}
-      <FloatingButton
+      <LootSplitCalculatorFloatingButton
         onClick={toggleDrawer}
         aria-label={t('huntHistory.openButton')}
         title={t('huntHistory.openButton')}
         data-cy="hunt-history-button-open"
       >
-        <ButtonIcon>📜</ButtonIcon>
-        <ButtonText>{t('huntHistory.title')}</ButtonText>
-      </FloatingButton>
+        <LootSplitCalculatorButtonIcon>📜</LootSplitCalculatorButtonIcon>
+        <LootSplitCalculatorButtonText>{t('huntHistory.title')}</LootSplitCalculatorButtonText>
+      </LootSplitCalculatorFloatingButton>
 
       {/* Hunt History Drawer */}
       <HuntHistoryDrawer
@@ -95,6 +95,6 @@ export default function LootSplitCalculator() {
         onDeleteHunt={deleteHunt}
         onClearHistory={clearHistory}
       />
-    </CalculatorContainer>
+    </LootSplitCalculatorContainer>
   );
 }
