@@ -5,11 +5,11 @@
 
 import styled from 'styled-components';
 
-export const SectionContainer = styled.div`
+export const DamageHealingSectionContainer = styled.div`
   margin-top: 2rem;
 `;
 
-export const SectionSubtitle = styled.h3`
+export const DamageHealingSectionSubtitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -21,7 +21,7 @@ export const SectionSubtitle = styled.h3`
   }
 `;
 
-export const DamageHealingGrid = styled.div`
+export const DamageHealingSectionGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
