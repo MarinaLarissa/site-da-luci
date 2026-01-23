@@ -12,8 +12,8 @@ import {
   SessionDataInputContainer,
   SectionTitle,
   SectionDescription,
-  InputActions,
-  ParsedSessionInfo,
+  SessionDataInputActions,
+  SessionDataInputParsedInfo,
 } from './SessionDataInput.styles';
 
 export default function SessionDataInput({ sessionData, setSessionData, onParse, parsedSession }) {
@@ -56,7 +56,7 @@ Lofi Shades (Leader)
   };
 
   return (
-    <SessionDataInputContainer>
+    <SessionDataInputContainer data-cy="session-data-input">
       <SectionTitle>{t('soloHuntAnalyzer.sessionInput.title')}</SectionTitle>
       <SectionDescription>
         {t('soloHuntAnalyzer.sessionInput.description')} <strong>{t('soloHuntAnalyzer.sessionInput.onePlayerOnly')}</strong>
@@ -72,7 +72,7 @@ Lofi Shades (Leader)
         data-cy="solo-hunt-input-session"
       />
 
-      <InputActions>
+      <SessionDataInputActions>
         <Button
           variant="primary"
           onClick={onParse}
@@ -95,13 +95,13 @@ Lofi Shades (Leader)
         >
           {t('soloHuntAnalyzer.sessionInput.loadExampleButton')} (2:30h)
         </Button>
-      </InputActions>
+      </SessionDataInputActions>
 
       {/* Show parsed session info */}
       {parsedSession && (
-        <ParsedSessionInfo>
+        <SessionDataInputParsedInfo>
           <p>{t('soloHuntAnalyzer.sessionInput.sessionProcessed')}</p>
-        </ParsedSessionInfo>
+        </SessionDataInputParsedInfo>
       )}
     </SessionDataInputContainer>
   );

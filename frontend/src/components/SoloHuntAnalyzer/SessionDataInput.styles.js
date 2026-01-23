@@ -24,7 +24,7 @@ export const SessionDataInputContainer = styled.div`
 
 // SessionTextarea removed - now using shared Textarea component from common/styled
 
-export const InputActions = styled.div`
+export const SessionDataInputActions = styled.div`
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
@@ -40,7 +40,7 @@ export const InputActions = styled.div`
   }
 `;
 
-export const ParsedSessionInfo = styled.div`
+export const SessionDataInputParsedInfo = styled.div`
   background-color: rgba(195, 155, 211, 0.1);
   border: 1px solid rgba(195, 155, 211, 0.3);
   border-radius: 8px;
@@ -48,14 +48,14 @@ export const ParsedSessionInfo = styled.div`
   margin-top: 16px;
 `;
 
-export const ParsedSessionTitle = styled.h3`
+export const SessionDataInputParsedTitle = styled.h3`
   color: #c39bd3;
   margin-bottom: 12px;
   font-size: 18px;
   font-weight: 600;
 `;
 
-export const SessionSummary = styled.div`
+export const SessionDataInputSummary = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 12px;
@@ -66,7 +66,7 @@ export const SessionSummary = styled.div`
   }
 `;
 
-export const SummaryItem = styled.p`
+export const SessionDataInputSummaryItem = styled.p`
   margin: 4px 0;
   color: #e0e0e0;
   font-size: 14px;
