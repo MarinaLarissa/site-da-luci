@@ -16,7 +16,9 @@
     "frontend:validate-i18n": "cd frontend && npm run validate-i18n",
     "backend:dev": "cd backend && npm run dev",
     "backend:test": "cd backend && npm test",
-    "backend:coverage": "cd backend && npm run test:coverage"
+    "backend:coverage": "cd backend && npm run test:coverage",
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "author": "Marina Larissa Carpes Röhrig",
   "license": "MIT",
   "devDependencies": {
+    "cypress": "^15.9.0",
     "husky": "^9.1.7"
   }
 }
