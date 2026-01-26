@@ -10,7 +10,7 @@ export const SoloHuntResultsContainer = styled.div`
   margin-top: 24px;
 `;
 
-export const ResultsTitle = styled.div`
+export const SoloHuntResultsTitle = styled.div`
   font-size: 28px;
   font-weight: 700;
   background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
@@ -26,7 +26,7 @@ export const ResultsTitle = styled.div`
   }
 `;
 
-export const ResultsIcon = styled.span`
+export const SoloHuntResultsIcon = styled.span`
   all: initial;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 28px;
@@ -35,7 +35,7 @@ export const ResultsIcon = styled.span`
   vertical-align: middle;
 `;
 
-export const ResultCard = styled.div`
+export const SoloHuntResultCard = styled.div`
   background-color: #16213e;
   border-radius: 12px;
   padding: 20px;
@@ -68,7 +68,7 @@ export const ResultCard = styled.div`
 `;
 
 /* Session Info */
-export const InfoGrid = styled.div`
+export const SoloHuntResultsInfoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
@@ -79,7 +79,7 @@ export const InfoGrid = styled.div`
   }
 `;
 
-export const InfoItem = styled.div`
+export const SoloHuntResultsInfoItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -98,7 +98,7 @@ export const InfoItem = styled.div`
 `;
 
 /* Stats Grid */
-export const StatsGrid = styled.div`
+export const SoloHuntResultsStatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
@@ -109,7 +109,7 @@ export const StatsGrid = styled.div`
   }
 `;
 
-export const StatItem = styled.div`
+export const SoloHuntResultsStatItem = styled.div`
   padding: 16px;
   border-radius: 8px;
   text-align: center;
@@ -143,7 +143,7 @@ export const StatItem = styled.div`
     `}
 `;
 
-export const StatLabel = styled.p`
+export const SoloHuntResultsStatLabel = styled.p`
   font-size: 14px;
   color: #9e9e9e;
   margin: 0 0 4px 0;
@@ -159,7 +159,7 @@ export const StatLabel = styled.p`
     `}
 `;
 
-export const StatValue = styled.div`
+export const SoloHuntResultsStatValue = styled.div`
   font-size: 20px;
   font-weight: 700;
   text-align: center;
@@ -192,13 +192,13 @@ export const StatValue = styled.div`
 `;
 
 /* Costs Breakdown */
-export const CostsBreakdown = styled.div`
+export const SoloHuntResultsCostsBreakdown = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
 
-export const CostRow = styled.div`
+export const SoloHuntResultsCostRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -216,13 +216,13 @@ export const CostRow = styled.div`
     `}
 `;
 
-export const CostValue = styled.span`
+export const SoloHuntResultsCostValue = styled.span`
   font-weight: 600;
   color: #f44336;
 `;
 
 /* Final Balance */
-export const FinalBalance = styled.div`
+export const SoloHuntResultsFinalBalance = styled.div`
   text-align: center;
 
   ${({ $variant }) =>
@@ -245,7 +245,7 @@ export const FinalBalance = styled.div`
   }
 `;
 
-export const FinalBalanceValue = styled.div`
+export const SoloHuntResultsFinalBalanceValue = styled.div`
   font-size: 48px;
   font-weight: 800;
   margin: 16px 0;
@@ -268,7 +268,7 @@ export const FinalBalanceValue = styled.div`
   }
 `;
 
-export const ProfitPerHour = styled.div`
+export const SoloHuntResultsProfitPerHour = styled.div`
   font-size: 20px;
   font-weight: 600;
   color: #9e9e9e;
@@ -281,7 +281,7 @@ export const ProfitPerHour = styled.div`
 `;
 
 /* Combat Stats */
-export const CombatStats = styled.div`
+export const SoloHuntResultsCombatStats = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
@@ -292,7 +292,7 @@ export const CombatStats = styled.div`
   }
 `;
 
-export const CombatStat = styled.div`
+export const SoloHuntResultsCombatStat = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 12px 16px;
@@ -312,13 +312,13 @@ export const CombatStat = styled.div`
 `;
 
 /* Additional Costs Layout */
-export const AdditionalCostsLayout = styled.div`
+export const SoloHuntResultsAdditionalCostsLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-export const CostsEquation = styled.div`
+export const SoloHuntResultsCostsEquation = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -344,7 +344,7 @@ export const CostsEquation = styled.div`
   }
 `;
 
-export const CostComponent = styled.div`
+export const SoloHuntResultsCostComponent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -369,7 +369,7 @@ export const CostComponent = styled.div`
   }
 `;
 
-export const TotalCostComponent = styled.div`
+export const SoloHuntResultsTotalCostComponent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -394,7 +394,7 @@ export const TotalCostComponent = styled.div`
   }
 `;
 
-export const CostLabel = styled.div`
+export const SoloHuntResultsCostLabel = styled.div`
   font-size: 11px;
   color: #9e9e9e;
   font-weight: 500;
@@ -408,7 +408,7 @@ export const CostLabel = styled.div`
   }
 `;
 
-export const CostValueText = styled.div`
+export const SoloHuntResultsCostValueText = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: #f44336;
@@ -433,7 +433,7 @@ export const CostValueText = styled.div`
   }
 `;
 
-export const CostOperator = styled.div`
+export const SoloHuntResultsCostOperator = styled.div`
   font-size: 26px;
   font-weight: 700;
   color: #c39bd3;
@@ -446,7 +446,7 @@ export const CostOperator = styled.div`
   }
 `;
 
-export const CostPerHourSection = styled.div`
+export const SoloHuntResultsCostPerHourSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -467,7 +467,7 @@ export const CostPerHourSection = styled.div`
 `;
 
 /* Final Balance Grid Layout */
-export const FinalBalanceGrid = styled.div`
+export const SoloHuntResultsFinalBalanceGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -480,7 +480,7 @@ export const FinalBalanceGrid = styled.div`
   }
 `;
 
-export const BalanceColumn = styled.div`
+export const SoloHuntResultsBalanceColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -497,7 +497,7 @@ export const BalanceColumn = styled.div`
   }
 `;
 
-export const BalanceItem = styled.div`
+export const SoloHuntResultsBalanceItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -506,13 +506,13 @@ export const BalanceItem = styled.div`
   width: 100%;
 `;
 
-export const BalanceLabel = styled.div`
+export const SoloHuntResultsBalanceLabel = styled.div`
   font-size: 14px;
   color: #9e9e9e;
   font-weight: 500;
 `;
 
-export const BalanceValue = styled.div`
+export const SoloHuntResultsBalanceValue = styled.div`
   font-size: 16px;
   font-weight: 700;
   color: #e0e0e0;
@@ -527,7 +527,7 @@ export const BalanceValue = styled.div`
 `;
 
 /* Final Balance Highlights */
-export const FinalBalanceHighlights = styled.div`
+export const SoloHuntResultsFinalBalanceHighlights = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -558,7 +558,7 @@ export const FinalBalanceHighlights = styled.div`
   }
 `;
 
-export const HighlightItem = styled.div`
+export const SoloHuntResultsHighlightItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -585,7 +585,7 @@ export const HighlightItem = styled.div`
     `}
 `;
 
-export const HighlightLabel = styled.div`
+export const SoloHuntResultsHighlightLabel = styled.div`
   font-size: 13px;
   color: #9e9e9e;
   font-weight: 600;
@@ -594,7 +594,7 @@ export const HighlightLabel = styled.div`
   text-align: center;
 `;
 
-export const HighlightValue = styled.div`
+export const SoloHuntResultsHighlightValue = styled.div`
   font-size: 28px;
   font-weight: 800;
   text-align: center;

@@ -10,29 +10,29 @@ import Tooltip from '../common/Tooltip';
 import { formatGPValue } from '../../utils/formatters';
 import {
   SoloHuntResultsContainer,
-  ResultsTitle,
-  ResultsIcon,
-  ResultCard,
-  InfoGrid,
-  InfoItem,
-  AdditionalCostsLayout,
-  CostsEquation,
-  CostComponent,
-  TotalCostComponent,
-  CostLabel,
-  CostValueText,
-  CostOperator,
-  CostPerHourSection,
-  FinalBalance,
-  FinalBalanceGrid,
-  BalanceColumn,
-  BalanceItem,
-  BalanceLabel,
-  BalanceValue,
-  FinalBalanceHighlights,
-  HighlightItem,
-  HighlightLabel,
-  HighlightValue,
+  SoloHuntResultsTitle,
+  SoloHuntResultsIcon,
+  SoloHuntResultCard,
+  SoloHuntResultsInfoGrid,
+  SoloHuntResultsInfoItem,
+  SoloHuntResultsAdditionalCostsLayout,
+  SoloHuntResultsCostsEquation,
+  SoloHuntResultsCostComponent,
+  SoloHuntResultsTotalCostComponent,
+  SoloHuntResultsCostLabel,
+  SoloHuntResultsCostValueText,
+  SoloHuntResultsCostOperator,
+  SoloHuntResultsCostPerHourSection,
+  SoloHuntResultsFinalBalance,
+  SoloHuntResultsFinalBalanceGrid,
+  SoloHuntResultsBalanceColumn,
+  SoloHuntResultsBalanceItem,
+  SoloHuntResultsBalanceLabel,
+  SoloHuntResultsBalanceValue,
+  SoloHuntResultsFinalBalanceHighlights,
+  SoloHuntResultsHighlightItem,
+  SoloHuntResultsHighlightLabel,
+  SoloHuntResultsHighlightValue,
 } from './SoloHuntResults.styles';
 
 export default function SoloHuntResults({ results }) {
@@ -42,27 +42,27 @@ export default function SoloHuntResults({ results }) {
 
   return (
     <SoloHuntResultsContainer data-cy="solo-hunt-results">
-      <ResultsTitle>
-        <ResultsIcon>📊</ResultsIcon> {t('soloHuntAnalyzer.results.title')}
-      </ResultsTitle>
+      <SoloHuntResultsTitle>
+        <SoloHuntResultsIcon>📊</SoloHuntResultsIcon> {t('soloHuntAnalyzer.results.title')}
+      </SoloHuntResultsTitle>
 
       {/* Session Info Card */}
-      <ResultCard>
+      <SoloHuntResultCard>
         <h3>{t('soloHuntAnalyzer.results.sessionInfo.title')}</h3>
-        <InfoGrid>
-          <InfoItem>
+        <SoloHuntResultsInfoGrid>
+          <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.character')}:</span>
             <span className="value">{player.name}</span>
-          </InfoItem>
-          <InfoItem>
+          </SoloHuntResultsInfoItem>
+          <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.duration')}:</span>
             <span className="value">{session.duration}</span>
-          </InfoItem>
-          <InfoItem>
+          </SoloHuntResultsInfoItem>
+          <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.sessionTime')}:</span>
             <span className="value">{session.sessionInfo}</span>
-          </InfoItem>
-          <InfoItem>
+          </SoloHuntResultsInfoItem>
+          <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
             {formatGPValue(player.loot).formatted.includes('kk') ? (
               <Tooltip text={formatGPValue(player.loot).full} position="top">
@@ -71,8 +71,8 @@ export default function SoloHuntResults({ results }) {
             ) : (
               <span className="value positive">+{formatGPValue(player.loot).formatted} GP</span>
             )}
-          </InfoItem>
-          <InfoItem>
+          </SoloHuntResultsInfoItem>
+          <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
             {formatGPValue(player.supplies).formatted.includes('kk') ? (
               <Tooltip text={formatGPValue(player.supplies).full} position="top">
@@ -81,9 +81,9 @@ export default function SoloHuntResults({ results }) {
             ) : (
               <span className="value negative">-{formatGPValue(player.supplies).formatted} GP</span>
             )}
-          </InfoItem>
+          </SoloHuntResultsInfoItem>
           <Tooltip text={t('soloHuntAnalyzer.results.lootStats.balanceTooltip')} position="top">
-            <InfoItem>
+            <SoloHuntResultsInfoItem>
               <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
               {formatGPValue(player.balance).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.balance).full} position="top">
@@ -92,88 +92,88 @@ export default function SoloHuntResults({ results }) {
               ) : (
                 <span className="value neutral">{formatGPValue(player.balance).formatted} GP</span>
               )}
-            </InfoItem>
+            </SoloHuntResultsInfoItem>
           </Tooltip>
-        </InfoGrid>
-      </ResultCard>
+        </SoloHuntResultsInfoGrid>
+      </SoloHuntResultCard>
 
       {/* Additional Costs Card */}
       {costs.items.length > 0 && (
-        <ResultCard>
+        <SoloHuntResultCard>
           <h3>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCost')}</h3>
-          <AdditionalCostsLayout>
+          <SoloHuntResultsAdditionalCostsLayout>
             {/* First line: Cost in GP + GT proportional + ST proportional = total cost */}
-            <CostsEquation>
+            <SoloHuntResultsCostsEquation>
               {costs.partialGP > 0 && (
                 <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.costInGPTooltip')} position="top">
-                  <CostComponent>
-                    <CostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.costInGP')}</CostLabel>
+                  <SoloHuntResultsCostComponent>
+                    <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.costInGP')}</SoloHuntResultsCostLabel>
                     {formatGPValue(Math.floor(costs.partialGP)).formatted.includes('kk') ? (
                       <Tooltip text={formatGPValue(Math.floor(costs.partialGP)).full} position="top">
-                        <CostValueText>-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</CostValueText>
+                        <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
                       </Tooltip>
                     ) : (
-                      <CostValueText>-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</CostValueText>
+                      <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
                     )}
-                  </CostComponent>
+                  </SoloHuntResultsCostComponent>
                 </Tooltip>
               )}
 
               {costs.totalGT > 0 && (
                 <>
-                  {costs.partialGP > 0 && <CostOperator>+</CostOperator>}
+                  {costs.partialGP > 0 && <SoloHuntResultsCostOperator>+</SoloHuntResultsCostOperator>}
                   <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.gtProportionalTooltip')} position="top">
-                    <CostComponent>
-                      <CostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtProportional')}</CostLabel>
+                    <SoloHuntResultsCostComponent>
+                      <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtProportional')}</SoloHuntResultsCostLabel>
                       {formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted.includes('kk') ? (
                         <Tooltip text={formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).full} position="top">
-                          <CostValueText>-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</CostValueText>
+                          <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                         </Tooltip>
                       ) : (
-                        <CostValueText>-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</CostValueText>
+                        <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                       )}
-                    </CostComponent>
+                    </SoloHuntResultsCostComponent>
                   </Tooltip>
                 </>
               )}
 
               {costs.totalST > 0 && (
                 <>
-                  {(costs.partialGP > 0 || costs.totalGT > 0) && <CostOperator>+</CostOperator>}
+                  {(costs.partialGP > 0 || costs.totalGT > 0) && <SoloHuntResultsCostOperator>+</SoloHuntResultsCostOperator>}
                   <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.stProportionalTooltip')} position="top">
-                    <CostComponent>
-                      <CostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.stProportional')}</CostLabel>
+                    <SoloHuntResultsCostComponent>
+                      <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.stProportional')}</SoloHuntResultsCostLabel>
                       {formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted.includes('kk') ? (
                         <Tooltip text={formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).full} position="top">
-                          <CostValueText>-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</CostValueText>
+                          <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                         </Tooltip>
                       ) : (
-                        <CostValueText>-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</CostValueText>
+                        <SoloHuntResultsCostValueText>-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                       )}
-                    </CostComponent>
+                    </SoloHuntResultsCostComponent>
                   </Tooltip>
                 </>
               )}
 
-              <CostOperator>=</CostOperator>
+              <SoloHuntResultsCostOperator>=</SoloHuntResultsCostOperator>
 
               <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.totalCostTooltip')} position="top">
-                <TotalCostComponent>
-                  <CostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCostLabel')}</CostLabel>
+                <SoloHuntResultsTotalCostComponent>
+                  <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCostLabel')}</SoloHuntResultsCostLabel>
                   {formatGPValue(Math.floor(costs.additionalCost)).formatted.includes('kk') ? (
                     <Tooltip text={formatGPValue(Math.floor(costs.additionalCost)).full} position="top">
-                      <CostValueText $isTotal>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</CostValueText>
+                      <SoloHuntResultsCostValueText $isTotal>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
                     </Tooltip>
                   ) : (
-                    <CostValueText $isTotal>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</CostValueText>
+                    <SoloHuntResultsCostValueText $isTotal>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
                   )}
-                </TotalCostComponent>
+                </SoloHuntResultsTotalCostComponent>
               </Tooltip>
-            </CostsEquation>
+            </SoloHuntResultsCostsEquation>
 
             {/* Second line: Cost per hour */}
             <Tooltip text={t('soloHuntAnalyzer.itemCostManager.costSummary.costPerHourTooltip')} position="top">
-              <CostPerHourSection>
+              <SoloHuntResultsCostPerHourSection>
                 <span className="cost-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.costPerHour')}</span>
                 {formatGPValue(Math.floor(costs.gpPerHour)).formatted.includes('kk') ? (
                   <Tooltip text={formatGPValue(Math.floor(costs.gpPerHour)).full} position="top">
@@ -182,142 +182,142 @@ export default function SoloHuntResults({ results }) {
                 ) : (
                   <span className="cost-value">-{formatGPValue(Math.floor(costs.gpPerHour)).formatted} GP/h</span>
                 )}
-              </CostPerHourSection>
+              </SoloHuntResultsCostPerHourSection>
             </Tooltip>
-          </AdditionalCostsLayout>
-        </ResultCard>
+          </SoloHuntResultsAdditionalCostsLayout>
+        </SoloHuntResultCard>
       )}
 
       {/* Final Balance Card */}
-      <FinalBalance as={ResultCard} $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
+      <SoloHuntResultsFinalBalance as={SoloHuntResultCard} $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
         <h3 title={t('soloHuntAnalyzer.results.finalBalance.finalBalanceTooltip')}>
           💰 {t('soloHuntAnalyzer.results.finalBalance.title')}
         </h3>
 
         {/* New Layout - Grid with 2 columns */}
-        <FinalBalanceGrid>
+        <SoloHuntResultsFinalBalanceGrid>
           {/* Left Column */}
-          <BalanceColumn>
-            <BalanceItem>
-              <BalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesUsed')}</BalanceLabel>
+          <SoloHuntResultsBalanceColumn>
+            <SoloHuntResultsBalanceItem>
+              <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesUsed')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(player.supplies).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.supplies).full} position="top">
-                  <BalanceValue>-{formatGPValue(player.supplies).formatted} GP</BalanceValue>
+                  <SoloHuntResultsBalanceValue>-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <BalanceValue>-{formatGPValue(player.supplies).formatted} GP</BalanceValue>
+                <SoloHuntResultsBalanceValue>-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
               )}
-            </BalanceItem>
-            <BalanceItem>
-              <BalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}</BalanceLabel>
+            </SoloHuntResultsBalanceItem>
+            <SoloHuntResultsBalanceItem>
+              <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(costs.additionalCost)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(costs.additionalCost)).full} position="top">
-                  <BalanceValue>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</BalanceValue>
+                  <SoloHuntResultsBalanceValue>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <BalanceValue>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</BalanceValue>
+                <SoloHuntResultsBalanceValue>-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
               )}
-            </BalanceItem>
-            <BalanceItem>
-              <BalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}</BalanceLabel>
+            </SoloHuntResultsBalanceItem>
+            <SoloHuntResultsBalanceItem>
+              <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(suppliesPerHour)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(suppliesPerHour)).full} position="top">
-                  <BalanceValue>-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</BalanceValue>
+                  <SoloHuntResultsBalanceValue>-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <BalanceValue>-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</BalanceValue>
+                <SoloHuntResultsBalanceValue>-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
               )}
-            </BalanceItem>
-          </BalanceColumn>
+            </SoloHuntResultsBalanceItem>
+          </SoloHuntResultsBalanceColumn>
 
           {/* Right Column */}
-          <BalanceColumn>
-            <BalanceItem>
-              <BalanceLabel>{t('soloHuntAnalyzer.results.lootStats.balance')}</BalanceLabel>
+          <SoloHuntResultsBalanceColumn>
+            <SoloHuntResultsBalanceItem>
+              <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.lootStats.balance')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(player.balance).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.balance).full} position="top">
-                  <BalanceValue>{formatGPValue(player.balance).formatted} GP</BalanceValue>
+                  <SoloHuntResultsBalanceValue>{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <BalanceValue>{formatGPValue(player.balance).formatted} GP</BalanceValue>
+                <SoloHuntResultsBalanceValue>{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
               )}
-            </BalanceItem>
+            </SoloHuntResultsBalanceItem>
             {costs.tibiaCoinPrice > 0 && (
-              <BalanceItem>
-                <BalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}</BalanceLabel>
+              <SoloHuntResultsBalanceItem>
+                <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}</SoloHuntResultsBalanceLabel>
                 <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcPerHourTooltip')} position="top">
-                  <BalanceValue>{tcPerHour.toFixed(2)} TC/h</BalanceValue>
+                  <SoloHuntResultsBalanceValue>{tcPerHour.toFixed(2)} TC/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
-              </BalanceItem>
+              </SoloHuntResultsBalanceItem>
             )}
-            <BalanceItem>
-              <BalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}</BalanceLabel>
+            <SoloHuntResultsBalanceItem>
+              <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(profitPerHour)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(profitPerHour)).full} position="top">
-                  <BalanceValue>{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</BalanceValue>
+                  <SoloHuntResultsBalanceValue>{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <BalanceValue>{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</BalanceValue>
+                <SoloHuntResultsBalanceValue>{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
               )}
-            </BalanceItem>
-          </BalanceColumn>
-        </FinalBalanceGrid>
+            </SoloHuntResultsBalanceItem>
+          </SoloHuntResultsBalanceColumn>
+        </SoloHuntResultsFinalBalanceGrid>
 
         {/* Bottom Highlight - 3 main values */}
-        <FinalBalanceHighlights>
+        <SoloHuntResultsFinalBalanceHighlights>
           <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.totalSuppliesTooltip')} position="top">
-            <HighlightItem>
-              <HighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}</HighlightLabel>
+            <SoloHuntResultsHighlightItem>
+              <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}</SoloHuntResultsHighlightLabel>
               {formatGPValue(Math.floor(totalSupplies)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(totalSupplies)).full} position="top">
-                  <HighlightValue $variant="negative">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</HighlightValue>
+                  <SoloHuntResultsHighlightValue $variant="negative">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
                 </Tooltip>
               ) : (
-                <HighlightValue $variant="negative">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</HighlightValue>
+                <SoloHuntResultsHighlightValue $variant="negative">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
               )}
-            </HighlightItem>
+            </SoloHuntResultsHighlightItem>
           </Tooltip>
 
           <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.finalBalanceTooltip')} position="top">
-            <HighlightItem $main>
-              <HighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.finalBalanceValue')}</HighlightLabel>
+            <SoloHuntResultsHighlightItem $main>
+              <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.finalBalanceValue')}</SoloHuntResultsHighlightLabel>
               {formatGPValue(Math.floor(adjustedBalance)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(adjustedBalance)).full} position="top">
-                  <HighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
+                  <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
                     {adjustedBalance >= 0 ? '+' : ''}{formatGPValue(Math.floor(adjustedBalance)).formatted} GP
-                  </HighlightValue>
+                  </SoloHuntResultsHighlightValue>
                 </Tooltip>
               ) : (
-                <HighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
+                <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'}>
                   {adjustedBalance >= 0 ? '+' : ''}{formatGPValue(Math.floor(adjustedBalance)).formatted} GP
-                </HighlightValue>
+                </SoloHuntResultsHighlightValue>
               )}
-            </HighlightItem>
+            </SoloHuntResultsHighlightItem>
           </Tooltip>
 
           {costs.tibiaCoinPrice > 0 && (
             <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcTotalTooltip')} position="top">
-              <HighlightItem>
-                <HighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.tcTotal')}</HighlightLabel>
-                <HighlightValue $variant={tcTotal >= 0 ? 'positive' : 'negative'}>
+              <SoloHuntResultsHighlightItem>
+                <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.tcTotal')}</SoloHuntResultsHighlightLabel>
+                <SoloHuntResultsHighlightValue $variant={tcTotal >= 0 ? 'positive' : 'negative'}>
                   {tcTotal.toFixed(2)} TC
-                </HighlightValue>
-              </HighlightItem>
+                </SoloHuntResultsHighlightValue>
+              </SoloHuntResultsHighlightItem>
             </Tooltip>
           )}
 
           {costs.tibiaCoinSellPrice > 0 && moneyMaked !== undefined && moneyMaked !== null && (
             <Tooltip text="Real money profit from selling Tibia Coins (TC Total × TC Sell Price)" position="top">
-              <HighlightItem>
-                <HighlightLabel>💵 Money Earned</HighlightLabel>
-                <HighlightValue $variant={moneyMaked >= 0 ? 'positive' : 'negative'}>
+              <SoloHuntResultsHighlightItem>
+                <SoloHuntResultsHighlightLabel>💵 Money Earned</SoloHuntResultsHighlightLabel>
+                <SoloHuntResultsHighlightValue $variant={moneyMaked >= 0 ? 'positive' : 'negative'}>
                   ${moneyMaked.toFixed(2)}
-                </HighlightValue>
-              </HighlightItem>
+                </SoloHuntResultsHighlightValue>
+              </SoloHuntResultsHighlightItem>
             </Tooltip>
           )}
-        </FinalBalanceHighlights>
-      </FinalBalance>
+        </SoloHuntResultsFinalBalanceHighlights>
+      </SoloHuntResultsFinalBalance>
 
     </SoloHuntResultsContainer>
   );
