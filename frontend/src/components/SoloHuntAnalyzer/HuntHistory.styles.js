@@ -24,7 +24,7 @@ const slideIn = keyframes`
   }
 `;
 
-export const HuntHistoryOverlay = styled.div`
+export const SoloHuntHistoryOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@ export const HuntHistoryOverlay = styled.div`
   animation: ${fadeIn} 0.3s ease;
 `;
 
-export const HuntHistoryPanel = styled.div`
+export const SoloHuntHistoryPanel = styled.div`
   background-color: #0f1620;
   width: 500px;
   max-width: 100%;
@@ -54,7 +54,7 @@ export const HuntHistoryPanel = styled.div`
   }
 `;
 
-export const HuntHistoryHeader = styled.div`
+export const SoloHuntHistoryHeader = styled.div`
   background-color: #16213e;
   padding: 20px 24px;
   border-bottom: 1px solid rgba(195, 155, 211, 0.2);
@@ -73,7 +73,7 @@ export const HuntHistoryHeader = styled.div`
   }
 `;
 
-export const CloseButton = styled.button`
+export const SoloHuntHistoryCloseButton = styled.button`
   background: none;
   border: none;
   color: #e0e0e0;
@@ -93,14 +93,14 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const HuntHistoryControls = styled.div`
+export const SoloHuntHistoryControls = styled.div`
   padding: 16px 24px;
   display: flex;
   gap: 12px;
   border-bottom: 1px solid rgba(195, 155, 211, 0.1);
 `;
 
-export const HuntCount = styled.div`
+export const SoloHuntHistoryCount = styled.div`
   padding: 12px 24px;
   font-size: 13px;
   color: #9e9e9e;
@@ -108,13 +108,13 @@ export const HuntCount = styled.div`
   border-bottom: 1px solid rgba(195, 155, 211, 0.1);
 `;
 
-export const HuntHistoryList = styled.div`
+export const SoloHuntHistoryList = styled.div`
   flex: 1;
   padding: 16px 24px;
   overflow-y: auto;
 `;
 
-export const EmptyState = styled.div`
+export const SoloHuntHistoryEmptyState = styled.div`
   text-align: center;
   padding: 48px 24px;
   color: #9e9e9e;
@@ -125,7 +125,7 @@ export const EmptyState = styled.div`
   }
 `;
 
-export const HuntCard = styled.div`
+export const SoloHuntHistoryCard = styled.div`
   background-color: #16213e;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -138,7 +138,7 @@ export const HuntCard = styled.div`
   }
 `;
 
-export const HuntSummary = styled.div`
+export const SoloHuntHistorySummary = styled.div`
   padding: 16px;
   display: flex;
   align-items: center;
@@ -156,7 +156,7 @@ export const HuntSummary = styled.div`
   }
 `;
 
-export const HuntInfo = styled.div`
+export const SoloHuntHistoryInfo = styled.div`
   flex: 1;
 
   /* Responsive */
@@ -165,19 +165,19 @@ export const HuntInfo = styled.div`
   }
 `;
 
-export const HuntCharacter = styled.div`
+export const SoloHuntHistoryCharacter = styled.div`
   font-size: 16px;
   font-weight: 600;
   color: #e0e0e0;
   margin-bottom: 4px;
 `;
 
-export const HuntDate = styled.div`
+export const SoloHuntHistoryDate = styled.div`
   font-size: 13px;
   color: #9e9e9e;
 `;
 
-export const HuntBalance = styled.div`
+export const SoloHuntHistoryBalance = styled.div`
   font-size: 18px;
   font-weight: 700;
 
@@ -195,7 +195,7 @@ export const HuntBalance = styled.div`
   }
 `;
 
-export const ExpandButton = styled.button`
+export const SoloHuntHistoryExpandButton = styled.button`
   background: none;
   border: none;
   color: #c39bd3;
@@ -205,13 +205,13 @@ export const ExpandButton = styled.button`
   transition: transform 0.2s ease;
 `;
 
-export const HuntDetails = styled.div`
+export const SoloHuntHistoryDetails = styled.div`
   padding: 16px;
   border-top: 1px solid rgba(195, 155, 211, 0.1);
   background-color: rgba(195, 155, 211, 0.02);
 `;
 
-export const DetailsGrid = styled.div`
+export const SoloHuntHistoryDetailsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
@@ -223,7 +223,7 @@ export const DetailsGrid = styled.div`
   }
 `;
 
-export const DetailItem = styled.div`
+export const SoloHuntHistoryDetailItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -250,7 +250,7 @@ export const DetailItem = styled.div`
   }
 `;
 
-export const HuntActions = styled.div`
+export const SoloHuntHistoryActions = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 8px;
