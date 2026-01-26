@@ -12,42 +12,42 @@ import Button from '../common/Button';
 import { ModalOverlay, ModalContent } from '../common/styled';
 import {
   ItemCostManagerContainer,
-  TokenPricesSection,
-  TokenPriceRow,
-  TokenIconInline,
-  CoinIconInline,
-  ScreenReaderOnly,
-  AddButtons,
-  ItemsList,
-  ItemsTable,
-  ItemsHeader,
-  ItemsRow,
-  ItemName,
-  ChildPriceLabel,
-  PriceInput,
-  PriceTypeSelect,
-  RemoveButton,
-  QuantityButton,
-  CollapseButton,
-  CollapsedHint,
-  QuantityControls,
-  PriceControls,
-  QuantityDisplay,
-  HybridPrice,
-  TokenPrice,
-  GPPrice,
-  PriceSeparator,
-  CostSummary,
-  FormGroup,
-  ImbuementItemsPreview,
-  ModalActions,
-  RingBISDescription,
-  RingBISGrid,
-  RingBISOption,
-  RingBISIcon,
-  RingBISName,
-  RingBISVocation,
-  RecalculationIndicator,
+  ItemCostManagerTokenPricesSection,
+  ItemCostManagerTokenPriceRow,
+  ItemCostManagerTokenIconInline,
+  ItemCostManagerCoinIconInline,
+  ItemCostManagerScreenReaderOnly,
+  ItemCostManagerAddButtons,
+  ItemCostManagerItemsList,
+  ItemCostManagerItemsTable,
+  ItemCostManagerItemsHeader,
+  ItemCostManagerItemsRow,
+  ItemCostManagerItemName,
+  ItemCostManagerChildPriceLabel,
+  ItemCostManagerPriceInput,
+  ItemCostManagerPriceTypeSelect,
+  ItemCostManagerRemoveButton,
+  ItemCostManagerQuantityButton,
+  ItemCostManagerCollapseButton,
+  ItemCostManagerCollapsedHint,
+  ItemCostManagerQuantityControls,
+  ItemCostManagerPriceControls,
+  ItemCostManagerQuantityDisplay,
+  ItemCostManagerHybridPrice,
+  ItemCostManagerTokenPrice,
+  ItemCostManagerGPPrice,
+  ItemCostManagerPriceSeparator,
+  ItemCostManagerCostSummary,
+  ItemCostManagerFormGroup,
+  ItemCostManagerImbuementItemsPreview,
+  ItemCostManagerModalActions,
+  ItemCostManagerRingBISDescription,
+  ItemCostManagerRingBISGrid,
+  ItemCostManagerRingBISOption,
+  ItemCostManagerRingBISIcon,
+  ItemCostManagerRingBISName,
+  ItemCostManagerRingBISVocation,
+  ItemCostManagerRecalculationIndicator,
 } from './ItemCostManager.styles';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import silverTokenIcon from '../../assets/tibia/silver_token.gif';
@@ -666,7 +666,7 @@ export default function ItemCostManager({
     : [];
 
   return (
-    <ItemCostManagerContainer>
+    <ItemCostManagerContainer data-cy="item-cost-manager">
       <h2 className="section-title">{t('soloHuntAnalyzer.itemCostManager.title')}</h2>
 
       <p className="section-description">
@@ -674,8 +674,8 @@ export default function ItemCostManager({
       </p>
 
           {/* Token Prices */}
-          <TokenPricesSection>
-        <TokenPriceRow>
+          <ItemCostManagerTokenPricesSection>
+        <ItemCostManagerTokenPriceRow>
           <img src={goldTokenIcon} alt="Gold Token" className="token-icon" />
           <label htmlFor="gold-token-price-input">{t('soloHuntAnalyzer.itemCostManager.goldTokenLabel')}</label>
           <input
@@ -690,9 +690,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </TokenPriceRow>
+        </ItemCostManagerTokenPriceRow>
 
-        <TokenPriceRow $error={silverTokenError}>
+        <ItemCostManagerTokenPriceRow $error={silverTokenError}>
           <img src={silverTokenIcon} alt="Silver Token" className="token-icon" />
           <label htmlFor="silver-token-price-input">{t('soloHuntAnalyzer.itemCostManager.silverTokenLabel')}</label>
           <input
@@ -708,9 +708,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </TokenPriceRow>
+        </ItemCostManagerTokenPriceRow>
 
-        <TokenPriceRow>
+        <ItemCostManagerTokenPriceRow>
           <img src={tibiaCoinIcon} alt="Tibia Coin" className="token-icon" />
           <label htmlFor="tibia-coin-price-input">{t('soloHuntAnalyzer.itemCostManager.tibiaCoinLabel')}</label>
           <input
@@ -725,9 +725,9 @@ export default function ItemCostManager({
           />
           <img src={coinsIcon} alt="GP" className="coin-icon-small" />
           <span className="unit">GP</span>
-        </TokenPriceRow>
+        </ItemCostManagerTokenPriceRow>
 
-        <TokenPriceRow title="Valor de venda da Tibia Coin por dinheiro real">
+        <ItemCostManagerTokenPriceRow title="Valor de venda da Tibia Coin por dinheiro real">
           <span className="token-icon">💵</span>
           <label htmlFor="tibia-coin-sell-price-input">TC Sell Price</label>
           <input
@@ -742,18 +742,18 @@ export default function ItemCostManager({
             data-cy="solo-hunt-input-tc-sell-price"
           />
           <span className="unit">$ / TC</span>
-        </TokenPriceRow>
-      </TokenPricesSection>
+        </ItemCostManagerTokenPriceRow>
+      </ItemCostManagerTokenPricesSection>
 
       {/* Recalculation indicator */}
       {needsRecalculation && (
-        <RecalculationIndicator>
+        <ItemCostManagerRecalculationIndicator>
           {t('soloHuntAnalyzer.itemCostManager.recalculationWarning')}
-        </RecalculationIndicator>
+        </ItemCostManagerRecalculationIndicator>
       )}
 
       {/* Add buttons */}
-      <AddButtons>
+      <ItemCostManagerAddButtons>
         <Button
           variant="primary"
           onClick={() => setShowImbuementModal(true)}
@@ -792,19 +792,19 @@ export default function ItemCostManager({
         >
           {t('soloHuntAnalyzer.itemCostManager.pasteFromImbuementCalcButton')}
         </Button>
-      </AddButtons>
+      </ItemCostManagerAddButtons>
 
       {/* Items list */}
       {customItems.length > 0 && (
-        <ItemsList>
+        <ItemCostManagerItemsList>
           <h3>{t('soloHuntAnalyzer.itemCostManager.itemsListTitle')}</h3>
-          <ItemsTable>
-            <ItemsHeader>
+          <ItemCostManagerItemsTable>
+            <ItemCostManagerItemsHeader>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.item')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.quantity')}</div>
               <div>{t('soloHuntAnalyzer.itemCostManager.tableHeaders.unitPrice')}</div>
               <div></div>
-            </ItemsHeader>
+            </ItemCostManagerItemsHeader>
             {customItems.map(item => {
               // Skip child items - they'll be rendered under their parent
               if (item.isChild) return null;
@@ -817,76 +817,76 @@ export default function ItemCostManager({
               return (
                 <React.Fragment key={item.id}>
                   {/* Parent or standalone item row */}
-                  <ItemsRow $parent={item.isParent}>
-                    <ItemName>
+                  <ItemCostManagerItemsRow $parent={item.isParent}>
+                    <ItemCostManagerItemName>
                       {item.isParent && item.hasChildren && (
-                        <CollapseButton
+                        <ItemCostManagerCollapseButton
                           onClick={() => toggleItemCollapse(item.id)}
                           aria-label={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandItems') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
                           title={isCollapsed ? t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit') : t('soloHuntAnalyzer.itemCostManager.itemsList.collapseItems')}
                         >
                           {isCollapsed ? '▶' : '▼'}
-                        </CollapseButton>
+                        </ItemCostManagerCollapseButton>
                       )}
                       <span>{item.name}</span>
                       {RING_ICONS[item.name] && (
-                        <TokenIconInline
+                        <ItemCostManagerTokenIconInline
                           src={RING_ICONS[item.name]}
                           alt={item.name}
                           style={{ marginLeft: '8px' }}
                         />
                       )}
                       {item.isParent && item.hasChildren && isCollapsed && (
-                        <CollapsedHint
+                        <ItemCostManagerCollapsedHint
                           onClick={() => toggleItemCollapse(item.id)}
                           style={{ cursor: 'pointer' }}
                           title={t('soloHuntAnalyzer.itemCostManager.itemsList.expandToEdit')}
                         >
                           {' '}{t('soloHuntAnalyzer.itemCostManager.itemsList.clickToExpand')}
-                        </CollapsedHint>
+                        </ItemCostManagerCollapsedHint>
                       )}
-                    </ItemName>
+                    </ItemCostManagerItemName>
                     <div>
                       {item.isParent ? (
-                        <QuantityControls>
-                          <QuantityButton
+                        <ItemCostManagerQuantityControls>
+                          <ItemCostManagerQuantityButton
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
                             aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
                             title={t('soloHuntAnalyzer.itemCostManager.itemsList.decreaseQuantity')}
                           >
                             -
-                          </QuantityButton>
-                          <QuantityDisplay>{item.quantity}</QuantityDisplay>
-                          <QuantityButton
+                          </ItemCostManagerQuantityButton>
+                          <ItemCostManagerQuantityDisplay>{item.quantity}</ItemCostManagerQuantityDisplay>
+                          <ItemCostManagerQuantityButton
                             onClick={() => handleUpdateParentQuantity(item.id, item.quantity + 1)}
                             aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
                             title={t('soloHuntAnalyzer.itemCostManager.itemsList.increaseQuantity')}
                           >
                             +
-                          </QuantityButton>
-                        </QuantityControls>
+                          </ItemCostManagerQuantityButton>
+                        </ItemCostManagerQuantityControls>
                       ) : (
                         item.quantity
                       )}
                     </div>
                     <div>
                       {item.isParent ? (
-                        <HybridPrice>
+                        <ItemCostManagerHybridPrice>
                           {item.unitPrice > 0 && (
-                            <TokenPrice>
-                              <TokenIconInline
+                            <ItemCostManagerTokenPrice>
+                              <ItemCostManagerTokenIconInline
                                 src={item.priceType === 'GT' ? goldTokenIcon : silverTokenIcon}
                                 alt={item.priceType}
                               />
                               {item.unitPrice} {item.priceType}
-                            </TokenPrice>
+                            </ItemCostManagerTokenPrice>
                           )}
                           {childrenGPCost > 0 && (
                             <>
-                              {item.unitPrice > 0 && <PriceSeparator> + </PriceSeparator>}
-                              <GPPrice>
-                                <CoinIconInline src={coinsIcon} alt="GP" />
+                              {item.unitPrice > 0 && <ItemCostManagerPriceSeparator> + </ItemCostManagerPriceSeparator>}
+                              <ItemCostManagerGPPrice>
+                                <ItemCostManagerCoinIconInline src={coinsIcon} alt="GP" />
                                 {formatGPValue(childrenGPCost / item.quantity).formatted.includes('kk') ? (
                                   <span title={formatGPValue(childrenGPCost / item.quantity).full}>
                                     {formatGPValue(childrenGPCost / item.quantity).formatted} GP
@@ -894,71 +894,71 @@ export default function ItemCostManager({
                                 ) : (
                                   `${formatGPValue(childrenGPCost / item.quantity).formatted} GP`
                                 )}
-                              </GPPrice>
+                              </ItemCostManagerGPPrice>
                             </>
                           )}
                           {item.unitPrice === 0 && childrenGPCost === 0 && <span>-</span>}
-                        </HybridPrice>
+                        </ItemCostManagerHybridPrice>
                       ) : (
-                        <PriceControls>
-                          <PriceInput
+                        <ItemCostManagerPriceControls>
+                          <ItemCostManagerPriceInput
                             type="number"
                             value={item.unitPrice}
                             onChange={(e) => handleUpdateItemPrice(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                             min="0"
                           />
-                          <PriceTypeSelect
+                          <ItemCostManagerPriceTypeSelect
                             value={item.priceType}
                             onChange={(e) => handleUpdateItemPrice(item.id, 'priceType', e.target.value)}
                           >
                             <option value="GP">GP</option>
                             <option value="GT">GT</option>
                             <option value="ST">ST</option>
-                          </PriceTypeSelect>
-                        </PriceControls>
+                          </ItemCostManagerPriceTypeSelect>
+                        </ItemCostManagerPriceControls>
                       )}
                     </div>
                     <div>
-                      <RemoveButton
+                      <ItemCostManagerRemoveButton
                         onClick={() => handleRemoveItem(item.id)}
                         aria-label={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
                         title={t('soloHuntAnalyzer.itemCostManager.itemsList.removeItemAria', { itemName: item.name })}
                       >
                         <span aria-hidden="true">🗑️</span>
-                        <ScreenReaderOnly>{t('soloHuntAnalyzer.itemCostManager.itemsList.removeItem')}</ScreenReaderOnly>
-                      </RemoveButton>
+                        <ItemCostManagerScreenReaderOnly>{t('soloHuntAnalyzer.itemCostManager.itemsList.removeItem')}</ItemCostManagerScreenReaderOnly>
+                      </ItemCostManagerRemoveButton>
                     </div>
-                  </ItemsRow>
+                  </ItemCostManagerItemsRow>
 
                   {/* Render children if this is a parent and it's expanded */}
                   {item.isParent && !isCollapsed && customItems
                     .filter(child => child.parentId === item.id)
                     .map(child => (
-                      <ItemsRow key={child.id} $child>
-                        <ItemName $child>↳ {child.name}</ItemName>
+                      <ItemCostManagerItemsRow key={child.id} $child>
+                        <ItemCostManagerItemName $child>↳ {child.name}</ItemCostManagerItemName>
                         <div>{child.quantity}</div>
                         <div>
-                          <PriceControls>
-                            <PriceInput
+                          <ItemCostManagerPriceControls>
+                            <ItemCostManagerPriceInput
                               type="number"
                               value={child.unitPrice}
                               onChange={(e) => handleUpdateItemPrice(child.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                               min="0"
                             />
-                            <ChildPriceLabel>GP</ChildPriceLabel>
-                          </PriceControls>
+                            <ItemCostManagerChildPriceLabel>GP</ItemCostManagerChildPriceLabel>
+                          </ItemCostManagerPriceControls>
                         </div>
                         <div></div>
-                      </ItemsRow>
+                      </ItemCostManagerItemsRow>
                     ))
                   }
                 </React.Fragment>
               );
             })}
-          </ItemsTable>
+          </ItemCostManagerItemsTable>
 
           {/* Total cost summary */}
-          <CostSummary>
+          <ItemCostManagerCostSummary>
             {/* Partial GP - Only show if there are direct GP costs */}
             {totalGP > 0 && (
               <p title={t('soloHuntAnalyzer.itemCostManager.costSummary.partialGPTooltip')}>
@@ -1034,8 +1034,8 @@ export default function ItemCostManager({
                 )
               }
             </p>
-          </CostSummary>
-        </ItemsList>
+          </ItemCostManagerCostSummary>
+        </ItemCostManagerItemsList>
       )}
 
       {/* Imbuement Modal */}
@@ -1053,7 +1053,7 @@ export default function ItemCostManager({
           >
             <h3 id="imbuement-modal-title">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.title')}</h3>
 
-            <FormGroup>
+            <ItemCostManagerFormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.categoryLabel')}</label>
               <select
                 value={selectedCategory}
@@ -1067,10 +1067,10 @@ export default function ItemCostManager({
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
-            </FormGroup>
+            </ItemCostManagerFormGroup>
 
             {selectedCategory && (
-              <FormGroup>
+              <ItemCostManagerFormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.imbuementLabel')}</label>
                 <select
                   value={selectedImbuement}
@@ -1083,11 +1083,11 @@ export default function ItemCostManager({
                     </option>
                   ))}
                 </select>
-              </FormGroup>
+              </ItemCostManagerFormGroup>
             )}
 
             {selectedImbuement && (
-              <FormGroup>
+              <ItemCostManagerFormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tierLabel')}</label>
                 <select
                   value={selectedTier}
@@ -1100,11 +1100,11 @@ export default function ItemCostManager({
                   <option value="intricate">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.intricate')}</option>
                   <option value="powerful">{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.tiers.powerful')}</option>
                 </select>
-              </FormGroup>
+              </ItemCostManagerFormGroup>
             )}
 
             {selectedImbuement && GT_ELIGIBLE_IMBUEMENTS.includes(selectedImbuement) && (
-              <FormGroup>
+              <ItemCostManagerFormGroup>
                 <label>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentLabel')}</label>
                 <select
                   value={gtPayment}
@@ -1121,11 +1121,11 @@ export default function ItemCostManager({
                     <option value={6}>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.gtPaymentOptions.all')}</option>
                   )}
                 </select>
-              </FormGroup>
+              </ItemCostManagerFormGroup>
             )}
 
             {selectedImbuement && (
-              <ImbuementItemsPreview>
+              <ItemCostManagerImbuementItemsPreview>
                 <h4>{t('soloHuntAnalyzer.itemCostManager.addImbuementModal.itemsPreviewTitle')}</h4>
                 {(() => {
                   const imbuement = IMBUEMENTS.find(imb => imb.id === selectedImbuement);
@@ -1167,10 +1167,10 @@ export default function ItemCostManager({
                     </>
                   );
                 })()}
-              </ImbuementItemsPreview>
+              </ItemCostManagerImbuementItemsPreview>
             )}
 
-            <ModalActions>
+            <ItemCostManagerModalActions>
               <Button
                 variant="primary"
                 onClick={handleAddImbuement}
@@ -1186,7 +1186,7 @@ export default function ItemCostManager({
               >
                 {t('soloHuntAnalyzer.itemCostManager.addImbuementModal.cancelButton')}
               </Button>
-            </ModalActions>
+            </ItemCostManagerModalActions>
           </ModalContent>
         </ModalOverlay>
       )}
@@ -1206,7 +1206,7 @@ export default function ItemCostManager({
           >
             <h3 id="custom-item-modal-title">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.title')}</h3>
 
-            <FormGroup>
+            <ItemCostManagerFormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNameLabel')}</label>
               <input
                 type="text"
@@ -1214,9 +1214,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemName(e.target.value)}
                 placeholder={t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.itemNamePlaceholder')}
               />
-            </FormGroup>
+            </ItemCostManagerFormGroup>
 
-            <FormGroup>
+            <ItemCostManagerFormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.quantityLabel')}</label>
               <input
                 type="number"
@@ -1224,9 +1224,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemQuantity(parseInt(e.target.value) || 1)}
                 min="1"
               />
-            </FormGroup>
+            </ItemCostManagerFormGroup>
 
-            <FormGroup>
+            <ItemCostManagerFormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.unitPriceLabel')}</label>
               <input
                 type="number"
@@ -1234,9 +1234,9 @@ export default function ItemCostManager({
                 onChange={(e) => setCustomItemPrice(parseFloat(e.target.value) || 0)}
                 min="0"
               />
-            </FormGroup>
+            </ItemCostManagerFormGroup>
 
-            <FormGroup>
+            <ItemCostManagerFormGroup>
               <label>{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypeLabel')}</label>
               <select
                 value={customItemPriceType}
@@ -1246,9 +1246,9 @@ export default function ItemCostManager({
                 <option value="GT">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.gt')}</option>
                 <option value="ST">{t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.priceTypes.st')}</option>
               </select>
-            </FormGroup>
+            </ItemCostManagerFormGroup>
 
-            <ModalActions>
+            <ItemCostManagerModalActions>
               <Button
                 variant="primary"
                 onClick={handleAddCustomItem}
@@ -1264,7 +1264,7 @@ export default function ItemCostManager({
               >
                 {t('soloHuntAnalyzer.itemCostManager.addCustomItemModal.cancelButton')}
               </Button>
-            </ModalActions>
+            </ItemCostManagerModalActions>
           </ModalContent>
         </ModalOverlay>
       )}
@@ -1284,10 +1284,10 @@ export default function ItemCostManager({
             aria-modal="true"
           >
             <h3 id="ring-bis-modal-title">{t('soloHuntAnalyzer.itemCostManager.ringBisModal.title')}</h3>
-            <RingBISDescription>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.description')}</RingBISDescription>
+            <ItemCostManagerRingBISDescription>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.description')}</ItemCostManagerRingBISDescription>
 
-            <RingBISGrid>
-              <RingBISOption
+            <ItemCostManagerRingBISGrid>
+              <ItemCostManagerRingBISOption
                 $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing'))}
                 role="button"
@@ -1299,12 +1299,12 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <RingBISIcon src={arborealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')} />
-                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}</RingBISName>
-                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.druid')}</RingBISVocation>
-              </RingBISOption>
+                <ItemCostManagerRingBISIcon src={arborealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')} />
+                <ItemCostManagerRingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arborealRing')}</ItemCostManagerRingBISName>
+                <ItemCostManagerRingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.druid')}</ItemCostManagerRingBISVocation>
+              </ItemCostManagerRingBISOption>
 
-              <RingBISOption
+              <ItemCostManagerRingBISOption
                 $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing'))}
                 role="button"
@@ -1316,12 +1316,12 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <RingBISIcon src={alicornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')} />
-                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}</RingBISName>
-                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.paladin')}</RingBISVocation>
-              </RingBISOption>
+                <ItemCostManagerRingBISIcon src={alicornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')} />
+                <ItemCostManagerRingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.alicornRing')}</ItemCostManagerRingBISName>
+                <ItemCostManagerRingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.paladin')}</ItemCostManagerRingBISVocation>
+              </ItemCostManagerRingBISOption>
 
-              <RingBISOption
+              <ItemCostManagerRingBISOption
                 $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil'))}
                 role="button"
@@ -1333,12 +1333,12 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <RingBISIcon src={arcanomancerSigilIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')} />
-                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}</RingBISName>
-                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.sorcerer')}</RingBISVocation>
-              </RingBISOption>
+                <ItemCostManagerRingBISIcon src={arcanomancerSigilIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')} />
+                <ItemCostManagerRingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.arcanomancerSigil')}</ItemCostManagerRingBISName>
+                <ItemCostManagerRingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.sorcerer')}</ItemCostManagerRingBISVocation>
+              </ItemCostManagerRingBISOption>
 
-              <RingBISOption
+              <ItemCostManagerRingBISOption
                 $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing'))}
                 role="button"
@@ -1350,12 +1350,12 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <RingBISIcon src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} />
-                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</RingBISName>
-                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.monk')}</RingBISVocation>
-              </RingBISOption>
+                <ItemCostManagerRingBISIcon src={etherealRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')} />
+                <ItemCostManagerRingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.etherealRing')}</ItemCostManagerRingBISName>
+                <ItemCostManagerRingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.monk')}</ItemCostManagerRingBISVocation>
+              </ItemCostManagerRingBISOption>
 
-              <RingBISOption
+              <ItemCostManagerRingBISOption
                 $selected={selectedRing === t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}
                 onClick={() => handleAddRingBis(t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing'))}
                 role="button"
@@ -1367,13 +1367,13 @@ export default function ItemCostManager({
                   }
                 }}
               >
-                <RingBISIcon src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} />
-                <RingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</RingBISName>
-                <RingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</RingBISVocation>
-              </RingBISOption>
-            </RingBISGrid>
+                <ItemCostManagerRingBISIcon src={spiritthornRingIcon} alt={t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')} />
+                <ItemCostManagerRingBISName>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.rings.spiritthornRing')}</ItemCostManagerRingBISName>
+                <ItemCostManagerRingBISVocation>{t('soloHuntAnalyzer.itemCostManager.ringBisModal.vocations.knight')}</ItemCostManagerRingBISVocation>
+              </ItemCostManagerRingBISOption>
+            </ItemCostManagerRingBISGrid>
 
-            <ModalActions>
+            <ItemCostManagerModalActions>
               <Button
                 variant="secondary"
                 onClick={() => {
@@ -1384,7 +1384,7 @@ export default function ItemCostManager({
               >
                 {t('soloHuntAnalyzer.itemCostManager.ringBisModal.cancelButton')}
               </Button>
-            </ModalActions>
+            </ItemCostManagerModalActions>
           </ModalContent>
         </ModalOverlay>
       )}

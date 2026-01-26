@@ -24,7 +24,7 @@ export const ItemCostManagerContainer = styled.div`
 `;
 
 /* Token Prices Section */
-export const TokenPricesSection = styled.div`
+export const ItemCostManagerTokenPricesSection = styled.div`
   margin-bottom: 20px;
   padding: 16px;
   background-color: rgba(195, 155, 211, 0.1);
@@ -45,7 +45,7 @@ export const TokenPricesSection = styled.div`
   }
 `;
 
-export const TokenPriceRow = styled.div`
+export const ItemCostManagerTokenPriceRow = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -93,13 +93,13 @@ export const TokenPriceRow = styled.div`
 `;
 
 /* Icons */
-export const TokenIcon = styled.img`
+export const ItemCostManagerTokenIcon = styled.img`
   width: 20px;
   height: 20px;
   image-rendering: pixelated;
 `;
 
-export const TokenIconInline = styled.img`
+export const ItemCostManagerTokenIconInline = styled.img`
   width: 18px;
   height: 18px;
   vertical-align: middle;
@@ -107,13 +107,13 @@ export const TokenIconInline = styled.img`
   image-rendering: pixelated;
 `;
 
-export const CoinIconSmall = styled.img`
+export const ItemCostManagerCoinIconSmall = styled.img`
   width: 16px;
   height: 16px;
   image-rendering: pixelated;
 `;
 
-export const CoinIconInline = styled.img`
+export const ItemCostManagerCoinIconInline = styled.img`
   width: 16px;
   height: 16px;
   vertical-align: middle;
@@ -122,7 +122,7 @@ export const CoinIconInline = styled.img`
 `;
 
 /* Screen Reader Only */
-export const ScreenReaderOnly = styled.span`
+export const ItemCostManagerScreenReaderOnly = styled.span`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -135,7 +135,7 @@ export const ScreenReaderOnly = styled.span`
 `;
 
 /* Add Buttons */
-export const AddButtons = styled.div`
+export const ItemCostManagerAddButtons = styled.div`
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
@@ -147,7 +147,7 @@ export const AddButtons = styled.div`
 `;
 
 /* Items List */
-export const ItemsList = styled.div`
+export const ItemCostManagerItemsList = styled.div`
   margin-top: 24px;
 
   h3 {
@@ -158,7 +158,7 @@ export const ItemsList = styled.div`
   }
 `;
 
-export const ItemsTable = styled.div`
+export const ItemCostManagerItemsTable = styled.div`
   background-color: #0f1620;
   border-radius: 8px;
   overflow: hidden;
@@ -189,7 +189,7 @@ const ItemsGridBase = css`
   }
 `;
 
-export const ItemsHeader = styled.div`
+export const ItemCostManagerItemsHeader = styled.div`
   ${ItemsGridBase}
   background-color: rgba(195, 155, 211, 0.2);
   color: #c39bd3;
@@ -197,7 +197,7 @@ export const ItemsHeader = styled.div`
   font-size: 14px;
 `;
 
-export const ItemsRow = styled.div`
+export const ItemCostManagerItemsRow = styled.div`
   ${ItemsGridBase}
   background-color: #16213e;
   border-bottom: 1px solid rgba(195, 155, 211, 0.1);
@@ -232,7 +232,7 @@ export const ItemsRow = styled.div`
     `}
 `;
 
-export const ItemName = styled.div`
+export const ItemCostManagerItemName = styled.div`
   font-weight: 500;
   color: #e0e0e0;
   display: flex;
@@ -247,13 +247,13 @@ export const ItemName = styled.div`
     `}
 `;
 
-export const ChildPriceLabel = styled.span`
+export const ItemCostManagerChildPriceLabel = styled.span`
   font-size: 0.85em;
   color: #888;
 `;
 
 /* Form Controls */
-export const PriceInput = styled.input`
+export const ItemCostManagerPriceInput = styled.input`
   padding: 6px 8px;
   border: 1px solid rgba(195, 155, 211, 0.3);
   border-radius: 4px;
@@ -268,7 +268,7 @@ export const PriceInput = styled.input`
   }
 `;
 
-export const PriceTypeSelect = styled.select`
+export const ItemCostManagerPriceTypeSelect = styled.select`
   padding: 6px 8px;
   border: 1px solid rgba(195, 155, 211, 0.3);
   border-radius: 4px;
@@ -284,19 +284,19 @@ export const PriceTypeSelect = styled.select`
   }
 `;
 
-export const ItemTotal = styled.div`
+export const ItemCostManagerItemTotal = styled.div`
   font-weight: 600;
   color: #c39bd3;
 `;
 
-export const ItemSource = styled.div`
+export const ItemCostManagerItemSource = styled.div`
   font-size: 12px;
   color: #9e9e9e;
   font-style: italic;
 `;
 
 /* Buttons */
-export const RemoveButton = styled.button`
+export const ItemCostManagerRemoveButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -311,7 +311,7 @@ export const RemoveButton = styled.button`
   }
 `;
 
-export const QuantityButton = styled.button`
+export const ItemCostManagerQuantityButton = styled.button`
   background-color: rgba(195, 155, 211, 0.2);
   border: 1px solid rgba(195, 155, 211, 0.4);
   border-radius: 4px;
@@ -339,7 +339,7 @@ export const QuantityButton = styled.button`
   }
 `;
 
-export const CollapseButton = styled.button`
+export const ItemCostManagerCollapseButton = styled.button`
   background: none;
   border: none;
   color: #c39bd3;
@@ -355,7 +355,7 @@ export const CollapseButton = styled.button`
   }
 `;
 
-export const CollapsedHint = styled.span`
+export const ItemCostManagerCollapsedHint = styled.span`
   font-size: 0.85em;
   color: #9e9e9e;
   font-style: italic;
@@ -363,50 +363,50 @@ export const CollapsedHint = styled.span`
 `;
 
 /* Utility Controls */
-export const QuantityControls = styled.div`
+export const ItemCostManagerQuantityControls = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
 `;
 
-export const PriceControls = styled.div`
+export const ItemCostManagerPriceControls = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
 `;
 
-export const QuantityDisplay = styled.div`
+export const ItemCostManagerQuantityDisplay = styled.div`
   min-width: 30px;
   text-align: center;
 `;
 
 /* Hybrid Price Display */
-export const HybridPrice = styled.div`
+export const ItemCostManagerHybridPrice = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
   flex-wrap: wrap;
 `;
 
-export const TokenPrice = styled.div`
+export const ItemCostManagerTokenPrice = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;
 `;
 
-export const GPPrice = styled.div`
+export const ItemCostManagerGPPrice = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;
 `;
 
-export const PriceSeparator = styled.span`
+export const ItemCostManagerPriceSeparator = styled.span`
   color: #9e9e9e;
   font-weight: 500;
 `;
 
 /* Cost Summary */
-export const CostSummary = styled.div`
+export const ItemCostManagerCostSummary = styled.div`
   margin-top: 20px;
   padding: 20px;
   background-color: rgba(195, 155, 211, 0.1);
@@ -435,7 +435,7 @@ export const CostSummary = styled.div`
 /* Modal Styles - ModalOverlay and ModalContent imported from common/styled */
 
 /* Form Groups */
-export const FormGroup = styled.div`
+export const ItemCostManagerFormGroup = styled.div`
   margin-bottom: 20px;
 
   label {
@@ -464,7 +464,7 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const ImbuementItemsPreview = styled.div`
+export const ItemCostManagerImbuementItemsPreview = styled.div`
   background-color: rgba(195, 155, 211, 0.05);
   padding: 16px;
   border-radius: 8px;
@@ -485,7 +485,7 @@ export const ImbuementItemsPreview = styled.div`
   }
 `;
 
-export const ModalActions = styled.div`
+export const ItemCostManagerModalActions = styled.div`
   display: flex;
   gap: 12px;
   justify-content: flex-end;
@@ -501,20 +501,20 @@ export const ModalActions = styled.div`
 `;
 
 /* Ring BIS Modal */
-export const RingBISDescription = styled.p`
+export const ItemCostManagerRingBISDescription = styled.p`
   color: #9e9e9e;
   margin-bottom: 24px;
   font-size: 14px;
 `;
 
-export const RingBISGrid = styled.div`
+export const ItemCostManagerRingBISGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 `;
 
-export const RingBISOption = styled.div`
+export const ItemCostManagerRingBISOption = styled.div`
   background-color: rgba(195, 155, 211, 0.1);
   border: 2px solid rgba(195, 155, 211, 0.3);
   border-radius: 12px;
@@ -542,20 +542,20 @@ export const RingBISOption = styled.div`
     `}
 `;
 
-export const RingBISIcon = styled.img`
+export const ItemCostManagerRingBISIcon = styled.img`
   width: 48px;
   height: 48px;
   object-fit: contain;
 `;
 
-export const RingBISName = styled.div`
+export const ItemCostManagerRingBISName = styled.div`
   font-weight: 600;
   color: #c39bd3;
   text-align: center;
   font-size: 14px;
 `;
 
-export const RingBISVocation = styled.div`
+export const ItemCostManagerRingBISVocation = styled.div`
   font-size: 12px;
   color: #9e9e9e;
   text-align: center;
@@ -571,7 +571,7 @@ const pulseWarning = keyframes`
   }
 `;
 
-export const RecalculationIndicator = styled.div`
+export const ItemCostManagerRecalculationIndicator = styled.div`
   background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 152, 0, 0.1) 100%);
   border: 2px solid rgba(255, 193, 7, 0.5);
   border-radius: 8px;
