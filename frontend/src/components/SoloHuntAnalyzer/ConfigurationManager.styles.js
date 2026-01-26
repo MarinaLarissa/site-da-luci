@@ -14,7 +14,7 @@ export const ConfigurationManagerContainer = styled.div`
   border: 1px solid rgba(195, 155, 211, 0.2);
 `;
 
-export const ConfigHeader = styled.div`
+export const ConfigurationManagerHeader = styled.div`
   h3 {
     font-size: 20px;
     font-weight: 600;
@@ -23,13 +23,13 @@ export const ConfigHeader = styled.div`
   }
 `;
 
-export const ConfigDescription = styled.p`
+export const ConfigurationManagerDescription = styled.p`
   font-size: 14px;
   color: #9e9e9e;
   margin-bottom: 16px;
 `;
 
-export const ConfigControls = styled.div`
+export const ConfigurationManagerControls = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
@@ -42,7 +42,7 @@ export const ConfigControls = styled.div`
   }
 `;
 
-export const ConfigLoadSection = styled.div`
+export const ConfigurationManagerLoadSection = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
@@ -55,7 +55,7 @@ export const ConfigLoadSection = styled.div`
   }
 `;
 
-export const ConfigSelect = styled.select`
+export const ConfigurationManagerSelect = styled.select`
   flex: 1;
   padding: 10px 12px;
   border: 2px solid rgba(195, 155, 211, 0.3);
@@ -76,7 +76,7 @@ export const ConfigSelect = styled.select`
   }
 `;
 
-export const DangerButtonSmall = styled.button`
+export const ConfigurationManagerDangerButtonSmall = styled.button`
   padding: 8px 12px;
   background-color: rgba(244, 67, 54, 0.1);
   color: #f44336;
@@ -92,7 +92,7 @@ export const DangerButtonSmall = styled.button`
   }
 `;
 
-export const SecondaryButtonSmall = styled.button`
+export const ConfigurationManagerSecondaryButtonSmall = styled.button`
   padding: 8px 12px;
   background-color: rgba(195, 155, 211, 0.1);
   color: #c39bd3;
@@ -108,7 +108,7 @@ export const SecondaryButtonSmall = styled.button`
   }
 `;
 
-export const DangerButton = styled.button`
+export const ConfigurationManagerDangerButton = styled.button`
   padding: 10px 16px;
   background-color: rgba(244, 67, 54, 0.1);
   color: #f44336;
@@ -131,7 +131,7 @@ export const DangerButton = styled.button`
   }
 `;
 
-export const ConfigCount = styled.p`
+export const ConfigurationManagerCount = styled.p`
   margin-top: 12px;
   font-size: 13px;
   color: #9e9e9e;
@@ -139,7 +139,7 @@ export const ConfigCount = styled.p`
 `;
 
 /* Save Modal Styles */
-export const ConfigPreview = styled.div`
+export const ConfigurationManagerPreview = styled.div`
   margin: 16px 0;
   padding: 12px;
   background-color: rgba(195, 155, 211, 0.05);
@@ -147,14 +147,14 @@ export const ConfigPreview = styled.div`
   border: 1px solid rgba(195, 155, 211, 0.2);
 `;
 
-export const PreviewLabel = styled.p`
+export const ConfigurationManagerPreviewLabel = styled.p`
   font-size: 13px;
   color: #9e9e9e;
   margin-bottom: 8px;
   font-weight: 600;
 `;
 
-export const PreviewList = styled.ul`
+export const ConfigurationManagerPreviewList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -167,7 +167,7 @@ export const PreviewList = styled.ul`
 `;
 
 /* Modal Styles - ModalOverlay and ModalContent imported from common/styled */
-export const FormGroup = styled.div`
+export const ConfigurationManagerFormGroup = styled.div`
   margin-bottom: 20px;
 
   label {
@@ -179,7 +179,7 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const ConfigNameInput = styled.input`
+export const ConfigurationManagerNameInput = styled.input`
   width: 100%;
   padding: 10px 12px;
   background: #0f1620;
@@ -203,7 +203,7 @@ export const ConfigNameInput = styled.input`
   }
 `;
 
-export const ModalActions = styled.div`
+export const ConfigurationManagerModalActions = styled.div`
   display: flex;
   gap: 12px;
   margin-top: 24px;

@@ -11,21 +11,21 @@ import Button from '../common/Button';
 import { ModalOverlay, ModalContent } from '../common/styled';
 import {
   ConfigurationManagerContainer,
-  ConfigHeader,
-  ConfigDescription,
-  ConfigControls,
-  ConfigLoadSection,
-  ConfigSelect,
-  DangerButtonSmall,
-  SecondaryButtonSmall,
-  DangerButton,
-  ConfigCount,
-  ConfigPreview,
-  PreviewLabel,
-  PreviewList,
-  FormGroup,
-  ConfigNameInput,
-  ModalActions,
+  ConfigurationManagerHeader,
+  ConfigurationManagerDescription,
+  ConfigurationManagerControls,
+  ConfigurationManagerLoadSection,
+  ConfigurationManagerSelect,
+  ConfigurationManagerDangerButtonSmall,
+  ConfigurationManagerSecondaryButtonSmall,
+  ConfigurationManagerDangerButton,
+  ConfigurationManagerCount,
+  ConfigurationManagerPreview,
+  ConfigurationManagerPreviewLabel,
+  ConfigurationManagerPreviewList,
+  ConfigurationManagerFormGroup,
+  ConfigurationManagerNameInput,
+  ConfigurationManagerModalActions,
 } from './ConfigurationManager.styles';
 
 const STORAGE_KEY = 'solo-hunt-configurations';
@@ -230,15 +230,15 @@ export default function ConfigurationManager({
   };
 
   return (
-    <ConfigurationManagerContainer>
-      <ConfigHeader>
+    <ConfigurationManagerContainer data-cy="configuration-manager">
+      <ConfigurationManagerHeader>
         <h3>{t('soloHuntAnalyzer.configManager.title')}</h3>
-        <ConfigDescription>
+        <ConfigurationManagerDescription>
           {t('soloHuntAnalyzer.configManager.description')}
-        </ConfigDescription>
-      </ConfigHeader>
+        </ConfigurationManagerDescription>
+      </ConfigurationManagerHeader>
 
-      <ConfigControls>
+      <ConfigurationManagerControls>
         {/* Save Configuration Button */}
         <Button
           variant="primary"
@@ -251,8 +251,8 @@ export default function ConfigurationManager({
 
         {/* Load Configuration Dropdown */}
         {configurations.length > 0 && (
-          <ConfigLoadSection>
-            <ConfigSelect
+          <ConfigurationManagerLoadSection>
+            <ConfigurationManagerSelect
               value={selectedConfigId}
               onChange={(e) => handleLoadConfiguration(e.target.value)}
             >
@@ -262,46 +262,46 @@ export default function ConfigurationManager({
                   {config.name} ({new Date(config.createdAt).toLocaleDateString()})
                 </option>
               ))}
-            </ConfigSelect>
+            </ConfigurationManagerSelect>
 
             {selectedConfigId && (
               <>
-                <SecondaryButtonSmall
+                <ConfigurationManagerSecondaryButtonSmall
                   onClick={() => handleOpenEditModal(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.editButton')}
                 >
                   ✏️
-                </SecondaryButtonSmall>
-                <SecondaryButtonSmall
+                </ConfigurationManagerSecondaryButtonSmall>
+                <ConfigurationManagerSecondaryButtonSmall
                   onClick={() => handleDuplicateConfiguration(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.duplicateButton')}
                 >
                   📋
-                </SecondaryButtonSmall>
-                <DangerButtonSmall
+                </ConfigurationManagerSecondaryButtonSmall>
+                <ConfigurationManagerDangerButtonSmall
                   onClick={() => handleDeleteConfiguration(parseInt(selectedConfigId, 10))}
                   title={t('soloHuntAnalyzer.configManager.deleteButton')}
                 >
                   🗑️
-                </DangerButtonSmall>
+                </ConfigurationManagerDangerButtonSmall>
               </>
             )}
-          </ConfigLoadSection>
+          </ConfigurationManagerLoadSection>
         )}
 
         {/* Clear All Button */}
         {configurations.length > 0 && (
-          <DangerButton onClick={handleClearAll}>
+          <ConfigurationManagerDangerButton onClick={handleClearAll}>
             {t('soloHuntAnalyzer.configManager.clearAllButton')}
-          </DangerButton>
+          </ConfigurationManagerDangerButton>
         )}
-      </ConfigControls>
+      </ConfigurationManagerControls>
 
       {/* Configuration Count */}
       {configurations.length > 0 && (
-        <ConfigCount>
+        <ConfigurationManagerCount>
           {t('soloHuntAnalyzer.configManager.savedCount', { count: configurations.length })}
-        </ConfigCount>
+        </ConfigurationManagerCount>
       )}
 
       {/* Save Configuration Modal */}
@@ -321,11 +321,11 @@ export default function ConfigurationManager({
               {t('soloHuntAnalyzer.configManager.saveModal.title')}
             </h3>
 
-            <FormGroup>
+            <ConfigurationManagerFormGroup>
               <label htmlFor="config-name-input">
                 {t('soloHuntAnalyzer.configManager.saveModal.nameLabel')}:
               </label>
-              <ConfigNameInput
+              <ConfigurationManagerNameInput
                 id="config-name-input"
                 type="text"
                 value={configName}
@@ -339,13 +339,13 @@ export default function ConfigurationManager({
                   }
                 }}
               />
-            </FormGroup>
+            </ConfigurationManagerFormGroup>
 
-            <ConfigPreview>
-              <PreviewLabel>
+            <ConfigurationManagerPreview>
+              <ConfigurationManagerPreviewLabel>
                 {t('soloHuntAnalyzer.configManager.saveModal.preview')}:
-              </PreviewLabel>
-              <PreviewList>
+              </ConfigurationManagerPreviewLabel>
+              <ConfigurationManagerPreviewList>
                 <li>📦 {customItems.length} {t('soloHuntAnalyzer.configManager.saveModal.itemsCount')}</li>
                 {goldTokenPrice > 0 && (
                   <li>GT: {formatGPValue(goldTokenPrice).formatted} GP</li>
@@ -353,10 +353,10 @@ export default function ConfigurationManager({
                 {silverTokenPrice > 0 && (
                   <li>ST: {formatGPValue(silverTokenPrice).formatted} GP</li>
                 )}
-              </PreviewList>
-            </ConfigPreview>
+              </ConfigurationManagerPreviewList>
+            </ConfigurationManagerPreview>
 
-            <ModalActions>
+            <ConfigurationManagerModalActions>
               <Button
                 variant="primary"
                 onClick={handleSaveConfiguration}
@@ -375,7 +375,7 @@ export default function ConfigurationManager({
               >
                 {t('soloHuntAnalyzer.configManager.saveModal.cancelButton')}
               </Button>
-            </ModalActions>
+            </ConfigurationManagerModalActions>
           </ModalContent>
         </ModalOverlay>
       )}
@@ -397,11 +397,11 @@ export default function ConfigurationManager({
               {t('soloHuntAnalyzer.configManager.editModal.title')}
             </h3>
 
-            <FormGroup>
+            <ConfigurationManagerFormGroup>
               <label htmlFor="edit-config-name-input">
                 {t('soloHuntAnalyzer.configManager.editModal.nameLabel')}:
               </label>
-              <ConfigNameInput
+              <ConfigurationManagerNameInput
                 id="edit-config-name-input"
                 type="text"
                 value={editingConfigName}
@@ -415,9 +415,9 @@ export default function ConfigurationManager({
                   }
                 }}
               />
-            </FormGroup>
+            </ConfigurationManagerFormGroup>
 
-            <ModalActions>
+            <ConfigurationManagerModalActions>
               <Button
                 variant="primary"
                 onClick={handleSaveEditedName}
@@ -437,7 +437,7 @@ export default function ConfigurationManager({
               >
                 {t('soloHuntAnalyzer.configManager.editModal.cancelButton')}
               </Button>
-            </ModalActions>
+            </ConfigurationManagerModalActions>
           </ModalContent>
         </ModalOverlay>
       )}
