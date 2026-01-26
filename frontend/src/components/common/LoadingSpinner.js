@@ -7,9 +7,9 @@ import { SpinnerContainer, Spinner, LoadingMessage } from './LoadingSpinner.styl
 
 export default function LoadingSpinner({ message = 'Calculating...' }) {
   return (
-    <SpinnerContainer>
+    <SpinnerContainer data-cy="loading-spinner">
       <Spinner />
-      <LoadingMessage>{message}</LoadingMessage>
+      <LoadingMessage data-cy="loading-message">{message}</LoadingMessage>
     </SpinnerContainer>
   );
 }

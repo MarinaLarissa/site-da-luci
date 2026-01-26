@@ -1,8 +1,8 @@
 # Refatoração: Nomenclatura de Styled-Components e Atributos data-cy - site-da-luci
 
 **Data de criação**: 2026-01-19
-**Última atualização**: 2026-01-20
-**Status**: ⏸️ PLANEJAMENTO (Análise Profunda Completa)
+**Última atualização**: 2026-01-21
+**Status**: 🚀 EM EXECUÇÃO (16/32 ETAPAs Completas - 50%)
 **Dependência**: FASE 3 completa (CSS → styled-components migration 100%)
 **Objetivo**: Melhorar identificação de componentes e cobertura de testes Cypress
 **Análise**: ✅ 100% do código analisado (32 componentes, 4.333 linhas)
@@ -1351,7 +1351,102 @@ Executar validação completa após:
 
 ## FASE 3 - Execução
 
-*Aguardando aprovação do plano*
+**Status**: 🚀 EM ANDAMENTO
+**Progresso**: 16/32 ETAPAs (50%)
+**Última sessão**: 2026-01-21
+
+### Progresso por Fase
+
+| Fase | ETAPAs | Status | Progresso |
+|------|--------|--------|-----------|
+| FASE 0: Setup e Consolidação | 0.5-6 | ✅ COMPLETA | 7/7 (100%) |
+| FASE 3: LootSplitCalculator | 7-15 | ✅ COMPLETA | 9/9 (100%) |
+| FASE 4: HuntHistory | 16-18 | ⏸️ NÃO INICIADA | 0/3 (0%) |
+| FASE 5: SoloHuntAnalyzer | 19-24 | 🚀 EM ANDAMENTO | 0/6 (0%) |
+| FASE 6: ImbuementCalculator | 25-26 | ⏸️ NÃO INICIADA | 0/2 (0%) |
+| FASE 7: Auditoria + Validação | 27-31 | ⏸️ NÃO INICIADA | 0/5 (0%) |
+
+### Checklist de ETAPAs
+
+**FASE 0: Setup e Consolidação** ✅
+- [x] ETAPA 0.5: Consolidar Shared Components Duplicados (2026-01-20)
+- [x] ETAPA 1: Criar Guia de Nomenclatura (2026-01-20)
+- [x] ETAPA 2: Refatorar Button.js (2026-01-20)
+- [x] ETAPA 3: Refatorar ErrorMessage.js (2026-01-20)
+- [x] ETAPA 4: Refatorar Tooltip.js (2026-01-20)
+- [x] ETAPA 5: Refatorar Sidebar.js (2026-01-20)
+- [x] ETAPA 6: Refatorar LanguageSelector.js (2026-01-20)
+
+**FASE 3: LootSplitCalculator** ✅
+- [x] ETAPA 7: Refatorar InputSection (2026-01-20)
+- [x] ETAPA 8: Refatorar PlayerCard (2026-01-20)
+- [x] ETAPA 9: Refatorar PlayerStatsRow (2026-01-20)
+- [x] ETAPA 10: Refatorar TransferList (2026-01-20)
+- [x] ETAPA 11: Refatorar ResultsSection (2026-01-20)
+- [x] ETAPA 12: Refatorar PlayerList (2026-01-20)
+- [x] ETAPA 13: Refatorar DamageHealingCard (2026-01-20)
+- [x] ETAPA 14: Refatorar DamageHealingSection (2026-01-20)
+- [x] ETAPA 15: Refatorar LootSplitCalculator (2026-01-21)
+
+**FASE 5: SoloHuntAnalyzer** 🚀
+- [x] ETAPA 16: Refatorar SoloHuntAnalyzer (componente principal) (2026-01-21)
+- [ ] ETAPA 17: Refatorar InputPanel (SessionDataInput)
+- [ ] ETAPA 18: Refatorar ItemCostManager
+- [ ] ETAPA 19: Refatorar ConfigurationManager
+- [ ] ETAPA 20: Refatorar SoloHuntResults
+- [ ] ETAPA 21: Refatorar HuntHistory interno
+
+**FASE 4: HuntHistory** ⏸️
+- [ ] ETAPA 22: Refatorar HuntHistoryControls
+- [ ] ETAPA 23: Refatorar HuntHistoryItem
+- [ ] ETAPA 24: Refatorar HuntHistoryDrawer
+
+**FASE 6: ImbuementCalculator** ⏸️
+- [ ] ETAPA 25: Refatorar ImbuementBlock
+- [ ] ETAPA 26: Refatorar ImbuementCalculator
+
+**FASE 7: Auditoria + Validação** ⏸️
+- [ ] ETAPA 27: Auditoria de Nomenclatura
+- [ ] ETAPA 28: Auditoria de data-cy
+- [ ] ETAPA 29: Validação Build e Lint
+- [ ] ETAPA 30: Validação Final e Documentação
+- [ ] ETAPA 31: Auditoria Detalhada de Valores Calculados
+
+### Métricas Atuais
+
+| Métrica | Antes | Atual | Meta | Progresso |
+|---------|-------|-------|------|-----------|
+| ETAPAs Completas | 0/32 | 16/32 | 32/32 | 50% |
+| Styled-components renomeados | 0 | ~120 | ~178 | 67% |
+| Data-cy adicionados | ~20 | ~40 | 100-120 | 40% |
+| Features completas | 0/4 | 1/4 | 4/4 | 25% |
+
+### Commits Realizados
+
+1. `docs(standards): add naming conventions` (ETAPA 1)
+2. `refactor(shared): consolidate duplicate components` (ETAPA 0.5)
+3. `refactor(common): improve Button naming and add data-cy` (ETAPA 2)
+4. `refactor(common): improve ErrorMessage naming and add data-cy` (ETAPA 3)
+5. `refactor(common): improve Tooltip naming` (ETAPA 4)
+6. `refactor(layout): improve Sidebar naming and add data-cy` (ETAPA 5)
+7. `refactor(i18n): improve LanguageSelector naming` (ETAPA 6)
+8. `refactor(loot-calculator): improve InputSection naming and add data-cy` (ETAPA 7)
+9. `refactor(loot-calculator): improve PlayerCard naming and add data-cy` (ETAPA 8)
+10. `refactor(loot-calculator): improve PlayerStatsRow naming and add data-cy` (ETAPA 9)
+11. `refactor(loot-calculator): improve TransferList naming and add data-cy` (ETAPA 10)
+12. `refactor(loot-calculator): improve ResultsSection naming and add data-cy` (ETAPA 11)
+13. `refactor(loot-calculator): improve PlayerList naming and add data-cy` (ETAPA 12)
+14. `refactor(loot-calculator): improve DamageHealingCard naming and add data-cy` (ETAPA 13)
+15. `refactor(loot-calculator): improve DamageHealingSection naming and add data-cy` (ETAPA 14)
+16. `refactor(loot-calculator): improve LootSplitCalculator naming and add data-cy` (ETAPA 15)
+17. `refactor(solo-hunt): improve SoloHuntAnalyzer naming and add data-cy` (ETAPA 16)
+
+### Próxima ETAPA
+
+**ETAPA 17**: Refatorar SessionDataInput (SoloHuntAnalyzer)
+- Renomear componentes styled com prefixo SessionDataInput
+- Adicionar data-cy em textarea e botões
+- Validar build e commit
 
 ---
 

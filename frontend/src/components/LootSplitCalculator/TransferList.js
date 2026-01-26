@@ -66,12 +66,12 @@ export default function TransferList({ transfers, copyableText }) {
               }
             }}
           >
-            <TransferFrom>{transfer.from}</TransferFrom>
+            <TransferFrom data-cy="transfer-from">{transfer.from}</TransferFrom>
             <TransferArrow>→</TransferArrow>
-            <TransferTo>{transfer.to}</TransferTo>
-            <TransferAmount>{formatGold(transfer.amount)}</TransferAmount>
+            <TransferTo data-cy="transfer-to">{transfer.to}</TransferTo>
+            <TransferAmount data-cy="transfer-amount">{formatGold(transfer.amount)}</TransferAmount>
             {copiedIndex === index && (
-              <TransferCopiedIndicator>{t('calculator.resultsSection.transferList.copiedButton')}</TransferCopiedIndicator>
+              <TransferCopiedIndicator data-cy="transfer-copied-indicator">{t('calculator.resultsSection.transferList.copiedButton')}</TransferCopiedIndicator>
             )}
           </TransferItem>
         ))}

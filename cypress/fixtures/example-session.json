@@ -1,0 +1,23 @@
+{
+  "sessionData": "Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53\nSession: 03:08h\nLoot Type: Leader\nLoot: 12,937,605\nSupplies: 1,051,291\nBalance: 11,886,314\n\nLofi Shades (Leader)\n  Loot: 12,120,799\n  Supplies: 179,781\n  Balance: 11,941,018\n  Damage: 17,660,082\n  Healing: 785,634\n\nLuciana Burks\n  Loot: 277,020\n  Supplies: 381,162\n  Balance: -104,142\n  Damage: 17,145,590\n  Healing: 9,169,753\n\nYoung Vex\n  Loot: 539,786\n  Supplies: 490,348\n  Balance: 49,438\n  Damage: 18,737,566\n  Healing: 2,666,860",
+  "expectedResults": {
+    "totalBalance": "11,886,314",
+    "fairShare": "3,962,105",
+    "activePlayers": 3,
+    "players": [
+      {
+        "name": "Lofi Shades",
+        "isLeader": true,
+        "balance": 11941018
+      },
+      {
+        "name": "Luciana Burks",
+        "balance": -104142
+      },
+      {
+        "name": "Young Vex",
+        "balance": 49438
+      }
+    ]
+  }
+}

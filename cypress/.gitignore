@@ -1,0 +1,14 @@
+# Cypress artifacts
+screenshots/
+videos/
+downloads/
+
+# Cypress cache
+.cache/
+
+# Test results
+results/
+reports/
+
+# Node modules (if Cypress has its own)
+node_modules/

@@ -42,7 +42,7 @@ export default function HuntHistoryDrawer({
       {isOpen && <DrawerOverlay onClick={onClose} />}
 
       {/* Drawer */}
-      <DrawerContainer $isOpen={isOpen}>
+      <DrawerContainer $isOpen={isOpen} data-cy="hunt-history-drawer">
         <DrawerHeader>
           <DrawerTitle>
             📜 {t('huntHistory.title')}
@@ -50,6 +50,7 @@ export default function HuntHistoryDrawer({
           <CloseButton
             onClick={onClose}
             aria-label={t('huntHistory.closeButton')}
+            data-cy="hunt-history-close-button"
           >
             ✕
           </CloseButton>

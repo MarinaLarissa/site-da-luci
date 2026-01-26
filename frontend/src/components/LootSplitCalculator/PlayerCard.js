@@ -24,9 +24,9 @@ export default function PlayerCard({ player }) {
   return (
     <PlayerCardContainer data-cy="player-card">
       <PlayerCardHeader>
-        <PlayerCardName>
+        <PlayerCardName data-cy="player-name">
           {player.name}
-          {player.isLeader && <PlayerCardLeaderBadge>{t('calculator.resultsSection.playerList.leaderBadge')}</PlayerCardLeaderBadge>}
+          {player.isLeader && <PlayerCardLeaderBadge data-cy="player-leader-badge">{t('calculator.resultsSection.playerList.leaderBadge')}</PlayerCardLeaderBadge>}
         </PlayerCardName>
         <PlayerCardRole style={{ color: getRoleColor(player.role) }}>
           {getRoleLabel(player.role, t)}
@@ -35,15 +35,15 @@ export default function PlayerCard({ player }) {
       <PlayerCardStats>
         <PlayerCardStat>
           <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.balance')}:</PlayerCardStatLabel>
-          <PlayerCardStatValue>{formatGold(player.balance)}</PlayerCardStatValue>
+          <PlayerCardStatValue data-cy="player-balance">{formatGold(player.balance)}</PlayerCardStatValue>
         </PlayerCardStat>
         <PlayerCardStat>
           <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.netBalance')}:</PlayerCardStatLabel>
-          <PlayerCardStatValue>{formatGold(player.netBalance)}</PlayerCardStatValue>
+          <PlayerCardStatValue data-cy="player-net-balance">{formatGold(player.netBalance)}</PlayerCardStatValue>
         </PlayerCardStat>
         <PlayerCardStat>
           <PlayerCardStatLabel>{t('calculator.resultsSection.playerList.difference')}:</PlayerCardStatLabel>
-          <PlayerCardStatValue $variant={player.difference >= 0 ? 'positive' : 'negative'}>
+          <PlayerCardStatValue data-cy="player-difference" $variant={player.difference >= 0 ? 'positive' : 'negative'}>
             {player.difference >= 0 ? '+' : ''}
             {formatGold(Math.abs(player.difference))}
           </PlayerCardStatValue>

@@ -11,7 +11,7 @@ export default function ErrorMessage({ message }) {
   return (
     <ErrorMessageContainer data-cy="error-message">
       <ErrorMessageIcon>⚠️</ErrorMessageIcon>
-      <ErrorMessageText>{message}</ErrorMessageText>
+      <ErrorMessageText data-cy="error-message-text">{message}</ErrorMessageText>
     </ErrorMessageContainer>
   );
 }

@@ -62,8 +62,8 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
   const timeStr = huntDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <HuntItemContainer>
-      <HuntItemHeader onClick={toggleExpand}>
+    <HuntItemContainer data-cy="hunt-history-item">
+      <HuntItemHeader onClick={toggleExpand} data-cy="hunt-history-item-header">
         <HuntItemMain>
           <HuntDate>
             <DateText>{dateStr}</DateText>
@@ -78,11 +78,13 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
           <DeleteButton
             onClick={handleDelete}
             aria-label={t('huntHistory.deleteButton')}
+            data-cy="hunt-history-delete-button"
           >
             🗑️
           </DeleteButton>
           <ExpandButton
             aria-label={expanded ? t('huntHistory.collapseButton') : t('huntHistory.expandButton')}
+            data-cy="hunt-history-expand-button"
           >
             {expanded ? '−' : '+'}
           </ExpandButton>
