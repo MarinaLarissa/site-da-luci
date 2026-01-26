@@ -5,13 +5,13 @@
 
 import styled, { css } from 'styled-components';
 
-export const ControlsContainer = styled.div`
+export const HuntHistoryControlsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 `;
 
-export const ControlsSection = styled.div`
+export const HuntHistoryControlsSection = styled.div`
   padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
@@ -25,21 +25,21 @@ export const ControlsSection = styled.div`
     `}
 `;
 
-export const ControlsTitle = styled.h4`
+export const HuntHistoryControlsTitle = styled.h4`
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #333;
 `;
 
-export const ExportTypeSelector = styled.div`
+export const HuntHistoryControlsExportTypeSelector = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
 `;
 
-export const RadioLabel = styled.label`
+export const HuntHistoryControlsRadioLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -57,7 +57,7 @@ export const RadioLabel = styled.label`
   }
 `;
 
-export const InputGroup = styled.div`
+export const HuntHistoryControlsInputGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -70,7 +70,7 @@ export const InputGroup = styled.div`
   }
 `;
 
-export const NumberInput = styled.input`
+export const HuntHistoryControlsNumberInput = styled.input`
   width: 80px;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -78,12 +78,12 @@ export const NumberInput = styled.input`
   font-size: 0.95rem;
 `;
 
-export const InputHint = styled.span`
+export const HuntHistoryControlsInputHint = styled.span`
   font-size: 0.9rem;
   color: #666;
 `;
 
-export const DateRangeInputs = styled.div`
+export const HuntHistoryControlsDateRangeInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -96,7 +96,7 @@ export const DateRangeInputs = styled.div`
   }
 `;
 
-export const InputLabel = styled.label`
+export const HuntHistoryControlsInputLabel = styled.label`
   font-size: 0.9rem;
   color: #666;
   min-width: 80px;
@@ -107,7 +107,7 @@ export const InputLabel = styled.label`
   }
 `;
 
-export const DateInput = styled.input`
+export const HuntHistoryControlsDateInput = styled.input`
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -139,7 +139,7 @@ const buttonBaseStyles = css`
   }
 `;
 
-export const ExportButton = styled.button`
+export const HuntHistoryControlsExportButton = styled.button`
   ${buttonBaseStyles}
   background: #1976d2;
   color: white;
@@ -151,7 +151,7 @@ export const ExportButton = styled.button`
   }
 `;
 
-export const ClearAllButton = styled.button`
+export const HuntHistoryControlsClearAllButton = styled.button`
   ${buttonBaseStyles}
   background: #d32f2f;
   color: white;
@@ -163,7 +163,7 @@ export const ClearAllButton = styled.button`
   }
 `;
 
-export const WarningText = styled.p`
+export const HuntHistoryControlsWarningText = styled.p`
   margin-top: 0.75rem;
   font-size: 0.85rem;
   color: #d32f2f;

@@ -1,8 +1,8 @@
 # Refatoração: Nomenclatura de Styled-Components e Atributos data-cy - site-da-luci
 
 **Data de criação**: 2026-01-19
-**Última atualização**: 2026-01-21
-**Status**: 🚀 EM EXECUÇÃO (16/32 ETAPAs Completas - 50%)
+**Última atualização**: 2026-01-26
+**Status**: 🚀 EM EXECUÇÃO (21/32 ETAPAs Completas - 65.63%)
 **Dependência**: FASE 3 completa (CSS → styled-components migration 100%)
 **Objetivo**: Melhorar identificação de componentes e cobertura de testes Cypress
 **Análise**: ✅ 100% do código analisado (32 componentes, 4.333 linhas)
@@ -1352,8 +1352,8 @@ Executar validação completa após:
 ## FASE 3 - Execução
 
 **Status**: 🚀 EM ANDAMENTO
-**Progresso**: 16/32 ETAPAs (50%)
-**Última sessão**: 2026-01-21
+**Progresso**: 21/32 ETAPAs (65.63%)
+**Última sessão**: 2026-01-26
 
 ### Progresso por Fase
 
@@ -1361,8 +1361,8 @@ Executar validação completa após:
 |------|--------|--------|-----------|
 | FASE 0: Setup e Consolidação | 0.5-6 | ✅ COMPLETA | 7/7 (100%) |
 | FASE 3: LootSplitCalculator | 7-15 | ✅ COMPLETA | 9/9 (100%) |
-| FASE 4: HuntHistory | 16-18 | ⏸️ NÃO INICIADA | 0/3 (0%) |
-| FASE 5: SoloHuntAnalyzer | 19-24 | 🚀 EM ANDAMENTO | 0/6 (0%) |
+| FASE 5: SoloHuntAnalyzer | 16-21 | ✅ COMPLETA | 6/6 (100%) |
+| FASE 4: HuntHistory | 22-24 | 🚀 EM ANDAMENTO | 0/3 (0%) |
 | FASE 6: ImbuementCalculator | 25-26 | ⏸️ NÃO INICIADA | 0/2 (0%) |
 | FASE 7: Auditoria + Validação | 27-31 | ⏸️ NÃO INICIADA | 0/5 (0%) |
 
@@ -1388,15 +1388,15 @@ Executar validação completa após:
 - [x] ETAPA 14: Refatorar DamageHealingSection (2026-01-20)
 - [x] ETAPA 15: Refatorar LootSplitCalculator (2026-01-21)
 
-**FASE 5: SoloHuntAnalyzer** 🚀
+**FASE 5: SoloHuntAnalyzer** ✅
 - [x] ETAPA 16: Refatorar SoloHuntAnalyzer (componente principal) (2026-01-21)
-- [ ] ETAPA 17: Refatorar InputPanel (SessionDataInput)
-- [ ] ETAPA 18: Refatorar ItemCostManager
-- [ ] ETAPA 19: Refatorar ConfigurationManager
-- [ ] ETAPA 20: Refatorar SoloHuntResults
-- [ ] ETAPA 21: Refatorar HuntHistory interno
+- [x] ETAPA 17: Refatorar SessionDataInput (2026-01-21)
+- [x] ETAPA 18: Refatorar ItemCostManager (2026-01-21)
+- [x] ETAPA 19: Refatorar ConfigurationManager (2026-01-26)
+- [x] ETAPA 20: Refatorar SoloHuntResults (2026-01-26)
+- [x] ETAPA 21: Refatorar HuntHistory interno (2026-01-26)
 
-**FASE 4: HuntHistory** ⏸️
+**FASE 4: HuntHistory** 🚀
 - [ ] ETAPA 22: Refatorar HuntHistoryControls
 - [ ] ETAPA 23: Refatorar HuntHistoryItem
 - [ ] ETAPA 24: Refatorar HuntHistoryDrawer
@@ -1416,10 +1416,10 @@ Executar validação completa após:
 
 | Métrica | Antes | Atual | Meta | Progresso |
 |---------|-------|-------|------|-----------|
-| ETAPAs Completas | 0/32 | 16/32 | 32/32 | 50% |
-| Styled-components renomeados | 0 | ~120 | ~178 | 67% |
-| Data-cy adicionados | ~20 | ~40 | 100-120 | 40% |
-| Features completas | 0/4 | 1/4 | 4/4 | 25% |
+| ETAPAs Completas | 0/32 | 21/32 | 32/32 | 65.63% |
+| Styled-components renomeados | 0 | ~185 | ~178 | 100%+ |
+| Data-cy adicionados | ~20 | ~47 | 100-120 | 47% |
+| Features completas | 0/4 | 2/4 | 4/4 | 50% |
 
 ### Commits Realizados
 
@@ -1440,13 +1440,19 @@ Executar validação completa após:
 15. `refactor(loot-calculator): improve DamageHealingSection naming and add data-cy` (ETAPA 14)
 16. `refactor(loot-calculator): improve LootSplitCalculator naming and add data-cy` (ETAPA 15)
 17. `refactor(solo-hunt): improve SoloHuntAnalyzer naming and add data-cy` (ETAPA 16)
+18. `refactor(solo-hunt): improve SessionDataInput naming and add data-cy` (ETAPA 17)
+19. `refactor(solo-hunt): improve ItemCostManager naming and add data-cy` (ETAPA 18)
+20. `refactor(solo-hunt): improve ConfigurationManager component naming` (ETAPA 19)
+21. `refactor(solo-hunt): improve SoloHuntResults component naming` (ETAPA 20)
+22. `refactor(solo-hunt): improve internal HuntHistory component naming` (ETAPA 21)
 
 ### Próxima ETAPA
 
-**ETAPA 17**: Refatorar SessionDataInput (SoloHuntAnalyzer)
-- Renomear componentes styled com prefixo SessionDataInput
-- Adicionar data-cy em textarea e botões
+**ETAPA 22**: Refatorar HuntHistoryControls (HuntHistory drawer principal)
+- Renomear componentes styled com prefixo HuntHistoryControls
+- Adicionar data-cy nos controles
 - Validar build e commit
+- Componente separado do HuntHistory interno do SoloHuntAnalyzer
 
 ---
 

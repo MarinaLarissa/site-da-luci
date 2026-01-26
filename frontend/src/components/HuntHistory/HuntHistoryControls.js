@@ -7,20 +7,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
-  ControlsContainer,
-  ControlsSection,
-  ControlsTitle,
-  ExportTypeSelector,
-  RadioLabel,
-  InputGroup,
-  NumberInput,
-  InputHint,
-  DateRangeInputs,
-  InputLabel,
-  DateInput,
-  ExportButton,
-  ClearAllButton,
-  WarningText,
+  HuntHistoryControlsContainer,
+  HuntHistoryControlsSection,
+  HuntHistoryControlsTitle,
+  HuntHistoryControlsExportTypeSelector,
+  HuntHistoryControlsRadioLabel,
+  HuntHistoryControlsInputGroup,
+  HuntHistoryControlsNumberInput,
+  HuntHistoryControlsInputHint,
+  HuntHistoryControlsDateRangeInputs,
+  HuntHistoryControlsInputLabel,
+  HuntHistoryControlsDateInput,
+  HuntHistoryControlsExportButton,
+  HuntHistoryControlsClearAllButton,
+  HuntHistoryControlsWarningText,
 } from './HuntHistoryControls.styles';
 
 export default function HuntHistoryControls({
@@ -56,12 +56,12 @@ export default function HuntHistoryControls({
   };
 
   return (
-    <ControlsContainer>
-      <ControlsSection>
-        <ControlsTitle>{t('huntHistory.controls.exportTitle')}</ControlsTitle>
+    <HuntHistoryControlsContainer data-cy="hunt-history-controls">
+      <HuntHistoryControlsSection>
+        <HuntHistoryControlsTitle>{t('huntHistory.controls.exportTitle')}</HuntHistoryControlsTitle>
 
-        <ExportTypeSelector>
-          <RadioLabel>
+        <HuntHistoryControlsExportTypeSelector>
+          <HuntHistoryControlsRadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -70,9 +70,9 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportAll')} ({totalHunts})</span>
-          </RadioLabel>
+          </HuntHistoryControlsRadioLabel>
 
-          <RadioLabel>
+          <HuntHistoryControlsRadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -81,21 +81,21 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportLastN')}</span>
-          </RadioLabel>
+          </HuntHistoryControlsRadioLabel>
           {exportOptions.type === 'lastN' && (
-            <InputGroup>
-              <NumberInput
+            <HuntHistoryControlsInputGroup>
+              <HuntHistoryControlsNumberInput
                 type="number"
                 min="1"
                 max={totalHunts}
                 value={exportOptions.count}
                 onChange={handleCountChange}
               />
-              <InputHint>{t('huntHistory.controls.huntsLabel')}</InputHint>
-            </InputGroup>
+              <HuntHistoryControlsInputHint>{t('huntHistory.controls.huntsLabel')}</HuntHistoryControlsInputHint>
+            </HuntHistoryControlsInputGroup>
           )}
 
-          <RadioLabel>
+          <HuntHistoryControlsRadioLabel>
             <input
               type="radio"
               name="exportType"
@@ -104,42 +104,42 @@ export default function HuntHistoryControls({
               onChange={handleTypeChange}
             />
             <span>{t('huntHistory.controls.exportDateRange')}</span>
-          </RadioLabel>
+          </HuntHistoryControlsRadioLabel>
           {exportOptions.type === 'dateRange' && (
-            <DateRangeInputs>
-              <InputGroup>
-                <InputLabel>{t('huntHistory.controls.startDate')}:</InputLabel>
-                <DateInput
+            <HuntHistoryControlsDateRangeInputs>
+              <HuntHistoryControlsInputGroup>
+                <HuntHistoryControlsInputLabel>{t('huntHistory.controls.startDate')}:</HuntHistoryControlsInputLabel>
+                <HuntHistoryControlsDateInput
                   type="date"
                   value={exportOptions.startDate || ''}
                   onChange={handleStartDateChange}
                 />
-              </InputGroup>
-              <InputGroup>
-                <InputLabel>{t('huntHistory.controls.endDate')}:</InputLabel>
-                <DateInput
+              </HuntHistoryControlsInputGroup>
+              <HuntHistoryControlsInputGroup>
+                <HuntHistoryControlsInputLabel>{t('huntHistory.controls.endDate')}:</HuntHistoryControlsInputLabel>
+                <HuntHistoryControlsDateInput
                   type="date"
                   value={exportOptions.endDate || ''}
                   onChange={handleEndDateChange}
                 />
-              </InputGroup>
-            </DateRangeInputs>
+              </HuntHistoryControlsInputGroup>
+            </HuntHistoryControlsDateRangeInputs>
           )}
-        </ExportTypeSelector>
+        </HuntHistoryControlsExportTypeSelector>
 
-        <ExportButton onClick={onExport}>
+        <HuntHistoryControlsExportButton onClick={onExport}>
           📥 {t('huntHistory.controls.exportButton')}
-        </ExportButton>
-      </ControlsSection>
+        </HuntHistoryControlsExportButton>
+      </HuntHistoryControlsSection>
 
-      <ControlsSection $dangerZone>
-        <ControlsTitle>{t('huntHistory.controls.dangerZone')}</ControlsTitle>
-        <ClearAllButton onClick={handleClearHistory}>
+      <HuntHistoryControlsSection $dangerZone>
+        <HuntHistoryControlsTitle>{t('huntHistory.controls.dangerZone')}</HuntHistoryControlsTitle>
+        <HuntHistoryControlsClearAllButton onClick={handleClearHistory}>
           🗑️ {t('huntHistory.controls.clearAllButton')}
-        </ClearAllButton>
-        <WarningText>{t('huntHistory.controls.clearWarning')}</WarningText>
-      </ControlsSection>
-    </ControlsContainer>
+        </HuntHistoryControlsClearAllButton>
+        <HuntHistoryControlsWarningText>{t('huntHistory.controls.clearWarning')}</HuntHistoryControlsWarningText>
+      </HuntHistoryControlsSection>
+    </HuntHistoryControlsContainer>
   );
 }
 
