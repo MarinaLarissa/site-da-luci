@@ -14,7 +14,7 @@ const fadeIn = keyframes`
   }
 `;
 
-export const DrawerOverlay = styled.div`
+export const HuntHistoryDrawerOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@ export const DrawerOverlay = styled.div`
   animation: ${fadeIn} 0.3s ease;
 `;
 
-export const DrawerContainer = styled.div`
+export const HuntHistoryDrawerContainer = styled.div`
   position: fixed;
   top: 0;
   right: ${({ $isOpen }) => ($isOpen ? '0' : '-480px')};
@@ -45,7 +45,7 @@ export const DrawerContainer = styled.div`
   }
 `;
 
-export const DrawerHeader = styled.div`
+export const HuntHistoryDrawerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +61,7 @@ export const DrawerHeader = styled.div`
   }
 `;
 
-export const DrawerTitle = styled.h2`
+export const HuntHistoryDrawerTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
@@ -73,7 +73,7 @@ export const DrawerTitle = styled.h2`
   }
 `;
 
-export const CloseButton = styled.button`
+export const HuntHistoryDrawerCloseButton = styled.button`
   background: none;
   border: none;
   color: #e0e0e0;
@@ -89,7 +89,7 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const DrawerContent = styled.div`
+export const HuntHistoryDrawerContent = styled.div`
   flex: 1;
   overflow-y: auto;
   padding: 1.5rem;
@@ -121,7 +121,7 @@ export const DrawerContent = styled.div`
   }
 `;
 
-export const HuntCountInfo = styled.div`
+export const HuntHistoryDrawerHuntCountInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -131,37 +131,37 @@ export const HuntCountInfo = styled.div`
   border-left: 4px solid #c39bd3;
 `;
 
-export const CountText = styled.span`
+export const HuntHistoryDrawerCountText = styled.span`
   font-size: 0.95rem;
   color: #e0e0e0;
   font-weight: 600;
 `;
 
-export const LimitWarning = styled.span`
+export const HuntHistoryDrawerLimitWarning = styled.span`
   font-size: 0.85rem;
   color: #ff9800;
   font-weight: 500;
 `;
 
-export const HuntListSection = styled.div`
+export const HuntHistoryDrawerHuntListSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
 `;
 
-export const ListSectionTitle = styled.h3`
+export const HuntHistoryDrawerListSectionTitle = styled.h3`
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #e0e0e0;
 `;
 
-export const HuntList = styled.div`
+export const HuntHistoryDrawerHuntList = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const EmptyState = styled.div`
+export const HuntHistoryDrawerEmptyState = styled.div`
   padding: 2rem;
   text-align: center;
   color: #9e9e9e;

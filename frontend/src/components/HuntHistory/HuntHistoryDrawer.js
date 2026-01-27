@@ -9,19 +9,19 @@ import { useTranslation } from 'react-i18next';
 import HuntHistoryItem from './HuntHistoryItem';
 import HuntHistoryControls from './HuntHistoryControls';
 import {
-  DrawerOverlay,
-  DrawerContainer,
-  DrawerHeader,
-  DrawerTitle,
-  CloseButton,
-  DrawerContent,
-  HuntCountInfo,
-  CountText,
-  LimitWarning,
-  HuntListSection,
-  ListSectionTitle,
-  HuntList,
-  EmptyState,
+  HuntHistoryDrawerOverlay,
+  HuntHistoryDrawerContainer,
+  HuntHistoryDrawerHeader,
+  HuntHistoryDrawerTitle,
+  HuntHistoryDrawerCloseButton,
+  HuntHistoryDrawerContent,
+  HuntHistoryDrawerHuntCountInfo,
+  HuntHistoryDrawerCountText,
+  HuntHistoryDrawerLimitWarning,
+  HuntHistoryDrawerHuntListSection,
+  HuntHistoryDrawerListSectionTitle,
+  HuntHistoryDrawerHuntList,
+  HuntHistoryDrawerEmptyState,
 } from './HuntHistoryDrawer.styles';
 
 export default function HuntHistoryDrawer({
@@ -39,35 +39,35 @@ export default function HuntHistoryDrawer({
   return (
     <>
       {/* Overlay */}
-      {isOpen && <DrawerOverlay onClick={onClose} />}
+      {isOpen && <HuntHistoryDrawerOverlay onClick={onClose} />}
 
       {/* Drawer */}
-      <DrawerContainer $isOpen={isOpen} data-cy="hunt-history-drawer">
-        <DrawerHeader>
-          <DrawerTitle>
+      <HuntHistoryDrawerContainer $isOpen={isOpen} data-cy="hunt-history-drawer">
+        <HuntHistoryDrawerHeader>
+          <HuntHistoryDrawerTitle>
             📜 {t('huntHistory.title')}
-          </DrawerTitle>
-          <CloseButton
+          </HuntHistoryDrawerTitle>
+          <HuntHistoryDrawerCloseButton
             onClick={onClose}
             aria-label={t('huntHistory.closeButton')}
             data-cy="hunt-history-close-button"
           >
             ✕
-          </CloseButton>
-        </DrawerHeader>
+          </HuntHistoryDrawerCloseButton>
+        </HuntHistoryDrawerHeader>
 
-        <DrawerContent>
+        <HuntHistoryDrawerContent>
           {/* Hunt count info */}
-          <HuntCountInfo>
-            <CountText>
+          <HuntHistoryDrawerHuntCountInfo>
+            <HuntHistoryDrawerCountText>
               {t('huntHistory.huntCount', { count: hunts.length, max: 62 })}
-            </CountText>
+            </HuntHistoryDrawerCountText>
             {hunts.length >= 62 && (
-              <LimitWarning>
+              <HuntHistoryDrawerLimitWarning>
                 ⚠️ {t('huntHistory.limitWarning')}
-              </LimitWarning>
+              </HuntHistoryDrawerLimitWarning>
             )}
-          </HuntCountInfo>
+          </HuntHistoryDrawerHuntCountInfo>
 
           {/* Controls */}
           <HuntHistoryControls
@@ -79,14 +79,14 @@ export default function HuntHistoryDrawer({
           />
 
           {/* Hunt list */}
-          <HuntListSection>
-            <ListSectionTitle>{t('huntHistory.listTitle')}</ListSectionTitle>
+          <HuntHistoryDrawerHuntListSection>
+            <HuntHistoryDrawerListSectionTitle>{t('huntHistory.listTitle')}</HuntHistoryDrawerListSectionTitle>
             {hunts.length === 0 ? (
-              <EmptyState>
+              <HuntHistoryDrawerEmptyState>
                 <p>{t('huntHistory.emptyState')}</p>
-              </EmptyState>
+              </HuntHistoryDrawerEmptyState>
             ) : (
-              <HuntList>
+              <HuntHistoryDrawerHuntList>
                 {hunts.map(hunt => (
                   <HuntHistoryItem
                     key={hunt.id}
@@ -94,11 +94,11 @@ export default function HuntHistoryDrawer({
                     onDelete={onDeleteHunt}
                   />
                 ))}
-              </HuntList>
+              </HuntHistoryDrawerHuntList>
             )}
-          </HuntListSection>
-        </DrawerContent>
-      </DrawerContainer>
+          </HuntHistoryDrawerHuntListSection>
+        </HuntHistoryDrawerContent>
+      </HuntHistoryDrawerContainer>
     </>
   );
 }
