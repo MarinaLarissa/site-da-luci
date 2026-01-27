@@ -19,7 +19,7 @@ export const ImbuementBlockContainer = styled.div`
   }
 `;
 
-export const ImbuementTitle = styled.h3`
+export const ImbuementBlockTitle = styled.h3`
   font-size: 24px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text.primary};
@@ -31,14 +31,14 @@ export const ImbuementTitle = styled.h3`
   padding-bottom: 12px;
 `;
 
-export const ImbuementDescription = styled.span`
+export const ImbuementBlockDescription = styled.span`
   font-size: 14px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.accent.primary};
   font-style: italic;
 `;
 
-export const ItemPrices = styled.div`
+export const ImbuementBlockItemPrices = styled.div`
   margin-top: 20px;
   margin-bottom: 24px;
   display: flex;
@@ -46,7 +46,7 @@ export const ItemPrices = styled.div`
   gap: 12px;
 `;
 
-export const PriceInputRow = styled.div`
+export const ImbuementBlockPriceInputRow = styled.div`
   display: grid;
   grid-template-columns: 32px 1fr 120px 40px;
   align-items: center;
@@ -95,7 +95,7 @@ export const PriceInputRow = styled.div`
   }
 `;
 
-export const CopyButton = styled.button`
+export const ImbuementBlockCopyButton = styled.button`
   width: 32px;
   height: 32px;
   border: none;
@@ -119,26 +119,26 @@ export const CopyButton = styled.button`
   }
 `;
 
-export const GPLabel = styled.span`
+export const ImbuementBlockGPLabel = styled.span`
   font-size: 12px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text.muted};
 `;
 
-export const Calculations = styled.div`
+export const ImbuementBlockCalculations = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-export const CalculationRow = styled.div`
+export const ImbuementBlockCalculationRow = styled.div`
   background: ${({ theme }) => theme.colors.bg.input};
   border-radius: 8px;
   padding: 16px;
   border-left: 4px solid ${({ theme }) => theme.colors.accent.primaryDark};
 `;
 
-export const TierName = styled.div`
+export const ImbuementBlockTierName = styled.div`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text.primary};
@@ -147,14 +147,14 @@ export const TierName = styled.div`
   letter-spacing: 0.5px;
 `;
 
-export const CostComparison = styled.div`
+export const ImbuementBlockCostComparison = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-bottom: 12px;
 `;
 
-export const CostOption = styled.div`
+export const ImbuementBlockCostOption = styled.div`
   padding: 12px;
   border-radius: 8px;
   background: ${({ theme }) => theme.colors.bg.darker};
@@ -186,13 +186,13 @@ export const CostOption = styled.div`
   }
 `;
 
-export const CostValue = styled.span`
+export const ImbuementBlockCostValue = styled.span`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.accent.primaryDark};
 `;
 
-export const CostBreakdown = styled.div`
+export const ImbuementBlockCostBreakdown = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -200,7 +200,7 @@ export const CostBreakdown = styled.div`
   margin-top: 8px;
 `;
 
-export const BreakdownLine = styled.div`
+export const ImbuementBlockBreakdownLine = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -218,18 +218,18 @@ export const BreakdownLine = styled.div`
   `}
 `;
 
-export const BreakdownLabel = styled.span`
+export const ImbuementBlockBreakdownLabel = styled.span`
   color: ${({ theme }) => theme.colors.text.muted};
   font-size: 11px;
 `;
 
-export const BreakdownValue = styled.span`
+export const ImbuementBlockBreakdownValue = styled.span`
   color: ${({ theme }) => theme.colors.text.primary};
   font-weight: 600;
   font-size: 12px;
 `;
 
-export const Savings = styled.div`
+export const ImbuementBlockSavings = styled.div`
   background: ${({ theme }) => theme.colors.warningBg};
   border: 1px solid ${({ theme }) => theme.colors.warningBorder};
   border-radius: 6px;
@@ -241,7 +241,7 @@ export const Savings = styled.div`
   margin-bottom: 12px;
 `;
 
-export const BestOptionHighlight = styled.div`
+export const ImbuementBlockBestOptionHighlight = styled.div`
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
   border: 2px solid ${({ theme }) => theme.colors.successAlt};
   border-radius: 10px;
@@ -262,7 +262,7 @@ export const BestOptionHighlight = styled.div`
   }
 `;
 
-export const BestBadge = styled.span`
+export const ImbuementBlockBestBadge = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -277,7 +277,7 @@ export const BestBadge = styled.span`
   letter-spacing: 0.5px;
 `;
 
-export const BestOptionContent = styled.div`
+export const ImbuementBlockBestOptionContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -289,14 +289,14 @@ export const BestOptionContent = styled.div`
   }
 `;
 
-export const BestOptionDescription = styled.p`
+export const ImbuementBlockBestOptionDescription = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.colors.text.muted};
   margin: 0;
   font-style: italic;
 `;
 
-export const BestOptionCost = styled.div`
+export const ImbuementBlockBestOptionCost = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -318,7 +318,7 @@ export const BestOptionCost = styled.div`
   }
 `;
 
-export const CopyToAnalyzerButton = styled.button`
+export const ImbuementBlockCopyToAnalyzerButton = styled.button`
   width: 100%;
   padding: 12px 16px;
   background: ${({ theme }) => theme.gradients.primary};
@@ -341,14 +341,14 @@ export const CopyToAnalyzerButton = styled.button`
   }
 `;
 
-export const TierToggles = styled.div`
+export const ImbuementBlockTierToggles = styled.div`
   display: flex;
   gap: 12px;
   margin-top: 16px;
   justify-content: center;
 `;
 
-export const ToggleTierButton = styled.button`
+export const ImbuementBlockToggleTierButton = styled.button`
   padding: 8px 16px;
   background: ${({ theme }) => theme.colors.bg.darker};
   color: ${({ theme }) => theme.colors.accent.primary};

@@ -11,30 +11,30 @@ import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import coinsIcon from '../../assets/tibia/coins.png';
 import {
   ImbuementBlockContainer,
-  ImbuementTitle,
-  ImbuementDescription,
-  ItemPrices,
-  PriceInputRow,
-  CopyButton,
-  GPLabel,
-  Calculations,
-  CalculationRow,
-  TierName,
-  CostComparison,
-  CostOption,
-  CostValue,
-  CostBreakdown,
-  BreakdownLine,
-  BreakdownLabel,
-  BreakdownValue,
-  Savings,
-  BestOptionHighlight,
-  BestBadge,
-  BestOptionContent,
-  BestOptionDescription,
-  BestOptionCost,
-  TierToggles,
-  ToggleTierButton,
+  ImbuementBlockTitle,
+  ImbuementBlockDescription,
+  ImbuementBlockItemPrices,
+  ImbuementBlockPriceInputRow,
+  ImbuementBlockCopyButton,
+  ImbuementBlockGPLabel,
+  ImbuementBlockCalculations,
+  ImbuementBlockCalculationRow,
+  ImbuementBlockTierName,
+  ImbuementBlockCostComparison,
+  ImbuementBlockCostOption,
+  ImbuementBlockCostValue,
+  ImbuementBlockCostBreakdown,
+  ImbuementBlockBreakdownLine,
+  ImbuementBlockBreakdownLabel,
+  ImbuementBlockBreakdownValue,
+  ImbuementBlockSavings,
+  ImbuementBlockBestOptionHighlight,
+  ImbuementBlockBestBadge,
+  ImbuementBlockBestOptionContent,
+  ImbuementBlockBestOptionDescription,
+  ImbuementBlockBestOptionCost,
+  ImbuementBlockTierToggles,
+  ImbuementBlockToggleTierButton,
 } from './ImbuementBlock.styles';
 
 export default function ImbuementBlock({
@@ -101,7 +101,7 @@ export default function ImbuementBlock({
   }, [imbuement.items, tiers]);
 
   // Helper function to get items cost breakdown (without service fee) (memoized)
-  const getItemsCostBreakdown = useMemo(() => {
+  const getItemsImbuementBlockCostBreakdown = useMemo(() => {
     return (tier) => {
       const tierIndex = tiers.indexOf(tier);
       let totalCost = 0;
@@ -128,14 +128,14 @@ export default function ImbuementBlock({
   }, [itemPrices, imbuement.items, tiers]);
 
   return (
-    <ImbuementBlockContainer>
-      <ImbuementTitle>
+    <ImbuementBlockContainer data-cy="imbuement-block">
+      <ImbuementBlockTitle>
         {imbuement.name}
-        <ImbuementDescription>{imbuement.description}</ImbuementDescription>
-      </ImbuementTitle>
+        <ImbuementBlockDescription>{imbuement.description}</ImbuementBlockDescription>
+      </ImbuementBlockTitle>
 
       {/* Item Price Inputs */}
-      <ItemPrices>
+      <ImbuementBlockItemPrices>
         {tiers.map(tier => {
           const items = imbuement.items[tier];
           return items.map(item => {
@@ -143,14 +143,14 @@ export default function ImbuementBlock({
             const tooltipText = `${item.name}\n\nQuantities needed:\n• Basic: ${getCumulativeQuantity(item.name, 'basic')}\n• Intricate: ${getCumulativeQuantity(item.name, 'intricate')}\n• Powerful: ${getCumulativeQuantity(item.name, 'powerful')}`;
 
             return (
-              <PriceInputRow key={item.name} title={tooltipText}>
-                <CopyButton
+              <ImbuementBlockPriceInputRow key={item.name} title={tooltipText}>
+                <ImbuementBlockCopyButton
                   onClick={() => onCopyItemName(item.name)}
                   title={t('imbuementCalculator.copyItemName')}
                   aria-label={t('imbuementCalculator.copyItemName')}
                 >
                   {copiedItem === item.name ? '✓' : '📋'}
-                </CopyButton>
+                </ImbuementBlockCopyButton>
                 <label>
                   {item.name} ({cumulativeQty}x):
                 </label>
@@ -161,128 +161,128 @@ export default function ImbuementBlock({
                   onChange={(e) => onPriceChange(item.name, e.target.value)}
                   placeholder="0"
                 />
-                <GPLabel>GP</GPLabel>
-              </PriceInputRow>
+                <ImbuementBlockGPLabel>GP</ImbuementBlockGPLabel>
+              </ImbuementBlockPriceInputRow>
             );
           });
         })}
-      </ItemPrices>
+      </ImbuementBlockItemPrices>
 
-      {/* Calculations per Tier */}
-      <Calculations>
+      {/* ImbuementBlockCalculations per Tier */}
+      <ImbuementBlockCalculations>
         {/* Powerful tier - always visible */}
         {(() => {
           const tier = 'powerful';
           const bestOption = getBestOption(imbuement.id, tier);
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
-          const itemsBreakdown = getItemsCostBreakdown(tier);
+          const itemsBreakdown = getItemsImbuementBlockCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
           const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <CalculationRow key={tier}>
-              <TierName>{tierName}</TierName>
+            <ImbuementBlockCalculationRow key={tier}>
+              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <BestOptionHighlight>
-                  <BestBadge>⭐ Best Option</BestBadge>
-                  <BestOptionContent>
+                <ImbuementBlockBestOptionHighlight>
+                  <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
+                  <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
-                    <BestOptionCost>
+                    <ImbuementBlockBestOptionDescription>{bestOption.description}</ImbuementBlockBestOptionDescription>
+                    <ImbuementBlockBestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.cost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.cost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BestOptionCost>
-                  </BestOptionContent>
-                </BestOptionHighlight>
+                    </ImbuementBlockBestOptionCost>
+                  </ImbuementBlockBestOptionContent>
+                </ImbuementBlockBestOptionHighlight>
               )}
 
-              <CostComparison>
-                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>GT Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
 
-                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>Items Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
-              </CostComparison>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
+              </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <Savings>
+                <ImbuementBlockSavings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -296,9 +296,9 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </Savings>
+                </ImbuementBlockSavings>
               )}
-            </CalculationRow>
+            </ImbuementBlockCalculationRow>
           );
         })()}
 
@@ -307,114 +307,114 @@ export default function ImbuementBlock({
           const tier = 'intricate';
           const bestOption = getBestOption(imbuement.id, tier);
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
-          const itemsBreakdown = getItemsCostBreakdown(tier);
+          const itemsBreakdown = getItemsImbuementBlockCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
           const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <CalculationRow key={tier}>
-              <TierName>{tierName}</TierName>
+            <ImbuementBlockCalculationRow key={tier}>
+              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <BestOptionHighlight>
-                  <BestBadge>⭐ Best Option</BestBadge>
-                  <BestOptionContent>
+                <ImbuementBlockBestOptionHighlight>
+                  <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
+                  <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
-                    <BestOptionCost>
+                    <ImbuementBlockBestOptionDescription>{bestOption.description}</ImbuementBlockBestOptionDescription>
+                    <ImbuementBlockBestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.cost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.cost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BestOptionCost>
-                  </BestOptionContent>
-                </BestOptionHighlight>
+                    </ImbuementBlockBestOptionCost>
+                  </ImbuementBlockBestOptionContent>
+                </ImbuementBlockBestOptionHighlight>
               )}
 
-              <CostComparison>
-                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>GT Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
 
-                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>Items Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
-              </CostComparison>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
+              </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <Savings>
+                <ImbuementBlockSavings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -428,9 +428,9 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </Savings>
+                </ImbuementBlockSavings>
               )}
-            </CalculationRow>
+            </ImbuementBlockCalculationRow>
           );
         })()}
 
@@ -439,114 +439,114 @@ export default function ImbuementBlock({
           const tier = 'basic';
           const bestOption = getBestOption(imbuement.id, tier);
           const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
-          const itemsBreakdown = getItemsCostBreakdown(tier);
+          const itemsBreakdown = getItemsImbuementBlockCostBreakdown(tier);
           const serviceFee = serviceFees[tier] || 0;
           const gtCostWithoutFee = imbuement.gtCost[tier] * goldTokenPrice;
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <CalculationRow key={tier}>
-              <TierName>{tierName}</TierName>
+            <ImbuementBlockCalculationRow key={tier}>
+              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <BestOptionHighlight>
-                  <BestBadge>⭐ Best Option</BestBadge>
-                  <BestOptionContent>
+                <ImbuementBlockBestOptionHighlight>
+                  <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
+                  <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
-                    <BestOptionDescription>{bestOption.description}</BestOptionDescription>
-                    <BestOptionCost>
+                    <ImbuementBlockBestOptionDescription>{bestOption.description}</ImbuementBlockBestOptionDescription>
+                    <ImbuementBlockBestOptionCost>
                       <span className="cost-label">Total Cost:</span>
                       {formatGPValue(bestOption.cost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.cost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.cost).full}>
                           {formatGPValue(bestOption.cost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.cost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.cost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BestOptionCost>
-                  </BestOptionContent>
-                </BestOptionHighlight>
+                    </ImbuementBlockBestOptionCost>
+                  </ImbuementBlockBestOptionContent>
+                </ImbuementBlockBestOptionHighlight>
               )}
 
-              <CostComparison>
-                <CostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>GT Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gtCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
 
-                <CostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
-                  <CostBreakdown>
-                    <BreakdownLine>
-                      <BreakdownLabel>Items Cost:</BreakdownLabel>
+                  <ImbuementBlockCostBreakdown>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine>
-                      <BreakdownLabel>+ Service Fee:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine>
+                      <ImbuementBlockBreakdownLabel>+ Service Fee:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(serviceFee).formatted.includes('kk') ? (
-                        <BreakdownValue title={formatGPValue(serviceFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(serviceFee).full}>
                           {formatGPValue(serviceFee).formatted} GP
-                        </BreakdownValue>
+                        </ImbuementBlockBreakdownValue>
                       ) : (
-                        <BreakdownValue>{formatGPValue(serviceFee).formatted} GP</BreakdownValue>
+                        <ImbuementBlockBreakdownValue>{formatGPValue(serviceFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
-                    </BreakdownLine>
-                    <BreakdownLine $isTotal>
-                      <BreakdownLabel>Total:</BreakdownLabel>
+                    </ImbuementBlockBreakdownLine>
+                    <ImbuementBlockBreakdownLine $isTotal>
+                      <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <CostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
-                        </CostValue>
+                        </ImbuementBlockCostValue>
                       ) : (
-                        <CostValue>{formatGPValue(bestOption.gpCost).formatted} GP</CostValue>
+                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
-                    </BreakdownLine>
-                  </CostBreakdown>
-                </CostOption>
-              </CostComparison>
+                    </ImbuementBlockBreakdownLine>
+                  </ImbuementBlockCostBreakdown>
+                </ImbuementBlockCostOption>
+              </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <Savings>
+                <ImbuementBlockSavings>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
                     <span title={formatGPValue(bestOption.savings).full}>
                       {formatGPValue(bestOption.savings).formatted}
@@ -560,28 +560,28 @@ export default function ImbuementBlock({
                     bestOption.method === 'hybrid2' ? 'Hybrid (Basic+Intricate GT + Powerful Market)' :
                     bestOption.name || 'Best Option'
                   }
-                </Savings>
+                </ImbuementBlockSavings>
               )}
-            </CalculationRow>
+            </ImbuementBlockCalculationRow>
           );
         })()}
 
         {/* Toggle buttons for additional tiers */}
-        <TierToggles>
-          <ToggleTierButton
+        <ImbuementBlockTierToggles>
+          <ImbuementBlockToggleTierButton
             $active={showIntricate}
             onClick={() => setShowIntricate(!showIntricate)}
           >
             {showIntricate ? t('imbuementCalculator.hideIntricate') : t('imbuementCalculator.showIntricate')}
-          </ToggleTierButton>
-          <ToggleTierButton
+          </ImbuementBlockToggleTierButton>
+          <ImbuementBlockToggleTierButton
             $active={showBasic}
             onClick={() => setShowBasic(!showBasic)}
           >
             {showBasic ? t('imbuementCalculator.hideBasic') : t('imbuementCalculator.showBasic')}
-          </ToggleTierButton>
-        </TierToggles>
-      </Calculations>
+          </ImbuementBlockToggleTierButton>
+        </ImbuementBlockTierToggles>
+      </ImbuementBlockCalculations>
     </ImbuementBlockContainer>
   );
 }
