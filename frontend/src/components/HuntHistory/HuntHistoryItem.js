@@ -11,34 +11,34 @@ import Tooltip from '../common/Tooltip';
 import damageIcon from '../../assets/tibia/damage-icon.gif';
 import healingIcon from '../../assets/tibia/healing-icon.gif';
 import {
-  HuntItemContainer,
-  HuntItemHeader,
-  HuntItemMain,
-  HuntDate,
-  DateText,
-  TimeText,
-  HuntSummary,
-  TotalBalance,
-  Duration,
-  HuntItemActions,
-  DeleteButton,
-  ExpandButton,
-  HuntItemDetails,
-  DetailsSection,
-  DetailsTitle,
-  DetailsGrid,
-  DetailItem,
-  DetailLabel,
-  DetailValue,
-  PlayersList,
-  PlayerDetailCard,
-  PlayerName,
-  LeaderBadge,
-  PlayerStatsGrid,
-  PlayerStat,
-  StatLabel,
-  StatIconInline,
-  StatValue,
+  HuntHistoryItemContainer,
+  HuntHistoryItemHeader,
+  HuntHistoryItemMain,
+  HuntHistoryItemDate,
+  HuntHistoryItemDateText,
+  HuntHistoryItemTimeText,
+  HuntHistoryItemSummary,
+  HuntHistoryItemTotalBalance,
+  HuntHistoryItemDuration,
+  HuntHistoryItemActions,
+  HuntHistoryItemDeleteButton,
+  HuntHistoryItemExpandButton,
+  HuntHistoryItemDetails,
+  HuntHistoryItemDetailsSection,
+  HuntHistoryItemDetailsTitle,
+  HuntHistoryItemDetailsGrid,
+  HuntHistoryItemDetailItem,
+  HuntHistoryItemDetailLabel,
+  HuntHistoryItemDetailValue,
+  HuntHistoryItemPlayersList,
+  HuntHistoryItemPlayerDetailCard,
+  HuntHistoryItemPlayerName,
+  HuntHistoryItemLeaderBadge,
+  HuntHistoryItemPlayerStatsGrid,
+  HuntHistoryItemPlayerStat,
+  HuntHistoryItemStatLabel,
+  HuntHistoryItemStatIconInline,
+  HuntHistoryItemStatValue,
 } from './HuntHistoryItem.styles';
 
 export default function HuntHistoryItem({ hunt, onDelete }) {
@@ -62,99 +62,99 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
   const timeStr = huntDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <HuntItemContainer data-cy="hunt-history-item">
-      <HuntItemHeader onClick={toggleExpand} data-cy="hunt-history-item-header">
-        <HuntItemMain>
-          <HuntDate>
-            <DateText>{dateStr}</DateText>
-            <TimeText>{timeStr}</TimeText>
-          </HuntDate>
-          <HuntSummary>
-            <TotalBalance>{hunt.summary.totalBalanceFormatted}</TotalBalance>
-            <Duration>{formatDuration(hunt.summary.duration)}</Duration>
-          </HuntSummary>
-        </HuntItemMain>
-        <HuntItemActions>
-          <DeleteButton
+    <HuntHistoryItemContainer data-cy="hunt-history-item">
+      <HuntHistoryItemHeader onClick={toggleExpand} data-cy="hunt-history-item-header">
+        <HuntHistoryItemMain>
+          <HuntHistoryItemDate>
+            <HuntHistoryItemDateText>{dateStr}</HuntHistoryItemDateText>
+            <HuntHistoryItemTimeText>{timeStr}</HuntHistoryItemTimeText>
+          </HuntHistoryItemDate>
+          <HuntHistoryItemSummary>
+            <HuntHistoryItemTotalBalance>{hunt.summary.totalBalanceFormatted}</HuntHistoryItemTotalBalance>
+            <HuntHistoryItemDuration>{formatDuration(hunt.summary.duration)}</HuntHistoryItemDuration>
+          </HuntHistoryItemSummary>
+        </HuntHistoryItemMain>
+        <HuntHistoryItemActions>
+          <HuntHistoryItemDeleteButton
             onClick={handleDelete}
             aria-label={t('huntHistory.deleteButton')}
             data-cy="hunt-history-delete-button"
           >
             🗑️
-          </DeleteButton>
-          <ExpandButton
+          </HuntHistoryItemDeleteButton>
+          <HuntHistoryItemExpandButton
             aria-label={expanded ? t('huntHistory.collapseButton') : t('huntHistory.expandButton')}
             data-cy="hunt-history-expand-button"
           >
             {expanded ? '−' : '+'}
-          </ExpandButton>
-        </HuntItemActions>
-      </HuntItemHeader>
+          </HuntHistoryItemExpandButton>
+        </HuntHistoryItemActions>
+      </HuntHistoryItemHeader>
 
       {expanded && (
-        <HuntItemDetails>
-          <DetailsSection>
-            <DetailsTitle>{t('huntHistory.details.summary')}</DetailsTitle>
-            <DetailsGrid>
-              <DetailItem>
-                <DetailLabel>{t('calculator.resultsSection.summary.fairShare')}:</DetailLabel>
-                <DetailValue>{hunt.summary.fairShareFormatted}</DetailValue>
-              </DetailItem>
-              <DetailItem>
-                <DetailLabel>{t('calculator.resultsSection.summary.profitPerHour')}:</DetailLabel>
-                <DetailValue>{hunt.summary.profitPerHourFormatted}</DetailValue>
-              </DetailItem>
-              <DetailItem>
-                <DetailLabel>{t('calculator.resultsSection.summary.activePlayers')}:</DetailLabel>
-                <DetailValue>{hunt.summary.activePlayers}</DetailValue>
-              </DetailItem>
-            </DetailsGrid>
-          </DetailsSection>
+        <HuntHistoryItemDetails>
+          <HuntHistoryItemDetailsSection>
+            <HuntHistoryItemDetailsTitle>{t('huntHistory.details.summary')}</HuntHistoryItemDetailsTitle>
+            <HuntHistoryItemDetailsGrid>
+              <HuntHistoryItemDetailItem>
+                <HuntHistoryItemDetailLabel>{t('calculator.resultsSection.summary.fairShare')}:</HuntHistoryItemDetailLabel>
+                <HuntHistoryItemDetailValue>{hunt.summary.fairShareFormatted}</HuntHistoryItemDetailValue>
+              </HuntHistoryItemDetailItem>
+              <HuntHistoryItemDetailItem>
+                <HuntHistoryItemDetailLabel>{t('calculator.resultsSection.summary.profitPerHour')}:</HuntHistoryItemDetailLabel>
+                <HuntHistoryItemDetailValue>{hunt.summary.profitPerHourFormatted}</HuntHistoryItemDetailValue>
+              </HuntHistoryItemDetailItem>
+              <HuntHistoryItemDetailItem>
+                <HuntHistoryItemDetailLabel>{t('calculator.resultsSection.summary.activePlayers')}:</HuntHistoryItemDetailLabel>
+                <HuntHistoryItemDetailValue>{hunt.summary.activePlayers}</HuntHistoryItemDetailValue>
+              </HuntHistoryItemDetailItem>
+            </HuntHistoryItemDetailsGrid>
+          </HuntHistoryItemDetailsSection>
 
-          <DetailsSection>
-            <DetailsTitle>{t('huntHistory.details.players')}</DetailsTitle>
-            <PlayersList>
+          <HuntHistoryItemDetailsSection>
+            <HuntHistoryItemDetailsTitle>{t('huntHistory.details.players')}</HuntHistoryItemDetailsTitle>
+            <HuntHistoryItemPlayersList>
               {hunt.players.map((player, index) => (
-                <PlayerDetailCard key={index}>
-                  <PlayerName>
+                <HuntHistoryItemPlayerDetailCard key={index}>
+                  <HuntHistoryItemPlayerName>
                     {player.name}
-                    {player.isLeader && <LeaderBadge>👑</LeaderBadge>}
-                  </PlayerName>
-                  <PlayerStatsGrid>
-                    <PlayerStat>
-                      <StatLabel>{t('calculator.resultsSection.playerList.balance')}:</StatLabel>
-                      <StatValue>{formatGold(player.balance)}</StatValue>
-                    </PlayerStat>
+                    {player.isLeader && <HuntHistoryItemLeaderBadge>👑</HuntHistoryItemLeaderBadge>}
+                  </HuntHistoryItemPlayerName>
+                  <HuntHistoryItemPlayerStatsGrid>
+                    <HuntHistoryItemPlayerStat>
+                      <HuntHistoryItemStatLabel>{t('calculator.resultsSection.playerList.balance')}:</HuntHistoryItemStatLabel>
+                      <HuntHistoryItemStatValue>{formatGold(player.balance)}</HuntHistoryItemStatValue>
+                    </HuntHistoryItemPlayerStat>
                     <Tooltip
                       text={`${t('calculator.resultsSection.damageHealing.tooltips.actualDamage')}: ${formatGold(player.damage || 0)}`}
                       position="top"
                     >
-                      <PlayerStat>
-                        <StatLabel>
-                          <StatIconInline src={damageIcon} alt="Damage" /> {t('calculator.resultsSection.damageHealing.damage')}:
-                        </StatLabel>
-                        <StatValue>{player.damagePercent}%</StatValue>
-                      </PlayerStat>
+                      <HuntHistoryItemPlayerStat>
+                        <HuntHistoryItemStatLabel>
+                          <HuntHistoryItemStatIconInline src={damageIcon} alt="Damage" /> {t('calculator.resultsSection.damageHealing.damage')}:
+                        </HuntHistoryItemStatLabel>
+                        <HuntHistoryItemStatValue>{player.damagePercent}%</HuntHistoryItemStatValue>
+                      </HuntHistoryItemPlayerStat>
                     </Tooltip>
                     <Tooltip
                       text={`${t('calculator.resultsSection.damageHealing.tooltips.actualHealing')}: ${formatGold(player.healing || 0)}`}
                       position="top"
                     >
-                      <PlayerStat>
-                        <StatLabel>
-                          <StatIconInline src={healingIcon} alt="Healing" /> {t('calculator.resultsSection.damageHealing.healing')}:
-                        </StatLabel>
-                        <StatValue>{player.healingPercent}%</StatValue>
-                      </PlayerStat>
+                      <HuntHistoryItemPlayerStat>
+                        <HuntHistoryItemStatLabel>
+                          <HuntHistoryItemStatIconInline src={healingIcon} alt="Healing" /> {t('calculator.resultsSection.damageHealing.healing')}:
+                        </HuntHistoryItemStatLabel>
+                        <HuntHistoryItemStatValue>{player.healingPercent}%</HuntHistoryItemStatValue>
+                      </HuntHistoryItemPlayerStat>
                     </Tooltip>
-                  </PlayerStatsGrid>
-                </PlayerDetailCard>
+                  </HuntHistoryItemPlayerStatsGrid>
+                </HuntHistoryItemPlayerDetailCard>
               ))}
-            </PlayersList>
-          </DetailsSection>
-        </HuntItemDetails>
+            </HuntHistoryItemPlayersList>
+          </HuntHistoryItemDetailsSection>
+        </HuntHistoryItemDetails>
       )}
-    </HuntItemContainer>
+    </HuntHistoryItemContainer>
   );
 }
 
