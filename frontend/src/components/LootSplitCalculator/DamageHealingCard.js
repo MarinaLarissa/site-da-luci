@@ -35,7 +35,7 @@ export default function DamageHealingCard({ player, totalDamage, totalHealing })
           <DamageHealingCardStatItem>
             <DamageHealingCardStatIcon src={damageIcon} alt="Damage" />
             <DamageHealingCardStatLabel>{t('calculator.resultsSection.damageHealing.damage')}:</DamageHealingCardStatLabel>
-            <DamageHealingCardStatPercent>{damagePercent}%</DamageHealingCardStatPercent>
+            <DamageHealingCardStatPercent data-cy="damage-healing-card-damage-percent">{damagePercent}%</DamageHealingCardStatPercent>
           </DamageHealingCardStatItem>
         </Tooltip>
 
@@ -46,7 +46,7 @@ export default function DamageHealingCard({ player, totalDamage, totalHealing })
           <DamageHealingCardStatItem>
             <DamageHealingCardStatIcon src={healingIcon} alt="Healing" />
             <DamageHealingCardStatLabel>{t('calculator.resultsSection.damageHealing.healing')}:</DamageHealingCardStatLabel>
-            <DamageHealingCardStatPercent>{healingPercent}%</DamageHealingCardStatPercent>
+            <DamageHealingCardStatPercent data-cy="damage-healing-card-healing-percent">{healingPercent}%</DamageHealingCardStatPercent>
           </DamageHealingCardStatItem>
         </Tooltip>
       </DamageHealingCardStatsRow>
