@@ -78,7 +78,7 @@ export default function HuntHistoryItem({ hunt, onDelete }) {
           <HuntHistoryItemDeleteButton
             onClick={handleDelete}
             aria-label={t('huntHistory.deleteButton')}
-            data-cy="hunt-history-delete-button"
+            data-cy="hunt-history-item-delete-button"
           >
             🗑️
           </HuntHistoryItemDeleteButton>

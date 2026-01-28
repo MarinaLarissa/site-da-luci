@@ -68,6 +68,7 @@ export default function HuntHistoryControls({
               value="all"
               checked={exportOptions.type === 'all'}
               onChange={handleTypeChange}
+              data-cy="hunt-history-export-all-radio"
             />
             <span>{t('huntHistory.controls.exportAll')} ({totalHunts})</span>
           </HuntHistoryControlsRadioLabel>
@@ -79,6 +80,7 @@ export default function HuntHistoryControls({
               value="lastN"
               checked={exportOptions.type === 'lastN'}
               onChange={handleTypeChange}
+              data-cy="hunt-history-export-lastn-radio"
             />
             <span>{t('huntHistory.controls.exportLastN')}</span>
           </HuntHistoryControlsRadioLabel>
@@ -90,6 +92,7 @@ export default function HuntHistoryControls({
                 max={totalHunts}
                 value={exportOptions.count}
                 onChange={handleCountChange}
+                data-cy="hunt-history-export-count-input"
               />
               <HuntHistoryControlsInputHint>{t('huntHistory.controls.huntsLabel')}</HuntHistoryControlsInputHint>
             </HuntHistoryControlsInputGroup>
@@ -102,6 +105,7 @@ export default function HuntHistoryControls({
               value="dateRange"
               checked={exportOptions.type === 'dateRange'}
               onChange={handleTypeChange}
+              data-cy="hunt-history-export-daterange-radio"
             />
             <span>{t('huntHistory.controls.exportDateRange')}</span>
           </HuntHistoryControlsRadioLabel>
@@ -113,6 +117,7 @@ export default function HuntHistoryControls({
                   type="date"
                   value={exportOptions.startDate || ''}
                   onChange={handleStartDateChange}
+                  data-cy="hunt-history-export-startdate-input"
                 />
               </HuntHistoryControlsInputGroup>
               <HuntHistoryControlsInputGroup>
@@ -121,20 +126,21 @@ export default function HuntHistoryControls({
                   type="date"
                   value={exportOptions.endDate || ''}
                   onChange={handleEndDateChange}
+                  data-cy="hunt-history-export-enddate-input"
                 />
               </HuntHistoryControlsInputGroup>
             </HuntHistoryControlsDateRangeInputs>
           )}
         </HuntHistoryControlsExportTypeSelector>
 
-        <HuntHistoryControlsExportButton onClick={onExport}>
+        <HuntHistoryControlsExportButton onClick={onExport} data-cy="hunt-history-export-button">
           📥 {t('huntHistory.controls.exportButton')}
         </HuntHistoryControlsExportButton>
       </HuntHistoryControlsSection>
 
       <HuntHistoryControlsSection $dangerZone>
         <HuntHistoryControlsTitle>{t('huntHistory.controls.dangerZone')}</HuntHistoryControlsTitle>
-        <HuntHistoryControlsClearAllButton onClick={handleClearHistory}>
+        <HuntHistoryControlsClearAllButton onClick={handleClearHistory} data-cy="hunt-history-clearall-button">
           🗑️ {t('huntHistory.controls.clearAllButton')}
         </HuntHistoryControlsClearAllButton>
         <HuntHistoryControlsWarningText>{t('huntHistory.controls.clearWarning')}</HuntHistoryControlsWarningText>
