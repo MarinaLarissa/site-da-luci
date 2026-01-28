@@ -5,8 +5,9 @@
 
 import styled, { keyframes } from 'styled-components';
 
-// ETAPA 33: Migrated to shared Typography components
+// ETAPA 33-36: Migrated to shared Typography and Modal components
 export { PageTitle, PageDescription, SectionTitle, SectionDescription } from '../common/styled';
+export { ModalOverlay, ModalContent, ModalFooter as ModalActions } from '../common/styled';
 
 /* Animations */
 const slideDown = keyframes`
@@ -252,13 +253,7 @@ export const CheckboxLabel = styled.label`
   }
 `;
 
-/* Modal Actions */
-export const ModalActions = styled.div`
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  margin-top: 24px;
-`;
+/* Modal Actions - removed, now using shared ModalFooter (aliased as ModalActions above) */
 
 export const Button = styled.button`
   padding: 12px 24px;

@@ -5,17 +5,18 @@
 
 import styled from 'styled-components';
 
+// ETAPA 31: Migrated to theme tokens
 export const HuntHistoryItemContainer = styled.div`
-  background: #16213e;
-  border: 1px solid rgba(195, 155, 211, 0.2);
-  border-radius: 8px;
+  background: ${({ theme }) => theme.colors.bg.card};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
+  border-radius: ${({ theme }) => theme.radius.md};
   margin-bottom: 0.75rem;
   overflow: hidden;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(195, 155, 211, 0.15);
-    border-color: rgba(195, 155, 211, 0.4);
+    box-shadow: 0 2px 8px ${({ theme }) => theme.colors.accent.goldLight};
+    border-color: ${({ theme }) => theme.colors.border.medium};
   }
 `;
 
@@ -26,10 +27,10 @@ export const HuntHistoryItemHeader = styled.div`
   padding: 0.75rem 1rem;
   cursor: pointer;
   background: rgba(195, 155, 211, 0.05);
-  transition: background 0.2s ease;
+  transition: ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    background: rgba(195, 155, 211, 0.1);
+    background: ${({ theme }) => theme.colors.bg.hover};
   }
 `;
 

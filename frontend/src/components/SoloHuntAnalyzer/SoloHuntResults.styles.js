@@ -10,15 +10,16 @@ export const SoloHuntResultsContainer = styled.div`
   margin-top: 24px;
 `;
 
+// ETAPA 31: Migrated to theme tokens
 export const SoloHuntResultsTitle = styled.div`
   font-size: 28px;
   font-weight: 700;
-  background: linear-gradient(135deg, #c39bd3 0%, #b388c7 100%);
+  background: ${({ theme }) => theme.gradients.primary};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
 
   /* Responsive */
   @media (max-width: 768px) {
@@ -36,30 +37,30 @@ export const SoloHuntResultsIcon = styled.span`
 `;
 
 export const SoloHuntResultCard = styled.div`
-  background-color: #16213e;
-  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  border-radius: ${({ theme }) => theme.radius.lg};
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid rgba(195, 155, 211, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
+  transition: ${({ theme }) => theme.transitions.fast};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(195, 155, 211, 0.15);
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.accent.goldLight};
   }
 
   h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #c39bd3;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(195, 155, 211, 0.2);
+    color: ${({ theme }) => theme.colors.accent.primary};
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+    padding-bottom: ${({ theme }) => theme.spacing.sm};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border.light};
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    padding: 16px;
+    padding: ${({ theme }) => theme.spacing.lg};
 
     h3 {
       font-size: 18px;
@@ -86,13 +87,13 @@ export const SoloHuntResultsInfoItem = styled.div`
 
   .label {
     font-size: 14px;
-    color: #9e9e9e;
+    color: ${({ theme }) => theme.colors.text.secondary};
     font-weight: 500;
   }
 
   .value {
     font-size: 16px;
-    color: #e0e0e0;
+    color: ${({ theme }) => theme.colors.text.primary};
     font-weight: 600;
   }
 `;

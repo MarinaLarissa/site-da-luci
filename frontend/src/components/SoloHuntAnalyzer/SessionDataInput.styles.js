@@ -6,51 +6,38 @@
 
 import styled from 'styled-components';
 
-// ETAPA 33: Migrated to shared Typography components
+// ETAPA 33-35: Migrated to shared Typography and ButtonGroup components
 export { SectionTitle, SectionDescription } from '../common/styled';
+export { ButtonGroup as SessionDataInputActions } from '../common/styled';
 
+// ETAPA 31: Migrated to theme tokens
 export const SessionDataInputContainer = styled.div`
-  background-color: #16213e;
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(195, 155, 211, 0.2);
-  margin-bottom: 24px;
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  padding: ${({ theme }) => theme.spacing.xl};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
 
   /* Responsive */
   @media (max-width: 768px) {
-    padding: 16px;
+    padding: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
 // SessionTextarea removed - now using shared Textarea component from common/styled
-
-export const SessionDataInputActions = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    flex-direction: column;
-
-    /* Target Button components inside */
-    > button {
-      width: 100%;
-    }
-  }
-`;
+// SessionDataInputActions removed - now using shared ButtonGroup (aliased above)
 
 export const SessionDataInputParsedInfo = styled.div`
-  background-color: rgba(195, 155, 211, 0.1);
-  border: 1px solid rgba(195, 155, 211, 0.3);
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 16px;
+  background-color: ${({ theme }) => theme.colors.bg.hover};
+  border: 1px solid ${({ theme }) => theme.colors.border.medium};
+  border-radius: ${({ theme }) => theme.radius.md};
+  padding: ${({ theme }) => theme.spacing.lg};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
 export const SessionDataInputParsedTitle = styled.h3`
-  color: #c39bd3;
-  margin-bottom: 12px;
+  color: ${({ theme }) => theme.colors.accent.primary};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-size: 18px;
   font-weight: 600;
 `;
@@ -58,7 +45,7 @@ export const SessionDataInputParsedTitle = styled.h3`
 export const SessionDataInputSummary = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
+  gap: ${({ theme }) => theme.spacing.md};
 
   /* Responsive */
   @media (max-width: 768px) {
@@ -68,10 +55,10 @@ export const SessionDataInputSummary = styled.div`
 
 export const SessionDataInputSummaryItem = styled.p`
   margin: 4px 0;
-  color: #e0e0e0;
+  color: ${({ theme }) => theme.colors.text.primary};
   font-size: 14px;
 
   strong {
-    color: #c39bd3;
+    color: ${({ theme }) => theme.colors.accent.primary};
   }
 `;
