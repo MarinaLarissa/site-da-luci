@@ -33,7 +33,7 @@ const fadeIn = keyframes`
 `;
 
 /* Main Container */
-export const CalculatorContainer = styled.div`
+export const ImbuementCalculatorContainer = styled.div`
   padding: 24px;
   max-width: 1400px;
   margin: 0 auto;
@@ -46,7 +46,7 @@ export const CalculatorContainer = styled.div`
 // PageTitle and PageDescription removed - using shared components (imported above)
 
 /* GT Price Section */
-export const GTPriceSection = styled.div`
+export const ImbuementCalculatorGTPriceSection = styled.div`
   background: ${({ theme }) => theme.colors.bg.card};
   padding: 20px 24px;
   border-radius: 12px;
@@ -64,7 +64,7 @@ export const GTPriceSection = styled.div`
   }
 `;
 
-export const GTPriceLabel = styled.label`
+export const ImbuementCalculatorGTPriceLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -73,7 +73,7 @@ export const GTPriceLabel = styled.label`
   color: ${({ theme }) => theme.colors.text.primary};
 `;
 
-export const GTPriceInput = styled.input`
+export const ImbuementCalculatorGTPriceInput = styled.input`
   width: 140px;
   padding: 10px 16px;
   font-size: 18px;
@@ -97,7 +97,7 @@ export const GTPriceInput = styled.input`
 `;
 
 /* Service Fee Section */
-export const ServiceFeeSection = styled.div`
+export const ImbuementCalculatorServiceFeeSection = styled.div`
   background: ${({ theme }) => theme.colors.bg.card};
   padding: 20px 24px;
   border-radius: 12px;
@@ -108,13 +108,13 @@ export const ServiceFeeSection = styled.div`
 
 // SectionTitle and SectionDescription removed - using shared components (imported above)
 
-export const ServiceFeeInputs = styled.div`
+export const ImbuementCalculatorServiceFeeInputs = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
 `;
 
-export const FeeInputGroup = styled.div`
+export const ImbuementCalculatorFeeInputGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -124,14 +124,14 @@ export const FeeInputGroup = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
-export const FeeLabel = styled.label`
+export const ImbuementCalculatorFeeLabel = styled.label`
   font-size: 14px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text.label};
   min-width: 80px;
 `;
 
-export const FeeInput = styled.input`
+export const ImbuementCalculatorFeeInput = styled.input`
   flex: 1;
   padding: 8px 12px;
   font-size: 14px;
@@ -151,7 +151,7 @@ export const FeeInput = styled.input`
 `;
 
 /* Imbuements Grid */
-export const ImbueingGrid = styled.div`
+export const ImbuementCalculatorGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 24px;
@@ -163,7 +163,7 @@ export const ImbueingGrid = styled.div`
 `;
 
 /* Copy/Paste Section */
-export const CopyPasteSection = styled.div`
+export const ImbuementCalculatorCopyPasteSection = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
@@ -174,7 +174,7 @@ export const CopyPasteSection = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.light};
 `;
 
-export const FeedbackSuccess = styled.span`
+export const ImbuementCalculatorFeedbackSuccess = styled.span`
   color: ${({ theme }) => theme.colors.successAlt};
   font-weight: 600;
   font-size: 14px;
@@ -182,7 +182,7 @@ export const FeedbackSuccess = styled.span`
 `;
 
 /* Modal - specific components only (ModalOverlay and ModalContent imported from common/styled) */
-export const ModalDescription = styled.p`
+export const ImbuementCalculatorModalDescription = styled.p`
   color: ${({ theme }) => theme.colors.text.muted};
   font-size: 14px;
   margin-bottom: 24px;
@@ -190,14 +190,14 @@ export const ModalDescription = styled.p`
 `;
 
 /* Imbuements Selection (Modal) */
-export const ImbuementsSelection = styled.div`
+export const ImbuementCalculatorImbuementsSelection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 24px;
 `;
 
-export const ImbuementSelectionBlock = styled.div`
+export const ImbuementCalculatorSelectionBlock = styled.div`
   background: ${({ theme }) => theme.colors.bg.input};
   border-radius: 8px;
   padding: 16px;
@@ -211,13 +211,13 @@ export const ImbuementSelectionBlock = styled.div`
   }
 `;
 
-export const TierCheckboxes = styled.div`
+export const ImbuementCalculatorTierCheckboxes = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-export const CheckboxLabel = styled.label`
+export const ImbuementCalculatorCheckboxLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -255,7 +255,7 @@ export const CheckboxLabel = styled.label`
 
 /* Modal Actions - removed, now using shared ModalFooter (aliased as ModalActions above) */
 
-export const Button = styled.button`
+export const ImbuementCalculatorButton = styled.button`
   padding: 12px 24px;
   border-radius: 8px;
   font-size: 14px;
@@ -293,13 +293,13 @@ export const Button = styled.button`
 `;
 
 /* Icons */
-export const IconInline = styled.img`
+export const ImbuementCalculatorIconInline = styled.img`
   width: 24px;
   height: 24px;
   vertical-align: middle;
 `;
 
-export const IconSmall = styled.img`
+export const ImbuementCalculatorIconSmall = styled.img`
   width: 20px;
   height: 20px;
   vertical-align: middle;

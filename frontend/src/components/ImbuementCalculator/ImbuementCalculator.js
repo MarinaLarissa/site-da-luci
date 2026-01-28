@@ -11,17 +11,17 @@ import { formatGPValue } from '../../utils/formatters';
 import goldTokenIcon from '../../assets/tibia/gold_token.gif';
 import ImbuementBlock from './ImbuementBlock';
 import {
-  CalculatorContainer,
+  ImbuementCalculatorContainer,
   PageTitle,
   PageDescription,
-  GTPriceSection,
-  GTPriceLabel,
-  GTPriceInput,
-  CopyPasteSection,
-  FeedbackSuccess,
-  ImbueingGrid,
-  Button,
-  IconInline,
+  ImbuementCalculatorGTPriceSection,
+  ImbuementCalculatorGTPriceLabel,
+  ImbuementCalculatorGTPriceInput,
+  ImbuementCalculatorCopyPasteSection,
+  ImbuementCalculatorFeedbackSuccess,
+  ImbuementCalculatorGrid,
+  ImbuementCalculatorButton,
+  ImbuementCalculatorIconInline,
 } from './ImbuementCalculator.styles';
 
 // GT-eligible imbuements data (from imbuements.js)
@@ -605,48 +605,51 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
 
 
   return (
-    <CalculatorContainer>
-      <PageTitle>{t('imbuementCalculator.title')}</PageTitle>
-      <PageDescription>{t('imbuementCalculator.description')}</PageDescription>
+    <ImbuementCalculatorContainer data-cy="imbuement-calc-container">
+      <PageTitle data-cy="imbuement-calc-title">{t('imbuementCalculator.title')}</PageTitle>
+      <PageDescription data-cy="imbuement-calc-description">{t('imbuementCalculator.description')}</PageDescription>
 
       {/* Shared GT Price Input */}
-      <GTPriceSection>
-        <GTPriceLabel>
-          <IconInline src={goldTokenIcon} alt="GT" />
+      <ImbuementCalculatorGTPriceSection data-cy="imbuement-calc-gt-price-section">
+        <ImbuementCalculatorGTPriceLabel data-cy="imbuement-calc-gt-price-label">
+          <ImbuementCalculatorIconInline src={goldTokenIcon} alt="GT" />
           {t('imbuementCalculator.goldTokenPrice')}:
-        </GTPriceLabel>
-        <GTPriceInput
+        </ImbuementCalculatorGTPriceLabel>
+        <ImbuementCalculatorGTPriceInput
           type="number"
           min="0"
           value={goldTokenPrice}
           onChange={(e) => setGoldTokenPrice(parseFloat(e.target.value) || 0)}
           placeholder="0"
+          data-cy="imbuement-calc-input-gt-price"
         />
         <span style={{ fontSize: '12px', fontWeight: 600, color: '#9E9E9E' }}>GP</span>
-      </GTPriceSection>
+      </ImbuementCalculatorGTPriceSection>
 
       {/* Copy/Paste Buttons */}
-      <CopyPasteSection>
-        <Button
+      <ImbuementCalculatorCopyPasteSection data-cy="imbuement-calc-copy-paste-section">
+        <ImbuementCalculatorButton
           variant="secondary"
           onClick={handleCopyImbuements}
           title={t('imbuementCalculator.copyPaste.copyButtonTitle')}
+          data-cy="imbuement-calc-button-copy"
         >
           📋 {t('imbuementCalculator.copyPaste.copyButton')}
-        </Button>
-        <Button
+        </ImbuementCalculatorButton>
+        <ImbuementCalculatorButton
           variant="secondary"
           onClick={handlePasteImbuements}
           title={t('imbuementCalculator.copyPaste.pasteButtonTitle')}
+          data-cy="imbuement-calc-button-paste"
         >
           📥 {t('imbuementCalculator.copyPaste.pasteButton')}
-        </Button>
-        {copyFeedback && <FeedbackSuccess>{copyFeedback}</FeedbackSuccess>}
-        {pasteFeedback && <FeedbackSuccess>{pasteFeedback}</FeedbackSuccess>}
-      </CopyPasteSection>
+        </ImbuementCalculatorButton>
+        {copyFeedback && <ImbuementCalculatorFeedbackSuccess data-cy="imbuement-calc-feedback-copy">{copyFeedback}</ImbuementCalculatorFeedbackSuccess>}
+        {pasteFeedback && <ImbuementCalculatorFeedbackSuccess data-cy="imbuement-calc-feedback-paste">{pasteFeedback}</ImbuementCalculatorFeedbackSuccess>}
+      </ImbuementCalculatorCopyPasteSection>
 
       {/* Imbuement Blocks */}
-      <ImbueingGrid>
+      <ImbuementCalculatorGrid data-cy="imbuement-calc-grid">
         <ImbuementBlock
           imbuement={GT_IMBUEMENTS.vampirism}
           itemPrices={itemPrices}
@@ -657,6 +660,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onCopyItemName={copyItemName}
           getBestOption={getBestOption}
           calculateGPCost={calculateGPCost}
+          data-cy="imbuement-calc-block-vampirism"
         />
         <ImbuementBlock
           imbuement={GT_IMBUEMENTS.void}
@@ -670,6 +674,7 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onCopyToAnalyzer={copyToAnalyzer}
           calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
+          data-cy="imbuement-calc-block-void"
         />
         <ImbuementBlock
           imbuement={GT_IMBUEMENTS.strike}
@@ -683,10 +688,11 @@ export default function ImbuementCalculator({ goldTokenPrice, setGoldTokenPrice 
           onCopyToAnalyzer={copyToAnalyzer}
           calculateGPCost={calculateGPCost}
           getBestOption={getBestOption}
+          data-cy="imbuement-calc-block-strike"
         />
-      </ImbueingGrid>
+      </ImbuementCalculatorGrid>
 
-    </CalculatorContainer>
+    </ImbuementCalculatorContainer>
   );
 }
 

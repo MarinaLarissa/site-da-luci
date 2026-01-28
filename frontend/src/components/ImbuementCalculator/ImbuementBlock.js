@@ -143,11 +143,16 @@ export default function ImbuementBlock({
             const tooltipText = `${item.name}\n\nQuantities needed:\n• Basic: ${getCumulativeQuantity(item.name, 'basic')}\n• Intricate: ${getCumulativeQuantity(item.name, 'intricate')}\n• Powerful: ${getCumulativeQuantity(item.name, 'powerful')}`;
 
             return (
-              <ImbuementBlockPriceInputRow key={item.name} title={tooltipText}>
+              <ImbuementBlockPriceInputRow
+                key={item.name}
+                title={tooltipText}
+                data-cy={`imbuement-block-input-row-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+              >
                 <ImbuementBlockCopyButton
                   onClick={() => onCopyItemName(item.name)}
                   title={t('imbuementCalculator.copyItemName')}
                   aria-label={t('imbuementCalculator.copyItemName')}
+                  data-cy={`imbuement-block-button-copy-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   {copiedItem === item.name ? '✓' : '📋'}
                 </ImbuementBlockCopyButton>
@@ -160,6 +165,7 @@ export default function ImbuementBlock({
                   value={itemPrices[item.name]}
                   onChange={(e) => onPriceChange(item.name, e.target.value)}
                   placeholder="0"
+                  data-cy={`imbuement-block-input-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                 />
                 <ImbuementBlockGPLabel>GP</ImbuementBlockGPLabel>
               </ImbuementBlockPriceInputRow>
@@ -181,12 +187,12 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <ImbuementBlockCalculationRow key={tier}>
-              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
+            <ImbuementBlockCalculationRow key={tier} data-cy={`imbuement-block-calculation-${tier}`}>
+              <ImbuementBlockTierName data-cy={`imbuement-block-tier-name-${tier}`}>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <ImbuementBlockBestOptionHighlight>
+                <ImbuementBlockBestOptionHighlight data-cy={`imbuement-block-best-option-${tier}`}>
                   <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
                   <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
@@ -205,8 +211,11 @@ export default function ImbuementBlock({
                 </ImbuementBlockBestOptionHighlight>
               )}
 
-              <ImbuementBlockCostComparison>
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison data-cy={`imbuement-block-cost-comparison-${tier}`}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gt'}
+                  data-cy={`imbuement-block-cost-option-gt-${tier}`}
+                >
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
                   <ImbuementBlockCostBreakdown>
@@ -233,17 +242,20 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full} data-cy={`imbuement-block-cost-gt-${tier}`}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-gt-${tier}`}>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
                 </ImbuementBlockCostOption>
 
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gp'}
+                  data-cy={`imbuement-block-cost-option-gp-${tier}`}
+                >
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
                   <ImbuementBlockCostBreakdown>
@@ -270,11 +282,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full} data-cy={`imbuement-block-cost-market-${tier}`}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-market-${tier}`}>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
@@ -282,13 +294,13 @@ export default function ImbuementBlock({
               </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <ImbuementBlockSavings>
+                <ImbuementBlockSavings data-cy={`imbuement-block-savings-${tier}`}>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
-                    <span title={formatGPValue(bestOption.savings).full}>
+                    <span title={formatGPValue(bestOption.savings).full} data-cy={`imbuement-block-savings-value-${tier}`}>
                       {formatGPValue(bestOption.savings).formatted}
                     </span>
                   ) : (
-                    formatGPValue(bestOption.savings).formatted
+                    <span data-cy={`imbuement-block-savings-value-${tier}`}>{formatGPValue(bestOption.savings).formatted}</span>
                   )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
@@ -313,12 +325,12 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <ImbuementBlockCalculationRow key={tier}>
-              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
+            <ImbuementBlockCalculationRow key={tier} data-cy={`imbuement-block-calculation-${tier}`}>
+              <ImbuementBlockTierName data-cy={`imbuement-block-tier-name-${tier}`}>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <ImbuementBlockBestOptionHighlight>
+                <ImbuementBlockBestOptionHighlight data-cy={`imbuement-block-best-option-${tier}`}>
                   <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
                   <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
@@ -337,8 +349,11 @@ export default function ImbuementBlock({
                 </ImbuementBlockBestOptionHighlight>
               )}
 
-              <ImbuementBlockCostComparison>
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison data-cy={`imbuement-block-cost-comparison-${tier}`}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gt'}
+                  data-cy={`imbuement-block-cost-option-gt-${tier}`}
+                >
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
                   <ImbuementBlockCostBreakdown>
@@ -365,17 +380,20 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full} data-cy={`imbuement-block-cost-gt-${tier}`}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-gt-${tier}`}>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
                 </ImbuementBlockCostOption>
 
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gp'}
+                  data-cy={`imbuement-block-cost-option-gp-${tier}`}
+                >
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
                   <ImbuementBlockCostBreakdown>
@@ -402,11 +420,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full} data-cy={`imbuement-block-cost-market-${tier}`}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-market-${tier}`}>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
@@ -414,13 +432,13 @@ export default function ImbuementBlock({
               </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <ImbuementBlockSavings>
+                <ImbuementBlockSavings data-cy={`imbuement-block-savings-${tier}`}>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
-                    <span title={formatGPValue(bestOption.savings).full}>
+                    <span title={formatGPValue(bestOption.savings).full} data-cy={`imbuement-block-savings-value-${tier}`}>
                       {formatGPValue(bestOption.savings).formatted}
                     </span>
                   ) : (
-                    formatGPValue(bestOption.savings).formatted
+                    <span data-cy={`imbuement-block-savings-value-${tier}`}>{formatGPValue(bestOption.savings).formatted}</span>
                   )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
@@ -445,12 +463,12 @@ export default function ImbuementBlock({
           const isValid = isValidForBestComparison(tier);
 
           return (
-            <ImbuementBlockCalculationRow key={tier}>
-              <ImbuementBlockTierName>{tierName}</ImbuementBlockTierName>
+            <ImbuementBlockCalculationRow key={tier} data-cy={`imbuement-block-calculation-${tier}`}>
+              <ImbuementBlockTierName data-cy={`imbuement-block-tier-name-${tier}`}>{tierName}</ImbuementBlockTierName>
 
               {/* Best Option Highlight (Hybrid scenarios) */}
               {isValid && (bestOption.method === 'hybrid1' || bestOption.method === 'hybrid2') && (
-                <ImbuementBlockBestOptionHighlight>
+                <ImbuementBlockBestOptionHighlight data-cy={`imbuement-block-best-option-${tier}`}>
                   <ImbuementBlockBestBadge>⭐ Best Option</ImbuementBlockBestBadge>
                   <ImbuementBlockBestOptionContent>
                     <strong>{bestOption.name}</strong>
@@ -469,8 +487,11 @@ export default function ImbuementBlock({
                 </ImbuementBlockBestOptionHighlight>
               )}
 
-              <ImbuementBlockCostComparison>
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gt'}>
+              <ImbuementBlockCostComparison data-cy={`imbuement-block-cost-comparison-${tier}`}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gt'}
+                  data-cy={`imbuement-block-cost-option-gt-${tier}`}
+                >
                   <img src={goldTokenIcon} alt="GT" className="icon-small" />
                   <span>{imbuement.gtCost[tier]} GT</span>
                   <ImbuementBlockCostBreakdown>
@@ -497,17 +518,20 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gtCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gtCost).full} data-cy={`imbuement-block-cost-gt-${tier}`}>
                           {formatGPValue(bestOption.gtCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-gt-${tier}`}>{formatGPValue(bestOption.gtCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
                 </ImbuementBlockCostOption>
 
-                <ImbuementBlockCostOption $isBest={isValid && bestOption.method === 'gp'}>
+                <ImbuementBlockCostOption
+                  $isBest={isValid && bestOption.method === 'gp'}
+                  data-cy={`imbuement-block-cost-option-gp-${tier}`}
+                >
                   <img src={coinsIcon} alt="GP" className="icon-small" />
                   <span>Market Items</span>
                   <ImbuementBlockCostBreakdown>
@@ -534,11 +558,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine $isTotal>
                       <ImbuementBlockBreakdownLabel>Total:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(bestOption.gpCost).formatted.includes('kk') ? (
-                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full}>
+                        <ImbuementBlockCostValue title={formatGPValue(bestOption.gpCost).full} data-cy={`imbuement-block-cost-market-${tier}`}>
                           {formatGPValue(bestOption.gpCost).formatted} GP
                         </ImbuementBlockCostValue>
                       ) : (
-                        <ImbuementBlockCostValue>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
+                        <ImbuementBlockCostValue data-cy={`imbuement-block-cost-market-${tier}`}>{formatGPValue(bestOption.gpCost).formatted} GP</ImbuementBlockCostValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                   </ImbuementBlockCostBreakdown>
@@ -546,13 +570,13 @@ export default function ImbuementBlock({
               </ImbuementBlockCostComparison>
 
               {isValid && bestOption.savings > 0 && (
-                <ImbuementBlockSavings>
+                <ImbuementBlockSavings data-cy={`imbuement-block-savings-${tier}`}>
                   💰 Save {formatGPValue(bestOption.savings).formatted.includes('kk') ? (
-                    <span title={formatGPValue(bestOption.savings).full}>
+                    <span title={formatGPValue(bestOption.savings).full} data-cy={`imbuement-block-savings-value-${tier}`}>
                       {formatGPValue(bestOption.savings).formatted}
                     </span>
                   ) : (
-                    formatGPValue(bestOption.savings).formatted
+                    <span data-cy={`imbuement-block-savings-value-${tier}`}>{formatGPValue(bestOption.savings).formatted}</span>
                   )} GP using {
                     bestOption.method === 'gt' ? 'Full GT' :
                     bestOption.method === 'gp' ? 'Full Market' :
@@ -567,16 +591,18 @@ export default function ImbuementBlock({
         })()}
 
         {/* Toggle buttons for additional tiers */}
-        <ImbuementBlockTierToggles>
+        <ImbuementBlockTierToggles data-cy="imbuement-block-tier-toggles">
           <ImbuementBlockToggleTierButton
             $active={showIntricate}
             onClick={() => setShowIntricate(!showIntricate)}
+            data-cy="imbuement-block-button-toggle-intricate"
           >
             {showIntricate ? t('imbuementCalculator.hideIntricate') : t('imbuementCalculator.showIntricate')}
           </ImbuementBlockToggleTierButton>
           <ImbuementBlockToggleTierButton
             $active={showBasic}
             onClick={() => setShowBasic(!showBasic)}
+            data-cy="imbuement-block-button-toggle-basic"
           >
             {showBasic ? t('imbuementCalculator.hideBasic') : t('imbuementCalculator.showBasic')}
           </ImbuementBlockToggleTierButton>
