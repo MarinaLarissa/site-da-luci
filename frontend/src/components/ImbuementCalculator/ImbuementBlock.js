@@ -222,11 +222,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full} data-cy={`imbuement-${tier}-gt-cost-base`}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-gt-cost-base`}>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>
@@ -262,11 +262,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full} data-cy={`imbuement-${tier}-items-cost-base`}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-items-cost-base`}>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>
@@ -360,11 +360,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full} data-cy={`imbuement-${tier}-gt-cost-base`}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-gt-cost-base`}>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>
@@ -400,11 +400,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full} data-cy={`imbuement-${tier}-items-cost-base`}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-items-cost-base`}>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>
@@ -498,11 +498,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>GT Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(gtCostWithoutFee).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(gtCostWithoutFee).full} data-cy={`imbuement-${tier}-gt-cost-base`}>
                           {formatGPValue(gtCostWithoutFee).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-gt-cost-base`}>{formatGPValue(gtCostWithoutFee).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>
@@ -538,11 +538,11 @@ export default function ImbuementBlock({
                     <ImbuementBlockBreakdownLine>
                       <ImbuementBlockBreakdownLabel>Items Cost:</ImbuementBlockBreakdownLabel>
                       {formatGPValue(itemsBreakdown.totalCost).formatted.includes('kk') ? (
-                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full}>
+                        <ImbuementBlockBreakdownValue title={formatGPValue(itemsBreakdown.totalCost).full} data-cy={`imbuement-${tier}-items-cost-base`}>
                           {formatGPValue(itemsBreakdown.totalCost).formatted} GP
                         </ImbuementBlockBreakdownValue>
                       ) : (
-                        <ImbuementBlockBreakdownValue>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
+                        <ImbuementBlockBreakdownValue data-cy={`imbuement-${tier}-items-cost-base`}>{formatGPValue(itemsBreakdown.totalCost).formatted} GP</ImbuementBlockBreakdownValue>
                       )}
                     </ImbuementBlockBreakdownLine>
                     <ImbuementBlockBreakdownLine>

@@ -52,34 +52,34 @@ export default function SoloHuntResults({ results }) {
         <SoloHuntResultsInfoGrid>
           <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.character')}:</span>
-            <span className="value" data-cy="solo-hunt-result-character-name">{player.name}</span>
+            <span className="value" data-cy="solo-hunt-session-character-name">{player.name}</span>
           </SoloHuntResultsInfoItem>
           <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.duration')}:</span>
-            <span className="value" data-cy="solo-hunt-result-duration">{session.duration}</span>
+            <span className="value" data-cy="solo-hunt-session-duration">{session.duration}</span>
           </SoloHuntResultsInfoItem>
           <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.sessionInfo.sessionTime')}:</span>
-            <span className="value" data-cy="solo-hunt-result-session-time">{session.sessionInfo}</span>
+            <span className="value" data-cy="solo-hunt-session-time">{session.sessionInfo}</span>
           </SoloHuntResultsInfoItem>
           <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.lootStats.loot')}:</span>
             {formatGPValue(player.loot).formatted.includes('kk') ? (
               <Tooltip text={formatGPValue(player.loot).full} position="top">
-                <span className="value positive" data-cy="solo-hunt-result-loot">+{formatGPValue(player.loot).formatted} GP</span>
+                <span className="value positive" data-cy="solo-hunt-session-loot">+{formatGPValue(player.loot).formatted} GP</span>
               </Tooltip>
             ) : (
-              <span className="value positive" data-cy="solo-hunt-result-loot">+{formatGPValue(player.loot).formatted} GP</span>
+              <span className="value positive" data-cy="solo-hunt-session-loot">+{formatGPValue(player.loot).formatted} GP</span>
             )}
           </SoloHuntResultsInfoItem>
           <SoloHuntResultsInfoItem>
             <span className="label">{t('soloHuntAnalyzer.results.lootStats.supplies')}:</span>
             {formatGPValue(player.supplies).formatted.includes('kk') ? (
               <Tooltip text={formatGPValue(player.supplies).full} position="top">
-                <span className="value negative" data-cy="solo-hunt-result-supplies">-{formatGPValue(player.supplies).formatted} GP</span>
+                <span className="value negative" data-cy="solo-hunt-session-supplies">-{formatGPValue(player.supplies).formatted} GP</span>
               </Tooltip>
             ) : (
-              <span className="value negative" data-cy="solo-hunt-result-supplies">-{formatGPValue(player.supplies).formatted} GP</span>
+              <span className="value negative" data-cy="solo-hunt-session-supplies">-{formatGPValue(player.supplies).formatted} GP</span>
             )}
           </SoloHuntResultsInfoItem>
           <Tooltip text={t('soloHuntAnalyzer.results.lootStats.balanceTooltip')} position="top">
@@ -87,10 +87,10 @@ export default function SoloHuntResults({ results }) {
               <span className="label">{t('soloHuntAnalyzer.results.lootStats.balance')}:</span>
               {formatGPValue(player.balance).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.balance).full} position="top">
-                  <span className="value neutral" data-cy="solo-hunt-result-balance">{formatGPValue(player.balance).formatted} GP</span>
+                  <span className="value neutral" data-cy="solo-hunt-session-balance">{formatGPValue(player.balance).formatted} GP</span>
                 </Tooltip>
               ) : (
-                <span className="value neutral" data-cy="solo-hunt-result-balance">{formatGPValue(player.balance).formatted} GP</span>
+                <span className="value neutral" data-cy="solo-hunt-session-balance">{formatGPValue(player.balance).formatted} GP</span>
               )}
             </SoloHuntResultsInfoItem>
           </Tooltip>
@@ -110,10 +110,10 @@ export default function SoloHuntResults({ results }) {
                     <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.costInGP')}</SoloHuntResultsCostLabel>
                     {formatGPValue(Math.floor(costs.partialGP)).formatted.includes('kk') ? (
                       <Tooltip text={formatGPValue(Math.floor(costs.partialGP)).full} position="top">
-                        <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-gp">-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
+                        <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-gp">-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
                       </Tooltip>
                     ) : (
-                      <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-gp">-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
+                      <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-gp">-{formatGPValue(Math.floor(costs.partialGP)).formatted} GP</SoloHuntResultsCostValueText>
                     )}
                   </SoloHuntResultsCostComponent>
                 </Tooltip>
@@ -127,10 +127,10 @@ export default function SoloHuntResults({ results }) {
                       <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.gtProportional')}</SoloHuntResultsCostLabel>
                       {formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted.includes('kk') ? (
                         <Tooltip text={formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).full} position="top">
-                          <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-gt">-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
+                          <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-gt">-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                         </Tooltip>
                       ) : (
-                        <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-gt">-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
+                        <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-gt">-{formatGPValue(Math.floor(costs.totalGT * costs.goldTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                       )}
                     </SoloHuntResultsCostComponent>
                   </Tooltip>
@@ -145,10 +145,10 @@ export default function SoloHuntResults({ results }) {
                       <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.stProportional')}</SoloHuntResultsCostLabel>
                       {formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted.includes('kk') ? (
                         <Tooltip text={formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).full} position="top">
-                          <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-st">-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
+                          <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-st">-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                         </Tooltip>
                       ) : (
-                        <SoloHuntResultsCostValueText data-cy="solo-hunt-result-cost-st">-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
+                        <SoloHuntResultsCostValueText data-cy="solo-hunt-cost-st">-{formatGPValue(Math.floor(costs.totalST * costs.silverTokenPrice)).formatted} GP</SoloHuntResultsCostValueText>
                       )}
                     </SoloHuntResultsCostComponent>
                   </Tooltip>
@@ -162,10 +162,10 @@ export default function SoloHuntResults({ results }) {
                   <SoloHuntResultsCostLabel>{t('soloHuntAnalyzer.itemCostManager.costSummary.totalCostLabel')}</SoloHuntResultsCostLabel>
                   {formatGPValue(Math.floor(costs.additionalCost)).formatted.includes('kk') ? (
                     <Tooltip text={formatGPValue(Math.floor(costs.additionalCost)).full} position="top">
-                      <SoloHuntResultsCostValueText $isTotal data-cy="solo-hunt-result-total-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
+                      <SoloHuntResultsCostValueText $isTotal data-cy="solo-hunt-cost-total">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
                     </Tooltip>
                   ) : (
-                    <SoloHuntResultsCostValueText $isTotal data-cy="solo-hunt-result-total-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
+                    <SoloHuntResultsCostValueText $isTotal data-cy="solo-hunt-cost-total">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsCostValueText>
                   )}
                 </SoloHuntResultsTotalCostComponent>
               </Tooltip>
@@ -177,10 +177,10 @@ export default function SoloHuntResults({ results }) {
                 <span className="cost-label">{t('soloHuntAnalyzer.itemCostManager.costSummary.costPerHour')}</span>
                 {formatGPValue(Math.floor(costs.gpPerHour)).formatted.includes('kk') ? (
                   <Tooltip text={formatGPValue(Math.floor(costs.gpPerHour)).full} position="top">
-                    <span className="cost-value" data-cy="solo-hunt-result-cost-per-hour">-{formatGPValue(Math.floor(costs.gpPerHour)).formatted} GP/h</span>
+                    <span className="cost-value" data-cy="solo-hunt-cost-per-hour">-{formatGPValue(Math.floor(costs.gpPerHour)).formatted} GP/h</span>
                   </Tooltip>
                 ) : (
-                  <span className="cost-value" data-cy="solo-hunt-result-cost-per-hour">-{formatGPValue(Math.floor(costs.gpPerHour)).formatted} GP/h</span>
+                  <span className="cost-value" data-cy="solo-hunt-cost-per-hour">-{formatGPValue(Math.floor(costs.gpPerHour)).formatted} GP/h</span>
                 )}
               </SoloHuntResultsCostPerHourSection>
             </Tooltip>
@@ -202,30 +202,30 @@ export default function SoloHuntResults({ results }) {
               <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesUsed')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(player.supplies).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.supplies).full} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-supplies-used">-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-supplies-used">-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-supplies-used">-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
+                <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-supplies-used">-{formatGPValue(player.supplies).formatted} GP</SoloHuntResultsBalanceValue>
               )}
             </SoloHuntResultsBalanceItem>
             <SoloHuntResultsBalanceItem>
               <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.additionalCost')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(costs.additionalCost)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(costs.additionalCost)).full} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-additional-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-additional-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-additional-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
+                <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-additional-cost">-{formatGPValue(Math.floor(costs.additionalCost)).formatted} GP</SoloHuntResultsBalanceValue>
               )}
             </SoloHuntResultsBalanceItem>
             <SoloHuntResultsBalanceItem>
               <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.suppliesPerHour')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(suppliesPerHour)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(suppliesPerHour)).full} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-supplies-per-hour">-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-supplies-per-hour">-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-supplies-per-hour">-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
+                <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-supplies-per-hour">-{formatGPValue(Math.floor(suppliesPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
               )}
             </SoloHuntResultsBalanceItem>
           </SoloHuntResultsBalanceColumn>
@@ -236,17 +236,17 @@ export default function SoloHuntResults({ results }) {
               <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.lootStats.balance')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(player.balance).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(player.balance).full} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-balance-value">{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-raw">{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-balance-value">{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
+                <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-raw">{formatGPValue(player.balance).formatted} GP</SoloHuntResultsBalanceValue>
               )}
             </SoloHuntResultsBalanceItem>
             {costs.tibiaCoinPrice > 0 && (
               <SoloHuntResultsBalanceItem>
                 <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.tcPerHour')}</SoloHuntResultsBalanceLabel>
                 <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcPerHourTooltip')} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-tc-per-hour">{tcPerHour.toFixed(2)} TC/h</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-tc-per-hour">{tcPerHour.toFixed(2)} TC/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
               </SoloHuntResultsBalanceItem>
             )}
@@ -254,10 +254,10 @@ export default function SoloHuntResults({ results }) {
               <SoloHuntResultsBalanceLabel>{t('soloHuntAnalyzer.results.finalBalance.profitPerHour')}</SoloHuntResultsBalanceLabel>
               {formatGPValue(Math.floor(profitPerHour)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(profitPerHour)).full} position="top">
-                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-profit-per-hour">{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
+                  <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-profit-per-hour">{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsBalanceValue data-cy="solo-hunt-result-profit-per-hour">{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
+                <SoloHuntResultsBalanceValue data-cy="solo-hunt-balance-profit-per-hour">{formatGPValue(Math.floor(profitPerHour)).formatted} GP/h</SoloHuntResultsBalanceValue>
               )}
             </SoloHuntResultsBalanceItem>
           </SoloHuntResultsBalanceColumn>
@@ -270,10 +270,10 @@ export default function SoloHuntResults({ results }) {
               <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.totalSupplies')}</SoloHuntResultsHighlightLabel>
               {formatGPValue(Math.floor(totalSupplies)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(totalSupplies)).full} position="top">
-                  <SoloHuntResultsHighlightValue $variant="negative" data-cy="solo-hunt-result-total-supplies">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
+                  <SoloHuntResultsHighlightValue $variant="negative" data-cy="solo-hunt-balance-total-supplies">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsHighlightValue $variant="negative" data-cy="solo-hunt-result-total-supplies">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
+                <SoloHuntResultsHighlightValue $variant="negative" data-cy="solo-hunt-balance-total-supplies">-{formatGPValue(Math.floor(totalSupplies)).formatted} GP</SoloHuntResultsHighlightValue>
               )}
             </SoloHuntResultsHighlightItem>
           </Tooltip>
@@ -283,12 +283,12 @@ export default function SoloHuntResults({ results }) {
               <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.finalBalanceValue')}</SoloHuntResultsHighlightLabel>
               {formatGPValue(Math.floor(adjustedBalance)).formatted.includes('kk') ? (
                 <Tooltip text={formatGPValue(Math.floor(adjustedBalance)).full} position="top">
-                  <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-result-final-balance">
+                  <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-final">
                     {adjustedBalance >= 0 ? '+' : ''}{formatGPValue(Math.floor(adjustedBalance)).formatted} GP
                   </SoloHuntResultsHighlightValue>
                 </Tooltip>
               ) : (
-                <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-result-final-balance">
+                <SoloHuntResultsHighlightValue $main $variant={adjustedBalance >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-final">
                   {adjustedBalance >= 0 ? '+' : ''}{formatGPValue(Math.floor(adjustedBalance)).formatted} GP
                 </SoloHuntResultsHighlightValue>
               )}
@@ -299,7 +299,7 @@ export default function SoloHuntResults({ results }) {
             <Tooltip text={t('soloHuntAnalyzer.results.finalBalance.tcTotalTooltip')} position="top">
               <SoloHuntResultsHighlightItem>
                 <SoloHuntResultsHighlightLabel>{t('soloHuntAnalyzer.results.finalBalance.tcTotal')}</SoloHuntResultsHighlightLabel>
-                <SoloHuntResultsHighlightValue $variant={tcTotal >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-result-tc-total">
+                <SoloHuntResultsHighlightValue $variant={tcTotal >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-tc-total">
                   {tcTotal.toFixed(2)} TC
                 </SoloHuntResultsHighlightValue>
               </SoloHuntResultsHighlightItem>
@@ -310,7 +310,7 @@ export default function SoloHuntResults({ results }) {
             <Tooltip text="Real money profit from selling Tibia Coins (TC Total × TC Sell Price)" position="top">
               <SoloHuntResultsHighlightItem>
                 <SoloHuntResultsHighlightLabel>💵 Money Earned</SoloHuntResultsHighlightLabel>
-                <SoloHuntResultsHighlightValue $variant={moneyMaked >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-result-money-earned">
+                <SoloHuntResultsHighlightValue $variant={moneyMaked >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-money-earned">
                   ${moneyMaked.toFixed(2)}
                 </SoloHuntResultsHighlightValue>
               </SoloHuntResultsHighlightItem>
