@@ -27,8 +27,44 @@
  * }
  */
 
+import Joi from 'joi';
+
 const STORAGE_KEY = 'luci_bestiary_progress';
 const CURRENT_VERSION = '1.0';
+
+/**
+ * Joi Schema for bestiary data validation
+ */
+const creatureProgressSchema = Joi.object({
+  completed: Joi.boolean().required(),
+  completedAt: Joi.string().isoDate().optional(),
+});
+
+const characterSchema = Joi.object({
+  id: Joi.string().required(),
+  name: Joi.string().min(1).max(100).required(),
+  level: Joi.number().integer().min(1).max(9999).required(),
+  vocation: Joi.string().valid('knight', 'paladin', 'sorcerer', 'druid').required(),
+  createdAt: Joi.string().isoDate().required(),
+  creatures: Joi.object().pattern(
+    Joi.string(), // creature ID
+    creatureProgressSchema
+  ).required(),
+});
+
+const bestiaryDataSchema = Joi.object({
+  version: Joi.string().required(),
+  lastUpdated: Joi.string().isoDate().required(),
+  activeCharacter: Joi.string().allow(null).required(),
+  characters: Joi.object().pattern(
+    Joi.string(), // character UUID
+    characterSchema
+  ).required(),
+  settings: Joi.object({
+    rapidRespawnActive: Joi.boolean().required(),
+    preferredRegions: Joi.array().items(Joi.string()).required(),
+  }).required(),
+});
 
 /**
  * Generate a simple UUID
@@ -214,36 +250,29 @@ export const setActiveCharacter = (characterId) => {
 
 /**
  * Mark a creature as completed for a character
+ * Now delegates to markCreaturesCompleted for code reuse
  */
 export const markCreatureCompleted = (characterId, creatureId, completed = true) => {
-  const data = loadBestiaryData();
-
-  if (!data.characters[characterId]) {
-    console.error('Character not found:', characterId);
-    return false;
-  }
-
-  data.characters[characterId].creatures[creatureId] = {
-    completed,
-    ...(completed && { completedAt: new Date().toISOString() }),
-  };
-
-  saveBestiaryData(data);
-  return true;
+  return markCreaturesCompleted(characterId, creatureId, completed);
 };
 
 /**
- * Mark multiple creatures as completed
+ * Mark multiple creatures as completed (consolidated with single version)
  */
 export const markCreaturesCompleted = (characterId, creatureIds, completed = true) => {
   const data = loadBestiaryData();
 
   if (!data.characters[characterId]) {
-    console.error('Character not found:', characterId);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Character not found:', characterId);
+    }
     return false;
   }
 
-  creatureIds.forEach((creatureId) => {
+  // Convert single ID to array for uniform processing
+  const idsArray = Array.isArray(creatureIds) ? creatureIds : [creatureIds];
+
+  idsArray.forEach((creatureId) => {
     data.characters[characterId].creatures[creatureId] = {
       completed,
       ...(completed && { completedAt: new Date().toISOString() }),
@@ -376,21 +405,29 @@ export const exportBestiaryData = () => {
 };
 
 /**
- * Import data from JSON
+ * Import data from JSON with Joi validation
  */
 export const importBestiaryData = (jsonString) => {
   try {
     const data = JSON.parse(jsonString);
 
-    // Validate structure
-    if (!data.version || !data.characters) {
-      throw new Error('Invalid data structure');
+    // Validate with Joi schema
+    const { error, value } = bestiaryDataSchema.validate(data, {
+      abortEarly: false, // Show all errors
+      stripUnknown: true, // Remove unknown fields
+    });
+
+    if (error) {
+      const errorMessages = error.details.map((detail) => detail.message).join(', ');
+      throw new Error(`Schema validation failed: ${errorMessages}`);
     }
 
-    saveBestiaryData(data);
+    saveBestiaryData(value);
     return { success: true };
   } catch (error) {
-    console.error('Error importing bestiary data:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error importing bestiary data:', error);
+    }
     return { success: false, error: error.message };
   }
 };

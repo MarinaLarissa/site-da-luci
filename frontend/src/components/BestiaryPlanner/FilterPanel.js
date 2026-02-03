@@ -113,19 +113,17 @@ const FilterPanel = ({
       {/* Regions */}
       <FilterGroup>
         <FilterLabel>{t('bestiaryPlanner.filters.region')}</FilterLabel>
-        <CheckboxGroup>
-          {Object.values(REGIONS)
-            .slice(0, 10)
-            .map((region) => (
-              <CheckboxLabel key={region}>
-                <Checkbox
-                  type="checkbox"
-                  checked={filters.region.includes(region)}
-                  onChange={() => handleRegionToggle(region)}
-                />
-                {region}
-              </CheckboxLabel>
-            ))}
+        <CheckboxGroup style={{ maxHeight: '300px', overflowY: 'auto' }}>
+          {Object.values(REGIONS).map((region) => (
+            <CheckboxLabel key={region}>
+              <Checkbox
+                type="checkbox"
+                checked={filters.region.includes(region)}
+                onChange={() => handleRegionToggle(region)}
+              />
+              {region}
+            </CheckboxLabel>
+          ))}
         </CheckboxGroup>
       </FilterGroup>
 

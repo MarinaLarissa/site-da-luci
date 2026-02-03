@@ -4,14 +4,8 @@
  */
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import BESTIARY_DATA, { DIFFICULTY_HOURS } from '../data/bestiary';
-import {
-  getActiveCharacter,
-  getCompletedCreatures,
-  markCreatureCompleted,
-  getCharacterProgress,
-  getSettings,
-} from '../services/bestiaryStorage';
+import BESTIARY_DATA from '../data/bestiary';
+import * as bestiaryStorageDefault from '../services/bestiaryStorage';
 
 /**
  * Efficiency calculation
@@ -47,8 +41,9 @@ const calculateEfficiencyScore = (creature, settings, characterLevel) => {
 
 /**
  * Main hook
+ * @param {Object} storageService - Optional storage service for dependency injection (for testing)
  */
-export const useBestiaryPlanner = () => {
+export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const [character, setCharacter] = useState(null);
   const [completedCreatureIds, setCompletedCreatureIds] = useState([]);
   const [settings, setSettings] = useState({ rapidRespawnActive: false, preferredRegions: [] });
@@ -65,25 +60,27 @@ export const useBestiaryPlanner = () => {
 
   // Load character and settings from localStorage
   useEffect(() => {
-    const activeChar = getActiveCharacter();
+    const activeChar = storageService.getActiveCharacter();
     setCharacter(activeChar);
 
     if (activeChar) {
-      const completed = getCompletedCreatures(activeChar.id);
+      const completed = storageService.getCompletedCreatures(activeChar.id);
       setCompletedCreatureIds(completed);
     }
 
-    const loadedSettings = getSettings();
+    const loadedSettings = storageService.getSettings();
     setSettings(loadedSettings);
-  }, []);
+  }, [storageService]);
 
   // Refresh completed creatures when character changes
   const refreshProgress = useCallback(() => {
     if (character) {
-      const completed = getCompletedCreatures(character.id);
+      // Capture character ID to avoid race conditions
+      const characterId = character.id;
+      const completed = storageService.getCompletedCreatures(characterId);
       setCompletedCreatureIds(completed);
     }
-  }, [character]);
+  }, [character, storageService]);
 
   // Get incomplete creatures
   const incompleteCreatures = useMemo(() => {
@@ -169,10 +166,10 @@ export const useBestiaryPlanner = () => {
       if (!character) return;
 
       const isCompleted = completedCreatureIds.includes(creatureId);
-      markCreatureCompleted(character.id, creatureId, !isCompleted);
+      storageService.markCreatureCompleted(character.id, creatureId, !isCompleted);
       refreshProgress();
     },
-    [character, completedCreatureIds, refreshProgress]
+    [character, completedCreatureIds, refreshProgress, storageService]
   );
 
   // Mark multiple creatures as completed
@@ -180,12 +177,10 @@ export const useBestiaryPlanner = () => {
     (creatureIds) => {
       if (!character) return;
 
-      creatureIds.forEach((id) => {
-        markCreatureCompleted(character.id, id, true);
-      });
+      storageService.markCreaturesCompleted(character.id, creatureIds, true);
       refreshProgress();
     },
-    [character, refreshProgress]
+    [character, refreshProgress, storageService]
   );
 
   // Update filters
@@ -219,13 +214,13 @@ export const useBestiaryPlanner = () => {
       };
     }
 
-    return getCharacterProgress(character.id, BESTIARY_DATA);
-  }, [character, completedCreatureIds]); // eslint-disable-line react-hooks/exhaustive-deps
+    return storageService.getCharacterProgress(character.id, BESTIARY_DATA);
+  }, [character, completedCreatureIds, storageService]);
 
-  // Get creature by ID
-  const getCreatureById = useCallback((creatureId) => {
+  // Get creature by ID (pure function, no need for useCallback)
+  const getCreatureById = (creatureId) => {
     return BESTIARY_DATA.find((c) => c.id === creatureId);
-  }, []);
+  };
 
   // Check if creature is completed
   const isCreatureCompleted = useCallback(
@@ -242,12 +237,12 @@ export const useBestiaryPlanner = () => {
 
   // Get charm points per hour for remaining
   const getAverageCharmPointsPerHour = useCallback(() => {
-    if (incompleteCreatures.length === 0) return 0;
+    if (incompleteCreatures.length === 0) return null;
 
     const totalCharmPoints = incompleteCreatures.reduce((sum, c) => sum + c.charmPoints, 0);
     const totalHours = incompleteCreatures.reduce((sum, c) => sum + c.estimatedHours, 0);
 
-    return totalHours > 0 ? totalCharmPoints / totalHours : 0;
+    return totalHours > 0 ? totalCharmPoints / totalHours : null;
   }, [incompleteCreatures]);
 
   return {

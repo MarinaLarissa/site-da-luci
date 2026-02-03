@@ -10,6 +10,7 @@ import ImbuementCalculator from './components/ImbuementCalculator/ImbuementCalcu
 import { BestiaryPlanner } from './components/BestiaryPlanner';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import { LoginModal, UserMenu } from './components/Auth';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
 import { AppContainer, MainContent, TopControls } from './App.styles';
@@ -63,20 +64,22 @@ function App() {
 
         <MainContent>
           {/* Content based on active page from sidebar */}
-          {activePage === 'loot-split' && <LootSplitCalculator />}
-          {activePage === 'solo-hunt' && (
-            <SoloHuntAnalyzer
-              goldTokenPrice={sharedGoldTokenPrice}
-              setGoldTokenPrice={setSharedGoldTokenPrice}
-            />
-          )}
-          {activePage === 'imbuement-calc' && (
-            <ImbuementCalculator
-              goldTokenPrice={sharedGoldTokenPrice}
-              setGoldTokenPrice={setSharedGoldTokenPrice}
-            />
-          )}
-          {activePage === 'bestiary-planner' && <BestiaryPlanner />}
+          <ErrorBoundary>
+            {activePage === 'loot-split' && <LootSplitCalculator />}
+            {activePage === 'solo-hunt' && (
+              <SoloHuntAnalyzer
+                goldTokenPrice={sharedGoldTokenPrice}
+                setGoldTokenPrice={setSharedGoldTokenPrice}
+              />
+            )}
+            {activePage === 'imbuement-calc' && (
+              <ImbuementCalculator
+                goldTokenPrice={sharedGoldTokenPrice}
+                setGoldTokenPrice={setSharedGoldTokenPrice}
+              />
+            )}
+            {activePage === 'bestiary-planner' && <BestiaryPlanner />}
+          </ErrorBoundary>
         </MainContent>
       </AppContainer>
     </Suspense>

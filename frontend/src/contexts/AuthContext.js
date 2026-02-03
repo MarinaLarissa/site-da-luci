@@ -57,9 +57,13 @@ export const AuthProvider = ({ children }) => {
 
         if (event === 'SIGNED_IN') {
           // User signed in - could trigger sync here
-          console.log('User signed in:', session?.user?.email);
+          if (process.env.NODE_ENV === 'development') {
+            console.log('User signed in:', session?.user?.email);
+          }
         } else if (event === 'SIGNED_OUT') {
-          console.log('User signed out');
+          if (process.env.NODE_ENV === 'development') {
+            console.log('User signed out');
+          }
         }
       }
     );
@@ -105,7 +109,7 @@ export const AuthProvider = ({ children }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin,
+        redirectTo: process.env.REACT_APP_AUTH_REDIRECT_URL || window.location.origin,
       },
     });
 
@@ -128,7 +132,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
+      redirectTo: `${process.env.REACT_APP_AUTH_REDIRECT_URL || window.location.origin}/reset-password`,
     });
 
     if (error) throw error;
