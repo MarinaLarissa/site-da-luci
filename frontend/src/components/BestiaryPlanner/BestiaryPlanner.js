@@ -10,6 +10,8 @@ import FilterPanel from './FilterPanel';
 import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
 import SyncStatus from './SyncStatus';
+import ScreenshotImport from './ScreenshotImport';
+import { markCreaturesCompleted } from '../../services/bestiaryStorage';
 import {
   PlannerContainer,
   Header,
@@ -24,6 +26,8 @@ import {
   StatValue,
   ProgressBarTrack,
   ProgressBarFill,
+  ScreenshotSection,
+  ScreenshotToggleButton,
   ContentGrid,
   FilterSection,
   ResultsSection,
@@ -38,6 +42,7 @@ import {
 const BestiaryPlanner = () => {
   const { t } = useTranslation();
   const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
+  const [showScreenshotImport, setShowScreenshotImport] = useState(false);
 
   const {
     character,
@@ -83,6 +88,17 @@ const BestiaryPlanner = () => {
   const totalRemainingTime = getTotalRemainingTime();
   const avgCharmPointsPerHour = getAverageCharmPointsPerHour();
 
+  // Handle screenshot import
+  const handleCreaturesImported = (creatureIds) => {
+    if (!character) return;
+
+    markCreaturesCompleted(character.id, creatureIds, true);
+    setShowScreenshotImport(false);
+
+    // Reload data to reflect changes
+    window.location.reload();
+  };
+
   return (
     <PlannerContainer>
       <Header>
@@ -122,6 +138,19 @@ const BestiaryPlanner = () => {
           <ProgressBarFill $percentage={progress.percentage} />
         </ProgressBarTrack>
       </ProgressBar>
+
+      {/* Screenshot Import */}
+      <ScreenshotSection>
+        <ScreenshotToggleButton onClick={() => setShowScreenshotImport(!showScreenshotImport)}>
+          📷 {showScreenshotImport ? t('bestiaryPlanner.screenshot.hide') : t('bestiaryPlanner.screenshot.show')}
+        </ScreenshotToggleButton>
+        {showScreenshotImport && (
+          <ScreenshotImport
+            characterId={character.id}
+            onCreaturesImported={handleCreaturesImported}
+          />
+        )}
+      </ScreenshotSection>
 
       {/* Main Content Grid */}
       <ContentGrid>

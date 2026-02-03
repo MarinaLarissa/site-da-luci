@@ -484,6 +484,25 @@
       "queuePending": "{{count}} operação pendente",
       "queuePending_plural": "{{count}} operações pendentes",
       "manualSync": "Sincronizar agora"
+    },
+    "screenshot": {
+      "show": "Import via Screenshot",
+      "hide": "Ocultar Import de Screenshot",
+      "uploadTitle": "Upload de Screenshot do Bestiary",
+      "uploadHint": "Arraste uma imagem ou clique para selecionar",
+      "invalidFile": "Arquivo inválido. Por favor, selecione uma imagem.",
+      "processButton": "Processar Screenshot",
+      "processing": "Processando...",
+      "clearButton": "Limpar",
+      "ocrFailed": "Falha ao processar imagem",
+      "notBestiaryScreenshot": "A imagem não parece ser um screenshot do bestiary",
+      "processingError": "Erro ao processar screenshot",
+      "resultsTitle": "Criaturas Encontradas",
+      "foundCreatures": "{{matched}} de {{total}} criaturas correspondidas",
+      "confirmImport": "Marcar {{count}} criatura como completa",
+      "confirmImport_plural": "Marcar {{count}} criaturas como completas",
+      "unmatchedTitle": "Não foi possível identificar:",
+      "tryAnother": "Tentar Outro Screenshot"
     }
   },
   "imbuementCalculator": {

@@ -105,6 +105,31 @@ export const ProgressBarFill = styled.div`
   width: ${({ $percentage }) => $percentage}%;
 `;
 
+export const ScreenshotSection = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+`;
+
+export const ScreenshotToggleButton = styled.button`
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.md};
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+  }
+`;
+
 export const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 320px 1fr;
