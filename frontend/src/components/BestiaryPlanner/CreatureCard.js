@@ -143,6 +143,12 @@ const CreatureCard = ({
 
           <LocationSection>
             <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
+            {creature.killsRequired && (
+              <Stat>
+                <StatIcon>🎯</StatIcon>
+                {creature.killsRequired} kills
+              </Stat>
+            )}
             <LocationList>
               {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
                 <LocationChip key={idx}>{location}</LocationChip>

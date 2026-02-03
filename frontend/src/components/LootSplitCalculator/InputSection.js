@@ -30,7 +30,7 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         placeholder={t('calculator.inputSection.placeholder')}
         $minHeight="200px"
         $monospace={false}
-        rows={3}
+        rows={12}
         disabled={loading}
         data-cy="loot-calculator-input-session"
       />

@@ -51,7 +51,7 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
     <PlannerPanel>
       <PlannerHeader>
         <PlannerTitle>📅 {t('bestiaryPlanner.sessionPlanner.title')}</PlannerTitle>
-        {creatures.length > 0 && (
+        {(creatures.length > 0 || todayStats.count > 0) && (
           <PlannerActions>
             <ClearButton onClick={onClearPlan}>
               {t('bestiaryPlanner.sessionPlanner.clearButton')}

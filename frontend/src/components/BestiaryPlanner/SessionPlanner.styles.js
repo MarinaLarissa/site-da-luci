@@ -54,7 +54,7 @@ export const PlannerList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
-  max-height: 400px;
+  max-height: 300px;
   overflow-y: auto;
 
   /* Custom scrollbar */
