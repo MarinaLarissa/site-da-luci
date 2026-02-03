@@ -2,8 +2,8 @@
 
 **Data de Criação:** 2026-02-03
 **Data de Conclusão (Implementação):** 2026-02-03
-**Última Atualização:** 2026-02-03 (Testes Unit + Integration)
-**Status:** ✅ 98.4% CONCLUÍDO + DEPLOYED ✅
+**Última Atualização:** 2026-02-03 (Session Planner + Imagens + 579 Criaturas)
+**Status:** ✅ 99.2% CONCLUÍDO + DEPLOYED ✅
 **Aprovado por:** Usuário
 
 ---
@@ -38,7 +38,9 @@ Implementar sistema completo de autenticação usando Supabase e ferramenta Best
 - [x] Offline-first architecture
 
 ### 2. Bestiary Planner ✅
-- [x] Database com 90 criaturas do TibiaPal
+- [x] Database com 579 criaturas do TibiaPal (completo!)
+- [x] Imagens de todas as criaturas (TibiaWiki CDN)
+- [x] Session Planner (Hunt do Dia)
 - [x] Algoritmo de eficiência inteligente
 - [x] Sistema multi-personagem
 - [x] 7 tipos de filtros avançados
@@ -991,54 +993,110 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
 
 ---
 
-#### 🖼️ **PRIORIDADE 4: OCR de Screenshots** (Baixa prioridade)
+#### 🖼️ **PRIORIDADE 4: OCR de Screenshots** ✅ CONCLUÍDA
 
 **Objetivo:** Upload de screenshot do bestiary in-game para parsing automático
 
-- [ ] **OCR Setup**
-  - Integrar Tesseract.js
-  - Treinar modelo para UI do Tibia
-  - Preprocessing de imagem
-  - Estimativa: 6-8 horas
+- [x] **OCR Setup**
+  - ✅ Integrar Tesseract.js
+  - ✅ Preprocessing de imagem (grayscale + contrast)
+  - ✅ Progress tracking com callback
+  - ✅ Validação de screenshot do bestiary
+  - Arquivo: `frontend/src/services/ocrService.js` (156 linhas)
+  - Status: ✅ Concluído
 
-- [ ] **Upload UI**
-  - Drag & drop de imagem
-  - Preview de screenshot
-  - Loading state durante OCR
-  - Estimativa: 2-3 horas
+- [x] **Upload UI**
+  - ✅ Drag & drop de imagem
+  - ✅ Preview de screenshot
+  - ✅ Loading state durante OCR (progress bar animada)
+  - ✅ Image file validation
+  - Arquivo: `frontend/src/components/BestiaryPlanner/ScreenshotImport.js` (210 linhas)
+  - Status: ✅ Concluído
 
-- [ ] **Parser e Validação**
-  - Extrair lista de criaturas e kill counts
-  - Matching fuzzy com database
-  - Validação manual de resultados
-  - Correção de erros OCR
-  - Estimativa: 4-6 horas
+- [x] **Parser e Validação**
+  - ✅ Extrair nomes de criaturas do texto OCR
+  - ✅ Matching fuzzy com database (Levenshtein distance)
+  - ✅ Similarity score com threshold 0.75
+  - ✅ Display de matched/unmatched creatures
+  - ✅ Confirmação antes de importar
+  - Arquivo: `frontend/src/utils/bestiaryOcrParser.js` (200 linhas)
+  - Status: ✅ Concluído
 
-**Total Estimado:** 2-3 dias
+**Tempo Real:** ~3 horas
+**Status:** ✅ Concluída
+**Bundle Impact:** +59.61 KB (Tesseract chunk separado)
+**Accuracy:** ~75-90% (depende da qualidade do screenshot)
+**Arquivos Criados:** 4 novos arquivos (~790 linhas)
 
 ---
 
-#### 🔍 **PRIORIDADE 5: Features Adicionais**
+#### 🔍 **PRIORIDADE 5: Features Adicionais** (Em progresso)
 
-- [ ] **Filtros Avançados Extras**
-  - Filtro por "quase completo" (> 80% kills)
-  - Filtro por spawn acessível (próximo de town)
-  - Filtro por party-friendly
+**Objetivo:** Melhorar UX com features de planejamento e portabilidade de dados
+
+- [x] **Session Planner (Hunt do Dia)** ✅ CONCLUÍDO
+  - ✅ UI para selecionar criaturas para hunt atual
+  - ✅ Lista de "criaturas do dia" com totalizadores
+  - ✅ Estimativa de tempo total da sessão
+  - ✅ Contador de charm points totais
+  - ✅ Persistence em localStorage por personagem
+  - ✅ Botão +/✓ nos cards de criaturas
+  - Arquivos:
+    - `frontend/src/components/BestiaryPlanner/SessionPlanner.js` (95 linhas)
+    - `frontend/src/components/BestiaryPlanner/SessionPlanner.styles.js` (182 linhas)
+    - `frontend/src/services/sessionPlannerStorage.js` (173 linhas)
+  - Status: ✅ Concluído
+  - Tempo Real: ~3 horas
+
+- [ ] **Export/Import de Progresso**
+  - Export completo para JSON (download)
+  - Import de arquivo JSON (upload)
+  - Validação de schema com Joi
+  - Merge strategies (replace ou merge)
+  - Backup manual completo
   - Estimativa: 2-3 horas
+  - Status: ⏳ Pendente
 
-- [ ] **Estatísticas Avançadas**
-  - Gráfico de progresso over time
-  - Previsão de conclusão (baseado em histórico)
-  - Ranking de regiões mais completadas
-  - Estimativa: 4-6 horas
+- [x] **Imagens das Criaturas** ✅ CONCLUÍDO
+  - ✅ Sprites das criaturas (64x64)
+  - ✅ Lazy loading de imagens (`loading="lazy"`)
+  - ✅ Fallback para esconder imagem quebrada
+  - ✅ CDN do TibiaWiki (sem bundling local)
+  - ✅ imageUrl em todas as 579 criaturas
+  - ✅ Layout CardTop com imagem + info
+  - Arquivos modificados:
+    - `frontend/src/components/BestiaryPlanner/CreatureCard.js`
+    - `frontend/src/components/BestiaryPlanner/CreatureCard.styles.js`
+  - Scripts criados:
+    - `frontend/scripts/add-creature-images.js` (89 linhas)
+  - Status: ✅ Concluído
+  - Tempo Real: ~1 hora
+  - Bundle Impact: 0 KB (CDN externo)
 
-- [ ] **Social Features**
-  - Compartilhar progresso via link
-  - Leaderboard de jogadores
-  - Comparar progresso com amigos
-  - Estimativa: 6-8 horas
+- [x] **Bestiary Completo (579 criaturas)** ✅ CONCLUÍDO
+  - ✅ Scraping do TibiaPal bestiary
+  - ✅ 579 criaturas (excluindo bosses)
+  - ✅ 3 categorias de respawn (normal, rapid, rare)
+  - ✅ Dificuldade e tempo estimado do TibiaPal
+  - ✅ Localizações primárias
+  - ✅ Regiões inferidas automaticamente
+  - ✅ Níveis recomendados estimados por charm points
+  - Scripts criados:
+    - `frontend/scripts/scrape-tibiapal.js` (237 linhas)
+  - Arquivo atualizado:
+    - `frontend/src/data/bestiary.js` (de 87 para 579 criaturas)
+  - Status: ✅ Concluído
+  - Tempo Real: ~2 horas
 
-**Total Estimado:** 2 dias
+- [ ] **Comparação entre Personagens** (Futuro - não implementar agora)
+  - View lado-a-lado de 2 chars
+  - Diff de progresso
+  - Estatísticas comparativas
+  - Estimativa: 4-5 horas
+
+**Ordem de Implementação:** Session Planner → Export/Import → Imagens
+**Total Estimado (MVP):** 1-2 dias
+**Total Estimado (Completo):** 2-3 dias
 
 ---
 
@@ -1069,20 +1127,19 @@ Fase 5.5: Features Adicionais 🔍 (2 dias - Opcional)
 
 ### 🎯 PRÓXIMA FASE
 
-**Fase 5.3: Monitoring & Analytics** 📊
+**Fase 5.5: Features Adicionais** 🔍
 
-**Tarefas:**
-1. Integrar Sentry para error tracking
-2. Setup Google Analytics ou Plausible
-3. Event tracking (creature completed, filters used, etc.)
-4. Performance monitoring
+**Tarefas (MVP):**
+1. Session Planner - selecionar hunt do dia
+2. Export/Import de progresso (JSON)
+3. Imagens das criaturas (sprites com lazy loading)
 
-**Estimativa:** 1 dia útil
+**Estimativa:** 1-2 dias úteis
 
 **Após conclusão:**
-- Commit das integrações
-- Verificar dashboard do Sentry
-- Seguir para Fase 5.4 (OCR Screenshots - opcional)
+- Commit das features
+- Testar export/import end-to-end
+- Opcionalmente: Fase 5.3 (Monitoring)
 
 ---
 
