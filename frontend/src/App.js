@@ -1,19 +1,25 @@
 /**
  * Main App component
+ *
+ * Performance: Uses code splitting with React.lazy for heavy components
+ * to reduce initial bundle size and improve load time
  */
 
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, lazy } from 'react';
 import Sidebar from './components/Layout/Sidebar';
-import LootSplitCalculator from './components/LootSplitCalculator/LootSplitCalculator';
-import SoloHuntAnalyzer from './components/SoloHuntAnalyzer/SoloHuntAnalyzer';
-import ImbuementCalculator from './components/ImbuementCalculator/ImbuementCalculator';
-import { BestiaryPlanner } from './components/BestiaryPlanner';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
-import { LoginModal, UserMenu } from './components/Auth';
+import { UserMenu } from './components/Auth';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
 import { AppContainer, MainContent, TopControls } from './App.styles';
+
+// Lazy load heavy components for better performance
+const LootSplitCalculator = lazy(() => import('./components/LootSplitCalculator/LootSplitCalculator'));
+const SoloHuntAnalyzer = lazy(() => import('./components/SoloHuntAnalyzer/SoloHuntAnalyzer'));
+const ImbuementCalculator = lazy(() => import('./components/ImbuementCalculator/ImbuementCalculator'));
+const BestiaryPlanner = lazy(() => import('./components/BestiaryPlanner').then(module => ({ default: module.BestiaryPlanner })));
+const LoginModal = lazy(() => import('./components/Auth').then(module => ({ default: module.LoginModal })));
 
 function App() {
   const [activePage, setActivePage] = useState('loot-split');
@@ -49,22 +55,39 @@ function App() {
     }
   }, [sharedGoldTokenPrice]);
 
+  // Loading fallback component
+  const LoadingFallback = () => (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      fontSize: '1.2rem',
+      color: '#666'
+    }}>
+      Loading...
+    </div>
+  );
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <AppContainer>
-        <TopControls>
-          <UserMenu onLoginClick={() => setIsLoginModalOpen(true)} />
-          <LanguageSelector />
-        </TopControls>
-        <Sidebar activePage={activePage} onNavigate={setActivePage} />
+    <AppContainer>
+      <TopControls>
+        <UserMenu onLoginClick={() => setIsLoginModalOpen(true)} />
+        <LanguageSelector />
+      </TopControls>
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
+
+      <Suspense fallback={<LoadingFallback />}>
         <LoginModal
           isOpen={isLoginModalOpen}
           onClose={() => setIsLoginModalOpen(false)}
         />
+      </Suspense>
 
-        <MainContent>
-          {/* Content based on active page from sidebar */}
-          <ErrorBoundary>
+      <MainContent>
+        {/* Content based on active page from sidebar - lazy loaded */}
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingFallback />}>
             {activePage === 'loot-split' && <LootSplitCalculator />}
             {activePage === 'solo-hunt' && (
               <SoloHuntAnalyzer
@@ -79,10 +102,10 @@ function App() {
               />
             )}
             {activePage === 'bestiary-planner' && <BestiaryPlanner />}
-          </ErrorBoundary>
-        </MainContent>
-      </AppContainer>
-    </Suspense>
+          </Suspense>
+        </ErrorBoundary>
+      </MainContent>
+    </AppContainer>
   );
 }
 

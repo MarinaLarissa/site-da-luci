@@ -1,8 +1,12 @@
 /**
  * CreatureCard Component
  * Displays individual creature information
+ *
+ * Performance: Memoized to prevent unnecessary re-renders
+ * when parent updates but props haven't changed
  */
 
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Card,
@@ -83,4 +87,14 @@ const CreatureCard = ({ creature, onToggleComplete, isCompleted }) => {
   );
 };
 
-export default CreatureCard;
+// Custom comparison function for memo
+// Only re-render if creature id, isCompleted, or efficiencyScore changed
+const areEqual = (prevProps, nextProps) => {
+  return (
+    prevProps.creature.id === nextProps.creature.id &&
+    prevProps.isCompleted === nextProps.isCompleted &&
+    prevProps.creature.efficiencyScore === nextProps.creature.efficiencyScore
+  );
+};
+
+export default memo(CreatureCard, areEqual);

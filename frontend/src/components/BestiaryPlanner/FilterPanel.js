@@ -1,9 +1,14 @@
 /**
  * FilterPanel Component
  * Sidebar panel for filtering bestiary creatures
+ *
+ * Performance: Memoized to prevent re-renders when parent updates
+ * but filter props haven't changed
  */
 
+import { memo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDebounce } from '../../hooks/useDebounce';
 import { DIFFICULTY, REGIONS, RESPAWN_CATEGORY } from '../../data/bestiary';
 import {
   Panel,
@@ -37,6 +42,22 @@ const FilterPanel = ({
 }) => {
   const { t } = useTranslation();
 
+  // Local state for search input with debounce
+  const [searchInput, setSearchInput] = useState(filters.searchTerm);
+  const debouncedSearchTerm = useDebounce(searchInput, 300);
+
+  // Update parent filter when debounced value changes
+  useEffect(() => {
+    if (debouncedSearchTerm !== filters.searchTerm) {
+      onUpdateFilters({ searchTerm: debouncedSearchTerm });
+    }
+  }, [debouncedSearchTerm, filters.searchTerm, onUpdateFilters]);
+
+  // Sync local state when filter resets
+  useEffect(() => {
+    setSearchInput(filters.searchTerm);
+  }, [filters.searchTerm]);
+
   const handleDifficultyToggle = (difficulty) => {
     const newDifficulty = filters.difficulty.includes(difficulty)
       ? filters.difficulty.filter((d) => d !== difficulty)
@@ -67,14 +88,14 @@ const FilterPanel = ({
         </ResetButton>
       </PanelHeader>
 
-      {/* Search */}
+      {/* Search (debounced for performance) */}
       <FilterGroup>
         <FilterLabel>{t('bestiaryPlanner.filters.search')}</FilterLabel>
         <SearchInput
           type="text"
           placeholder={t('bestiaryPlanner.filters.searchPlaceholder')}
-          value={filters.searchTerm}
-          onChange={(e) => onUpdateFilters({ searchTerm: e.target.value })}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
       </FilterGroup>
 
@@ -205,4 +226,5 @@ const FilterPanel = ({
   );
 };
 
-export default FilterPanel;
+// Memo the FilterPanel to avoid re-renders when filters haven't changed
+export default memo(FilterPanel);
