@@ -3,7 +3,7 @@
  * Main component for the bestiary planning feature
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBestiaryPlanner } from '../../hooks/useBestiaryPlanner';
 import FilterPanel from './FilterPanel';
@@ -11,7 +11,15 @@ import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
 import SyncStatus from './SyncStatus';
 import ScreenshotImport from './ScreenshotImport';
+import SessionPlanner from './SessionPlanner';
 import { markCreaturesCompleted } from '../../services/bestiaryStorage';
+import {
+  getSessionPlanWithData,
+  toggleCreatureInPlan,
+  clearSessionPlan,
+  isInSessionPlan,
+} from '../../services/sessionPlannerStorage';
+import { BESTIARY_DATA } from '../../data/bestiary';
 import {
   PlannerContainer,
   Header,
@@ -43,6 +51,7 @@ const BestiaryPlanner = () => {
   const { t } = useTranslation();
   const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
   const [showScreenshotImport, setShowScreenshotImport] = useState(false);
+  const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
 
   const {
     character,
@@ -56,6 +65,14 @@ const BestiaryPlanner = () => {
     getTotalRemainingTime,
     getAverageCharmPointsPerHour,
   } = useBestiaryPlanner();
+
+  // Load session plan creatures
+  useEffect(() => {
+    if (character) {
+      const planCreatures = getSessionPlanWithData(character.id, BESTIARY_DATA);
+      setSessionPlanCreatures(planCreatures);
+    }
+  }, [character]);
 
   // Show warning if no character exists
   if (!character) {
@@ -97,6 +114,30 @@ const BestiaryPlanner = () => {
 
     // Reload data to reflect changes
     window.location.reload();
+  };
+
+  // Handle session planner
+  const handleTogglePlan = (creatureId) => {
+    if (!character) return;
+
+    toggleCreatureInPlan(character.id, creatureId);
+    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+    setSessionPlanCreatures(updatedPlan);
+  };
+
+  const handleClearPlan = () => {
+    if (!character) return;
+
+    clearSessionPlan(character.id);
+    setSessionPlanCreatures([]);
+  };
+
+  const handleRemoveFromPlan = (creatureId) => {
+    if (!character) return;
+
+    toggleCreatureInPlan(character.id, creatureId);
+    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+    setSessionPlanCreatures(updatedPlan);
   };
 
   return (
@@ -163,12 +204,20 @@ const BestiaryPlanner = () => {
             avgCharmPointsPerHour={avgCharmPointsPerHour}
             totalRemainingTime={totalRemainingTime}
           />
+          <SessionPlanner
+            creatures={sessionPlanCreatures}
+            characterId={character.id}
+            onRemoveCreature={handleRemoveFromPlan}
+            onClearPlan={handleClearPlan}
+          />
         </FilterSection>
 
         <ResultsSection>
           <SuggestionList
             suggestions={suggestions}
             onToggleComplete={toggleCreatureCompletion}
+            onTogglePlan={handleTogglePlan}
+            isCreatureInPlan={(creatureId) => isInSessionPlan(character.id, creatureId)}
             isCreatureCompleted={isCreatureCompleted}
             character={character}
           />

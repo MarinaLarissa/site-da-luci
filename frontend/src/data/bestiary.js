@@ -48,1138 +48,8113 @@ export const REGIONS = {
   ROSHAMUUL: 'Roshamuul',
   FERUMBRAS_ASCENSION: 'Ferumbras Ascension',
   OTHERWORLD: 'Otherworld',
-  FEYRIST: 'Feyrist',
-  ISSAVI: 'Issavi',
-  KILMARESH: 'Kilmaresh',
-  GNOMPRONA: 'Gnomprona',
-  ROOKGAARD: 'Rookgaard',
-  DAWNPORT: 'Dawnport',
-  DEEPER_BANUTA: 'Deeper Banuta',
-  INQUISITION: 'Inquisition',
-  WARZONES: 'Warzones',
 };
 
-export const VOCATIONS = {
-  ALL: 'all',
-  KNIGHT: 'knight',
-  PALADIN: 'paladin',
-  SORCERER: 'sorcerer',
-  DRUID: 'druid',
-};
-
-/**
- * Main bestiary database
- * Starting with ~100 popular creatures across different difficulties and regions
- */
 export const BESTIARY_DATA = [
-  // ============== EASY CREATURES (< 2 hours) ==============
-
-  // Rotworms / Basic creatures
-  {
-    id: 'rotworm',
-    name: 'Rotworm',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Darashia Rotworm Cave', 'Edron Rotworm Cave', 'Liberty Bay Rotworm Cave'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 15,
-    killsRequired: 500,
-  },
-  {
-    id: 'carrion-worm',
-    name: 'Carrion Worm',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Darashia Rotworm Cave', 'Edron Rotworm Cave'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'amazon',
-    name: 'Amazon',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Venore Amazon Camp', 'Carlin Amazon Camp'],
-    region: REGIONS.VENORE,
-    recommendedLevel: 20,
-    killsRequired: 500,
-  },
-  {
-    id: 'valkyrie',
-    name: 'Valkyrie',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Amazon Camp', 'Edron Hero Cave'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 30,
-    killsRequired: 500,
-  },
-  {
-    id: 'cyclops',
-    name: 'Cyclops',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Mount Sternum Cyclops Camp', 'Edron Cyclops Cave', 'Thais Cyclops Cave'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'dwarf',
-    name: 'Dwarf',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Kazordoon Mines', 'Femor Hills'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 15,
-    killsRequired: 500,
-  },
-  {
-    id: 'dwarf-soldier',
-    name: 'Dwarf Soldier',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Kazordoon Mines', 'Femor Hills'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'minotaur',
-    name: 'Minotaur',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Mintwallin', 'Rookgaard Minotaur Tower'],
-    region: REGIONS.THAIS,
-    recommendedLevel: 15,
-    killsRequired: 500,
-  },
-  {
-    id: 'minotaur-archer',
-    name: 'Minotaur Archer',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Mintwallin'],
-    region: REGIONS.THAIS,
-    recommendedLevel: 20,
-    killsRequired: 500,
-  },
-  {
-    id: 'minotaur-mage',
-    name: 'Minotaur Mage',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Mintwallin'],
-    region: REGIONS.THAIS,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'minotaur-guard',
-    name: 'Minotaur Guard',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Mintwallin'],
-    region: REGIONS.THAIS,
-    recommendedLevel: 30,
-    killsRequired: 500,
-  },
-  {
-    id: 'orc',
-    name: 'Orc',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Orc Fortress', 'Ulderek Rock'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 15,
-    killsRequired: 500,
-  },
-  {
-    id: 'orc-warrior',
-    name: 'Orc Warrior',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Orc Fortress', 'Ulderek Rock'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'skeleton',
-    name: 'Skeleton',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.3,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Thais Ancient Temple', 'Plains of Havoc'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 10,
-    killsRequired: 500,
-  },
-  {
-    id: 'ghoul',
-    name: 'Ghoul',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Drefia', 'Plains of Havoc', 'Ghostlands'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 25,
-    killsRequired: 500,
-  },
-  {
-    id: 'mummy',
-    name: 'Mummy',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Ankrahmun Tombs', 'Drefia'],
-    region: REGIONS.ANKRAHMUN,
-    recommendedLevel: 30,
-    killsRequired: 500,
-  },
-  {
-    id: 'crypt-shambler',
-    name: 'Crypt Shambler',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 0.5,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Ankrahmun Tombs', 'Drefia'],
-    region: REGIONS.ANKRAHMUN,
-    recommendedLevel: 35,
-    killsRequired: 500,
-  },
-  {
-    id: 'dragon',
-    name: 'Dragon',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Darashia Dragon Lair', 'Thais Dragon Lair', 'Edron Dragon Lair'],
-    region: REGIONS.DARASHIA,
-    recommendedLevel: 50,
-    killsRequired: 1000,
-  },
-  {
-    id: 'dragon-lord',
-    name: 'Dragon Lord',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Darashia Dragon Lords', 'Goroma'],
-    region: REGIONS.DARASHIA,
-    recommendedLevel: 70,
-    killsRequired: 1000,
-  },
-  {
-    id: 'bonebeast',
-    name: 'Bonebeast',
-    charmPoints: 5,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Drefia', 'Yalahar Cemetery'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 45,
-    killsRequired: 500,
-  },
-  {
-    id: 'giant-spider',
-    name: 'Giant Spider',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1,
-    respawnCategory: RESPAWN_CATEGORY.RAPID,
-    locations: ['Plains of Havoc Spider Cave', 'Port Hope Spider Cave'],
-    region: REGIONS.PORT_HOPE,
-    recommendedLevel: 50,
-    killsRequired: 1000,
-  },
-
-  // ============== MEDIUM CREATURES (2-5 hours) ==============
-
-  {
-    id: 'demon',
-    name: 'Demon',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Demon Forge', 'Goroma', 'Edron Demon Cave'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-  {
-    id: 'hydra',
-    name: 'Hydra',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Hydra Mountain', 'Forbidden Lands'],
-    region: REGIONS.PORT_HOPE,
-    recommendedLevel: 80,
-    killsRequired: 1000,
-  },
-  {
-    id: 'medusa',
-    name: 'Medusa',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Talahu', 'Deeper Banuta'],
-    region: REGIONS.DEEPER_BANUTA,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-  {
-    id: 'serpent-spawn',
-    name: 'Serpent Spawn',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Deeper Banuta', 'Talahu'],
-    region: REGIONS.DEEPER_BANUTA,
-    recommendedLevel: 150,
-    killsRequired: 2500,
-  },
-  {
-    id: 'behemoth',
-    name: 'Behemoth',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Cyclopolis', 'Edron Hero Cave'],
-    region: REGIONS.EDRON,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'sea-serpent',
-    name: 'Sea Serpent',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Svargrond Sea Serpent Area', 'Frozen Trench'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 100,
-    killsRequired: 1000,
-  },
-  {
-    id: 'frost-dragon',
-    name: 'Frost Dragon',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Okolnir', 'Ice Dragon Tower'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-  {
-    id: 'ghastly-dragon',
-    name: 'Ghastly Dragon',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Ghastly Dragon Cave', 'Zarganash'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-  {
-    id: 'bog-raider',
-    name: 'Bog Raider',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Tiquanda', 'Venore Bog'],
-    region: REGIONS.PORT_HOPE,
-    recommendedLevel: 80,
-    killsRequired: 1000,
-  },
-  {
-    id: 'energy-elemental',
-    name: 'Energy Elemental',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Deeper Fibula', 'Energy Elemental Lair'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 70,
-    killsRequired: 1000,
-  },
-  {
-    id: 'nightmare',
-    name: 'Nightmare',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Pits of Inferno', 'Plains of Havoc'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'nightmare-scion',
-    name: 'Nightmare Scion',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Pits of Inferno', 'Plains of Havoc'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 90,
-    killsRequired: 1000,
-  },
-  {
-    id: 'hellspawn',
-    name: 'Hellspawn',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Yalahar Hellspawn Area', 'Pits of Inferno'],
-    region: REGIONS.YALAHAR,
-    recommendedLevel: 100,
-    killsRequired: 1000,
-  },
-  {
-    id: 'plaguesmith',
-    name: 'Plaguesmith',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Pits of Inferno', 'Demon Forge'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-  {
-    id: 'war-golem',
-    name: 'War Golem',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Factory Quarter', 'War Golem Factory'],
-    region: REGIONS.YALAHAR,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'lost-soul',
-    name: 'Lost Soul',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Drefia', 'Pits of Inferno'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 90,
-    killsRequired: 1000,
-  },
-  {
-    id: 'spectre',
-    name: 'Spectre',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Drefia', 'Upper Spike'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-
-  // ============== ZAO CREATURES ==============
-
-  {
-    id: 'lizard-chosen',
-    name: 'Lizard Chosen',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Zzaion', 'Muggy Plains'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'lizard-high-guard',
-    name: 'Lizard High Guard',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Zzaion', 'Muggy Plains'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 100,
-    killsRequired: 1000,
-  },
-  {
-    id: 'lizard-legionnaire',
-    name: 'Lizard Legionnaire',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Zzaion', 'Zao Palace'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 80,
-    killsRequired: 1000,
-  },
-  {
-    id: 'lizard-dragon-priest',
-    name: 'Lizard Dragon Priest',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Zzaion', 'Muggy Plains'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 110,
-    killsRequired: 2500,
-  },
-  {
-    id: 'draken-spellweaver',
-    name: 'Draken Spellweaver',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Razachai', 'Draken Walls'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 140,
-    killsRequired: 2500,
-  },
-  {
-    id: 'draken-elite',
-    name: 'Draken Elite',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Razachai', 'Draken Walls'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 150,
-    killsRequired: 2500,
-  },
-  {
-    id: 'draken-warmaster',
-    name: 'Draken Warmaster',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Razachai', 'Draken Walls'],
-    region: REGIONS.ZAO,
-    recommendedLevel: 150,
-    killsRequired: 2500,
-  },
-
-  // ============== ROSHAMUUL CREATURES ==============
-
-  {
-    id: 'frazzlemaw',
-    name: 'Frazzlemaw',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Lower Roshamuul', 'Roshamuul Prison'],
-    region: REGIONS.ROSHAMUUL,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'silencer',
-    name: 'Silencer',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Lower Roshamuul', 'Roshamuul Prison'],
-    region: REGIONS.ROSHAMUUL,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'shock-head',
-    name: 'Shock Head',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Lower Roshamuul', 'Roshamuul Prison'],
-    region: REGIONS.ROSHAMUUL,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'guzzlemaw',
-    name: 'Guzzlemaw',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Lower Roshamuul', 'Roshamuul Bone Pits'],
-    region: REGIONS.ROSHAMUUL,
-    recommendedLevel: 230,
-    killsRequired: 2500,
-  },
-
-  // ============== HARD CREATURES (> 5 hours) ==============
-
-  {
-    id: 'undead-dragon',
-    name: 'Undead Dragon',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Darashia Dragon Lords', 'Pits of Inferno'],
-    region: REGIONS.DARASHIA,
-    recommendedLevel: 150,
-    killsRequired: 2500,
-  },
-  {
-    id: 'hellhound',
-    name: 'Hellhound',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Pits of Inferno', 'Demon Forge'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 150,
-    killsRequired: 2500,
-  },
-  {
-    id: 'hand-of-cursed-fate',
-    name: 'Hand of Cursed Fate',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Inquisition Quest', 'Pits of Inferno'],
-    region: REGIONS.INQUISITION,
-    recommendedLevel: 160,
-    killsRequired: 2500,
-  },
-  {
-    id: 'dark-torturer',
-    name: 'Dark Torturer',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Inquisition Quest', 'Pits of Inferno'],
-    region: REGIONS.INQUISITION,
-    recommendedLevel: 170,
-    killsRequired: 2500,
-  },
-  {
-    id: 'destroyer',
-    name: 'Destroyer',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Inquisition Quest', 'Warzone 1'],
-    region: REGIONS.INQUISITION,
-    recommendedLevel: 180,
-    killsRequired: 2500,
-  },
-  {
-    id: 'juggernaut',
-    name: 'Juggernaut',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 7,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Pits of Inferno', 'Inquisition Quest'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'true-midnight-asura',
-    name: 'True Midnight Asura',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 7,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Asura Palace'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 250,
-    killsRequired: 2500,
-  },
-  {
-    id: 'true-frost-flower-asura',
-    name: 'True Frost Flower Asura',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 7,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Asura Palace'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 250,
-    killsRequired: 2500,
-  },
-  {
-    id: 'true-dawnfire-asura',
-    name: 'True Dawnfire Asura',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 7,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Asura Palace'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 250,
-    killsRequired: 2500,
-  },
-
-  // ============== FEYRIST CREATURES ==============
-
-  {
-    id: 'pixie',
-    name: 'Pixie',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 80,
-    killsRequired: 1000,
-  },
-  {
-    id: 'faun',
-    name: 'Faun',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.EASY,
-    estimatedHours: 1.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 80,
-    killsRequired: 1000,
-  },
-  {
-    id: 'swan-maiden',
-    name: 'Swan Maiden',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'nymph',
-    name: 'Nymph',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 100,
-    killsRequired: 1000,
-  },
-  {
-    id: 'boogy',
-    name: 'Boogy',
-    charmPoints: 15,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 2.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist Night Side'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 100,
-    killsRequired: 1000,
-  },
-  {
-    id: 'dark-faun',
-    name: 'Dark Faun',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist Night Side'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 120,
-    killsRequired: 2500,
-  },
-  {
-    id: 'pooka',
-    name: 'Pooka',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 3.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Feyrist Night Side'],
-    region: REGIONS.FEYRIST,
-    recommendedLevel: 130,
-    killsRequired: 2500,
-  },
-
-  // ============== OTHERWORLD CREATURES ==============
-
-  {
-    id: 'demon-outcast',
-    name: 'Demon Outcast',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Otherworld'],
-    region: REGIONS.OTHERWORLD,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'reality-reaver',
-    name: 'Reality Reaver',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Otherworld'],
-    region: REGIONS.OTHERWORLD,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'breach-brood',
-    name: 'Breach Brood',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.MEDIUM,
-    estimatedHours: 4,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Otherworld'],
-    region: REGIONS.OTHERWORLD,
-    recommendedLevel: 200,
-    killsRequired: 2500,
-  },
-  {
-    id: 'sparkion',
-    name: 'Sparkion',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Otherworld'],
-    region: REGIONS.OTHERWORLD,
-    recommendedLevel: 230,
-    killsRequired: 2500,
-  },
-
-  // ============== FERUMBRAS ASCENSION CREATURES ==============
-
-  {
-    id: 'vexclaw',
-    name: 'Vexclaw',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Ferumbras Ascension'],
-    region: REGIONS.FERUMBRAS_ASCENSION,
-    recommendedLevel: 270,
-    killsRequired: 2500,
-  },
-  {
-    id: 'grimeleech',
-    name: 'Grimeleech',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Ferumbras Ascension'],
-    region: REGIONS.FERUMBRAS_ASCENSION,
-    recommendedLevel: 270,
-    killsRequired: 2500,
-  },
-  {
-    id: 'hellflayer',
-    name: 'Hellflayer',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Ferumbras Ascension'],
-    region: REGIONS.FERUMBRAS_ASCENSION,
-    recommendedLevel: 280,
-    killsRequired: 2500,
-  },
-
-  // ============== ISSAVI / KILMARESH CREATURES ==============
-
-  {
-    id: 'bashmu',
-    name: 'Bashmu',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Kilmaresh'],
-    region: REGIONS.KILMARESH,
-    recommendedLevel: 270,
-    killsRequired: 2500,
-  },
-  {
-    id: 'usurper-warlock',
-    name: 'Usurper Warlock',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Kilmaresh'],
-    region: REGIONS.KILMARESH,
-    recommendedLevel: 280,
-    killsRequired: 2500,
-  },
-  {
-    id: 'usurper-knight',
-    name: 'Usurper Knight',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Kilmaresh'],
-    region: REGIONS.KILMARESH,
-    recommendedLevel: 280,
-    killsRequired: 2500,
-  },
-  {
-    id: 'usurper-archer',
-    name: 'Usurper Archer',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Kilmaresh'],
-    region: REGIONS.KILMARESH,
-    recommendedLevel: 280,
-    killsRequired: 2500,
-  },
-  {
-    id: 'sphinx',
-    name: 'Sphinx',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Issavi Sphinx Area'],
-    region: REGIONS.ISSAVI,
-    recommendedLevel: 300,
-    killsRequired: 2500,
-  },
-  {
-    id: 'lamassu',
-    name: 'Lamassu',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Issavi'],
-    region: REGIONS.ISSAVI,
-    recommendedLevel: 290,
-    killsRequired: 2500,
-  },
-  {
-    id: 'manticore',
-    name: 'Manticore',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Issavi'],
-    region: REGIONS.ISSAVI,
-    recommendedLevel: 300,
-    killsRequired: 2500,
-  },
-
-  // ============== GNOMPRONA CREATURES ==============
-
-  {
-    id: 'carnivostrich',
-    name: 'Carnivostrich',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Gnomprona'],
-    region: REGIONS.GNOMPRONA,
-    recommendedLevel: 350,
-    killsRequired: 2500,
-  },
-  {
-    id: 'hulking-prehemoth',
-    name: 'Hulking Prehemoth',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Gnomprona'],
-    region: REGIONS.GNOMPRONA,
-    recommendedLevel: 350,
-    killsRequired: 2500,
-  },
-  {
-    id: 'lumbering-carnivor',
-    name: 'Lumbering Carnivor',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 5.5,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Gnomprona'],
-    region: REGIONS.GNOMPRONA,
-    recommendedLevel: 350,
-    killsRequired: 2500,
-  },
-
-  // ============== WARZONES CREATURES ==============
-
-  {
-    id: 'deathling-scout',
-    name: 'Deathling Scout',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Warzone 4', 'Warzone 5', 'Warzone 6'],
-    region: REGIONS.WARZONES,
-    recommendedLevel: 270,
-    killsRequired: 2500,
-  },
-  {
-    id: 'deathling-spellsinger',
-    name: 'Deathling Spellsinger',
-    charmPoints: 25,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 6,
-    respawnCategory: RESPAWN_CATEGORY.NORMAL,
-    locations: ['Warzone 4', 'Warzone 5', 'Warzone 6'],
-    region: REGIONS.WARZONES,
-    recommendedLevel: 270,
-    killsRequired: 2500,
-  },
-
-  // ============== RARE / EVENT CREATURES ==============
-
-  {
-    id: 'midnight-panther',
-    name: 'Midnight Panther',
-    charmPoints: 30,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 10,
-    respawnCategory: RESPAWN_CATEGORY.RARE,
-    locations: ['Tiquanda', 'Banuta'],
-    region: REGIONS.PORT_HOPE,
-    recommendedLevel: 80,
-    killsRequired: 5,
-  },
-  {
-    id: 'white-deer',
-    name: 'White Deer',
-    charmPoints: 30,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 8,
-    respawnCategory: RESPAWN_CATEGORY.RARE,
-    locations: ['Ab\'Dendriel Area', 'Carlin Area'],
-    region: REGIONS.CARLIN,
-    recommendedLevel: 40,
-    killsRequired: 5,
-  },
-  {
-    id: 'undead-cavebear',
-    name: 'Undead Cavebear',
-    charmPoints: 30,
-    difficulty: DIFFICULTY.HARD,
-    estimatedHours: 8,
-    respawnCategory: RESPAWN_CATEGORY.RARE,
-    locations: ['Helheim'],
-    region: REGIONS.MAINLAND,
-    recommendedLevel: 60,
-    killsRequired: 5,
-  },
+  {
+    "id": "raging-fire",
+    "name": "Raging Fire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Raging_Fire.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Jaccus Maxxen's Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "iks-ahpututu",
+    "name": "Iks Ahpututu",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iks_Ahpututu.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Iksupan"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "goblin-leader",
+    "name": "Goblin Leader",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin_Leader.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Beregar"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "water-buffalo",
+    "name": "Water Buffalo",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Water_Buffalo.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Venore Southern Swamp"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "haunted-treeling",
+    "name": "Haunted Treeling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Haunted_Treeling.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bonebeast",
+    "name": "Bonebeast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonebeast.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5, Edron Old Fortress -1"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ancient-scarab",
+    "name": "Ancient Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ancient_Scarab.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "toad",
+    "name": "Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Laguna Islands, Tainted Soul Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "larva",
+    "name": "Larva",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Larva.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -1/-2"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "scarab",
+    "name": "Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Scarab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-crab",
+    "name": "Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Laguna Blood Crab Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "deepsea-blood-crab",
+    "name": "Deepsea Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepsea_Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Sea Serpent Area Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "salamander",
+    "name": "Salamander",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Salamander.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "emerald-damselfly",
+    "name": "Emerald Damselfly",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Emerald_Damselfly.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stalker",
+    "name": "Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mummy",
+    "name": "Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mummy.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "marsh-stalker",
+    "name": "Marsh Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Marsh_Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gargoyle.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Meriana Gargoyle Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tainted-soul",
+    "name": "Tainted Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tainted_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "hunter",
+    "name": "Hunter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hunter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "poacher",
+    "name": "Poacher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poacher.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boar",
+    "name": "Boar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bear",
+    "name": "Bear",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bear.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gloom-wolf",
+    "name": "Gloom Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gloom_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost-wolf",
+    "name": "Ghost Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wild-warrior",
+    "name": "Wild Warrior",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wild_Warrior.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bandit",
+    "name": "Bandit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bandit.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dark-monk",
+    "name": "Dark Monk",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Monk.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "smuggler",
+    "name": "Smuggler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Smuggler.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Assassin.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-marauder",
+    "name": "Pirate Marauder",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Marauder.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "novice-of-the-cult",
+    "name": "Novice of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Novice_Of_The_Cult.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swamp-troll",
+    "name": "Swamp Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swamp_Troll.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Swamp Trolls Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "firestarter",
+    "name": "Firestarter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Firestarter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Shadowthorn"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "corym-charlatan",
+    "name": "Corym Charlatan",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corym_Charlatan.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Coryms PH, Coryms Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mammoth",
+    "name": "Mammoth",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mammoth.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kongra",
+    "name": "Kongra",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kongra.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sibang",
+    "name": "Sibang",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sibang.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghoul",
+    "name": "Ghoul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghoul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Skeleton.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "slime",
+    "name": "Slime",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Slime.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gnarlhound",
+    "name": "Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gnarlhound.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Zao Gnarlhound Cave"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-templar",
+    "name": "Lizard Templar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Templar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-sentinel",
+    "name": "Lizard Sentinel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Sentinel.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crocodile",
+    "name": "Crocodile",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crocodile.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Crocodile Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rotworm",
+    "name": "Rotworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rotworm.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Darashia Rotworms, Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tortoise",
+    "name": "Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "thornback-tortoise",
+    "name": "Thornback Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Thornback_Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "leaf-golem",
+    "name": "Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Leaf_Golem.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terramite",
+    "name": "Terramite",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terramite.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Darashia Terramite Cave"
+    ],
+    "region": "Darashia",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "troll",
+    "name": "Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Troll Cave"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Goblin Troll Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "island-troll",
+    "name": "Island Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Island_Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Goroma"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "fish",
+    "name": "Fish",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fish.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "seagull",
+    "name": "Seagull",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seagull.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Laguna Islands"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "sandcrawler",
+    "name": "Sandcrawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sandcrawler.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Zao Steppe"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "deer",
+    "name": "Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "badger",
+    "name": "Badger",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Badger.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "silver-rabbit",
+    "name": "Silver Rabbit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Silver_Rabbit.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "wolf",
+    "name": "Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spider",
+    "name": "Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "poison-spider",
+    "name": "Poison Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poison_Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "penguin",
+    "name": "Penguin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Penguin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "snake",
+    "name": "Snake",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Snake.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Tibia, Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "northern-pike",
+    "name": "Northern Pike",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Northern_Pike.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "butterfly-purplebluered",
+    "name": "Butterfly (Purple/Blue/Red)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(purple/blue/red).gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "All over Tiquanda"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "dog",
+    "name": "Dog",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dog.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Thais"
+    ],
+    "region": "Thais",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "modified-gnarlhound",
+    "name": "Modified Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Modified_Gnarlhound.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Stonehome, under Telas's house"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "mushroom-sniffer",
+    "name": "Mushroom Sniffer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mushroom_Sniffer.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Truffels Garden"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "cat",
+    "name": "Cat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cat.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "husky",
+    "name": "Husky",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Husky.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "pigeon",
+    "name": "Pigeon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pigeon.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "normal",
+    "locations": [
+      "Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "chasm-spawn",
+    "name": "Chasm Spawn",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chasm_Spawn.gif",
+    "charmPoints": 50,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 4 (650/h~)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "worker-golem",
+    "name": "Worker Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Worker_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "war-golem",
+    "name": "War Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/War_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-bat",
+    "name": "Exotic Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-cave-spider",
+    "name": "Exotic Cave Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Cave_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "metal-gargoyle",
+    "name": "Metal Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Metal_Gargoyle.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Surface, Abandoned Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wilting-leaf-golem",
+    "name": "Wilting Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wilting_Leaf_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Vampire Crypt, Peninsula Tomb"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-bride",
+    "name": "Vampire Bride",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Bride.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-viscount",
+    "name": "Vampire Viscount",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Viscount.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "weakened-frazzlemaw",
+    "name": "Weakened Frazzlemaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weakened_Frazzlemaw.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enfeebled-silencer",
+    "name": "Enfeebled Silencer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enfeebled_Silencer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lumbering-carnivor",
+    "name": "Lumbering Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lumbering_Carnivor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "putrid-mummy",
+    "name": "Putrid Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Putrid_Mummy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Caverna Exanima"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ice-golem",
+    "name": "Ice Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ice_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Nibelor Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bog-raider",
+    "name": "Bog Raider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bog_Raider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Hydra Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stonerefiner",
+    "name": "Stonerefiner",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stonerefiner.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Corym Mines Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sea-serpent",
+    "name": "Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "young-sea-serpent",
+    "name": "Young Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Young_Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stampor",
+    "name": "Stampor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stampor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Stampor Cave Muggy Plains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "giant-spider",
+    "name": "Giant Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Giant_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Spider Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-zaogun",
+    "name": "Lizard Zaogun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Zaogun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Lower Draken Walls"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-chosen",
+    "name": "Lizard Chosen",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Chosen.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Temple of Equilibrium"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-high-guard",
+    "name": "Lizard High Guard",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_High_Guard.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-legionnaire",
+    "name": "Lizard Legionnaire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Legionnaire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-dragon-priest",
+    "name": "Lizard Dragon Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Dragon_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Lizard City (South mostly)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "eternal-guardian",
+    "name": "Eternal Guardian",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Eternal_Guardian.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon",
+    "name": "Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Dragons, Edron Dragons"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-cutthroat",
+    "name": "Pirate Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "acolyte-of-the-cult",
+    "name": "Acolyte of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acolyte_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "adept-of-the-cult",
+    "name": "Adept of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adept_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enlightened-of-the-cult",
+    "name": "Enlightened of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enlightened_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon-lord",
+    "name": "Dragon Lord",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon_Lord.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Fenrock DLs, POI DLs"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon",
+    "name": "Frost Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon-hatchling",
+    "name": "Frost Dragon Hatchling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon_Hatchling.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-predator",
+    "name": "Quara Predator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Predator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-pincher",
+    "name": "Quara Pincher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Pincher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-hydromancer",
+    "name": "Quara Hydromancer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Hydromancer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "iron-servant-replica",
+    "name": "Iron Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iron_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "golden-servant-replica",
+    "name": "Golden Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Golden_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "diamond-servant-replica",
+    "name": "Diamond Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diamond_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cultist",
+    "name": "Orc Cultist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cultist.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-priest",
+    "name": "Orc Cult Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-inquisitor",
+    "name": "Orc Cult Inquisitor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Inquisitor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-fanatic",
+    "name": "Orc Cult Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-minion",
+    "name": "Orc Cult Minion",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Minion.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-devotee",
+    "name": "Barkless Devotee",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Devotee.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-fanatic",
+    "name": "Barkless Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-follower",
+    "name": "Minotaur Cult Follower",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Follower.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-propher",
+    "name": "Minotaur Cult Propher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Propher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-zealot",
+    "name": "Minotaur Cult Zealot",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Zealot.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-bat",
+    "name": "Mutated Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Souleater Mountains, Farmine Mutated Bat/Tiger Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "souleater",
+    "name": "Souleater",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Souleater.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Souleater Mountains, Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "death-blob",
+    "name": "Death Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Death_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Souleater Mountains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-blob",
+    "name": "Glooth Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-beast",
+    "name": "Blood Beast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Beast.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rot-elemental",
+    "name": "Rot Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rot_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "devourer",
+    "name": "Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Devourer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-anemone",
+    "name": "Glooth Anemone",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Anemone.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Wildlife Raid"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-cutthroat",
+    "name": "Pirat Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-bombardier",
+    "name": "Pirat Bombardier",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Bombardier.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-scoundrel",
+    "name": "Pirat Scoundrel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Scoundrel.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-mate",
+    "name": "Pirat Mate",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Mate.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "faun",
+    "name": "Faun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Faun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pooka",
+    "name": "Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swan-maiden",
+    "name": "Swan Maiden",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swan_Maiden.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pixie.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nymph",
+    "name": "Nymph",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nymph.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boogy",
+    "name": "Boogy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boogy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "twisted-pooka",
+    "name": "Twisted Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Twisted_Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "drillworm",
+    "name": "Drillworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Drillworm.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 4"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-human",
+    "name": "Mutated Human",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Human.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Alchemist Quarter"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "undead-gladiator",
+    "name": "Undead Gladiator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Gladiator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Krailos Nightmare Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "clomp",
+    "name": "Clomp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Clomp.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-brute",
+    "name": "Ogre Brute",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Brute.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-savage",
+    "name": "Ogre Savage",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Savage.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-shaman",
+    "name": "Ogre Shaman",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Shaman.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-ravager",
+    "name": "Orclops Ravager",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Ravager.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-doomhauler",
+    "name": "Orclops Doomhauler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Doomhauler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crawler",
+    "name": "Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crawler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spidris",
+    "name": "Spidris",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spidris.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kollos",
+    "name": "Kollos",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kollos.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spitter",
+    "name": "Spitter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spitter.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "waspoid",
+    "name": "Waspoid",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Waspoid.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "warlock",
+    "name": "Warlock",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Warlock.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Demona"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-thief",
+    "name": "Misguided Thief",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Thief.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-bully",
+    "name": "Misguided Bully",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Bully.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terror-bird",
+    "name": "Terror Bird",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terror_Bird.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crypt-shambler",
+    "name": "Crypt Shambler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Shambler.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Ramoa -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giant",
+    "name": "Frost Giant",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giant.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "carrion-worm",
+    "name": "Carrion Worm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carrion_Worm.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "merlkin",
+    "name": "Merlkin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Merlkin.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giantess",
+    "name": "Frost Giantess",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giantess.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "panda",
+    "name": "Panda",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Panda.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "starving-wolf",
+    "name": "Starving Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Starving_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wisp",
+    "name": "Wisp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wisp.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "white-deer",
+    "name": "White Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/White_Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spiky-carnivor",
+    "name": "Spiky Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spiky_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "menancing-carnivor",
+    "name": "Menancing Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Menancing_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "fury",
+    "name": "Fury",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fury.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "diremaw",
+    "name": "Diremaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diremaw.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "deepworm",
+    "name": "Deepworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepworm.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "stone-devourer",
+    "name": "Stone Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stone_Devourer.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "weeper",
+    "name": "Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "orewalker",
+    "name": "Orewalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orewalker.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lava-golem",
+    "name": "Lava Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lava_Golem.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "magma-crawler",
+    "name": "Magma Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Magma_Crawler.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infected-weeper",
+    "name": "Infected Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infected_Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "seacrest-serpent",
+    "name": "Seacrest Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seacrest_Serpent.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Seacrest Grounds"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infernalist",
+    "name": "Infernalist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infernalist.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lizard-noble",
+    "name": "Lizard Noble",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Noble.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Razzachai"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "dragonling",
+    "name": "Dragonling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragonling.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "high-voltage-elemental",
+    "name": "High Voltage Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/High_Voltage_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Oramond Glooth Underground Raid, Warzone 5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "walker",
+    "name": "Walker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Walker.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Underground Glooth Factory, Rathleton Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "redeemed-soul",
+    "name": "Redeemed Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Redeemed_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "filth-toad",
+    "name": "Filth Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Filth_Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Lake Equivocolao"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-blue",
+    "name": "Nomad (Blue)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(blue).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-female",
+    "name": "Nomad (Female)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(female).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "normal",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "raging-fire",
+    "name": "Raging Fire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Raging_Fire.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Jaccus Maxxen's Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "iks-ahpututu",
+    "name": "Iks Ahpututu",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iks_Ahpututu.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Iksupan"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "goblin-leader",
+    "name": "Goblin Leader",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin_Leader.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Beregar"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "water-buffalo",
+    "name": "Water Buffalo",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Water_Buffalo.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Venore Southern Swamp"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "haunted-treeling",
+    "name": "Haunted Treeling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Haunted_Treeling.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bonebeast",
+    "name": "Bonebeast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonebeast.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5, Edron Old Fortress -1"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ancient-scarab",
+    "name": "Ancient Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ancient_Scarab.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "toad",
+    "name": "Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Laguna Islands, Tainted Soul Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "larva",
+    "name": "Larva",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Larva.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -1/-2"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "scarab",
+    "name": "Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Scarab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-crab",
+    "name": "Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Laguna Blood Crab Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "deepsea-blood-crab",
+    "name": "Deepsea Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepsea_Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Sea Serpent Area Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "salamander",
+    "name": "Salamander",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Salamander.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "emerald-damselfly",
+    "name": "Emerald Damselfly",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Emerald_Damselfly.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stalker",
+    "name": "Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mummy",
+    "name": "Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mummy.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "marsh-stalker",
+    "name": "Marsh Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Marsh_Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gargoyle.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Meriana Gargoyle Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tainted-soul",
+    "name": "Tainted Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tainted_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "hunter",
+    "name": "Hunter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hunter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "poacher",
+    "name": "Poacher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poacher.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boar",
+    "name": "Boar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bear",
+    "name": "Bear",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bear.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gloom-wolf",
+    "name": "Gloom Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gloom_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost-wolf",
+    "name": "Ghost Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wild-warrior",
+    "name": "Wild Warrior",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wild_Warrior.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bandit",
+    "name": "Bandit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bandit.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dark-monk",
+    "name": "Dark Monk",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Monk.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "smuggler",
+    "name": "Smuggler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Smuggler.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Assassin.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-marauder",
+    "name": "Pirate Marauder",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Marauder.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "novice-of-the-cult",
+    "name": "Novice of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Novice_Of_The_Cult.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swamp-troll",
+    "name": "Swamp Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swamp_Troll.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Swamp Trolls Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "firestarter",
+    "name": "Firestarter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Firestarter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Shadowthorn"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "corym-charlatan",
+    "name": "Corym Charlatan",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corym_Charlatan.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Coryms PH, Coryms Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mammoth",
+    "name": "Mammoth",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mammoth.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kongra",
+    "name": "Kongra",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kongra.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sibang",
+    "name": "Sibang",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sibang.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghoul",
+    "name": "Ghoul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghoul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Skeleton.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "slime",
+    "name": "Slime",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Slime.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gnarlhound",
+    "name": "Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gnarlhound.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Zao Gnarlhound Cave"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-templar",
+    "name": "Lizard Templar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Templar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-sentinel",
+    "name": "Lizard Sentinel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Sentinel.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crocodile",
+    "name": "Crocodile",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crocodile.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Crocodile Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rotworm",
+    "name": "Rotworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rotworm.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Darashia Rotworms, Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tortoise",
+    "name": "Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "thornback-tortoise",
+    "name": "Thornback Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Thornback_Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "leaf-golem",
+    "name": "Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Leaf_Golem.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terramite",
+    "name": "Terramite",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terramite.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Darashia Terramite Cave"
+    ],
+    "region": "Darashia",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "troll",
+    "name": "Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Troll Cave"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Goblin Troll Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "island-troll",
+    "name": "Island Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Island_Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Goroma"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "fish",
+    "name": "Fish",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fish.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "seagull",
+    "name": "Seagull",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seagull.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Laguna Islands"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "sandcrawler",
+    "name": "Sandcrawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sandcrawler.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Zao Steppe"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "deer",
+    "name": "Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "badger",
+    "name": "Badger",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Badger.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "silver-rabbit",
+    "name": "Silver Rabbit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Silver_Rabbit.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "wolf",
+    "name": "Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spider",
+    "name": "Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "poison-spider",
+    "name": "Poison Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poison_Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "penguin",
+    "name": "Penguin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Penguin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "snake",
+    "name": "Snake",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Snake.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Tibia, Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "northern-pike",
+    "name": "Northern Pike",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Northern_Pike.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "butterfly-purplebluered",
+    "name": "Butterfly (Purple/Blue/Red)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(purple/blue/red).gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "All over Tiquanda"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "dog",
+    "name": "Dog",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dog.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Thais"
+    ],
+    "region": "Thais",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "modified-gnarlhound",
+    "name": "Modified Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Modified_Gnarlhound.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Stonehome, under Telas's house"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "mushroom-sniffer",
+    "name": "Mushroom Sniffer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mushroom_Sniffer.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Truffels Garden"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "cat",
+    "name": "Cat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cat.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "husky",
+    "name": "Husky",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Husky.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "pigeon",
+    "name": "Pigeon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pigeon.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "chasm-spawn",
+    "name": "Chasm Spawn",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chasm_Spawn.gif",
+    "charmPoints": 50,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 4 (650/h~)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "worker-golem",
+    "name": "Worker Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Worker_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "war-golem",
+    "name": "War Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/War_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-bat",
+    "name": "Exotic Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-cave-spider",
+    "name": "Exotic Cave Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Cave_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "metal-gargoyle",
+    "name": "Metal Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Metal_Gargoyle.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Surface, Abandoned Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wilting-leaf-golem",
+    "name": "Wilting Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wilting_Leaf_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Vampire Crypt, Peninsula Tomb"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-bride",
+    "name": "Vampire Bride",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Bride.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-viscount",
+    "name": "Vampire Viscount",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Viscount.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "weakened-frazzlemaw",
+    "name": "Weakened Frazzlemaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weakened_Frazzlemaw.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enfeebled-silencer",
+    "name": "Enfeebled Silencer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enfeebled_Silencer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lumbering-carnivor",
+    "name": "Lumbering Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lumbering_Carnivor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "putrid-mummy",
+    "name": "Putrid Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Putrid_Mummy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Caverna Exanima"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ice-golem",
+    "name": "Ice Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ice_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Nibelor Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bog-raider",
+    "name": "Bog Raider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bog_Raider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Hydra Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stonerefiner",
+    "name": "Stonerefiner",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stonerefiner.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Corym Mines Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sea-serpent",
+    "name": "Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "young-sea-serpent",
+    "name": "Young Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Young_Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stampor",
+    "name": "Stampor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stampor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Stampor Cave Muggy Plains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "giant-spider",
+    "name": "Giant Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Giant_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Spider Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-zaogun",
+    "name": "Lizard Zaogun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Zaogun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Lower Draken Walls"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-chosen",
+    "name": "Lizard Chosen",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Chosen.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Temple of Equilibrium"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-high-guard",
+    "name": "Lizard High Guard",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_High_Guard.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-legionnaire",
+    "name": "Lizard Legionnaire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Legionnaire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-dragon-priest",
+    "name": "Lizard Dragon Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Dragon_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Lizard City (South mostly)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "eternal-guardian",
+    "name": "Eternal Guardian",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Eternal_Guardian.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon",
+    "name": "Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Dragons, Edron Dragons"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-cutthroat",
+    "name": "Pirate Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "acolyte-of-the-cult",
+    "name": "Acolyte of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acolyte_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "adept-of-the-cult",
+    "name": "Adept of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adept_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enlightened-of-the-cult",
+    "name": "Enlightened of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enlightened_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon-lord",
+    "name": "Dragon Lord",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon_Lord.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Fenrock DLs, POI DLs"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon",
+    "name": "Frost Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon-hatchling",
+    "name": "Frost Dragon Hatchling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon_Hatchling.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-predator",
+    "name": "Quara Predator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Predator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-pincher",
+    "name": "Quara Pincher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Pincher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-hydromancer",
+    "name": "Quara Hydromancer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Hydromancer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "iron-servant-replica",
+    "name": "Iron Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iron_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "golden-servant-replica",
+    "name": "Golden Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Golden_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "diamond-servant-replica",
+    "name": "Diamond Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diamond_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cultist",
+    "name": "Orc Cultist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cultist.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-priest",
+    "name": "Orc Cult Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-inquisitor",
+    "name": "Orc Cult Inquisitor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Inquisitor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-fanatic",
+    "name": "Orc Cult Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-minion",
+    "name": "Orc Cult Minion",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Minion.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-devotee",
+    "name": "Barkless Devotee",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Devotee.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-fanatic",
+    "name": "Barkless Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-follower",
+    "name": "Minotaur Cult Follower",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Follower.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-propher",
+    "name": "Minotaur Cult Propher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Propher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-zealot",
+    "name": "Minotaur Cult Zealot",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Zealot.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-bat",
+    "name": "Mutated Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Souleater Mountains, Farmine Mutated Bat/Tiger Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "souleater",
+    "name": "Souleater",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Souleater.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Souleater Mountains, Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "death-blob",
+    "name": "Death Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Death_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Souleater Mountains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-blob",
+    "name": "Glooth Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-beast",
+    "name": "Blood Beast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Beast.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rot-elemental",
+    "name": "Rot Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rot_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "devourer",
+    "name": "Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Devourer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-anemone",
+    "name": "Glooth Anemone",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Anemone.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Wildlife Raid"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-cutthroat",
+    "name": "Pirat Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-bombardier",
+    "name": "Pirat Bombardier",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Bombardier.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-scoundrel",
+    "name": "Pirat Scoundrel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Scoundrel.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-mate",
+    "name": "Pirat Mate",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Mate.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "faun",
+    "name": "Faun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Faun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pooka",
+    "name": "Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swan-maiden",
+    "name": "Swan Maiden",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swan_Maiden.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pixie.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nymph",
+    "name": "Nymph",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nymph.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boogy",
+    "name": "Boogy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boogy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "twisted-pooka",
+    "name": "Twisted Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Twisted_Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "drillworm",
+    "name": "Drillworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Drillworm.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 4"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-human",
+    "name": "Mutated Human",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Human.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Alchemist Quarter"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "undead-gladiator",
+    "name": "Undead Gladiator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Gladiator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Krailos Nightmare Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "clomp",
+    "name": "Clomp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Clomp.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-brute",
+    "name": "Ogre Brute",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Brute.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-savage",
+    "name": "Ogre Savage",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Savage.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-shaman",
+    "name": "Ogre Shaman",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Shaman.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-ravager",
+    "name": "Orclops Ravager",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Ravager.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-doomhauler",
+    "name": "Orclops Doomhauler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Doomhauler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crawler",
+    "name": "Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crawler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spidris",
+    "name": "Spidris",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spidris.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kollos",
+    "name": "Kollos",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kollos.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spitter",
+    "name": "Spitter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spitter.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "waspoid",
+    "name": "Waspoid",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Waspoid.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "warlock",
+    "name": "Warlock",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Warlock.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Demona"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-thief",
+    "name": "Misguided Thief",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Thief.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-bully",
+    "name": "Misguided Bully",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Bully.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terror-bird",
+    "name": "Terror Bird",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terror_Bird.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crypt-shambler",
+    "name": "Crypt Shambler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Shambler.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Ramoa -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giant",
+    "name": "Frost Giant",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giant.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "carrion-worm",
+    "name": "Carrion Worm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carrion_Worm.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "merlkin",
+    "name": "Merlkin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Merlkin.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giantess",
+    "name": "Frost Giantess",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giantess.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "panda",
+    "name": "Panda",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Panda.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "starving-wolf",
+    "name": "Starving Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Starving_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wisp",
+    "name": "Wisp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wisp.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "white-deer",
+    "name": "White Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/White_Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spiky-carnivor",
+    "name": "Spiky Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spiky_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "menancing-carnivor",
+    "name": "Menancing Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Menancing_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "fury",
+    "name": "Fury",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fury.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "diremaw",
+    "name": "Diremaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diremaw.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "deepworm",
+    "name": "Deepworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepworm.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "stone-devourer",
+    "name": "Stone Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stone_Devourer.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "weeper",
+    "name": "Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "orewalker",
+    "name": "Orewalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orewalker.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lava-golem",
+    "name": "Lava Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lava_Golem.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "magma-crawler",
+    "name": "Magma Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Magma_Crawler.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infected-weeper",
+    "name": "Infected Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infected_Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "seacrest-serpent",
+    "name": "Seacrest Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seacrest_Serpent.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Seacrest Grounds"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infernalist",
+    "name": "Infernalist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infernalist.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lizard-noble",
+    "name": "Lizard Noble",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Noble.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Razzachai"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "dragonling",
+    "name": "Dragonling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragonling.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "high-voltage-elemental",
+    "name": "High Voltage Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/High_Voltage_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Oramond Glooth Underground Raid, Warzone 5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "walker",
+    "name": "Walker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Walker.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Underground Glooth Factory, Rathleton Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "redeemed-soul",
+    "name": "Redeemed Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Redeemed_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "filth-toad",
+    "name": "Filth Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Filth_Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Lake Equivocolao"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-blue",
+    "name": "Nomad (Blue)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(blue).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-female",
+    "name": "Nomad (Female)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(female).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rapid",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "raging-fire",
+    "name": "Raging Fire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Raging_Fire.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Jaccus Maxxen's Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "iks-ahpututu",
+    "name": "Iks Ahpututu",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iks_Ahpututu.gif",
+    "charmPoints": 50,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Iksupan"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "goblin-leader",
+    "name": "Goblin Leader",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin_Leader.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Beregar"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "water-buffalo",
+    "name": "Water Buffalo",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Water_Buffalo.gif",
+    "charmPoints": 30,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Venore Southern Swamp"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "haunted-treeling",
+    "name": "Haunted Treeling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Haunted_Treeling.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bonebeast",
+    "name": "Bonebeast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonebeast.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5, Edron Old Fortress -1"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ancient-scarab",
+    "name": "Ancient Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ancient_Scarab.gif",
+    "charmPoints": 25,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "toad",
+    "name": "Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Laguna Islands, Tainted Soul Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "larva",
+    "name": "Larva",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Larva.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -1/-2"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "scarab",
+    "name": "Scarab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Scarab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ankrahmun Larva Caves, Mother of Scarabs Lair -4/-5"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-crab",
+    "name": "Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Laguna Blood Crab Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "deepsea-blood-crab",
+    "name": "Deepsea Blood Crab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepsea_Blood_Crab.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Sea Serpent Area Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "salamander",
+    "name": "Salamander",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Salamander.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "emerald-damselfly",
+    "name": "Emerald Damselfly",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Emerald_Damselfly.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stalker",
+    "name": "Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mummy",
+    "name": "Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mummy.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Peninsula Tomb"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "marsh-stalker",
+    "name": "Marsh Stalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Marsh_Stalker.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Venore Salamander Cave"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gargoyle.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Meriana Gargoyle Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tainted-soul",
+    "name": "Tainted Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tainted_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "hunter",
+    "name": "Hunter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hunter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "poacher",
+    "name": "Poacher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poacher.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Hunter stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boar",
+    "name": "Boar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bear",
+    "name": "Bear",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bear.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Wildlife stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gloom-wolf",
+    "name": "Gloom Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gloom_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghost-wolf",
+    "name": "Ghost Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghost_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Poacher's Cave (Undead stage)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wild-warrior",
+    "name": "Wild Warrior",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wild_Warrior.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bandit",
+    "name": "Bandit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bandit.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dark-monk",
+    "name": "Dark Monk",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Monk.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "smuggler",
+    "name": "Smuggler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Smuggler.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Assassin.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Cathedral"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-marauder",
+    "name": "Pirate Marauder",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Marauder.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "novice-of-the-cult",
+    "name": "Novice of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Novice_Of_The_Cult.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swamp-troll",
+    "name": "Swamp Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swamp_Troll.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Swamp Trolls Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "firestarter",
+    "name": "Firestarter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Firestarter.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Shadowthorn"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "corym-charlatan",
+    "name": "Corym Charlatan",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corym_Charlatan.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Coryms PH, Coryms Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mammoth",
+    "name": "Mammoth",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mammoth.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kongra",
+    "name": "Kongra",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kongra.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sibang",
+    "name": "Sibang",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sibang.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ghoul",
+    "name": "Ghoul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghoul.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Skeleton.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "slime",
+    "name": "Slime",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Slime.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Vengoth Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "gnarlhound",
+    "name": "Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gnarlhound.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Zao Gnarlhound Cave"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-templar",
+    "name": "Lizard Templar",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Templar.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-sentinel",
+    "name": "Lizard Sentinel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Sentinel.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Chor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crocodile",
+    "name": "Crocodile",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crocodile.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Crocodile Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rotworm",
+    "name": "Rotworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rotworm.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Darashia Rotworms, Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "tortoise",
+    "name": "Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "thornback-tortoise",
+    "name": "Thornback Tortoise",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Thornback_Tortoise.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Laguna Islands Tortoise Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "leaf-golem",
+    "name": "Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Leaf_Golem.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terramite",
+    "name": "Terramite",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terramite.gif",
+    "charmPoints": 15,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Darashia Terramite Cave"
+    ],
+    "region": "Darashia",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "troll",
+    "name": "Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Troll Cave"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Goblin Troll Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "island-troll",
+    "name": "Island Troll",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Island_Troll.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Goroma"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "fish",
+    "name": "Fish",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fish.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "seagull",
+    "name": "Seagull",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seagull.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Laguna Islands"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "sandcrawler",
+    "name": "Sandcrawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sandcrawler.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Zao Steppe"
+    ],
+    "region": "Zao",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "deer",
+    "name": "Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "badger",
+    "name": "Badger",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Badger.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "silver-rabbit",
+    "name": "Silver Rabbit",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Silver_Rabbit.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "winter-wolf",
+    "name": "Winter Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Winter_Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Mammoth Mountain (South west from depot)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "wolf",
+    "name": "Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wolf.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spider",
+    "name": "Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "poison-spider",
+    "name": "Poison Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Poison_Spider.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Tibia, should be completed naturally"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "penguin",
+    "name": "Penguin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Penguin.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "snake",
+    "name": "Snake",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Snake.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Tibia, Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "northern-pike",
+    "name": "Northern Pike",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Northern_Pike.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Fiehonja"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "butterfly-purplebluered",
+    "name": "Butterfly (Purple/Blue/Red)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(purple/blue/red).gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "All over Tiquanda"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "dog",
+    "name": "Dog",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dog.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Thais"
+    ],
+    "region": "Thais",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "modified-gnarlhound",
+    "name": "Modified Gnarlhound",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Modified_Gnarlhound.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Stonehome, under Telas's house"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "mushroom-sniffer",
+    "name": "Mushroom Sniffer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mushroom_Sniffer.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Truffels Garden"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "cat",
+    "name": "Cat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cat.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "husky",
+    "name": "Husky",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Husky.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "pigeon",
+    "name": "Pigeon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pigeon.gif",
+    "charmPoints": 1,
+    "difficulty": "EASY",
+    "estimatedHours": 1,
+    "respawnCategory": "rare",
+    "locations": [
+      "Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 20
+  },
+  {
+    "id": "chasm-spawn",
+    "name": "Chasm Spawn",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chasm_Spawn.gif",
+    "charmPoints": 50,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 4 (650/h~)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "worker-golem",
+    "name": "Worker Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Worker_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "war-golem",
+    "name": "War Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/War_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Catacombs - Golem stage"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-bat",
+    "name": "Exotic Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "exotic-cave-spider",
+    "name": "Exotic Cave Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Exotic_Cave_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Exotic Cave Spider Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "metal-gargoyle",
+    "name": "Metal Gargoyle",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Metal_Gargoyle.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Surface, Abandoned Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wilting-leaf-golem",
+    "name": "Wilting Leaf Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wilting_Leaf_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dryad Gardens"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Vampire Crypt, Peninsula Tomb"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-bride",
+    "name": "Vampire Bride",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Bride.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "vampire-viscount",
+    "name": "Vampire Viscount",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vampire_Viscount.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Vampire Crypt"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "weakened-frazzlemaw",
+    "name": "Weakened Frazzlemaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weakened_Frazzlemaw.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enfeebled-silencer",
+    "name": "Enfeebled Silencer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enfeebled_Silencer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Mini Rosha"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lumbering-carnivor",
+    "name": "Lumbering Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lumbering_Carnivor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "putrid-mummy",
+    "name": "Putrid Mummy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Putrid_Mummy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Caverna Exanima"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ice-golem",
+    "name": "Ice Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ice_Golem.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Nibelor Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "bog-raider",
+    "name": "Bog Raider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bog_Raider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Hydra Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stonerefiner",
+    "name": "Stonerefiner",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stonerefiner.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Corym Mines Venore"
+    ],
+    "region": "Venore",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "sea-serpent",
+    "name": "Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "young-sea-serpent",
+    "name": "Young Sea Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Young_Sea_Serpent.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Svargrond Sea Serpent Area"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "stampor",
+    "name": "Stampor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stampor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Stampor Cave Muggy Plains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "giant-spider",
+    "name": "Giant Spider",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Giant_Spider.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Spider Cave"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-zaogun",
+    "name": "Lizard Zaogun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Zaogun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Lower Draken Walls"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-chosen",
+    "name": "Lizard Chosen",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Chosen.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Temple of Equilibrium"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-high-guard",
+    "name": "Lizard High Guard",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_High_Guard.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-legionnaire",
+    "name": "Lizard Legionnaire",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Legionnaire.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Lizard City"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "lizard-dragon-priest",
+    "name": "Lizard Dragon Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Dragon_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Lizard City (South mostly)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "eternal-guardian",
+    "name": "Eternal Guardian",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Eternal_Guardian.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon",
+    "name": "Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Dragons, Edron Dragons"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirate-cutthroat",
+    "name": "Pirate Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Pirates"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "acolyte-of-the-cult",
+    "name": "Acolyte of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acolyte_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "adept-of-the-cult",
+    "name": "Adept of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adept_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cults, Goroma Volcano"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "enlightened-of-the-cult",
+    "name": "Enlightened of the Cult",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enlightened_Of_The_Cult.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cults"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "dragon-lord",
+    "name": "Dragon Lord",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragon_Lord.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Fenrock DLs, POI DLs"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon",
+    "name": "Frost Dragon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-dragon-hatchling",
+    "name": "Frost Dragon Hatchling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Dragon_Hatchling.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Chyllfroest"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-predator",
+    "name": "Quara Predator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Predator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-pincher",
+    "name": "Quara Pincher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Pincher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "quara-hydromancer",
+    "name": "Quara Hydromancer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Hydromancer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Sunken Quarter, Calassa"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "iron-servant-replica",
+    "name": "Iron Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iron_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "golden-servant-replica",
+    "name": "Golden Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Golden_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "diamond-servant-replica",
+    "name": "Diamond Servant Replica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diamond_Servant_Replica.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Replica Dungeon (Lloyd)"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cultist",
+    "name": "Orc Cultist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cultist.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-priest",
+    "name": "Orc Cult Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Priest.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-inquisitor",
+    "name": "Orc Cult Inquisitor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Inquisitor.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-fanatic",
+    "name": "Orc Cult Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orc-cult-minion",
+    "name": "Orc Cult Minion",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Cult_Minion.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Edron Orc Cults"
+    ],
+    "region": "Edron",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-devotee",
+    "name": "Barkless Devotee",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Devotee.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "barkless-fanatic",
+    "name": "Barkless Fanatic",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barkless_Fanatic.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ab'Dendriel Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-follower",
+    "name": "Minotaur Cult Follower",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Follower.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-propher",
+    "name": "Minotaur Cult Propher",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Propher.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "minotaur-cult-zealot",
+    "name": "Minotaur Cult Zealot",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Zealot.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Mintwallin Cults"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-bat",
+    "name": "Mutated Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Bat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Souleater Mountains, Farmine Mutated Bat/Tiger Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "souleater",
+    "name": "Souleater",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Souleater.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Souleater Mountains, Deeper Banuta"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "death-blob",
+    "name": "Death Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Death_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Souleater Mountains"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-blob",
+    "name": "Glooth Blob",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Blob.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "blood-beast",
+    "name": "Blood Beast",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Beast.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "rot-elemental",
+    "name": "Rot Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rot_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "devourer",
+    "name": "Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Devourer.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond West"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "glooth-anemone",
+    "name": "Glooth Anemone",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Glooth_Anemone.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Wildlife Raid"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-cutthroat",
+    "name": "Pirat Cutthroat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Cutthroat.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-bombardier",
+    "name": "Pirat Bombardier",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Bombardier.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-scoundrel",
+    "name": "Pirat Scoundrel",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Scoundrel.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pirat-mate",
+    "name": "Pirat Mate",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirat_Mate.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "The Wreckoning"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "faun",
+    "name": "Faun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Faun.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pooka",
+    "name": "Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "swan-maiden",
+    "name": "Swan Maiden",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swan_Maiden.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pixie.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nymph",
+    "name": "Nymph",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nymph.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "boogy",
+    "name": "Boogy",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boogy.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "twisted-pooka",
+    "name": "Twisted Pooka",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Twisted_Pooka.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Dark Faun Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "drillworm",
+    "name": "Drillworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Drillworm.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 4"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "mutated-human",
+    "name": "Mutated Human",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Human.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Alchemist Quarter"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "undead-gladiator",
+    "name": "Undead Gladiator",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Gladiator.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Krailos Nightmare Cave"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "clomp",
+    "name": "Clomp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Clomp.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-brute",
+    "name": "Ogre Brute",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Brute.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-savage",
+    "name": "Ogre Savage",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Savage.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "ogre-shaman",
+    "name": "Ogre Shaman",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ogre_Shaman.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Krailos Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-ravager",
+    "name": "Orclops Ravager",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Ravager.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "orclops-doomhauler",
+    "name": "Orclops Doomhauler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orclops_Doomhauler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Desecrated Glade"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crawler",
+    "name": "Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crawler.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spidris",
+    "name": "Spidris",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spidris.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "kollos",
+    "name": "Kollos",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Kollos.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "spitter",
+    "name": "Spitter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spitter.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "waspoid",
+    "name": "Waspoid",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Waspoid.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Inner Hive"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "warlock",
+    "name": "Warlock",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Warlock.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Demona"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-thief",
+    "name": "Misguided Thief",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Thief.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "misguided-bully",
+    "name": "Misguided Bully",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Misguided_Bully.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Misguided Camp"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "terror-bird",
+    "name": "Terror Bird",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terror_Bird.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "crypt-shambler",
+    "name": "Crypt Shambler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Shambler.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Yalahar Cemetery, Mount Sternum, Ramoa -1/-2"
+    ],
+    "region": "Yalahar",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giant",
+    "name": "Frost Giant",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giant.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "carrion-worm",
+    "name": "Carrion Worm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carrion_Worm.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Liberty Bay Rotworms"
+    ],
+    "region": "Liberty Bay",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "merlkin",
+    "name": "Merlkin",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Merlkin.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Port Hope Ape City"
+    ],
+    "region": "Port Hope",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "frost-giantess",
+    "name": "Frost Giantess",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Giantess.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Nibelor"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "panda",
+    "name": "Panda",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Panda.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Southern Tiquanda Coast"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "starving-wolf",
+    "name": "Starving Wolf",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Starving_Wolf.gif",
+    "charmPoints": 15,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "wisp",
+    "name": "Wisp",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wisp.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Feyrist Surface"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "white-deer",
+    "name": "White Deer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/White_Deer.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "estimatedHours": 3.5,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ab'Dendriel Surroundings"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 50
+  },
+  {
+    "id": "spiky-carnivor",
+    "name": "Spiky Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spiky_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "menancing-carnivor",
+    "name": "Menancing Carnivor",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Menancing_Carnivor.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Carnivora's Rock"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "fury",
+    "name": "Fury",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fury.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "diremaw",
+    "name": "Diremaw",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diremaw.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "deepworm",
+    "name": "Deepworm",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepworm.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 6"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "stone-devourer",
+    "name": "Stone Devourer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stone_Devourer.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "weeper",
+    "name": "Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "orewalker",
+    "name": "Orewalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orewalker.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lava-golem",
+    "name": "Lava Golem",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lava_Golem.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "magma-crawler",
+    "name": "Magma Crawler",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Magma_Crawler.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infected-weeper",
+    "name": "Infected Weeper",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infected_Weeper.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Warzone 1-3"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "seacrest-serpent",
+    "name": "Seacrest Serpent",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Seacrest_Serpent.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Seacrest Grounds"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "infernalist",
+    "name": "Infernalist",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infernalist.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "lizard-noble",
+    "name": "Lizard Noble",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Noble.gif",
+    "charmPoints": 50,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Razzachai"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 200
+  },
+  {
+    "id": "dragonling",
+    "name": "Dragonling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragonling.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Fury Dungeon"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "high-voltage-elemental",
+    "name": "High Voltage Elemental",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/High_Voltage_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Oramond Glooth Underground Raid, Warzone 5"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "walker",
+    "name": "Walker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Walker.gif",
+    "charmPoints": 25,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Underground Glooth Factory, Rathleton Sewers"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "redeemed-soul",
+    "name": "Redeemed Soul",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Redeemed_Soul.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Tainted Caves"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "filth-toad",
+    "name": "Filth Toad",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Filth_Toad.gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Lake Equivocolao"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-blue",
+    "name": "Nomad (Blue)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(blue).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  },
+  {
+    "id": "nomad-female",
+    "name": "Nomad (Female)",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(female).gif",
+    "charmPoints": 15,
+    "difficulty": "HARD",
+    "estimatedHours": 7,
+    "respawnCategory": "rare",
+    "locations": [
+      "Ankrahmun Desert"
+    ],
+    "region": "Ankrahmun",
+    "recommendedLevel": 150
+  }
 ];
-
-/**
- * Helper functions
- */
-
-export const getCreatureById = (id) => {
-  return BESTIARY_DATA.find(c => c.id === id);
-};
-
-export const getCreaturesByRegion = (region) => {
-  return BESTIARY_DATA.filter(c => c.region === region);
-};
-
-export const getCreaturesByDifficulty = (difficulty) => {
-  return BESTIARY_DATA.filter(c => c.difficulty === difficulty);
-};
-
-export const getCreaturesByRespawnCategory = (category) => {
-  return BESTIARY_DATA.filter(c => c.respawnCategory === category);
-};
-
-export const getUniqueRegions = () => {
-  return [...new Set(BESTIARY_DATA.map(c => c.region))].sort();
-};
-
-export const getTotalCharmPoints = () => {
-  return BESTIARY_DATA.reduce((sum, c) => sum + c.charmPoints, 0);
-};
-
-export default BESTIARY_DATA;

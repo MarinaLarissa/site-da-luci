@@ -485,6 +485,17 @@
       "queuePending_plural": "{{count}} operações pendentes",
       "manualSync": "Sincronizar agora"
     },
+    "sessionPlanner": {
+      "title": "Hunt do Dia",
+      "clearButton": "Limpar",
+      "emptyState": "Nenhuma criatura selecionada. Clique no botão + nos cards para adicionar criaturas à sua hunt de hoje.",
+      "removeAria": "Remover {{name}} do plano",
+      "totalCreatures": "Criaturas",
+      "totalCharmPoints": "Charm Points",
+      "totalTime": "Tempo Total",
+      "addToPlan": "Adicionar ao plano",
+      "removeFromPlan": "Remover do plano"
+    },
     "screenshot": {
       "show": "Import via Screenshot",
       "hide": "Ocultar Import de Screenshot",

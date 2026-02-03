@@ -43,11 +43,37 @@ export const CompletedBadge = styled.div`
   gap: 4px;
 `;
 
+export const CardTop = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+
+export const CreatureImage = styled.img`
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background-color: ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  padding: ${({ theme }) => theme.spacing.xs};
+  flex-shrink: 0;
+
+  &[src=''] {
+    display: none;
+  }
+`;
+
+export const CreatureInfo = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
 export const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const CreatureName = styled.h3`
@@ -181,4 +207,34 @@ export const RegionBadge = styled.span`
   font-size: 0.75rem;
   color: ${({ theme }) => theme.colors.accent.primary};
   font-weight: 600;
+`;
+
+export const PlanButton = styled.button`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ $isInPlan, theme }) =>
+    $isInPlan ? theme.colors.accent.primary : 'transparent'};
+  border: 1px solid ${({ $isInPlan, theme }) =>
+    $isInPlan ? theme.colors.accent.primary : theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ $isInPlan, theme }) =>
+    $isInPlan ? theme.colors.bg.primary : theme.colors.text.secondary};
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ $isInPlan, theme }) =>
+      $isInPlan ? theme.colors.accent.secondary : theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 `;

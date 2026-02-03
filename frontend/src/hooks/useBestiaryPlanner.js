@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import BESTIARY_DATA from '../data/bestiary';
+import { BESTIARY_DATA } from '../data/bestiary';
 import * as bestiaryStorageDefault from '../services/bestiaryStorage';
 
 /**

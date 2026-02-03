@@ -485,6 +485,17 @@
       "queuePending_plural": "{{count}} pending operations",
       "manualSync": "Sync now"
     },
+    "sessionPlanner": {
+      "title": "Today's Hunt",
+      "clearButton": "Clear",
+      "emptyState": "No creatures selected. Click the + button on cards to add creatures to today's hunt.",
+      "removeAria": "Remove {{name}} from plan",
+      "totalCreatures": "Creatures",
+      "totalCharmPoints": "Charm Points",
+      "totalTime": "Total Time",
+      "addToPlan": "Add to plan",
+      "removeFromPlan": "Remove from plan"
+    },
     "screenshot": {
       "show": "Import via Screenshot",
       "hide": "Hide Screenshot Import",

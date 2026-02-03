@@ -22,6 +22,8 @@ import {
 const SuggestionList = ({
   suggestions,
   onToggleComplete,
+  onTogglePlan,
+  isCreatureInPlan,
   isCreatureCompleted,
   character,
 }) => {
@@ -62,6 +64,8 @@ const SuggestionList = ({
             key={creature.id}
             creature={creature}
             onToggleComplete={onToggleComplete}
+            onTogglePlan={onTogglePlan}
+            isInPlan={isCreatureInPlan?.(creature.id) || false}
             isCompleted={isCreatureCompleted(creature.id)}
           />
         ))}
