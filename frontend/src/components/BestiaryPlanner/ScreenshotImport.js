@@ -87,8 +87,8 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setError(null);
 
     try {
-      // Extract text from image
-      const result = await extractTextFromImage(imageFile, setProgress);
+      // Extract text from image (with color detection)
+      const result = await extractTextFromImage(imageFile, setProgress, true);
 
       if (!result.success) {
         setError(result.error || t('bestiaryPlanner.screenshot.ocrFailed'));
@@ -103,7 +103,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
         return;
       }
 
-      // Parse creatures
+      // Parse creatures with stage detection
       const parsed = parseOcrText(result.text, 0.75);
 
       setOcrResults({
@@ -125,7 +125,17 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const handleConfirmImport = () => {
     if (!ocrResults || !ocrResults.matched.length) return;
 
-    const creatureIds = ocrResults.matched.map((m) => m.creature.id);
+    // Only import creatures that are marked as complete (✓)
+    // Creatures in stage 1/3 or 2/3 are not completed yet
+    const creatureIds = ocrResults.matched
+      .filter((m) => m.isComplete)
+      .map((m) => m.creature.id);
+
+    if (creatureIds.length === 0) {
+      setError(t('bestiaryPlanner.screenshot.noCompleteCreatures'));
+      return;
+    }
+
     onCreaturesImported?.(creatureIds);
 
     // Reset state
@@ -206,7 +216,25 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
               <MatchedList>
                 {ocrResults.matched.map((match, index) => (
                   <MatchedItem key={index}>
-                    <CreatureName>{match.creature.name}</CreatureName>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', flex: 1 }}>
+                      <CreatureName>{match.creature.name}</CreatureName>
+                      {match.stage && (
+                        <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
+                          {match.isComplete ? (
+                            <span style={{ color: '#10b981' }}>
+                              ✓ {t('bestiaryPlanner.screenshot.complete')}
+                            </span>
+                          ) : (
+                            <span>
+                              {t('bestiaryPlanner.screenshot.stage', { stage: match.stage })}
+                              {match.minimumKills !== null && (
+                                <> • {t('bestiaryPlanner.screenshot.minKills', { kills: match.minimumKills })}</>
+                              )}
+                            </span>
+                          )}
+                        </span>
+                      )}
+                    </div>
                     <SimilarityBadge $similarity={match.similarity}>
                       {Math.round(match.similarity * 100)}%
                     </SimilarityBadge>
@@ -216,7 +244,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
 
               <ConfirmButton onClick={handleConfirmImport}>
                 {t('bestiaryPlanner.screenshot.confirmImport', {
-                  count: ocrResults.matched.length,
+                  count: ocrResults.matched.filter(m => m.isComplete).length,
                 })}
               </ConfirmButton>
             </>

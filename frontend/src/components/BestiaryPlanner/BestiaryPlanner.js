@@ -9,11 +9,13 @@ import { useBestiaryPlanner } from '../../hooks/useBestiaryPlanner';
 import FilterPanel from './FilterPanel';
 import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
+import CharacterDrawer from './CharacterDrawer';
 import SyncStatus from './SyncStatus';
 import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
 import Toast from './Toast';
-import { markCreaturesCompleted } from '../../services/bestiaryStorage';
+import KillCountModal from './KillCountModal';
+import { markCreaturesCompleted, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
   toggleCreatureInPlan,
@@ -58,12 +60,15 @@ import {
 const BestiaryPlanner = () => {
   const { t } = useTranslation();
   const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
+  const [isCharacterDrawerOpen, setIsCharacterDrawerOpen] = useState(false);
   const [showScreenshotImport, setShowScreenshotImport] = useState(false);
   const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
   const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true);
   const [pendingFilters, setPendingFilters] = useState(null);
   const [toast, setToast] = useState(null);
   const [toastClosing, setToastClosing] = useState(false);
+  const [isKillCountModalOpen, setIsKillCountModalOpen] = useState(false);
+  const [selectedCreatureForEdit, setSelectedCreatureForEdit] = useState(null);
 
   const {
     character,
@@ -76,6 +81,8 @@ const BestiaryPlanner = () => {
     isCreatureCompleted,
     getTotalRemainingTime,
     getAverageCharmPointsPerHour,
+    refreshProgress,
+    reloadCharacter,
   } = useBestiaryPlanner();
 
   // Load session plan creatures
@@ -124,8 +131,8 @@ const BestiaryPlanner = () => {
     markCreaturesCompleted(character.id, creatureIds, true);
     setShowScreenshotImport(false);
 
-    // Reload data to reflect changes
-    window.location.reload();
+    // Refresh progress to reflect changes
+    refreshProgress();
   };
 
   // Handle session planner
@@ -152,11 +159,32 @@ const BestiaryPlanner = () => {
     setSessionPlanCreatures(updatedPlan);
   };
 
+  // Handle character switching
+  const handleCharacterChange = () => {
+    // Reload character data from storage
+    reloadCharacter();
+
+    // Reload session plan for new character
+    const activeChar = getActiveCharacter();
+    if (activeChar) {
+      const planCreatures = getSessionPlanWithData(activeChar.id, BESTIARY_DATA);
+      setSessionPlanCreatures(planCreatures);
+    }
+  };
+
+  const handleOpenCreateCharacter = () => {
+    setIsCharacterDrawerOpen(false);
+    setIsCharacterModalOpen(true);
+  };
+
   const handleCompleteCreature = (creatureId) => {
     if (!character) return;
 
     const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
     if (!creature) return;
+
+    // Don't complete if already completed
+    if (isCreatureCompleted(creatureId)) return;
 
     // Mark as completed
     toggleCreatureCompletion(creatureId);
@@ -164,10 +192,12 @@ const BestiaryPlanner = () => {
     // Add to today's completions
     addTodayCompletion(character.id, creature);
 
-    // Remove from session plan
-    toggleCreatureInPlan(character.id, creatureId);
-    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
-    setSessionPlanCreatures(updatedPlan);
+    // Remove from session plan if it's there
+    if (isInSessionPlan(character.id, creatureId)) {
+      toggleCreatureInPlan(character.id, creatureId);
+      const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+      setSessionPlanCreatures(updatedPlan);
+    }
 
     // Show success toast
     showToast({
@@ -218,12 +248,88 @@ const BestiaryPlanner = () => {
     setIsFiltersCollapsed(!isFiltersCollapsed);
   };
 
+  // Handle opening kill count modal
+  const handleEditKills = (creatureId) => {
+    if (!character) return;
+
+    const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
+    if (!creature) return;
+
+    setSelectedCreatureForEdit(creature);
+    setIsKillCountModalOpen(true);
+  };
+
+  // Handle saving kill count
+  const handleSaveKills = (creatureId, kills, occurrence) => {
+    if (!character) return;
+
+    updateCreatureKills(character.id, creatureId, kills, occurrence);
+
+    // If kills reach the max, also add to today's completions
+    if (kills >= occurrence) {
+      const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
+      if (creature) {
+        addTodayCompletion(character.id, creature);
+
+        // Show success toast
+        showToast({
+          type: 'success',
+          title: t('bestiaryPlanner.toast.completed.title'),
+          message: t('bestiaryPlanner.toast.completed.message', {
+            name: creature.name,
+            charmPoints: creature.charmPoints,
+          }),
+        });
+      }
+    }
+
+    // Refresh progress to reflect kill count changes
+    refreshProgress();
+
+    // Reload session plan if creature was completed
+    if (kills >= occurrence) {
+      const planCreatures = getSessionPlanWithData(character.id, BESTIARY_DATA);
+      setSessionPlanCreatures(planCreatures);
+    }
+
+    // Close modal
+    setIsKillCountModalOpen(false);
+    setSelectedCreatureForEdit(null);
+  };
+
   return (
     <PlannerContainer>
       <Header>
         <HeaderTop>
           <HeaderContent>
-            <Title>{t('bestiaryPlanner.title')}</Title>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <Title>{t('bestiaryPlanner.title')}</Title>
+              {character && (
+                <button
+                  onClick={() => setIsCharacterDrawerOpen(true)}
+                  style={{
+                    padding: '0.5rem 1rem',
+                    background: 'transparent',
+                    border: '1px solid #374151',
+                    borderRadius: '0.375rem',
+                    color: '#9ca3af',
+                    fontSize: '0.875rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.borderColor = '#667eea';
+                    e.target.style.color = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.borderColor = '#374151';
+                    e.target.style.color = '#9ca3af';
+                  }}
+                >
+                  👤 {character.name}
+                </button>
+              )}
+            </div>
             <Subtitle>{t('bestiaryPlanner.subtitle')}</Subtitle>
             <SyncStatus />
           </HeaderContent>
@@ -317,8 +423,9 @@ const BestiaryPlanner = () => {
         <ResultsSection>
           <SuggestionList
             suggestions={suggestions}
-            onToggleComplete={toggleCreatureCompletion}
+            onToggleComplete={handleCompleteCreature}
             onTogglePlan={handleTogglePlan}
+            onEditKills={handleEditKills}
             isCreatureInPlan={(creatureId) => isInSessionPlan(character.id, creatureId)}
             isCreatureCompleted={isCreatureCompleted}
             character={character}
@@ -334,6 +441,26 @@ const BestiaryPlanner = () => {
 
       {/* Toast notification */}
       {toast && <Toast {...toast} isClosing={toastClosing} />}
+
+      {/* Character Drawer */}
+      <CharacterDrawer
+        isOpen={isCharacterDrawerOpen}
+        onClose={() => setIsCharacterDrawerOpen(false)}
+        activeCharacterId={character?.id}
+        onCharacterChange={handleCharacterChange}
+        onCreateCharacter={handleOpenCreateCharacter}
+      />
+
+      {/* Kill Count Modal */}
+      {selectedCreatureForEdit && (
+        <KillCountModal
+          isOpen={isKillCountModalOpen}
+          onClose={() => setIsKillCountModalOpen(false)}
+          creature={selectedCreatureForEdit}
+          currentKills={character ? getCreatureKills(character.id, selectedCreatureForEdit.id) : 0}
+          onSave={handleSaveKills}
+        />
+      )}
     </PlannerContainer>
   );
 };

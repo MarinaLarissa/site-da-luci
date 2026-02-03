@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import CreatureCard from './CreatureCard';
 import {
@@ -23,6 +24,7 @@ const SuggestionList = ({
   suggestions,
   onToggleComplete,
   onTogglePlan,
+  onEditKills,
   isCreatureInPlan,
   isCreatureCompleted,
   character,
@@ -65,6 +67,7 @@ const SuggestionList = ({
             creature={creature}
             onToggleComplete={onToggleComplete}
             onTogglePlan={onTogglePlan}
+            onEditKills={onEditKills}
             isInPlan={isCreatureInPlan?.(creature.id) || false}
             isCompleted={isCreatureCompleted(creature.id)}
           />
@@ -78,6 +81,40 @@ const SuggestionList = ({
       )}
     </ListContainer>
   );
+};
+
+SuggestionList.propTypes = {
+  suggestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      charmPoints: PropTypes.number.isRequired,
+      estimatedHours: PropTypes.number.isRequired,
+      difficulty: PropTypes.string.isRequired,
+      region: PropTypes.string.isRequired,
+      recommendedLevel: PropTypes.number.isRequired,
+      locations: PropTypes.arrayOf(PropTypes.string).isRequired,
+      imageUrl: PropTypes.string,
+      isRapidRecommended: PropTypes.bool,
+    })
+  ).isRequired,
+  onToggleComplete: PropTypes.func.isRequired,
+  onTogglePlan: PropTypes.func,
+  onEditKills: PropTypes.func,
+  isCreatureInPlan: PropTypes.func,
+  isCreatureCompleted: PropTypes.func.isRequired,
+  character: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    level: PropTypes.number.isRequired,
+  }),
+};
+
+SuggestionList.defaultProps = {
+  onTogglePlan: null,
+  onEditKills: null,
+  isCreatureInPlan: null,
+  character: null,
 };
 
 export default SuggestionList;

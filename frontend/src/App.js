@@ -9,6 +9,7 @@ import { Suspense, useState, useEffect, lazy } from 'react';
 import Sidebar from './components/Layout/Sidebar';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import { UserMenu } from './components/Auth';
+import { useAuth } from './contexts/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
@@ -24,6 +25,13 @@ const LoginModal = lazy(() => import('./components/Auth').then(module => ({ defa
 function App() {
   const [activePage, setActivePage] = useState('loot-split');
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { saveRedirectPath } = useAuth();
+
+  // Handle login click - save current path before opening modal
+  const handleLoginClick = () => {
+    saveRedirectPath();
+    setIsLoginModalOpen(true);
+  };
 
   // Shared Gold Token Price state (used by both Solo Hunt Analyzer and Imbuement Calculator)
   // Load from localStorage on mount
@@ -72,7 +80,7 @@ function App() {
   return (
     <AppContainer>
       <TopControls>
-        <UserMenu onLoginClick={() => setIsLoginModalOpen(true)} />
+        <UserMenu onLoginClick={handleLoginClick} />
         <LanguageSelector />
       </TopControls>
       <Sidebar activePage={activePage} onNavigate={setActivePage} />

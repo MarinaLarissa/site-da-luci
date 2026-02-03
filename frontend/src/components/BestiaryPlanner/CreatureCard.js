@@ -7,6 +7,7 @@
  */
 
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
   Card,
@@ -28,6 +29,7 @@ import {
   LocationChip,
   RegionBadge,
   PlanButton,
+  EditButton,
 } from './CreatureCard.styles';
 
 // Constants
@@ -40,12 +42,18 @@ const CreatureCard = ({
   isCompleted,
   onTogglePlan,
   isInPlan,
+  onEditKills,
 }) => {
   const { t } = useTranslation();
 
   const handlePlanClick = (e) => {
     e.stopPropagation(); // Prevent card click
     onTogglePlan?.(creature.id);
+  };
+
+  const handleEditClick = (e) => {
+    e.stopPropagation(); // Prevent card click
+    onEditKills?.(creature.id);
   };
 
   const handleImageError = (e) => {
@@ -86,6 +94,15 @@ const CreatureCard = ({
           <CardHeader>
             <CreatureName>{creature.name}</CreatureName>
             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+              {onEditKills && (
+                <EditButton
+                  onClick={handleEditClick}
+                  aria-label={t('bestiaryPlanner.creature.editKills')}
+                  title={t('bestiaryPlanner.creature.editKills')}
+                >
+                  ✎
+                </EditButton>
+              )}
               {onTogglePlan && (
                 <PlanButton
                   onClick={handlePlanClick}
@@ -150,6 +167,32 @@ const areEqual = (prevProps, nextProps) => {
     prevProps.isInPlan === nextProps.isInPlan &&
     prevProps.creature.isRapidRecommended === nextProps.creature.isRapidRecommended
   );
+};
+
+CreatureCard.propTypes = {
+  creature: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    charmPoints: PropTypes.number.isRequired,
+    estimatedHours: PropTypes.number.isRequired,
+    difficulty: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
+    recommendedLevel: PropTypes.number.isRequired,
+    locations: PropTypes.arrayOf(PropTypes.string).isRequired,
+    imageUrl: PropTypes.string,
+    isRapidRecommended: PropTypes.bool,
+  }).isRequired,
+  onToggleComplete: PropTypes.func.isRequired,
+  isCompleted: PropTypes.bool.isRequired,
+  onTogglePlan: PropTypes.func,
+  isInPlan: PropTypes.bool,
+  onEditKills: PropTypes.func,
+};
+
+CreatureCard.defaultProps = {
+  onTogglePlan: null,
+  isInPlan: false,
+  onEditKills: null,
 };
 
 export default memo(CreatureCard, areEqual);

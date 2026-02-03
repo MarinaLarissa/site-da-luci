@@ -264,3 +264,29 @@ export const PlanButton = styled.button`
     transform: scale(0.95);
   }
 `;
+
+export const EditButton = styled.button`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ theme }) => theme.colors.text.muted};
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+    color: ${({ theme }) => theme.colors.accent.primary};
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;

@@ -38,6 +38,7 @@ const CURRENT_VERSION = '1.0';
 const creatureProgressSchema = Joi.object({
   completed: Joi.boolean().required(),
   completedAt: Joi.string().isoDate().optional(),
+  kills: Joi.number().integer().min(0).optional(), // Manual kill count
 });
 
 const characterSchema = Joi.object({
@@ -312,6 +313,57 @@ export const isCreatureCompleted = (characterId, creatureId) => {
 };
 
 /**
+ * Update kill count for a creature (manual entry)
+ * @param {string} characterId - Character UUID
+ * @param {string} creatureId - Creature ID
+ * @param {number} kills - Number of kills
+ * @param {number} occurrence - Total kills needed for completion (from BESTIARY_DATA)
+ * @returns {boolean} - Success status
+ */
+export const updateCreatureKills = (characterId, creatureId, kills, occurrence) => {
+  const data = loadBestiaryData();
+
+  if (!data.characters[characterId]) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Character not found:', characterId);
+    }
+    return false;
+  }
+
+  // Ensure kills is valid
+  const validKills = Math.max(0, Math.min(kills, occurrence));
+
+  // Check if should auto-complete
+  const shouldComplete = validKills >= occurrence;
+
+  data.characters[characterId].creatures[creatureId] = {
+    completed: shouldComplete,
+    kills: validKills,
+    ...(shouldComplete && { completedAt: new Date().toISOString() }),
+  };
+
+  saveBestiaryData(data);
+  return true;
+};
+
+/**
+ * Get kill count for a creature
+ * @param {string} characterId - Character UUID
+ * @param {string} creatureId - Creature ID
+ * @returns {number} - Number of kills (0 if not started)
+ */
+export const getCreatureKills = (characterId, creatureId) => {
+  const data = loadBestiaryData();
+
+  if (!data.characters[characterId]) {
+    return 0;
+  }
+
+  const creature = data.characters[characterId].creatures[creatureId];
+  return creature?.kills || 0;
+};
+
+/**
  * Get progress statistics for a character
  */
 export const getCharacterProgress = (characterId, allCreatures) => {
@@ -452,6 +504,8 @@ export default {
   markCreaturesCompleted,
   getCompletedCreatures,
   isCreatureCompleted,
+  updateCreatureKills,
+  getCreatureKills,
   getCharacterProgress,
   getSettings,
   updateSettings,

@@ -445,7 +445,8 @@
       "completed": "Completed",
       "efficiency": "Efficiency",
       "locations": "Locations",
-      "rapidRecommended": "Rapid Recommended"
+      "rapidRecommended": "Rapid Recommended",
+      "editKills": "Edit progress"
     },
     "suggestions": {
       "title": "Creature Suggestions",
@@ -511,6 +512,25 @@
         "message": "{{name}} completed! +{{charmPoints}} Charm Points"
       }
     },
+    "characterDrawer": {
+      "title": "Switch Character",
+      "empty": "You don't have any characters yet.",
+      "createFirst": "Create First Character",
+      "createNew": "Create New Character",
+      "active": "Active"
+    },
+    "killCountModal": {
+      "title": "Edit Progress",
+      "killsLabel": "Kill Count",
+      "complete": "Complete",
+      "stage": "Stage {{stage}}/3",
+      "cancel": "Cancel",
+      "save": "Save",
+      "errors": {
+        "negativeKills": "Kill count cannot be negative",
+        "exceedsMax": "Kill count cannot exceed {{max}}"
+      }
+    },
     "screenshot": {
       "show": "Import via Screenshot",
       "hide": "Hide Screenshot Import",
@@ -528,7 +548,11 @@
       "confirmImport": "Mark {{count}} creature as completed",
       "confirmImport_plural": "Mark {{count}} creatures as completed",
       "unmatchedTitle": "Could not identify:",
-      "tryAnother": "Try Another Screenshot"
+      "tryAnother": "Try Another Screenshot",
+      "complete": "Complete",
+      "stage": "Stage {{stage}}/3",
+      "minKills": "Min {{kills}} kills",
+      "noCompleteCreatures": "No complete creatures detected. Only creatures with ✓ (complete) will be marked."
     }
   },
   "imbuementCalculator": {

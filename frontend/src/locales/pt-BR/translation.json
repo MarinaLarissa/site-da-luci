@@ -445,7 +445,8 @@
       "completed": "Completo",
       "efficiency": "Eficiência",
       "locations": "Localizações",
-      "rapidRecommended": "Rapid Recomendado"
+      "rapidRecommended": "Rapid Recomendado",
+      "editKills": "Editar progresso"
     },
     "suggestions": {
       "title": "Sugestões de Criaturas",
@@ -511,6 +512,25 @@
         "message": "{{name}} completado! +{{charmPoints}} Charm Points"
       }
     },
+    "characterDrawer": {
+      "title": "Trocar Personagem",
+      "empty": "Você ainda não tem personagens criados.",
+      "createFirst": "Criar Primeiro Personagem",
+      "createNew": "Criar Novo Personagem",
+      "active": "Ativo"
+    },
+    "killCountModal": {
+      "title": "Editar Progresso",
+      "killsLabel": "Quantidade de Kills",
+      "complete": "Completo",
+      "stage": "Estágio {{stage}}/3",
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "errors": {
+        "negativeKills": "Quantidade de kills não pode ser negativa",
+        "exceedsMax": "Quantidade não pode exceder {{max}} kills"
+      }
+    },
     "screenshot": {
       "show": "Import via Screenshot",
       "hide": "Ocultar Import de Screenshot",
@@ -528,7 +548,11 @@
       "confirmImport": "Marcar {{count}} criatura como completa",
       "confirmImport_plural": "Marcar {{count}} criaturas como completas",
       "unmatchedTitle": "Não foi possível identificar:",
-      "tryAnother": "Tentar Outro Screenshot"
+      "tryAnother": "Tentar Outro Screenshot",
+      "complete": "Completo",
+      "stage": "Estágio {{stage}}/3",
+      "minKills": "Mínimo {{kills}} kills",
+      "noCompleteCreatures": "Nenhuma criatura completa detectada. Apenas criaturas com ✓ (completas) serão marcadas."
     }
   },
   "imbuementCalculator": {

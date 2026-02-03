@@ -20,19 +20,58 @@ const initializeWorker = async () => {
 
   // Configure for better accuracy on game UI
   await worker.setParameters({
-    tessedit_pageseg_mode: '6', // Assume a single uniform block of text
-    tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ()-/',
+    tessedit_pageseg_mode: '11', // Sparse text. Find as much text as possible
+    tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ()-/✓✔',
   });
 
   return worker;
 };
 
 /**
+ * Detect if a region of the image has color (not grayscale/black)
+ * @param {ImageData} imageData - Image data to analyze
+ * @param {number} x - Starting x coordinate
+ * @param {number} y - Starting y coordinate
+ * @param {number} width - Width of region
+ * @param {number} height - Height of region
+ * @returns {boolean} - True if region has color
+ */
+const hasColorInRegion = (imageData, x, y, width, height) => {
+  const data = imageData.data;
+  const imgWidth = imageData.width;
+  let colorPixels = 0;
+  let totalPixels = 0;
+
+  for (let dy = 0; dy < height; dy++) {
+    for (let dx = 0; dx < width; dx++) {
+      const px = Math.min(x + dx, imgWidth - 1);
+      const py = Math.min(y + dy, imageData.height - 1);
+      const i = (py * imgWidth + px) * 4;
+
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+
+      // Check if pixel has significant color variation (not grayscale)
+      const maxDiff = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
+      if (maxDiff > 30) {
+        colorPixels++;
+      }
+      totalPixels++;
+    }
+  }
+
+  // If more than 5% of pixels have color, consider it colored
+  return colorPixels / totalPixels > 0.05;
+};
+
+/**
  * Preprocess image for better OCR accuracy
  * @param {File} imageFile - The image file to process
- * @returns {Promise<string>} - Base64 data URL of processed image
+ * @param {boolean} detectColor - Whether to detect colored creatures (default: false)
+ * @returns {Promise<{processedImage: string, originalImageData?: ImageData}>} - Processed image data
  */
-const preprocessImage = async (imageFile) => {
+const preprocessImage = async (imageFile, detectColor = false) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const canvas = document.createElement('canvas');
@@ -47,9 +86,11 @@ const preprocessImage = async (imageFile) => {
 
       // Get image data
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const originalImageData = detectColor ?
+        ctx.getImageData(0, 0, canvas.width, canvas.height) : null;
       const data = imageData.data;
 
-      // Convert to grayscale and increase contrast
+      // Convert to grayscale and increase contrast for OCR
       for (let i = 0; i < data.length; i += 4) {
         const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
 
@@ -63,7 +104,10 @@ const preprocessImage = async (imageFile) => {
       }
 
       ctx.putImageData(imageData, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
+      resolve({
+        processedImage: canvas.toDataURL('image/png'),
+        originalImageData,
+      });
     };
 
     img.onerror = reject;
@@ -75,9 +119,10 @@ const preprocessImage = async (imageFile) => {
  * Extract text from bestiary screenshot
  * @param {File} imageFile - The screenshot image file
  * @param {Function} onProgress - Progress callback (optional)
- * @returns {Promise<{success: boolean, text?: string, confidence?: number, error?: string}>}
+ * @param {boolean} detectColor - Whether to detect colored creatures (default: true)
+ * @returns {Promise<{success: boolean, text?: string, confidence?: number, originalImageData?: ImageData, error?: string}>}
  */
-export const extractTextFromImage = async (imageFile, onProgress) => {
+export const extractTextFromImage = async (imageFile, onProgress, detectColor = true) => {
   let worker;
 
   try {
@@ -87,7 +132,7 @@ export const extractTextFromImage = async (imageFile, onProgress) => {
     }
 
     // Preprocess image for better OCR
-    const processedImage = await preprocessImage(imageFile);
+    const { processedImage, originalImageData } = await preprocessImage(imageFile, detectColor);
 
     // Initialize worker
     worker = await initializeWorker();
@@ -104,6 +149,7 @@ export const extractTextFromImage = async (imageFile, onProgress) => {
       success: true,
       text: data.text,
       confidence: data.confidence,
+      originalImageData,
     };
   } catch (error) {
     console.error('OCR Error:', error);
@@ -147,3 +193,15 @@ export const validateBestiaryScreenshot = (text) => {
 
   return matchCount >= 2;
 };
+
+/**
+ * Detect if creatures in a region have color
+ * Exported for use by parser/components
+ * @param {ImageData} imageData - Image data to analyze
+ * @param {number} x - Starting x coordinate
+ * @param {number} y - Starting y coordinate
+ * @param {number} width - Width of region
+ * @param {number} height - Height of region
+ * @returns {boolean} - True if region has color
+ */
+export const detectColorInRegion = hasColorInRegion;

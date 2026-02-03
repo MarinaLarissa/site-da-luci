@@ -56,9 +56,19 @@ export const AuthProvider = ({ children }) => {
         setUser(session?.user ?? null);
 
         if (event === 'SIGNED_IN') {
-          // User signed in - could trigger sync here
+          // User signed in - redirect to saved path
           if (process.env.NODE_ENV === 'development') {
             console.log('User signed in:', session?.user?.email);
+          }
+
+          // Check for saved redirect path
+          const savedPath = localStorage.getItem('auth_redirect_path');
+          if (savedPath) {
+            localStorage.removeItem('auth_redirect_path');
+            // Small delay to ensure state is updated
+            setTimeout(() => {
+              window.location.href = savedPath;
+            }, 100);
           }
         } else if (event === 'SIGNED_OUT') {
           if (process.env.NODE_ENV === 'development') {
@@ -139,6 +149,11 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
+  const saveRedirectPath = () => {
+    // Save current path for redirect after login
+    localStorage.setItem('auth_redirect_path', window.location.pathname);
+  };
+
   const value = {
     user,
     loading,
@@ -150,6 +165,7 @@ export const AuthProvider = ({ children }) => {
     signInWithGoogle,
     signOut,
     resetPassword,
+    saveRedirectPath,
   };
 
   return (

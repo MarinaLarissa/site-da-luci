@@ -4,6 +4,7 @@
  */
 
 import { BESTIARY_DATA } from '../data/bestiary';
+import { calculateMinimumKills } from './bestiaryStages';
 
 /**
  * Calculate Levenshtein distance for fuzzy matching
@@ -86,18 +87,40 @@ export const findMatchingCreature = (name, minSimilarity = 0.7) => {
 };
 
 /**
- * Extract creature names from OCR text
+ * Detect bestiary stage from text
+ * @param {string} line - Line of text that may contain stage info
+ * @returns {{stage: number|null, isComplete: boolean}} - Stage info (1, 2, 3) or complete
+ */
+const detectBestiaryStage = (line) => {
+  // Look for stage patterns: "1/3", "2/3", "3/3"
+  const stageMatch = line.match(/(\d)\s*\/\s*3/);
+  if (stageMatch) {
+    const stage = parseInt(stageMatch[1], 10);
+    return { stage, isComplete: stage === 3 };
+  }
+
+  // Look for complete indicators: checkmark, "complete", "✓", "✔"
+  if (/[✓✔]/u.test(line) || /complete/i.test(line)) {
+    return { stage: 3, isComplete: true };
+  }
+
+  return { stage: null, isComplete: false };
+};
+
+/**
+ * Extract creature names with stage information from OCR text
  * Looks for patterns like:
- * - "Creature Name" followed by numbers (kills)
+ * - "Creature Name 1/3" or "Creature Name 2/3"
+ * - "Creature Name ✓" (complete)
  * - Lines with capitalized words
  * @param {string} text - Raw OCR text
- * @returns {string[]} - Array of potential creature names
+ * @returns {Array<{name: string, stage: number|null, isComplete: boolean}>} - Array of creatures with stage info
  */
 const extractCreatureNames = (text) => {
   if (!text) return [];
 
   const lines = text.split('\n').map((line) => line.trim()).filter(Boolean);
-  const potentialNames = [];
+  const potentialCreatures = [];
 
   for (const line of lines) {
     // Skip lines that are clearly not creature names
@@ -105,26 +128,35 @@ const extractCreatureNames = (text) => {
     if (/^\d+$/.test(line)) continue; // Skip pure numbers
     if (/^[^a-zA-Z]+$/.test(line)) continue; // Skip lines without letters
 
-    // Extract creature name (before numbers/progress indicators)
-    const match = line.match(/^([A-Za-z][A-Za-z\s'-]+?)(?:\s+\d+|\s+\(|\s*$)/);
+    // Detect stage information
+    const stageInfo = detectBestiaryStage(line);
+
+    // Extract creature name (before numbers/progress indicators/checkmarks)
+    const match = line.match(/^([A-Za-z][A-Za-z\s'-]+?)(?:\s+\d+|\s+\(|\s*[✓✔]|\s*$)/u);
 
     if (match) {
       const name = match[1].trim();
       if (name.length >= 3) {
-        potentialNames.push(name);
+        potentialCreatures.push({
+          name,
+          ...stageInfo,
+        });
       }
     } else {
       // Fallback: if line starts with capital letter, consider it
       if (/^[A-Z]/.test(line)) {
         const cleaned = line.replace(/[^\w\s'-]/g, '').trim();
         if (cleaned.length >= 3) {
-          potentialNames.push(cleaned);
+          potentialCreatures.push({
+            name: cleaned,
+            ...stageInfo,
+          });
         }
       }
     }
   }
 
-  return potentialNames;
+  return potentialCreatures;
 };
 
 /**
@@ -132,39 +164,51 @@ const extractCreatureNames = (text) => {
  * @param {string} text - OCR extracted text
  * @param {number} minSimilarity - Minimum similarity for matching (default 0.7)
  * @returns {{
- *   matched: Array<{creature: Object, similarity: number, originalText: string}>,
- *   unmatched: Array<string>,
+ *   matched: Array<{creature: Object, similarity: number, originalText: string, stage: number|null, isComplete: boolean, minimumKills: number|null}>,
+ *   unmatched: Array<{name: string, stage: number|null, isComplete: boolean}>,
  *   totalFound: number
  * }}
  */
 export const parseOcrText = (text, minSimilarity = 0.7) => {
-  const potentialNames = extractCreatureNames(text);
+  const potentialCreatures = extractCreatureNames(text);
   const matched = [];
   const unmatched = [];
 
-  for (const name of potentialNames) {
-    const { creature, similarity } = findMatchingCreature(name, minSimilarity);
+  for (const creatureData of potentialCreatures) {
+    const { creature, similarity } = findMatchingCreature(creatureData.name, minSimilarity);
 
     if (creature) {
       // Avoid duplicates
       const alreadyMatched = matched.some((m) => m.creature.id === creature.id);
 
       if (!alreadyMatched) {
+        // Calculate minimum kills if stage is detected
+        const minimumKills = creatureData.stage
+          ? calculateMinimumKills(creatureData.stage, creature.occurrence)
+          : null;
+
         matched.push({
           creature,
           similarity,
-          originalText: name,
+          originalText: creatureData.name,
+          stage: creatureData.stage,
+          isComplete: creatureData.isComplete,
+          minimumKills,
         });
       }
     } else {
-      unmatched.push(name);
+      unmatched.push({
+        name: creatureData.name,
+        stage: creatureData.stage,
+        isComplete: creatureData.isComplete,
+      });
     }
   }
 
   return {
     matched,
     unmatched,
-    totalFound: potentialNames.length,
+    totalFound: potentialCreatures.length,
   };
 };
 

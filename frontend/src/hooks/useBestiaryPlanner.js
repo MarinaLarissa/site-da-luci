@@ -83,6 +83,20 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     }
   }, [character, storageService]);
 
+  // Reload character data from storage (after switching characters or updates)
+  const reloadCharacter = useCallback(() => {
+    const activeChar = storageService.getActiveCharacter();
+    setCharacter(activeChar);
+
+    if (activeChar) {
+      const completed = storageService.getCompletedCreatures(activeChar.id);
+      setCompletedCreatureIds(completed);
+    }
+
+    const loadedSettings = storageService.getSettings();
+    setSettings(loadedSettings);
+  }, [storageService]);
+
   // Get incomplete creatures
   const incompleteCreatures = useMemo(() => {
     return BESTIARY_DATA.filter((c) => !completedCreatureIds.includes(c.id));
@@ -286,6 +300,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     updateFilters,
     resetFilters,
     refreshProgress,
+    reloadCharacter,
     getTopSuggestions,
     getCreatureById,
     isCreatureCompleted,
