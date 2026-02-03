@@ -1,0 +1,282 @@
+/**
+ * useBestiaryPlanner hook
+ * Manages bestiary planner state and calculates optimal hunting suggestions
+ */
+
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import BESTIARY_DATA, { DIFFICULTY_HOURS } from '../data/bestiary';
+import {
+  getActiveCharacter,
+  getCompletedCreatures,
+  markCreatureCompleted,
+  getCharacterProgress,
+  getSettings,
+} from '../services/bestiaryStorage';
+
+/**
+ * Efficiency calculation
+ * Score = (charmPoints / estimatedHours) * modifiers
+ *
+ * Modifiers:
+ * - Rapid respawn active: +30% for creatures with rapid respawn category
+ * - Preferred region: +20%
+ * - Lower level recommendation (character level > recommended level + 50): +10%
+ */
+const calculateEfficiencyScore = (creature, settings, characterLevel) => {
+  const baseScore = creature.charmPoints / creature.estimatedHours;
+
+  let modifier = 1.0;
+
+  // Rapid respawn bonus
+  if (settings.rapidRespawnActive && creature.respawnCategory === 'rapid') {
+    modifier += 0.3;
+  }
+
+  // Preferred region bonus
+  if (settings.preferredRegions.includes(creature.region)) {
+    modifier += 0.2;
+  }
+
+  // Over-leveled bonus (easier kills)
+  if (characterLevel > creature.recommendedLevel + 50) {
+    modifier += 0.1;
+  }
+
+  return baseScore * modifier;
+};
+
+/**
+ * Main hook
+ */
+export const useBestiaryPlanner = () => {
+  const [character, setCharacter] = useState(null);
+  const [completedCreatureIds, setCompletedCreatureIds] = useState([]);
+  const [settings, setSettings] = useState({ rapidRespawnActive: false, preferredRegions: [] });
+  const [filters, setFilters] = useState({
+    difficulty: [], // EASY, MEDIUM, HARD
+    region: [],
+    respawnCategory: [],
+    minCharmPoints: 0,
+    maxEstimatedHours: 10,
+    minRecommendedLevel: 0,
+    maxRecommendedLevel: 500,
+    searchTerm: '',
+  });
+
+  // Load character and settings from localStorage
+  useEffect(() => {
+    const activeChar = getActiveCharacter();
+    setCharacter(activeChar);
+
+    if (activeChar) {
+      const completed = getCompletedCreatures(activeChar.id);
+      setCompletedCreatureIds(completed);
+    }
+
+    const loadedSettings = getSettings();
+    setSettings(loadedSettings);
+  }, []);
+
+  // Refresh completed creatures when character changes
+  const refreshProgress = useCallback(() => {
+    if (character) {
+      const completed = getCompletedCreatures(character.id);
+      setCompletedCreatureIds(completed);
+    }
+  }, [character]);
+
+  // Get incomplete creatures
+  const incompleteCreatures = useMemo(() => {
+    return BESTIARY_DATA.filter((c) => !completedCreatureIds.includes(c.id));
+  }, [completedCreatureIds]);
+
+  // Apply filters
+  const filteredCreatures = useMemo(() => {
+    return incompleteCreatures.filter((creature) => {
+      // Difficulty filter
+      if (filters.difficulty.length > 0 && !filters.difficulty.includes(creature.difficulty)) {
+        return false;
+      }
+
+      // Region filter
+      if (filters.region.length > 0 && !filters.region.includes(creature.region)) {
+        return false;
+      }
+
+      // Respawn category filter
+      if (
+        filters.respawnCategory.length > 0 &&
+        !filters.respawnCategory.includes(creature.respawnCategory)
+      ) {
+        return false;
+      }
+
+      // Charm points filter
+      if (creature.charmPoints < filters.minCharmPoints) {
+        return false;
+      }
+
+      // Estimated hours filter
+      if (creature.estimatedHours > filters.maxEstimatedHours) {
+        return false;
+      }
+
+      // Level range filter
+      if (
+        creature.recommendedLevel < filters.minRecommendedLevel ||
+        creature.recommendedLevel > filters.maxRecommendedLevel
+      ) {
+        return false;
+      }
+
+      // Search term filter
+      if (filters.searchTerm) {
+        const term = filters.searchTerm.toLowerCase();
+        const nameMatch = creature.name.toLowerCase().includes(term);
+        const locationMatch = creature.locations.some((loc) =>
+          loc.toLowerCase().includes(term)
+        );
+        return nameMatch || locationMatch;
+      }
+
+      return true;
+    });
+  }, [incompleteCreatures, filters]);
+
+  // Calculate suggestions (sorted by efficiency)
+  const suggestions = useMemo(() => {
+    const characterLevel = character?.level || 100;
+
+    return filteredCreatures
+      .map((creature) => ({
+        ...creature,
+        efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
+      }))
+      .sort((a, b) => b.efficiencyScore - a.efficiencyScore);
+  }, [filteredCreatures, settings, character]);
+
+  // Get top N suggestions
+  const getTopSuggestions = useCallback(
+    (n = 10) => {
+      return suggestions.slice(0, n);
+    },
+    [suggestions]
+  );
+
+  // Toggle creature completion
+  const toggleCreatureCompletion = useCallback(
+    (creatureId) => {
+      if (!character) return;
+
+      const isCompleted = completedCreatureIds.includes(creatureId);
+      markCreatureCompleted(character.id, creatureId, !isCompleted);
+      refreshProgress();
+    },
+    [character, completedCreatureIds, refreshProgress]
+  );
+
+  // Mark multiple creatures as completed
+  const markMultipleCompleted = useCallback(
+    (creatureIds) => {
+      if (!character) return;
+
+      creatureIds.forEach((id) => {
+        markCreatureCompleted(character.id, id, true);
+      });
+      refreshProgress();
+    },
+    [character, refreshProgress]
+  );
+
+  // Update filters
+  const updateFilters = useCallback((newFilters) => {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+  }, []);
+
+  // Reset filters
+  const resetFilters = useCallback(() => {
+    setFilters({
+      difficulty: [],
+      region: [],
+      respawnCategory: [],
+      minCharmPoints: 0,
+      maxEstimatedHours: 10,
+      minRecommendedLevel: 0,
+      maxRecommendedLevel: 500,
+      searchTerm: '',
+    });
+  }, []);
+
+  // Get progress statistics
+  const progress = useMemo(() => {
+    if (!character) {
+      return {
+        completed: 0,
+        total: BESTIARY_DATA.length,
+        percentage: 0,
+        charmPointsEarned: 0,
+        charmPointsRemaining: 0,
+      };
+    }
+
+    return getCharacterProgress(character.id, BESTIARY_DATA);
+  }, [character, completedCreatureIds]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Get creature by ID
+  const getCreatureById = useCallback((creatureId) => {
+    return BESTIARY_DATA.find((c) => c.id === creatureId);
+  }, []);
+
+  // Check if creature is completed
+  const isCreatureCompleted = useCallback(
+    (creatureId) => {
+      return completedCreatureIds.includes(creatureId);
+    },
+    [completedCreatureIds]
+  );
+
+  // Get time to complete all remaining
+  const getTotalRemainingTime = useCallback(() => {
+    return incompleteCreatures.reduce((sum, c) => sum + c.estimatedHours, 0);
+  }, [incompleteCreatures]);
+
+  // Get charm points per hour for remaining
+  const getAverageCharmPointsPerHour = useCallback(() => {
+    if (incompleteCreatures.length === 0) return 0;
+
+    const totalCharmPoints = incompleteCreatures.reduce((sum, c) => sum + c.charmPoints, 0);
+    const totalHours = incompleteCreatures.reduce((sum, c) => sum + c.estimatedHours, 0);
+
+    return totalHours > 0 ? totalCharmPoints / totalHours : 0;
+  }, [incompleteCreatures]);
+
+  return {
+    // State
+    character,
+    completedCreatureIds,
+    settings,
+    filters,
+
+    // Computed
+    incompleteCreatures,
+    filteredCreatures,
+    suggestions,
+    progress,
+
+    // Actions
+    setCharacter,
+    setSettings,
+    toggleCreatureCompletion,
+    markMultipleCompleted,
+    updateFilters,
+    resetFilters,
+    refreshProgress,
+    getTopSuggestions,
+    getCreatureById,
+    isCreatureCompleted,
+    getTotalRemainingTime,
+    getAverageCharmPointsPerHour,
+  };
+};
+
+export default useBestiaryPlanner;

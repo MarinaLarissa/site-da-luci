@@ -16,6 +16,22 @@ export const AppContainer = styled.div`
   }
 `;
 
+export const TopControls = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    top: 15px;
+    right: 15px;
+    gap: ${({ theme }) => theme.spacing.sm};
+  }
+`;
+
 export const MainContent = styled.main`
   flex: 1;
   margin-left: 280px;

@@ -9,6 +9,7 @@
       "lootSplit": "Loot Split Calculator",
       "soloHunt": "Solo Hunt Analyzer",
       "imbuementCalc": "Imbuement Efficiency Calculator",
+      "bestiaryPlanner": "Bestiary Planner",
       "statistics": "Statistics (Coming Soon)",
       "partyAnalyzer": "Party Analyzer (Coming Soon)"
     },
@@ -356,6 +357,115 @@
     "errors": {
       "quotaExceeded": "Storage limit reached! Please delete old hunts or export your history.",
       "saveFailed": "Failed to save hunt. Please try again."
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "logout": "Logout",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Your password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Login",
+    "signUpButton": "Sign Up",
+    "loading": "Loading...",
+    "or": "or",
+    "continueWithGoogle": "Continue with Google",
+    "online": "Online",
+    "offline": "Offline",
+    "errors": {
+      "loginFailed": "Login failed. Check your credentials.",
+      "signUpFailed": "Sign up failed. Please try again.",
+      "googleFailed": "Google login failed.",
+      "passwordMismatch": "Passwords do not match.",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "emailRequired": "Enter your email to recover password.",
+      "resetFailed": "Failed to send recovery email."
+    },
+    "success": {
+      "checkEmail": "Account created! Check your email to confirm.",
+      "resetEmailSent": "Recovery email sent! Check your inbox."
+    }
+  },
+  "bestiaryPlanner": {
+    "title": "Bestiary Planner",
+    "subtitle": "Optimize your charm point hunting! See the best creatures to complete based on efficiency.",
+    "noCharacter": {
+      "title": "No Character Found",
+      "description": "Create a character to start planning your Bestiary journey!",
+      "createButton": "Create Character"
+    },
+    "progress": {
+      "completed": "Completed",
+      "charmPoints": "Charm Points",
+      "remaining": "Remaining",
+      "percentage": "Progress"
+    },
+    "filters": {
+      "title": "Filters",
+      "reset": "Clear",
+      "search": "Search",
+      "searchPlaceholder": "Name or location...",
+      "difficulty": "Difficulty",
+      "respawnCategory": "Respawn",
+      "region": "Region",
+      "minCharmPoints": "Min. Charm Points",
+      "maxHours": "Max. Hours",
+      "levelRange": "Recommended Level",
+      "results": "Results",
+      "avgCharmPoints": "Avg CP/hour",
+      "totalTime": "Total Time"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "respawnCategory": {
+      "normal": "Normal",
+      "rapid": "Rapid",
+      "rare": "Rare"
+    },
+    "vocations": {
+      "knight": "Knight",
+      "paladin": "Paladin",
+      "sorcerer": "Sorcerer",
+      "druid": "Druid"
+    },
+    "creature": {
+      "completed": "Completed",
+      "efficiency": "Efficiency",
+      "locations": "Locations"
+    },
+    "suggestions": {
+      "title": "Creature Suggestions",
+      "count": "{{count}} creature",
+      "count_plural": "{{count}} creatures",
+      "loadMore": "Load {{count}} more",
+      "empty": {
+        "title": "No creatures found",
+        "description": "Try adjusting the filters to see more results."
+      }
+    },
+    "characterModal": {
+      "createTitle": "Create Character",
+      "editTitle": "Edit Character",
+      "characterName": "Character Name",
+      "namePlaceholder": "Ex: Knight Master",
+      "level": "Level",
+      "vocation": "Vocation",
+      "cancel": "Cancel",
+      "save": "Save",
+      "create": "Create",
+      "errors": {
+        "nameRequired": "Character name is required",
+        "invalidLevel": "Level must be between 1 and 9999",
+        "saveFailed": "Failed to save character"
+      }
     }
   },
   "imbuementCalculator": {

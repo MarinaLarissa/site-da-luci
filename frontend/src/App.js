@@ -7,13 +7,16 @@ import Sidebar from './components/Layout/Sidebar';
 import LootSplitCalculator from './components/LootSplitCalculator/LootSplitCalculator';
 import SoloHuntAnalyzer from './components/SoloHuntAnalyzer/SoloHuntAnalyzer';
 import ImbuementCalculator from './components/ImbuementCalculator/ImbuementCalculator';
+import { BestiaryPlanner } from './components/BestiaryPlanner';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
+import { LoginModal, UserMenu } from './components/Auth';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
-import { AppContainer, MainContent } from './App.styles';
+import { AppContainer, MainContent, TopControls } from './App.styles';
 
 function App() {
   const [activePage, setActivePage] = useState('loot-split');
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   // Shared Gold Token Price state (used by both Solo Hunt Analyzer and Imbuement Calculator)
   // Load from localStorage on mount
@@ -48,8 +51,15 @@ function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <AppContainer>
-        <LanguageSelector />
+        <TopControls>
+          <UserMenu onLoginClick={() => setIsLoginModalOpen(true)} />
+          <LanguageSelector />
+        </TopControls>
         <Sidebar activePage={activePage} onNavigate={setActivePage} />
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+        />
 
         <MainContent>
           {/* Content based on active page from sidebar */}
@@ -66,6 +76,7 @@ function App() {
               setGoldTokenPrice={setSharedGoldTokenPrice}
             />
           )}
+          {activePage === 'bestiary-planner' && <BestiaryPlanner />}
         </MainContent>
       </AppContainer>
     </Suspense>

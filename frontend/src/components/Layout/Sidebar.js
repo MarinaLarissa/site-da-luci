@@ -58,6 +58,16 @@ export default function Sidebar({ activePage, onNavigate }) {
             {t('sidebar.nav.imbuementCalc')}
           </SidebarNavLabel>
         </SidebarNavItem>
+        <SidebarNavItem
+          $active={activePage === 'bestiary-planner'}
+          onClick={() => onNavigate('bestiary-planner')}
+          data-cy="sidebar-nav-bestiary-planner"
+        >
+          <SidebarNavIcon>📖</SidebarNavIcon>
+          <SidebarNavLabel $active={activePage === 'bestiary-planner'}>
+            {t('sidebar.nav.bestiaryPlanner')}
+          </SidebarNavLabel>
+        </SidebarNavItem>
         <SidebarNavItem $disabled>
           <SidebarNavIcon>📊</SidebarNavIcon>
           <SidebarNavLabel>{t('sidebar.nav.statistics')}</SidebarNavLabel>

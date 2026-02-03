@@ -9,6 +9,7 @@
       "lootSplit": "Calculadora de Divisão de Loot",
       "soloHunt": "Analisador de Caçada Solo",
       "imbuementCalc": "Calculadora de Eficiência de Imbuement",
+      "bestiaryPlanner": "Planejador de Bestiary",
       "statistics": "Estatísticas (Em Breve)",
       "partyAnalyzer": "Analisador de Party (Em Breve)"
     },
@@ -356,6 +357,115 @@
     "errors": {
       "quotaExceeded": "Limite de armazenamento atingido! Por favor, delete caçadas antigas ou exporte seu histórico.",
       "saveFailed": "Erro ao salvar caçada. Por favor, tente novamente."
+    }
+  },
+  "auth": {
+    "login": "Entrar",
+    "signUp": "Criar Conta",
+    "logout": "Sair",
+    "email": "E-mail",
+    "emailPlaceholder": "seu@email.com",
+    "password": "Senha",
+    "passwordPlaceholder": "Sua senha",
+    "confirmPassword": "Confirmar Senha",
+    "confirmPasswordPlaceholder": "Confirme sua senha",
+    "forgotPassword": "Esqueceu a senha?",
+    "loginButton": "Entrar",
+    "signUpButton": "Criar Conta",
+    "loading": "Carregando...",
+    "or": "ou",
+    "continueWithGoogle": "Continuar com Google",
+    "online": "Online",
+    "offline": "Offline",
+    "errors": {
+      "loginFailed": "Falha ao fazer login. Verifique suas credenciais.",
+      "signUpFailed": "Falha ao criar conta. Tente novamente.",
+      "googleFailed": "Falha ao fazer login com Google.",
+      "passwordMismatch": "As senhas não coincidem.",
+      "passwordTooShort": "A senha deve ter pelo menos 6 caracteres.",
+      "emailRequired": "Digite seu e-mail para recuperar a senha.",
+      "resetFailed": "Falha ao enviar e-mail de recuperação."
+    },
+    "success": {
+      "checkEmail": "Conta criada! Verifique seu e-mail para confirmar.",
+      "resetEmailSent": "E-mail de recuperação enviado! Verifique sua caixa de entrada."
+    }
+  },
+  "bestiaryPlanner": {
+    "title": "Planejador de Bestiary",
+    "subtitle": "Otimize sua caçada por charm points! Veja as melhores criaturas para completar com base em eficiência.",
+    "noCharacter": {
+      "title": "Nenhum Personagem Encontrado",
+      "description": "Crie um personagem para começar a planejar sua jornada no Bestiary!",
+      "createButton": "Criar Personagem"
+    },
+    "progress": {
+      "completed": "Completados",
+      "charmPoints": "Charm Points",
+      "remaining": "Restantes",
+      "percentage": "Progresso"
+    },
+    "filters": {
+      "title": "Filtros",
+      "reset": "Limpar",
+      "search": "Buscar",
+      "searchPlaceholder": "Nome ou localização...",
+      "difficulty": "Dificuldade",
+      "respawnCategory": "Respawn",
+      "region": "Região",
+      "minCharmPoints": "Min. Charm Points",
+      "maxHours": "Máx. Horas",
+      "levelRange": "Nível Recomendado",
+      "results": "Resultados",
+      "avgCharmPoints": "CP/hora médio",
+      "totalTime": "Tempo Total"
+    },
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Médio",
+      "hard": "Difícil"
+    },
+    "respawnCategory": {
+      "normal": "Normal",
+      "rapid": "Rápido",
+      "rare": "Raro"
+    },
+    "vocations": {
+      "knight": "Knight",
+      "paladin": "Paladin",
+      "sorcerer": "Sorcerer",
+      "druid": "Druid"
+    },
+    "creature": {
+      "completed": "Completo",
+      "efficiency": "Eficiência",
+      "locations": "Localizações"
+    },
+    "suggestions": {
+      "title": "Sugestões de Criaturas",
+      "count": "{{count}} criatura",
+      "count_plural": "{{count}} criaturas",
+      "loadMore": "Carregar mais {{count}}",
+      "empty": {
+        "title": "Nenhuma criatura encontrada",
+        "description": "Tente ajustar os filtros para ver mais resultados."
+      }
+    },
+    "characterModal": {
+      "createTitle": "Criar Personagem",
+      "editTitle": "Editar Personagem",
+      "characterName": "Nome do Personagem",
+      "namePlaceholder": "Ex: Knight Master",
+      "level": "Level",
+      "vocation": "Vocação",
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "create": "Criar",
+      "errors": {
+        "nameRequired": "Nome do personagem é obrigatório",
+        "invalidLevel": "Level deve estar entre 1 e 9999",
+        "saveFailed": "Erro ao salvar personagem"
+      }
     }
   },
   "imbuementCalculator": {

@@ -19,10 +19,6 @@ export const LanguageSelectorButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
 
   &:hover {
     transform: translateY(-2px);
@@ -36,8 +32,6 @@ export const LanguageSelectorButton = styled.button`
 
   /* Responsive */
   @media (max-width: 768px) {
-    top: 15px;
-    right: 15px;
     padding: 6px 12px;
     font-size: 13px;
   }
