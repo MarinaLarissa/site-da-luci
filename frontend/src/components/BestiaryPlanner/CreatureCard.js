@@ -9,6 +9,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
 import {
   Card,
   CompletedBadge,
@@ -34,7 +35,6 @@ import {
 
 // Constants
 const MAX_VISIBLE_LOCATIONS = 3;
-const PLACEHOLDER_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="64" height="64"%3E%3Crect fill="%23374151" width="64" height="64"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239CA3AF" font-size="10" font-family="Arial"%3E%3F%3F%3F%3C/text%3E%3C/svg%3E';
 
 const CreatureCard = ({
   creature,
@@ -83,7 +83,7 @@ const CreatureCard = ({
       <CardTop>
         {creature.imageUrl && (
           <CreatureImage
-            src={creature.imageUrl}
+            src={getImageUrl(creature.imageUrl)}
             alt={creature.name}
             loading="lazy"
             onError={handleImageError}

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { calculateStageFromKills, isBestiaryComplete, calculatePercentage } from '../../utils/bestiaryStages';
+import { getImageUrl } from '../../utils/imageUtils';
 import {
   Overlay,
   Modal,
@@ -90,7 +91,7 @@ const KillCountModal = ({ isOpen, onClose, creature, currentKills = 0, onSave })
           <CreatureHeader>
             {creature.imageUrl && (
               <CreatureImage
-                src={creature.imageUrl}
+                src={getImageUrl(creature.imageUrl)}
                 alt={creature.name}
                 onError={(e) => {
                   e.target.style.display = 'none';

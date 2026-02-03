@@ -209,7 +209,7 @@ export const TodayCreatureList = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
   margin-top: ${({ theme }) => theme.spacing.sm};
-  max-height: 150px;
+  max-height: 100px;
   overflow-y: auto;
 
   /* Custom scrollbar */

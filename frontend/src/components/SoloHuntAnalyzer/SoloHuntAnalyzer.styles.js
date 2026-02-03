@@ -8,15 +8,16 @@ import styled from 'styled-components';
 export const SoloHuntAnalyzerContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px;
+  padding: ${({ theme }) => theme.spacing.xl};
 
+  /* Responsive */
   @media (max-width: 768px) {
-    padding: 16px;
+    padding: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
 export const SoloHuntAnalyzerHeader = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: ${({ theme }) => theme.spacing.xxl};
 `;
 
 export const SoloHuntAnalyzerTitle = styled.h1`
@@ -28,16 +29,18 @@ export const SoloHuntAnalyzerTitle = styled.h1`
   background-clip: text;
   margin: 0 0 12px 0;
 
+  /* Responsive */
   @media (max-width: 768px) {
     font-size: 28px;
   }
 `;
 
 export const SoloHuntAnalyzerDescription = styled.p`
-  color: #9E9E9E;
+  color: ${({ theme }) => theme.colors.text.secondary};
   font-size: 18px;
   margin: 0;
 
+  /* Responsive */
   @media (max-width: 768px) {
     font-size: 16px;
   }
@@ -73,6 +76,7 @@ export const SoloHuntAnalyzerHistoryButton = styled.button`
     transform: scale(1.05);
   }
 
+  /* Responsive */
   @media (max-width: 768px) {
     width: 60px;
     min-width: 60px;
@@ -91,6 +95,7 @@ export const SoloHuntAnalyzerButtonText = styled.span`
   font-weight: 600;
   white-space: nowrap;
 
+  /* Responsive - Hide text on mobile, show icon only */
   @media (max-width: 768px) {
     display: none;
   }
@@ -98,21 +103,22 @@ export const SoloHuntAnalyzerButtonText = styled.span`
 
 export const SoloHuntAnalyzerActionButtons = styled.div`
   display: flex;
-  gap: 12px;
+  gap: ${({ theme }) => theme.spacing.md};
   justify-content: center;
-  margin: 24px 0;
+  margin: ${({ theme }) => theme.spacing.xl} 0;
 
+  /* Responsive */
   @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
 
 export const SoloHuntAnalyzerButton = styled.button`
-  padding: 12px 24px;
+  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.radius.md};
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -145,6 +151,7 @@ export const SoloHuntAnalyzerButton = styled.button`
     }
   `}
 
+  /* Responsive */
   @media (max-width: 768px) {
     width: 100%;
   }

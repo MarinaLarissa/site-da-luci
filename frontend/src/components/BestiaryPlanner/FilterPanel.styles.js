@@ -5,12 +5,7 @@ export const Panel = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   padding: ${({ theme }) => theme.spacing.lg};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
-  position: sticky;
-  top: ${({ theme }) => theme.spacing.lg};
-
-  @media (max-width: 1024px) {
-    position: static;
-  }
+  /* position: sticky removido - painel scrolls naturalmente */
 `;
 
 export const PanelHeader = styled.div`

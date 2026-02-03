@@ -12,7 +12,13 @@ export const InputSectionContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.card};
   padding: ${({ theme }) => theme.spacing.xl};
   border-radius: ${({ theme }) => theme.radius.lg};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
 `;
 
 export const InputSectionLabel = styled.label`
