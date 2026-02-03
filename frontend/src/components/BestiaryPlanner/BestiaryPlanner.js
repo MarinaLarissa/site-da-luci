@@ -9,9 +9,12 @@ import { useBestiaryPlanner } from '../../hooks/useBestiaryPlanner';
 import FilterPanel from './FilterPanel';
 import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
+import SyncStatus from './SyncStatus';
 import {
   PlannerContainer,
   Header,
+  HeaderTop,
+  HeaderContent,
   Title,
   Subtitle,
   ProgressBar,
@@ -83,8 +86,13 @@ const BestiaryPlanner = () => {
   return (
     <PlannerContainer>
       <Header>
-        <Title>{t('bestiaryPlanner.title')}</Title>
-        <Subtitle>{t('bestiaryPlanner.subtitle')}</Subtitle>
+        <HeaderTop>
+          <HeaderContent>
+            <Title>{t('bestiaryPlanner.title')}</Title>
+            <Subtitle>{t('bestiaryPlanner.subtitle')}</Subtitle>
+          </HeaderContent>
+          <SyncStatus />
+        </HeaderTop>
       </Header>
 
       {/* Progress Section */}

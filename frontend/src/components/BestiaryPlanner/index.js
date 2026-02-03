@@ -3,3 +3,4 @@ export { default as FilterPanel } from './FilterPanel';
 export { default as CreatureCard } from './CreatureCard';
 export { default as SuggestionList } from './SuggestionList';
 export { default as CharacterModal } from './CharacterModal';
+export { default as SyncStatus } from './SyncStatus';

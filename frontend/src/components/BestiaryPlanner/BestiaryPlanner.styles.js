@@ -14,6 +14,23 @@ export const Header = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
+export const HeaderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`;
+
+export const HeaderContent = styled.div`
+  flex: 1;
+`;
+
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;

@@ -466,6 +466,24 @@
         "invalidLevel": "Level must be between 1 and 9999",
         "saveFailed": "Failed to save character"
       }
+    },
+    "sync": {
+      "syncing": "Syncing",
+      "synced": "Synced",
+      "offline": "Offline",
+      "error": "Error",
+      "idle": "Idle",
+      "neverSynced": "Never synced",
+      "justNow": "Just now",
+      "minsAgo": "{{count}} min ago",
+      "minsAgo_plural": "{{count}} mins ago",
+      "hoursAgo": "{{count}} hour ago",
+      "hoursAgo_plural": "{{count}} hours ago",
+      "daysAgo": "{{count}} day ago",
+      "daysAgo_plural": "{{count}} days ago",
+      "queuePending": "{{count}} pending operation",
+      "queuePending_plural": "{{count}} pending operations",
+      "manualSync": "Sync now"
     }
   },
   "imbuementCalculator": {

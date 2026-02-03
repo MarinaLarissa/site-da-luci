@@ -466,6 +466,24 @@
         "invalidLevel": "Level deve estar entre 1 e 9999",
         "saveFailed": "Erro ao salvar personagem"
       }
+    },
+    "sync": {
+      "syncing": "Sincronizando",
+      "synced": "Sincronizado",
+      "offline": "Offline",
+      "error": "Erro",
+      "idle": "Aguardando",
+      "neverSynced": "Nunca sincronizado",
+      "justNow": "Agora",
+      "minsAgo": "há {{count}} min",
+      "minsAgo_plural": "há {{count}} mins",
+      "hoursAgo": "há {{count}} hora",
+      "hoursAgo_plural": "há {{count}} horas",
+      "daysAgo": "há {{count}} dia",
+      "daysAgo_plural": "há {{count}} dias",
+      "queuePending": "{{count}} operação pendente",
+      "queuePending_plural": "{{count}} operações pendentes",
+      "manualSync": "Sincronizar agora"
     }
   },
   "imbuementCalculator": {
