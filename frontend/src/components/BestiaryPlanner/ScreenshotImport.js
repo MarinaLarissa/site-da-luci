@@ -253,8 +253,15 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
           {ocrResults.unmatched.length > 0 && (
             <UnmatchedList>
               <p>{t('bestiaryPlanner.screenshot.unmatchedTitle')}</p>
-              {ocrResults.unmatched.map((name, index) => (
-                <UnmatchedItem key={index}>{name}</UnmatchedItem>
+              {ocrResults.unmatched.map((unmatchedData, index) => (
+                <UnmatchedItem key={index}>
+                  {unmatchedData.name}
+                  {unmatchedData.stage && (
+                    <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginLeft: '0.5rem' }}>
+                      ({unmatchedData.isComplete ? '✓' : `${unmatchedData.stage}/3`})
+                    </span>
+                  )}
+                </UnmatchedItem>
               ))}
             </UnmatchedList>
           )}
