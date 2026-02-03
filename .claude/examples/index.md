@@ -1,8 +1,8 @@
 ---
 diretorio: .claude/examples/
-total_itens: 0
+total_itens: 1
 categoria: examples
-ultima_atualizacao: 2026-01-16
+ultima_atualizacao: 2026-02-03
 ---
 
 # Examples - Index
@@ -12,6 +12,7 @@ ultima_atualizacao: 2026-01-16
 | Arquivo | Tipo | Descrição | Tags | Data |
 |---------|------|-----------|------|------|
 | **README.md** | Documentação | Guia de exemplos | `guia`, `examples` | 2026-01-16 |
+| **react-component-dos-donts.md** | Guia | Do's/Don'ts de React components | `react`, `best-practices`, `performance`, `i18n` | 2026-02-03 |
 
 ---
 
@@ -28,7 +29,6 @@ examples/
 
 ## Exemplos Planejados
 
-- `react-component-dos-donts.md` - Boas e más práticas React
 - `i18n-dos-donts.md` - Boas e más práticas i18n
 - `css-dos-donts.md` - Boas e más práticas CSS
 - `git-workflow-example.md` - Exemplo de workflow Git ideal

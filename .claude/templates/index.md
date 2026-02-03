@@ -1,8 +1,8 @@
 ---
 diretorio: .claude/templates/
-total_itens: 0
+total_itens: 1
 categoria: templates
-ultima_atualizacao: 2026-01-16
+ultima_atualizacao: 2026-02-03
 ---
 
 # Templates - Index
@@ -12,6 +12,7 @@ ultima_atualizacao: 2026-01-16
 | Arquivo | Tipo | Descrição | Tags | Data |
 |---------|------|-----------|------|------|
 | **README.md** | Documentação | Guia de templates | `guia`, `templates` | 2026-01-16 |
+| **template_react_component_styled.md** | Template | Boilerplate para componentes React com styled-components | `react`, `styled-components`, `i18n`, `propTypes` | 2026-02-03 |
 
 ---
 
