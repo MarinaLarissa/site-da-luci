@@ -10,13 +10,14 @@ const spin = keyframes`
 `;
 
 export const SyncContainer = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   background-color: ${({ theme }) => theme.colors.bg.card};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
   border-radius: ${({ theme }) => theme.radius.md};
+  margin-top: ${({ theme }) => theme.spacing.md};
 `;
 
 export const SyncBadge = styled.div`

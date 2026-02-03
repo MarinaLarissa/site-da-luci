@@ -98,6 +98,12 @@ export const CreatureInfo = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
   flex: 1;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const CreatureName = styled.span`
@@ -178,4 +184,62 @@ export const StatValue = styled.span`
   font-size: 1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.accent.primary};
+`;
+
+export const TodaySummary = styled.div`
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ theme }) => theme.colors.bg.hover};
+  border-radius: ${({ theme }) => theme.radius.md};
+  border: 1px solid #10b98140;
+  margin-top: ${({ theme }) => theme.spacing.md};
+`;
+
+export const TodayTitle = styled.h4`
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+`;
+
+export const TodayCreatureList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+  max-height: 150px;
+  overflow-y: auto;
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.bg.secondary};
+    border-radius: ${({ theme }) => theme.radius.sm};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: ${({ theme }) => theme.radius.sm};
+  }
+`;
+
+export const TodayCreatureItem = styled.div`
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors.text.secondary};
+  padding: ${({ theme }) => theme.spacing.xs};
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-weight: 600;
+    color: #10b981;
+  }
 `;

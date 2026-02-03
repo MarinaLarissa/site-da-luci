@@ -56,6 +56,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     minRecommendedLevel: 0,
     maxRecommendedLevel: 500,
     searchTerm: '',
+    showCompleted: false, // Show only completed creatures
   });
 
   // Load character and settings from localStorage
@@ -87,9 +88,17 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     return BESTIARY_DATA.filter((c) => !completedCreatureIds.includes(c.id));
   }, [completedCreatureIds]);
 
+  // Get completed creatures
+  const completedCreatures = useMemo(() => {
+    return BESTIARY_DATA.filter((c) => completedCreatureIds.includes(c.id));
+  }, [completedCreatureIds]);
+
   // Apply filters
   const filteredCreatures = useMemo(() => {
-    return incompleteCreatures.filter((creature) => {
+    // Choose which set of creatures to filter based on showCompleted flag
+    const baseCreatures = filters.showCompleted ? completedCreatures : incompleteCreatures;
+
+    return baseCreatures.filter((creature) => {
       // Difficulty filter
       if (filters.difficulty.length > 0 && !filters.difficulty.includes(creature.difficulty)) {
         return false;
@@ -138,19 +147,29 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
 
       return true;
     });
-  }, [incompleteCreatures, filters]);
+  }, [incompleteCreatures, completedCreatures, filters]);
 
   // Calculate suggestions (sorted by efficiency)
   const suggestions = useMemo(() => {
     const characterLevel = character?.level || 100;
+    const hasRapidFilter = filters.respawnCategory.includes('rapid');
 
     return filteredCreatures
       .map((creature) => ({
         ...creature,
         efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
+        isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
       }))
-      .sort((a, b) => b.efficiencyScore - a.efficiencyScore);
-  }, [filteredCreatures, settings, character]);
+      .sort((a, b) => {
+        // When rapid filter is active, prioritize rapid creatures
+        if (hasRapidFilter) {
+          if (a.isRapidRecommended && !b.isRapidRecommended) return -1;
+          if (!a.isRapidRecommended && b.isRapidRecommended) return 1;
+        }
+        // Then sort by efficiency
+        return b.efficiencyScore - a.efficiencyScore;
+      });
+  }, [filteredCreatures, settings, character, filters.respawnCategory]);
 
   // Get top N suggestions
   const getTopSuggestions = useCallback(
@@ -199,6 +218,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
       minRecommendedLevel: 0,
       maxRecommendedLevel: 500,
       searchTerm: '',
+      showCompleted: false,
     });
   }, []);
 

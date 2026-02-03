@@ -99,6 +99,18 @@ const FilterPanel = ({
         />
       </FilterGroup>
 
+      {/* Show Completed Toggle */}
+      <FilterGroup>
+        <CheckboxLabel>
+          <Checkbox
+            type="checkbox"
+            checked={filters.showCompleted}
+            onChange={(e) => onUpdateFilters({ showCompleted: e.target.checked })}
+          />
+          {t('bestiaryPlanner.filters.showCompleted')}
+        </CheckboxLabel>
+      </FilterGroup>
+
       {/* Difficulty */}
       <FilterGroup>
         <FilterLabel>{t('bestiaryPlanner.filters.difficulty')}</FilterLabel>

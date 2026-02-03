@@ -410,6 +410,7 @@
       "reset": "Limpar",
       "search": "Buscar",
       "searchPlaceholder": "Nome ou localização...",
+      "showCompleted": "Mostrar Apenas Completados",
       "difficulty": "Dificuldade",
       "respawnCategory": "Respawn",
       "region": "Região",
@@ -443,7 +444,8 @@
     "creature": {
       "completed": "Completo",
       "efficiency": "Eficiência",
-      "locations": "Localizações"
+      "locations": "Localizações",
+      "rapidRecommended": "Rapid Recomendado"
     },
     "suggestions": {
       "title": "Sugestões de Criaturas",
@@ -498,7 +500,16 @@
       "totalCharmPoints": "Charm Points",
       "totalTime": "Tempo Total",
       "addToPlan": "Adicionar ao plano",
-      "removeFromPlan": "Remover do plano"
+      "removeFromPlan": "Remover do plano",
+      "todayCompleted": "Completados Hoje",
+      "completedToday": "Bestiários",
+      "pointsEarned": "Pontos Ganhos"
+    },
+    "toast": {
+      "completed": {
+        "title": "Bestiary Completado!",
+        "message": "{{name}} completado! +{{charmPoints}} Charm Points"
+      }
     },
     "screenshot": {
       "show": "Import via Screenshot",

@@ -3,8 +3,9 @@
  * Displays and manages the hunt session plan (creatures selected for current hunt)
  */
 
-import { memo } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getTodayStats } from '../../services/dailyProgressStorage';
 import {
   PlannerPanel,
   PlannerHeader,
@@ -24,10 +25,23 @@ import {
   StatItem,
   StatLabel,
   StatValue,
+  TodaySummary,
+  TodayTitle,
+  TodayCreatureList,
+  TodayCreatureItem,
 } from './SessionPlanner.styles';
 
-const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan }) => {
+const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan, onCompleteCreature }) => {
   const { t } = useTranslation();
+  const [todayStats, setTodayStats] = useState({ count: 0, totalCharmPoints: 0, creatures: [] });
+
+  // Load today's stats
+  useEffect(() => {
+    if (characterId) {
+      const stats = getTodayStats(characterId);
+      setTodayStats(stats);
+    }
+  }, [characterId, creatures]); // Re-load when creatures change (after completion)
 
   // Calculate totals
   const totalCharmPoints = creatures.reduce((sum, c) => sum + (c.charmPoints || 0), 0);
@@ -56,14 +70,17 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan 
           <PlannerList>
             {creatures.map((creature) => (
               <PlannerItem key={creature.id}>
-                <CreatureInfo>
+                <CreatureInfo onClick={() => onCompleteCreature?.(creature.id)}>
                   <CreatureName>{creature.name}</CreatureName>
                   <CreatureStats>
                     {creature.charmPoints} CP • {creature.estimatedHours}h
                   </CreatureStats>
                 </CreatureInfo>
                 <RemoveButton
-                  onClick={() => onRemoveCreature(creature.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemoveCreature(creature.id);
+                  }}
                   aria-label={t('bestiaryPlanner.sessionPlanner.removeAria', { name: creature.name })}
                 >
                   ✕
@@ -87,6 +104,34 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan 
             </StatItem>
           </StatsFooter>
         </>
+      )}
+
+      {/* Today's Completions Summary */}
+      {todayStats.count > 0 && (
+        <TodaySummary>
+          <TodayTitle>
+            ✅ {t('bestiaryPlanner.sessionPlanner.todayCompleted')}
+          </TodayTitle>
+          <StatsFooter style={{ paddingTop: '0.5rem', borderTop: 'none' }}>
+            <StatItem>
+              <StatLabel>{t('bestiaryPlanner.sessionPlanner.completedToday')}</StatLabel>
+              <StatValue>{todayStats.count}</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>{t('bestiaryPlanner.sessionPlanner.pointsEarned')}</StatLabel>
+              <StatValue>{todayStats.totalCharmPoints} CP</StatValue>
+            </StatItem>
+          </StatsFooter>
+          {todayStats.creatures.length > 0 && (
+            <TodayCreatureList>
+              {todayStats.creatures.map((creature, idx) => (
+                <TodayCreatureItem key={`${creature.id}-${idx}`}>
+                  {creature.name} <span>+{creature.charmPoints} CP</span>
+                </TodayCreatureItem>
+              ))}
+            </TodayCreatureList>
+          )}
+        </TodaySummary>
       )}
     </PlannerPanel>
   );

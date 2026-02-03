@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import {
   Card,
   CompletedBadge,
+  RapidBadge,
   CardTop,
   CreatureImage,
   CreatureInfo,
@@ -25,9 +26,6 @@ import {
   LocationLabel,
   LocationList,
   LocationChip,
-  EfficiencyScore,
-  EfficiencyLabel,
-  EfficiencyValue,
   RegionBadge,
   PlanButton,
 } from './CreatureCard.styles';
@@ -68,6 +66,12 @@ const CreatureCard = ({
         </CompletedBadge>
       )}
 
+      {creature.isRapidRecommended && (
+        <RapidBadge>
+          ⚡ {t('bestiaryPlanner.creature.rapidRecommended')}
+        </RapidBadge>
+      )}
+
       <CardTop>
         {creature.imageUrl && (
           <CreatureImage
@@ -75,7 +79,6 @@ const CreatureCard = ({
             alt={creature.name}
             loading="lazy"
             onError={handleImageError}
-            crossOrigin="anonymous"
           />
         )}
 
@@ -121,13 +124,6 @@ const CreatureCard = ({
             </Stat>
           </StatsRow>
 
-          {creature.efficiencyScore && (
-            <EfficiencyScore>
-              <EfficiencyLabel>{t('bestiaryPlanner.creature.efficiency')}</EfficiencyLabel>
-              <EfficiencyValue>{creature.efficiencyScore.toFixed(2)}</EfficiencyValue>
-            </EfficiencyScore>
-          )}
-
           <LocationSection>
             <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
             <LocationList>
@@ -146,13 +142,13 @@ const CreatureCard = ({
 };
 
 // Custom comparison function for memo
-// Only re-render if creature id, isCompleted, efficiencyScore, or isInPlan changed
+// Only re-render if creature id, isCompleted, isInPlan, or isRapidRecommended changed
 const areEqual = (prevProps, nextProps) => {
   return (
     prevProps.creature.id === nextProps.creature.id &&
     prevProps.isCompleted === nextProps.isCompleted &&
     prevProps.isInPlan === nextProps.isInPlan &&
-    prevProps.creature.efficiencyScore === nextProps.creature.efficiencyScore
+    prevProps.creature.isRapidRecommended === nextProps.creature.isRapidRecommended
   );
 };
 

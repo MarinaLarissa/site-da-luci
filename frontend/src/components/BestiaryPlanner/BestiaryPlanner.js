@@ -12,6 +12,7 @@ import CharacterModal from './CharacterModal';
 import SyncStatus from './SyncStatus';
 import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
+import Toast from './Toast';
 import { markCreaturesCompleted } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
@@ -19,6 +20,7 @@ import {
   clearSessionPlan,
   isInSessionPlan,
 } from '../../services/sessionPlannerStorage';
+import { addTodayCompletion } from '../../services/dailyProgressStorage';
 import { BESTIARY_DATA } from '../../data/bestiary';
 import {
   PlannerContainer,
@@ -60,6 +62,8 @@ const BestiaryPlanner = () => {
   const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
   const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true);
   const [pendingFilters, setPendingFilters] = useState(null);
+  const [toast, setToast] = useState(null);
+  const [toastClosing, setToastClosing] = useState(false);
 
   const {
     character,
@@ -148,6 +152,48 @@ const BestiaryPlanner = () => {
     setSessionPlanCreatures(updatedPlan);
   };
 
+  const handleCompleteCreature = (creatureId) => {
+    if (!character) return;
+
+    const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
+    if (!creature) return;
+
+    // Mark as completed
+    toggleCreatureCompletion(creatureId);
+
+    // Add to today's completions
+    addTodayCompletion(character.id, creature);
+
+    // Remove from session plan
+    toggleCreatureInPlan(character.id, creatureId);
+    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+    setSessionPlanCreatures(updatedPlan);
+
+    // Show success toast
+    showToast({
+      type: 'success',
+      title: t('bestiaryPlanner.toast.completed.title'),
+      message: t('bestiaryPlanner.toast.completed.message', {
+        name: creature.name,
+        charmPoints: creature.charmPoints,
+      }),
+    });
+  };
+
+  const showToast = (toastData) => {
+    setToast(toastData);
+    setToastClosing(false);
+
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+      setToastClosing(true);
+      setTimeout(() => {
+        setToast(null);
+        setToastClosing(false);
+      }, 300); // Wait for animation
+    }, 5000);
+  };
+
   // Handle filter changes (pending mode)
   const handlePendingFilterChange = (newFilters) => {
     setPendingFilters(newFilters);
@@ -179,8 +225,8 @@ const BestiaryPlanner = () => {
           <HeaderContent>
             <Title>{t('bestiaryPlanner.title')}</Title>
             <Subtitle>{t('bestiaryPlanner.subtitle')}</Subtitle>
+            <SyncStatus />
           </HeaderContent>
-          <SyncStatus />
         </HeaderTop>
       </Header>
 
@@ -232,6 +278,7 @@ const BestiaryPlanner = () => {
           characterId={character.id}
           onRemoveCreature={handleRemoveFromPlan}
           onClearPlan={handleClearPlan}
+          onCompleteCreature={handleCompleteCreature}
         />
       </SessionPlannerSection>
 
@@ -284,6 +331,9 @@ const BestiaryPlanner = () => {
         onClose={() => setIsCharacterModalOpen(false)}
         character={character}
       />
+
+      {/* Toast notification */}
+      {toast && <Toast {...toast} isClosing={toastClosing} />}
     </PlannerContainer>
   );
 };
