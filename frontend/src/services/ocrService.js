@@ -93,13 +93,9 @@ export const extractTextFromImage = async (imageFile, onProgress) => {
     worker = await initializeWorker();
 
     // Perform OCR
-    const { data } = await worker.recognize(processedImage, {
-      logger: (m) => {
-        if (onProgress && m.status === 'recognizing text') {
-          onProgress(Math.round(m.progress * 100));
-        }
-      },
-    });
+    // Note: onProgress callback is handled in initializeWorker's global logger
+    // to avoid Worker cloning issues
+    const { data } = await worker.recognize(processedImage);
 
     // Terminate worker
     await worker.terminate();

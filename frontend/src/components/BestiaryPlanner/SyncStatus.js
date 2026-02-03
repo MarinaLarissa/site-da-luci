@@ -5,6 +5,7 @@
 
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../contexts/AuthContext';
 import { useBestiarySync } from '../../hooks/useBestiarySync';
 import { SYNC_STATUS } from '../../services/bestiarySync';
 import {
@@ -21,6 +22,7 @@ import {
 
 const SyncStatus = () => {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const {
     syncStatus,
     lastSyncTime,
@@ -29,6 +31,11 @@ const SyncStatus = () => {
     manualSync,
     isSyncing,
   } = useBestiarySync();
+
+  // Don't show sync status if user is not authenticated
+  if (!user) {
+    return null;
+  }
 
   // Get icon and color based on status
   const getStatusDisplay = () => {

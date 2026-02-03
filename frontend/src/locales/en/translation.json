@@ -418,7 +418,11 @@
       "levelRange": "Recommended Level",
       "results": "Results",
       "avgCharmPoints": "Avg CP/hour",
-      "totalTime": "Total Time"
+      "totalTime": "Total Time",
+      "show": "Show Filters",
+      "hide": "Hide Filters",
+      "apply": "Apply Filters",
+      "clear": "Clear Filters"
     },
     "difficulty": {
       "easy": "Easy",

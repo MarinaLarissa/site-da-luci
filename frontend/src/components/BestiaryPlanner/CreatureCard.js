@@ -32,6 +32,10 @@ import {
   PlanButton,
 } from './CreatureCard.styles';
 
+// Constants
+const MAX_VISIBLE_LOCATIONS = 3;
+const PLACEHOLDER_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="64" height="64"%3E%3Crect fill="%23374151" width="64" height="64"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239CA3AF" font-size="10" font-family="Arial"%3E%3F%3F%3F%3C/text%3E%3C/svg%3E';
+
 const CreatureCard = ({
   creature,
   onToggleComplete,
@@ -44,6 +48,16 @@ const CreatureCard = ({
   const handlePlanClick = (e) => {
     e.stopPropagation(); // Prevent card click
     onTogglePlan?.(creature.id);
+  };
+
+  const handleImageError = (e) => {
+    // Log for debugging
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(`Failed to load image for ${creature.name}:`, creature.imageUrl);
+    }
+    // Set placeholder
+    e.target.src = PLACEHOLDER_IMAGE;
+    e.target.onerror = null; // Prevent infinite loop
   };
 
   return (
@@ -60,9 +74,8 @@ const CreatureCard = ({
             src={creature.imageUrl}
             alt={creature.name}
             loading="lazy"
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
+            onError={handleImageError}
+            crossOrigin="anonymous"
           />
         )}
 
@@ -118,11 +131,11 @@ const CreatureCard = ({
           <LocationSection>
             <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
             <LocationList>
-              {creature.locations.slice(0, 3).map((location, idx) => (
+              {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
                 <LocationChip key={idx}>{location}</LocationChip>
               ))}
-              {creature.locations.length > 3 && (
-                <LocationChip>+{creature.locations.length - 3}</LocationChip>
+              {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
+                <LocationChip>+{creature.locations.length - MAX_VISIBLE_LOCATIONS}</LocationChip>
               )}
             </LocationList>
           </LocationSection>

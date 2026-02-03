@@ -130,6 +130,16 @@ export const ScreenshotToggleButton = styled.button`
   }
 `;
 
+// Session Planner Section (sticky no topo)
+export const SessionPlannerSection = styled.div`
+  position: sticky;
+  top: ${({ theme }) => theme.spacing.md};
+  z-index: 10;
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  background-color: ${({ theme }) => theme.colors.bg.primary};
+  padding-bottom: ${({ theme }) => theme.spacing.sm};
+`;
+
 export const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -143,6 +153,82 @@ export const ContentGrid = styled.div`
 export const FilterSection = styled.aside`
   @media (max-width: 1024px) {
     order: 2;
+  }
+`;
+
+export const FilterHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+
+export const FilterTitle = styled.h3`
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text.primary};
+`;
+
+export const FilterToggle = styled.button`
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+    color: ${({ theme }) => theme.colors.accent.primary};
+  }
+`;
+
+export const FilterActions = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.md};
+`;
+
+export const FilterButton = styled.button`
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  ${({ $variant, theme }) =>
+    $variant === 'primary'
+      ? `
+    background: ${theme.gradients.primary};
+    border: none;
+    color: ${theme.colors.bg.primary};
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+  `
+      : `
+    background-color: transparent;
+    border: 1px solid ${theme.colors.bg.secondary};
+    color: ${theme.colors.text.secondary};
+
+    &:hover {
+      background-color: ${theme.colors.bg.hover};
+      border-color: ${theme.colors.accent.primary};
+      color: ${theme.colors.accent.primary};
+    }
+  `}
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 

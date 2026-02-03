@@ -38,7 +38,13 @@ import {
   ScreenshotToggleButton,
   ContentGrid,
   FilterSection,
+  FilterHeader,
+  FilterTitle,
+  FilterToggle,
+  FilterActions,
+  FilterButton,
   ResultsSection,
+  SessionPlannerSection,
   CharacterWarning,
   WarningIcon,
   WarningContent,
@@ -52,6 +58,8 @@ const BestiaryPlanner = () => {
   const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
   const [showScreenshotImport, setShowScreenshotImport] = useState(false);
   const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
+  const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true);
+  const [pendingFilters, setPendingFilters] = useState(null);
 
   const {
     character,
@@ -140,6 +148,30 @@ const BestiaryPlanner = () => {
     setSessionPlanCreatures(updatedPlan);
   };
 
+  // Handle filter changes (pending mode)
+  const handlePendingFilterChange = (newFilters) => {
+    setPendingFilters(newFilters);
+  };
+
+  // Apply pending filters
+  const handleApplyFilters = () => {
+    if (pendingFilters) {
+      updateFilters(pendingFilters);
+      setPendingFilters(null);
+    }
+  };
+
+  // Clear filters
+  const handleClearFilters = () => {
+    resetFilters();
+    setPendingFilters(null);
+  };
+
+  // Toggle filters visibility
+  const toggleFiltersCollapsed = () => {
+    setIsFiltersCollapsed(!isFiltersCollapsed);
+  };
+
   return (
     <PlannerContainer>
       <Header>
@@ -193,23 +225,46 @@ const BestiaryPlanner = () => {
         )}
       </ScreenshotSection>
 
+      {/* Session Planner (Hunt do Dia) - Sticky no topo */}
+      <SessionPlannerSection>
+        <SessionPlanner
+          creatures={sessionPlanCreatures}
+          characterId={character.id}
+          onRemoveCreature={handleRemoveFromPlan}
+          onClearPlan={handleClearPlan}
+        />
+      </SessionPlannerSection>
+
       {/* Main Content Grid */}
       <ContentGrid>
         <FilterSection>
-          <FilterPanel
-            filters={filters}
-            onUpdateFilters={updateFilters}
-            onResetFilters={resetFilters}
-            totalResults={suggestions.length}
-            avgCharmPointsPerHour={avgCharmPointsPerHour}
-            totalRemainingTime={totalRemainingTime}
-          />
-          <SessionPlanner
-            creatures={sessionPlanCreatures}
-            characterId={character.id}
-            onRemoveCreature={handleRemoveFromPlan}
-            onClearPlan={handleClearPlan}
-          />
+          <FilterHeader>
+            <FilterTitle>{t('bestiaryPlanner.filters.title')}</FilterTitle>
+            <FilterToggle onClick={toggleFiltersCollapsed}>
+              {isFiltersCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
+            </FilterToggle>
+          </FilterHeader>
+
+          {!isFiltersCollapsed && (
+            <>
+              <FilterPanel
+                filters={pendingFilters || filters}
+                onUpdateFilters={handlePendingFilterChange}
+                onResetFilters={handleClearFilters}
+                totalResults={suggestions.length}
+                avgCharmPointsPerHour={avgCharmPointsPerHour}
+                totalRemainingTime={totalRemainingTime}
+              />
+              <FilterActions>
+                <FilterButton $variant="primary" onClick={handleApplyFilters} disabled={!pendingFilters}>
+                  {t('bestiaryPlanner.filters.apply')}
+                </FilterButton>
+                <FilterButton onClick={handleClearFilters}>
+                  {t('bestiaryPlanner.filters.clear')}
+                </FilterButton>
+              </FilterActions>
+            </>
+          )}
         </FilterSection>
 
         <ResultsSection>
