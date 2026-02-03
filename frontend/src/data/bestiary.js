@@ -2688,3 +2688,19 @@ export const BESTIARY_DATA = [
     "recommendedLevel": 150
   }
 ];
+
+// Constants for filtering
+export const DIFFICULTY = {
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD',
+};
+
+export const RESPAWN_CATEGORY = {
+  NORMAL: 'normal',
+  RAPID: 'rapid',
+  RARE: 'rare',
+};
+
+// Extract unique regions from bestiary data
+export const REGIONS = [...new Set(BESTIARY_DATA.map(creature => creature.region))].sort();

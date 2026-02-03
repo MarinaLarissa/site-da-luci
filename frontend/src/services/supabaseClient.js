@@ -15,6 +15,8 @@ export const supabase = supabaseUrl && supabaseAnonKey
         autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: true,
+        storage: window.localStorage, // Explicitly use localStorage for persistence
+        storageKey: 'supabase.auth.token', // Custom storage key
       },
     })
   : null;

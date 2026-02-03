@@ -41,6 +41,10 @@ export const AuthProvider = ({ children }) => {
       try {
         const { data: { session } } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
+
+        if (process.env.NODE_ENV === 'development' && session) {
+          console.log('Session loaded on mount:', session.user?.email);
+        }
       } catch (error) {
         console.error('Error getting session:', error);
       } finally {
@@ -53,6 +57,10 @@ export const AuthProvider = ({ children }) => {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Auth state changed:', event, session?.user?.email);
+        }
+
         setUser(session?.user ?? null);
 
         if (event === 'SIGNED_IN') {
@@ -74,12 +82,47 @@ export const AuthProvider = ({ children }) => {
           if (process.env.NODE_ENV === 'development') {
             console.log('User signed out');
           }
+        } else if (event === 'TOKEN_REFRESHED') {
+          if (process.env.NODE_ENV === 'development') {
+            console.log('Token refreshed successfully');
+          }
         }
       }
     );
 
+    // Periodic session check and token refresh (every 5 minutes)
+    // This helps ensure the session stays active
+    const sessionCheckInterval = setInterval(async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+
+        if (error) {
+          console.error('Session check error:', error);
+          return;
+        }
+
+        if (session) {
+          // Check if token is close to expiration (within 10 minutes)
+          const expiresAt = session.expires_at * 1000; // Convert to milliseconds
+          const now = Date.now();
+          const tenMinutes = 10 * 60 * 1000;
+
+          if (expiresAt - now < tenMinutes) {
+            if (process.env.NODE_ENV === 'development') {
+              console.log('Token close to expiration, refreshing...');
+            }
+            // Force refresh
+            await supabase.auth.refreshSession();
+          }
+        }
+      } catch (error) {
+        console.error('Session check interval error:', error);
+      }
+    }, 5 * 60 * 1000); // Check every 5 minutes
+
     return () => {
       subscription?.unsubscribe();
+      clearInterval(sessionCheckInterval);
     };
   }, []);
 

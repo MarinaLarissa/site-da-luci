@@ -13,7 +13,7 @@ import { useAuth } from './contexts/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { STORAGE_KEYS } from './utils/huntUtils';
 import './i18n/config'; // Initialize i18n
-import { AppContainer, MainContent, TopControls } from './App.styles';
+import { AppContainer, MainContent, TopControls, Footer } from './App.styles';
 
 // Lazy load heavy components for better performance
 const LootSplitCalculator = lazy(() => import('./components/LootSplitCalculator/LootSplitCalculator'));
@@ -112,6 +112,13 @@ function App() {
             {activePage === 'bestiary-planner' && <BestiaryPlanner />}
           </Suspense>
         </ErrorBoundary>
+
+        <Footer>
+          O jogo Tibia e todas as imagens contidas nesse site são propriedades de CipSoft.{' '}
+          O site oficial de Tibia é <a href="https://www.tibia.com" target="_blank" rel="noopener noreferrer">www.tibia.com</a>.{' '}
+          Imagens de Items, Outfits e Monstros obtidos do TibiaWiki BR.{' '}
+          <a href="https://www.tibiawiki.com.br" target="_blank" rel="noopener noreferrer">www.tibiawiki.com.br</a>
+        </Footer>
       </MainContent>
     </AppContainer>
   );
