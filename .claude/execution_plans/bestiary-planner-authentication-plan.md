@@ -867,54 +867,229 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
 
 ### 📌 FASE 5: Melhorias Futuras - BACKLOG
 
-#### Performance
-- [ ] React.memo em componentes puros
-- [ ] Debounce no search input (300ms)
-- [ ] Virtual scrolling para listas grandes
-
-#### Monitoramento
-- [ ] Integrar Sentry para error monitoring
-- [ ] Analytics (Google Analytics / Plausible)
-
-#### OCR de Screenshots (Fase 2 Original)
-- [ ] Integrar Tesseract.js
-- [ ] Upload de imagem do bestiary
-- [ ] Parsing automático de progresso
-
-#### Sincronização
-- [ ] Sync localStorage ↔ Supabase
-- [ ] Conflict resolution
-- [ ] Offline queue
-
-#### Equipment Set Builder (Prioridade #2 Original)
-- [ ] Visual builder de sets
-- [ ] Análise de resistências
-- [ ] Comparação de sets
+**Ordem de Implementação Definida:** 2 → 4 → 3 → 6 → 5 → 1
 
 ---
 
-### 🎯 PRÓXIMO COMMIT SUGERIDO
+#### 🚀 **PRIORIDADE 1: Performance Optimizations** (Próxima implementação)
 
-**Arquivos para commitar:**
-```bash
-git add .claude/templates/template_react_component_styled.md
-git add .claude/templates/index.md
-git add .claude/examples/react-component-dos-donts.md
-git add .claude/examples/index.md
-git add .claude/execution_plans/bestiary-planner-authentication-plan.md
+**Objetivo:** Melhorar performance e UX com 90+ criaturas no bestiary
+
+- [ ] **React.memo em componentes puros**
+  - CreatureCard (renderiza 90+ vezes)
+  - FilterPanel (re-render desnecessário)
+  - ProgressBar (atualiza frequentemente)
+  - Estimativa: 2-3 horas
+
+- [ ] **Debounce no search input**
+  - Implementar debounce de 300ms
+  - Evitar re-filtrar a cada keystroke
+  - Melhorar responsividade
+  - Estimativa: 1 hora
+
+- [ ] **Virtual scrolling para listas grandes**
+  - Implementar react-window ou react-virtualized
+  - Renderizar apenas criaturas visíveis (10-15 por vez)
+  - Scroll infinito suave
+  - Estimativa: 4-6 horas
+
+- [ ] **Code splitting e lazy loading**
+  - Lazy load de BestiaryPlanner component
+  - Lazy load de imagens de criaturas (se houver)
+  - Route-based code splitting
+  - Estimativa: 2 horas
+
+**Total Estimado:** 1-2 dias
+
+---
+
+#### ☁️ **PRIORIDADE 2: Sincronização Cloud** (Segunda implementação)
+
+**Objetivo:** Sync automático localStorage ↔ Supabase para backup e multi-device
+
+- [ ] **Schema de banco Supabase**
+  - Tabela `bestiary_progress` (character_id, creature_id, completed_at)
+  - Tabela `bestiary_characters` (id, user_id, name, level, vocation, created_at)
+  - Tabela `bestiary_settings` (user_id, rapid_respawn, preferred_regions)
+  - RLS policies por user_id
+  - Estimativa: 2-3 horas
+
+- [ ] **Sync Service**
+  - `syncToSupabase()` - upload de mudanças locais
+  - `syncFromSupabase()` - download de dados remotos
+  - Auto-sync on auth state change
+  - Manual sync button
+  - Estimativa: 4-6 horas
+
+- [ ] **Conflict Resolution Strategy**
+  - Last-write-wins por padrão
+  - Merge inteligente de progress (união de completed creatures)
+  - Timestamp-based conflict detection
+  - User prompt para conflitos críticos
+  - Estimativa: 3-4 horas
+
+- [ ] **Offline Queue**
+  - Queue de operações pendentes quando offline
+  - Retry automático quando voltar online
+  - Persistent queue (localStorage)
+  - Status indicator (syncing, synced, offline, conflict)
+  - Estimativa: 3-4 horas
+
+- [ ] **Migration & Backup**
+  - Migração de dados localStorage → Supabase (primeira vez)
+  - Export/backup manual completo
+  - Restore from backup
+  - Estimativa: 2-3 horas
+
+**Total Estimado:** 2-3 dias
+
+---
+
+#### 📊 **PRIORIDADE 3: Monitoramento e Analytics**
+
+**Objetivo:** Entender uso e detectar erros em produção
+
+- [ ] **Sentry Integration**
+  - Setup Sentry SDK
+  - Error boundary integration
+  - Performance monitoring
+  - User feedback widget
+  - Estimativa: 2-3 horas
+
+- [ ] **Analytics**
+  - Google Analytics ou Plausible
+  - Event tracking (creature completed, filter used, character created)
+  - Conversion funnels
+  - Dashboard de uso
+  - Estimativa: 3-4 horas
+
+**Total Estimado:** 1 dia
+
+---
+
+#### 🖼️ **PRIORIDADE 4: OCR de Screenshots** (Baixa prioridade)
+
+**Objetivo:** Upload de screenshot do bestiary in-game para parsing automático
+
+- [ ] **OCR Setup**
+  - Integrar Tesseract.js
+  - Treinar modelo para UI do Tibia
+  - Preprocessing de imagem
+  - Estimativa: 6-8 horas
+
+- [ ] **Upload UI**
+  - Drag & drop de imagem
+  - Preview de screenshot
+  - Loading state durante OCR
+  - Estimativa: 2-3 horas
+
+- [ ] **Parser e Validação**
+  - Extrair lista de criaturas e kill counts
+  - Matching fuzzy com database
+  - Validação manual de resultados
+  - Correção de erros OCR
+  - Estimativa: 4-6 horas
+
+**Total Estimado:** 2-3 dias
+
+---
+
+#### 🔍 **PRIORIDADE 5: Features Adicionais**
+
+- [ ] **Filtros Avançados Extras**
+  - Filtro por "quase completo" (> 80% kills)
+  - Filtro por spawn acessível (próximo de town)
+  - Filtro por party-friendly
+  - Estimativa: 2-3 horas
+
+- [ ] **Estatísticas Avançadas**
+  - Gráfico de progresso over time
+  - Previsão de conclusão (baseado em histórico)
+  - Ranking de regiões mais completadas
+  - Estimativa: 4-6 horas
+
+- [ ] **Social Features**
+  - Compartilhar progresso via link
+  - Leaderboard de jogadores
+  - Comparar progresso com amigos
+  - Estimativa: 6-8 horas
+
+**Total Estimado:** 2 dias
+
+---
+
+#### 🧪 **PRIORIDADE 6: E2E Tests (Cypress)** (Última implementação)
+
+**Objetivo:** Cobertura E2E completa antes de novas features
+
+- [ ] **Setup Cypress**
+  - Instalação e configuração
+  - Custom commands
+  - Test data fixtures
+  - Estimativa: 2-3 horas
+
+- [ ] **User Journey Tests**
+  - Criar personagem → marcar criaturas → ver progresso
+  - Trocar de personagem
+  - Importar/exportar dados
+  - Estimativa: 4-6 horas
+
+- [ ] **Feature Tests**
+  - Todos os filtros (7 tipos)
+  - Busca por nome e localização
+  - Rapid respawn toggle
+  - Preferred regions
+  - Estimativa: 4-6 horas
+
+- [ ] **Persistence Tests**
+  - localStorage persistence
+  - Supabase sync (após implementar)
+  - Offline/online scenarios
+  - Estimativa: 3-4 horas
+
+**Total Estimado:** 2-3 dias
+
+---
+
+### 📊 **ROADMAP VISUAL**
+
+```
+Fase 4: Testes Unit/Integration ✅ (Concluído)
+  ↓
+Fase 5.1: Performance Optimizations 🎯 (Próximo - 1-2 dias)
+  ↓
+Fase 5.2: Cloud Sync (Supabase) ☁️ (2-3 dias)
+  ↓
+Fase 5.3: Monitoring & Analytics 📊 (1 dia)
+  ↓
+Fase 5.4: OCR Screenshots 🖼️ (2-3 dias - Opcional)
+  ↓
+Fase 5.5: Features Adicionais 🔍 (2 dias - Opcional)
+  ↓
+Fase 5.6: E2E Tests (Cypress) 🧪 (2-3 dias - Final)
 ```
 
-**Mensagem sugerida:**
-```
-docs: adicionar templates React e atualizar plano de execução
+**Estimativa Total Fase 5 (Completa):** 10-15 dias úteis
+**Estimativa Fases Prioritárias (5.1 + 5.2):** 3-5 dias úteis
 
-- Adicionar template de componente React styled-components
-- Adicionar guia de do's/don'ts para componentes React
-- Atualizar checklist de pendências no plano de execução
-- Atualizar índices de templates e exemplos
+---
 
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
-```
+### 🎯 PRÓXIMA FASE
+
+**Fase 5.1: Performance Optimizations** 🚀
+
+**Tarefas:**
+1. React.memo em componentes puros (CreatureCard, FilterPanel, ProgressBar)
+2. Debounce no search input (300ms)
+3. Virtual scrolling com react-window
+4. Code splitting e lazy loading
+
+**Estimativa:** 1-2 dias úteis
+
+**Após conclusão:**
+- Commit das otimizações
+- Testes de performance (Lighthouse)
+- Seguir para Fase 5.2 (Cloud Sync)
 
 ---
 
