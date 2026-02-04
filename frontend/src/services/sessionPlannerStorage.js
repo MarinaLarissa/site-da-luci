@@ -6,6 +6,7 @@
  * {
  *   [characterId]: {
  *     creatureIds: ['dragon', 'demon', ...],
+ *     customHours: { 'dragon': 2.5, 'demon': 1.5 }, // Optional custom hours per creature
  *     createdAt: 'ISO-date',
  *     updatedAt: 'ISO-date'
  *   }
@@ -145,13 +146,24 @@ export const isInSessionPlan = (characterId, creatureId) => {
  * Get session plan with full creature data
  * @param {string} characterId - Character ID
  * @param {Array} allCreatures - All creatures from BESTIARY_DATA
- * @returns {Array} - Creatures with full data
+ * @returns {Array} - Creatures with full data (with custom hours if set)
  */
 export const getSessionPlanWithData = (characterId, allCreatures) => {
   const creatureIds = getSessionPlan(characterId);
+  const plans = loadSessionPlans();
+  const customHours = plans[characterId]?.customHours || {};
 
   return creatureIds
-    .map((id) => allCreatures.find((c) => c.id === id))
+    .map((id) => {
+      const creature = allCreatures.find((c) => c.id === id);
+      if (!creature) return null;
+
+      // Override estimatedHours with custom value if exists
+      return {
+        ...creature,
+        estimatedHours: customHours[id] !== undefined ? customHours[id] : creature.estimatedHours,
+      };
+    })
     .filter(Boolean); // Remove undefined if creature not found
 };
 
@@ -169,4 +181,31 @@ export const getSessionPlanStats = (characterId, allCreatures) => {
     totalCharmPoints: creatures.reduce((sum, c) => sum + (c.charmPoints || 0), 0),
     totalHours: creatures.reduce((sum, c) => sum + (c.estimatedHours || 0), 0),
   };
+};
+
+/**
+ * Update custom hours for a creature in the session plan
+ * @param {string} characterId - Character ID
+ * @param {string} creatureId - Creature ID
+ * @param {number} hours - Custom hours (can be decimal like 1.5)
+ */
+export const updateCreatureHours = (characterId, creatureId, hours) => {
+  if (!characterId || !creatureId) return;
+
+  const plans = loadSessionPlans();
+  const currentPlan = plans[characterId];
+
+  if (!currentPlan) return; // No plan exists
+
+  // Initialize customHours object if not exists
+  if (!currentPlan.customHours) {
+    currentPlan.customHours = {};
+  }
+
+  // Set custom hours
+  currentPlan.customHours[creatureId] = Number(hours);
+  currentPlan.updatedAt = new Date().toISOString();
+
+  plans[characterId] = currentPlan;
+  saveSessionPlans(plans);
 };

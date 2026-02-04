@@ -17,6 +17,8 @@ import {
   CreatureInfo,
   CreatureName,
   CreatureStats,
+  ItemActions,
+  EditButton,
   RemoveButton,
   EmptyState,
   EmptyIcon,
@@ -31,7 +33,7 @@ import {
   TodayCreatureItem,
 } from './SessionPlanner.styles';
 
-const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan, onCompleteCreature }) => {
+const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan, onCompleteCreature, onEditHours }) => {
   const { t } = useTranslation();
   const [todayStats, setTodayStats] = useState({ count: 0, totalCharmPoints: 0, creatures: [] });
 
@@ -76,15 +78,27 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
                     {creature.charmPoints} CP • {creature.estimatedHours}h
                   </CreatureStats>
                 </CreatureInfo>
-                <RemoveButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRemoveCreature(creature.id);
-                  }}
-                  aria-label={t('bestiaryPlanner.sessionPlanner.removeAria', { name: creature.name })}
-                >
-                  ✕
-                </RemoveButton>
+                <ItemActions>
+                  <EditButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onEditHours?.(creature.id, creature.name, creature.estimatedHours);
+                    }}
+                    aria-label={t('bestiaryPlanner.sessionPlanner.editHoursAria', { name: creature.name })}
+                    title="Edit hours"
+                  >
+                    ✎
+                  </EditButton>
+                  <RemoveButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemoveCreature(creature.id);
+                    }}
+                    aria-label={t('bestiaryPlanner.sessionPlanner.removeAria', { name: creature.name })}
+                  >
+                    ✕
+                  </RemoveButton>
+                </ItemActions>
               </PlannerItem>
             ))}
           </PlannerList>
