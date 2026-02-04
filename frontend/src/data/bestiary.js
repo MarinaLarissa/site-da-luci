@@ -27,6 +27,39 @@
  * - estimatedHours: number (imprecise, should not be displayed)
  * - recommendedLevel: number (imprecise, should not be displayed)
  */
+
+export const DIFFICULTY = {
+  HARMLESS: 'HARMLESS',
+  TRIVIAL: 'TRIVIAL',
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD',
+  CHALLENGING: 'CHALLENGING',
+};
+
+export const RESPAWN_CATEGORY = {
+  NORMAL: 'normal',
+  RAPID: 'rapid',
+  RARE: 'rare',
+};
+
+export const REGIONS = {
+  MAINLAND: 'Mainland',
+  VENORE: 'Venore',
+  THAIS: 'Thais',
+  CARLIN: 'Carlin',
+  DARASHIA: 'Darashia',
+  LIBERTY_BAY: 'Liberty Bay',
+  PORT_HOPE: 'Port Hope',
+  ANKRAHMUN: 'Ankrahmun',
+  EDRON: 'Edron',
+  YALAHAR: 'Yalahar',
+  ZAO: 'Zao',
+  ROSHAMUUL: 'Roshamuul',
+  FERUMBRAS_ASCENSION: 'Ferumbras Ascension',
+  OTHERWORLD: 'Otherworld',
+};
+
 export const BESTIARY_DATA = [
   {
     "id": "raging-fire",
