@@ -64,7 +64,7 @@ export const BESTIARY_DATA = [
   {
     "id": "abyssal-calamary",
     "name": "Abyssal Calamary",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Abyssal_Calamary.gif",
+    "imageUrl": "/images/creatures/abyssal-calamary.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -87,7 +87,7 @@ export const BESTIARY_DATA = [
   {
     "id": "acid-blob",
     "name": "Acid Blob",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acid_Blob.gif",
+    "imageUrl": "/images/creatures/acid-blob.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -110,7 +110,7 @@ export const BESTIARY_DATA = [
   {
     "id": "acolyte-of-darkness",
     "name": "Acolyte of Darkness",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acolyte_Of_Darkness.gif",
+    "imageUrl": "/images/creatures/acolyte-of-darkness.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -133,7 +133,7 @@ export const BESTIARY_DATA = [
   {
     "id": "acolyte-of-the-cult",
     "name": "Acolyte of the Cult",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Acolyte_Of_The_Cult.gif",
+    "imageUrl": "/images/creatures/acolyte-of-the-cult.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -158,7 +158,7 @@ export const BESTIARY_DATA = [
   {
     "id": "adept-of-the-cult",
     "name": "Adept of the Cult",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adept_Of_The_Cult.gif",
+    "imageUrl": "/images/creatures/adept-of-the-cult.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -183,7 +183,7 @@ export const BESTIARY_DATA = [
   {
     "id": "adult-goanna",
     "name": "Adult Goanna",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adult_Goanna.gif",
+    "imageUrl": "/images/creatures/adult-goanna.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -206,7 +206,7 @@ export const BESTIARY_DATA = [
   {
     "id": "adventurer",
     "name": "Adventurer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Adventurer.gif",
+    "imageUrl": "/images/creatures/adventurer.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -229,7 +229,7 @@ export const BESTIARY_DATA = [
   {
     "id": "afflicted-strider",
     "name": "Afflicted Strider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Afflicted_Strider.gif",
+    "imageUrl": "/images/creatures/afflicted-strider.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -252,7 +252,7 @@ export const BESTIARY_DATA = [
   {
     "id": "agrestic-chicken",
     "name": "Agrestic Chicken",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Agrestic_Chicken.gif",
+    "imageUrl": "/images/creatures/agrestic-chicken.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -275,7 +275,7 @@ export const BESTIARY_DATA = [
   {
     "id": "albino-dragon",
     "name": "Albino Dragon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Albino_Dragon.gif",
+    "imageUrl": "/images/creatures/albino-dragon.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -298,7 +298,7 @@ export const BESTIARY_DATA = [
   {
     "id": "alchemistical-container",
     "name": "Alchemistical Container",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Alchemistical_Container.gif",
+    "imageUrl": "/images/creatures/alchemistical-container.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -321,7 +321,7 @@ export const BESTIARY_DATA = [
   {
     "id": "amazon",
     "name": "Amazon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Amazon.gif",
+    "imageUrl": "/images/creatures/amazon.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -344,7 +344,7 @@ export const BESTIARY_DATA = [
   {
     "id": "an-eye",
     "name": "An Eye",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/An_Eye.gif",
+    "imageUrl": "/images/creatures/an-eye.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -367,7 +367,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ancient-scarab",
     "name": "Ancient Scarab",
-    "imageUrl": "/images/creatures/Ancient_Scarab.gif",
+    "imageUrl": "/images/creatures/ancient-scarab.gif",
     "charmPoints": 25,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -392,7 +392,7 @@ export const BESTIARY_DATA = [
   {
     "id": "angry-plant-thing",
     "name": "Angry Plant Thing",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Angry_Plant_Thing.gif",
+    "imageUrl": "/images/creatures/angry-plant-thing.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -415,7 +415,7 @@ export const BESTIARY_DATA = [
   {
     "id": "angry-sugar-fairy",
     "name": "Angry Sugar Fairy",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Angry_Sugar_Fairy.gif",
+    "imageUrl": "/images/creatures/angry-sugar-fairy.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -438,7 +438,7 @@ export const BESTIARY_DATA = [
   {
     "id": "animated-feather",
     "name": "Animated Feather",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Animated_Feather.gif",
+    "imageUrl": "/images/creatures/animated-feather.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -461,7 +461,7 @@ export const BESTIARY_DATA = [
   {
     "id": "animated-snowman",
     "name": "Animated Snowman",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Animated_Snowman.gif",
+    "imageUrl": "/images/creatures/animated-snowman.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -484,7 +484,7 @@ export const BESTIARY_DATA = [
   {
     "id": "antenna",
     "name": "Antenna",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Antenna.gif",
+    "imageUrl": "/images/creatures/antenna.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -507,7 +507,7 @@ export const BESTIARY_DATA = [
   {
     "id": "arachnophobica",
     "name": "Arachnophobica",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arachnophobica.gif",
+    "imageUrl": "/images/creatures/arachnophobica.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -530,7 +530,7 @@ export const BESTIARY_DATA = [
   {
     "id": "arbaziloth",
     "name": "Arbaziloth",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arbaziloth.gif",
+    "imageUrl": "/images/creatures/arbaziloth.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -553,7 +553,7 @@ export const BESTIARY_DATA = [
   {
     "id": "arctic-faun",
     "name": "Arctic Faun",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arctic_Faun.gif",
+    "imageUrl": "/images/creatures/arctic-faun.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -576,7 +576,7 @@ export const BESTIARY_DATA = [
   {
     "id": "armadile",
     "name": "Armadile",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Armadile.gif",
+    "imageUrl": "/images/creatures/armadile.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -599,7 +599,7 @@ export const BESTIARY_DATA = [
   {
     "id": "askarak-demon",
     "name": "Askarak Demon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Demon.gif",
+    "imageUrl": "/images/creatures/askarak-demon.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -622,7 +622,7 @@ export const BESTIARY_DATA = [
   {
     "id": "askarak-lord",
     "name": "Askarak Lord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Lord.gif",
+    "imageUrl": "/images/creatures/askarak-lord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -645,7 +645,7 @@ export const BESTIARY_DATA = [
   {
     "id": "askarak-prince",
     "name": "Askarak Prince",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Prince.gif",
+    "imageUrl": "/images/creatures/askarak-prince.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -668,7 +668,7 @@ export const BESTIARY_DATA = [
   {
     "id": "assassin",
     "name": "Assassin",
-    "imageUrl": "/images/creatures/Assassin.gif",
+    "imageUrl": "/images/creatures/assassin.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -693,7 +693,7 @@ export const BESTIARY_DATA = [
   {
     "id": "atab",
     "name": "Atab",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Atab.gif",
+    "imageUrl": "/images/creatures/atab.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -716,7 +716,7 @@ export const BESTIARY_DATA = [
   {
     "id": "azure-frog",
     "name": "Azure Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Azure_Frog.gif",
+    "imageUrl": "/images/creatures/azure-frog.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -739,7 +739,7 @@ export const BESTIARY_DATA = [
   {
     "id": "badger",
     "name": "Badger",
-    "imageUrl": "/images/creatures/Badger.gif",
+    "imageUrl": "/images/creatures/badger.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -764,7 +764,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bakragore",
     "name": "Bakragore",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bakragore.gif",
+    "imageUrl": "/images/creatures/bakragore.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -787,7 +787,7 @@ export const BESTIARY_DATA = [
   {
     "id": "baleful-bunny",
     "name": "Baleful Bunny",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Baleful_Bunny.gif",
+    "imageUrl": "/images/creatures/baleful-bunny.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -810,7 +810,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bandit",
     "name": "Bandit",
-    "imageUrl": "/images/creatures/Bandit.gif",
+    "imageUrl": "/images/creatures/bandit.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -835,7 +835,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bane-bringer",
     "name": "Bane Bringer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bane_Bringer.gif",
+    "imageUrl": "/images/creatures/bane-bringer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -858,7 +858,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bane-of-light",
     "name": "Bane of Light",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bane_Of_Light.gif",
+    "imageUrl": "/images/creatures/bane-of-light.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -881,7 +881,7 @@ export const BESTIARY_DATA = [
   {
     "id": "banshee",
     "name": "Banshee",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Banshee.gif",
+    "imageUrl": "/images/creatures/banshee.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -904,7 +904,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barbarian-bloodwalker",
     "name": "Barbarian Bloodwalker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Bloodwalker.gif",
+    "imageUrl": "/images/creatures/barbarian-bloodwalker.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -927,7 +927,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barbarian-brutetamer",
     "name": "Barbarian Brutetamer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Brutetamer.gif",
+    "imageUrl": "/images/creatures/barbarian-brutetamer.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -950,7 +950,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barbarian-headsplitter",
     "name": "Barbarian Headsplitter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Headsplitter.gif",
+    "imageUrl": "/images/creatures/barbarian-headsplitter.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -973,7 +973,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barbarian-skullhunter",
     "name": "Barbarian Skullhunter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Skullhunter.gif",
+    "imageUrl": "/images/creatures/barbarian-skullhunter.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -996,7 +996,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barkless-devotee",
     "name": "Barkless Devotee",
-    "imageUrl": "/images/creatures/Barkless_Devotee.gif",
+    "imageUrl": "/images/creatures/barkless-devotee.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -1021,7 +1021,7 @@ export const BESTIARY_DATA = [
   {
     "id": "barkless-fanatic",
     "name": "Barkless Fanatic",
-    "imageUrl": "/images/creatures/Barkless_Fanatic.gif",
+    "imageUrl": "/images/creatures/barkless-fanatic.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -1046,7 +1046,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bashmu",
     "name": "Bashmu",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bashmu.gif",
+    "imageUrl": "/images/creatures/bashmu.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1069,7 +1069,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bat",
     "name": "Bat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bat.gif",
+    "imageUrl": "/images/creatures/bat.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -1092,7 +1092,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bear",
     "name": "Bear",
-    "imageUrl": "/images/creatures/Bear.gif",
+    "imageUrl": "/images/creatures/bear.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -1117,7 +1117,7 @@ export const BESTIARY_DATA = [
   {
     "id": "behemoth",
     "name": "Behemoth",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Behemoth.gif",
+    "imageUrl": "/images/creatures/behemoth.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1140,7 +1140,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bellicose-orger",
     "name": "Bellicose Orger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bellicose_Orger.gif",
+    "imageUrl": "/images/creatures/bellicose-orger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1163,7 +1163,7 @@ export const BESTIARY_DATA = [
   {
     "id": "berrypest",
     "name": "Berrypest",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Berrypest.gif",
+    "imageUrl": "/images/creatures/berrypest.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -1186,7 +1186,7 @@ export const BESTIARY_DATA = [
   {
     "id": "berserker-chicken",
     "name": "Berserker Chicken",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Berserker_Chicken.gif",
+    "imageUrl": "/images/creatures/berserker-chicken.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1209,7 +1209,7 @@ export const BESTIARY_DATA = [
   {
     "id": "betrayed-wraith",
     "name": "Betrayed Wraith",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Betrayed_Wraith.gif",
+    "imageUrl": "/images/creatures/betrayed-wraith.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1232,7 +1232,7 @@ export const BESTIARY_DATA = [
   {
     "id": "billdodger",
     "name": "Billdodger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Billdodger.gif",
+    "imageUrl": "/images/creatures/billdodger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1255,7 +1255,7 @@ export const BESTIARY_DATA = [
   {
     "id": "biting-book",
     "name": "Biting Book",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Biting_Book.gif",
+    "imageUrl": "/images/creatures/biting-book.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1278,7 +1278,7 @@ export const BESTIARY_DATA = [
   {
     "id": "black-sheep",
     "name": "Black Sheep",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Black_Sheep.gif",
+    "imageUrl": "/images/creatures/black-sheep.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -1301,7 +1301,7 @@ export const BESTIARY_DATA = [
   {
     "id": "black-sphinx-acolyte",
     "name": "Black Sphinx Acolyte",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Black_Sphinx_Acolyte.gif",
+    "imageUrl": "/images/creatures/black-sphinx-acolyte.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1324,7 +1324,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blemished-spawn",
     "name": "Blemished Spawn",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blemished_Spawn.gif",
+    "imageUrl": "/images/creatures/blemished-spawn.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1347,7 +1347,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blight-spitter",
     "name": "Blight Spitter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blight_Spitter.gif",
+    "imageUrl": "/images/creatures/blight-spitter.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1370,7 +1370,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blightling",
     "name": "Blightling",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blightling.gif",
+    "imageUrl": "/images/creatures/blightling.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1393,7 +1393,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blightwalker",
     "name": "Blightwalker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blightwalker.gif",
+    "imageUrl": "/images/creatures/blightwalker.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1416,7 +1416,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bloated-man-maggot",
     "name": "Bloated Man-Maggot",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bloated_Man-maggot.gif",
+    "imageUrl": "/images/creatures/bloated-man-maggot.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -1439,7 +1439,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blocking-stalagmite",
     "name": "Blocking Stalagmite",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blocking_Stalagmite.gif",
+    "imageUrl": "/images/creatures/blocking-stalagmite.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1462,7 +1462,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-beast",
     "name": "Blood Beast",
-    "imageUrl": "/images/creatures/Blood_Beast.gif",
+    "imageUrl": "/images/creatures/blood-beast.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -1487,7 +1487,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-crab",
     "name": "Blood Crab",
-    "imageUrl": "/images/creatures/Blood_Crab.gif",
+    "imageUrl": "/images/creatures/blood-crab.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -1512,7 +1512,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-guardian",
     "name": "Blood Guardian",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Guardian.gif",
+    "imageUrl": "/images/creatures/blood-guardian.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1535,7 +1535,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-hand",
     "name": "Blood Hand",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Hand.gif",
+    "imageUrl": "/images/creatures/blood-hand.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1558,7 +1558,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-pool",
     "name": "Blood Pool",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Pool.gif",
+    "imageUrl": "/images/creatures/blood-pool.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1581,7 +1581,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blood-priest",
     "name": "Blood Priest",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Priest.gif",
+    "imageUrl": "/images/creatures/blood-priest.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1604,7 +1604,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blooming-tower-light-blue",
     "name": "Blooming Tower (Light Blue)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blooming_Tower_(light_Blue).gif",
+    "imageUrl": "/images/creatures/blooming-tower-light-blue.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1627,7 +1627,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blooming-tower-red",
     "name": "Blooming Tower (Red)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blooming_Tower_(red).gif",
+    "imageUrl": "/images/creatures/blooming-tower-red.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1650,7 +1650,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blooming-tower-violet",
     "name": "Blooming Tower (Violet)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blooming_Tower_(violet).gif",
+    "imageUrl": "/images/creatures/blooming-tower-violet.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1673,7 +1673,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blooming-tower-yellow",
     "name": "Blooming Tower (Yellow)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blooming_Tower_(yellow).gif",
+    "imageUrl": "/images/creatures/blooming-tower-yellow.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1696,7 +1696,7 @@ export const BESTIARY_DATA = [
   {
     "id": "blue-djinn",
     "name": "Blue Djinn",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blue_Djinn.gif",
+    "imageUrl": "/images/creatures/blue-djinn.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1719,7 +1719,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bluebeak",
     "name": "Bluebeak",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bluebeak.gif",
+    "imageUrl": "/images/creatures/bluebeak.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1742,7 +1742,7 @@ export const BESTIARY_DATA = [
   {
     "id": "boar",
     "name": "Boar",
-    "imageUrl": "/images/creatures/Boar.gif",
+    "imageUrl": "/images/creatures/boar.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -1767,7 +1767,7 @@ export const BESTIARY_DATA = [
   {
     "id": "boar-man",
     "name": "Boar Man",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Boar_Man.gif",
+    "imageUrl": "/images/creatures/boar-man.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -1790,7 +1790,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bog-frog",
     "name": "Bog Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bog_Frog.gif",
+    "imageUrl": "/images/creatures/bog-frog.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -1813,7 +1813,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bog-raider",
     "name": "Bog Raider",
-    "imageUrl": "/images/creatures/Bog_Raider.gif",
+    "imageUrl": "/images/creatures/bog-raider.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -1838,7 +1838,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bone-barrier",
     "name": "Bone Barrier",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bone_Barrier.gif",
+    "imageUrl": "/images/creatures/bone-barrier.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1861,7 +1861,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bone-bear",
     "name": "Bone Bear",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bone_Bear.gif",
+    "imageUrl": "/images/creatures/bone-bear.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1884,7 +1884,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bone-overlord",
     "name": "Bone Overlord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bone_Overlord.gif",
+    "imageUrl": "/images/creatures/bone-overlord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1907,7 +1907,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bonebeast",
     "name": "Bonebeast",
-    "imageUrl": "/images/creatures/Bonebeast.gif",
+    "imageUrl": "/images/creatures/bonebeast.gif",
     "charmPoints": 25,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -1932,7 +1932,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bonelord",
     "name": "Bonelord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonelord.gif",
+    "imageUrl": "/images/creatures/bonelord.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -1955,7 +1955,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bonelord-totem",
     "name": "Bonelord Totem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonelord_Totem.gif",
+    "imageUrl": "/images/creatures/bonelord-totem.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -1978,7 +1978,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bonelords-phylactery",
     "name": "Bonelord's Phylactery",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bonelord's_Phylactery.gif",
+    "imageUrl": "/images/creatures/bonelords-phylactery.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2001,7 +2001,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bony-sea-devil",
     "name": "Bony Sea Devil",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bony_Sea_Devil.gif",
+    "imageUrl": "/images/creatures/bony-sea-devil.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -2024,7 +2024,7 @@ export const BESTIARY_DATA = [
   {
     "id": "boogy",
     "name": "Boogy",
-    "imageUrl": "/images/creatures/Boogy.gif",
+    "imageUrl": "/images/creatures/boogy.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -2049,7 +2049,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bound-ape",
     "name": "Bound Ape",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bound_Ape.gif",
+    "imageUrl": "/images/creatures/bound-ape.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2072,7 +2072,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bound-cave-spider",
     "name": "Bound Cave Spider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bound_Cave_Spider.gif",
+    "imageUrl": "/images/creatures/bound-cave-spider.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2095,7 +2095,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bound-iks-aucar",
     "name": "Bound Iks Aucar",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bound_Iks_Aucar.gif",
+    "imageUrl": "/images/creatures/bound-iks-aucar.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2118,7 +2118,7 @@ export const BESTIARY_DATA = [
   {
     "id": "brachiodemon",
     "name": "Brachiodemon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Brachiodemon.gif",
+    "imageUrl": "/images/creatures/brachiodemon.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -2141,7 +2141,7 @@ export const BESTIARY_DATA = [
   {
     "id": "brain-squid",
     "name": "Brain Squid",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Brain_Squid.gif",
+    "imageUrl": "/images/creatures/brain-squid.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2164,7 +2164,7 @@ export const BESTIARY_DATA = [
   {
     "id": "braindeath",
     "name": "Braindeath",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Braindeath.gif",
+    "imageUrl": "/images/creatures/braindeath.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2187,7 +2187,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bramble-wyrmling",
     "name": "Bramble Wyrmling",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bramble_Wyrmling.gif",
+    "imageUrl": "/images/creatures/bramble-wyrmling.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2210,7 +2210,7 @@ export const BESTIARY_DATA = [
   {
     "id": "branchy-crawler",
     "name": "Branchy Crawler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Branchy_Crawler.gif",
+    "imageUrl": "/images/creatures/branchy-crawler.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -2233,7 +2233,7 @@ export const BESTIARY_DATA = [
   {
     "id": "breach-brood",
     "name": "Breach Brood",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Breach_Brood.gif",
+    "imageUrl": "/images/creatures/breach-brood.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2256,7 +2256,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bride-of-night",
     "name": "Bride of Night",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bride_Of_Night.gif",
+    "imageUrl": "/images/creatures/bride-of-night.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2279,7 +2279,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bright-crystal",
     "name": "Bright Crystal",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bright_Crystal.gif",
+    "imageUrl": "/images/creatures/bright-crystal.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2302,7 +2302,7 @@ export const BESTIARY_DATA = [
   {
     "id": "brimstone-bug",
     "name": "Brimstone Bug",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Brimstone_Bug.gif",
+    "imageUrl": "/images/creatures/brimstone-bug.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2325,7 +2325,7 @@ export const BESTIARY_DATA = [
   {
     "id": "brinebrute-inferniarch",
     "name": "Brinebrute Inferniarch",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Brinebrute_Inferniarch.gif",
+    "imageUrl": "/images/creatures/brinebrute-inferniarch.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2348,7 +2348,7 @@ export const BESTIARY_DATA = [
   {
     "id": "broken-shaper",
     "name": "Broken Shaper",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Broken_Shaper.gif",
+    "imageUrl": "/images/creatures/broken-shaper.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2371,7 +2371,7 @@ export const BESTIARY_DATA = [
   {
     "id": "broodrider-inferniarch",
     "name": "Broodrider Inferniarch",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Broodrider_Inferniarch.gif",
+    "imageUrl": "/images/creatures/broodrider-inferniarch.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2394,7 +2394,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bug",
     "name": "Bug",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bug.gif",
+    "imageUrl": "/images/creatures/bug.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -2417,7 +2417,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bulltaur-alchemist",
     "name": "Bulltaur Alchemist",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bulltaur_Alchemist.gif",
+    "imageUrl": "/images/creatures/bulltaur-alchemist.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2440,7 +2440,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bulltaur-brute",
     "name": "Bulltaur Brute",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bulltaur_Brute.gif",
+    "imageUrl": "/images/creatures/bulltaur-brute.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2463,7 +2463,7 @@ export const BESTIARY_DATA = [
   {
     "id": "bulltaur-forgepriest",
     "name": "Bulltaur Forgepriest",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bulltaur_Forgepriest.gif",
+    "imageUrl": "/images/creatures/bulltaur-forgepriest.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2486,7 +2486,7 @@ export const BESTIARY_DATA = [
   {
     "id": "burning-book",
     "name": "Burning Book",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Burning_Book.gif",
+    "imageUrl": "/images/creatures/burning-book.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2509,7 +2509,7 @@ export const BESTIARY_DATA = [
   {
     "id": "burning-gladiator",
     "name": "Burning Gladiator",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Burning_Gladiator.gif",
+    "imageUrl": "/images/creatures/burning-gladiator.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2532,7 +2532,7 @@ export const BESTIARY_DATA = [
   {
     "id": "burster-spectre",
     "name": "Burster Spectre",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Burster_Spectre.gif",
+    "imageUrl": "/images/creatures/burster-spectre.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2555,7 +2555,7 @@ export const BESTIARY_DATA = [
   {
     "id": "butterfly-blue",
     "name": "Butterfly (Blue)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(blue).gif",
+    "imageUrl": "/images/creatures/butterfly-blue.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -2578,7 +2578,7 @@ export const BESTIARY_DATA = [
   {
     "id": "butterfly-purple",
     "name": "Butterfly (Purple)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(purple).gif",
+    "imageUrl": "/images/creatures/butterfly-purple.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -2601,7 +2601,7 @@ export const BESTIARY_DATA = [
   {
     "id": "butterfly-purplebluered",
     "name": "Butterfly (Purple/Blue/Red)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(purple/blue/red).gif",
+    "imageUrl": "/images/creatures/butterfly-purplebluered.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -2615,7 +2615,7 @@ export const BESTIARY_DATA = [
   {
     "id": "butterfly-red",
     "name": "Butterfly (Red)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Butterfly_(red).gif",
+    "imageUrl": "/images/creatures/butterfly-red.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -2638,7 +2638,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cake-golem",
     "name": "Cake Golem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cake_Golem.gif",
+    "imageUrl": "/images/creatures/cake-golem.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -2661,7 +2661,7 @@ export const BESTIARY_DATA = [
   {
     "id": "calamary",
     "name": "Calamary",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Calamary.gif",
+    "imageUrl": "/images/creatures/calamary.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -2684,7 +2684,7 @@ export const BESTIARY_DATA = [
   {
     "id": "candy-floss-elemental",
     "name": "Candy Floss Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Candy_Floss_Elemental.gif",
+    "imageUrl": "/images/creatures/candy-floss-elemental.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2707,7 +2707,7 @@ export const BESTIARY_DATA = [
   {
     "id": "candy-horror",
     "name": "Candy Horror",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Candy_Horror.gif",
+    "imageUrl": "/images/creatures/candy-horror.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2730,7 +2730,7 @@ export const BESTIARY_DATA = [
   {
     "id": "capricious-phantom",
     "name": "Capricious Phantom",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Capricious_Phantom.gif",
+    "imageUrl": "/images/creatures/capricious-phantom.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -2753,7 +2753,7 @@ export const BESTIARY_DATA = [
   {
     "id": "carniphila",
     "name": "Carniphila",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carniphila.gif",
+    "imageUrl": "/images/creatures/carniphila.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2776,7 +2776,7 @@ export const BESTIARY_DATA = [
   {
     "id": "carnivorous-butterfly",
     "name": "Carnivorous Butterfly",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carnivorous_Butterfly.gif",
+    "imageUrl": "/images/creatures/carnivorous-butterfly.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2799,7 +2799,7 @@ export const BESTIARY_DATA = [
   {
     "id": "carnivostrich",
     "name": "Carnivostrich",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Carnivostrich.gif",
+    "imageUrl": "/images/creatures/carnivostrich.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2822,7 +2822,7 @@ export const BESTIARY_DATA = [
   {
     "id": "carrion-worm",
     "name": "Carrion Worm",
-    "imageUrl": "/images/creatures/Carrion_Worm.gif",
+    "imageUrl": "/images/creatures/carrion-worm.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -2847,7 +2847,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cat",
     "name": "Cat",
-    "imageUrl": "/images/creatures/Cat.gif",
+    "imageUrl": "/images/creatures/cat.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -2872,7 +2872,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cave-chimera",
     "name": "Cave Chimera",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cave_Chimera.gif",
+    "imageUrl": "/images/creatures/cave-chimera.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2895,7 +2895,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cave-devourer",
     "name": "Cave Devourer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cave_Devourer.gif",
+    "imageUrl": "/images/creatures/cave-devourer.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -2918,7 +2918,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cave-parrot",
     "name": "Cave Parrot",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cave_Parrot.gif",
+    "imageUrl": "/images/creatures/cave-parrot.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -2941,7 +2941,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cave-rat",
     "name": "Cave Rat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cave_Rat.gif",
+    "imageUrl": "/images/creatures/cave-rat.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -2964,7 +2964,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cellar-rat",
     "name": "Cellar Rat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cellar_Rat.gif",
+    "imageUrl": "/images/creatures/cellar-rat.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -2987,7 +2987,7 @@ export const BESTIARY_DATA = [
   {
     "id": "centipede",
     "name": "Centipede",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Centipede.gif",
+    "imageUrl": "/images/creatures/centipede.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3010,7 +3010,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chakoya-toolshaper",
     "name": "Chakoya Toolshaper",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chakoya_Toolshaper.gif",
+    "imageUrl": "/images/creatures/chakoya-toolshaper.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3033,7 +3033,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chakoya-tribewarden",
     "name": "Chakoya Tribewarden",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chakoya_Tribewarden.gif",
+    "imageUrl": "/images/creatures/chakoya-tribewarden.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3056,7 +3056,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chakoya-windcaller",
     "name": "Chakoya Windcaller",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chakoya_Windcaller.gif",
+    "imageUrl": "/images/creatures/chakoya-windcaller.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3079,7 +3079,7 @@ export const BESTIARY_DATA = [
   {
     "id": "charged-imp",
     "name": "Charged Imp",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Charged_Imp.gif",
+    "imageUrl": "/images/creatures/charged-imp.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3102,7 +3102,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chasm-spawn",
     "name": "Chasm Spawn",
-    "imageUrl": "/images/creatures/Chasm_Spawn.gif",
+    "imageUrl": "/images/creatures/chasm-spawn.gif",
     "charmPoints": 50,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -3127,7 +3127,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cheeky-sugar-cube",
     "name": "Cheeky Sugar Cube",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cheeky_Sugar_Cube.gif",
+    "imageUrl": "/images/creatures/cheeky-sugar-cube.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3150,7 +3150,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chicken",
     "name": "Chicken",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chicken.gif",
+    "imageUrl": "/images/creatures/chicken.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -3173,7 +3173,7 @@ export const BESTIARY_DATA = [
   {
     "id": "chocolate-blob",
     "name": "Chocolate Blob",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Chocolate_Blob.gif",
+    "imageUrl": "/images/creatures/chocolate-blob.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -3196,7 +3196,7 @@ export const BESTIARY_DATA = [
   {
     "id": "choking-fear",
     "name": "Choking Fear",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Choking_Fear.gif",
+    "imageUrl": "/images/creatures/choking-fear.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3219,7 +3219,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cinder-wyrmling",
     "name": "Cinder Wyrmling",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cinder_Wyrmling.gif",
+    "imageUrl": "/images/creatures/cinder-wyrmling.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3242,7 +3242,7 @@ export const BESTIARY_DATA = [
   {
     "id": "clavius",
     "name": "Clavius",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Clavius.gif",
+    "imageUrl": "/images/creatures/clavius.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3265,7 +3265,7 @@ export const BESTIARY_DATA = [
   {
     "id": "clay-guardian",
     "name": "Clay Guardian",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Clay_Guardian.gif",
+    "imageUrl": "/images/creatures/clay-guardian.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3288,7 +3288,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cliff-strider",
     "name": "Cliff Strider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cliff_Strider.gif",
+    "imageUrl": "/images/creatures/cliff-strider.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3311,7 +3311,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cloak-of-terror",
     "name": "Cloak of Terror",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cloak_Of_Terror.gif",
+    "imageUrl": "/images/creatures/cloak-of-terror.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -3334,7 +3334,7 @@ export const BESTIARY_DATA = [
   {
     "id": "clomp",
     "name": "Clomp",
-    "imageUrl": "/images/creatures/Clomp.gif",
+    "imageUrl": "/images/creatures/clomp.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -3359,7 +3359,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cobra",
     "name": "Cobra",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cobra.gif",
+    "imageUrl": "/images/creatures/cobra.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3382,7 +3382,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cobra-assassin",
     "name": "Cobra Assassin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cobra_Assassin.gif",
+    "imageUrl": "/images/creatures/cobra-assassin.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3405,7 +3405,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cobra-scout",
     "name": "Cobra Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cobra_Scout.gif",
+    "imageUrl": "/images/creatures/cobra-scout.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3428,7 +3428,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cobra-vizier",
     "name": "Cobra Vizier",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cobra_Vizier.gif",
+    "imageUrl": "/images/creatures/cobra-vizier.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3451,7 +3451,7 @@ export const BESTIARY_DATA = [
   {
     "id": "converter",
     "name": "Converter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Converter.gif",
+    "imageUrl": "/images/creatures/converter.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -3474,7 +3474,7 @@ export const BESTIARY_DATA = [
   {
     "id": "coral-frog",
     "name": "Coral Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Coral_Frog.gif",
+    "imageUrl": "/images/creatures/coral-frog.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3497,7 +3497,7 @@ export const BESTIARY_DATA = [
   {
     "id": "corrupted-ghost",
     "name": "Corrupted Ghost",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corrupted_Ghost.gif",
+    "imageUrl": "/images/creatures/corrupted-ghost.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -3520,7 +3520,7 @@ export const BESTIARY_DATA = [
   {
     "id": "corrupted-skeleton",
     "name": "Corrupted Skeleton",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corrupted_Skeleton.gif",
+    "imageUrl": "/images/creatures/corrupted-skeleton.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -3543,7 +3543,7 @@ export const BESTIARY_DATA = [
   {
     "id": "corym-charlatan",
     "name": "Corym Charlatan",
-    "imageUrl": "/images/creatures/Corym_Charlatan.gif",
+    "imageUrl": "/images/creatures/corym-charlatan.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -3568,7 +3568,7 @@ export const BESTIARY_DATA = [
   {
     "id": "corym-skirmisher",
     "name": "Corym Skirmisher",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corym_Skirmisher.gif",
+    "imageUrl": "/images/creatures/corym-skirmisher.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3591,7 +3591,7 @@ export const BESTIARY_DATA = [
   {
     "id": "corym-vanguard",
     "name": "Corym Vanguard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Corym_Vanguard.gif",
+    "imageUrl": "/images/creatures/corym-vanguard.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3614,7 +3614,7 @@ export const BESTIARY_DATA = [
   {
     "id": "courage-leech",
     "name": "Courage Leech",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Courage_Leech.gif",
+    "imageUrl": "/images/creatures/courage-leech.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -3637,7 +3637,7 @@ export const BESTIARY_DATA = [
   {
     "id": "court-warlock",
     "name": "Court Warlock",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Court_Warlock.gif",
+    "imageUrl": "/images/creatures/court-warlock.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3660,7 +3660,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cow",
     "name": "Cow",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cow.gif",
+    "imageUrl": "/images/creatures/cow.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -3683,7 +3683,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crab",
     "name": "Crab",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crab.gif",
+    "imageUrl": "/images/creatures/crab.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3706,7 +3706,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crape-man",
     "name": "Crape Man",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crape_Man.gif",
+    "imageUrl": "/images/creatures/crape-man.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3729,7 +3729,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crawler",
     "name": "Crawler",
-    "imageUrl": "/images/creatures/Crawler.gif",
+    "imageUrl": "/images/creatures/crawler.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -3754,7 +3754,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crazed-beggar",
     "name": "Crazed Beggar",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crazed_Beggar.gif",
+    "imageUrl": "/images/creatures/crazed-beggar.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3777,7 +3777,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crazed-summer-rearguard",
     "name": "Crazed Summer Rearguard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crazed_Summer_Rearguard.gif",
+    "imageUrl": "/images/creatures/crazed-summer-rearguard.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3800,7 +3800,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crazed-summer-vanguard",
     "name": "Crazed Summer Vanguard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crazed_Summer_Vanguard.gif",
+    "imageUrl": "/images/creatures/crazed-summer-vanguard.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3823,7 +3823,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crazed-winter-rearguard",
     "name": "Crazed Winter Rearguard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crazed_Winter_Rearguard.gif",
+    "imageUrl": "/images/creatures/crazed-winter-rearguard.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3846,7 +3846,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crazed-winter-vanguard",
     "name": "Crazed Winter Vanguard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crazed_Winter_Vanguard.gif",
+    "imageUrl": "/images/creatures/crazed-winter-vanguard.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3869,7 +3869,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cream-blob",
     "name": "Cream Blob",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cream_Blob.gif",
+    "imageUrl": "/images/creatures/cream-blob.gif",
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
@@ -3892,7 +3892,7 @@ export const BESTIARY_DATA = [
   {
     "id": "creepy-crawler",
     "name": "Creepy Crawler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Creepy_Crawler.gif",
+    "imageUrl": "/images/creatures/creepy-crawler.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -3915,7 +3915,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crimson-frog",
     "name": "Crimson Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crimson_Frog.gif",
+    "imageUrl": "/images/creatures/crimson-frog.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -3938,7 +3938,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crocodile",
     "name": "Crocodile",
-    "imageUrl": "/images/creatures/Crocodile.gif",
+    "imageUrl": "/images/creatures/crocodile.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -3963,7 +3963,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crusader",
     "name": "Crusader",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crusader.gif",
+    "imageUrl": "/images/creatures/crusader.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -3986,7 +3986,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crustacea-gigantica",
     "name": "Crustacea Gigantica",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crustacea_Gigantica.gif",
+    "imageUrl": "/images/creatures/crustacea-gigantica.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4009,7 +4009,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-construct",
     "name": "Crypt Construct",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Construct.gif",
+    "imageUrl": "/images/creatures/crypt-construct.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4032,7 +4032,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-defiler",
     "name": "Crypt Defiler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Defiler.gif",
+    "imageUrl": "/images/creatures/crypt-defiler.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4055,7 +4055,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-fiend",
     "name": "Crypt Fiend",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Fiend.gif",
+    "imageUrl": "/images/creatures/crypt-fiend.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4078,7 +4078,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-mage",
     "name": "Crypt Mage",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Mage.gif",
+    "imageUrl": "/images/creatures/crypt-mage.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4101,7 +4101,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-shambler",
     "name": "Crypt Shambler",
-    "imageUrl": "/images/creatures/Crypt_Shambler.gif",
+    "imageUrl": "/images/creatures/crypt-shambler.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -4126,7 +4126,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-warden",
     "name": "Crypt Warden",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Warden.gif",
+    "imageUrl": "/images/creatures/crypt-warden.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4149,7 +4149,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crypt-warrior",
     "name": "Crypt Warrior",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crypt_Warrior.gif",
+    "imageUrl": "/images/creatures/crypt-warrior.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4172,7 +4172,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crystal-spider",
     "name": "Crystal Spider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crystal_Spider.gif",
+    "imageUrl": "/images/creatures/crystal-spider.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4195,7 +4195,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crystal-wolf",
     "name": "Crystal Wolf",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crystal_Wolf.gif",
+    "imageUrl": "/images/creatures/crystal-wolf.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4218,7 +4218,7 @@ export const BESTIARY_DATA = [
   {
     "id": "crystalcrusher",
     "name": "Crystalcrusher",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Crystalcrusher.gif",
+    "imageUrl": "/images/creatures/crystalcrusher.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4241,7 +4241,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cult-believer",
     "name": "Cult Believer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cult_Believer.gif",
+    "imageUrl": "/images/creatures/cult-believer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4264,7 +4264,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cult-enforcer",
     "name": "Cult Enforcer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cult_Enforcer.gif",
+    "imageUrl": "/images/creatures/cult-enforcer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4287,7 +4287,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cult-scholar",
     "name": "Cult Scholar",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cult_Scholar.gif",
+    "imageUrl": "/images/creatures/cult-scholar.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4310,7 +4310,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cunning-werepanther",
     "name": "Cunning Werepanther",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cunning_Werepanther.gif",
+    "imageUrl": "/images/creatures/cunning-werepanther.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4333,7 +4333,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cursed-ape",
     "name": "Cursed Ape",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cursed_Ape.gif",
+    "imageUrl": "/images/creatures/cursed-ape.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4356,7 +4356,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cursed-book",
     "name": "Cursed Book",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cursed_Book.gif",
+    "imageUrl": "/images/creatures/cursed-book.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4379,7 +4379,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cursed-prospector",
     "name": "Cursed Prospector",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cursed_Prospector.gif",
+    "imageUrl": "/images/creatures/cursed-prospector.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4402,7 +4402,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cyclops",
     "name": "Cyclops",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cyclops.gif",
+    "imageUrl": "/images/creatures/cyclops.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4425,7 +4425,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cyclops-drone",
     "name": "Cyclops Drone",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cyclops_Drone.gif",
+    "imageUrl": "/images/creatures/cyclops-drone.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4448,7 +4448,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cyclops-smith",
     "name": "Cyclops Smith",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cyclops_Smith.gif",
+    "imageUrl": "/images/creatures/cyclops-smith.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4471,7 +4471,7 @@ export const BESTIARY_DATA = [
   {
     "id": "cyclursus",
     "name": "Cyclursus",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Cyclursus.gif",
+    "imageUrl": "/images/creatures/cyclursus.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4494,7 +4494,7 @@ export const BESTIARY_DATA = [
   {
     "id": "damaged-crystal-golem",
     "name": "Damaged Crystal Golem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Damaged_Crystal_Golem.gif",
+    "imageUrl": "/images/creatures/damaged-crystal-golem.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4517,7 +4517,7 @@ export const BESTIARY_DATA = [
   {
     "id": "damaged-worker-golem",
     "name": "Damaged Worker Golem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Damaged_Worker_Golem.gif",
+    "imageUrl": "/images/creatures/damaged-worker-golem.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4540,7 +4540,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dangerous-apparatus",
     "name": "Dangerous Apparatus",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dangerous_Apparatus.gif",
+    "imageUrl": "/images/creatures/dangerous-apparatus.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4563,7 +4563,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-apprentice",
     "name": "Dark Apprentice",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Apprentice.gif",
+    "imageUrl": "/images/creatures/dark-apprentice.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4586,7 +4586,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-carnisylvan",
     "name": "Dark Carnisylvan",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Carnisylvan.gif",
+    "imageUrl": "/images/creatures/dark-carnisylvan.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4609,7 +4609,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-faun",
     "name": "Dark Faun",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Faun.gif",
+    "imageUrl": "/images/creatures/dark-faun.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4632,7 +4632,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-magician",
     "name": "Dark Magician",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Magician.gif",
+    "imageUrl": "/images/creatures/dark-magician.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -4655,7 +4655,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-merudri",
     "name": "Dark Merudri",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Merudri.gif",
+    "imageUrl": "/images/creatures/dark-merudri.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4678,7 +4678,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-monk",
     "name": "Dark Monk",
-    "imageUrl": "/images/creatures/Dark_Monk.gif",
+    "imageUrl": "/images/creatures/dark-monk.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -4703,7 +4703,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dark-torturer",
     "name": "Dark Torturer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dark_Torturer.gif",
+    "imageUrl": "/images/creatures/dark-torturer.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4726,7 +4726,7 @@ export const BESTIARY_DATA = [
   {
     "id": "darklight-construct",
     "name": "Darklight Construct",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Darklight_Construct.gif",
+    "imageUrl": "/images/creatures/darklight-construct.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4749,7 +4749,7 @@ export const BESTIARY_DATA = [
   {
     "id": "darklight-emitter",
     "name": "Darklight Emitter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Darklight_Emitter.gif",
+    "imageUrl": "/images/creatures/darklight-emitter.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4772,7 +4772,7 @@ export const BESTIARY_DATA = [
   {
     "id": "darklight-matter",
     "name": "Darklight Matter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Darklight_Matter.gif",
+    "imageUrl": "/images/creatures/darklight-matter.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4795,7 +4795,7 @@ export const BESTIARY_DATA = [
   {
     "id": "darklight-source",
     "name": "Darklight Source",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Darklight_Source.gif",
+    "imageUrl": "/images/creatures/darklight-source.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4818,7 +4818,7 @@ export const BESTIARY_DATA = [
   {
     "id": "darklight-striker",
     "name": "Darklight Striker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Darklight_Striker.gif",
+    "imageUrl": "/images/creatures/darklight-striker.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -4841,7 +4841,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dawnfire-asura",
     "name": "Dawnfire Asura",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dawnfire_Asura.gif",
+    "imageUrl": "/images/creatures/dawnfire-asura.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4864,7 +4864,7 @@ export const BESTIARY_DATA = [
   {
     "id": "death-blob",
     "name": "Death Blob",
-    "imageUrl": "/images/creatures/Death_Blob.gif",
+    "imageUrl": "/images/creatures/death-blob.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -4889,7 +4889,7 @@ export const BESTIARY_DATA = [
   {
     "id": "death-priest",
     "name": "Death Priest",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Death_Priest.gif",
+    "imageUrl": "/images/creatures/death-priest.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4912,7 +4912,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deathling-scout",
     "name": "Deathling Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deathling_Scout.gif",
+    "imageUrl": "/images/creatures/deathling-scout.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4935,7 +4935,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deathling-spellsinger",
     "name": "Deathling Spellsinger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deathling_Spellsinger.gif",
+    "imageUrl": "/images/creatures/deathling-spellsinger.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -4958,7 +4958,7 @@ export const BESTIARY_DATA = [
   {
     "id": "decaying-totem",
     "name": "Decaying Totem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Decaying_Totem.gif",
+    "imageUrl": "/images/creatures/decaying-totem.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -4981,7 +4981,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-brawler",
     "name": "Deepling Brawler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Brawler.gif",
+    "imageUrl": "/images/creatures/deepling-brawler.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5004,7 +5004,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-elite",
     "name": "Deepling Elite",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Elite.gif",
+    "imageUrl": "/images/creatures/deepling-elite.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5027,7 +5027,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-guard",
     "name": "Deepling Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Guard.gif",
+    "imageUrl": "/images/creatures/deepling-guard.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5050,7 +5050,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-master-librarian",
     "name": "Deepling Master Librarian",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Master_Librarian.gif",
+    "imageUrl": "/images/creatures/deepling-master-librarian.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5073,7 +5073,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-scout",
     "name": "Deepling Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Scout.gif",
+    "imageUrl": "/images/creatures/deepling-scout.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5096,7 +5096,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-spellsinger",
     "name": "Deepling Spellsinger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Spellsinger.gif",
+    "imageUrl": "/images/creatures/deepling-spellsinger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5119,7 +5119,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-tyrant",
     "name": "Deepling Tyrant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Tyrant.gif",
+    "imageUrl": "/images/creatures/deepling-tyrant.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -5142,7 +5142,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-warrior",
     "name": "Deepling Warrior",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Warrior.gif",
+    "imageUrl": "/images/creatures/deepling-warrior.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5165,7 +5165,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepling-worker",
     "name": "Deepling Worker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Deepling_Worker.gif",
+    "imageUrl": "/images/creatures/deepling-worker.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5188,7 +5188,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepsea-blood-crab",
     "name": "Deepsea Blood Crab",
-    "imageUrl": "/images/creatures/Deepsea_Blood_Crab.gif",
+    "imageUrl": "/images/creatures/deepsea-blood-crab.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -5213,7 +5213,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deepworm",
     "name": "Deepworm",
-    "imageUrl": "/images/creatures/Deepworm.gif",
+    "imageUrl": "/images/creatures/deepworm.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -5238,7 +5238,7 @@ export const BESTIARY_DATA = [
   {
     "id": "deer",
     "name": "Deer",
-    "imageUrl": "/images/creatures/Deer.gif",
+    "imageUrl": "/images/creatures/deer.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -5263,7 +5263,7 @@ export const BESTIARY_DATA = [
   {
     "id": "defiler",
     "name": "Defiler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Defiler.gif",
+    "imageUrl": "/images/creatures/defiler.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -5286,7 +5286,7 @@ export const BESTIARY_DATA = [
   {
     "id": "demon",
     "name": "Demon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Demon.gif",
+    "imageUrl": "/images/creatures/demon.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -5309,7 +5309,7 @@ export const BESTIARY_DATA = [
   {
     "id": "demon-outcast",
     "name": "Demon Outcast",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Demon_Outcast.gif",
+    "imageUrl": "/images/creatures/demon-outcast.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -5332,7 +5332,7 @@ export const BESTIARY_DATA = [
   {
     "id": "demon-parrot",
     "name": "Demon Parrot",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Demon_Parrot.gif",
+    "imageUrl": "/images/creatures/demon-parrot.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5355,7 +5355,7 @@ export const BESTIARY_DATA = [
   {
     "id": "demon-skeleton",
     "name": "Demon Skeleton",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Demon_Skeleton.gif",
+    "imageUrl": "/images/creatures/demon-skeleton.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5378,7 +5378,7 @@ export const BESTIARY_DATA = [
   {
     "id": "destroyer",
     "name": "Destroyer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Destroyer.gif",
+    "imageUrl": "/images/creatures/destroyer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5401,7 +5401,7 @@ export const BESTIARY_DATA = [
   {
     "id": "devourer",
     "name": "Devourer",
-    "imageUrl": "/images/creatures/Devourer.gif",
+    "imageUrl": "/images/creatures/devourer.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -5426,7 +5426,7 @@ export const BESTIARY_DATA = [
   {
     "id": "diabolic-imp",
     "name": "Diabolic Imp",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diabolic_Imp.gif",
+    "imageUrl": "/images/creatures/diabolic-imp.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5449,7 +5449,7 @@ export const BESTIARY_DATA = [
   {
     "id": "diamond-servant",
     "name": "Diamond Servant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Diamond_Servant.gif",
+    "imageUrl": "/images/creatures/diamond-servant.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5472,7 +5472,7 @@ export const BESTIARY_DATA = [
   {
     "id": "diamond-servant-replica",
     "name": "Diamond Servant Replica",
-    "imageUrl": "/images/creatures/Diamond_Servant_Replica.gif",
+    "imageUrl": "/images/creatures/diamond-servant-replica.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -5497,7 +5497,7 @@ export const BESTIARY_DATA = [
   {
     "id": "digestive-ooze",
     "name": "Digestive Ooze",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Digestive_Ooze.gif",
+    "imageUrl": "/images/creatures/digestive-ooze.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5520,7 +5520,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dire-penguin",
     "name": "Dire Penguin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dire_Penguin.gif",
+    "imageUrl": "/images/creatures/dire-penguin.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5543,7 +5543,7 @@ export const BESTIARY_DATA = [
   {
     "id": "diremaw",
     "name": "Diremaw",
-    "imageUrl": "/images/creatures/Diremaw.gif",
+    "imageUrl": "/images/creatures/diremaw.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -5568,7 +5568,7 @@ export const BESTIARY_DATA = [
   {
     "id": "distorted-phantom",
     "name": "Distorted Phantom",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Distorted_Phantom.gif",
+    "imageUrl": "/images/creatures/distorted-phantom.gif",
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
@@ -5591,7 +5591,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dog",
     "name": "Dog",
-    "imageUrl": "/images/creatures/Dog.gif",
+    "imageUrl": "/images/creatures/dog.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -5616,7 +5616,7 @@ export const BESTIARY_DATA = [
   {
     "id": "doom-deer",
     "name": "Doom Deer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Doom_Deer.gif",
+    "imageUrl": "/images/creatures/doom-deer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5639,7 +5639,7 @@ export const BESTIARY_DATA = [
   {
     "id": "doomsday-cultist",
     "name": "Doomsday Cultist",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Doomsday_Cultist.gif",
+    "imageUrl": "/images/creatures/doomsday-cultist.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5662,7 +5662,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dragolisk",
     "name": "Dragolisk",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dragolisk.gif",
+    "imageUrl": "/images/creatures/dragolisk.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -5685,7 +5685,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dragon",
     "name": "Dragon",
-    "imageUrl": "/images/creatures/Dragon.gif",
+    "imageUrl": "/images/creatures/dragon.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -5710,7 +5710,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dragon-lord",
     "name": "Dragon Lord",
-    "imageUrl": "/images/creatures/Dragon_Lord.gif",
+    "imageUrl": "/images/creatures/dragon-lord.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -5735,7 +5735,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dragonling",
     "name": "Dragonling",
-    "imageUrl": "/images/creatures/Dragonling.gif",
+    "imageUrl": "/images/creatures/dragonling.gif",
     "charmPoints": 25,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -5760,7 +5760,7 @@ export const BESTIARY_DATA = [
   {
     "id": "draptor",
     "name": "Draptor",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Draptor.gif",
+    "imageUrl": "/images/creatures/draptor.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5783,7 +5783,7 @@ export const BESTIARY_DATA = [
   {
     "id": "drillworm",
     "name": "Drillworm",
-    "imageUrl": "/images/creatures/Drillworm.gif",
+    "imageUrl": "/images/creatures/drillworm.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -5808,7 +5808,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dromedary",
     "name": "Dromedary",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dromedary.gif",
+    "imageUrl": "/images/creatures/dromedary.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -5831,7 +5831,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dryad",
     "name": "Dryad",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dryad.gif",
+    "imageUrl": "/images/creatures/dryad.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5854,7 +5854,7 @@ export const BESTIARY_DATA = [
   {
     "id": "duskbringer",
     "name": "Duskbringer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Duskbringer.gif",
+    "imageUrl": "/images/creatures/duskbringer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5877,7 +5877,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dwarf",
     "name": "Dwarf",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dwarf.gif",
+    "imageUrl": "/images/creatures/dwarf.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5900,7 +5900,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dwarf-geomancer",
     "name": "Dwarf Geomancer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dwarf_Geomancer.gif",
+    "imageUrl": "/images/creatures/dwarf-geomancer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5923,7 +5923,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dwarf-guard",
     "name": "Dwarf Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dwarf_Guard.gif",
+    "imageUrl": "/images/creatures/dwarf-guard.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5946,7 +5946,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dwarf-henchman",
     "name": "Dwarf Henchman",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dwarf_Henchman.gif",
+    "imageUrl": "/images/creatures/dwarf-henchman.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -5969,7 +5969,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dwarf-soldier",
     "name": "Dwarf Soldier",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dwarf_Soldier.gif",
+    "imageUrl": "/images/creatures/dwarf-soldier.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -5992,7 +5992,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dworc-fleshhunter",
     "name": "Dworc Fleshhunter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dworc_Fleshhunter.gif",
+    "imageUrl": "/images/creatures/dworc-fleshhunter.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6015,7 +6015,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dworc-venomsniper",
     "name": "Dworc Venomsniper",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dworc_Venomsniper.gif",
+    "imageUrl": "/images/creatures/dworc-venomsniper.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6038,7 +6038,7 @@ export const BESTIARY_DATA = [
   {
     "id": "dworc-voodoomaster",
     "name": "Dworc Voodoomaster",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Dworc_Voodoomaster.gif",
+    "imageUrl": "/images/creatures/dworc-voodoomaster.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6061,7 +6061,7 @@ export const BESTIARY_DATA = [
   {
     "id": "earth-elemental",
     "name": "Earth Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Earth_Elemental.gif",
+    "imageUrl": "/images/creatures/earth-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6084,7 +6084,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elder-bonelord",
     "name": "Elder Bonelord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elder_Bonelord.gif",
+    "imageUrl": "/images/creatures/elder-bonelord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6107,7 +6107,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elder-forest-fury",
     "name": "Elder Forest Fury",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elder_Forest_Fury.gif",
+    "imageUrl": "/images/creatures/elder-forest-fury.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6130,7 +6130,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elder-mummy",
     "name": "Elder Mummy",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elder_Mummy.gif",
+    "imageUrl": "/images/creatures/elder-mummy.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6153,7 +6153,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elephant",
     "name": "Elephant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elephant.gif",
+    "imageUrl": "/images/creatures/elephant.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6176,7 +6176,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elf",
     "name": "Elf",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elf.gif",
+    "imageUrl": "/images/creatures/elf.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6199,7 +6199,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elf-arcanist",
     "name": "Elf Arcanist",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elf_Arcanist.gif",
+    "imageUrl": "/images/creatures/elf-arcanist.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6222,7 +6222,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elf-overseer",
     "name": "Elf Overseer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elf_Overseer.gif",
+    "imageUrl": "/images/creatures/elf-overseer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6245,7 +6245,7 @@ export const BESTIARY_DATA = [
   {
     "id": "elf-scout",
     "name": "Elf Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Elf_Scout.gif",
+    "imageUrl": "/images/creatures/elf-scout.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6268,7 +6268,7 @@ export const BESTIARY_DATA = [
   {
     "id": "emerald-damselfly",
     "name": "Emerald Damselfly",
-    "imageUrl": "/images/creatures/Emerald_Damselfly.gif",
+    "imageUrl": "/images/creatures/emerald-damselfly.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -6293,7 +6293,7 @@ export const BESTIARY_DATA = [
   {
     "id": "energy-elemental",
     "name": "Energy Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Energy_Elemental.gif",
+    "imageUrl": "/images/creatures/energy-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6316,7 +6316,7 @@ export const BESTIARY_DATA = [
   {
     "id": "enfeebled-silencer",
     "name": "Enfeebled Silencer",
-    "imageUrl": "/images/creatures/Enfeebled_Silencer.gif",
+    "imageUrl": "/images/creatures/enfeebled-silencer.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6341,7 +6341,7 @@ export const BESTIARY_DATA = [
   {
     "id": "enlightened-of-the-cult",
     "name": "Enlightened of the Cult",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enlightened_Of_The_Cult.gif",
+    "imageUrl": "/images/creatures/enlightened-of-the-cult.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6366,7 +6366,7 @@ export const BESTIARY_DATA = [
   {
     "id": "enraged-crystal-golem",
     "name": "Enraged Crystal Golem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Enraged_Crystal_Golem.gif",
+    "imageUrl": "/images/creatures/enraged-crystal-golem.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6389,7 +6389,7 @@ export const BESTIARY_DATA = [
   {
     "id": "eternal-guardian",
     "name": "Eternal Guardian",
-    "imageUrl": "/images/creatures/Eternal_Guardian.gif",
+    "imageUrl": "/images/creatures/eternal-guardian.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6414,7 +6414,7 @@ export const BESTIARY_DATA = [
   {
     "id": "evil-sheep",
     "name": "Evil Sheep",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Evil_Sheep.gif",
+    "imageUrl": "/images/creatures/evil-sheep.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6437,7 +6437,7 @@ export const BESTIARY_DATA = [
   {
     "id": "evil-sheep-lord",
     "name": "Evil Sheep Lord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Evil_Sheep_Lord.gif",
+    "imageUrl": "/images/creatures/evil-sheep-lord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6460,7 +6460,7 @@ export const BESTIARY_DATA = [
   {
     "id": "execowtioner",
     "name": "Execowtioner",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Execowtioner.gif",
+    "imageUrl": "/images/creatures/execowtioner.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6483,7 +6483,7 @@ export const BESTIARY_DATA = [
   {
     "id": "exotic-bat",
     "name": "Exotic Bat",
-    "imageUrl": "/images/creatures/Exotic_Bat.gif",
+    "imageUrl": "/images/creatures/exotic-bat.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6508,7 +6508,7 @@ export const BESTIARY_DATA = [
   {
     "id": "exotic-cave-spider",
     "name": "Exotic Cave Spider",
-    "imageUrl": "/images/creatures/Exotic_Cave_Spider.gif",
+    "imageUrl": "/images/creatures/exotic-cave-spider.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6533,7 +6533,7 @@ export const BESTIARY_DATA = [
   {
     "id": "faun",
     "name": "Faun",
-    "imageUrl": "/images/creatures/Faun.gif",
+    "imageUrl": "/images/creatures/faun.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6558,7 +6558,7 @@ export const BESTIARY_DATA = [
   {
     "id": "feverish-citizen",
     "name": "Feverish Citizen",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Feverish_Citizen.gif",
+    "imageUrl": "/images/creatures/feverish-citizen.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6581,7 +6581,7 @@ export const BESTIARY_DATA = [
   {
     "id": "filth-toad",
     "name": "Filth Toad",
-    "imageUrl": "/images/creatures/Filth_Toad.gif",
+    "imageUrl": "/images/creatures/filth-toad.gif",
     "charmPoints": 15,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -6606,7 +6606,7 @@ export const BESTIARY_DATA = [
   {
     "id": "fire-devil",
     "name": "Fire Devil",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fire_Devil.gif",
+    "imageUrl": "/images/creatures/fire-devil.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6629,7 +6629,7 @@ export const BESTIARY_DATA = [
   {
     "id": "fire-elemental",
     "name": "Fire Elemental",
-    "imageUrl": "/images/creatures/Fire_Elemental.gif",
+    "imageUrl": "/images/creatures/fire-elemental.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6657,7 +6657,7 @@ export const BESTIARY_DATA = [
   {
     "id": "firestarter",
     "name": "Firestarter",
-    "imageUrl": "/images/creatures/Firestarter.gif",
+    "imageUrl": "/images/creatures/firestarter.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -6682,7 +6682,7 @@ export const BESTIARY_DATA = [
   {
     "id": "fish",
     "name": "Fish",
-    "imageUrl": "/images/creatures/Fish.gif",
+    "imageUrl": "/images/creatures/fish.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -6705,7 +6705,7 @@ export const BESTIARY_DATA = [
   {
     "id": "flamingo",
     "name": "Flamingo",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Flamingo.gif",
+    "imageUrl": "/images/creatures/flamingo.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -6728,7 +6728,7 @@ export const BESTIARY_DATA = [
   {
     "id": "forest-fury",
     "name": "Forest Fury",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Forest_Fury.gif",
+    "imageUrl": "/images/creatures/forest-fury.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6751,7 +6751,7 @@ export const BESTIARY_DATA = [
   {
     "id": "fox",
     "name": "Fox",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Fox.gif",
+    "imageUrl": "/images/creatures/fox.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -6774,7 +6774,7 @@ export const BESTIARY_DATA = [
   {
     "id": "frost-dragon",
     "name": "Frost Dragon",
-    "imageUrl": "/images/creatures/Frost_Dragon.gif",
+    "imageUrl": "/images/creatures/frost-dragon.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6799,7 +6799,7 @@ export const BESTIARY_DATA = [
   {
     "id": "frost-dragon-hatchling",
     "name": "Frost Dragon Hatchling",
-    "imageUrl": "/images/creatures/Frost_Dragon_Hatchling.gif",
+    "imageUrl": "/images/creatures/frost-dragon-hatchling.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6824,7 +6824,7 @@ export const BESTIARY_DATA = [
   {
     "id": "frost-giant",
     "name": "Frost Giant",
-    "imageUrl": "/images/creatures/Frost_Giant.gif",
+    "imageUrl": "/images/creatures/frost-giant.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6849,7 +6849,7 @@ export const BESTIARY_DATA = [
   {
     "id": "frost-giantess",
     "name": "Frost Giantess",
-    "imageUrl": "/images/creatures/Frost_Giantess.gif",
+    "imageUrl": "/images/creatures/frost-giantess.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -6874,7 +6874,7 @@ export const BESTIARY_DATA = [
   {
     "id": "frost-troll",
     "name": "Frost Troll",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Frost_Troll.gif",
+    "imageUrl": "/images/creatures/frost-troll.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -6897,7 +6897,7 @@ export const BESTIARY_DATA = [
   {
     "id": "furious-fire-elemental",
     "name": "Furious Fire Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Furious_Fire_Elemental.gif",
+    "imageUrl": "/images/creatures/furious-fire-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -6920,7 +6920,7 @@ export const BESTIARY_DATA = [
   {
     "id": "furious-troll",
     "name": "Furious Troll",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Furious_Troll.gif",
+    "imageUrl": "/images/creatures/furious-troll.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6943,7 +6943,7 @@ export const BESTIARY_DATA = [
   {
     "id": "fury",
     "name": "Fury",
-    "imageUrl": "/images/creatures/Fury.gif",
+    "imageUrl": "/images/creatures/fury.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -6968,7 +6968,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gang-member",
     "name": "Gang Member",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gang_Member.gif",
+    "imageUrl": "/images/creatures/gang-member.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -6991,7 +6991,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gargoyle",
     "name": "Gargoyle",
-    "imageUrl": "/images/creatures/Gargoyle.gif",
+    "imageUrl": "/images/creatures/gargoyle.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7016,7 +7016,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gazer",
     "name": "Gazer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gazer.gif",
+    "imageUrl": "/images/creatures/gazer.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7039,7 +7039,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ghastly-dragon",
     "name": "Ghastly Dragon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghastly_Dragon.gif",
+    "imageUrl": "/images/creatures/ghastly-dragon.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -7062,7 +7062,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ghost",
     "name": "Ghost",
-    "imageUrl": "/images/creatures/Ghost.gif",
+    "imageUrl": "/images/creatures/ghost.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7087,7 +7087,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ghost-wolf",
     "name": "Ghost Wolf",
-    "imageUrl": "/images/creatures/Ghost_Wolf.gif",
+    "imageUrl": "/images/creatures/ghost-wolf.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7112,7 +7112,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ghoul",
     "name": "Ghoul",
-    "imageUrl": "/images/creatures/Ghoul.gif",
+    "imageUrl": "/images/creatures/ghoul.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7137,7 +7137,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ghoulish-hyaena",
     "name": "Ghoulish Hyaena",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ghoulish_Hyaena.gif",
+    "imageUrl": "/images/creatures/ghoulish-hyaena.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7160,7 +7160,7 @@ export const BESTIARY_DATA = [
   {
     "id": "giant-spider",
     "name": "Giant Spider",
-    "imageUrl": "/images/creatures/Giant_Spider.gif",
+    "imageUrl": "/images/creatures/giant-spider.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -7185,7 +7185,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gladiator",
     "name": "Gladiator",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gladiator.gif",
+    "imageUrl": "/images/creatures/gladiator.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7208,7 +7208,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gloom-wolf",
     "name": "Gloom Wolf",
-    "imageUrl": "/images/creatures/Gloom_Wolf.gif",
+    "imageUrl": "/images/creatures/gloom-wolf.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7233,7 +7233,7 @@ export const BESTIARY_DATA = [
   {
     "id": "glooth-anemone",
     "name": "Glooth Anemone",
-    "imageUrl": "/images/creatures/Glooth_Anemone.gif",
+    "imageUrl": "/images/creatures/glooth-anemone.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -7258,7 +7258,7 @@ export const BESTIARY_DATA = [
   {
     "id": "glooth-blob",
     "name": "Glooth Blob",
-    "imageUrl": "/images/creatures/Glooth_Blob.gif",
+    "imageUrl": "/images/creatures/glooth-blob.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -7283,7 +7283,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gnarlhound",
     "name": "Gnarlhound",
-    "imageUrl": "/images/creatures/Gnarlhound.gif",
+    "imageUrl": "/images/creatures/gnarlhound.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7308,7 +7308,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goblin",
     "name": "Goblin",
-    "imageUrl": "/images/creatures/Goblin.gif",
+    "imageUrl": "/images/creatures/goblin.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7333,7 +7333,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goblin-assassin",
     "name": "Goblin Assassin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin_Assassin.gif",
+    "imageUrl": "/images/creatures/goblin-assassin.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7356,7 +7356,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goblin-leader",
     "name": "Goblin Leader",
-    "imageUrl": "/images/creatures/Goblin_Leader.gif",
+    "imageUrl": "/images/creatures/goblin-leader.gif",
     "charmPoints": 30,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7381,7 +7381,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goblin-scavenger",
     "name": "Goblin Scavenger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goblin_Scavenger.gif",
+    "imageUrl": "/images/creatures/goblin-scavenger.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7404,7 +7404,7 @@ export const BESTIARY_DATA = [
   {
     "id": "golden-servant",
     "name": "Golden Servant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Golden_Servant.gif",
+    "imageUrl": "/images/creatures/golden-servant.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7427,7 +7427,7 @@ export const BESTIARY_DATA = [
   {
     "id": "golden-servant-replica",
     "name": "Golden Servant Replica",
-    "imageUrl": "/images/creatures/Golden_Servant_Replica.gif",
+    "imageUrl": "/images/creatures/golden-servant-replica.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -7452,7 +7452,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goldhanded-cultist",
     "name": "Goldhanded Cultist",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goldhanded_Cultist.gif",
+    "imageUrl": "/images/creatures/goldhanded-cultist.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7475,7 +7475,7 @@ export const BESTIARY_DATA = [
   {
     "id": "goldhanded-cultist-bride",
     "name": "Goldhanded Cultist Bride",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Goldhanded_Cultist_Bride.gif",
+    "imageUrl": "/images/creatures/goldhanded-cultist-bride.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7498,7 +7498,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gozzler",
     "name": "Gozzler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gozzler.gif",
+    "imageUrl": "/images/creatures/gozzler.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7521,7 +7521,7 @@ export const BESTIARY_DATA = [
   {
     "id": "grave-guard",
     "name": "Grave Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Grave_Guard.gif",
+    "imageUrl": "/images/creatures/grave-guard.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7544,7 +7544,7 @@ export const BESTIARY_DATA = [
   {
     "id": "grave-robber",
     "name": "Grave Robber",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Grave_Robber.gif",
+    "imageUrl": "/images/creatures/grave-robber.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7567,7 +7567,7 @@ export const BESTIARY_DATA = [
   {
     "id": "gravedigger",
     "name": "Gravedigger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Gravedigger.gif",
+    "imageUrl": "/images/creatures/gravedigger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7590,7 +7590,7 @@ export const BESTIARY_DATA = [
   {
     "id": "green-djinn",
     "name": "Green Djinn",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Green_Djinn.gif",
+    "imageUrl": "/images/creatures/green-djinn.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7613,7 +7613,7 @@ export const BESTIARY_DATA = [
   {
     "id": "green-frog",
     "name": "Green Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Green_Frog.gif",
+    "imageUrl": "/images/creatures/green-frog.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -7636,7 +7636,7 @@ export const BESTIARY_DATA = [
   {
     "id": "grynch-clan-goblin",
     "name": "Grynch Clan Goblin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Grynch_Clan_Goblin.gif",
+    "imageUrl": "/images/creatures/grynch-clan-goblin.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -7659,7 +7659,7 @@ export const BESTIARY_DATA = [
   {
     "id": "haunted-dragon",
     "name": "Haunted Dragon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Haunted_Dragon.gif",
+    "imageUrl": "/images/creatures/haunted-dragon.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -7682,7 +7682,7 @@ export const BESTIARY_DATA = [
   {
     "id": "haunted-treeling",
     "name": "Haunted Treeling",
-    "imageUrl": "/images/creatures/Haunted_Treeling.gif",
+    "imageUrl": "/images/creatures/haunted-treeling.gif",
     "charmPoints": 25,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7707,7 +7707,7 @@ export const BESTIARY_DATA = [
   {
     "id": "herald-of-gloom",
     "name": "Herald of Gloom",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Herald_Of_Gloom.gif",
+    "imageUrl": "/images/creatures/herald-of-gloom.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7730,7 +7730,7 @@ export const BESTIARY_DATA = [
   {
     "id": "high-voltage-elemental",
     "name": "High Voltage Elemental",
-    "imageUrl": "/images/creatures/High_Voltage_Elemental.gif",
+    "imageUrl": "/images/creatures/high-voltage-elemental.gif",
     "charmPoints": 25,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -7755,7 +7755,7 @@ export const BESTIARY_DATA = [
   {
     "id": "hive-overseer",
     "name": "Hive Overseer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hive_Overseer.gif",
+    "imageUrl": "/images/creatures/hive-overseer.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -7778,7 +7778,7 @@ export const BESTIARY_DATA = [
   {
     "id": "honour-guard",
     "name": "Honour Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Honour_Guard.gif",
+    "imageUrl": "/images/creatures/honour-guard.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7801,7 +7801,7 @@ export const BESTIARY_DATA = [
   {
     "id": "hot-dog",
     "name": "Hot Dog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hot_Dog.gif",
+    "imageUrl": "/images/creatures/hot-dog.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7824,7 +7824,7 @@ export const BESTIARY_DATA = [
   {
     "id": "hunter",
     "name": "Hunter",
-    "imageUrl": "/images/creatures/Hunter.gif",
+    "imageUrl": "/images/creatures/hunter.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7849,7 +7849,7 @@ export const BESTIARY_DATA = [
   {
     "id": "husky",
     "name": "Husky",
-    "imageUrl": "/images/creatures/Husky.gif",
+    "imageUrl": "/images/creatures/husky.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -7874,7 +7874,7 @@ export const BESTIARY_DATA = [
   {
     "id": "hyaena",
     "name": "Hyaena",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Hyaena.gif",
+    "imageUrl": "/images/creatures/hyaena.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -7897,7 +7897,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ice-dragon",
     "name": "Ice Dragon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ice_Dragon.gif",
+    "imageUrl": "/images/creatures/ice-dragon.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7920,7 +7920,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ice-golem",
     "name": "Ice Golem",
-    "imageUrl": "/images/creatures/Ice_Golem.gif",
+    "imageUrl": "/images/creatures/ice-golem.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -7945,7 +7945,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ice-witch",
     "name": "Ice Witch",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ice_Witch.gif",
+    "imageUrl": "/images/creatures/ice-witch.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -7968,7 +7968,7 @@ export const BESTIARY_DATA = [
   {
     "id": "iks-ahpututu",
     "name": "Iks Ahpututu",
-    "imageUrl": "/images/creatures/Iks_Ahpututu.gif",
+    "imageUrl": "/images/creatures/iks-ahpututu.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
     "officialDifficulty": "MEDIUM",
@@ -7994,7 +7994,7 @@ export const BESTIARY_DATA = [
   {
     "id": "infected-weeper",
     "name": "Infected Weeper",
-    "imageUrl": "/images/creatures/Infected_Weeper.gif",
+    "imageUrl": "/images/creatures/infected-weeper.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -8019,7 +8019,7 @@ export const BESTIARY_DATA = [
   {
     "id": "infernal-frog",
     "name": "Infernal Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Infernal_Frog.gif",
+    "imageUrl": "/images/creatures/infernal-frog.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8042,7 +8042,7 @@ export const BESTIARY_DATA = [
   {
     "id": "infernalist",
     "name": "Infernalist",
-    "imageUrl": "/images/creatures/Infernalist.gif",
+    "imageUrl": "/images/creatures/infernalist.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -8067,7 +8067,7 @@ export const BESTIARY_DATA = [
   {
     "id": "insect-swarm",
     "name": "Insect Swarm",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Insect_Swarm.gif",
+    "imageUrl": "/images/creatures/insect-swarm.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8090,7 +8090,7 @@ export const BESTIARY_DATA = [
   {
     "id": "insectoid-scout",
     "name": "Insectoid Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Insectoid_Scout.gif",
+    "imageUrl": "/images/creatures/insectoid-scout.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8113,7 +8113,7 @@ export const BESTIARY_DATA = [
   {
     "id": "insectoid-worker",
     "name": "Insectoid Worker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Insectoid_Worker.gif",
+    "imageUrl": "/images/creatures/insectoid-worker.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8136,7 +8136,7 @@ export const BESTIARY_DATA = [
   {
     "id": "iron-servant",
     "name": "Iron Servant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Iron_Servant.gif",
+    "imageUrl": "/images/creatures/iron-servant.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8159,7 +8159,7 @@ export const BESTIARY_DATA = [
   {
     "id": "iron-servant-replica",
     "name": "Iron Servant Replica",
-    "imageUrl": "/images/creatures/Iron_Servant_Replica.gif",
+    "imageUrl": "/images/creatures/iron-servant-replica.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8184,7 +8184,7 @@ export const BESTIARY_DATA = [
   {
     "id": "island-troll",
     "name": "Island Troll",
-    "imageUrl": "/images/creatures/Island_Troll.gif",
+    "imageUrl": "/images/creatures/island-troll.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8209,7 +8209,7 @@ export const BESTIARY_DATA = [
   {
     "id": "jellyfish",
     "name": "Jellyfish",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Jellyfish.gif",
+    "imageUrl": "/images/creatures/jellyfish.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8232,7 +8232,7 @@ export const BESTIARY_DATA = [
   {
     "id": "killer-caiman",
     "name": "Killer Caiman",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Killer_Caiman.gif",
+    "imageUrl": "/images/creatures/killer-caiman.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8255,7 +8255,7 @@ export const BESTIARY_DATA = [
   {
     "id": "killer-rabbit",
     "name": "Killer Rabbit",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Killer_Rabbit.gif",
+    "imageUrl": "/images/creatures/killer-rabbit.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8278,7 +8278,7 @@ export const BESTIARY_DATA = [
   {
     "id": "kollos",
     "name": "Kollos",
-    "imageUrl": "/images/creatures/Kollos.gif",
+    "imageUrl": "/images/creatures/kollos.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8303,7 +8303,7 @@ export const BESTIARY_DATA = [
   {
     "id": "kongra",
     "name": "Kongra",
-    "imageUrl": "/images/creatures/Kongra.gif",
+    "imageUrl": "/images/creatures/kongra.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8328,7 +8328,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ladybug",
     "name": "Ladybug",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Ladybug.gif",
+    "imageUrl": "/images/creatures/ladybug.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8351,7 +8351,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lancer-beetle",
     "name": "Lancer Beetle",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lancer_Beetle.gif",
+    "imageUrl": "/images/creatures/lancer-beetle.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8374,7 +8374,7 @@ export const BESTIARY_DATA = [
   {
     "id": "larva",
     "name": "Larva",
-    "imageUrl": "/images/creatures/Larva.gif",
+    "imageUrl": "/images/creatures/larva.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8399,7 +8399,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lava-golem",
     "name": "Lava Golem",
-    "imageUrl": "/images/creatures/Lava_Golem.gif",
+    "imageUrl": "/images/creatures/lava-golem.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -8424,7 +8424,7 @@ export const BESTIARY_DATA = [
   {
     "id": "leaf-golem",
     "name": "Leaf Golem",
-    "imageUrl": "/images/creatures/Leaf_Golem.gif",
+    "imageUrl": "/images/creatures/leaf-golem.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8449,7 +8449,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lich",
     "name": "Lich",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lich.gif",
+    "imageUrl": "/images/creatures/lich.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8472,7 +8472,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lion",
     "name": "Lion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lion.gif",
+    "imageUrl": "/images/creatures/lion.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8495,7 +8495,7 @@ export const BESTIARY_DATA = [
   {
     "id": "little-corym-charlatan",
     "name": "Little Corym Charlatan",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Little_Corym_Charlatan.gif",
+    "imageUrl": "/images/creatures/little-corym-charlatan.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8518,7 +8518,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-chosen",
     "name": "Lizard Chosen",
-    "imageUrl": "/images/creatures/Lizard_Chosen.gif",
+    "imageUrl": "/images/creatures/lizard-chosen.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8543,7 +8543,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-dragon-priest",
     "name": "Lizard Dragon Priest",
-    "imageUrl": "/images/creatures/Lizard_Dragon_Priest.gif",
+    "imageUrl": "/images/creatures/lizard-dragon-priest.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8568,7 +8568,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-high-guard",
     "name": "Lizard High Guard",
-    "imageUrl": "/images/creatures/Lizard_High_Guard.gif",
+    "imageUrl": "/images/creatures/lizard-high-guard.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8593,7 +8593,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-legionnaire",
     "name": "Lizard Legionnaire",
-    "imageUrl": "/images/creatures/Lizard_Legionnaire.gif",
+    "imageUrl": "/images/creatures/lizard-legionnaire.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8618,7 +8618,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-magistratus",
     "name": "Lizard Magistratus",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Magistratus.gif",
+    "imageUrl": "/images/creatures/lizard-magistratus.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8641,7 +8641,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-noble",
     "name": "Lizard Noble",
-    "imageUrl": "/images/creatures/Lizard_Noble.gif",
+    "imageUrl": "/images/creatures/lizard-noble.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -8666,7 +8666,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-sentinel",
     "name": "Lizard Sentinel",
-    "imageUrl": "/images/creatures/Lizard_Sentinel.gif",
+    "imageUrl": "/images/creatures/lizard-sentinel.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8691,7 +8691,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-snakecharmer",
     "name": "Lizard Snakecharmer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Lizard_Snakecharmer.gif",
+    "imageUrl": "/images/creatures/lizard-snakecharmer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8714,7 +8714,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-templar",
     "name": "Lizard Templar",
-    "imageUrl": "/images/creatures/Lizard_Templar.gif",
+    "imageUrl": "/images/creatures/lizard-templar.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8739,7 +8739,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lizard-zaogun",
     "name": "Lizard Zaogun",
-    "imageUrl": "/images/creatures/Lizard_Zaogun.gif",
+    "imageUrl": "/images/creatures/lizard-zaogun.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8764,7 +8764,7 @@ export const BESTIARY_DATA = [
   {
     "id": "loricate-orger",
     "name": "Loricate Orger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Loricate_Orger.gif",
+    "imageUrl": "/images/creatures/loricate-orger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8787,7 +8787,7 @@ export const BESTIARY_DATA = [
   {
     "id": "lumbering-carnivor",
     "name": "Lumbering Carnivor",
-    "imageUrl": "/images/creatures/Lumbering_Carnivor.gif",
+    "imageUrl": "/images/creatures/lumbering-carnivor.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -8812,7 +8812,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mad-scientist",
     "name": "Mad Scientist",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mad_Scientist.gif",
+    "imageUrl": "/images/creatures/mad-scientist.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -8835,7 +8835,7 @@ export const BESTIARY_DATA = [
   {
     "id": "magma-crawler",
     "name": "Magma Crawler",
-    "imageUrl": "/images/creatures/Magma_Crawler.gif",
+    "imageUrl": "/images/creatures/magma-crawler.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -8860,7 +8860,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mammoth",
     "name": "Mammoth",
-    "imageUrl": "/images/creatures/Mammoth.gif",
+    "imageUrl": "/images/creatures/mammoth.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8885,7 +8885,7 @@ export const BESTIARY_DATA = [
   {
     "id": "manta-ray",
     "name": "Manta Ray",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Manta_Ray.gif",
+    "imageUrl": "/images/creatures/manta-ray.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8908,7 +8908,7 @@ export const BESTIARY_DATA = [
   {
     "id": "marsh-stalker",
     "name": "Marsh Stalker",
-    "imageUrl": "/images/creatures/Marsh_Stalker.gif",
+    "imageUrl": "/images/creatures/marsh-stalker.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -8933,7 +8933,7 @@ export const BESTIARY_DATA = [
   {
     "id": "massive-earth-elemental",
     "name": "Massive Earth Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Massive_Earth_Elemental.gif",
+    "imageUrl": "/images/creatures/massive-earth-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8956,7 +8956,7 @@ export const BESTIARY_DATA = [
   {
     "id": "massive-energy-elemental",
     "name": "Massive Energy Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Massive_Energy_Elemental.gif",
+    "imageUrl": "/images/creatures/massive-energy-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -8979,7 +8979,7 @@ export const BESTIARY_DATA = [
   {
     "id": "massive-fire-elemental",
     "name": "Massive Fire Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Massive_Fire_Elemental.gif",
+    "imageUrl": "/images/creatures/massive-fire-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9002,7 +9002,7 @@ export const BESTIARY_DATA = [
   {
     "id": "massive-water-elemental",
     "name": "Massive Water Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Massive_Water_Elemental.gif",
+    "imageUrl": "/images/creatures/massive-water-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9025,7 +9025,7 @@ export const BESTIARY_DATA = [
   {
     "id": "menancing-carnivor",
     "name": "Menancing Carnivor",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Menancing_Carnivor.gif",
+    "imageUrl": "/images/creatures/menancing-carnivor.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -9039,7 +9039,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mercury-blob",
     "name": "Mercury Blob",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mercury_Blob.gif",
+    "imageUrl": "/images/creatures/mercury-blob.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9062,7 +9062,7 @@ export const BESTIARY_DATA = [
   {
     "id": "merlkin",
     "name": "Merlkin",
-    "imageUrl": "/images/creatures/Merlkin.gif",
+    "imageUrl": "/images/creatures/merlkin.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9087,7 +9087,7 @@ export const BESTIARY_DATA = [
   {
     "id": "metal-gargoyle",
     "name": "Metal Gargoyle",
-    "imageUrl": "/images/creatures/Metal_Gargoyle.gif",
+    "imageUrl": "/images/creatures/metal-gargoyle.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9112,7 +9112,7 @@ export const BESTIARY_DATA = [
   {
     "id": "midnight-panther",
     "name": "Midnight Panther",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Midnight_Panther.gif",
+    "imageUrl": "/images/creatures/midnight-panther.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9135,7 +9135,7 @@ export const BESTIARY_DATA = [
   {
     "id": "midnight-spawn",
     "name": "Midnight Spawn",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Midnight_Spawn.gif",
+    "imageUrl": "/images/creatures/midnight-spawn.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9158,7 +9158,7 @@ export const BESTIARY_DATA = [
   {
     "id": "midnight-warrior",
     "name": "Midnight Warrior",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Midnight_Warrior.gif",
+    "imageUrl": "/images/creatures/midnight-warrior.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9181,7 +9181,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur",
     "name": "Minotaur",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur.gif",
+    "imageUrl": "/images/creatures/minotaur.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9204,7 +9204,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-amazon",
     "name": "Minotaur Amazon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Amazon.gif",
+    "imageUrl": "/images/creatures/minotaur-amazon.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -9227,7 +9227,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-archer",
     "name": "Minotaur Archer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Archer.gif",
+    "imageUrl": "/images/creatures/minotaur-archer.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9250,7 +9250,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-cult-follower",
     "name": "Minotaur Cult Follower",
-    "imageUrl": "/images/creatures/Minotaur_Cult_Follower.gif",
+    "imageUrl": "/images/creatures/minotaur-cult-follower.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9275,7 +9275,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-cult-propher",
     "name": "Minotaur Cult Propher",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Cult_Propher.gif",
+    "imageUrl": "/images/creatures/minotaur-cult-propher.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9289,7 +9289,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-cult-zealot",
     "name": "Minotaur Cult Zealot",
-    "imageUrl": "/images/creatures/Minotaur_Cult_Zealot.gif",
+    "imageUrl": "/images/creatures/minotaur-cult-zealot.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9314,7 +9314,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-guard",
     "name": "Minotaur Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Guard.gif",
+    "imageUrl": "/images/creatures/minotaur-guard.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9337,7 +9337,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-hunter",
     "name": "Minotaur Hunter",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Hunter.gif",
+    "imageUrl": "/images/creatures/minotaur-hunter.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9360,7 +9360,7 @@ export const BESTIARY_DATA = [
   {
     "id": "minotaur-mage",
     "name": "Minotaur Mage",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Minotaur_Mage.gif",
+    "imageUrl": "/images/creatures/minotaur-mage.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9383,7 +9383,7 @@ export const BESTIARY_DATA = [
   {
     "id": "misguided-bully",
     "name": "Misguided Bully",
-    "imageUrl": "/images/creatures/Misguided_Bully.gif",
+    "imageUrl": "/images/creatures/misguided-bully.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9408,7 +9408,7 @@ export const BESTIARY_DATA = [
   {
     "id": "misguided-thief",
     "name": "Misguided Thief",
-    "imageUrl": "/images/creatures/Misguided_Thief.gif",
+    "imageUrl": "/images/creatures/misguided-thief.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9433,7 +9433,7 @@ export const BESTIARY_DATA = [
   {
     "id": "modified-gnarlhound",
     "name": "Modified Gnarlhound",
-    "imageUrl": "/images/creatures/Modified_Gnarlhound.gif",
+    "imageUrl": "/images/creatures/modified-gnarlhound.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -9458,7 +9458,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mole",
     "name": "Mole",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mole.gif",
+    "imageUrl": "/images/creatures/mole.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -9481,7 +9481,7 @@ export const BESTIARY_DATA = [
   {
     "id": "moohtant",
     "name": "Moohtant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Moohtant.gif",
+    "imageUrl": "/images/creatures/moohtant.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9504,7 +9504,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mummy",
     "name": "Mummy",
-    "imageUrl": "/images/creatures/Mummy.gif",
+    "imageUrl": "/images/creatures/mummy.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -9529,7 +9529,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mushroom-sniffer",
     "name": "Mushroom Sniffer",
-    "imageUrl": "/images/creatures/Mushroom_Sniffer.gif",
+    "imageUrl": "/images/creatures/mushroom-sniffer.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -9554,7 +9554,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mutated-bat",
     "name": "Mutated Bat",
-    "imageUrl": "/images/creatures/Mutated_Bat.gif",
+    "imageUrl": "/images/creatures/mutated-bat.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9579,7 +9579,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mutated-human",
     "name": "Mutated Human",
-    "imageUrl": "/images/creatures/Mutated_Human.gif",
+    "imageUrl": "/images/creatures/mutated-human.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9604,7 +9604,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mutated-rat",
     "name": "Mutated Rat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Rat.gif",
+    "imageUrl": "/images/creatures/mutated-rat.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9627,7 +9627,7 @@ export const BESTIARY_DATA = [
   {
     "id": "mutated-tiger",
     "name": "Mutated Tiger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Mutated_Tiger.gif",
+    "imageUrl": "/images/creatures/mutated-tiger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9650,7 +9650,7 @@ export const BESTIARY_DATA = [
   {
     "id": "necromancer",
     "name": "Necromancer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Necromancer.gif",
+    "imageUrl": "/images/creatures/necromancer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9673,7 +9673,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nightfiend",
     "name": "Nightfiend",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nightfiend.gif",
+    "imageUrl": "/images/creatures/nightfiend.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9696,7 +9696,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nightslayer",
     "name": "Nightslayer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nightslayer.gif",
+    "imageUrl": "/images/creatures/nightslayer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9719,7 +9719,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nightstalker",
     "name": "Nightstalker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nightstalker.gif",
+    "imageUrl": "/images/creatures/nightstalker.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9742,7 +9742,7 @@ export const BESTIARY_DATA = [
   {
     "id": "noble-lion",
     "name": "Noble Lion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Noble_Lion.gif",
+    "imageUrl": "/images/creatures/noble-lion.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9765,7 +9765,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nomad-blue",
     "name": "Nomad (Blue)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(blue).gif",
+    "imageUrl": "/images/creatures/nomad-blue.gif",
     "charmPoints": 15,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -9790,7 +9790,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nomad-female",
     "name": "Nomad (Female)",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Nomad_(female).gif",
+    "imageUrl": "/images/creatures/nomad-female.gif",
     "charmPoints": 15,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -9815,7 +9815,7 @@ export const BESTIARY_DATA = [
   {
     "id": "northern-pike",
     "name": "Northern Pike",
-    "imageUrl": "/images/creatures/Northern_Pike.gif",
+    "imageUrl": "/images/creatures/northern-pike.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -9838,7 +9838,7 @@ export const BESTIARY_DATA = [
   {
     "id": "novice-of-the-cult",
     "name": "Novice of the Cult",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Novice_Of_The_Cult.gif",
+    "imageUrl": "/images/creatures/novice-of-the-cult.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -9863,7 +9863,7 @@ export const BESTIARY_DATA = [
   {
     "id": "nymph",
     "name": "Nymph",
-    "imageUrl": "/images/creatures/Nymph.gif",
+    "imageUrl": "/images/creatures/nymph.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9888,7 +9888,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ogre-brute",
     "name": "Ogre Brute",
-    "imageUrl": "/images/creatures/Ogre_Brute.gif",
+    "imageUrl": "/images/creatures/ogre-brute.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9913,7 +9913,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ogre-savage",
     "name": "Ogre Savage",
-    "imageUrl": "/images/creatures/Ogre_Savage.gif",
+    "imageUrl": "/images/creatures/ogre-savage.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9938,7 +9938,7 @@ export const BESTIARY_DATA = [
   {
     "id": "ogre-shaman",
     "name": "Ogre Shaman",
-    "imageUrl": "/images/creatures/Ogre_Shaman.gif",
+    "imageUrl": "/images/creatures/ogre-shaman.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -9963,7 +9963,7 @@ export const BESTIARY_DATA = [
   {
     "id": "omnivora",
     "name": "Omnivora",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Omnivora.gif",
+    "imageUrl": "/images/creatures/omnivora.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -9986,7 +9986,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc",
     "name": "Orc",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc.gif",
+    "imageUrl": "/images/creatures/orc.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10009,7 +10009,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-berserker",
     "name": "Orc Berserker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Berserker.gif",
+    "imageUrl": "/images/creatures/orc-berserker.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10032,7 +10032,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-cult-fanatic",
     "name": "Orc Cult Fanatic",
-    "imageUrl": "/images/creatures/Orc_Cult_Fanatic.gif",
+    "imageUrl": "/images/creatures/orc-cult-fanatic.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10057,7 +10057,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-cult-inquisitor",
     "name": "Orc Cult Inquisitor",
-    "imageUrl": "/images/creatures/Orc_Cult_Inquisitor.gif",
+    "imageUrl": "/images/creatures/orc-cult-inquisitor.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10082,7 +10082,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-cult-minion",
     "name": "Orc Cult Minion",
-    "imageUrl": "/images/creatures/Orc_Cult_Minion.gif",
+    "imageUrl": "/images/creatures/orc-cult-minion.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10107,7 +10107,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-cult-priest",
     "name": "Orc Cult Priest",
-    "imageUrl": "/images/creatures/Orc_Cult_Priest.gif",
+    "imageUrl": "/images/creatures/orc-cult-priest.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10132,7 +10132,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-cultist",
     "name": "Orc Cultist",
-    "imageUrl": "/images/creatures/Orc_Cultist.gif",
+    "imageUrl": "/images/creatures/orc-cultist.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10157,7 +10157,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-leader",
     "name": "Orc Leader",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Leader.gif",
+    "imageUrl": "/images/creatures/orc-leader.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10180,7 +10180,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-marauder",
     "name": "Orc Marauder",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Marauder.gif",
+    "imageUrl": "/images/creatures/orc-marauder.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10203,7 +10203,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-rider",
     "name": "Orc Rider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Rider.gif",
+    "imageUrl": "/images/creatures/orc-rider.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10226,7 +10226,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-shaman",
     "name": "Orc Shaman",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Shaman.gif",
+    "imageUrl": "/images/creatures/orc-shaman.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10249,7 +10249,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-spearman",
     "name": "Orc Spearman",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Spearman.gif",
+    "imageUrl": "/images/creatures/orc-spearman.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10272,7 +10272,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-warlord",
     "name": "Orc Warlord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Warlord.gif",
+    "imageUrl": "/images/creatures/orc-warlord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10295,7 +10295,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orc-warrior",
     "name": "Orc Warrior",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orc_Warrior.gif",
+    "imageUrl": "/images/creatures/orc-warrior.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10318,7 +10318,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orchid-frog",
     "name": "Orchid Frog",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orchid_Frog.gif",
+    "imageUrl": "/images/creatures/orchid-frog.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10341,7 +10341,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orclops-doomhauler",
     "name": "Orclops Doomhauler",
-    "imageUrl": "/images/creatures/Orclops_Doomhauler.gif",
+    "imageUrl": "/images/creatures/orclops-doomhauler.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10366,7 +10366,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orclops-ravager",
     "name": "Orclops Ravager",
-    "imageUrl": "/images/creatures/Orclops_Ravager.gif",
+    "imageUrl": "/images/creatures/orclops-ravager.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10391,7 +10391,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orewalker",
     "name": "Orewalker",
-    "imageUrl": "/images/creatures/Orewalker.gif",
+    "imageUrl": "/images/creatures/orewalker.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -10416,7 +10416,7 @@ export const BESTIARY_DATA = [
   {
     "id": "orger",
     "name": "Orger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Orger.gif",
+    "imageUrl": "/images/creatures/orger.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10439,7 +10439,7 @@ export const BESTIARY_DATA = [
   {
     "id": "panda",
     "name": "Panda",
-    "imageUrl": "/images/creatures/Panda.gif",
+    "imageUrl": "/images/creatures/panda.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10464,7 +10464,7 @@ export const BESTIARY_DATA = [
   {
     "id": "parrot",
     "name": "Parrot",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Parrot.gif",
+    "imageUrl": "/images/creatures/parrot.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -10487,7 +10487,7 @@ export const BESTIARY_DATA = [
   {
     "id": "penguin",
     "name": "Penguin",
-    "imageUrl": "/images/creatures/Penguin.gif",
+    "imageUrl": "/images/creatures/penguin.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -10512,7 +10512,7 @@ export const BESTIARY_DATA = [
   {
     "id": "percht",
     "name": "Percht",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Percht.gif",
+    "imageUrl": "/images/creatures/percht.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10535,7 +10535,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pig",
     "name": "Pig",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pig.gif",
+    "imageUrl": "/images/creatures/pig.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -10558,7 +10558,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pigeon",
     "name": "Pigeon",
-    "imageUrl": "/images/creatures/Pigeon.gif",
+    "imageUrl": "/images/creatures/pigeon.gif",
     "charmPoints": 1,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -10583,7 +10583,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirat-bombardier",
     "name": "Pirat Bombardier",
-    "imageUrl": "/images/creatures/Pirat_Bombardier.gif",
+    "imageUrl": "/images/creatures/pirat-bombardier.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10608,7 +10608,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirat-cutthroat",
     "name": "Pirat Cutthroat",
-    "imageUrl": "/images/creatures/Pirat_Cutthroat.gif",
+    "imageUrl": "/images/creatures/pirat-cutthroat.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10633,7 +10633,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirat-mate",
     "name": "Pirat Mate",
-    "imageUrl": "/images/creatures/Pirat_Mate.gif",
+    "imageUrl": "/images/creatures/pirat-mate.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10658,7 +10658,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirat-scoundrel",
     "name": "Pirat Scoundrel",
-    "imageUrl": "/images/creatures/Pirat_Scoundrel.gif",
+    "imageUrl": "/images/creatures/pirat-scoundrel.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10683,7 +10683,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirate-corsair",
     "name": "Pirate Corsair",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Corsair.gif",
+    "imageUrl": "/images/creatures/pirate-corsair.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10706,7 +10706,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirate-cutthroat",
     "name": "Pirate Cutthroat",
-    "imageUrl": "/images/creatures/Pirate_Cutthroat.gif",
+    "imageUrl": "/images/creatures/pirate-cutthroat.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10731,7 +10731,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirate-ghost",
     "name": "Pirate Ghost",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Ghost.gif",
+    "imageUrl": "/images/creatures/pirate-ghost.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10754,7 +10754,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirate-marauder",
     "name": "Pirate Marauder",
-    "imageUrl": "/images/creatures/Pirate_Marauder.gif",
+    "imageUrl": "/images/creatures/pirate-marauder.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -10779,7 +10779,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pirate-skeleton",
     "name": "Pirate Skeleton",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Pirate_Skeleton.gif",
+    "imageUrl": "/images/creatures/pirate-skeleton.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10802,7 +10802,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pixie",
     "name": "Pixie",
-    "imageUrl": "/images/creatures/Pixie.gif",
+    "imageUrl": "/images/creatures/pixie.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10827,7 +10827,7 @@ export const BESTIARY_DATA = [
   {
     "id": "poacher",
     "name": "Poacher",
-    "imageUrl": "/images/creatures/Poacher.gif",
+    "imageUrl": "/images/creatures/poacher.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -10852,7 +10852,7 @@ export const BESTIARY_DATA = [
   {
     "id": "poison-spider",
     "name": "Poison Spider",
-    "imageUrl": "/images/creatures/Poison_Spider.gif",
+    "imageUrl": "/images/creatures/poison-spider.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -10877,7 +10877,7 @@ export const BESTIARY_DATA = [
   {
     "id": "polar-bear",
     "name": "Polar Bear",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Polar_Bear.gif",
+    "imageUrl": "/images/creatures/polar-bear.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -10900,7 +10900,7 @@ export const BESTIARY_DATA = [
   {
     "id": "pooka",
     "name": "Pooka",
-    "imageUrl": "/images/creatures/Pooka.gif",
+    "imageUrl": "/images/creatures/pooka.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10925,7 +10925,7 @@ export const BESTIARY_DATA = [
   {
     "id": "priestess",
     "name": "Priestess",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Priestess.gif",
+    "imageUrl": "/images/creatures/priestess.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10948,7 +10948,7 @@ export const BESTIARY_DATA = [
   {
     "id": "putrid-mummy",
     "name": "Putrid Mummy",
-    "imageUrl": "/images/creatures/Putrid_Mummy.gif",
+    "imageUrl": "/images/creatures/putrid-mummy.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -10973,7 +10973,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-constrictor",
     "name": "Quara Constrictor",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Constrictor.gif",
+    "imageUrl": "/images/creatures/quara-constrictor.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -10996,7 +10996,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-constrictor-scout",
     "name": "Quara Constrictor Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Constrictor_Scout.gif",
+    "imageUrl": "/images/creatures/quara-constrictor-scout.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11019,7 +11019,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-hydromancer",
     "name": "Quara Hydromancer",
-    "imageUrl": "/images/creatures/Quara_Hydromancer.gif",
+    "imageUrl": "/images/creatures/quara-hydromancer.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -11044,7 +11044,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-hydromancer-scout",
     "name": "Quara Hydromancer Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Hydromancer_Scout.gif",
+    "imageUrl": "/images/creatures/quara-hydromancer-scout.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11067,7 +11067,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-mantassin",
     "name": "Quara Mantassin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Mantassin.gif",
+    "imageUrl": "/images/creatures/quara-mantassin.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11090,7 +11090,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-mantassin-scout",
     "name": "Quara Mantassin Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Mantassin_Scout.gif",
+    "imageUrl": "/images/creatures/quara-mantassin-scout.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -11113,7 +11113,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-pincher",
     "name": "Quara Pincher",
-    "imageUrl": "/images/creatures/Quara_Pincher.gif",
+    "imageUrl": "/images/creatures/quara-pincher.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -11138,7 +11138,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-pincher-scout",
     "name": "Quara Pincher Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Pincher_Scout.gif",
+    "imageUrl": "/images/creatures/quara-pincher-scout.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11161,7 +11161,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-predator",
     "name": "Quara Predator",
-    "imageUrl": "/images/creatures/Quara_Predator.gif",
+    "imageUrl": "/images/creatures/quara-predator.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -11186,7 +11186,7 @@ export const BESTIARY_DATA = [
   {
     "id": "quara-predator-scout",
     "name": "Quara Predator Scout",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Quara_Predator_Scout.gif",
+    "imageUrl": "/images/creatures/quara-predator-scout.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11209,7 +11209,7 @@ export const BESTIARY_DATA = [
   {
     "id": "rabbit",
     "name": "Rabbit",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rabbit.gif",
+    "imageUrl": "/images/creatures/rabbit.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -11232,7 +11232,7 @@ export const BESTIARY_DATA = [
   {
     "id": "raging-fire",
     "name": "Raging Fire",
-    "imageUrl": "/images/creatures/Raging_Fire.gif",
+    "imageUrl": "/images/creatures/raging-fire.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
     "officialDifficulty": "MEDIUM",
@@ -11258,7 +11258,7 @@ export const BESTIARY_DATA = [
   {
     "id": "rat",
     "name": "Rat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rat.gif",
+    "imageUrl": "/images/creatures/rat.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -11281,7 +11281,7 @@ export const BESTIARY_DATA = [
   {
     "id": "redeemed-soul",
     "name": "Redeemed Soul",
-    "imageUrl": "/images/creatures/Redeemed_Soul.gif",
+    "imageUrl": "/images/creatures/redeemed-soul.gif",
     "charmPoints": 15,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -11306,7 +11306,7 @@ export const BESTIARY_DATA = [
   {
     "id": "renegade-quara-constrictor",
     "name": "Renegade Quara Constrictor",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Renegade_Quara_Constrictor.gif",
+    "imageUrl": "/images/creatures/renegade-quara-constrictor.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11329,7 +11329,7 @@ export const BESTIARY_DATA = [
   {
     "id": "renegade-quara-hydromancer",
     "name": "Renegade Quara Hydromancer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Renegade_Quara_Hydromancer.gif",
+    "imageUrl": "/images/creatures/renegade-quara-hydromancer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11352,7 +11352,7 @@ export const BESTIARY_DATA = [
   {
     "id": "renegade-quara-mantassin",
     "name": "Renegade Quara Mantassin",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Renegade_Quara_Mantassin.gif",
+    "imageUrl": "/images/creatures/renegade-quara-mantassin.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11375,7 +11375,7 @@ export const BESTIARY_DATA = [
   {
     "id": "renegade-quara-pincher",
     "name": "Renegade Quara Pincher",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Renegade_Quara_Pincher.gif",
+    "imageUrl": "/images/creatures/renegade-quara-pincher.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11398,7 +11398,7 @@ export const BESTIARY_DATA = [
   {
     "id": "renegade-quara-predator",
     "name": "Renegade Quara Predator",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Renegade_Quara_Predator.gif",
+    "imageUrl": "/images/creatures/renegade-quara-predator.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11421,7 +11421,7 @@ export const BESTIARY_DATA = [
   {
     "id": "roaring-lion",
     "name": "Roaring Lion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Roaring_Lion.gif",
+    "imageUrl": "/images/creatures/roaring-lion.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11444,7 +11444,7 @@ export const BESTIARY_DATA = [
   {
     "id": "roast-pork",
     "name": "Roast Pork",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Roast_Pork.gif",
+    "imageUrl": "/images/creatures/roast-pork.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11467,7 +11467,7 @@ export const BESTIARY_DATA = [
   {
     "id": "rorc",
     "name": "Rorc",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Rorc.gif",
+    "imageUrl": "/images/creatures/rorc.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -11490,7 +11490,7 @@ export const BESTIARY_DATA = [
   {
     "id": "rot-elemental",
     "name": "Rot Elemental",
-    "imageUrl": "/images/creatures/Rot_Elemental.gif",
+    "imageUrl": "/images/creatures/rot-elemental.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -11515,7 +11515,7 @@ export const BESTIARY_DATA = [
   {
     "id": "rotworm",
     "name": "Rotworm",
-    "imageUrl": "/images/creatures/Rotworm.gif",
+    "imageUrl": "/images/creatures/rotworm.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11540,7 +11540,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sacred-spider",
     "name": "Sacred Spider",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sacred_Spider.gif",
+    "imageUrl": "/images/creatures/sacred-spider.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11563,7 +11563,7 @@ export const BESTIARY_DATA = [
   {
     "id": "salamander",
     "name": "Salamander",
-    "imageUrl": "/images/creatures/Salamander.gif",
+    "imageUrl": "/images/creatures/salamander.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11588,7 +11588,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sandcrawler",
     "name": "Sandcrawler",
-    "imageUrl": "/images/creatures/Sandcrawler.gif",
+    "imageUrl": "/images/creatures/sandcrawler.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11613,7 +11613,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sandstone-scorpion",
     "name": "Sandstone Scorpion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sandstone_Scorpion.gif",
+    "imageUrl": "/images/creatures/sandstone-scorpion.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11636,7 +11636,7 @@ export const BESTIARY_DATA = [
   {
     "id": "scarab",
     "name": "Scarab",
-    "imageUrl": "/images/creatures/Scarab.gif",
+    "imageUrl": "/images/creatures/scarab.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11661,7 +11661,7 @@ export const BESTIARY_DATA = [
   {
     "id": "schiach",
     "name": "Schiach",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Schiach.gif",
+    "imageUrl": "/images/creatures/schiach.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11684,7 +11684,7 @@ export const BESTIARY_DATA = [
   {
     "id": "scorpion",
     "name": "Scorpion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Scorpion.gif",
+    "imageUrl": "/images/creatures/scorpion.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -11707,7 +11707,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sea-serpent",
     "name": "Sea Serpent",
-    "imageUrl": "/images/creatures/Sea_Serpent.gif",
+    "imageUrl": "/images/creatures/sea-serpent.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -11732,7 +11732,7 @@ export const BESTIARY_DATA = [
   {
     "id": "seacrest-serpent",
     "name": "Seacrest Serpent",
-    "imageUrl": "/images/creatures/Seacrest_Serpent.gif",
+    "imageUrl": "/images/creatures/seacrest-serpent.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -11757,7 +11757,7 @@ export const BESTIARY_DATA = [
   {
     "id": "seagull",
     "name": "Seagull",
-    "imageUrl": "/images/creatures/Seagull.gif",
+    "imageUrl": "/images/creatures/seagull.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11782,7 +11782,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shaburak-demon",
     "name": "Shaburak Demon",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shaburak_Demon.gif",
+    "imageUrl": "/images/creatures/shaburak-demon.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11805,7 +11805,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shaburak-lord",
     "name": "Shaburak Lord",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shaburak_Lord.gif",
+    "imageUrl": "/images/creatures/shaburak-lord.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11828,7 +11828,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shaburak-prince",
     "name": "Shaburak Prince",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shaburak_Prince.gif",
+    "imageUrl": "/images/creatures/shaburak-prince.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11851,7 +11851,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shadow-hound",
     "name": "Shadow Hound",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shadow_Hound.gif",
+    "imageUrl": "/images/creatures/shadow-hound.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11874,7 +11874,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shadow-pupil",
     "name": "Shadow Pupil",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shadow_Pupil.gif",
+    "imageUrl": "/images/creatures/shadow-pupil.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11897,7 +11897,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shaper-matriarch",
     "name": "Shaper Matriarch",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shaper_Matriarch.gif",
+    "imageUrl": "/images/creatures/shaper-matriarch.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11920,7 +11920,7 @@ export const BESTIARY_DATA = [
   {
     "id": "shark",
     "name": "Shark",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Shark.gif",
+    "imageUrl": "/images/creatures/shark.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -11943,7 +11943,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sheep",
     "name": "Sheep",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Sheep.gif",
+    "imageUrl": "/images/creatures/sheep.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -11966,7 +11966,7 @@ export const BESTIARY_DATA = [
   {
     "id": "sibang",
     "name": "Sibang",
-    "imageUrl": "/images/creatures/Sibang.gif",
+    "imageUrl": "/images/creatures/sibang.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -11991,7 +11991,7 @@ export const BESTIARY_DATA = [
   {
     "id": "silver-rabbit",
     "name": "Silver Rabbit",
-    "imageUrl": "/images/creatures/Silver_Rabbit.gif",
+    "imageUrl": "/images/creatures/silver-rabbit.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12016,7 +12016,7 @@ export const BESTIARY_DATA = [
   {
     "id": "skeleton",
     "name": "Skeleton",
-    "imageUrl": "/images/creatures/Skeleton.gif",
+    "imageUrl": "/images/creatures/skeleton.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12041,7 +12041,7 @@ export const BESTIARY_DATA = [
   {
     "id": "skeleton-warrior",
     "name": "Skeleton Warrior",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Skeleton_Warrior.gif",
+    "imageUrl": "/images/creatures/skeleton-warrior.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12064,7 +12064,7 @@ export const BESTIARY_DATA = [
   {
     "id": "skunk",
     "name": "Skunk",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Skunk.gif",
+    "imageUrl": "/images/creatures/skunk.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -12087,7 +12087,7 @@ export const BESTIARY_DATA = [
   {
     "id": "slime",
     "name": "Slime",
-    "imageUrl": "/images/creatures/Slime.gif",
+    "imageUrl": "/images/creatures/slime.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12112,7 +12112,7 @@ export const BESTIARY_DATA = [
   {
     "id": "slug",
     "name": "Slug",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Slug.gif",
+    "imageUrl": "/images/creatures/slug.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12135,7 +12135,7 @@ export const BESTIARY_DATA = [
   {
     "id": "smuggler",
     "name": "Smuggler",
-    "imageUrl": "/images/creatures/Smuggler.gif",
+    "imageUrl": "/images/creatures/smuggler.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12160,7 +12160,7 @@ export const BESTIARY_DATA = [
   {
     "id": "snake",
     "name": "Snake",
-    "imageUrl": "/images/creatures/Snake.gif",
+    "imageUrl": "/images/creatures/snake.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12185,7 +12185,7 @@ export const BESTIARY_DATA = [
   {
     "id": "souleater",
     "name": "Souleater",
-    "imageUrl": "/images/creatures/Souleater.gif",
+    "imageUrl": "/images/creatures/souleater.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12210,7 +12210,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spider",
     "name": "Spider",
-    "imageUrl": "/images/creatures/Spider.gif",
+    "imageUrl": "/images/creatures/spider.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12235,7 +12235,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spidris",
     "name": "Spidris",
-    "imageUrl": "/images/creatures/Spidris.gif",
+    "imageUrl": "/images/creatures/spidris.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12260,7 +12260,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spidris-elite",
     "name": "Spidris Elite",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spidris_Elite.gif",
+    "imageUrl": "/images/creatures/spidris-elite.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -12283,7 +12283,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spiky-carnivor",
     "name": "Spiky Carnivor",
-    "imageUrl": "/images/creatures/Spiky_Carnivor.gif",
+    "imageUrl": "/images/creatures/spiky-carnivor.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -12308,7 +12308,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spit-nettle",
     "name": "Spit Nettle",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Spit_Nettle.gif",
+    "imageUrl": "/images/creatures/spit-nettle.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12331,7 +12331,7 @@ export const BESTIARY_DATA = [
   {
     "id": "spitter",
     "name": "Spitter",
-    "imageUrl": "/images/creatures/Spitter.gif",
+    "imageUrl": "/images/creatures/spitter.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12356,7 +12356,7 @@ export const BESTIARY_DATA = [
   {
     "id": "squidgy-slime",
     "name": "Squidgy Slime",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Squidgy_Slime.gif",
+    "imageUrl": "/images/creatures/squidgy-slime.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12379,7 +12379,7 @@ export const BESTIARY_DATA = [
   {
     "id": "squirrel",
     "name": "Squirrel",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Squirrel.gif",
+    "imageUrl": "/images/creatures/squirrel.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -12402,7 +12402,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stalker",
     "name": "Stalker",
-    "imageUrl": "/images/creatures/Stalker.gif",
+    "imageUrl": "/images/creatures/stalker.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12427,7 +12427,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stampor",
     "name": "Stampor",
-    "imageUrl": "/images/creatures/Stampor.gif",
+    "imageUrl": "/images/creatures/stampor.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12452,7 +12452,7 @@ export const BESTIARY_DATA = [
   {
     "id": "starving-wolf",
     "name": "Starving Wolf",
-    "imageUrl": "/images/creatures/Starving_Wolf.gif",
+    "imageUrl": "/images/creatures/starving-wolf.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12477,7 +12477,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stone-devourer",
     "name": "Stone Devourer",
-    "imageUrl": "/images/creatures/Stone_Devourer.gif",
+    "imageUrl": "/images/creatures/stone-devourer.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -12502,7 +12502,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stone-golem",
     "name": "Stone Golem",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stone_Golem.gif",
+    "imageUrl": "/images/creatures/stone-golem.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12525,7 +12525,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stone-rhino",
     "name": "Stone Rhino",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Stone_Rhino.gif",
+    "imageUrl": "/images/creatures/stone-rhino.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -12548,7 +12548,7 @@ export const BESTIARY_DATA = [
   {
     "id": "stonerefiner",
     "name": "Stonerefiner",
-    "imageUrl": "/images/creatures/Stonerefiner.gif",
+    "imageUrl": "/images/creatures/stonerefiner.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12573,7 +12573,7 @@ export const BESTIARY_DATA = [
   {
     "id": "swamp-troll",
     "name": "Swamp Troll",
-    "imageUrl": "/images/creatures/Swamp_Troll.gif",
+    "imageUrl": "/images/creatures/swamp-troll.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12598,7 +12598,7 @@ export const BESTIARY_DATA = [
   {
     "id": "swampling",
     "name": "Swampling",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swampling.gif",
+    "imageUrl": "/images/creatures/swampling.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12621,7 +12621,7 @@ export const BESTIARY_DATA = [
   {
     "id": "swan-maiden",
     "name": "Swan Maiden",
-    "imageUrl": "/images/creatures/Swan_Maiden.gif",
+    "imageUrl": "/images/creatures/swan-maiden.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12646,7 +12646,7 @@ export const BESTIARY_DATA = [
   {
     "id": "swarmer",
     "name": "Swarmer",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Swarmer.gif",
+    "imageUrl": "/images/creatures/swarmer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -12669,7 +12669,7 @@ export const BESTIARY_DATA = [
   {
     "id": "tainted-soul",
     "name": "Tainted Soul",
-    "imageUrl": "/images/creatures/Tainted_Soul.gif",
+    "imageUrl": "/images/creatures/tainted-soul.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12694,7 +12694,7 @@ export const BESTIARY_DATA = [
   {
     "id": "tarnished-spirit",
     "name": "Tarnished Spirit",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tarnished_Spirit.gif",
+    "imageUrl": "/images/creatures/tarnished-spirit.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12717,7 +12717,7 @@ export const BESTIARY_DATA = [
   {
     "id": "terramite",
     "name": "Terramite",
-    "imageUrl": "/images/creatures/Terramite.gif",
+    "imageUrl": "/images/creatures/terramite.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12742,7 +12742,7 @@ export const BESTIARY_DATA = [
   {
     "id": "terrified-elephant",
     "name": "Terrified Elephant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Terrified_Elephant.gif",
+    "imageUrl": "/images/creatures/terrified-elephant.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12765,7 +12765,7 @@ export const BESTIARY_DATA = [
   {
     "id": "terror-bird",
     "name": "Terror Bird",
-    "imageUrl": "/images/creatures/Terror_Bird.gif",
+    "imageUrl": "/images/creatures/terror-bird.gif",
     "charmPoints": 15,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -12790,7 +12790,7 @@ export const BESTIARY_DATA = [
   {
     "id": "thornback-tortoise",
     "name": "Thornback Tortoise",
-    "imageUrl": "/images/creatures/Thornback_Tortoise.gif",
+    "imageUrl": "/images/creatures/thornback-tortoise.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12815,7 +12815,7 @@ export const BESTIARY_DATA = [
   {
     "id": "thornfire-wolf",
     "name": "Thornfire Wolf",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Thornfire_Wolf.gif",
+    "imageUrl": "/images/creatures/thornfire-wolf.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -12838,7 +12838,7 @@ export const BESTIARY_DATA = [
   {
     "id": "tiger",
     "name": "Tiger",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tiger.gif",
+    "imageUrl": "/images/creatures/tiger.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12861,7 +12861,7 @@ export const BESTIARY_DATA = [
   {
     "id": "toad",
     "name": "Toad",
-    "imageUrl": "/images/creatures/Toad.gif",
+    "imageUrl": "/images/creatures/toad.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12886,7 +12886,7 @@ export const BESTIARY_DATA = [
   {
     "id": "tomb-servant",
     "name": "Tomb Servant",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Tomb_Servant.gif",
+    "imageUrl": "/images/creatures/tomb-servant.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -12909,7 +12909,7 @@ export const BESTIARY_DATA = [
   {
     "id": "tortoise",
     "name": "Tortoise",
-    "imageUrl": "/images/creatures/Tortoise.gif",
+    "imageUrl": "/images/creatures/tortoise.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12934,7 +12934,7 @@ export const BESTIARY_DATA = [
   {
     "id": "troll",
     "name": "Troll",
-    "imageUrl": "/images/creatures/Troll.gif",
+    "imageUrl": "/images/creatures/troll.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -12959,7 +12959,7 @@ export const BESTIARY_DATA = [
   {
     "id": "troll-champion",
     "name": "Troll Champion",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll_Champion.gif",
+    "imageUrl": "/images/creatures/troll-champion.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -12982,7 +12982,7 @@ export const BESTIARY_DATA = [
   {
     "id": "troll-guard",
     "name": "Troll Guard",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll_Guard.gif",
+    "imageUrl": "/images/creatures/troll-guard.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13005,7 +13005,7 @@ export const BESTIARY_DATA = [
   {
     "id": "troll-legionnaire",
     "name": "Troll Legionnaire",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Troll_Legionnaire.gif",
+    "imageUrl": "/images/creatures/troll-legionnaire.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13028,7 +13028,7 @@ export const BESTIARY_DATA = [
   {
     "id": "twisted-pooka",
     "name": "Twisted Pooka",
-    "imageUrl": "/images/creatures/Twisted_Pooka.gif",
+    "imageUrl": "/images/creatures/twisted-pooka.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13053,7 +13053,7 @@ export const BESTIARY_DATA = [
   {
     "id": "twisted-shaper",
     "name": "Twisted Shaper",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Twisted_Shaper.gif",
+    "imageUrl": "/images/creatures/twisted-shaper.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13076,7 +13076,7 @@ export const BESTIARY_DATA = [
   {
     "id": "undead-cavebear",
     "name": "Undead Cavebear",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Cavebear.gif",
+    "imageUrl": "/images/creatures/undead-cavebear.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13099,7 +13099,7 @@ export const BESTIARY_DATA = [
   {
     "id": "undead-gladiator",
     "name": "Undead Gladiator",
-    "imageUrl": "/images/creatures/Undead_Gladiator.gif",
+    "imageUrl": "/images/creatures/undead-gladiator.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13124,7 +13124,7 @@ export const BESTIARY_DATA = [
   {
     "id": "undead-jester",
     "name": "Undead Jester",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Jester.gif",
+    "imageUrl": "/images/creatures/undead-jester.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -13147,7 +13147,7 @@ export const BESTIARY_DATA = [
   {
     "id": "undead-mine-worker",
     "name": "Undead Mine Worker",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Mine_Worker.gif",
+    "imageUrl": "/images/creatures/undead-mine-worker.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13170,7 +13170,7 @@ export const BESTIARY_DATA = [
   {
     "id": "undead-prospector",
     "name": "Undead Prospector",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Undead_Prospector.gif",
+    "imageUrl": "/images/creatures/undead-prospector.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13193,7 +13193,7 @@ export const BESTIARY_DATA = [
   {
     "id": "valkyrie",
     "name": "Valkyrie",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Valkyrie.gif",
+    "imageUrl": "/images/creatures/valkyrie.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13216,7 +13216,7 @@ export const BESTIARY_DATA = [
   {
     "id": "vampire",
     "name": "Vampire",
-    "imageUrl": "/images/creatures/Vampire.gif",
+    "imageUrl": "/images/creatures/vampire.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13241,7 +13241,7 @@ export const BESTIARY_DATA = [
   {
     "id": "vampire-bride",
     "name": "Vampire Bride",
-    "imageUrl": "/images/creatures/Vampire_Bride.gif",
+    "imageUrl": "/images/creatures/vampire-bride.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13266,7 +13266,7 @@ export const BESTIARY_DATA = [
   {
     "id": "vampire-viscount",
     "name": "Vampire Viscount",
-    "imageUrl": "/images/creatures/Vampire_Viscount.gif",
+    "imageUrl": "/images/creatures/vampire-viscount.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13291,7 +13291,7 @@ export const BESTIARY_DATA = [
   {
     "id": "vicious-manbat",
     "name": "Vicious Manbat",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vicious_Manbat.gif",
+    "imageUrl": "/images/creatures/vicious-manbat.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13314,7 +13314,7 @@ export const BESTIARY_DATA = [
   {
     "id": "vulcongra",
     "name": "Vulcongra",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Vulcongra.gif",
+    "imageUrl": "/images/creatures/vulcongra.gif",
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
@@ -13337,7 +13337,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wailing-widow",
     "name": "Wailing Widow",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wailing_Widow.gif",
+    "imageUrl": "/images/creatures/wailing-widow.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13360,7 +13360,7 @@ export const BESTIARY_DATA = [
   {
     "id": "walker",
     "name": "Walker",
-    "imageUrl": "/images/creatures/Walker.gif",
+    "imageUrl": "/images/creatures/walker.gif",
     "charmPoints": 25,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -13385,7 +13385,7 @@ export const BESTIARY_DATA = [
   {
     "id": "war-golem",
     "name": "War Golem",
-    "imageUrl": "/images/creatures/War_Golem.gif",
+    "imageUrl": "/images/creatures/war-golem.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13410,7 +13410,7 @@ export const BESTIARY_DATA = [
   {
     "id": "war-wolf",
     "name": "War Wolf",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/War_Wolf.gif",
+    "imageUrl": "/images/creatures/war-wolf.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13433,7 +13433,7 @@ export const BESTIARY_DATA = [
   {
     "id": "warlock",
     "name": "Warlock",
-    "imageUrl": "/images/creatures/Warlock.gif",
+    "imageUrl": "/images/creatures/warlock.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13458,7 +13458,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wasp",
     "name": "Wasp",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wasp.gif",
+    "imageUrl": "/images/creatures/wasp.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -13481,7 +13481,7 @@ export const BESTIARY_DATA = [
   {
     "id": "waspoid",
     "name": "Waspoid",
-    "imageUrl": "/images/creatures/Waspoid.gif",
+    "imageUrl": "/images/creatures/waspoid.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13506,7 +13506,7 @@ export const BESTIARY_DATA = [
   {
     "id": "water-buffalo",
     "name": "Water Buffalo",
-    "imageUrl": "/images/creatures/Water_Buffalo.gif",
+    "imageUrl": "/images/creatures/water-buffalo.gif",
     "charmPoints": 30,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -13531,7 +13531,7 @@ export const BESTIARY_DATA = [
   {
     "id": "water-elemental",
     "name": "Water Elemental",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Water_Elemental.gif",
+    "imageUrl": "/images/creatures/water-elemental.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13554,7 +13554,7 @@ export const BESTIARY_DATA = [
   {
     "id": "weakened-frazzlemaw",
     "name": "Weakened Frazzlemaw",
-    "imageUrl": "/images/creatures/Weakened_Frazzlemaw.gif",
+    "imageUrl": "/images/creatures/weakened-frazzlemaw.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13579,7 +13579,7 @@ export const BESTIARY_DATA = [
   {
     "id": "weeper",
     "name": "Weeper",
-    "imageUrl": "/images/creatures/Weeper.gif",
+    "imageUrl": "/images/creatures/weeper.gif",
     "charmPoints": 50,
     "difficulty": "HARD",
     "estimatedHours": 7,
@@ -13604,7 +13604,7 @@ export const BESTIARY_DATA = [
   {
     "id": "white-deer",
     "name": "White Deer",
-    "imageUrl": "/images/creatures/White_Deer.gif",
+    "imageUrl": "/images/creatures/white-deer.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13629,7 +13629,7 @@ export const BESTIARY_DATA = [
   {
     "id": "white-shade",
     "name": "White Shade",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/White_Shade.gif",
+    "imageUrl": "/images/creatures/white-shade.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13652,7 +13652,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wiggler",
     "name": "Wiggler",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wiggler.gif",
+    "imageUrl": "/images/creatures/wiggler.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13675,7 +13675,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wild-horse",
     "name": "Wild Horse",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wild_Horse.gif",
+    "imageUrl": "/images/creatures/wild-horse.gif",
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
@@ -13698,7 +13698,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wild-warrior",
     "name": "Wild Warrior",
-    "imageUrl": "/images/creatures/Wild_Warrior.gif",
+    "imageUrl": "/images/creatures/wild-warrior.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -13723,7 +13723,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wilting-leaf-golem",
     "name": "Wilting Leaf Golem",
-    "imageUrl": "/images/creatures/Wilting_Leaf_Golem.gif",
+    "imageUrl": "/images/creatures/wilting-leaf-golem.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13748,7 +13748,7 @@ export const BESTIARY_DATA = [
   {
     "id": "winter-wolf",
     "name": "Winter Wolf",
-    "imageUrl": "/images/creatures/Winter_Wolf.gif",
+    "imageUrl": "/images/creatures/winter-wolf.gif",
     "charmPoints": 15,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -13773,7 +13773,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wisp",
     "name": "Wisp",
-    "imageUrl": "/images/creatures/Wisp.gif",
+    "imageUrl": "/images/creatures/wisp.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13798,7 +13798,7 @@ export const BESTIARY_DATA = [
   {
     "id": "witch",
     "name": "Witch",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Witch.gif",
+    "imageUrl": "/images/creatures/witch.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
@@ -13821,7 +13821,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wolf",
     "name": "Wolf",
-    "imageUrl": "/images/creatures/Wolf.gif",
+    "imageUrl": "/images/creatures/wolf.gif",
     "charmPoints": 5,
     "difficulty": "EASY",
     "estimatedHours": 1,
@@ -13846,7 +13846,7 @@ export const BESTIARY_DATA = [
   {
     "id": "worker-golem",
     "name": "Worker Golem",
-    "imageUrl": "/images/creatures/Worker_Golem.gif",
+    "imageUrl": "/images/creatures/worker-golem.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13871,7 +13871,7 @@ export const BESTIARY_DATA = [
   {
     "id": "worm-priestess",
     "name": "Worm Priestess",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Worm_Priestess.gif",
+    "imageUrl": "/images/creatures/worm-priestess.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13894,7 +13894,7 @@ export const BESTIARY_DATA = [
   {
     "id": "wyvern",
     "name": "Wyvern",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Wyvern.gif",
+    "imageUrl": "/images/creatures/wyvern.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13917,7 +13917,7 @@ export const BESTIARY_DATA = [
   {
     "id": "yeti",
     "name": "Yeti",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Yeti.gif",
+    "imageUrl": "/images/creatures/yeti.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
@@ -13940,7 +13940,7 @@ export const BESTIARY_DATA = [
   {
     "id": "young-sea-serpent",
     "name": "Young Sea Serpent",
-    "imageUrl": "/images/creatures/Young_Sea_Serpent.gif",
+    "imageUrl": "/images/creatures/young-sea-serpent.gif",
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "estimatedHours": 3.5,
@@ -13965,7 +13965,7 @@ export const BESTIARY_DATA = [
   {
     "id": "zombie",
     "name": "Zombie",
-    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Zombie.gif",
+    "imageUrl": "/images/creatures/zombie.gif",
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
