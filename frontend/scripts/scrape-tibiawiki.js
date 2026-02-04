@@ -68,7 +68,7 @@ const parseResistances = (wikitext) => {
   };
 
   Object.entries(resistanceMapping).forEach(([wikiKey, ourKey]) => {
-    const regex = new RegExp(`\\|${wikiKey}\\s*=\\s*([0-9]+)`, 'i');
+    const regex = new RegExp(`\\|\\s*${wikiKey}\\s*=\\s*([0-9]+)%?`, 'i');
     const match = wikitext.match(regex);
     if (match) {
       resistances[ourKey] = parseInt(match[1]);
@@ -83,7 +83,7 @@ const parseResistances = (wikitext) => {
  * Formato esperado: |bestiaryclass = Harmless/Trivial/Easy/Medium/Hard/Challenging
  */
 const parseOfficialDifficulty = (wikitext) => {
-  const regex = /\|bestiaryclass\s*=\s*([A-Za-z]+)/i;
+  const regex = /\|\s*bestiarylevel\s*=\s*([A-Za-z]+)/i;
   const match = wikitext.match(regex);
 
   if (match) {
@@ -103,7 +103,7 @@ const parseOfficialDifficulty = (wikitext) => {
  * Formato esperado: |bestiaryoccurrence = Common (mapeamos para kills)
  */
 const parseKillsToComplete = (wikitext) => {
-  const regex = /\|bestiaryoccurrence\s*=\s*([A-Za-z\s]+)/i;
+  const regex = /\|\s*occurrence\s*=\s*([A-Za-z\s]+)/i;
   const match = wikitext.match(regex);
 
   if (match) {

@@ -34,7 +34,7 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Raging_Fire.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
-    "officialDifficulty": "CHALLENGING",
+    "officialDifficulty": "MEDIUM",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
@@ -44,14 +44,14 @@ export const BESTIARY_DATA = [
     "recommendedLevel": 200,
     "elementalResistances": {
       "physical": 100,
-      "fire": 120,
-      "ice": 70,
+      "fire": 0,
+      "ice": 110,
       "energy": 100,
       "earth": 100,
-      "holy": 90,
-      "death": 100
+      "holy": 100,
+      "death": 80
     },
-    "killsToComplete": 1000,
+    "killsToComplete": 2500,
     "currentKills": 350
   },
   {
@@ -60,7 +60,7 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Iks_Ahpututu.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
-    "officialDifficulty": "HARD",
+    "officialDifficulty": "MEDIUM",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
@@ -77,7 +77,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000,
+    "killsToComplete": 2500,
     "currentKills": 1000
   },
   {
@@ -86,7 +86,7 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Goblin_Leader.gif",
     "charmPoints": 30,
     "difficulty": "EASY",
-    "officialDifficulty": "TRIVIAL",
+    "officialDifficulty": "EASY",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
@@ -96,14 +96,14 @@ export const BESTIARY_DATA = [
     "recommendedLevel": 200,
     "elementalResistances": {
       "physical": 100,
-      "fire": 105,
+      "fire": 100,
       "ice": 100,
       "energy": 100,
       "earth": 100,
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 2500
   },
   {
     "id": "fire-elemental",
@@ -115,18 +115,20 @@ export const BESTIARY_DATA = [
     "estimatedHours": 3,
     "respawnCategory": "normal",
     "locations": [
-      "Hellgate", "Magma Dungeon", "Formorgar Mines"
+      "Hellgate",
+      "Magma Dungeon",
+      "Formorgar Mines"
     ],
     "region": "Mainland",
     "recommendedLevel": 100,
     "elementalResistances": {
       "physical": 100,
       "fire": 0,
-      "ice": 130,
+      "ice": 125,
       "energy": 100,
-      "earth": 80,
+      "earth": 100,
       "holy": 100,
-      "death": 100
+      "death": 0
     },
     "killsToComplete": 500,
     "currentKills": 150
@@ -143,7 +145,18 @@ export const BESTIARY_DATA = [
       "Venore Southern Swamp"
     ],
     "region": "Venore",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 2500
   },
   {
     "id": "haunted-treeling",
@@ -157,7 +170,18 @@ export const BESTIARY_DATA = [
       "Vengoth Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 90,
+      "energy": 100,
+      "earth": 0,
+      "holy": 80,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "bonebeast",
@@ -171,7 +195,18 @@ export const BESTIARY_DATA = [
       "Mother of Scarabs Lair -4/-5, Edron Old Fortress -1"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "ancient-scarab",
@@ -185,7 +220,18 @@ export const BESTIARY_DATA = [
       "Mother of Scarabs Lair -4/-5"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 120,
+      "ice": 105,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "toad",
@@ -199,7 +245,18 @@ export const BESTIARY_DATA = [
       "Laguna Islands, Tainted Soul Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "larva",
@@ -213,7 +270,18 @@ export const BESTIARY_DATA = [
       "Ankrahmun Larva Caves, Mother of Scarabs Lair -1/-2"
     ],
     "region": "Ankrahmun",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 105,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "scarab",
@@ -227,7 +295,18 @@ export const BESTIARY_DATA = [
       "Ankrahmun Larva Caves, Mother of Scarabs Lair -4/-5"
     ],
     "region": "Ankrahmun",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 118,
+      "ice": 80,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "blood-crab",
@@ -241,7 +320,18 @@ export const BESTIARY_DATA = [
       "Laguna Blood Crab Caves"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 110,
+      "ice": 0,
+      "energy": 105,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "deepsea-blood-crab",
@@ -255,7 +345,18 @@ export const BESTIARY_DATA = [
       "Sea Serpent Area Svargrond"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 110,
+      "ice": 0,
+      "energy": 105,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "salamander",
@@ -269,7 +370,18 @@ export const BESTIARY_DATA = [
       "Venore Salamander Cave"
     ],
     "region": "Venore",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 90,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "emerald-damselfly",
@@ -283,7 +395,18 @@ export const BESTIARY_DATA = [
       "Venore Salamander Cave"
     ],
     "region": "Venore",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "stalker",
@@ -297,7 +420,18 @@ export const BESTIARY_DATA = [
       "Peninsula Tomb"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 110,
+      "death": 90
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "ghost",
@@ -311,7 +445,18 @@ export const BESTIARY_DATA = [
       "Peninsula Tomb"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 0,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "mummy",
@@ -325,7 +470,18 @@ export const BESTIARY_DATA = [
       "Peninsula Tomb"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 80,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "marsh-stalker",
@@ -339,7 +495,18 @@ export const BESTIARY_DATA = [
       "Venore Salamander Cave"
     ],
     "region": "Venore",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 95,
+      "energy": 100,
+      "earth": 105,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "gargoyle",
@@ -353,7 +520,18 @@ export const BESTIARY_DATA = [
       "Meriana Gargoyle Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 60
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "tainted-soul",
@@ -367,7 +545,18 @@ export const BESTIARY_DATA = [
       "Tainted Caves"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 50,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 100,
+      "holy": 110,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "hunter",
@@ -381,7 +570,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Hunter stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 80,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "poacher",
@@ -395,7 +595,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Hunter stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "boar",
@@ -409,7 +620,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Wildlife stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "bear",
@@ -423,7 +645,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Wildlife stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "gloom-wolf",
@@ -437,7 +670,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Undead stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 105,
+      "energy": 100,
+      "earth": 80,
+      "holy": 105,
+      "death": 90
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "ghost-wolf",
@@ -451,7 +695,18 @@ export const BESTIARY_DATA = [
       "Poacher's Cave (Undead stage)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 65,
+      "fire": 105,
+      "ice": 100,
+      "energy": 100,
+      "earth": 90,
+      "holy": 105,
+      "death": 80
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "wild-warrior",
@@ -465,7 +720,18 @@ export const BESTIARY_DATA = [
       "Dark Cathedral"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "bandit",
@@ -479,7 +745,18 @@ export const BESTIARY_DATA = [
       "Dark Cathedral"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "dark-monk",
@@ -493,7 +770,18 @@ export const BESTIARY_DATA = [
       "Dark Cathedral"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 110,
+      "death": 60
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "smuggler",
@@ -507,7 +795,18 @@ export const BESTIARY_DATA = [
       "Dark Cathedral"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "assassin",
@@ -521,7 +820,18 @@ export const BESTIARY_DATA = [
       "Dark Cathedral"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "pirate-marauder",
@@ -535,7 +845,18 @@ export const BESTIARY_DATA = [
       "Yalahar Pirates"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 103,
+      "earth": 90,
+      "holy": 80,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "novice-of-the-cult",
@@ -549,7 +870,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cults"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 105,
+      "ice": 90,
+      "energy": 108,
+      "earth": 90,
+      "holy": 90,
+      "death": 108
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "swamp-troll",
@@ -563,7 +895,18 @@ export const BESTIARY_DATA = [
       "Port Hope Swamp Trolls Cave"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 100,
+      "energy": 100,
+      "earth": 85,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "firestarter",
@@ -577,7 +920,18 @@ export const BESTIARY_DATA = [
       "Shadowthorn"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 0,
+      "ice": 110,
+      "energy": 100,
+      "earth": 95,
+      "holy": 80,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "corym-charlatan",
@@ -591,7 +945,18 @@ export const BESTIARY_DATA = [
       "Coryms PH, Coryms Venore"
     ],
     "region": "Venore",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 75,
+      "earth": 75,
+      "holy": 105,
+      "death": 85
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "mammoth",
@@ -605,7 +970,18 @@ export const BESTIARY_DATA = [
       "Svargrond Mammoth Mountain (South west from depot)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 110,
+      "ice": 80,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "winter-wolf",
@@ -619,7 +995,18 @@ export const BESTIARY_DATA = [
       "Svargrond Mammoth Mountain (South west from depot)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 90,
+      "ice": 80,
+      "energy": 105,
+      "earth": 100,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "kongra",
@@ -633,7 +1020,18 @@ export const BESTIARY_DATA = [
       "Port Hope Ape City"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 115,
+      "energy": 95,
+      "earth": 90,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "sibang",
@@ -647,7 +1045,18 @@ export const BESTIARY_DATA = [
       "Port Hope Ape City"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 75,
+      "ice": 115,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "ghoul",
@@ -661,7 +1070,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 90,
+      "energy": 70,
+      "earth": 80,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "skeleton",
@@ -675,7 +1095,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cemetery, Mount Sternum, Edron Vampire Crypt -1/-2"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "slime",
@@ -689,7 +1120,18 @@ export const BESTIARY_DATA = [
       "Vengoth Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 110,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "gnarlhound",
@@ -703,7 +1145,18 @@ export const BESTIARY_DATA = [
       "Zao Gnarlhound Cave"
     ],
     "region": "Zao",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-templar",
@@ -717,7 +1170,18 @@ export const BESTIARY_DATA = [
       "Chor"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 90,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-sentinel",
@@ -731,7 +1195,18 @@ export const BESTIARY_DATA = [
       "Chor"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "crocodile",
@@ -745,7 +1220,18 @@ export const BESTIARY_DATA = [
       "Port Hope Crocodile Cave"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 110,
+      "ice": 90,
+      "energy": 105,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "rotworm",
@@ -759,7 +1245,18 @@ export const BESTIARY_DATA = [
       "Darashia Rotworms, Liberty Bay Rotworms"
     ],
     "region": "Liberty Bay",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "tortoise",
@@ -773,7 +1270,18 @@ export const BESTIARY_DATA = [
       "Laguna Islands Tortoise Caves"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 110,
+      "ice": 80,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "thornback-tortoise",
@@ -787,7 +1295,18 @@ export const BESTIARY_DATA = [
       "Laguna Islands Tortoise Caves"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 70,
+      "fire": 110,
+      "ice": 80,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "leaf-golem",
@@ -801,7 +1320,18 @@ export const BESTIARY_DATA = [
       "Dryad Gardens"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 105,
+      "energy": 100,
+      "earth": 60,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "terramite",
@@ -815,7 +1345,18 @@ export const BESTIARY_DATA = [
       "Darashia Terramite Cave"
     ],
     "region": "Darashia",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 110,
+      "ice": 100,
+      "energy": 105,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "troll",
@@ -829,7 +1370,18 @@ export const BESTIARY_DATA = [
       "Edron Troll Cave"
     ],
     "region": "Edron",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "goblin",
@@ -843,7 +1395,18 @@ export const BESTIARY_DATA = [
       "Goblin Troll Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "island-troll",
@@ -857,7 +1420,18 @@ export const BESTIARY_DATA = [
       "Goroma"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "fish",
@@ -871,7 +1445,16 @@ export const BESTIARY_DATA = [
       "Fiehonja"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    }
   },
   {
     "id": "seagull",
@@ -885,7 +1468,18 @@ export const BESTIARY_DATA = [
       "Laguna Islands"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "sandcrawler",
@@ -899,7 +1493,18 @@ export const BESTIARY_DATA = [
       "All over Zao Steppe"
     ],
     "region": "Zao",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "deer",
@@ -913,7 +1518,18 @@ export const BESTIARY_DATA = [
       "Svargrond Mammoth Mountain (South west from depot)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "badger",
@@ -927,7 +1543,18 @@ export const BESTIARY_DATA = [
       "Svargrond Mammoth Mountain (South west from depot)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "silver-rabbit",
@@ -941,7 +1568,18 @@ export const BESTIARY_DATA = [
       "Svargrond Mammoth Mountain (South west from depot)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "wolf",
@@ -955,7 +1593,18 @@ export const BESTIARY_DATA = [
       "All over Tibia, should be completed naturally"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 70,
+      "death": 105
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "spider",
@@ -969,7 +1618,18 @@ export const BESTIARY_DATA = [
       "All over Tibia, should be completed naturally"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "poison-spider",
@@ -983,7 +1643,18 @@ export const BESTIARY_DATA = [
       "All over Tibia, should be completed naturally"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "penguin",
@@ -997,7 +1668,18 @@ export const BESTIARY_DATA = [
       "Svargrond"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 80,
+      "energy": 110,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "snake",
@@ -1011,7 +1693,18 @@ export const BESTIARY_DATA = [
       "All over Tibia, Edron Vampire Crypt"
     ],
     "region": "Edron",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 110,
+      "energy": 80,
+      "earth": 60,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "northern-pike",
@@ -1025,7 +1718,16 @@ export const BESTIARY_DATA = [
       "Fiehonja"
     ],
     "region": "Mainland",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    }
   },
   {
     "id": "butterfly-purplebluered",
@@ -1053,7 +1755,18 @@ export const BESTIARY_DATA = [
       "Thais"
     ],
     "region": "Thais",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 500
   },
   {
     "id": "modified-gnarlhound",
@@ -1067,7 +1780,18 @@ export const BESTIARY_DATA = [
       "Stonehome, under Telas's house"
     ],
     "region": "Mainland",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 10,
+      "fire": 10,
+      "ice": 10,
+      "energy": 10,
+      "earth": 0,
+      "holy": 0,
+      "death": 0
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 1000
   },
   {
     "id": "mushroom-sniffer",
@@ -1081,7 +1805,18 @@ export const BESTIARY_DATA = [
       "Truffels Garden"
     ],
     "region": "Mainland",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 10,
+      "fire": 10,
+      "ice": 10,
+      "energy": 10,
+      "earth": 10,
+      "holy": 10,
+      "death": 10
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 500
   },
   {
     "id": "cat",
@@ -1095,7 +1830,18 @@ export const BESTIARY_DATA = [
       "Yalahar"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 500
   },
   {
     "id": "husky",
@@ -1109,7 +1855,18 @@ export const BESTIARY_DATA = [
       "Svargrond"
     ],
     "region": "Mainland",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 1000
   },
   {
     "id": "pigeon",
@@ -1123,7 +1880,18 @@ export const BESTIARY_DATA = [
       "Venore"
     ],
     "region": "Venore",
-    "recommendedLevel": 20
+    "recommendedLevel": 20,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 110,
+      "holy": 100,
+      "death": 110
+    },
+    "officialDifficulty": "HARMLESS",
+    "killsToComplete": 1000
   },
   {
     "id": "chasm-spawn",
@@ -1137,7 +1905,18 @@ export const BESTIARY_DATA = [
       "Warzone 4 (650/h~)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 130,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "worker-golem",
@@ -1151,7 +1930,18 @@ export const BESTIARY_DATA = [
       "Oramond Catacombs - Golem stage"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 90,
+      "energy": 105,
+      "earth": 50,
+      "holy": 50,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "war-golem",
@@ -1165,7 +1955,18 @@ export const BESTIARY_DATA = [
       "Oramond Catacombs - Golem stage"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 85,
+      "ice": 70,
+      "energy": 95,
+      "earth": 50,
+      "holy": 50,
+      "death": 80
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "exotic-bat",
@@ -1179,7 +1980,18 @@ export const BESTIARY_DATA = [
       "Exotic Cave Spider Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 95,
+      "energy": 95,
+      "earth": 99,
+      "holy": 95,
+      "death": 95
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "exotic-cave-spider",
@@ -1193,7 +2005,18 @@ export const BESTIARY_DATA = [
       "Exotic Cave Spider Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "metal-gargoyle",
@@ -1207,7 +2030,18 @@ export const BESTIARY_DATA = [
       "Oramond Surface, Abandoned Sewers"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 85,
+      "fire": 90,
+      "ice": 105,
+      "energy": 110,
+      "earth": 0,
+      "holy": 100,
+      "death": 20
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "wilting-leaf-golem",
@@ -1221,7 +2055,18 @@ export const BESTIARY_DATA = [
       "Dryad Gardens"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 105,
+      "energy": 100,
+      "earth": 60,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "vampire",
@@ -1235,7 +2080,18 @@ export const BESTIARY_DATA = [
       "Edron Vampire Crypt, Peninsula Tomb"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 75,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "vampire-bride",
@@ -1249,7 +2105,18 @@ export const BESTIARY_DATA = [
       "Edron Vampire Crypt"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 90,
+      "earth": 80,
+      "holy": 110,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "vampire-viscount",
@@ -1263,7 +2130,18 @@ export const BESTIARY_DATA = [
       "Edron Vampire Crypt"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 105,
+      "ice": 90,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "weakened-frazzlemaw",
@@ -1277,7 +2155,18 @@ export const BESTIARY_DATA = [
       "Feyrist Mini Rosha"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 90,
+      "ice": 95,
+      "energy": 85,
+      "earth": 80,
+      "holy": 105,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "enfeebled-silencer",
@@ -1291,7 +2180,18 @@ export const BESTIARY_DATA = [
       "Feyrist Mini Rosha"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 70,
+      "ice": 85,
+      "energy": 85,
+      "earth": 40,
+      "holy": 125,
+      "death": 35
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lumbering-carnivor",
@@ -1305,7 +2205,18 @@ export const BESTIARY_DATA = [
       "Carnivora's Rock"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 140,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "putrid-mummy",
@@ -1319,7 +2230,18 @@ export const BESTIARY_DATA = [
       "Caverna Exanima"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 80,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "ice-golem",
@@ -1333,7 +2255,18 @@ export const BESTIARY_DATA = [
       "Nibelor Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 0,
+      "ice": 0,
+      "energy": 120,
+      "earth": 100,
+      "holy": 0,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "bog-raider",
@@ -1347,7 +2280,18 @@ export const BESTIARY_DATA = [
       "Oramond Hydra Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 15,
+      "ice": 105,
+      "energy": 110,
+      "earth": 70,
+      "holy": 105,
+      "death": 95
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "stonerefiner",
@@ -1361,7 +2305,18 @@ export const BESTIARY_DATA = [
       "Corym Mines Venore"
     ],
     "region": "Venore",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 120,
+      "fire": 110,
+      "ice": 120,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "sea-serpent",
@@ -1375,7 +2330,18 @@ export const BESTIARY_DATA = [
       "Svargrond Sea Serpent Area"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 70,
+      "ice": 0,
+      "energy": 105,
+      "earth": 100,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "young-sea-serpent",
@@ -1389,7 +2355,18 @@ export const BESTIARY_DATA = [
       "Svargrond Sea Serpent Area"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 120,
+      "fire": 70,
+      "ice": 0,
+      "energy": 110,
+      "earth": 105,
+      "holy": 100,
+      "death": 115
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "stampor",
@@ -1403,7 +2380,18 @@ export const BESTIARY_DATA = [
       "Stampor Cave Muggy Plains"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 90,
+      "energy": 70,
+      "earth": 100,
+      "holy": 50,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "giant-spider",
@@ -1417,7 +2405,18 @@ export const BESTIARY_DATA = [
       "Port Hope Spider Cave"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-zaogun",
@@ -1431,7 +2430,18 @@ export const BESTIARY_DATA = [
       "Lower Draken Walls"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 55,
+      "ice": 85,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-chosen",
@@ -1445,7 +2455,18 @@ export const BESTIARY_DATA = [
       "Temple of Equilibrium"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 90,
+      "ice": 90,
+      "energy": 80,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-high-guard",
@@ -1459,7 +2480,18 @@ export const BESTIARY_DATA = [
       "Lizard City"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 55,
+      "ice": 110,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-legionnaire",
@@ -1473,7 +2505,18 @@ export const BESTIARY_DATA = [
       "Lizard City"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 55,
+      "ice": 110,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-dragon-priest",
@@ -1487,7 +2530,18 @@ export const BESTIARY_DATA = [
       "Lizard City (South mostly)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 15,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "eternal-guardian",
@@ -1501,7 +2555,18 @@ export const BESTIARY_DATA = [
       "Deeper Banuta"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 30,
+      "ice": 90,
+      "energy": 90,
+      "earth": 0,
+      "holy": 80,
+      "death": 80
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "dragon",
@@ -1515,7 +2580,18 @@ export const BESTIARY_DATA = [
       "Yalahar Dragons, Edron Dragons"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 110,
+      "energy": 80,
+      "earth": 20,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pirate-cutthroat",
@@ -1529,7 +2605,18 @@ export const BESTIARY_DATA = [
       "Yalahar Pirates"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 105,
+      "energy": 100,
+      "earth": 90,
+      "holy": 80,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "acolyte-of-the-cult",
@@ -1543,7 +2630,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cults, Goroma Volcano"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 80,
+      "energy": 110,
+      "earth": 80,
+      "holy": 80,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "adept-of-the-cult",
@@ -1557,7 +2655,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cults, Goroma Volcano"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 80,
+      "energy": 105,
+      "earth": 60,
+      "holy": 70,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "enlightened-of-the-cult",
@@ -1571,7 +2680,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cults"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 100,
+      "ice": 80,
+      "energy": 105,
+      "earth": 100,
+      "holy": 80,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "dragon-lord",
@@ -1585,7 +2705,18 @@ export const BESTIARY_DATA = [
       "Fenrock DLs, POI DLs"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 110,
+      "energy": 80,
+      "earth": 20,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "frost-dragon",
@@ -1599,7 +2730,18 @@ export const BESTIARY_DATA = [
       "Chyllfroest"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 0,
+      "ice": 0,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "frost-dragon-hatchling",
@@ -1613,7 +2755,18 @@ export const BESTIARY_DATA = [
       "Chyllfroest"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 0,
+      "energy": 105,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "quara-predator",
@@ -1627,7 +2780,18 @@ export const BESTIARY_DATA = [
       "Sunken Quarter, Calassa"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 0,
+      "energy": 125,
+      "earth": 110,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "quara-pincher",
@@ -1641,7 +2805,18 @@ export const BESTIARY_DATA = [
       "Sunken Quarter, Calassa"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 0,
+      "energy": 125,
+      "earth": 110,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "quara-hydromancer",
@@ -1655,7 +2830,18 @@ export const BESTIARY_DATA = [
       "Sunken Quarter, Calassa"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 0,
+      "energy": 125,
+      "earth": 110,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "iron-servant-replica",
@@ -1669,7 +2855,18 @@ export const BESTIARY_DATA = [
       "Replica Dungeon (Lloyd)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 75,
+      "ice": 100,
+      "energy": 75,
+      "earth": 110,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "golden-servant-replica",
@@ -1683,7 +2880,18 @@ export const BESTIARY_DATA = [
       "Replica Dungeon (Lloyd)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 85,
+      "ice": 105,
+      "energy": 75,
+      "earth": 20,
+      "holy": 0,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "diamond-servant-replica",
@@ -1697,7 +2905,18 @@ export const BESTIARY_DATA = [
       "Replica Dungeon (Lloyd)"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 90,
+      "ice": 100,
+      "energy": 0,
+      "earth": 25,
+      "holy": 115,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cultist",
@@ -1711,7 +2930,18 @@ export const BESTIARY_DATA = [
       "Edron Orc Cults"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 70,
+      "earth": 110,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-priest",
@@ -1725,7 +2955,18 @@ export const BESTIARY_DATA = [
       "Edron Orc Cults"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 50,
+      "earth": 110,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-inquisitor",
@@ -1739,7 +2980,18 @@ export const BESTIARY_DATA = [
       "Edron Orc Cults"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 85,
+      "earth": 110,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "orc-cult-fanatic",
@@ -1753,7 +3005,18 @@ export const BESTIARY_DATA = [
       "Edron Orc Cults"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 0,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-minion",
@@ -1767,7 +3030,18 @@ export const BESTIARY_DATA = [
       "Edron Orc Cults"
     ],
     "region": "Edron",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "barkless-devotee",
@@ -1781,7 +3055,18 @@ export const BESTIARY_DATA = [
       "Ab'Dendriel Cults"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 90,
+      "ice": 85,
+      "energy": 83,
+      "earth": 100,
+      "holy": 100,
+      "death": 85
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "barkless-fanatic",
@@ -1795,7 +3080,18 @@ export const BESTIARY_DATA = [
       "Ab'Dendriel Cults"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 90,
+      "ice": 85,
+      "energy": 83,
+      "earth": 100,
+      "holy": 100,
+      "death": 85
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "minotaur-cult-follower",
@@ -1809,7 +3105,18 @@ export const BESTIARY_DATA = [
       "Mintwallin Cults"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "minotaur-cult-propher",
@@ -1837,7 +3144,18 @@ export const BESTIARY_DATA = [
       "Mintwallin Cults"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 110
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "mutated-bat",
@@ -1851,7 +3169,18 @@ export const BESTIARY_DATA = [
       "Souleater Mountains, Farmine Mutated Bat/Tiger Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "souleater",
@@ -1865,7 +3194,18 @@ export const BESTIARY_DATA = [
       "Souleater Mountains, Deeper Banuta"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 40,
+      "fire": 110,
+      "ice": 50,
+      "energy": 110,
+      "earth": 100,
+      "holy": 110,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "death-blob",
@@ -1879,7 +3219,18 @@ export const BESTIARY_DATA = [
       "Souleater Mountains"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 110,
+      "ice": 90,
+      "energy": 110,
+      "earth": 0,
+      "holy": 110,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "glooth-blob",
@@ -1893,7 +3244,18 @@ export const BESTIARY_DATA = [
       "Oramond West"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 110,
+      "earth": 0,
+      "holy": 100,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "blood-beast",
@@ -1907,7 +3269,18 @@ export const BESTIARY_DATA = [
       "Oramond West"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "rot-elemental",
@@ -1921,7 +3294,18 @@ export const BESTIARY_DATA = [
       "Oramond West"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 70,
+      "energy": 105,
+      "earth": 0,
+      "holy": 80,
+      "death": 80
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "devourer",
@@ -1935,7 +3319,18 @@ export const BESTIARY_DATA = [
       "Oramond West"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 85,
+      "energy": 105,
+      "earth": 0,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "glooth-anemone",
@@ -1949,7 +3344,18 @@ export const BESTIARY_DATA = [
       "Oramond Wildlife Raid"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 100,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 65
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pirat-cutthroat",
@@ -1963,7 +3369,18 @@ export const BESTIARY_DATA = [
       "The Wreckoning"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 120,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pirat-bombardier",
@@ -1977,7 +3394,18 @@ export const BESTIARY_DATA = [
       "The Wreckoning"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 90,
+      "earth": 120,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pirat-scoundrel",
@@ -1991,7 +3419,18 @@ export const BESTIARY_DATA = [
       "The Wreckoning"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 100,
+      "ice": 100,
+      "energy": 74,
+      "earth": 130,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pirat-mate",
@@ -2005,7 +3444,18 @@ export const BESTIARY_DATA = [
       "The Wreckoning"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 70,
+      "earth": 130,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "faun",
@@ -2019,7 +3469,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 115,
+      "ice": 100,
+      "energy": 110,
+      "earth": 30,
+      "holy": 70,
+      "death": 80
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "pooka",
@@ -2033,7 +3494,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 80,
+      "energy": 110,
+      "earth": 30,
+      "holy": 80,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "swan-maiden",
@@ -2047,7 +3519,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 70,
+      "holy": 70,
+      "death": 50
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "pixie",
@@ -2061,7 +3544,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 110,
+      "ice": 105,
+      "energy": 100,
+      "earth": 40,
+      "holy": 40,
+      "death": 70
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "nymph",
@@ -2075,7 +3569,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 40,
+      "holy": 60,
+      "death": 60
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "boogy",
@@ -2089,7 +3594,18 @@ export const BESTIARY_DATA = [
       "Dark Faun Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 90,
+      "energy": 100,
+      "earth": 30,
+      "holy": 60,
+      "death": 80
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "twisted-pooka",
@@ -2103,7 +3619,18 @@ export const BESTIARY_DATA = [
       "Dark Faun Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 80,
+      "ice": 80,
+      "energy": 110,
+      "earth": 60,
+      "holy": 120,
+      "death": 70
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "drillworm",
@@ -2117,7 +3644,18 @@ export const BESTIARY_DATA = [
       "Warzone 4"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 84,
+      "energy": 85,
+      "earth": 0,
+      "holy": 85,
+      "death": 85
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "mutated-human",
@@ -2131,7 +3669,18 @@ export const BESTIARY_DATA = [
       "Yalahar Alchemist Quarter"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 80,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "undead-gladiator",
@@ -2145,7 +3694,18 @@ export const BESTIARY_DATA = [
       "Krailos Nightmare Cave"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 20,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "clomp",
@@ -2159,7 +3719,18 @@ export const BESTIARY_DATA = [
       "Krailos Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "ogre-brute",
@@ -2173,7 +3744,18 @@ export const BESTIARY_DATA = [
       "Krailos Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 80,
+      "ice": 80,
+      "energy": 110,
+      "earth": 0,
+      "holy": 80,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "ogre-savage",
@@ -2187,7 +3769,18 @@ export const BESTIARY_DATA = [
       "Krailos Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 80,
+      "energy": 110,
+      "earth": 0,
+      "holy": 50,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "ogre-shaman",
@@ -2201,7 +3794,18 @@ export const BESTIARY_DATA = [
       "Krailos Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 80,
+      "energy": 80,
+      "earth": 0,
+      "holy": 110,
+      "death": 0
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "orclops-ravager",
@@ -2215,7 +3819,18 @@ export const BESTIARY_DATA = [
       "Desecrated Glade"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 80,
+      "energy": 110,
+      "earth": 0,
+      "holy": 50,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "orclops-doomhauler",
@@ -2229,7 +3844,18 @@ export const BESTIARY_DATA = [
       "Desecrated Glade"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 85,
+      "ice": 110,
+      "energy": 110,
+      "earth": 70,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "crawler",
@@ -2243,7 +3869,18 @@ export const BESTIARY_DATA = [
       "Inner Hive"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 108,
+      "ice": 107,
+      "energy": 100,
+      "earth": 0,
+      "holy": 105,
+      "death": 95
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "spidris",
@@ -2257,7 +3894,18 @@ export const BESTIARY_DATA = [
       "Inner Hive"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 85,
+      "ice": 103,
+      "energy": 105,
+      "earth": 0,
+      "holy": 110,
+      "death": 90
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "kollos",
@@ -2271,7 +3919,18 @@ export const BESTIARY_DATA = [
       "Inner Hive"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 70,
+      "ice": 107,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "spitter",
@@ -2285,7 +3944,18 @@ export const BESTIARY_DATA = [
       "Inner Hive"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 95,
+      "ice": 105,
+      "energy": 111,
+      "earth": 0,
+      "holy": 100,
+      "death": 85
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "waspoid",
@@ -2299,7 +3969,18 @@ export const BESTIARY_DATA = [
       "Inner Hive"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 102,
+      "fire": 110,
+      "ice": 100,
+      "energy": 75,
+      "earth": 0,
+      "holy": 107,
+      "death": 95
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "warlock",
@@ -2313,7 +3994,18 @@ export const BESTIARY_DATA = [
       "Demona"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 0,
+      "ice": 0,
+      "energy": 0,
+      "earth": 5,
+      "holy": 108,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "misguided-thief",
@@ -2327,7 +4019,18 @@ export const BESTIARY_DATA = [
       "Misguided Camp"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 100,
+      "ice": 90,
+      "energy": 100,
+      "earth": 70,
+      "holy": 130,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "misguided-bully",
@@ -2341,7 +4044,18 @@ export const BESTIARY_DATA = [
       "Misguided Camp"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 80,
+      "fire": 100,
+      "ice": 90,
+      "energy": 100,
+      "earth": 70,
+      "holy": 130,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "terror-bird",
@@ -2355,7 +4069,18 @@ export const BESTIARY_DATA = [
       "Southern Tiquanda Coast"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 80,
+      "earth": 110,
+      "holy": 100,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "crypt-shambler",
@@ -2369,7 +4094,18 @@ export const BESTIARY_DATA = [
       "Yalahar Cemetery, Mount Sternum, Ramoa -1/-2"
     ],
     "region": "Yalahar",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "frost-giant",
@@ -2383,7 +4119,18 @@ export const BESTIARY_DATA = [
       "Nibelor"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 0,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "carrion-worm",
@@ -2397,7 +4144,18 @@ export const BESTIARY_DATA = [
       "Liberty Bay Rotworms"
     ],
     "region": "Liberty Bay",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 105,
+      "energy": 90,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "merlkin",
@@ -2411,7 +4169,18 @@ export const BESTIARY_DATA = [
       "Port Hope Ape City"
     ],
     "region": "Port Hope",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 115,
+      "energy": 90,
+      "earth": 100,
+      "holy": 90,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "frost-giantess",
@@ -2425,7 +4194,18 @@ export const BESTIARY_DATA = [
       "Nibelor"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 80,
+      "ice": 0,
+      "energy": 110,
+      "earth": 100,
+      "holy": 90,
+      "death": 103
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "panda",
@@ -2439,7 +4219,18 @@ export const BESTIARY_DATA = [
       "Southern Tiquanda Coast"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "starving-wolf",
@@ -2453,7 +4244,18 @@ export const BESTIARY_DATA = [
       "Ab'Dendriel Surroundings"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 70,
+      "death": 105
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "wisp",
@@ -2467,7 +4269,18 @@ export const BESTIARY_DATA = [
       "Feyrist Surface"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 40,
+      "fire": 100,
+      "ice": 100,
+      "energy": 60,
+      "earth": 10,
+      "holy": 100,
+      "death": 0
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 500
   },
   {
     "id": "white-deer",
@@ -2481,7 +4294,18 @@ export const BESTIARY_DATA = [
       "Ab'Dendriel Surroundings"
     ],
     "region": "Mainland",
-    "recommendedLevel": 50
+    "recommendedLevel": 50,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "TRIVIAL",
+    "killsToComplete": 1000
   },
   {
     "id": "spiky-carnivor",
@@ -2495,7 +4319,18 @@ export const BESTIARY_DATA = [
       "Carnivora's Rock"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 60,
+      "fire": 130,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "menancing-carnivor",
@@ -2523,7 +4358,18 @@ export const BESTIARY_DATA = [
       "Oramond Fury Dungeon"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 0,
+      "ice": 95,
+      "energy": 110,
+      "earth": 110,
+      "holy": 70,
+      "death": 110
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "diremaw",
@@ -2537,7 +4383,18 @@ export const BESTIARY_DATA = [
       "Warzone 6"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 120,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "deepworm",
@@ -2551,7 +4408,18 @@ export const BESTIARY_DATA = [
       "Warzone 6"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 100,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "stone-devourer",
@@ -2565,7 +4433,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 95,
+      "ice": 70,
+      "energy": 70,
+      "earth": 0,
+      "holy": 70,
+      "death": 70
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "weeper",
@@ -2579,7 +4458,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 0,
+      "ice": 105,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 70
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "orewalker",
@@ -2593,7 +4483,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 75,
+      "fire": 35,
+      "ice": 95,
+      "energy": 105,
+      "earth": 0,
+      "holy": 100,
+      "death": 75
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "lava-golem",
@@ -2607,7 +4508,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 70,
+      "fire": 0,
+      "ice": 105,
+      "energy": 70,
+      "earth": 0,
+      "holy": 100,
+      "death": 65
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "magma-crawler",
@@ -2621,7 +4533,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 0,
+      "ice": 100,
+      "energy": 90,
+      "earth": 0,
+      "holy": 100,
+      "death": 75
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "infected-weeper",
@@ -2635,7 +4558,18 @@ export const BESTIARY_DATA = [
       "Warzone 1-3"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 50,
+      "fire": 100,
+      "ice": 110,
+      "energy": 75,
+      "earth": 0,
+      "holy": 100,
+      "death": 70
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "seacrest-serpent",
@@ -2649,7 +4583,18 @@ export const BESTIARY_DATA = [
       "Oramond Seacrest Grounds"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 80,
+      "ice": 0,
+      "energy": 100,
+      "earth": 95,
+      "holy": 100,
+      "death": 90
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 1000
   },
   {
     "id": "infernalist",
@@ -2663,7 +4608,18 @@ export const BESTIARY_DATA = [
       "Fury Dungeon"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 0,
+      "ice": 105,
+      "energy": 0,
+      "earth": 5,
+      "holy": 80,
+      "death": 90
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "lizard-noble",
@@ -2677,7 +4633,18 @@ export const BESTIARY_DATA = [
       "Razzachai"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 15,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "HARD",
+    "killsToComplete": 500
   },
   {
     "id": "dragonling",
@@ -2691,7 +4658,18 @@ export const BESTIARY_DATA = [
       "Fury Dungeon"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 0,
+      "ice": 95,
+      "energy": 95,
+      "earth": 110,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "high-voltage-elemental",
@@ -2705,7 +4683,18 @@ export const BESTIARY_DATA = [
       "Oramond Glooth Underground Raid, Warzone 5"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 65,
+      "fire": 100,
+      "ice": 0,
+      "energy": 0,
+      "earth": 115,
+      "holy": 95,
+      "death": 95
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 500
   },
   {
     "id": "walker",
@@ -2719,7 +4708,18 @@ export const BESTIARY_DATA = [
       "Underground Glooth Factory, Rathleton Sewers"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 65,
+      "ice": 95,
+      "energy": 100,
+      "earth": 50,
+      "holy": 60,
+      "death": 85
+    },
+    "officialDifficulty": "MEDIUM",
+    "killsToComplete": 1000
   },
   {
     "id": "redeemed-soul",
@@ -2733,7 +4733,18 @@ export const BESTIARY_DATA = [
       "Tainted Caves"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 40,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 100,
+      "holy": 0,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 500
   },
   {
     "id": "filth-toad",
@@ -2747,7 +4758,18 @@ export const BESTIARY_DATA = [
       "Lake Equivocolao"
     ],
     "region": "Mainland",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 80,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "nomad-blue",
@@ -2761,7 +4783,18 @@ export const BESTIARY_DATA = [
       "Ankrahmun Desert"
     ],
     "region": "Ankrahmun",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 80,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   },
   {
     "id": "nomad-female",
@@ -2775,25 +4808,17 @@ export const BESTIARY_DATA = [
       "Ankrahmun Desert"
     ],
     "region": "Ankrahmun",
-    "recommendedLevel": 150
+    "recommendedLevel": 150,
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 80,
+      "ice": 110,
+      "energy": 100,
+      "earth": 100,
+      "holy": 80,
+      "death": 110
+    },
+    "officialDifficulty": "EASY",
+    "killsToComplete": 1000
   }
 ];
-
-// Constants for filtering
-export const DIFFICULTY = {
-  HARMLESS: 'HARMLESS',
-  TRIVIAL: 'TRIVIAL',
-  EASY: 'EASY',
-  MEDIUM: 'MEDIUM',
-  HARD: 'HARD',
-  CHALLENGING: 'CHALLENGING',
-};
-
-export const RESPAWN_CATEGORY = {
-  NORMAL: 'normal',
-  RAPID: 'rapid',
-  RARE: 'rare',
-};
-
-// Extract unique regions from bestiary data
-export const REGIONS = [...new Set(BESTIARY_DATA.map(creature => creature.region))].sort();
