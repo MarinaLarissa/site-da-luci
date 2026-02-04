@@ -514,6 +514,14 @@
       "completed": {
         "title": "Bestiary Completado!",
         "message": "{{name}} completado! +{{charmPoints}} Charm Points"
+      },
+      "invalidHours": {
+        "title": "Valor Inválido",
+        "message": "Por favor, insira um número válido maior que zero"
+      },
+      "hoursUpdated": {
+        "title": "Horas Atualizadas",
+        "message": "Tempo estimado atualizado para {{hours}}h"
       }
     },
     "characterDrawer": {
@@ -521,7 +529,8 @@
       "empty": "Você ainda não tem personagens criados.",
       "createFirst": "Criar Primeiro Personagem",
       "createNew": "Criar Novo Personagem",
-      "active": "Ativo"
+      "active": "Ativo",
+      "edit": "Editar"
     },
     "killCountModal": {
       "title": "Editar Progresso",

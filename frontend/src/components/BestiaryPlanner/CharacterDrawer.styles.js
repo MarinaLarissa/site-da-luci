@@ -109,12 +109,21 @@ export const CharacterItem = styled.div`
   border: 2px solid ${({ theme, $isActive }) =>
     $isActive ? theme.colors.accent.primary : theme.colors.bg.secondary};
   border-radius: ${({ theme }) => theme.radius.md};
-  cursor: pointer;
   transition: all 0.2s;
+  gap: ${({ theme }) => theme.spacing.sm};
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.accent.primary};
-    transform: translateX(-4px);
+  }
+`;
+
+export const CharacterItemClickable = styled.div`
+  display: flex;
+  flex: 1;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -142,6 +151,31 @@ export const CharacterVocation = styled.span`
   color: ${({ theme }) => theme.colors.text.muted};
 `;
 
+export const CharacterActions = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.xs};
+  align-items: center;
+`;
+
+export const EditCharacterButton = styled.button`
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.accent.primary}20;
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+    color: ${({ theme }) => theme.colors.accent.primary};
+  }
+`;
+
 export const ActiveBadge = styled.div`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   background-color: ${({ theme }) => theme.colors.accent.primary};
@@ -152,6 +186,7 @@ export const ActiveBadge = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
 `;
 
 export const CreateButton = styled.button`

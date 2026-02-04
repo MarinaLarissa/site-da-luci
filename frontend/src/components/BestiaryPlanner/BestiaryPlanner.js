@@ -21,6 +21,7 @@ import {
   toggleCreatureInPlan,
   clearSessionPlan,
   isInSessionPlan,
+  updateCreatureHours,
 } from '../../services/sessionPlannerStorage';
 import { addTodayCompletion } from '../../services/dailyProgressStorage';
 import { BESTIARY_DATA } from '../../data/bestiary';
@@ -69,6 +70,7 @@ const BestiaryPlanner = () => {
   const [toastClosing, setToastClosing] = useState(false);
   const [isKillCountModalOpen, setIsKillCountModalOpen] = useState(false);
   const [selectedCreatureForEdit, setSelectedCreatureForEdit] = useState(null);
+  const [characterToEdit, setCharacterToEdit] = useState(null);
 
   const {
     character,
@@ -159,6 +161,47 @@ const BestiaryPlanner = () => {
     setSessionPlanCreatures(updatedPlan);
   };
 
+  const handleEditHours = (creatureId, creatureName, currentHours) => {
+    if (!character) return;
+
+    const newHours = prompt(
+      t('bestiaryPlanner.sessionPlanner.editHoursPrompt', { name: creatureName }),
+      currentHours
+    );
+
+    // User cancelled or entered empty value
+    if (newHours === null || newHours.trim() === '') return;
+
+    const parsedHours = parseFloat(newHours);
+
+    // Validate input
+    if (isNaN(parsedHours) || parsedHours <= 0) {
+      showToast({
+        type: 'error',
+        title: t('bestiaryPlanner.toast.invalidHours.title'),
+        message: t('bestiaryPlanner.toast.invalidHours.message'),
+      });
+      return;
+    }
+
+    // Update hours in storage
+    updateCreatureHours(character.id, creatureId, parsedHours);
+
+    // Reload session plan to reflect changes
+    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+    setSessionPlanCreatures(updatedPlan);
+
+    // Show success toast
+    showToast({
+      type: 'success',
+      title: t('bestiaryPlanner.toast.hoursUpdated.title'),
+      message: t('bestiaryPlanner.toast.hoursUpdated.message', {
+        name: creatureName,
+        hours: parsedHours,
+      }),
+    });
+  };
+
   // Handle character switching
   const handleCharacterChange = () => {
     // Reload character data from storage
@@ -173,6 +216,13 @@ const BestiaryPlanner = () => {
   };
 
   const handleOpenCreateCharacter = () => {
+    setCharacterToEdit(null); // Reset edit state
+    setIsCharacterDrawerOpen(false);
+    setIsCharacterModalOpen(true);
+  };
+
+  const handleOpenEditCharacter = (characterData) => {
+    setCharacterToEdit(characterData); // Set character to edit
     setIsCharacterDrawerOpen(false);
     setIsCharacterModalOpen(true);
   };
@@ -385,6 +435,7 @@ const BestiaryPlanner = () => {
           onRemoveCreature={handleRemoveFromPlan}
           onClearPlan={handleClearPlan}
           onCompleteCreature={handleCompleteCreature}
+          onEditHours={handleEditHours}
         />
       </SessionPlannerSection>
 
@@ -435,8 +486,11 @@ const BestiaryPlanner = () => {
 
       <CharacterModal
         isOpen={isCharacterModalOpen}
-        onClose={() => setIsCharacterModalOpen(false)}
-        character={character}
+        onClose={() => {
+          setIsCharacterModalOpen(false);
+          setCharacterToEdit(null); // Reset edit state on close
+        }}
+        character={characterToEdit}
       />
 
       {/* Toast notification */}
@@ -449,6 +503,7 @@ const BestiaryPlanner = () => {
         activeCharacterId={character?.id}
         onCharacterChange={handleCharacterChange}
         onCreateCharacter={handleOpenCreateCharacter}
+        onEditCharacter={handleOpenEditCharacter}
       />
 
       {/* Kill Count Modal */}

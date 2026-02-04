@@ -15,10 +15,13 @@ import {
   DrawerContent,
   CharacterList,
   CharacterItem,
+  CharacterItemClickable,
   CharacterInfo,
   CharacterName,
   CharacterLevel,
   CharacterVocation,
+  CharacterActions,
+  EditCharacterButton,
   ActiveBadge,
   CreateButton,
   EmptyState,
@@ -26,7 +29,7 @@ import {
   EmptyText,
 } from './CharacterDrawer.styles';
 
-const CharacterDrawer = ({ isOpen, onClose, activeCharacterId, onCharacterChange, onCreateCharacter }) => {
+const CharacterDrawer = ({ isOpen, onClose, activeCharacterId, onCharacterChange, onCreateCharacter, onEditCharacter }) => {
   const { t } = useTranslation();
   const characters = getAllCharacters();
 
@@ -38,6 +41,12 @@ const CharacterDrawer = ({ isOpen, onClose, activeCharacterId, onCharacterChange
 
   const handleCreateNew = () => {
     onCreateCharacter?.();
+    onClose();
+  };
+
+  const handleEditCharacter = (character, e) => {
+    e.stopPropagation(); // Prevent character selection
+    onEditCharacter?.(character);
     onClose();
   };
 
@@ -67,23 +76,32 @@ const CharacterDrawer = ({ isOpen, onClose, activeCharacterId, onCharacterChange
                 {characters.map((character) => (
                   <CharacterItem
                     key={character.id}
-                    onClick={() => handleSelectCharacter(character)}
                     $isActive={character.id === activeCharacterId}
                   >
-                    <CharacterInfo>
-                      <CharacterName>{character.name}</CharacterName>
-                      <div>
-                        <CharacterLevel>Level {character.level}</CharacterLevel>
-                        <CharacterVocation>
-                          {t(`bestiaryPlanner.vocations.${character.vocation.toLowerCase()}`)}
-                        </CharacterVocation>
-                      </div>
-                    </CharacterInfo>
-                    {character.id === activeCharacterId && (
-                      <ActiveBadge>
-                        ✓ {t('bestiaryPlanner.characterDrawer.active')}
-                      </ActiveBadge>
-                    )}
+                    <CharacterItemClickable onClick={() => handleSelectCharacter(character)}>
+                      <CharacterInfo>
+                        <CharacterName>{character.name}</CharacterName>
+                        <div>
+                          <CharacterLevel>Level {character.level}</CharacterLevel>
+                          <CharacterVocation>
+                            {t(`bestiaryPlanner.vocations.${character.vocation.toLowerCase()}`)}
+                          </CharacterVocation>
+                        </div>
+                      </CharacterInfo>
+                    </CharacterItemClickable>
+
+                    <CharacterActions>
+                      {character.id === activeCharacterId && (
+                        <>
+                          <EditCharacterButton onClick={(e) => handleEditCharacter(character, e)}>
+                            ✎ {t('bestiaryPlanner.characterDrawer.edit')}
+                          </EditCharacterButton>
+                          <ActiveBadge>
+                            ✓ {t('bestiaryPlanner.characterDrawer.active')}
+                          </ActiveBadge>
+                        </>
+                      )}
+                    </CharacterActions>
                   </CharacterItem>
                 ))}
               </CharacterList>
