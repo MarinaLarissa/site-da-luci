@@ -1,8 +1,8 @@
 {
-  "currentIndex": 50,
-  "totalProcessed": 50,
-  "successCount": 14,
-  "failedCount": 36,
+  "currentIndex": 100,
+  "totalProcessed": 100,
+  "successCount": 30,
+  "failedCount": 70,
   "failed": [
     {
       "name": "Sounds",
@@ -147,7 +147,143 @@
     {
       "name": "Animated Cyclops",
       "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Guzzlemaw",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Moohtant",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Mummy",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Ogre Brute",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Ogre Savage",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Ogre Shaman",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Rotworm",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Skunk",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Sword",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Anmothra",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Annihilon",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Annoying Dog",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Anomaly",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Apocalypse",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Apprentice Sheng",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Arachir the Ancient One",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Arkhothep (Creature)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Armenius (Creature)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Arthei",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Arthom the Hunter",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ascending Ferumbras",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ashes of Burning Hatred",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ashmunrah",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Aspect of Power",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Avalanche (Creature)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Axeitus Headbanger",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ayana the Crimson Curse",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Azaram's Soul",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Azerus",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Baby Dragon (Creature)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Baby Pet of Chayenne",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bad Dream",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bad Thought",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bane Lord",
+      "reason": "Not a bestiary creature"
     }
   ],
-  "lastUpdated": "2026-02-04T02:16:15.682Z"
+  "lastUpdated": "2026-02-04T02:19:23.896Z"
 }

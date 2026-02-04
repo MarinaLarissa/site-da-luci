@@ -459,6 +459,213 @@ export const BESTIARY_DATA = [
     "killsToComplete": 500
   },
   {
+    "id": "animated-snowman",
+    "name": "Animated Snowman",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Animated_Snowman.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 80,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "antenna",
+    "name": "Antenna",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Antenna.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "arachnophobica",
+    "name": "Arachnophobica",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arachnophobica.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 50,
+      "earth": 100,
+      "holy": 140,
+      "death": 50
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "arbaziloth",
+    "name": "Arbaziloth",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arbaziloth.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 70,
+      "fire": 85,
+      "ice": 80,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 80
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "arctic-faun",
+    "name": "Arctic Faun",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Arctic_Faun.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 115,
+      "ice": 20,
+      "energy": 110,
+      "earth": 30,
+      "holy": 70,
+      "death": 80
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "armadile",
+    "name": "Armadile",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Armadile.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 100,
+      "ice": 85,
+      "energy": 85,
+      "earth": 0,
+      "holy": 85,
+      "death": 55
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "askarak-demon",
+    "name": "Askarak Demon",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Demon.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 125,
+      "ice": 40,
+      "energy": 40,
+      "earth": 0,
+      "holy": 100,
+      "death": 105
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "askarak-lord",
+    "name": "Askarak Lord",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Lord.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 35,
+      "energy": 35,
+      "earth": 0,
+      "holy": 100,
+      "death": 105
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "askarak-prince",
+    "name": "Askarak Prince",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Askarak_Prince.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 115,
+      "ice": 30,
+      "energy": 30,
+      "earth": 0,
+      "holy": 100,
+      "death": 105
+    },
+    "killsToComplete": 1000
+  },
+  {
     "id": "assassin",
     "name": "Assassin",
     "imageUrl": "/images/creatures/Assassin.gif",
@@ -481,6 +688,52 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
+    "killsToComplete": 500
+  },
+  {
+    "id": "atab",
+    "name": "Atab",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Atab.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 115,
+      "earth": 100,
+      "holy": 50,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "azure-frog",
+    "name": "Azure Frog",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Azure_Frog.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "officialDifficulty": "EASY",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 90,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
     "killsToComplete": 500
   },
   {
@@ -509,6 +762,52 @@ export const BESTIARY_DATA = [
     "killsToComplete": 500
   },
   {
+    "id": "bakragore",
+    "name": "Bakragore",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bakragore.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 105,
+      "holy": 100,
+      "death": 65
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "baleful-bunny",
+    "name": "Baleful Bunny",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Baleful_Bunny.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 95,
+      "earth": 95,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 1000
+  },
+  {
     "id": "bandit",
     "name": "Bandit",
     "imageUrl": "/images/creatures/Bandit.gif",
@@ -531,6 +830,75 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
+    "killsToComplete": 500
+  },
+  {
+    "id": "bane-bringer",
+    "name": "Bane Bringer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bane_Bringer.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 10,
+      "ice": 10,
+      "energy": 10,
+      "earth": 10,
+      "holy": 10,
+      "death": 10
+    },
+    "killsToComplete": 2500
+  },
+  {
+    "id": "bane-of-light",
+    "name": "Bane of Light",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bane_Of_Light.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 0,
+      "energy": 120,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 2500
+  },
+  {
+    "id": "banshee",
+    "name": "Banshee",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Banshee.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 100,
+      "energy": 100,
+      "earth": 0,
+      "holy": 125,
+      "death": 0
+    },
     "killsToComplete": 500
   },
   {
