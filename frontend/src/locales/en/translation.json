@@ -426,9 +426,12 @@
       "clear": "Clear Filters"
     },
     "difficulty": {
+      "harmless": "Harmless",
+      "trivial": "Trivial",
       "easy": "Easy",
       "medium": "Medium",
-      "hard": "Hard"
+      "hard": "Hard",
+      "challenging": "Challenging"
     },
     "respawnCategory": {
       "normal": "Normal",
@@ -446,7 +449,8 @@
       "efficiency": "Efficiency",
       "locations": "Locations",
       "rapidRecommended": "Rapid Recommended",
-      "editKills": "Edit progress"
+      "editKills": "Edit progress",
+      "toComplete": "to complete"
     },
     "suggestions": {
       "title": "Creature Suggestions",

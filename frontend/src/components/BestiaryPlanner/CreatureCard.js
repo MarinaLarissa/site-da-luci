@@ -31,10 +31,26 @@ import {
   RegionBadge,
   PlanButton,
   EditButton,
+  ResistancesRow,
+  ResistanceItem,
+  ResistanceIcon,
+  ResistanceValue,
+  KillsSection,
 } from './CreatureCard.styles';
 
 // Constants
 const MAX_VISIBLE_LOCATIONS = 3;
+
+// Elemental resistance icons mapping
+const ELEMENT_ICONS = {
+  physical: '⚔️',
+  fire: '🔥',
+  ice: '❄️',
+  energy: '⚡',
+  earth: '🌿',
+  holy: '✨',
+  death: '💀',
+};
 
 const CreatureCard = ({
   creature,
@@ -64,6 +80,29 @@ const CreatureCard = ({
     // Set placeholder
     e.target.src = PLACEHOLDER_IMAGE;
     e.target.onerror = null; // Prevent infinite loop
+  };
+
+  // Helper to render elemental resistances
+  const renderResistances = () => {
+    if (!creature.elementalResistances) return null;
+
+    // Filter resistances that exist and are not 100% (neutral)
+    const activeResistances = Object.entries(creature.elementalResistances)
+      .filter(([_, value]) => value !== 100 && value != null)
+      .slice(0, 4); // Show max 4 resistances to avoid clutter
+
+    if (activeResistances.length === 0) return null;
+
+    return (
+      <ResistancesRow>
+        {activeResistances.map(([element, value]) => (
+          <ResistanceItem key={element}>
+            <ResistanceIcon>{ELEMENT_ICONS[element] || '🛡️'}</ResistanceIcon>
+            <ResistanceValue $value={value}>{value}%</ResistanceValue>
+          </ResistanceItem>
+        ))}
+      </ResistancesRow>
+    );
   };
 
   return (
@@ -122,10 +161,6 @@ const CreatureCard = ({
 
           <StatsRow>
             <Stat>
-              <StatIcon>⏱️</StatIcon>
-              {creature.estimatedHours}h
-            </Stat>
-            <Stat>
               <StatIcon>⚔️</StatIcon>
               <DifficultyBadge $difficulty={creature.difficulty}>
                 {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
@@ -135,20 +170,30 @@ const CreatureCard = ({
               <StatIcon>📍</StatIcon>
               <RegionBadge>{creature.region}</RegionBadge>
             </Stat>
-            <Stat>
-              <StatIcon>🎯</StatIcon>
-              Lvl {creature.recommendedLevel}+
-            </Stat>
           </StatsRow>
+
+          {renderResistances()}
+
+          {/* Kills tracking section */}
+          {(creature.currentKills != null || creature.killsToComplete) && (
+            <KillsSection>
+              {creature.currentKills != null && (
+                <Stat>
+                  <StatIcon>🎯</StatIcon>
+                  {creature.currentKills} / {creature.killsToComplete || '?'} kills
+                </Stat>
+              )}
+              {creature.currentKills == null && creature.killsToComplete && (
+                <Stat>
+                  <StatIcon>🎯</StatIcon>
+                  {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
+                </Stat>
+              )}
+            </KillsSection>
+          )}
 
           <LocationSection>
             <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
-            {creature.killsRequired && (
-              <Stat>
-                <StatIcon>🎯</StatIcon>
-                {creature.killsRequired} kills
-              </Stat>
-            )}
             <LocationList>
               {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
                 <LocationChip key={idx}>{location}</LocationChip>
@@ -180,13 +225,22 @@ CreatureCard.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     charmPoints: PropTypes.number.isRequired,
-    estimatedHours: PropTypes.number.isRequired,
     difficulty: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
-    recommendedLevel: PropTypes.number.isRequired,
     locations: PropTypes.arrayOf(PropTypes.string).isRequired,
     imageUrl: PropTypes.string,
     isRapidRecommended: PropTypes.bool,
+    elementalResistances: PropTypes.shape({
+      physical: PropTypes.number,
+      fire: PropTypes.number,
+      ice: PropTypes.number,
+      energy: PropTypes.number,
+      earth: PropTypes.number,
+      holy: PropTypes.number,
+      death: PropTypes.number,
+    }),
+    currentKills: PropTypes.number,
+    killsToComplete: PropTypes.number,
   }).isRequired,
   onToggleComplete: PropTypes.func.isRequired,
   isCompleted: PropTypes.bool.isRequired,

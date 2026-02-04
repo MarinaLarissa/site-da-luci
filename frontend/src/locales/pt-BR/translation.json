@@ -426,9 +426,12 @@
       "clear": "Limpar Filtros"
     },
     "difficulty": {
+      "harmless": "Inofensivo",
+      "trivial": "Trivial",
       "easy": "Fácil",
       "medium": "Médio",
-      "hard": "Difícil"
+      "hard": "Difícil",
+      "challenging": "Desafiador"
     },
     "respawnCategory": {
       "normal": "Normal",
@@ -446,7 +449,8 @@
       "efficiency": "Eficiência",
       "locations": "Localizações",
       "rapidRecommended": "Rapid Recomendado",
-      "editKills": "Editar progresso"
+      "editKills": "Editar progresso",
+      "toComplete": "para completar"
     },
     "suggestions": {
       "title": "Sugestões de Criaturas",

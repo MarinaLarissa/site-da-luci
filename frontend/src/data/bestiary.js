@@ -1,3 +1,32 @@
+/**
+ * Bestiary data structure
+ *
+ * Expected fields per creature:
+ * - id: string (kebab-case identifier)
+ * - name: string (official creature name)
+ * - imageUrl: string (path to creature image)
+ * - charmPoints: number (CP reward)
+ * - difficulty: string (EASY, MEDIUM, HARD - legacy field)
+ * - officialDifficulty: string (HARMLESS, TRIVIAL, EASY, MEDIUM, HARD, CHALLENGING - from TibiaWiki)
+ * - respawnCategory: string (normal, rapid, rare)
+ * - locations: array<string> (spawn locations)
+ * - region: string (geographical region)
+ * - elementalResistances: object {
+ *     physical: number (100 = neutral, <100 = resistant, >100 = weak),
+ *     fire: number,
+ *     ice: number,
+ *     energy: number,
+ *     earth: number,
+ *     holy: number,
+ *     death: number
+ *   }
+ * - killsToComplete: number (kills needed to complete bestiary)
+ * - currentKills: number (optional - user progress, filled manually or via screenshot)
+ *
+ * Deprecated fields (kept for backwards compatibility, will be removed in future):
+ * - estimatedHours: number (imprecise, should not be displayed)
+ * - recommendedLevel: number (imprecise, should not be displayed)
+ */
 export const BESTIARY_DATA = [
   {
     "id": "raging-fire",
@@ -2691,9 +2720,12 @@ export const BESTIARY_DATA = [
 
 // Constants for filtering
 export const DIFFICULTY = {
+  HARMLESS: 'HARMLESS',
+  TRIVIAL: 'TRIVIAL',
   EASY: 'EASY',
   MEDIUM: 'MEDIUM',
   HARD: 'HARD',
+  CHALLENGING: 'CHALLENGING',
 };
 
 export const RESPAWN_CATEGORY = {

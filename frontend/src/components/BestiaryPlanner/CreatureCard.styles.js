@@ -148,11 +148,17 @@ export const DifficultyBadge = styled.span`
   text-transform: uppercase;
   background-color: ${({ $difficulty, theme }) => {
     switch ($difficulty) {
+      case 'HARMLESS':
+        return 'rgba(158, 158, 158, 0.2)';
+      case 'TRIVIAL':
+        return 'rgba(129, 199, 132, 0.2)';
       case 'EASY':
         return 'rgba(76, 175, 80, 0.2)';
       case 'MEDIUM':
         return 'rgba(255, 193, 7, 0.2)';
       case 'HARD':
+        return 'rgba(255, 152, 0, 0.2)';
+      case 'CHALLENGING':
         return 'rgba(244, 67, 54, 0.2)';
       default:
         return theme.colors.bg.secondary;
@@ -160,11 +166,17 @@ export const DifficultyBadge = styled.span`
   }};
   color: ${({ $difficulty, theme }) => {
     switch ($difficulty) {
+      case 'HARMLESS':
+        return '#9e9e9e';
+      case 'TRIVIAL':
+        return '#81c784';
       case 'EASY':
         return '#4caf50';
       case 'MEDIUM':
         return '#ffc107';
       case 'HARD':
+        return '#ff9800';
+      case 'CHALLENGING':
         return '#f44336';
       default:
         return theme.colors.text.secondary;
@@ -289,4 +301,43 @@ export const EditButton = styled.button`
   &:active {
     transform: scale(0.95);
   }
+`;
+
+export const ResistancesRow = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  flex-wrap: wrap;
+`;
+
+export const ResistanceItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  font-size: 0.75rem;
+`;
+
+export const ResistanceIcon = styled.span`
+  font-size: 1rem;
+  line-height: 1;
+`;
+
+export const ResistanceValue = styled.span`
+  font-weight: 600;
+  color: ${({ $value, theme }) => {
+    if ($value < 100) return '#4caf50'; // Resistant (takes less damage)
+    if ($value > 100) return '#f44336'; // Weak (takes more damage)
+    return theme.colors.text.secondary; // Neutral
+  }};
+`;
+
+export const KillsSection = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.sm};
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: ${({ theme }) => theme.radius.sm};
+  border: 1px solid rgba(102, 126, 234, 0.1);
 `;
