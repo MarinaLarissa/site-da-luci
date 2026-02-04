@@ -1,0 +1,153 @@
+{
+  "currentIndex": 50,
+  "totalProcessed": 50,
+  "successCount": 14,
+  "failedCount": 36,
+  "failed": [
+    {
+      "name": "Sounds",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Vampire Lords",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "1st Mate Ratticus",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "A Greedy Eye",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "A Shielded Astral Glyph",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "A Weak Spot",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Abominable Servant",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Abominable Spawn",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Abomination Cultist",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Abyssador",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Achad",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Adlerauge",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Adventurer Group",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Aftershock",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Aggressive Chicken",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Aggressive Lava",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Aggressive Matter",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ahau",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Allusion",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Alptramun",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Amarie (Creature)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Amenef the Burning",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "An Astral Glyph",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "An Observer Eye",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ancient Lion Archer",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ancient Lion Knight",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ancient Lion Warlock",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ancient Spawn of Morgathla",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Ancient Ugly Monster",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Angry Adventurer",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Angry Demon",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Angry Elemental",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Angry King Chuck",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Angry Plant",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Clomp",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Animated Cyclops",
+      "reason": "Not a bestiary creature"
+    }
+  ],
+  "lastUpdated": "2026-02-04T02:16:15.682Z"
+}
