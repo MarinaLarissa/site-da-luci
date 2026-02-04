@@ -142,8 +142,8 @@ export const SessionPlannerSection = styled.div`
 
 export const ContentGrid = styled.div`
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: ${({ theme }) => theme.spacing.xl};
+  grid-template-columns: 280px 1fr;
+  gap: ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;

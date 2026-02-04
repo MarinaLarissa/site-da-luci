@@ -12,6 +12,9 @@ export const ImbuementBlockContainer = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border: 1px solid ${({ theme }) => theme.colors.border.light};
   transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-2px);

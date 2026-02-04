@@ -4,13 +4,18 @@ export const PlannerPanel = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.card};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
   border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.md};
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.sm};
   height: fit-content;
   position: sticky;
   top: ${({ theme }) => theme.spacing.lg};
+  max-width: 280px;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
 `;
 
 export const PlannerHeader = styled.div`
@@ -22,7 +27,7 @@ export const PlannerHeader = styled.div`
 `;
 
 export const PlannerTitle = styled.h3`
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text.primary};
 `;
@@ -53,13 +58,13 @@ export const ClearButton = styled.button`
 export const PlannerList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-  max-height: 300px;
+  gap: ${({ theme }) => theme.spacing.xs};
+  max-height: 200px;
   overflow-y: auto;
 
   /* Custom scrollbar */
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-track {
@@ -187,18 +192,18 @@ export const StatValue = styled.span`
 `;
 
 export const TodaySummary = styled.div`
-  padding: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.sm};
   background-color: ${({ theme }) => theme.colors.bg.hover};
-  border-radius: ${({ theme }) => theme.radius.md};
+  border-radius: ${({ theme }) => theme.radius.sm};
   border: 1px solid #10b98140;
-  margin-top: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const TodayTitle = styled.h4`
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #10b981;
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
@@ -208,13 +213,13 @@ export const TodayCreatureList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
-  margin-top: ${({ theme }) => theme.spacing.sm};
-  max-height: 100px;
+  margin-top: ${({ theme }) => theme.spacing.xs};
+  max-height: 60px;
   overflow-y: auto;
 
   /* Custom scrollbar */
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 3px;
   }
 
   &::-webkit-scrollbar-track {

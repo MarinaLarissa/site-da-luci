@@ -28,9 +28,9 @@ export default function InputSection({ input, setInput, onCalculate, onLoadExamp
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder={t('calculator.inputSection.placeholder')}
-        $minHeight="200px"
+        $minHeight="80px"
         $monospace={false}
-        rows={15}
+        rows={3}
         disabled={loading}
         data-cy="loot-calculator-input-session"
       />
