@@ -902,6 +902,98 @@ export const BESTIARY_DATA = [
     "killsToComplete": 500
   },
   {
+    "id": "barbarian-bloodwalker",
+    "name": "Barbarian Bloodwalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Bloodwalker.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 50,
+      "energy": 90,
+      "earth": 105,
+      "holy": 80,
+      "death": 110
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "barbarian-brutetamer",
+    "name": "Barbarian Brutetamer",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Brutetamer.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "officialDifficulty": "EASY",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 100,
+      "ice": 50,
+      "energy": 80,
+      "earth": 100,
+      "holy": 90,
+      "death": 105
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "barbarian-headsplitter",
+    "name": "Barbarian Headsplitter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Headsplitter.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "officialDifficulty": "EASY",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 50,
+      "energy": 80,
+      "earth": 110,
+      "holy": 80,
+      "death": 110
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "barbarian-skullhunter",
+    "name": "Barbarian Skullhunter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Barbarian_Skullhunter.gif",
+    "charmPoints": 5,
+    "difficulty": "EASY",
+    "officialDifficulty": "EASY",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 100,
+      "ice": 50,
+      "energy": 80,
+      "earth": 110,
+      "holy": 90,
+      "death": 105
+    },
+    "killsToComplete": 500
+  },
+  {
     "id": "barkless-devotee",
     "name": "Barkless Devotee",
     "imageUrl": "/images/creatures/Barkless_Devotee.gif",
@@ -952,6 +1044,52 @@ export const BESTIARY_DATA = [
     "killsToComplete": 500
   },
   {
+    "id": "bashmu",
+    "name": "Bashmu",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bashmu.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 95,
+      "fire": 100,
+      "ice": 105,
+      "energy": 95,
+      "earth": 80,
+      "holy": 110,
+      "death": 110
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "bat",
+    "name": "Bat",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bat.gif",
+    "charmPoints": 5,
+    "difficulty": "TRIVIAL",
+    "officialDifficulty": "TRIVIAL",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 110,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
     "id": "bear",
     "name": "Bear",
     "imageUrl": "/images/creatures/Bear.gif",
@@ -974,6 +1112,351 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
+    "killsToComplete": 500
+  },
+  {
+    "id": "behemoth",
+    "name": "Behemoth",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Behemoth.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 90,
+      "fire": 70,
+      "ice": 110,
+      "energy": 90,
+      "earth": 20,
+      "holy": 70,
+      "death": 105
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "bellicose-orger",
+    "name": "Bellicose Orger",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bellicose_Orger.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 80,
+      "earth": 110,
+      "holy": 90,
+      "death": 110
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "berrypest",
+    "name": "Berrypest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Berrypest.gif",
+    "charmPoints": 5,
+    "difficulty": "HARMLESS",
+    "officialDifficulty": "HARMLESS",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 2500
+  },
+  {
+    "id": "berserker-chicken",
+    "name": "Berserker Chicken",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Berserker_Chicken.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 90,
+      "ice": 90,
+      "energy": 90,
+      "earth": 90,
+      "holy": 90,
+      "death": 90
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "betrayed-wraith",
+    "name": "Betrayed Wraith",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Betrayed_Wraith.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 50,
+      "energy": 90,
+      "earth": 0,
+      "holy": 120,
+      "death": 0
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "billdodger",
+    "name": "Billdodger",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Billdodger.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "biting-book",
+    "name": "Biting Book",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Biting_Book.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 50,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "black-sheep",
+    "name": "Black Sheep",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Black_Sheep.gif",
+    "charmPoints": 5,
+    "difficulty": "TRIVIAL",
+    "officialDifficulty": "TRIVIAL",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 1000
+  },
+  {
+    "id": "black-sphinx-acolyte",
+    "name": "Black Sphinx Acolyte",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Black_Sphinx_Acolyte.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 90,
+      "holy": 130,
+      "death": 0
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blemished-spawn",
+    "name": "Blemished Spawn",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blemished_Spawn.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 115,
+      "ice": 100,
+      "energy": 100,
+      "earth": 90,
+      "holy": 100,
+      "death": 90
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blight-spitter",
+    "name": "Blight Spitter",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blight_Spitter.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blightling",
+    "name": "Blightling",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blightling.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blightwalker",
+    "name": "Blightwalker",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blightwalker.gif",
+    "charmPoints": 5,
+    "difficulty": "HARD",
+    "officialDifficulty": "HARD",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 110,
+      "fire": 50,
+      "ice": 85,
+      "energy": 80,
+      "earth": 0,
+      "holy": 130,
+      "death": 0
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "bloated-man-maggot",
+    "name": "Bloated Man-Maggot",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Bloated_Man-maggot.gif",
+    "charmPoints": 5,
+    "difficulty": "CHALLENGING",
+    "officialDifficulty": "CHALLENGING",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 55,
+      "fire": 85,
+      "ice": 115,
+      "energy": 115,
+      "earth": 60,
+      "holy": 105,
+      "death": 95
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blocking-stalagmite",
+    "name": "Blocking Stalagmite",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blocking_Stalagmite.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 0,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 0
+    },
     "killsToComplete": 500
   },
   {
@@ -1024,6 +1507,98 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
+    "killsToComplete": 500
+  },
+  {
+    "id": "blood-guardian",
+    "name": "Blood Guardian",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Guardian.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blood-hand",
+    "name": "Blood Hand",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Hand.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 110,
+      "ice": 90,
+      "energy": 80,
+      "earth": 0,
+      "holy": 110,
+      "death": 50
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blood-pool",
+    "name": "Blood Pool",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Pool.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 100,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "blood-priest",
+    "name": "Blood Priest",
+    "imageUrl": "https://tibia.fandom.com/wiki/Special:FilePath/Blood_Priest.gif",
+    "charmPoints": 5,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "respawnCategory": "normal",
+    "locations": [
+      "Unknown"
+    ],
+    "region": "Mainland",
+    "elementalResistances": {
+      "physical": 108,
+      "fire": 108,
+      "ice": 85,
+      "energy": 85,
+      "earth": 0,
+      "holy": 108,
+      "death": 50
+    },
     "killsToComplete": 500
   },
   {

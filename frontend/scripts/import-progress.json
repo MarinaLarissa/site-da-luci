@@ -1,8 +1,8 @@
 {
-  "currentIndex": 100,
-  "totalProcessed": 100,
-  "successCount": 30,
-  "failedCount": 70,
+  "currentIndex": 150,
+  "totalProcessed": 150,
+  "successCount": 55,
+  "failedCount": 95,
   "failed": [
     {
       "name": "Sounds",
@@ -283,7 +283,107 @@
     {
       "name": "Bane Lord",
       "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Barbaria",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Baron Brute",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Basaltwall",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Battlemaster Zunzu",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bazir",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bear (Nostalgia)",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Benevolent Iks Spirit",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bibby Bloodbath",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Big Boss Trolliver",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Biting Cold",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Black Cobra",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Black Knight",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Black Mutagen",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Black Vixen",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blasting Flame",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blaze of Burning Hatred",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blazing Fire Elemental",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blight Bug",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blight Mariner",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blind Monstrosity",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blissful Times",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blistering Fire Elemental",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blood Tear",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Blood Totem",
+      "reason": "Not a bestiary creature"
+    },
+    {
+      "name": "Bloodback",
+      "reason": "Not a bestiary creature"
     }
   ],
-  "lastUpdated": "2026-02-04T02:19:23.896Z"
+  "lastUpdated": "2026-02-04T02:25:00.015Z"
 }
