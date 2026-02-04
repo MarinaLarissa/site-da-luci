@@ -34,13 +34,25 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Raging_Fire.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
+    "officialDifficulty": "CHALLENGING",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
       "Jaccus Maxxen's Dungeon"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 120,
+      "ice": 70,
+      "energy": 100,
+      "earth": 100,
+      "holy": 90,
+      "death": 100
+    },
+    "killsToComplete": 1000,
+    "currentKills": 350
   },
   {
     "id": "iks-ahpututu",
@@ -48,13 +60,25 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Iks_Ahpututu.gif",
     "charmPoints": 50,
     "difficulty": "EASY",
+    "officialDifficulty": "HARD",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
       "Iksupan"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 105,
+      "fire": 95,
+      "ice": 100,
+      "energy": 100,
+      "earth": 75,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 1000,
+    "currentKills": 1000
   },
   {
     "id": "goblin-leader",
@@ -62,13 +86,50 @@ export const BESTIARY_DATA = [
     "imageUrl": "/images/creatures/Goblin_Leader.gif",
     "charmPoints": 30,
     "difficulty": "EASY",
+    "officialDifficulty": "TRIVIAL",
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
       "Beregar"
     ],
     "region": "Mainland",
-    "recommendedLevel": 200
+    "recommendedLevel": 200,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 105,
+      "ice": 100,
+      "energy": 100,
+      "earth": 100,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500
+  },
+  {
+    "id": "fire-elemental",
+    "name": "Fire Elemental",
+    "imageUrl": "/images/creatures/Fire_Elemental.gif",
+    "charmPoints": 25,
+    "difficulty": "MEDIUM",
+    "officialDifficulty": "MEDIUM",
+    "estimatedHours": 3,
+    "respawnCategory": "normal",
+    "locations": [
+      "Hellgate", "Magma Dungeon", "Formorgar Mines"
+    ],
+    "region": "Mainland",
+    "recommendedLevel": 100,
+    "elementalResistances": {
+      "physical": 100,
+      "fire": 0,
+      "ice": 130,
+      "energy": 100,
+      "earth": 80,
+      "holy": 100,
+      "death": 100
+    },
+    "killsToComplete": 500,
+    "currentKills": 150
   },
   {
     "id": "water-buffalo",

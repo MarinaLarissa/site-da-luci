@@ -328,9 +328,10 @@ export const ResistanceIcon = styled.span`
 export const ResistanceValue = styled.span`
   font-weight: 600;
   color: ${({ $value, theme }) => {
-    if ($value < 100) return '#4caf50'; // Resistant (takes less damage)
-    if ($value > 100) return '#f44336'; // Weak (takes more damage)
-    return theme.colors.text.secondary; // Neutral
+    if ($value === 0) return '#f44336'; // Immune (0 damage) - RED
+    if ($value > 100) return '#4caf50'; // Weak (takes more damage) - GREEN
+    if ($value < 100) return '#ffc107'; // Resistant (takes less damage) - YELLOW
+    return theme.colors.text.secondary; // Neutral (100%) - GRAY
   }};
 `;
 

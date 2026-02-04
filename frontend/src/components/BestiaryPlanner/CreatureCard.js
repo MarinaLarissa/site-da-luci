@@ -86,16 +86,17 @@ const CreatureCard = ({
   const renderResistances = () => {
     if (!creature.elementalResistances) return null;
 
-    // Filter resistances that exist and are not 100% (neutral)
-    const activeResistances = Object.entries(creature.elementalResistances)
-      .filter(([_, value]) => value !== 100 && value != null)
-      .slice(0, 4); // Show max 4 resistances to avoid clutter
+    // Show ALL elements in fixed order (physical, fire, ice, energy, earth, holy, death)
+    const elementOrder = ['physical', 'fire', 'ice', 'energy', 'earth', 'holy', 'death'];
+    const allResistances = elementOrder
+      .map(element => [element, creature.elementalResistances[element] ?? 100])
+      .filter(([_, value]) => value != null);
 
-    if (activeResistances.length === 0) return null;
+    if (allResistances.length === 0) return null;
 
     return (
       <ResistancesRow>
-        {activeResistances.map(([element, value]) => (
+        {allResistances.map(([element, value]) => (
           <ResistanceItem key={element}>
             <ResistanceIcon>{ELEMENT_ICONS[element] || '🛡️'}</ResistanceIcon>
             <ResistanceValue $value={value}>{value}%</ResistanceValue>
