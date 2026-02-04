@@ -30,7 +30,7 @@ export const ResultsCount = styled.span`
 
 export const CreatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: 768px) {
