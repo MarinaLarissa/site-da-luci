@@ -1,0 +1,198 @@
+Barbarian Headhunter
+Brimstone Bugs
+Dragon Hatching
+Dragon Lord Hatching
+Draptor
+Dromedary
+Dryad
+Duskbringer
+Dwarf
+Dwarf Geomancer
+Dwarf Guard
+Dwarf Henchman
+Dwarf Soldier
+Dworc Fleshhunter
+Dworc Venomsniper
+Dworc Voodoomaster
+Earth Elemental
+Efreet/Marid
+Elder Bonelord
+Elder Forest Fury
+Elder Mummy
+Elephant
+Elf
+Elf Arcanist
+Elf Overseer
+Elf Scout
+Energy Elemental
+Enraged Crystal Golem
+Evil Sheep
+Evil Sheep Lord
+Execowtioner
+Feverish Citizen
+Fire Devil
+Flamingo
+Forest Fury
+Fox
+Frost Troll
+Furious Fire Elemental
+Furious Troll
+Gang Member
+Gazer
+Ghastly Dragon
+Ghoulish Hyaena
+Gladiator
+Goblin Assassin
+Goblin Scavenger
+Golden Servant
+Goldhanded Cultist
+Goldhanded Cultist Bride
+Gozzler
+Grave Guard
+Grave Robber
+Gravedigger
+Green Djinn
+Green Frog
+Grynch Clan Goblin
+Haunted Dragon
+Herald of Gloom
+Hive Overseer
+Honour Guard
+Horse (Gray/Brown/Taupe)
+Hot Dog
+Hyaena
+Ice Dragon
+Ice Witch
+Infernal Frog
+Insect Swarm
+Insectoid Scout
+Insectoid Worker
+Iron Servant
+Jellyfish
+Killer Caiman
+Killer Rabbit
+Ladybug
+Lancer Beetle
+Lich
+Lion
+Little Corym Charlatan
+Lizard Magistratus
+Lizard Snakecharmer
+Loricate Orger
+Mad Scientist
+Manta Ray
+Massive Earth Elemental
+Massive Energy Elemental
+Massive Fire Elemental
+Massive Water Elemental
+Mercury Blob
+Midnight Panther
+Midnight Spawn
+Midnight Warrior
+Minotaur
+Minotaur Amazon
+Minotaur Archer
+Minotaur Guard
+Minotaur Hunter
+Minotaur Mage
+Mole
+Monk
+Mooh'tah Warrior
+Moohtant
+Mutated Rat
+Mutated Tiger
+Necromancer
+Nightfiend
+Nightslayer
+Nightstalker
+Noble Lion
+Nomad
+Omnivora
+Orc
+Orc Berserker
+Orc Leader
+Orc Marauder
+Orc Rider
+Orc Shaman
+Orc Spearman
+Orc Warlord
+Orc Warrior
+Orchid Frog
+Orger
+Parrot
+Percht
+Pig
+Pirate Bucaneer
+Pirate Corsair
+Pirate Ghost
+Pirate Skeleton
+Polar Bear
+Priestess
+Quara Constrictor
+Quara Constrictor Scout
+Quara Hydromancer Scout
+Quara Mantassin
+Quara Mantassin Scout
+Quara Pincher Scout
+Quara Predator Scout
+Rabbit
+Rat
+Renegade Quara Constrictor
+Renegade Quara Hydromancer
+Renegade Quara Mantassin
+Renegade Quara Pincher
+Renegade Quara Predator
+Roaring Lion
+Roast Pork
+Rorc
+Sacred Spider
+Sandstone Scorpion
+Schiach
+Scorpion
+Shaburak Demon
+Shaburak Lord
+Shaburak Prince
+Shadow Hound
+Shadow Pupil
+Shaper Matriarch
+Shark
+Sheep
+Skeleton Warrior
+Skunk
+Slug
+Spidris Elite
+Spit Nettle
+Squidgy Slime
+Squirrel
+Stone Golem
+Stone Rhino
+Swampling
+Swarmer
+Tarnished Spirit
+Terrified Elephant
+Thornfire Wolf
+Tiger
+Tomb Servant
+Troll Champion
+Troll Guard
+Troll Legionnaire
+Twisted Shaper
+Undead Cavebear
+Undead Jester
+Undead Mine Worker
+Undead Prospector
+Valkyrie
+Vicious Manbat
+Vulcongra
+Wailing Widow
+War Wolf
+Wasp
+Water Elemental
+White Shade
+Wiggler
+Wild Horse
+Witch
+Worm Priestess
+Wyvern
+Yeti
+Zombie

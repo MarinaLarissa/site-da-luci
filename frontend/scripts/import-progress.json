@@ -1,389 +1,49 @@
 {
-  "currentIndex": 150,
-  "totalProcessed": 150,
-  "successCount": 55,
-  "failedCount": 95,
+  "currentIndex": 198,
+  "totalProcessed": 198,
+  "successCount": 188,
+  "failedCount": 10,
   "failed": [
     {
-      "name": "Sounds",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Vampire Lords",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "1st Mate Ratticus",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "A Greedy Eye",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "A Shielded Astral Glyph",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "A Weak Spot",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Abominable Servant",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Abominable Spawn",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Abomination Cultist",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Abyssador",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Achad",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Adlerauge",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Adventurer Group",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Aftershock",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Aggressive Chicken",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Aggressive Lava",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Aggressive Matter",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ahau",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Allusion",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Alptramun",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Amarie (Creature)",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Amenef the Burning",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "An Astral Glyph",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "An Observer Eye",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ancient Lion Archer",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ancient Lion Knight",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ancient Lion Warlock",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ancient Spawn of Morgathla",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ancient Ugly Monster",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Angry Adventurer",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Angry Demon",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Angry Elemental",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Angry King Chuck",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Angry Plant",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Clomp",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Cyclops",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Guzzlemaw",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Moohtant",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Mummy",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Ogre Brute",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Ogre Savage",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Ogre Shaman",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Rotworm",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Skunk",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Animated Sword",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Anmothra",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Annihilon",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Annoying Dog",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Anomaly",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Apocalypse",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Apprentice Sheng",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Arachir the Ancient One",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Arkhothep (Creature)",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Armenius (Creature)",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Arthei",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Arthom the Hunter",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ascending Ferumbras",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ashes of Burning Hatred",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ashmunrah",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Aspect of Power",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Avalanche (Creature)",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Axeitus Headbanger",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Ayana the Crimson Curse",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Azaram's Soul",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Azerus",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Baby Dragon (Creature)",
-      "reason": "Not a bestiary creature"
+      "name": "Barbarian Headhunter",
+      "reason": "Page not found: Barbarian Headhunter"
     },
     {
-      "name": "Baby Pet of Chayenne",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bad Dream",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bad Thought",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bane Lord",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Barbaria",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Baron Brute",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Basaltwall",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Battlemaster Zunzu",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bazir",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bear (Nostalgia)",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Benevolent Iks Spirit",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Bibby Bloodbath",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Big Boss Trolliver",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Biting Cold",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Black Cobra",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Black Knight",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Black Mutagen",
-      "reason": "Not a bestiary creature"
+      "name": "Brimstone Bugs",
+      "reason": "Page not found: Brimstone Bugs"
     },
     {
-      "name": "Black Vixen",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Blasting Flame",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Blaze of Burning Hatred",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Blazing Fire Elemental",
-      "reason": "Not a bestiary creature"
-    },
-    {
-      "name": "Blight Bug",
-      "reason": "Not a bestiary creature"
+      "name": "Dragon Hatching",
+      "reason": "Page not found: Dragon Hatching"
     },
     {
-      "name": "Blight Mariner",
-      "reason": "Not a bestiary creature"
+      "name": "Dragon Lord Hatching",
+      "reason": "Page not found: Dragon Lord Hatching"
     },
     {
-      "name": "Blind Monstrosity",
-      "reason": "Not a bestiary creature"
+      "name": "Efreet/Marid",
+      "reason": "Page not found: Efreet/Marid"
     },
     {
-      "name": "Blissful Times",
-      "reason": "Not a bestiary creature"
+      "name": "Horse (Gray/Brown/Taupe)",
+      "reason": "Page not found: Horse (Gray/Brown/Taupe)"
     },
     {
-      "name": "Blistering Fire Elemental",
+      "name": "Monk",
       "reason": "Not a bestiary creature"
     },
     {
-      "name": "Blood Tear",
+      "name": "Mooh'tah Warrior",
       "reason": "Not a bestiary creature"
     },
     {
-      "name": "Blood Totem",
+      "name": "Nomad",
       "reason": "Not a bestiary creature"
     },
     {
-      "name": "Bloodback",
-      "reason": "Not a bestiary creature"
+      "name": "Pirate Bucaneer",
+      "reason": "Page not found: Pirate Bucaneer"
     }
   ],
-  "lastUpdated": "2026-02-04T02:25:00.015Z"
+  "lastUpdated": "2026-02-04T02:52:53.885Z"
 }
