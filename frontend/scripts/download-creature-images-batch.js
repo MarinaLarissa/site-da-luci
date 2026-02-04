@@ -1,8 +1,10 @@
 /**
- * Batch Image Downloader for Creatures
- * Downloads images in batches of 50 to prevent memory issues and show progress
+ * Download de imagens de criaturas em lotes
+ * Baixa imagens do TibiaWiki e salva localmente
  *
- * Usage: node scripts/download-creature-images-batch.js
+ * Uso:
+ * - node download-creature-images-batch.js         # Processa próximo lote
+ * - node download-creature-images-batch.js --reset # Reinicia do zero
  */
 
 const https = require('https');
@@ -11,42 +13,75 @@ const path = require('path');
 
 const BESTIARY_FILE = path.join(__dirname, '../src/data/bestiary.js');
 const IMAGES_DIR = path.join(__dirname, '../public/images/creatures');
+const PROGRESS_FILE = path.join(__dirname, 'image-download-progress.json');
 const BATCH_SIZE = 50;
-const MAX_CONCURRENT = 5;
-const RETRY_ATTEMPTS = 3;
-const RETRY_DELAY = 2000;
-
-// Ensure images directory exists
-if (!fs.existsSync(IMAGES_DIR)) {
-  fs.mkdirSync(IMAGES_DIR, { recursive: true });
-}
+const DELAY_MS = 500; // Delay entre downloads
 
 /**
- * Download an image from URL
+ * Cria diretório de imagens se não existir
  */
-const downloadImage = (url, filepath, attempt = 1) => {
+const ensureImagesDir = () => {
+  if (!fs.existsSync(IMAGES_DIR)) {
+    fs.mkdirSync(IMAGES_DIR, { recursive: true });
+    console.log('📁 Created images directory:', IMAGES_DIR);
+  }
+};
+
+/**
+ * Carrega progresso salvo
+ */
+const loadProgress = () => {
+  if (fs.existsSync(PROGRESS_FILE)) {
+    return JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8'));
+  }
+  return {
+    currentIndex: 0,
+    totalProcessed: 0,
+    successCount: 0,
+    failedCount: 0,
+    failed: [],
+    lastUpdated: null
+  };
+};
+
+/**
+ * Salva progresso
+ */
+const saveProgress = (progress) => {
+  progress.lastUpdated = new Date().toISOString();
+  fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2), 'utf8');
+};
+
+/**
+ * Carrega lista de criaturas do bestiary
+ */
+const loadCreatures = () => {
+  const content = fs.readFileSync(BESTIARY_FILE, 'utf8');
+  const dataMatch = content.match(/export const BESTIARY_DATA = \[([\s\S]*)\];/);
+
+  if (!dataMatch) {
+    throw new Error('Could not find BESTIARY_DATA in file');
+  }
+
+  return JSON.parse(`[${dataMatch[1]}]`);
+};
+
+/**
+ * Download de imagem
+ */
+const downloadImage = (url, filepath) => {
   return new Promise((resolve, reject) => {
-    https.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-      }
-    }, (res) => {
+    https.get(url, (res) => {
+      // Seguir redirects
       if (res.statusCode === 301 || res.statusCode === 302) {
-        return downloadImage(res.headers.location, filepath, attempt)
+        return downloadImage(res.headers.location, filepath)
           .then(resolve)
           .catch(reject);
       }
 
       if (res.statusCode !== 200) {
-        if (attempt < RETRY_ATTEMPTS) {
-          setTimeout(() => {
-            downloadImage(url, filepath, attempt + 1)
-              .then(resolve)
-              .catch(reject);
-          }, RETRY_DELAY);
-          return;
-        }
-        return reject(new Error(`Status: ${res.statusCode}`));
+        reject(new Error(`HTTP ${res.statusCode}`));
+        return;
       }
 
       const fileStream = fs.createWriteStream(filepath);
@@ -57,201 +92,174 @@ const downloadImage = (url, filepath, attempt = 1) => {
         resolve();
       });
 
-      fileStream.on('error', reject);
-    }).on('error', (err) => {
-      if (attempt < RETRY_ATTEMPTS) {
-        setTimeout(() => {
-          downloadImage(url, filepath, attempt + 1)
-            .then(resolve)
-            .catch(reject);
-        }, RETRY_DELAY);
-      } else {
+      fileStream.on('error', (err) => {
+        fs.unlink(filepath, () => {}); // Delete partial file
         reject(err);
-      }
-    });
+      });
+    }).on('error', reject);
   });
 };
 
 /**
- * Process a single batch
+ * Gera nome de arquivo local
  */
-const processBatch = async (batch) => {
-  const results = await Promise.allSettled(
-    batch.map(async ({ creature, url, filepath, filename }) => {
-      try {
-        if (fs.existsSync(filepath)) {
-          return { success: true, creature, filename, cached: true };
-        }
-
-        await downloadImage(url, filepath);
-        return { success: true, creature, filename, cached: false };
-      } catch (error) {
-        return { success: false, creature, error: error.message };
-      }
-    })
-  );
-
-  const succeeded = results.filter(r => r.status === 'fulfilled' && r.value.success).map(r => r.value);
-  const failed = results.filter(r => r.status === 'rejected' || (r.status === 'fulfilled' && !r.value.success));
-
-  return { succeeded, failed };
+const getLocalImagePath = (creatureId) => {
+  return `/images/creatures/${creatureId}.gif`;
 };
 
 /**
- * Update bestiary.js with local image paths for a batch
+ * Download de imagem de uma criatura
  */
-const updateBestiaryFileBatch = (successfulDownloads) => {
-  let content = fs.readFileSync(BESTIARY_FILE, 'utf8');
+const downloadCreatureImage = async (creature) => {
+  try {
+    const filename = `${creature.id}.gif`;
+    const filepath = path.join(IMAGES_DIR, filename);
 
-  successfulDownloads.forEach(({ creature, filename }) => {
-    const creaturePattern = new RegExp(
-      `("id":\\s*"${creature.id}"[^}]*?"imageUrl":\\s*)"https://tibia\\.fandom\\.com/wiki/Special:FilePath/[^"]+\\.gif"`,
-      's'
-    );
-
-    const match = content.match(creaturePattern);
-    if (match) {
-      const newUrl = `${match[1]}"/images/creatures/${filename}"`;
-      content = content.replace(creaturePattern, newUrl);
+    // Verificar se já existe
+    if (fs.existsSync(filepath)) {
+      return { success: true, cached: true };
     }
+
+    // Download
+    await downloadImage(creature.imageUrl, filepath);
+
+    return { success: true, cached: false };
+  } catch (error) {
+    return { success: false, reason: error.message };
+  }
+};
+
+/**
+ * Atualiza URLs das imagens no bestiary.js
+ */
+const updateBestiaryImageUrls = (creatures) => {
+  const bestiaryContent = fs.readFileSync(BESTIARY_FILE, 'utf8');
+
+  // Criar backup
+  const backupFile = BESTIARY_FILE.replace('.js', `.backup-images-${Date.now()}.js`);
+  fs.copyFileSync(BESTIARY_FILE, backupFile);
+
+  // Atualizar URLs para caminhos locais
+  creatures.forEach(creature => {
+    creature.imageUrl = getLocalImagePath(creature.id);
   });
 
-  fs.writeFileSync(BESTIARY_FILE, content, 'utf8');
+  // Recriar arquivo
+  const header = bestiaryContent.split('export const BESTIARY_DATA = [')[0];
+  const footer = '\n];';
+
+  const creaturesJson = creatures.map((c, idx) => {
+    const isLast = idx === creatures.length - 1;
+    return `  ${JSON.stringify(c, null, 2).replace(/\n/g, '\n  ')}${isLast ? '' : ','}`;
+  }).join('\n');
+
+  const newContent = header + 'export const BESTIARY_DATA = [\n' + creaturesJson + footer;
+
+  fs.writeFileSync(BESTIARY_FILE, newContent, 'utf8');
 };
 
 /**
  * Main execution
  */
 const main = async () => {
-  try {
-    console.log('🖼️  Batch Creature Image Downloader');
-    console.log('===================================\n');
+  const args = process.argv.slice(2);
 
-    // Read bestiary data
-    console.log('📖 Reading bestiary.js...');
-    const bestiaryContent = fs.readFileSync(BESTIARY_FILE, 'utf8');
-    const dataMatch = bestiaryContent.match(/export const BESTIARY_DATA = \[([\s\S]*?)\];/);
+  console.log('🖼️  Creature Image Downloader (50 per batch)\n');
 
-    if (!dataMatch) {
-      throw new Error('Could not find BESTIARY_DATA in bestiary.js');
+  // Criar diretório de imagens
+  ensureImagesDir();
+
+  // Reset se solicitado
+  if (args.includes('--reset')) {
+    if (fs.existsSync(PROGRESS_FILE)) {
+      fs.unlinkSync(PROGRESS_FILE);
+      console.log('🔄 Progress reset!\n');
+    }
+  }
+
+  // Carregar dados
+  const progress = loadProgress();
+  const creatures = loadCreatures();
+
+  const totalCreatures = creatures.length;
+  const remaining = totalCreatures - progress.currentIndex;
+
+  console.log(`📊 Progress Status:`);
+  console.log(`   Total creatures: ${totalCreatures}`);
+  console.log(`   Already processed: ${progress.currentIndex}`);
+  console.log(`   Remaining: ${remaining}`);
+  console.log(`   Success: ${progress.successCount} | Failed: ${progress.failedCount}\n`);
+
+  if (remaining === 0) {
+    console.log('✅ All images have been downloaded!');
+    console.log('\n📝 Updating bestiary.js with local image paths...');
+    updateBestiaryImageUrls(creatures);
+    console.log('✅ Bestiary updated with local image URLs!');
+    return;
+  }
+
+  // Pegar próximo lote
+  const endIndex = Math.min(progress.currentIndex + BATCH_SIZE, totalCreatures);
+  const batch = creatures.slice(progress.currentIndex, endIndex);
+
+  console.log(`🎯 Downloading batch: ${progress.currentIndex + 1} to ${endIndex}\n`);
+  console.log('─'.repeat(60));
+
+  let cachedCount = 0;
+
+  for (let i = 0; i < batch.length; i++) {
+    const creature = batch[i];
+    const globalIndex = progress.currentIndex + i + 1;
+
+    console.log(`\n[${globalIndex}/${totalCreatures}] 🔍 ${creature.name}`);
+
+    const result = await downloadCreatureImage(creature);
+
+    if (result.success) {
+      if (result.cached) {
+        console.log(`   ⚡ Cached (already exists)`);
+        cachedCount++;
+      } else {
+        console.log(`   ✅ Downloaded`);
+      }
+      progress.successCount++;
+    } else {
+      console.log(`   ❌ Failed: ${result.reason}`);
+      progress.failed.push({ name: creature.name, id: creature.id, reason: result.reason });
+      progress.failedCount++;
     }
 
-    const creaturesJson = '[' + dataMatch[1] + ']';
-    const creatures = JSON.parse(creaturesJson);
+    progress.totalProcessed++;
 
-    // Filter only creatures with TibiaWiki URLs (not yet downloaded)
-    const downloadTasks = creatures
-      .filter(c => c.imageUrl && c.imageUrl.includes('tibia.fandom.com'))
-      .map(creature => {
-        const filename = creature.imageUrl.split('/').pop();
-        const filepath = path.join(IMAGES_DIR, filename);
-        return { creature, url: creature.imageUrl, filepath, filename };
-      });
-
-    const totalTasks = downloadTasks.length;
-    console.log(`✅ Found ${creatures.length} creatures total`);
-    console.log(`📥 ${totalTasks} images need to be downloaded\n`);
-
-    if (totalTasks === 0) {
-      console.log('🎉 All images already downloaded!');
-      return;
+    // Delay entre requisições
+    if (i < batch.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, DELAY_MS));
     }
+  }
 
-    // Create backup before starting
-    const backupFile = BESTIARY_FILE.replace('.js', `.backup-${Date.now()}.js`);
-    fs.copyFileSync(BESTIARY_FILE, backupFile);
-    console.log(`💾 Backup created: ${path.basename(backupFile)}\n`);
+  console.log('\n' + '─'.repeat(60));
+  console.log(`\n📝 Batch Summary:`);
+  console.log(`   Downloaded: ${batch.length - cachedCount - (progress.failedCount - (progress.totalProcessed - batch.length))}`);
+  console.log(`   Cached: ${cachedCount}`);
+  console.log(`   Failed: ${progress.failed.filter((_, idx) => idx >= progress.totalProcessed - batch.length).length}`);
 
-    // Process in batches
-    let allSucceeded = [];
-    let allFailed = [];
-    let processedCount = 0;
+  // Atualizar progresso
+  progress.currentIndex = endIndex;
+  saveProgress(progress);
 
-    const totalBatches = Math.ceil(totalTasks / BATCH_SIZE);
+  console.log(`\n✅ Batch complete! Progress saved.`);
 
-    for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
-      const start = batchIndex * BATCH_SIZE;
-      const end = Math.min(start + BATCH_SIZE, totalTasks);
-      const batch = downloadTasks.slice(start, end);
-
-      console.log(`\n📦 Batch ${batchIndex + 1}/${totalBatches} (${batch.length} images)`);
-      console.log('─'.repeat(50));
-
-      // Process batch in chunks of MAX_CONCURRENT
-      const chunks = [];
-      for (let i = 0; i < batch.length; i += MAX_CONCURRENT) {
-        chunks.push(batch.slice(i, i + MAX_CONCURRENT));
-      }
-
-      let batchSucceeded = [];
-      let batchFailed = [];
-
-      for (const chunk of chunks) {
-        const { succeeded, failed } = await processBatch(chunk);
-        batchSucceeded = batchSucceeded.concat(succeeded);
-        batchFailed = batchFailed.concat(failed);
-
-        // Show progress for each chunk
-        succeeded.forEach(s => {
-          processedCount++;
-          const status = s.cached ? '✓ (cached)' : '✓';
-          console.log(`  ${status} ${s.creature.name} [${processedCount}/${totalTasks}]`);
-        });
-
-        failed.forEach(f => {
-          processedCount++;
-          const creature = f.value?.creature || f.reason;
-          console.log(`  ✗ ${creature.name} [${processedCount}/${totalTasks}]`);
-        });
-      }
-
-      allSucceeded = allSucceeded.concat(batchSucceeded);
-      allFailed = allFailed.concat(batchFailed);
-
-      // Update bestiary.js after each batch
-      if (batchSucceeded.length > 0) {
-        const newDownloads = batchSucceeded.filter(s => !s.cached);
-        if (newDownloads.length > 0) {
-          updateBestiaryFileBatch(newDownloads);
-          console.log(`\n  💾 Updated ${newDownloads.length} paths in bestiary.js`);
-        }
-      }
-
-      // Progress summary
-      const progress = ((batchIndex + 1) / totalBatches * 100).toFixed(1);
-      console.log(`\n  Progress: ${progress}% (${allSucceeded.length} success, ${allFailed.length} failed)`);
-
-      // Small delay between batches
-      if (batchIndex < totalBatches - 1) {
-        console.log('  ⏳ Waiting 2 seconds before next batch...');
-        await new Promise(resolve => setTimeout(resolve, 2000));
-      }
-    }
-
-    // Final summary
-    console.log('\n\n📊 Final Summary');
-    console.log('================');
-    console.log(`✅ Successfully downloaded: ${allSucceeded.filter(s => !s.cached).length}`);
-    console.log(`📁 Already cached: ${allSucceeded.filter(s => s.cached).length}`);
-    console.log(`❌ Failed: ${allFailed.length}`);
-    console.log(`📁 Total images in folder: ${fs.readdirSync(IMAGES_DIR).filter(f => f.endsWith('.gif')).length}`);
-
-    if (allFailed.length > 0 && allFailed.length <= 10) {
-      console.log('\n❌ Failed downloads:');
-      allFailed.forEach(f => {
-        const creature = f.value?.creature || f.reason;
-        const error = f.value?.error || 'Unknown error';
-        console.log(`  - ${creature.name}: ${error}`);
-      });
-    }
-
-    console.log('\n🎉 Batch download complete!');
-
-  } catch (error) {
-    console.error('❌ Error:', error.message);
-    console.error(error.stack);
-    process.exit(1);
+  if (endIndex < totalCreatures) {
+    console.log(`\n💡 Run again to download next batch (${totalCreatures - endIndex} remaining)`);
+  } else {
+    console.log(`\n🎉 All images downloaded!`);
+    console.log('\n📝 Updating bestiary.js with local image paths...');
+    updateBestiaryImageUrls(creatures);
+    console.log('✅ Bestiary updated with local image URLs!');
   }
 };
 
-main();
+main().catch(err => {
+  console.error('❌ Error:', err);
+  process.exit(1);
+});
