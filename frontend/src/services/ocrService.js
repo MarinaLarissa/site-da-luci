@@ -10,6 +10,15 @@
 const OCR_SPACE_API_KEY = 'K87899142388957'; // Free API key (public use)
 const OCR_SPACE_URL = 'https://api.ocr.space/parse/image';
 
+// Quality thresholds (exported for use by components)
+export const QUALITY_THRESHOLDS = {
+  MIN_RESOLUTION: { width: 800, height: 600 },
+  MIN_BRIGHTNESS: 30,
+  MAX_BRIGHTNESS: 225,
+  MIN_CONTRAST: 50,
+  MIN_SHARPNESS: 100,
+};
+
 /**
  * Call OCR.space API to extract text from image
  * @param {string} base64Image - Base64 encoded image
@@ -176,17 +185,66 @@ const preprocessImage = async (imageFile, detectColor = false, cropToCreatureLis
 };
 
 /**
+ * Preprocess image with quality check
+ * @param {File} imageFile - Image file to preprocess
+ * @param {boolean} detectColor - Whether to detect colored creatures
+ * @param {boolean} cropToCreatureList - Whether to crop to creature list area
+ * @returns {Promise<{processedImage: string, originalImageData?: ImageData, cropRegion: Object}>}
+ */
+export const preprocessWithQualityCheck = async (imageFile, detectColor = true, cropToCreatureList = true) => {
+  try {
+    const { processedImage, originalImageData } = await preprocessImage(
+      imageFile,
+      detectColor,
+      cropToCreatureList
+    );
+
+    // Calculate crop region for preview
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = URL.createObjectURL(imageFile);
+    });
+
+    const cropRegion = cropToCreatureList ? {
+      x: Math.floor(img.width * 0.24),
+      y: Math.floor(img.height * 0.20),
+      width: Math.floor(img.width * 0.67),
+      height: Math.floor(img.height * 0.64),
+    } : {
+      x: 0,
+      y: 0,
+      width: img.width,
+      height: img.height,
+    };
+
+    return {
+      processedImage,
+      originalImageData,
+      cropRegion,
+    };
+  } catch (error) {
+    console.error('[preprocessWithQualityCheck] Error:', error);
+    throw error;
+  }
+};
+
+/**
  * Extract text from bestiary screenshot
  * @param {File} imageFile - The screenshot image file
  * @param {Function} onProgress - Progress callback (optional)
  * @param {boolean} detectColor - Whether to detect colored creatures (default: true)
  * @param {boolean} cropToCreatureList - Whether to crop to creature list area (default: true)
- * @returns {Promise<{success: boolean, text?: string, confidence?: number, originalImageData?: ImageData, error?: string}>}
+ * @returns {Promise<{success: boolean, text?: string, confidence?: number, originalImageData?: ImageData, processedImage?: string, cropRegion?: Object, error?: string}>}
  */
 export const extractTextFromImage = async (imageFile, onProgress, detectColor = true, cropToCreatureList = true) => {
+  const startTime = Date.now();
+
   try {
     // Validate file
     if (!imageFile || !imageFile.type.startsWith('image/')) {
+      console.error('[extractTextFromImage] Invalid image file');
       return { success: false, error: 'Invalid image file' };
     }
 
@@ -194,7 +252,11 @@ export const extractTextFromImage = async (imageFile, onProgress, detectColor = 
     if (onProgress) onProgress(25);
 
     // Preprocess image for better OCR (crop and zoom)
-    const { processedImage, originalImageData } = await preprocessImage(imageFile, detectColor, cropToCreatureList);
+    const { processedImage, originalImageData, cropRegion } = await preprocessWithQualityCheck(
+      imageFile,
+      detectColor,
+      cropToCreatureList
+    );
 
     // Report progress (calling API)
     if (onProgress) onProgress(50);
@@ -205,15 +267,22 @@ export const extractTextFromImage = async (imageFile, onProgress, detectColor = 
     // Report progress (complete)
     if (onProgress) onProgress(100);
 
+    const duration = Date.now() - startTime;
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[extractTextFromImage] Success in ${duration}ms, confidence: ${confidence}`);
+    }
+
     return {
       success: true,
       text,
       confidence,
       originalImageData,
       processedImage, // Include cropped image for preview
+      cropRegion, // Include crop region for preview modal
     };
   } catch (error) {
-    console.error('OCR Error:', error);
+    const duration = Date.now() - startTime;
+    console.error(`[extractTextFromImage] Error after ${duration}ms:`, error);
 
     return {
       success: false,

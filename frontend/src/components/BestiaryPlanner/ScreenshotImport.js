@@ -5,10 +5,13 @@
 
 import { useState, useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { extractTextFromImage, validateBestiaryScreenshot } from '../../services/ocrService';
+import { validateBestiaryScreenshot, preprocessWithQualityCheck } from '../../services/ocrService';
 import { parseOcrText, isTruncatedName, findAutocompleteCandidates } from '../../utils/bestiaryOcrParser';
 import { calculateMinimumKills } from '../../utils/bestiaryStages';
+import { useOcrWithRetry } from '../../hooks/useOcrWithRetry';
 import AutocompleteModal from './AutocompleteModal';
+import ImageQualityValidator from './ScreenshotImport/ImageQualityValidator';
+import CropPreviewModal from './ScreenshotImport/CropPreviewModal';
 import {
   ImportContainer,
   UploadZone,
@@ -18,7 +21,6 @@ import {
   PreviewContainer,
   PreviewImage,
   PreviewActions,
-  ProcessButton,
   ClearButton,
   ProgressBar,
   ProgressFill,
@@ -42,15 +44,38 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [croppedPreview, setCroppedPreview] = useState(null);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [cropRegion, setCropRegion] = useState(null);
   const [ocrResults, setOcrResults] = useState(null);
   const [error, setError] = useState(null);
+
+  // New workflow states
+  const [showQualityCheck, setShowQualityCheck] = useState(false);
+  const [showCropPreview, setShowCropPreview] = useState(false);
 
   // Autocomplete states
   const [autocompleteQueue, setAutocompleteQueue] = useState([]);
   const [currentAutocomplete, setCurrentAutocomplete] = useState(null);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
+
+  // OCR with retry hook
+  const {
+    processOcr,
+    isProcessing,
+    progress,
+    retryCount,
+  } = useOcrWithRetry({
+    maxRetries: 3,
+    onProgress: (prog, retry) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`OCR Progress: ${prog}% (Attempt ${retry + 1})`);
+      }
+    },
+    onError: (err, retry) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`OCR Attempt ${retry + 1} failed:`, err.message);
+      }
+    },
+  });
 
   // Process selected file
   const handleFile = useCallback((file) => {
@@ -62,11 +87,17 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setImageFile(file);
     setError(null);
     setOcrResults(null);
+    setShowQualityCheck(false);
+    setShowCropPreview(false);
+    setCroppedPreview(null);
+    setCropRegion(null);
 
     // Create preview
     const reader = new FileReader();
     reader.onload = (e) => {
       setImagePreview(e.target.result);
+      // Show quality check after preview loads
+      setShowQualityCheck(true);
     };
     reader.readAsDataURL(file);
   }, [t]);
@@ -86,28 +117,47 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     handleFile(file);
   };
 
-  // Process OCR
-  const handleProcessOcr = async () => {
+  // Handle quality check proceed (show crop preview)
+  const handleQualityCheckProceed = async () => {
+    setShowQualityCheck(false);
+
+    // Preprocess image to get crop preview
+    try {
+      const { processedImage, cropRegion: region } = await preprocessWithQualityCheck(
+        imageFile,
+        true,
+        true
+      );
+
+      setCroppedPreview(processedImage);
+      setCropRegion(region);
+      setShowCropPreview(true);
+    } catch (err) {
+      console.error('Preprocessing error:', err);
+      setError(t('bestiaryPlanner.screenshot.processingError'));
+    }
+  };
+
+  // Handle quality check retake
+  const handleQualityCheckRetake = () => {
+    handleClear();
+  };
+
+  // Handle crop preview confirm (start OCR)
+  const handleCropPreviewConfirm = async () => {
+    setShowCropPreview(false);
+
     if (!imageFile) return;
 
-    setIsProcessing(true);
-    setProgress(0);
     setError(null);
-    setCroppedPreview(null);
 
     try {
-      // Extract text from image (with color detection and precise crop)
-      const result = await extractTextFromImage(imageFile, setProgress, true, true);
+      // Process OCR with retry
+      const result = await processOcr(imageFile, true, true);
 
       if (!result.success) {
         setError(result.error || t('bestiaryPlanner.screenshot.ocrFailed'));
-        setIsProcessing(false);
         return;
-      }
-
-      // Save cropped image preview (for debugging)
-      if (result.processedImage) {
-        setCroppedPreview(result.processedImage);
       }
 
       // Debug: Log OCR text in development
@@ -124,7 +174,6 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
           console.error('Validation failed for text:', result.text);
         }
         setError(t('bestiaryPlanner.screenshot.notBestiaryScreenshot'));
-        setIsProcessing(false);
         return;
       }
 
@@ -179,10 +228,14 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     } catch (err) {
       console.error('OCR Processing Error:', err);
       setError(t('bestiaryPlanner.screenshot.processingError'));
-    } finally {
-      setIsProcessing(false);
-      setProgress(0);
     }
+  };
+
+  // Handle crop preview cancel
+  const handleCropPreviewCancel = () => {
+    setShowCropPreview(false);
+    // Return to quality check
+    setShowQualityCheck(true);
   };
 
   // Confirm and import creatures
@@ -216,9 +269,11 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setImageFile(null);
     setImagePreview(null);
     setCroppedPreview(null);
+    setCropRegion(null);
     setOcrResults(null);
     setError(null);
-    setProgress(0);
+    setShowQualityCheck(false);
+    setShowCropPreview(false);
     setAutocompleteQueue([]);
     setCurrentAutocomplete(null);
     setIsAutocompleteOpen(false);
@@ -316,26 +371,58 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
       )}
 
       {imagePreview && !ocrResults && (
-        <PreviewContainer>
-          <PreviewImage src={imagePreview} alt="Screenshot preview" />
-          <PreviewActions>
-            <ProcessButton onClick={handleProcessOcr} disabled={isProcessing}>
-              {isProcessing
-                ? t('bestiaryPlanner.screenshot.processing')
-                : t('bestiaryPlanner.screenshot.processButton')}
-            </ProcessButton>
-            <ClearButton onClick={handleClear} disabled={isProcessing}>
-              {t('bestiaryPlanner.screenshot.clearButton')}
-            </ClearButton>
-          </PreviewActions>
+        <>
+          <PreviewContainer>
+            <PreviewImage src={imagePreview} alt="Screenshot preview" />
+          </PreviewContainer>
 
-          {isProcessing && (
-            <ProgressBar>
-              <ProgressFill $progress={progress} />
-              <ProgressText>{progress}%</ProgressText>
-            </ProgressBar>
+          {/* Quality Check */}
+          {showQualityCheck && !isProcessing && (
+            <ImageQualityValidator
+              imageFile={imageFile}
+              onProceed={handleQualityCheckProceed}
+              onRetake={handleQualityCheckRetake}
+            />
           )}
-        </PreviewContainer>
+
+          {/* Crop Preview Modal */}
+          <CropPreviewModal
+            isOpen={showCropPreview}
+            originalImage={imagePreview}
+            croppedImage={croppedPreview}
+            cropRegion={cropRegion}
+            onConfirm={handleCropPreviewConfirm}
+            onCancel={handleCropPreviewCancel}
+          />
+
+          {/* OCR Processing */}
+          {isProcessing && (
+            <div style={{ marginTop: '1rem' }}>
+              <ProgressBar>
+                <ProgressFill $progress={progress} />
+                <ProgressText>
+                  {progress}%
+                  {retryCount > 0 && (
+                    <span style={{ fontSize: '0.75rem', marginLeft: '0.5rem', color: '#f59e0b' }}>
+                      ({t('bestiaryPlanner.screenshot.retry.attempting', {
+                        current: retryCount + 1,
+                        max: 4,
+                      })})
+                    </span>
+                  )}
+                </ProgressText>
+              </ProgressBar>
+            </div>
+          )}
+
+          {!showQualityCheck && !showCropPreview && !isProcessing && (
+            <PreviewActions>
+              <ClearButton onClick={handleClear}>
+                {t('bestiaryPlanner.screenshot.clearButton')}
+              </ClearButton>
+            </PreviewActions>
+          )}
+        </>
       )}
 
       {error && <ErrorMessage>{error}</ErrorMessage>}

@@ -586,7 +586,36 @@
       "stage": "Stage {{stage}}/3",
       "minKills": "Min {{kills}} kills",
       "noCompleteCreatures": "No complete creatures detected. Only creatures with ✓ (complete) will be marked.",
-      "noCreaturesDetected": "No creatures detected in the screenshot."
+      "noCreaturesDetected": "No creatures detected in the screenshot.",
+      "qualityCheck": {
+        "title": "Quality Check",
+        "analyzing": "Analyzing image quality",
+        "score": "{{score}}/100",
+        "resolution": "Resolution",
+        "brightness": "Brightness",
+        "contrast": "Contrast",
+        "sharpness": "Sharpness",
+        "passed": "✓ OK",
+        "failed": "✗ Failed",
+        "warning": "⚠️ Image quality may be low for OCR. You can proceed, but accuracy might be affected.",
+        "suggestions": "Suggestions to Improve",
+        "proceedAnyway": "Process Anyway",
+        "retake": "Take New Screenshot"
+      },
+      "cropPreview": {
+        "title": "Detected Area",
+        "description": "This is the area that will be processed by OCR",
+        "originalSize": "Original Size",
+        "croppedSize": "Processed Area",
+        "zoomLevel": "Zoom Applied",
+        "confirmButton": "Confirm and Process",
+        "cancelButton": "Go Back"
+      },
+      "retry": {
+        "attempting": "Attempt {{current}} of {{max}}",
+        "retrying": "Retrying in {{seconds}}s",
+        "failed": "OCR failed after {{count}} attempts"
+      }
     }
   },
   "imbuementCalculator": {
