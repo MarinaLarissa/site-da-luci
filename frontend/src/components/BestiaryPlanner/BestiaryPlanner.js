@@ -231,31 +231,44 @@ const BestiaryPlanner = () => {
     const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
     if (!creature) return;
 
-    // Don't complete if already completed
-    if (isCreatureCompleted(creatureId)) return;
+    const wasCompleted = isCreatureCompleted(creatureId);
 
-    // Mark as completed
+    // Toggle completion status
     toggleCreatureCompletion(creatureId);
 
-    // Add to today's completions
-    addTodayCompletion(character.id, creature);
+    if (!wasCompleted) {
+      // Was NOT completed, now IS completed
+      // Add to today's completions
+      addTodayCompletion(character.id, creature);
 
-    // Remove from session plan if it's there
-    if (isInSessionPlan(character.id, creatureId)) {
-      toggleCreatureInPlan(character.id, creatureId);
-      const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
-      setSessionPlanCreatures(updatedPlan);
+      // Remove from session plan if it's there
+      if (isInSessionPlan(character.id, creatureId)) {
+        toggleCreatureInPlan(character.id, creatureId);
+        const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+        setSessionPlanCreatures(updatedPlan);
+      }
+
+      // Show success toast
+      showToast({
+        type: 'success',
+        title: t('bestiaryPlanner.toast.completed.title'),
+        message: t('bestiaryPlanner.toast.completed.message', {
+          name: creature.name,
+          charmPoints: creature.charmPoints,
+        }),
+      });
+    } else {
+      // Was completed, now is NOT completed
+      // Show toast about uncompleting
+      showToast({
+        type: 'info',
+        title: t('bestiaryPlanner.toast.uncompleted.title', { defaultValue: 'Criatura Desmarcada' }),
+        message: t('bestiaryPlanner.toast.uncompleted.message', {
+          name: creature.name,
+          defaultValue: `${creature.name} desmarcada como completa`,
+        }),
+      });
     }
-
-    // Show success toast
-    showToast({
-      type: 'success',
-      title: t('bestiaryPlanner.toast.completed.title'),
-      message: t('bestiaryPlanner.toast.completed.message', {
-        name: creature.name,
-        charmPoints: creature.charmPoints,
-      }),
-    });
   };
 
   const showToast = (toastData) => {
@@ -274,7 +287,10 @@ const BestiaryPlanner = () => {
 
   // Handle filter changes (pending mode)
   const handlePendingFilterChange = (newFilters) => {
-    setPendingFilters(newFilters);
+    setPendingFilters(prev => ({
+      ...(prev || filters),
+      ...newFilters
+    }));
   };
 
   // Apply pending filters
