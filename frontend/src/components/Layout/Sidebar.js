@@ -3,7 +3,9 @@
  */
 
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ROUTES } from '../../routes';
 import {
   SidebarContainer,
   SidebarHeader,
@@ -17,8 +19,10 @@ import {
   SidebarFooterText,
 } from './Sidebar.styles';
 
-export default function Sidebar({ activePage, onNavigate }) {
+export default function Sidebar() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const activePage = location.pathname;
 
   return (
     <SidebarContainer>
@@ -29,42 +33,46 @@ export default function Sidebar({ activePage, onNavigate }) {
 
       <SidebarNav>
         <SidebarNavItem
-          $active={activePage === 'loot-split'}
-          onClick={() => onNavigate('loot-split')}
+          as={Link}
+          to={ROUTES.LOOT_SPLIT}
+          $active={activePage === ROUTES.LOOT_SPLIT}
           data-cy="sidebar-nav-loot-split"
         >
           <SidebarNavIcon>💰</SidebarNavIcon>
-          <SidebarNavLabel $active={activePage === 'loot-split'}>
+          <SidebarNavLabel $active={activePage === ROUTES.LOOT_SPLIT}>
             {t('sidebar.nav.lootSplit')}
           </SidebarNavLabel>
         </SidebarNavItem>
         <SidebarNavItem
-          $active={activePage === 'solo-hunt'}
-          onClick={() => onNavigate('solo-hunt')}
+          as={Link}
+          to={ROUTES.SOLO_HUNT}
+          $active={activePage === ROUTES.SOLO_HUNT}
           data-cy="sidebar-nav-solo-hunt"
         >
           <SidebarNavIcon>🎯</SidebarNavIcon>
-          <SidebarNavLabel $active={activePage === 'solo-hunt'}>
+          <SidebarNavLabel $active={activePage === ROUTES.SOLO_HUNT}>
             {t('sidebar.nav.soloHunt')}
           </SidebarNavLabel>
         </SidebarNavItem>
         <SidebarNavItem
-          $active={activePage === 'imbuement-calc'}
-          onClick={() => onNavigate('imbuement-calc')}
+          as={Link}
+          to={ROUTES.IMBUEMENT_CALC}
+          $active={activePage === ROUTES.IMBUEMENT_CALC}
           data-cy="sidebar-nav-imbuement-calc"
         >
           <SidebarNavIcon>⚗️</SidebarNavIcon>
-          <SidebarNavLabel $active={activePage === 'imbuement-calc'}>
+          <SidebarNavLabel $active={activePage === ROUTES.IMBUEMENT_CALC}>
             {t('sidebar.nav.imbuementCalc')}
           </SidebarNavLabel>
         </SidebarNavItem>
         <SidebarNavItem
-          $active={activePage === 'bestiary-planner'}
-          onClick={() => onNavigate('bestiary-planner')}
+          as={Link}
+          to={ROUTES.BESTIARY_PLANNER}
+          $active={activePage === ROUTES.BESTIARY_PLANNER}
           data-cy="sidebar-nav-bestiary-planner"
         >
           <SidebarNavIcon>📖</SidebarNavIcon>
-          <SidebarNavLabel $active={activePage === 'bestiary-planner'}>
+          <SidebarNavLabel $active={activePage === ROUTES.BESTIARY_PLANNER}>
             {t('sidebar.nav.bestiaryPlanner')}
           </SidebarNavLabel>
         </SidebarNavItem>

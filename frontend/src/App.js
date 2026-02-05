@@ -6,12 +6,14 @@
  */
 
 import { Suspense, useState, useEffect, lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Layout/Sidebar';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import { UserMenu } from './components/Auth';
 import { useAuth } from './contexts/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { STORAGE_KEYS } from './utils/huntUtils';
+import { ROUTES, DEFAULT_ROUTE } from './routes';
 import './i18n/config'; // Initialize i18n
 import { AppContainer, MainContent, TopControls, Footer } from './App.styles';
 
@@ -23,7 +25,6 @@ const BestiaryPlanner = lazy(() => import('./components/BestiaryPlanner').then(m
 const LoginModal = lazy(() => import('./components/Auth').then(module => ({ default: module.LoginModal })));
 
 function App() {
-  const [activePage, setActivePage] = useState('loot-split');
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { saveRedirectPath } = useAuth();
 
@@ -83,7 +84,7 @@ function App() {
         <UserMenu onLoginClick={handleLoginClick} />
         <LanguageSelector />
       </TopControls>
-      <Sidebar activePage={activePage} onNavigate={setActivePage} />
+      <Sidebar />
 
       <Suspense fallback={<LoadingFallback />}>
         <LoginModal
@@ -93,23 +94,40 @@ function App() {
       </Suspense>
 
       <MainContent>
-        {/* Content based on active page from sidebar - lazy loaded */}
+        {/* Content based on routes - lazy loaded */}
         <ErrorBoundary>
           <Suspense fallback={<LoadingFallback />}>
-            {activePage === 'loot-split' && <LootSplitCalculator />}
-            {activePage === 'solo-hunt' && (
-              <SoloHuntAnalyzer
-                goldTokenPrice={sharedGoldTokenPrice}
-                setGoldTokenPrice={setSharedGoldTokenPrice}
+            <Routes>
+              {/* Default route redirects to loot-split */}
+              <Route path="/" element={<Navigate to={DEFAULT_ROUTE} replace />} />
+
+              <Route path={ROUTES.LOOT_SPLIT} element={<LootSplitCalculator />} />
+
+              <Route
+                path={ROUTES.SOLO_HUNT}
+                element={
+                  <SoloHuntAnalyzer
+                    goldTokenPrice={sharedGoldTokenPrice}
+                    setGoldTokenPrice={setSharedGoldTokenPrice}
+                  />
+                }
               />
-            )}
-            {activePage === 'imbuement-calc' && (
-              <ImbuementCalculator
-                goldTokenPrice={sharedGoldTokenPrice}
-                setGoldTokenPrice={setSharedGoldTokenPrice}
+
+              <Route
+                path={ROUTES.IMBUEMENT_CALC}
+                element={
+                  <ImbuementCalculator
+                    goldTokenPrice={sharedGoldTokenPrice}
+                    setGoldTokenPrice={setSharedGoldTokenPrice}
+                  />
+                }
               />
-            )}
-            {activePage === 'bestiary-planner' && <BestiaryPlanner />}
+
+              <Route path={ROUTES.BESTIARY_PLANNER} element={<BestiaryPlanner />} />
+
+              {/* Catch-all 404 - redirect to default */}
+              <Route path="*" element={<Navigate to={DEFAULT_ROUTE} replace />} />
+            </Routes>
           </Suspense>
         </ErrorBoundary>
 

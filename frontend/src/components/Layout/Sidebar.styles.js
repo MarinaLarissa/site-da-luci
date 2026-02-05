@@ -62,6 +62,10 @@ export const SidebarNavItem = styled.div`
   border-left: 4px solid transparent;
   opacity: ${({ $disabled }) => ($disabled ? '0.4' : '1')};
 
+  /* Link styles (when used as Link component) */
+  text-decoration: none;
+  color: inherit;
+
   /* Active state */
   ${({ $active, theme }) =>
     $active &&
