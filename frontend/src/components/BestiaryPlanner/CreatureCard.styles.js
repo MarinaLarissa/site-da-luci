@@ -94,9 +94,14 @@ export const RapidBadge = styled.div`
 `;
 
 export const CardTop = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 64px 1fr;
   gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+
+  /* Mobile: stack vertically */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const CreatureImage = styled.img`
@@ -107,16 +112,47 @@ export const CreatureImage = styled.img`
   border-radius: ${({ theme }) => theme.radius.sm};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
   padding: ${({ theme }) => theme.spacing.xs};
-  flex-shrink: 0;
+
+  /* Grid positioning */
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
 
   &[src=''] {
     display: none;
   }
+
+  /* Mobile: center */
+  @media (max-width: 768px) {
+    margin: 0 auto;
+  }
 `;
 
 export const CreatureInfo = styled.div`
-  flex: 1;
+  /* Grid positioning - header info next to image */
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
   min-width: 0;
+
+  /* Mobile: full width */
+  @media (max-width: 768px) {
+    grid-column: 1 / 2;
+  }
+`;
+
+export const CardDetails = styled.div`
+  /* Grid positioning - details span both columns below */
+  grid-column: 1 / -1;
+
+  /* Two column layout for details */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.md};
+
+  /* Mobile: single column */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const CardHeader = styled.div`

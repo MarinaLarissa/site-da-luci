@@ -18,6 +18,7 @@ import {
   CardTop,
   CreatureImage,
   CreatureInfo,
+  CardDetails,
   CardHeader,
   CreatureName,
   CharmPointsBadge,
@@ -193,49 +194,56 @@ const CreatureCard = ({
               </Stat>
             )}
           </StatsRow>
-
-          {renderResistances()}
-
-          {/* Kills tracking section */}
-          {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
-            <KillsSection>
-              {creature.currentKills != null && creature.killsToComplete && (
-                <Stat>
-                  <StatIcon>🎯</StatIcon>
-                  {creature.currentKills} / {creature.killsToComplete} kills
-                </Stat>
-              )}
-              {creature.currentKills == null && creature.killsToComplete && (
-                <Stat>
-                  <StatIcon>🎯</StatIcon>
-                  {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
-                </Stat>
-              )}
-              {creature.bestiaryStage && (
-                <Stat>
-                  <StatIcon>📊</StatIcon>
-                  {creature.bestiaryStageComplete ? (
-                    <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
-                  ) : (
-                    <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
-                  )}
-                </Stat>
-              )}
-            </KillsSection>
-          )}
-
-          <LocationSection>
-            <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
-            <LocationList>
-              {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
-                <LocationChip key={idx}>{location}</LocationChip>
-              ))}
-              {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
-                <LocationChip>+{creature.locations.length - MAX_VISIBLE_LOCATIONS}</LocationChip>
-              )}
-            </LocationList>
-          </LocationSection>
         </CreatureInfo>
+
+        {/* Details in two columns below */}
+        <CardDetails>
+          <div>
+            {renderResistances()}
+
+            {/* Kills tracking section */}
+            {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
+              <KillsSection>
+                {creature.currentKills != null && creature.killsToComplete && (
+                  <Stat>
+                    <StatIcon>🎯</StatIcon>
+                    {creature.currentKills} / {creature.killsToComplete} kills
+                  </Stat>
+                )}
+                {creature.currentKills == null && creature.killsToComplete && (
+                  <Stat>
+                    <StatIcon>🎯</StatIcon>
+                    {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
+                  </Stat>
+                )}
+                {creature.bestiaryStage && (
+                  <Stat>
+                    <StatIcon>📊</StatIcon>
+                    {creature.bestiaryStageComplete ? (
+                      <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
+                    ) : (
+                      <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
+                    )}
+                  </Stat>
+                )}
+              </KillsSection>
+            )}
+          </div>
+
+          <div>
+            <LocationSection>
+              <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
+              <LocationList>
+                {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
+                  <LocationChip key={idx}>{location}</LocationChip>
+                ))}
+                {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
+                  <LocationChip>+{creature.locations.length - MAX_VISIBLE_LOCATIONS}</LocationChip>
+                )}
+              </LocationList>
+            </LocationSection>
+          </div>
+        </CardDetails>
       </CardTop>
     </Card>
   );

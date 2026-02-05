@@ -6,15 +6,11 @@
 import styled from 'styled-components';
 
 export const LootSplitCalculatorContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.xl};
 
   /* Responsive - Expand on larger screens */
-  @media (min-width: 1400px) {
-    max-width: 1400px;
-  }
-
   @media (min-width: 1600px) {
     max-width: 1600px;
   }
