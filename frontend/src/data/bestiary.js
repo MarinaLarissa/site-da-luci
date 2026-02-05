@@ -108,7 +108,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "acolyte-of-darkness",
@@ -156,7 +156,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "adept-of-the-cult",
@@ -181,7 +181,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "adult-goanna",
@@ -204,7 +204,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "adventurer",
@@ -250,7 +250,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 85
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "agrestic-chicken",
@@ -273,7 +273,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "albino-dragon",
@@ -296,7 +296,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "alchemistical-container",
@@ -319,7 +319,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "amazon",
@@ -365,7 +365,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "ancient-scarab",
@@ -390,7 +390,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 250
+    "killsToComplete": 1000
   },
   {
     "id": "angry-plant-thing",
@@ -413,7 +413,7 @@ export const BESTIARY_DATA = [
       "holy": 55,
       "death": 55
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "angry-sugar-fairy",
@@ -436,7 +436,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 60
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "animated-feather",
@@ -459,7 +459,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "animated-snowman",
@@ -482,7 +482,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "antenna",
@@ -505,7 +505,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "arachnophobica",
@@ -528,7 +528,7 @@ export const BESTIARY_DATA = [
       "holy": 140,
       "death": 50
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "arbaziloth",
@@ -551,7 +551,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "arctic-faun",
@@ -574,7 +574,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "armadile",
@@ -597,7 +597,7 @@ export const BESTIARY_DATA = [
       "holy": 85,
       "death": 55
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "askarak-demon",
@@ -620,7 +620,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "askarak-lord",
@@ -643,7 +643,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "askarak-prince",
@@ -666,7 +666,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "assassin",
@@ -691,7 +691,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "atab",
@@ -714,7 +714,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "azure-frog",
@@ -785,7 +785,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 65
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "baleful-bunny",
@@ -808,7 +808,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bandit",
@@ -833,7 +833,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "bane-bringer",
@@ -856,7 +856,7 @@ export const BESTIARY_DATA = [
       "holy": 10,
       "death": 10
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bane-of-light",
@@ -879,7 +879,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "banshee",
@@ -902,7 +902,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "barbarian-bloodwalker",
@@ -925,7 +925,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "barbarian-brutetamer",
@@ -1019,7 +1019,7 @@ export const BESTIARY_DATA = [
       "death": 85
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "barkless-fanatic",
@@ -1044,7 +1044,7 @@ export const BESTIARY_DATA = [
       "death": 85
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "bashmu",
@@ -1067,7 +1067,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bat",
@@ -1090,7 +1090,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "bear",
@@ -1115,7 +1115,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "behemoth",
@@ -1138,7 +1138,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bellicose-orger",
@@ -1161,7 +1161,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "berrypest",
@@ -1170,7 +1170,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -1207,7 +1207,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "betrayed-wraith",
@@ -1230,7 +1230,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "billdodger",
@@ -1253,7 +1253,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "biting-book",
@@ -1276,7 +1276,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "black-sheep",
@@ -1299,7 +1299,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "black-sphinx-acolyte",
@@ -1322,7 +1322,7 @@ export const BESTIARY_DATA = [
       "holy": 130,
       "death": 0
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "blemished-spawn",
@@ -1345,7 +1345,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "blight-spitter",
@@ -1368,7 +1368,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blightling",
@@ -1391,7 +1391,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blightwalker",
@@ -1414,7 +1414,7 @@ export const BESTIARY_DATA = [
       "holy": 130,
       "death": 0
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bloated-man-maggot",
@@ -1437,7 +1437,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 95
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "blocking-stalagmite",
@@ -1460,7 +1460,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blood-beast",
@@ -1485,7 +1485,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "blood-crab",
@@ -1510,7 +1510,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "blood-guardian",
@@ -1533,7 +1533,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blood-hand",
@@ -1556,7 +1556,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blood-pool",
@@ -1579,7 +1579,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blood-priest",
@@ -1602,7 +1602,7 @@ export const BESTIARY_DATA = [
       "holy": 108,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blooming-tower-light-blue",
@@ -1625,7 +1625,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blooming-tower-red",
@@ -1648,7 +1648,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blooming-tower-violet",
@@ -1671,7 +1671,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blooming-tower-yellow",
@@ -1694,7 +1694,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "blue-djinn",
@@ -1717,7 +1717,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 113
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bluebeak",
@@ -1740,7 +1740,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "boar",
@@ -1765,7 +1765,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "boar-man",
@@ -1788,7 +1788,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 95
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bog-frog",
@@ -1811,7 +1811,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "bog-raider",
@@ -1836,7 +1836,7 @@ export const BESTIARY_DATA = [
       "death": 95
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "bone-barrier",
@@ -1859,7 +1859,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bone-bear",
@@ -1882,7 +1882,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bone-overlord",
@@ -1905,7 +1905,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bonebeast",
@@ -1930,7 +1930,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 250
+    "killsToComplete": 1000
   },
   {
     "id": "bonelord",
@@ -1976,7 +1976,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bonelords-phylactery",
@@ -1999,7 +1999,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bony-sea-devil",
@@ -2022,7 +2022,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 95
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "boogy",
@@ -2047,7 +2047,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "bound-ape",
@@ -2070,7 +2070,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bound-cave-spider",
@@ -2093,7 +2093,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bound-iks-aucar",
@@ -2116,7 +2116,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "brachiodemon",
@@ -2139,7 +2139,7 @@ export const BESTIARY_DATA = [
       "holy": 135,
       "death": 50
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "brain-squid",
@@ -2162,7 +2162,7 @@ export const BESTIARY_DATA = [
       "holy": 0,
       "death": 115
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "braindeath",
@@ -2185,7 +2185,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bramble-wyrmling",
@@ -2208,7 +2208,7 @@ export const BESTIARY_DATA = [
       "holy": 95,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "branchy-crawler",
@@ -2231,7 +2231,7 @@ export const BESTIARY_DATA = [
       "holy": 60,
       "death": 115
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "breach-brood",
@@ -2254,7 +2254,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 105
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bride-of-night",
@@ -2277,7 +2277,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "bright-crystal",
@@ -2300,7 +2300,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "brimstone-bug",
@@ -2323,7 +2323,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "brinebrute-inferniarch",
@@ -2346,7 +2346,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "broken-shaper",
@@ -2369,7 +2369,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "broodrider-inferniarch",
@@ -2392,7 +2392,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 85
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bug",
@@ -2415,7 +2415,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "bulltaur-alchemist",
@@ -2438,7 +2438,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 105
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bulltaur-brute",
@@ -2461,7 +2461,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "bulltaur-forgepriest",
@@ -2484,7 +2484,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "burning-book",
@@ -2507,7 +2507,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "burning-gladiator",
@@ -2530,7 +2530,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "burster-spectre",
@@ -2553,7 +2553,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "butterfly-blue",
@@ -2562,7 +2562,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -2585,7 +2585,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -2614,7 +2614,7 @@ export const BESTIARY_DATA = [
     ],
     "region": "Mainland",
     "recommendedLevel": 20,
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "butterfly-red",
@@ -2623,7 +2623,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -2706,7 +2706,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "candy-horror",
@@ -2729,7 +2729,7 @@ export const BESTIARY_DATA = [
       "holy": 115,
       "death": 50
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "capricious-phantom",
@@ -2752,7 +2752,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "carniphila",
@@ -2775,7 +2775,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "carnivorous-butterfly",
@@ -2798,7 +2798,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "carnivostrich",
@@ -2821,7 +2821,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 95
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "carrion-worm",
@@ -2871,7 +2871,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "cave-chimera",
@@ -2894,7 +2894,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cave-devourer",
@@ -2917,7 +2917,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cave-parrot",
@@ -2940,7 +2940,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "cave-rat",
@@ -2963,7 +2963,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "cellar-rat",
@@ -2986,7 +2986,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "centipede",
@@ -3101,7 +3101,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "chasm-spawn",
@@ -3126,7 +3126,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 500
+    "killsToComplete": 2500
   },
   {
     "id": "cheeky-sugar-cube",
@@ -3149,7 +3149,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "chicken",
@@ -3172,7 +3172,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "chocolate-blob",
@@ -3181,7 +3181,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -3218,7 +3218,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 45
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cinder-wyrmling",
@@ -3241,7 +3241,7 @@ export const BESTIARY_DATA = [
       "holy": 95,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "clavius",
@@ -3264,7 +3264,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "clay-guardian",
@@ -3287,7 +3287,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cliff-strider",
@@ -3310,7 +3310,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 65
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cloak-of-terror",
@@ -3333,7 +3333,7 @@ export const BESTIARY_DATA = [
       "holy": 60,
       "death": 120
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "clomp",
@@ -3358,7 +3358,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "cobra",
@@ -3404,7 +3404,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cobra-scout",
@@ -3427,7 +3427,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cobra-vizier",
@@ -3450,7 +3450,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "converter",
@@ -3473,7 +3473,7 @@ export const BESTIARY_DATA = [
       "holy": 65,
       "death": 115
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "coral-frog",
@@ -3519,7 +3519,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "corrupted-skeleton",
@@ -3542,7 +3542,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 90
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "corym-charlatan",
@@ -3567,7 +3567,7 @@ export const BESTIARY_DATA = [
       "death": 85
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "corym-skirmisher",
@@ -3590,7 +3590,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "corym-vanguard",
@@ -3613,7 +3613,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "courage-leech",
@@ -3636,7 +3636,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 125
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "court-warlock",
@@ -3659,7 +3659,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cow",
@@ -3682,7 +3682,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "crab",
@@ -3728,7 +3728,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 115
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crawler",
@@ -3753,7 +3753,7 @@ export const BESTIARY_DATA = [
       "death": 95
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "crazed-beggar",
@@ -3799,7 +3799,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crazed-summer-vanguard",
@@ -3822,7 +3822,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crazed-winter-rearguard",
@@ -3845,7 +3845,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crazed-winter-vanguard",
@@ -3868,7 +3868,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 85
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cream-blob",
@@ -3877,7 +3877,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Unknown"
     ],
@@ -3914,7 +3914,7 @@ export const BESTIARY_DATA = [
       "holy": 106,
       "death": 97
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "crimson-frog",
@@ -3962,7 +3962,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "crusader",
@@ -3985,7 +3985,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crustacea-gigantica",
@@ -4008,7 +4008,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "crypt-construct",
@@ -4031,7 +4031,7 @@ export const BESTIARY_DATA = [
       "holy": 92,
       "death": 92
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "crypt-defiler",
@@ -4077,7 +4077,7 @@ export const BESTIARY_DATA = [
       "holy": 103,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "crypt-mage",
@@ -4100,7 +4100,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 109
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crypt-shambler",
@@ -4148,7 +4148,7 @@ export const BESTIARY_DATA = [
       "holy": 75,
       "death": 135
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crypt-warrior",
@@ -4171,7 +4171,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "crystal-spider",
@@ -4194,7 +4194,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "crystal-wolf",
@@ -4217,7 +4217,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "crystalcrusher",
@@ -4240,7 +4240,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cult-believer",
@@ -4263,7 +4263,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cult-enforcer",
@@ -4286,7 +4286,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cult-scholar",
@@ -4309,7 +4309,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 70
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cunning-werepanther",
@@ -4332,7 +4332,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cursed-ape",
@@ -4355,7 +4355,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cursed-book",
@@ -4378,7 +4378,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cursed-prospector",
@@ -4401,7 +4401,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "cyclops",
@@ -4447,7 +4447,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cyclops-smith",
@@ -4470,7 +4470,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "cyclursus",
@@ -4493,7 +4493,7 @@ export const BESTIARY_DATA = [
       "holy": 103,
       "death": 112
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "damaged-crystal-golem",
@@ -4562,7 +4562,7 @@ export const BESTIARY_DATA = [
       "holy": 0,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dark-apprentice",
@@ -4608,7 +4608,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "dark-faun",
@@ -4631,7 +4631,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dark-magician",
@@ -4677,7 +4677,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dark-monk",
@@ -4702,7 +4702,7 @@ export const BESTIARY_DATA = [
       "death": 60
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "dark-torturer",
@@ -4725,7 +4725,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "darklight-construct",
@@ -4748,7 +4748,7 @@ export const BESTIARY_DATA = [
       "holy": 60,
       "death": 120
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "darklight-emitter",
@@ -4771,7 +4771,7 @@ export const BESTIARY_DATA = [
       "holy": 75,
       "death": 120
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "darklight-matter",
@@ -4794,7 +4794,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "darklight-source",
@@ -4817,7 +4817,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "darklight-striker",
@@ -4840,7 +4840,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "dawnfire-asura",
@@ -4863,7 +4863,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 80
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "death-blob",
@@ -4888,7 +4888,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "death-priest",
@@ -4911,7 +4911,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deathling-scout",
@@ -4934,7 +4934,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "deathling-spellsinger",
@@ -4957,7 +4957,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "decaying-totem",
@@ -4980,7 +4980,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-brawler",
@@ -5003,7 +5003,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-elite",
@@ -5026,7 +5026,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-guard",
@@ -5049,7 +5049,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-master-librarian",
@@ -5072,7 +5072,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-scout",
@@ -5095,7 +5095,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-spellsinger",
@@ -5118,7 +5118,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-tyrant",
@@ -5141,7 +5141,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "deepling-warrior",
@@ -5164,7 +5164,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "deepling-worker",
@@ -5212,7 +5212,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "deepworm",
@@ -5237,7 +5237,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "deer",
@@ -5285,7 +5285,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "demon",
@@ -5308,7 +5308,7 @@ export const BESTIARY_DATA = [
       "holy": 112,
       "death": 80
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "demon-outcast",
@@ -5331,7 +5331,7 @@ export const BESTIARY_DATA = [
       "holy": 106,
       "death": 70
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "demon-parrot",
@@ -5354,7 +5354,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "demon-skeleton",
@@ -5377,7 +5377,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "destroyer",
@@ -5400,7 +5400,7 @@ export const BESTIARY_DATA = [
       "holy": 103,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "devourer",
@@ -5425,7 +5425,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "diabolic-imp",
@@ -5448,7 +5448,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "diamond-servant",
@@ -5471,7 +5471,7 @@ export const BESTIARY_DATA = [
       "holy": 115,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "diamond-servant-replica",
@@ -5496,7 +5496,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "digestive-ooze",
@@ -5519,7 +5519,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dire-penguin",
@@ -5567,7 +5567,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "distorted-phantom",
@@ -5590,7 +5590,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 2500
+    "killsToComplete": 250
   },
   {
     "id": "dog",
@@ -5615,7 +5615,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "doom-deer",
@@ -5638,7 +5638,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "doomsday-cultist",
@@ -5684,7 +5684,7 @@ export const BESTIARY_DATA = [
       "holy": 115,
       "death": 110
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "dragon",
@@ -5709,7 +5709,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "dragon-lord",
@@ -5734,7 +5734,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "dragonling",
@@ -5782,7 +5782,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "drillworm",
@@ -5807,7 +5807,7 @@ export const BESTIARY_DATA = [
       "death": 85
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "dromedary",
@@ -5830,7 +5830,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "dryad",
@@ -5853,7 +5853,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "duskbringer",
@@ -5876,7 +5876,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dwarf",
@@ -5922,7 +5922,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dwarf-guard",
@@ -5968,7 +5968,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "dwarf-soldier",
@@ -6083,7 +6083,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "elder-bonelord",
@@ -6106,7 +6106,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 70
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "elder-forest-fury",
@@ -6129,7 +6129,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "elder-mummy",
@@ -6152,7 +6152,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "elephant",
@@ -6244,7 +6244,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "elf-scout",
@@ -6292,7 +6292,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "energy-elemental",
@@ -6315,7 +6315,7 @@ export const BESTIARY_DATA = [
       "holy": 95,
       "death": 95
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "enfeebled-silencer",
@@ -6340,7 +6340,7 @@ export const BESTIARY_DATA = [
       "death": 35
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "enlightened-of-the-cult",
@@ -6365,7 +6365,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "enraged-crystal-golem",
@@ -6388,7 +6388,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "eternal-guardian",
@@ -6413,7 +6413,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "evil-sheep",
@@ -6436,7 +6436,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "evil-sheep-lord",
@@ -6459,7 +6459,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "execowtioner",
@@ -6482,7 +6482,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 85
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "exotic-bat",
@@ -6507,7 +6507,7 @@ export const BESTIARY_DATA = [
       "death": 95
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "exotic-cave-spider",
@@ -6532,7 +6532,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "faun",
@@ -6557,7 +6557,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "feverish-citizen",
@@ -6605,7 +6605,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 1000
+    "killsToComplete": 500
   },
   {
     "id": "fire-devil",
@@ -6655,7 +6655,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 0
     },
-    "killsToComplete": 500,
+    "killsToComplete": 1000,
     "currentKills": 150
   },
   {
@@ -6681,7 +6681,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "fish",
@@ -6728,7 +6728,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "forest-fury",
@@ -6751,7 +6751,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 60
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "fox",
@@ -6774,7 +6774,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "frost-dragon",
@@ -6799,7 +6799,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "frost-dragon-hatchling",
@@ -6824,7 +6824,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "frost-giant",
@@ -6897,7 +6897,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "furious-fire-elemental",
@@ -6920,7 +6920,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "furious-troll",
@@ -6968,7 +6968,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "gang-member",
@@ -7016,7 +7016,7 @@ export const BESTIARY_DATA = [
       "death": 60
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "gazer",
@@ -7062,7 +7062,7 @@ export const BESTIARY_DATA = [
       "holy": 115,
       "death": 0
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "ghost",
@@ -7087,7 +7087,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "ghost-wolf",
@@ -7112,7 +7112,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "ghoul",
@@ -7137,7 +7137,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "ghoulish-hyaena",
@@ -7160,7 +7160,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "giant-spider",
@@ -7185,7 +7185,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "gladiator",
@@ -7233,7 +7233,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "glooth-anemone",
@@ -7258,7 +7258,7 @@ export const BESTIARY_DATA = [
       "death": 65
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "glooth-blob",
@@ -7283,7 +7283,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "gnarlhound",
@@ -7308,7 +7308,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "goblin",
@@ -7366,7 +7366,7 @@ export const BESTIARY_DATA = [
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
     "estimatedHours": 1,
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Beregar"
     ],
@@ -7381,7 +7381,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 250
+    "killsToComplete": 5
   },
   {
     "id": "goblin-scavenger",
@@ -7427,7 +7427,7 @@ export const BESTIARY_DATA = [
       "holy": 0,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "golden-servant-replica",
@@ -7452,7 +7452,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "goldhanded-cultist",
@@ -7475,7 +7475,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 85
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "goldhanded-cultist-bride",
@@ -7498,7 +7498,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 85
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "gozzler",
@@ -7544,7 +7544,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "grave-robber",
@@ -7590,7 +7590,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "green-djinn",
@@ -7613,7 +7613,7 @@ export const BESTIARY_DATA = [
       "holy": 113,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "green-frog",
@@ -7636,7 +7636,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "grynch-clan-goblin",
@@ -7659,7 +7659,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "haunted-dragon",
@@ -7682,7 +7682,7 @@ export const BESTIARY_DATA = [
       "holy": 140,
       "death": 0
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "haunted-treeling",
@@ -7707,7 +7707,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 250
+    "killsToComplete": 1000
   },
   {
     "id": "herald-of-gloom",
@@ -7730,7 +7730,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "high-voltage-elemental",
@@ -7778,7 +7778,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 85
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "honour-guard",
@@ -7824,7 +7824,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "hunter",
@@ -7849,7 +7849,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "husky",
@@ -7874,7 +7874,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "hyaena",
@@ -7920,7 +7920,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "ice-golem",
@@ -7945,7 +7945,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "ice-witch",
@@ -7968,7 +7968,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "iks-ahpututu",
@@ -7993,7 +7993,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 250,
+    "killsToComplete": 2500,
     "currentKills": 1000
   },
   {
@@ -8019,7 +8019,7 @@ export const BESTIARY_DATA = [
       "death": 70
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "infernal-frog",
@@ -8042,7 +8042,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "infernalist",
@@ -8067,7 +8067,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "insect-swarm",
@@ -8136,7 +8136,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "iron-servant",
@@ -8184,7 +8184,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "island-troll",
@@ -8255,7 +8255,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "killer-rabbit",
@@ -8303,7 +8303,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "kongra",
@@ -8328,7 +8328,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "ladybug",
@@ -8374,7 +8374,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "larva",
@@ -8399,7 +8399,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "lava-golem",
@@ -8424,7 +8424,7 @@ export const BESTIARY_DATA = [
       "death": 65
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "leaf-golem",
@@ -8449,7 +8449,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "lich",
@@ -8472,7 +8472,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "lion",
@@ -8543,7 +8543,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "lizard-dragon-priest",
@@ -8568,7 +8568,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "lizard-high-guard",
@@ -8593,7 +8593,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "lizard-legionnaire",
@@ -8618,7 +8618,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "lizard-magistratus",
@@ -8641,7 +8641,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "lizard-noble",
@@ -8666,7 +8666,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "lizard-sentinel",
@@ -8691,7 +8691,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "lizard-snakecharmer",
@@ -8714,7 +8714,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "lizard-templar",
@@ -8739,7 +8739,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "lizard-zaogun",
@@ -8764,7 +8764,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "loricate-orger",
@@ -8787,7 +8787,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "lumbering-carnivor",
@@ -8812,7 +8812,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "mad-scientist",
@@ -8860,7 +8860,7 @@ export const BESTIARY_DATA = [
       "death": 75
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "mammoth",
@@ -8885,7 +8885,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "manta-ray",
@@ -8908,7 +8908,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "marsh-stalker",
@@ -8933,7 +8933,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "massive-earth-elemental",
@@ -8956,7 +8956,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 55
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "massive-energy-elemental",
@@ -8979,7 +8979,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "massive-fire-elemental",
@@ -9002,7 +9002,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "massive-water-elemental",
@@ -9025,7 +9025,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "menancing-carnivor",
@@ -9040,7 +9040,7 @@ export const BESTIARY_DATA = [
     ],
     "region": "Mainland",
     "recommendedLevel": 200,
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "mercury-blob",
@@ -9113,7 +9113,7 @@ export const BESTIARY_DATA = [
       "death": 20
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "midnight-panther",
@@ -9136,7 +9136,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "midnight-spawn",
@@ -9159,7 +9159,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "midnight-warrior",
@@ -9182,7 +9182,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "minotaur",
@@ -9228,7 +9228,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 90
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "minotaur-archer",
@@ -9276,7 +9276,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "minotaur-cult-propher",
@@ -9291,7 +9291,7 @@ export const BESTIARY_DATA = [
     ],
     "region": "Mainland",
     "recommendedLevel": 150,
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "minotaur-cult-zealot",
@@ -9316,7 +9316,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "minotaur-guard",
@@ -9362,7 +9362,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "minotaur-mage",
@@ -9410,7 +9410,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "misguided-thief",
@@ -9435,7 +9435,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "modified-gnarlhound",
@@ -9460,7 +9460,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "mole",
@@ -9506,7 +9506,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "mummy",
@@ -9531,7 +9531,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "mushroom-sniffer",
@@ -9556,7 +9556,7 @@ export const BESTIARY_DATA = [
       "death": 10
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "mutated-bat",
@@ -9581,7 +9581,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "mutated-human",
@@ -9606,7 +9606,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "mutated-rat",
@@ -9629,7 +9629,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "mutated-tiger",
@@ -9652,7 +9652,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "necromancer",
@@ -9675,7 +9675,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "nightfiend",
@@ -9698,7 +9698,7 @@ export const BESTIARY_DATA = [
       "holy": 108,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "nightslayer",
@@ -9721,7 +9721,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "nightstalker",
@@ -9744,7 +9744,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "noble-lion",
@@ -9767,7 +9767,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "nomad-blue",
@@ -9792,7 +9792,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 1000
+    "killsToComplete": 500
   },
   {
     "id": "nomad-female",
@@ -9817,7 +9817,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 1000
+    "killsToComplete": 500
   },
   {
     "id": "northern-pike",
@@ -9841,7 +9841,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "novice-of-the-cult",
@@ -9866,7 +9866,7 @@ export const BESTIARY_DATA = [
       "death": 108
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "nymph",
@@ -9891,7 +9891,7 @@ export const BESTIARY_DATA = [
       "death": 60
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "ogre-brute",
@@ -9916,7 +9916,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "ogre-savage",
@@ -9941,7 +9941,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "ogre-shaman",
@@ -9966,7 +9966,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "omnivora",
@@ -9989,7 +9989,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "orc",
@@ -10035,7 +10035,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "orc-cult-fanatic",
@@ -10060,7 +10060,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-inquisitor",
@@ -10085,7 +10085,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-minion",
@@ -10110,7 +10110,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cult-priest",
@@ -10135,7 +10135,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orc-cultist",
@@ -10160,7 +10160,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orc-leader",
@@ -10183,7 +10183,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "orc-marauder",
@@ -10206,7 +10206,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "orc-rider",
@@ -10298,7 +10298,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "orc-warrior",
@@ -10369,7 +10369,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orclops-ravager",
@@ -10394,7 +10394,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "orewalker",
@@ -10419,7 +10419,7 @@ export const BESTIARY_DATA = [
       "death": 75
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "orger",
@@ -10442,7 +10442,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "panda",
@@ -10490,7 +10490,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "penguin",
@@ -10538,7 +10538,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "pig",
@@ -10561,7 +10561,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "pigeon",
@@ -10586,7 +10586,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "HARMLESS",
-    "killsToComplete": 250
+    "killsToComplete": 25
   },
   {
     "id": "pirat-bombardier",
@@ -10611,7 +10611,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "pirat-cutthroat",
@@ -10636,7 +10636,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "pirat-mate",
@@ -10661,7 +10661,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "pirat-scoundrel",
@@ -10686,7 +10686,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "pirate-corsair",
@@ -10709,7 +10709,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "pirate-cutthroat",
@@ -10734,7 +10734,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "pirate-ghost",
@@ -10782,7 +10782,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "pirate-skeleton",
@@ -10830,7 +10830,7 @@ export const BESTIARY_DATA = [
       "death": 70
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "poacher",
@@ -10855,7 +10855,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "poison-spider",
@@ -10928,7 +10928,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "priestess",
@@ -10951,7 +10951,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "putrid-mummy",
@@ -10976,7 +10976,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "quara-constrictor",
@@ -10999,7 +10999,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "quara-constrictor-scout",
@@ -11022,7 +11022,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "quara-hydromancer",
@@ -11047,7 +11047,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "quara-hydromancer-scout",
@@ -11070,7 +11070,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "quara-mantassin",
@@ -11093,7 +11093,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "quara-mantassin-scout",
@@ -11141,7 +11141,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "quara-pincher-scout",
@@ -11164,7 +11164,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "quara-predator",
@@ -11189,7 +11189,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "quara-predator-scout",
@@ -11212,7 +11212,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "rabbit",
@@ -11235,7 +11235,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "raging-fire",
@@ -11260,7 +11260,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 80
     },
-    "killsToComplete": 250,
+    "killsToComplete": 2500,
     "currentKills": 350
   },
   {
@@ -11284,7 +11284,7 @@ export const BESTIARY_DATA = [
       "holy": 80,
       "death": 110
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "redeemed-soul",
@@ -11309,7 +11309,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 1000
+    "killsToComplete": 500
   },
   {
     "id": "renegade-quara-constrictor",
@@ -11332,7 +11332,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "renegade-quara-hydromancer",
@@ -11355,7 +11355,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "renegade-quara-mantassin",
@@ -11378,7 +11378,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "renegade-quara-pincher",
@@ -11401,7 +11401,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "renegade-quara-predator",
@@ -11424,7 +11424,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "roaring-lion",
@@ -11447,7 +11447,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "roast-pork",
@@ -11470,7 +11470,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 110
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "rorc",
@@ -11518,7 +11518,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "rotworm",
@@ -11543,7 +11543,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "sacred-spider",
@@ -11566,7 +11566,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "salamander",
@@ -11591,7 +11591,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "sandcrawler",
@@ -11639,7 +11639,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "scarab",
@@ -11664,7 +11664,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "schiach",
@@ -11687,7 +11687,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "scorpion",
@@ -11735,7 +11735,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "seacrest-serpent",
@@ -11760,7 +11760,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "seagull",
@@ -11808,7 +11808,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shaburak-lord",
@@ -11831,7 +11831,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 105
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shaburak-prince",
@@ -11854,7 +11854,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shadow-hound",
@@ -11877,7 +11877,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shadow-pupil",
@@ -11900,7 +11900,7 @@ export const BESTIARY_DATA = [
       "holy": 105,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shaper-matriarch",
@@ -11923,7 +11923,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 85
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "shark",
@@ -11946,7 +11946,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "sheep",
@@ -11969,7 +11969,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "sibang",
@@ -11994,7 +11994,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "silver-rabbit",
@@ -12044,7 +12044,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "skeleton-warrior",
@@ -12090,7 +12090,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "slime",
@@ -12115,7 +12115,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "slug",
@@ -12163,7 +12163,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "snake",
@@ -12213,7 +12213,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "spider",
@@ -12263,7 +12263,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "spidris-elite",
@@ -12286,7 +12286,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "spiky-carnivor",
@@ -12311,7 +12311,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "spit-nettle",
@@ -12359,7 +12359,7 @@ export const BESTIARY_DATA = [
       "death": 85
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "squidgy-slime",
@@ -12405,7 +12405,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "stalker",
@@ -12430,7 +12430,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "stampor",
@@ -12455,7 +12455,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "starving-wolf",
@@ -12505,7 +12505,7 @@ export const BESTIARY_DATA = [
       "death": 70
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "stone-golem",
@@ -12551,7 +12551,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "stonerefiner",
@@ -12576,7 +12576,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "swamp-troll",
@@ -12601,7 +12601,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "swampling",
@@ -12649,7 +12649,7 @@ export const BESTIARY_DATA = [
       "death": 50
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "swarmer",
@@ -12672,7 +12672,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "tainted-soul",
@@ -12697,7 +12697,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "tarnished-spirit",
@@ -12745,7 +12745,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "terrified-elephant",
@@ -12818,7 +12818,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "thornfire-wolf",
@@ -12841,7 +12841,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "tiger",
@@ -12889,7 +12889,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "tomb-servant",
@@ -12912,7 +12912,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "tortoise",
@@ -12937,7 +12937,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "troll",
@@ -13031,7 +13031,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "twisted-pooka",
@@ -13056,7 +13056,7 @@ export const BESTIARY_DATA = [
       "death": 70
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "twisted-shaper",
@@ -13079,7 +13079,7 @@ export const BESTIARY_DATA = [
       "holy": 70,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "undead-cavebear",
@@ -13102,7 +13102,7 @@ export const BESTIARY_DATA = [
       "holy": 125,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "undead-gladiator",
@@ -13127,7 +13127,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "undead-jester",
@@ -13150,7 +13150,7 @@ export const BESTIARY_DATA = [
       "holy": 120,
       "death": 0
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "undead-mine-worker",
@@ -13244,7 +13244,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "vampire-bride",
@@ -13269,7 +13269,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "vampire-viscount",
@@ -13294,7 +13294,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "vicious-manbat",
@@ -13317,7 +13317,7 @@ export const BESTIARY_DATA = [
       "holy": 110,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "vulcongra",
@@ -13340,7 +13340,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 95
     },
-    "killsToComplete": 1000
+    "killsToComplete": 250
   },
   {
     "id": "wailing-widow",
@@ -13363,7 +13363,7 @@ export const BESTIARY_DATA = [
       "holy": 90,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "walker",
@@ -13413,7 +13413,7 @@ export const BESTIARY_DATA = [
       "death": 80
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "war-wolf",
@@ -13461,7 +13461,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "wasp",
@@ -13484,7 +13484,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "waspoid",
@@ -13509,7 +13509,7 @@ export const BESTIARY_DATA = [
       "death": 95
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "water-buffalo",
@@ -13518,7 +13518,7 @@ export const BESTIARY_DATA = [
     "charmPoints": 30,
     "difficulty": "EASY",
     "estimatedHours": 1,
-    "respawnCategory": "normal",
+    "respawnCategory": "rare",
     "locations": [
       "Venore Southern Swamp"
     ],
@@ -13534,7 +13534,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 5
   },
   {
     "id": "water-elemental",
@@ -13557,7 +13557,7 @@ export const BESTIARY_DATA = [
       "holy": 50,
       "death": 50
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "weakened-frazzlemaw",
@@ -13582,7 +13582,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "weeper",
@@ -13607,7 +13607,7 @@ export const BESTIARY_DATA = [
       "death": 70
     },
     "officialDifficulty": "HARD",
-    "killsToComplete": 1000
+    "killsToComplete": 2500
   },
   {
     "id": "white-deer",
@@ -13632,7 +13632,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "TRIVIAL",
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "white-shade",
@@ -13678,7 +13678,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 90
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "wild-horse",
@@ -13701,7 +13701,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 25
+    "killsToComplete": 250
   },
   {
     "id": "wild-warrior",
@@ -13726,7 +13726,7 @@ export const BESTIARY_DATA = [
       "death": 105
     },
     "officialDifficulty": "EASY",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "wilting-leaf-golem",
@@ -13751,7 +13751,7 @@ export const BESTIARY_DATA = [
       "death": 100
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "winter-wolf",
@@ -13776,7 +13776,7 @@ export const BESTIARY_DATA = [
       "death": 110
     },
     "officialDifficulty": "TRIVIAL",
-    "killsToComplete": 250
+    "killsToComplete": 500
   },
   {
     "id": "wisp",
@@ -13801,7 +13801,7 @@ export const BESTIARY_DATA = [
       "death": 0
     },
     "officialDifficulty": "TRIVIAL",
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "witch",
@@ -13874,7 +13874,7 @@ export const BESTIARY_DATA = [
       "death": 90
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "worm-priestess",
@@ -13897,7 +13897,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 95
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "wyvern",
@@ -13920,7 +13920,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "yeti",
@@ -13943,7 +13943,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 100
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   },
   {
     "id": "young-sea-serpent",
@@ -13968,7 +13968,7 @@ export const BESTIARY_DATA = [
       "death": 115
     },
     "officialDifficulty": "MEDIUM",
-    "killsToComplete": 500
+    "killsToComplete": 1000
   },
   {
     "id": "zombie",
@@ -13991,7 +13991,7 @@ export const BESTIARY_DATA = [
       "holy": 100,
       "death": 0
     },
-    "killsToComplete": 500
+    "killsToComplete": 250
   }
 ];
 
