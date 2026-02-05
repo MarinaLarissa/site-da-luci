@@ -15,6 +15,8 @@ export const InputSectionContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.light};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 
   /* Responsive - Expand padding on larger screens */
   @media (min-width: 1400px) {
