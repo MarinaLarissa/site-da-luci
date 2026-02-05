@@ -22,12 +22,12 @@ const calculateEfficiencyScore = (creature, settings, characterLevel) => {
   let modifier = 1.0;
 
   // Rapid respawn bonus
-  if (settings.rapidRespawnActive && creature.respawnCategory === 'rapid') {
+  if (settings?.rapidRespawnActive && creature.respawnCategory === 'rapid') {
     modifier += 0.3;
   }
 
   // Preferred region bonus
-  if (settings.preferredRegions.includes(creature.region)) {
+  if (settings?.preferredRegions?.includes(creature.region)) {
     modifier += 0.2;
   }
 
@@ -107,34 +107,34 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   // Apply filters
   const filteredCreatures = useMemo(() => {
     // Choose which set of creatures to filter based on showCompleted flag
-    const baseCreatures = filters.showCompleted ? completedCreatures : incompleteCreatures;
+    const baseCreatures = filters?.showCompleted ? completedCreatures : incompleteCreatures;
 
     return baseCreatures.filter((creature) => {
       // Difficulty filter
-      if (filters.difficulty.length > 0 && !filters.difficulty.includes(creature.difficulty)) {
+      if (filters?.difficulty?.length > 0 && !filters.difficulty.includes(creature.difficulty)) {
         return false;
       }
 
       // Region filter
-      if (filters.region.length > 0 && !filters.region.includes(creature.region)) {
+      if (filters?.region?.length > 0 && !filters.region.includes(creature.region)) {
         return false;
       }
 
       // Respawn category filter
       if (
-        filters.respawnCategory.length > 0 &&
+        filters?.respawnCategory?.length > 0 &&
         !filters.respawnCategory.includes(creature.respawnCategory)
       ) {
         return false;
       }
 
       // Charm points filter
-      if (creature.charmPoints < filters.minCharmPoints) {
+      if (creature.charmPoints < (filters?.minCharmPoints || 0)) {
         return false;
       }
 
       // Search term filter
-      if (filters.searchTerm) {
+      if (filters?.searchTerm) {
         const term = filters.searchTerm.toLowerCase();
         const nameMatch = creature.name.toLowerCase().includes(term);
         const locationMatch = creature.locations.some((loc) =>
@@ -150,7 +150,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   // Calculate suggestions (sorted by efficiency)
   const suggestions = useMemo(() => {
     const characterLevel = character?.level || 100;
-    const hasRapidFilter = filters.respawnCategory.includes('rapid');
+    const hasRapidFilter = filters?.respawnCategory?.includes('rapid') || false;
 
     return filteredCreatures
       .map((creature) => {
@@ -174,7 +174,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         // Then sort by efficiency
         return b.efficiencyScore - a.efficiencyScore;
       });
-  }, [filteredCreatures, settings, character, filters.respawnCategory]);
+  }, [filteredCreatures, settings, character, filters]);
 
   // Get top N suggestions
   const getTopSuggestions = useCallback(
