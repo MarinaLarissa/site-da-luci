@@ -171,8 +171,18 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
           if (a.isRapidRecommended && !b.isRapidRecommended) return -1;
           if (!a.isRapidRecommended && b.isRapidRecommended) return 1;
         }
-        // Then sort by efficiency
-        return b.efficiencyScore - a.efficiencyScore;
+        // Sort by efficiency score (primary)
+        const efficiencyDiff = b.efficiencyScore - a.efficiencyScore;
+        if (Math.abs(efficiencyDiff) > 0.01) {
+          return efficiencyDiff;
+        }
+        // If efficiency is equal, sort by charm points (secondary)
+        const charmDiff = b.charmPoints - a.charmPoints;
+        if (charmDiff !== 0) {
+          return charmDiff;
+        }
+        // If both are equal, sort by name (tertiary)
+        return a.name.localeCompare(b.name);
       });
   }, [filteredCreatures, settings, character, filters]);
 
