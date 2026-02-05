@@ -79,13 +79,6 @@ const FilterPanel = ({
 
   return (
     <Panel>
-      <PanelHeader>
-        <PanelTitle>{t('bestiaryPlanner.filters.title')}</PanelTitle>
-        <ResetButton onClick={onResetFilters}>
-          {t('bestiaryPlanner.filters.reset')}
-        </ResetButton>
-      </PanelHeader>
-
       {/* Search (debounced for performance) */}
       <FilterGroup>
         <FilterLabel>{t('bestiaryPlanner.filters.search')}</FilterLabel>
