@@ -99,6 +99,36 @@ export const CardTop = styled.div`
   gap: ${({ theme }) => theme.spacing.md};
 `;
 
+export const CardBody = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: ${({ theme }) => theme.spacing.lg};
+  align-items: start;
+
+  /* Mobile: single column */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const CardMainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm};
+  min-width: 0; /* Prevent overflow */
+`;
+
+export const CardSidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-width: 200px;
+
+  @media (max-width: 768px) {
+    max-width: none;
+  }
+`;
+
 export const CardImageRow = styled.div`
   display: flex;
   align-items: center;
@@ -250,21 +280,24 @@ export const DifficultyBadge = styled.span`
 `;
 
 export const LocationSection = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
 `;
 
 export const LocationLabel = styled.div`
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   color: ${({ theme }) => theme.colors.text.muted};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  padding-bottom: ${({ theme }) => theme.spacing.xs};
 `;
 
 export const LocationList = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
 `;
 
@@ -272,8 +305,9 @@ export const LocationChip = styled.span`
   padding: 4px 8px;
   background-color: ${({ theme }) => theme.colors.bg.secondary};
   border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: ${({ theme }) => theme.colors.text.secondary};
+  line-height: 1.4;
 `;
 
 export const EfficiencyScore = styled.div`

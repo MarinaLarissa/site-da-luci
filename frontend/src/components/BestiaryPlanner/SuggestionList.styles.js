@@ -30,21 +30,13 @@ export const ResultsCount = styled.span`
 
 export const CreatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: ${({ theme }) => theme.spacing.lg};
+  width: 100%;
 
-  /* Prevent cards from stretching too much */
-  & > * {
-    max-width: 420px;
-  }
-
-  /* Ensure minimum readable card size */
+  /* Ensure minimum readable card size on mobile */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-
-    & > * {
-      max-width: none;
-    }
   }
 `;
 
