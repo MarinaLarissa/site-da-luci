@@ -34,6 +34,10 @@ import {
   ResistanceIcon,
   ResistanceValue,
   KillsSection,
+  LocationSection,
+  LocationLabel,
+  LocationList,
+  LocationChip,
 } from './CreatureCard.styles';
 
 // Constants
@@ -189,9 +193,11 @@ const CreatureCard = ({
           </Stat>
         </CardStatsRow>
 
-        {/* Kills tracking section - logo após dificuldade/localização */}
-        {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
+        {/* Kills tracking section and locations - lado a lado */}
+        {((creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) ||
+          (creature.locations && creature.locations.length > 0)) && (
           <KillsSection>
+            {/* Kills stats */}
             {creature.currentKills != null && creature.killsToComplete && (
               <Stat>
                 <StatIcon>🎯</StatIcon>
@@ -211,6 +217,19 @@ const CreatureCard = ({
                   <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
                 ) : (
                   <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
+                )}
+              </Stat>
+            )}
+
+            {/* Locations inline with kills */}
+            {creature.locations && creature.locations.length > 0 && (
+              <Stat style={{ flexWrap: 'wrap', gap: '4px' }}>
+                <StatIcon>📍</StatIcon>
+                {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, index) => (
+                  <LocationChip key={index}>{location}</LocationChip>
+                ))}
+                {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
+                  <LocationChip>+{creature.locations.length - MAX_VISIBLE_LOCATIONS}</LocationChip>
                 )}
               </Stat>
             )}

@@ -57,6 +57,9 @@ import {
   WarningTitle,
   WarningText,
   CreateCharacterButton,
+  CollapsedFilterActions,
+  QuickActionButton,
+  ShowCompletedToggle,
 } from './BestiaryPlanner.styles';
 
 const BestiaryPlanner = () => {
@@ -299,6 +302,7 @@ const BestiaryPlanner = () => {
     if (pendingFilters) {
       updateFilters(pendingFilters);
       setPendingFilters(null);
+      setIsFiltersCollapsed(true); // Auto-collapse after applying
     }
   };
 
@@ -480,6 +484,26 @@ const BestiaryPlanner = () => {
                 {isFiltersCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
               </FilterToggle>
             </FilterHeader>
+
+            {/* Quick actions visible when collapsed */}
+            {isFiltersCollapsed && (
+              <CollapsedFilterActions>
+                <QuickActionButton onClick={handleClearFilters}>
+                  {t('bestiaryPlanner.filters.clear')}
+                </QuickActionButton>
+                <ShowCompletedToggle>
+                  <input
+                    type="checkbox"
+                    checked={filters.showCompleted}
+                    onChange={(e) => {
+                      // Apply directly without pending state for quick action
+                      updateFilters({ ...filters, showCompleted: e.target.checked });
+                    }}
+                  />
+                  {t('bestiaryPlanner.filters.showCompleted')}
+                </ShowCompletedToggle>
+              </CollapsedFilterActions>
+            )}
 
             {!isFiltersCollapsed && (
               <>

@@ -309,3 +309,52 @@ export const CreateCharacterButton = styled.button`
     transform: translateY(0);
   }
 `;
+
+export const CollapsedFilterActions = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.sm};
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const QuickActionButton = styled.button`
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg.hover};
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+    color: ${({ theme }) => theme.colors.accent.primary};
+  }
+`;
+
+export const ShowCompletedToggle = styled.label`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text.secondary};
+  cursor: pointer;
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg.hover};
+    color: ${({ theme }) => theme.colors.accent.primary};
+  }
+
+  input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+`;
