@@ -30,9 +30,10 @@ export const ResultsCount = styled.span`
 
 export const CreatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: ${({ theme }) => theme.spacing.lg};
 
+  /* Ensure minimum readable card size */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }

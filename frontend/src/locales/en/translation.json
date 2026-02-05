@@ -509,6 +509,13 @@
       "queuePending_plural": "{{count}} pending operations",
       "manualSync": "Sync now"
     },
+    "tutorial": {
+      "title": "💡 Tip",
+      "clickToComplete": "🖱️ Click on a creature card to mark it as completed in the bestiary",
+      "clickToUncomplete": "🔄 Click again to unmark",
+      "useFilters": "🔍 Use the filters to see only completed creatures and manage your progress",
+      "gotIt": "Got it!"
+    },
     "sessionPlanner": {
       "title": "Today's Hunt",
       "clearButton": "Clear",

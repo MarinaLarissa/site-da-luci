@@ -509,6 +509,13 @@
       "queuePending_plural": "{{count}} operações pendentes",
       "manualSync": "Sincronizar agora"
     },
+    "tutorial": {
+      "title": "💡 Dica",
+      "clickToComplete": "🖱️ Clique em um card de criatura para marcar como completada no bestiário",
+      "clickToUncomplete": "🔄 Clique novamente para desmarcar",
+      "useFilters": "🔍 Use os filtros para ver apenas as criaturas completadas e gerenciar seu progresso",
+      "gotIt": "Entendi!"
+    },
     "sessionPlanner": {
       "title": "Hunt do Dia",
       "clearButton": "Limpar",

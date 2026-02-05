@@ -15,6 +15,7 @@ import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
 import Toast from './Toast';
 import KillCountModal from './KillCountModal';
+import FirstTimeTutorial from './FirstTimeTutorial';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
@@ -547,6 +548,9 @@ const BestiaryPlanner = () => {
           onSave={handleSaveKills}
         />
       )}
+
+      {/* First Time Tutorial */}
+      <FirstTimeTutorial />
     </PlannerContainer>
   );
 };
