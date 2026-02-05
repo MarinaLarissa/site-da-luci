@@ -64,8 +64,8 @@ const BestiaryPlanner = () => {
   const [isCharacterDrawerOpen, setIsCharacterDrawerOpen] = useState(false);
   const [showScreenshotImport, setShowScreenshotImport] = useState(false);
   const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
-  const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true);
-  const [isSessionPlannerCollapsed, setIsSessionPlannerCollapsed] = useState(false);
+  const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true); // Collapsed by default
+  const [isSessionPlannerCollapsed, setIsSessionPlannerCollapsed] = useState(true); // Collapsed by default
   const [pendingFilters, setPendingFilters] = useState(null);
   const [toast, setToast] = useState(null);
   const [toastClosing, setToastClosing] = useState(false);

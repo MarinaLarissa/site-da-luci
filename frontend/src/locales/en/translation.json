@@ -420,8 +420,8 @@
       "results": "Results",
       "avgCharmPoints": "Avg CP/hour",
       "totalTime": "Total Time",
-      "show": "Show Filters",
-      "hide": "Hide Filters",
+      "show": "Show",
+      "hide": "Hide",
       "apply": "Apply Filters",
       "clear": "Clear Filters"
     },
