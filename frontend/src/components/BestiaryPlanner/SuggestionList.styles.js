@@ -30,22 +30,33 @@ export const ResultsCount = styled.span`
 
 export const CreatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: ${({ theme }) => theme.spacing.md};
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${({ theme }) => theme.spacing.sm};
   width: 100%;
 
-  /* Prevent cards from stretching too much - force multiple columns */
-  & > * {
-    max-width: 360px;
+  /* Large screens - 5 columns */
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(5, 1fr);
   }
 
-  /* Ensure minimum readable card size on mobile */
+  /* Extra large screens - 6 columns */
+  @media (min-width: 1920px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* Medium screens - 4 columns */
+  @media (min-width: 1200px) and (max-width: 1599px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Tablets - 2 columns */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Mobile - 1 column */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-
-    & > * {
-      max-width: none;
-    }
   }
 `;
 

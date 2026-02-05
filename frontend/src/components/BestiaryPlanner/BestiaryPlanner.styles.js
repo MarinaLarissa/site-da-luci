@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
 export const PlannerContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing.xl};
-  max-width: 1400px;
+  padding: ${({ theme }) => theme.spacing.lg};
+  max-width: 1600px;
   margin: 0 auto;
 
+  /* Responsive - Expand on larger screens */
+  @media (min-width: 1920px) {
+    max-width: 1850px;
+    padding: ${({ theme }) => theme.spacing.xl};
+  }
+
+  /* Responsive - Smaller screens */
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacing.md};
   }
@@ -143,6 +150,10 @@ export const ContentGrid = styled.div`
 
 export const FilterSection = styled.aside`
   margin-top: ${({ theme }) => theme.spacing.lg};
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.md};
+  padding: ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: 1024px) {
     margin-top: ${({ theme }) => theme.spacing.md};

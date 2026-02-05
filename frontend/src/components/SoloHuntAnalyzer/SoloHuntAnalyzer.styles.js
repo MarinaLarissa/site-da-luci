@@ -6,11 +6,17 @@
 import styled from 'styled-components';
 
 export const SoloHuntAnalyzerContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.xl};
+  padding: ${({ theme }) => theme.spacing.lg};
 
-  /* Responsive */
+  /* Responsive - Expand on larger screens */
+  @media (min-width: 1920px) {
+    max-width: 1850px;
+    padding: ${({ theme }) => theme.spacing.xl};
+  }
+
+  /* Responsive - Smaller screens */
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacing.lg};
   }

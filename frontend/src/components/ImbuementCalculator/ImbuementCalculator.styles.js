@@ -34,10 +34,17 @@ const fadeIn = keyframes`
 
 /* Main Container */
 export const ImbuementCalculatorContainer = styled.div`
-  padding: 24px;
-  max-width: 1400px;
+  padding: 16px;
+  max-width: 1600px;
   margin: 0 auto;
 
+  /* Responsive - Expand on larger screens */
+  @media (min-width: 1920px) {
+    max-width: 1850px;
+    padding: 24px;
+  }
+
+  /* Responsive - Smaller screens */
   @media (max-width: 768px) {
     padding: 16px;
   }
