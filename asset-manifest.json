@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/site-da-luci/static/js/main.36034836.js",
-    "static/js/329.0d2e6f01.chunk.js": "/site-da-luci/static/js/329.0d2e6f01.chunk.js",
-    "static/js/529.5ff50878.chunk.js": "/site-da-luci/static/js/529.5ff50878.chunk.js",
-    "static/js/420.f57601e3.chunk.js": "/site-da-luci/static/js/420.f57601e3.chunk.js",
-    "static/js/89.fd6bf52c.chunk.js": "/site-da-luci/static/js/89.fd6bf52c.chunk.js",
+    "main.js": "/site-da-luci/static/js/main.b56c7790.js",
+    "static/js/329.7831a491.chunk.js": "/site-da-luci/static/js/329.7831a491.chunk.js",
+    "static/js/529.e409c09e.chunk.js": "/site-da-luci/static/js/529.e409c09e.chunk.js",
+    "static/js/420.55b9bb06.chunk.js": "/site-da-luci/static/js/420.55b9bb06.chunk.js",
+    "static/js/134.ed917bcc.chunk.js": "/site-da-luci/static/js/134.ed917bcc.chunk.js",
     "static/js/453.20359781.chunk.js": "/site-da-luci/static/js/453.20359781.chunk.js",
     "static/js/722.90f615d9.chunk.js": "/site-da-luci/static/js/722.90f615d9.chunk.js",
     "static/js/396.fb49b9e9.chunk.js": "/site-da-luci/static/js/396.fb49b9e9.chunk.js",
     "static/js/667.39eb857c.chunk.js": "/site-da-luci/static/js/667.39eb857c.chunk.js",
     "index.html": "/site-da-luci/index.html",
-    "main.36034836.js.map": "/site-da-luci/static/js/main.36034836.js.map",
-    "329.0d2e6f01.chunk.js.map": "/site-da-luci/static/js/329.0d2e6f01.chunk.js.map",
-    "529.5ff50878.chunk.js.map": "/site-da-luci/static/js/529.5ff50878.chunk.js.map",
-    "420.f57601e3.chunk.js.map": "/site-da-luci/static/js/420.f57601e3.chunk.js.map",
-    "89.fd6bf52c.chunk.js.map": "/site-da-luci/static/js/89.fd6bf52c.chunk.js.map",
+    "main.b56c7790.js.map": "/site-da-luci/static/js/main.b56c7790.js.map",
+    "329.7831a491.chunk.js.map": "/site-da-luci/static/js/329.7831a491.chunk.js.map",
+    "529.e409c09e.chunk.js.map": "/site-da-luci/static/js/529.e409c09e.chunk.js.map",
+    "420.55b9bb06.chunk.js.map": "/site-da-luci/static/js/420.55b9bb06.chunk.js.map",
+    "134.ed917bcc.chunk.js.map": "/site-da-luci/static/js/134.ed917bcc.chunk.js.map",
     "453.20359781.chunk.js.map": "/site-da-luci/static/js/453.20359781.chunk.js.map",
     "722.90f615d9.chunk.js.map": "/site-da-luci/static/js/722.90f615d9.chunk.js.map",
     "396.fb49b9e9.chunk.js.map": "/site-da-luci/static/js/396.fb49b9e9.chunk.js.map",
     "667.39eb857c.chunk.js.map": "/site-da-luci/static/js/667.39eb857c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.36034836.js"
+    "static/js/main.b56c7790.js"
   ]
 }
