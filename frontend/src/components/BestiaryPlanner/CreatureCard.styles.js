@@ -96,37 +96,7 @@ export const RapidBadge = styled.div`
 export const CardTop = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
-`;
-
-export const CardBody = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: ${({ theme }) => theme.spacing.lg};
-  align-items: start;
-
-  /* Mobile: single column */
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const CardMainContent = styled.div`
-  display: flex;
-  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
-  min-width: 0; /* Prevent overflow */
-`;
-
-export const CardSidebar = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 180px;
-  max-width: 200px;
-
-  @media (max-width: 768px) {
-    max-width: none;
-  }
 `;
 
 export const CardImageRow = styled.div`
@@ -281,33 +251,79 @@ export const DifficultyBadge = styled.span`
 
 export const LocationSection = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors.text.muted};
+  position: relative;
+  overflow: hidden;
 `;
 
-export const LocationLabel = styled.div`
-  font-size: 0.75rem;
+export const LocationLabel = styled.span`
   font-weight: 600;
-  letter-spacing: 0.5px;
-  color: ${({ theme }) => theme.colors.text.muted};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.bg.secondary};
-  padding-bottom: ${({ theme }) => theme.spacing.xs};
+  flex-shrink: 0;
 `;
 
 export const LocationList = styled.div`
   display: flex;
-  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
 `;
 
 export const LocationChip = styled.span`
-  padding: 4px 8px;
+  padding: 2px 6px;
   background-color: ${({ theme }) => theme.colors.bg.secondary};
   border-radius: ${({ theme }) => theme.radius.sm};
   font-size: 0.7rem;
   color: ${({ theme }) => theme.colors.text.secondary};
-  line-height: 1.4;
+  white-space: nowrap;
+  flex-shrink: 0;
+`;
+
+export const LocationMore = styled.span`
+  padding: 2px 6px;
+  background-color: ${({ theme }) => theme.colors.accent.primary};
+  color: ${({ theme }) => theme.colors.bg.primary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: help;
+`;
+
+export const LocationTooltip = styled.div`
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.bg.card};
+  border: 1px solid ${({ theme }) => theme.colors.accent.primary};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  padding: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+
+  ${LocationMore}:hover ~ & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+`;
+
+export const TooltipLocationList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
 export const EfficiencyScore = styled.div`

@@ -16,9 +16,6 @@ import {
   StatusBadge,
   RapidBadge,
   CardTop,
-  CardBody,
-  CardMainContent,
-  CardSidebar,
   CardImageRow,
   CreatureImage,
   CardActions,
@@ -41,10 +38,13 @@ import {
   LocationLabel,
   LocationList,
   LocationChip,
+  LocationMore,
+  LocationTooltip,
+  TooltipLocationList,
 } from './CreatureCard.styles';
 
 // Constants
-const MAX_VISIBLE_LOCATIONS = 3;
+const MAX_VISIBLE_LOCATIONS = 2;
 
 // Elemental resistance icons mapping
 const ELEMENT_ICONS = {
@@ -179,84 +179,91 @@ const CreatureCard = ({
           </CardActions>
         </CardImageRow>
 
-        {/* 2-column layout: Main content | Locations sidebar */}
-        <CardBody>
-          <CardMainContent>
-            {/* Nome */}
-            <CreatureName>{creature.name}</CreatureName>
+        {/* Nome */}
+        <CreatureName>{creature.name}</CreatureName>
 
-            {/* Dificuldade + Região */}
-            <CardStatsRow>
-              <Stat>
-                <StatIcon>⚔️</StatIcon>
-                <DifficultyBadge $difficulty={creature.difficulty}>
-                  {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
-                </DifficultyBadge>
-              </Stat>
-              <Stat>
-                <StatIcon>📍</StatIcon>
-                <RegionBadge>{creature.region}</RegionBadge>
-              </Stat>
-            </CardStatsRow>
+        {/* Dificuldade + Região */}
+        <CardStatsRow>
+          <Stat>
+            <StatIcon>⚔️</StatIcon>
+            <DifficultyBadge $difficulty={creature.difficulty}>
+              {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
+            </DifficultyBadge>
+          </Stat>
+          <Stat>
+            <StatIcon>📍</StatIcon>
+            <RegionBadge>{creature.region}</RegionBadge>
+          </Stat>
+        </CardStatsRow>
 
-            {/* Kills tracking section */}
-            {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
-              <KillsSection>
-                {creature.currentKills != null && creature.killsToComplete && (
-                  <Stat>
-                    <StatIcon>🎯</StatIcon>
-                    {creature.currentKills} / {creature.killsToComplete} kills
-                  </Stat>
-                )}
-                {creature.currentKills == null && creature.killsToComplete && (
-                  <Stat>
-                    <StatIcon>🎯</StatIcon>
-                    {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
-                  </Stat>
-                )}
-                {creature.bestiaryStage && (
-                  <Stat>
-                    <StatIcon>📊</StatIcon>
-                    {creature.bestiaryStageComplete ? (
-                      <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
-                    ) : (
-                      <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
-                    )}
-                  </Stat>
-                )}
-              </KillsSection>
+        {/* Kills tracking section */}
+        {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
+          <KillsSection>
+            {creature.currentKills != null && creature.killsToComplete && (
+              <Stat>
+                <StatIcon>🎯</StatIcon>
+                {creature.currentKills} / {creature.killsToComplete} kills
+              </Stat>
             )}
+            {creature.currentKills == null && creature.killsToComplete && (
+              <Stat>
+                <StatIcon>🎯</StatIcon>
+                {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
+              </Stat>
+            )}
+            {creature.bestiaryStage && (
+              <Stat>
+                <StatIcon>📊</StatIcon>
+                {creature.bestiaryStageComplete ? (
+                  <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
+                ) : (
+                  <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
+                )}
+              </Stat>
+            )}
+          </KillsSection>
+        )}
 
-            {/* Resistências em 3 colunas */}
-            <CardDetails>
-              <ResistancesColumn>
-                {resistancesCol1.map(renderResistanceItem)}
-              </ResistancesColumn>
+        {/* Resistências em 3 colunas */}
+        <CardDetails>
+          <ResistancesColumn>
+            {resistancesCol1.map(renderResistanceItem)}
+          </ResistancesColumn>
 
-              <ResistancesColumn>
-                {resistancesCol2.map(renderResistanceItem)}
-              </ResistancesColumn>
+          <ResistancesColumn>
+            {resistancesCol2.map(renderResistanceItem)}
+          </ResistancesColumn>
 
-              <ResistancesColumn>
-                {resistancesCol3.map(renderResistanceItem)}
-              </ResistancesColumn>
-            </CardDetails>
-          </CardMainContent>
+          <ResistancesColumn>
+            {resistancesCol3.map(renderResistanceItem)}
+          </ResistancesColumn>
+        </CardDetails>
 
-          {/* Locations sidebar - coluna direita */}
-          {creature.locations && creature.locations.length > 0 && (
-            <CardSidebar>
-              <LocationSection>
-                <LocationLabel>Locations:</LocationLabel>
-                <LocationList>
-                  {creature.locations.map((location, index) => (
-                    <LocationChip key={index}>{location}</LocationChip>
-                  ))}
-                </LocationList>
-              </LocationSection>
-            </CardSidebar>
-          )}
-        </CardBody>
+        {/* Locations - horizontal single line with tooltip */}
+        {creature.locations && creature.locations.length > 0 && (
+          <LocationSection>
+            <LocationLabel>📍</LocationLabel>
+            <LocationList>
+              {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, index) => (
+                <LocationChip key={index}>{location}</LocationChip>
+              ))}
+            </LocationList>
+            {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
+              <>
+                <LocationMore title={creature.locations.slice(MAX_VISIBLE_LOCATIONS).join(', ')}>
+                  +{creature.locations.length - MAX_VISIBLE_LOCATIONS}
+                </LocationMore>
+                <LocationTooltip>
+                  <TooltipLocationList>
+                    {creature.locations.slice(MAX_VISIBLE_LOCATIONS).map((location, index) => (
+                      <div key={index}>• {location}</div>
+                    ))}
+                  </TooltipLocationList>
+                </LocationTooltip>
+              </>
+            )}
+          </LocationSection>
+        )}
       </CardTop>
     </Card>
   );
