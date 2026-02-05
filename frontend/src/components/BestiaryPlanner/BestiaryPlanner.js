@@ -480,30 +480,31 @@ const BestiaryPlanner = () => {
           <FilterSection>
             <FilterHeader>
               <FilterTitle>{t('bestiaryPlanner.filters.title')}</FilterTitle>
+
+              {/* Quick actions visible when collapsed */}
+              {isFiltersCollapsed && (
+                <CollapsedFilterActions>
+                  <QuickActionButton onClick={handleClearFilters}>
+                    {t('bestiaryPlanner.filters.clear')}
+                  </QuickActionButton>
+                  <ShowCompletedToggle>
+                    <input
+                      type="checkbox"
+                      checked={filters.showCompleted}
+                      onChange={(e) => {
+                        // Apply directly without pending state for quick action
+                        updateFilters({ ...filters, showCompleted: e.target.checked });
+                      }}
+                    />
+                    {t('bestiaryPlanner.filters.showCompleted')}
+                  </ShowCompletedToggle>
+                </CollapsedFilterActions>
+              )}
+
               <FilterToggle onClick={toggleFiltersCollapsed}>
                 {isFiltersCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
               </FilterToggle>
             </FilterHeader>
-
-            {/* Quick actions visible when collapsed */}
-            {isFiltersCollapsed && (
-              <CollapsedFilterActions>
-                <QuickActionButton onClick={handleClearFilters}>
-                  {t('bestiaryPlanner.filters.clear')}
-                </QuickActionButton>
-                <ShowCompletedToggle>
-                  <input
-                    type="checkbox"
-                    checked={filters.showCompleted}
-                    onChange={(e) => {
-                      // Apply directly without pending state for quick action
-                      updateFilters({ ...filters, showCompleted: e.target.checked });
-                    }}
-                  />
-                  {t('bestiaryPlanner.filters.showCompleted')}
-                </ShowCompletedToggle>
-              </CollapsedFilterActions>
-            )}
 
             {!isFiltersCollapsed && (
               <>
