@@ -371,7 +371,7 @@ export const EditButton = styled.button`
 export const ResistancesColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.xs};
+  gap: 4px; /* Reduced gap for tighter spacing */
 `;
 
 export const ResistancesRow = styled.div`
@@ -412,4 +412,10 @@ export const KillsSection = styled.div`
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
   border-radius: ${({ theme }) => theme.radius.sm};
   border: 1px solid rgba(102, 126, 234, 0.1);
+
+  /* Prevent text wrapping */
+  ${Stat} {
+    white-space: nowrap;
+    font-size: 0.8rem;
+  }
 `;

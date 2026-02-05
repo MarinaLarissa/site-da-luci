@@ -65,6 +65,7 @@ const BestiaryPlanner = () => {
   const [showScreenshotImport, setShowScreenshotImport] = useState(false);
   const [sessionPlanCreatures, setSessionPlanCreatures] = useState([]);
   const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true);
+  const [isSessionPlannerCollapsed, setIsSessionPlannerCollapsed] = useState(false);
   const [pendingFilters, setPendingFilters] = useState(null);
   const [toast, setToast] = useState(null);
   const [toastClosing, setToastClosing] = useState(false);
@@ -295,6 +296,11 @@ const BestiaryPlanner = () => {
     setIsFiltersCollapsed(!isFiltersCollapsed);
   };
 
+  // Toggle session planner visibility
+  const toggleSessionPlannerCollapsed = () => {
+    setIsSessionPlannerCollapsed(!isSessionPlannerCollapsed);
+  };
+
   // Handle opening kill count modal
   const handleEditKills = (creatureId) => {
     if (!character) return;
@@ -428,14 +434,26 @@ const BestiaryPlanner = () => {
       <ContentGrid>
         {/* Session Planner (Hunt do Dia) - Coluna esquerda */}
         <SessionPlannerSection>
-          <SessionPlanner
-            creatures={sessionPlanCreatures}
-            characterId={character.id}
-            onRemoveCreature={handleRemoveFromPlan}
-            onClearPlan={handleClearPlan}
-            onCompleteCreature={handleCompleteCreature}
-            onEditHours={handleEditHours}
-          />
+          {/* Session Planner Header with Collapse */}
+          <FilterSection>
+            <FilterHeader>
+              <FilterTitle>{t('bestiaryPlanner.sessionPlanner.title')}</FilterTitle>
+              <FilterToggle onClick={toggleSessionPlannerCollapsed}>
+                {isSessionPlannerCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
+              </FilterToggle>
+            </FilterHeader>
+
+            {!isSessionPlannerCollapsed && (
+              <SessionPlanner
+                creatures={sessionPlanCreatures}
+                characterId={character.id}
+                onRemoveCreature={handleRemoveFromPlan}
+                onClearPlan={handleClearPlan}
+                onCompleteCreature={handleCompleteCreature}
+                onEditHours={handleEditHours}
+              />
+            )}
+          </FilterSection>
 
           {/* Filtros abaixo da Hunt do Dia */}
           <FilterSection>
