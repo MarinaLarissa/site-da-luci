@@ -454,6 +454,17 @@
       "toComplete": "para completar",
       "progress": "progresso"
     },
+    "status": {
+      "complete": "Completo",
+      "inProgress": "{{stage}}/3",
+      "unknown": "Desconhecido"
+    },
+    "autocomplete": {
+      "title": "Nome da Criatura Truncado",
+      "subtitle": "O OCR detectou um nome truncado. Selecione a criatura correta:",
+      "skip": "Pular",
+      "cancel": "Cancelar"
+    },
     "suggestions": {
       "title": "Sugestões de Criaturas",
       "count": "{{count}} criatura",
@@ -567,7 +578,8 @@
       "complete": "Completo",
       "stage": "Estágio {{stage}}/3",
       "minKills": "Mínimo {{kills}} kills",
-      "noCompleteCreatures": "Nenhuma criatura completa detectada. Apenas criaturas com ✓ (completas) serão marcadas."
+      "noCompleteCreatures": "Nenhuma criatura completa detectada. Apenas criaturas com ✓ (completas) serão marcadas.",
+      "noCreaturesDetected": "Nenhuma criatura detectada no screenshot."
     }
   },
   "imbuementCalculator": {

@@ -364,6 +364,42 @@ export const getCreatureKills = (characterId, creatureId) => {
 };
 
 /**
+ * Import creatures with progress from OCR
+ * @param {string} characterId - Character UUID
+ * @param {Array<{creatureId: string, stage: number|null, isComplete: boolean, minimumKills: number|null}>} creaturesData - Array of creatures with progress
+ * @returns {boolean} - Success status
+ */
+export const importCreaturesWithProgress = (characterId, creaturesData) => {
+  const data = loadBestiaryData();
+
+  if (!data.characters[characterId]) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Character not found:', characterId);
+    }
+    return false;
+  }
+
+  creaturesData.forEach(({ creatureId, stage, isComplete, minimumKills }) => {
+    // If complete, mark as completed
+    if (isComplete) {
+      data.characters[characterId].creatures[creatureId] = {
+        completed: true,
+        completedAt: new Date().toISOString(),
+      };
+    } else if (stage && minimumKills !== null) {
+      // If in progress, save the minimum kills achieved
+      data.characters[characterId].creatures[creatureId] = {
+        completed: false,
+        kills: minimumKills,
+      };
+    }
+  });
+
+  saveBestiaryData(data);
+  return true;
+};
+
+/**
  * Get progress statistics for a character
  */
 export const getCharacterProgress = (characterId, allCreatures) => {
@@ -506,6 +542,7 @@ export default {
   isCreatureCompleted,
   updateCreatureKills,
   getCreatureKills,
+  importCreaturesWithProgress,
   getCharacterProgress,
   getSettings,
   updateSettings,

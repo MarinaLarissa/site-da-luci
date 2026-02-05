@@ -15,7 +15,7 @@ import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
 import Toast from './Toast';
 import KillCountModal from './KillCountModal';
-import { markCreaturesCompleted, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
+import { markCreaturesCompleted, importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
   toggleCreatureInPlan,
@@ -122,10 +122,11 @@ const BestiaryPlanner = () => {
   }
 
   // Handle screenshot import
-  const handleCreaturesImported = (creatureIds) => {
+  const handleCreaturesImported = (creaturesData) => {
     if (!character) return;
 
-    markCreaturesCompleted(character.id, creatureIds, true);
+    // Import creatures with their progress (Unknown, In Progress, Complete)
+    importCreaturesWithProgress(character.id, creaturesData);
     setShowScreenshotImport(false);
 
     // Refresh progress to reflect changes

@@ -6,7 +6,9 @@
 import { useState, useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { extractTextFromImage, validateBestiaryScreenshot } from '../../services/ocrService';
-import { parseOcrText } from '../../utils/bestiaryOcrParser';
+import { parseOcrText, isTruncatedName, findAutocompleteCandidates } from '../../utils/bestiaryOcrParser';
+import { calculateMinimumKills } from '../../utils/bestiaryStages';
+import AutocompleteModal from './AutocompleteModal';
 import {
   ImportContainer,
   UploadZone,
@@ -44,6 +46,11 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [progress, setProgress] = useState(0);
   const [ocrResults, setOcrResults] = useState(null);
   const [error, setError] = useState(null);
+
+  // Autocomplete states
+  const [autocompleteQueue, setAutocompleteQueue] = useState([]);
+  const [currentAutocomplete, setCurrentAutocomplete] = useState(null);
+  const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
 
   // Process selected file
   const handleFile = useCallback((file) => {
@@ -130,12 +137,45 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
         console.log('Unmatched:', parsed.unmatched.length);
       }
 
-      setOcrResults({
-        matched: parsed.matched,
-        unmatched: parsed.unmatched,
-        totalFound: parsed.totalFound,
-        confidence: result.confidence,
-      });
+      // Check for truncated names in unmatched
+      const truncatedNames = parsed.unmatched.filter((unmatched) =>
+        isTruncatedName(unmatched.name)
+      );
+
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Truncated names found:', truncatedNames.length);
+      }
+
+      // If there are truncated names, prepare autocomplete queue
+      if (truncatedNames.length > 0) {
+        const queue = truncatedNames.map((item) => ({
+          originalName: item.name,
+          stage: item.stage,
+          isComplete: item.isComplete,
+          candidates: findAutocompleteCandidates(item.name),
+        }));
+
+        setAutocompleteQueue(queue);
+        setOcrResults({
+          matched: parsed.matched,
+          unmatched: parsed.unmatched,
+          totalFound: parsed.totalFound,
+          confidence: result.confidence,
+        });
+
+        // Start autocomplete process
+        if (queue.length > 0 && queue[0].candidates.length > 0) {
+          setCurrentAutocomplete(queue[0]);
+          setIsAutocompleteOpen(true);
+        }
+      } else {
+        setOcrResults({
+          matched: parsed.matched,
+          unmatched: parsed.unmatched,
+          totalFound: parsed.totalFound,
+          confidence: result.confidence,
+        });
+      }
     } catch (err) {
       console.error('OCR Processing Error:', err);
       setError(t('bestiaryPlanner.screenshot.processingError'));
@@ -149,18 +189,21 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const handleConfirmImport = () => {
     if (!ocrResults || !ocrResults.matched.length) return;
 
-    // Only import creatures that are marked as complete (✓)
-    // Creatures in stage 1/3 or 2/3 are not completed yet
-    const creatureIds = ocrResults.matched
-      .filter((m) => m.isComplete)
-      .map((m) => m.creature.id);
+    // Import ALL creatures with their progress (not just complete ones)
+    // Include: Unknown (?), In Progress (1/3, 2/3), and Complete (✓)
+    const creaturesData = ocrResults.matched.map((m) => ({
+      creatureId: m.creature.id,
+      stage: m.stage,
+      isComplete: m.isComplete,
+      minimumKills: m.minimumKills,
+    }));
 
-    if (creatureIds.length === 0) {
-      setError(t('bestiaryPlanner.screenshot.noCompleteCreatures'));
+    if (creaturesData.length === 0) {
+      setError(t('bestiaryPlanner.screenshot.noCreaturesDetected'));
       return;
     }
 
-    onCreaturesImported?.(creatureIds);
+    onCreaturesImported?.(creaturesData);
 
     // Reset state
     setImageFile(null);
@@ -176,10 +219,83 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setOcrResults(null);
     setError(null);
     setProgress(0);
+    setAutocompleteQueue([]);
+    setCurrentAutocomplete(null);
+    setIsAutocompleteOpen(false);
+  };
+
+  // Handle autocomplete selection
+  const handleAutocompleteSelect = (selectedCreature) => {
+    if (!currentAutocomplete || !ocrResults) return;
+
+    // Add selected creature to matched list
+    const newMatch = {
+      creature: selectedCreature,
+      similarity: 1.0,
+      originalText: currentAutocomplete.originalName,
+      stage: currentAutocomplete.stage,
+      isComplete: currentAutocomplete.isComplete,
+      minimumKills: currentAutocomplete.stage
+        ? calculateMinimumKills(currentAutocomplete.stage, selectedCreature.occurrence)
+        : null,
+    };
+
+    // Remove from unmatched
+    const updatedUnmatched = ocrResults.unmatched.filter(
+      (u) => u.name !== currentAutocomplete.originalName
+    );
+
+    setOcrResults({
+      ...ocrResults,
+      matched: [...ocrResults.matched, newMatch],
+      unmatched: updatedUnmatched,
+    });
+
+    // Process next in queue
+    processNextAutocomplete();
+  };
+
+  // Skip current autocomplete
+  const handleAutocompleteSkip = () => {
+    processNextAutocomplete();
+  };
+
+  // Process next item in autocomplete queue
+  const processNextAutocomplete = () => {
+    const nextQueue = autocompleteQueue.slice(1);
+    setAutocompleteQueue(nextQueue);
+
+    if (nextQueue.length > 0 && nextQueue[0].candidates.length > 0) {
+      setCurrentAutocomplete(nextQueue[0]);
+      setIsAutocompleteOpen(true);
+    } else {
+      setCurrentAutocomplete(null);
+      setIsAutocompleteOpen(false);
+    }
+  };
+
+  // Close autocomplete modal
+  const handleAutocompleteClose = () => {
+    setIsAutocompleteOpen(false);
+    setAutocompleteQueue([]);
+    setCurrentAutocomplete(null);
   };
 
   return (
-    <ImportContainer>
+    <>
+      {/* Autocomplete Modal */}
+      {currentAutocomplete && (
+        <AutocompleteModal
+          isOpen={isAutocompleteOpen}
+          truncatedName={currentAutocomplete.originalName}
+          candidates={currentAutocomplete.candidates}
+          onSelectCandidate={handleAutocompleteSelect}
+          onSkip={handleAutocompleteSkip}
+          onClose={handleAutocompleteClose}
+        />
+      )}
+
+      <ImportContainer>
       {!imagePreview && (
         <UploadZone
           onDrop={handleDrop}
@@ -278,7 +394,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
 
               <ConfirmButton onClick={handleConfirmImport}>
                 {t('bestiaryPlanner.screenshot.confirmImport', {
-                  count: ocrResults.matched.filter(m => m.isComplete).length,
+                  count: ocrResults.matched.length,
                 })}
               </ConfirmButton>
             </>
@@ -306,6 +422,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
         </ResultsContainer>
       )}
     </ImportContainer>
+    </>
   );
 };
 

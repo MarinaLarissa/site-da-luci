@@ -10,9 +10,11 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
+import { calculateDisplayStatus, getStatusColor, getStatusI18nKey, BestiaryStatus } from '../../utils/bestiaryStatusUtils';
 import {
   Card,
   CompletedBadge,
+  StatusBadge,
   RapidBadge,
   CardTop,
   CreatureImage,
@@ -106,12 +108,30 @@ const CreatureCard = ({
     );
   };
 
+  // Calculate display status
+  const displayStatus = calculateDisplayStatus({
+    isCompleted,
+    currentKills: creature.currentKills,
+    totalKills: creature.occurrence || creature.killsToComplete || 0,
+  });
+
   return (
     <Card $completed={isCompleted} onClick={() => onToggleComplete(creature.id)}>
-      {isCompleted && (
-        <CompletedBadge>
-          ✓ {t('bestiaryPlanner.creature.completed')}
-        </CompletedBadge>
+      {/* Status Badge */}
+      {displayStatus.status === BestiaryStatus.COMPLETE && (
+        <StatusBadge $color={getStatusColor(displayStatus.status)}>
+          ✓ {t(getStatusI18nKey(displayStatus.status))}
+        </StatusBadge>
+      )}
+      {displayStatus.status === BestiaryStatus.IN_PROGRESS && (
+        <StatusBadge $color={getStatusColor(displayStatus.status)}>
+          {t(getStatusI18nKey(displayStatus.status), { stage: displayStatus.stage })}
+        </StatusBadge>
+      )}
+      {displayStatus.status === BestiaryStatus.UNKNOWN && (
+        <StatusBadge $color={getStatusColor(displayStatus.status)}>
+          ? {t(getStatusI18nKey(displayStatus.status))}
+        </StatusBadge>
       )}
 
       {creature.isRapidRecommended && (

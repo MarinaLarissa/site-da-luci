@@ -454,6 +454,17 @@
       "toComplete": "to complete",
       "progress": "progress"
     },
+    "status": {
+      "complete": "Complete",
+      "inProgress": "{{stage}}/3",
+      "unknown": "Unknown"
+    },
+    "autocomplete": {
+      "title": "Creature Name Truncated",
+      "subtitle": "The OCR detected a truncated name. Please select the correct creature:",
+      "skip": "Skip",
+      "cancel": "Cancel"
+    },
     "suggestions": {
       "title": "Creature Suggestions",
       "count": "{{count}} creature",
@@ -567,7 +578,8 @@
       "complete": "Complete",
       "stage": "Stage {{stage}}/3",
       "minKills": "Min {{kills}} kills",
-      "noCompleteCreatures": "No complete creatures detected. Only creatures with ✓ (complete) will be marked."
+      "noCompleteCreatures": "No complete creatures detected. Only creatures with ✓ (complete) will be marked.",
+      "noCreaturesDetected": "No creatures detected in the screenshot."
     }
   },
   "imbuementCalculator": {

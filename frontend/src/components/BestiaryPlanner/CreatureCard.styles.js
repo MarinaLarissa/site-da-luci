@@ -43,6 +43,27 @@ export const CompletedBadge = styled.div`
   gap: 4px;
 `;
 
+export const StatusBadge = styled.div`
+  position: absolute;
+  top: ${({ theme }) => theme.spacing.sm};
+  right: ${({ theme }) => theme.spacing.sm};
+  background-color: ${({ $color }) => $color || '#6b7280'};
+  color: white;
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.radius.full};
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+  max-width: 120px;
+  justify-content: center;
+  white-space: nowrap;
+  pointer-events: none; /* Prevent blocking clicks */
+  z-index: 10;
+`;
+
 export const RapidBadge = styled.div`
   position: absolute;
   top: ${({ theme }) => theme.spacing.sm};
@@ -58,6 +79,9 @@ export const RapidBadge = styled.div`
   gap: 4px;
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
   animation: pulse 2s ease-in-out infinite;
+  white-space: nowrap;
+  pointer-events: none; /* Prevent blocking clicks */
+  z-index: 10;
 
   @keyframes pulse {
     0%, 100% {
@@ -100,6 +124,9 @@ export const CardHeader = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.sm};
+  flex-wrap: wrap;
+  min-height: 32px;
 `;
 
 export const CreatureName = styled.h3`
@@ -108,6 +135,11 @@ export const CreatureName = styled.h3`
   color: ${({ theme }) => theme.colors.text.primary};
   margin: 0;
   flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  min-width: 0;
+  padding-right: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const CharmPointsBadge = styled.div`

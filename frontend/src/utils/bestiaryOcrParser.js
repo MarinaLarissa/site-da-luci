@@ -262,3 +262,65 @@ export const extractKillCount = (text, creatureName) => {
 
   return null;
 };
+
+/**
+ * Detect if a name is truncated (ends with "..." or "..")
+ * @param {string} name - Creature name from OCR
+ * @returns {boolean} - True if truncated
+ */
+export const isTruncatedName = (name) => {
+  return /\.{2,}$/.test(name.trim());
+};
+
+/**
+ * Find autocomplete candidates for a truncated name
+ * @param {string} truncatedName - Truncated creature name (with or without "...")
+ * @param {number} maxCandidates - Maximum number of candidates to return (default 5)
+ * @returns {Array<Object>} - Array of candidate creatures sorted by relevance
+ */
+export const findAutocompleteCandidates = (truncatedName, maxCandidates = 5) => {
+  // Remove trailing dots and trim
+  const cleanName = truncatedName.replace(/\.+$/, '').trim().toLowerCase();
+
+  if (cleanName.length < 3) {
+    return [];
+  }
+
+  const candidates = [];
+
+  for (const creature of BESTIARY_DATA) {
+    const creatureLower = creature.name.toLowerCase();
+
+    // Check if creature name starts with the truncated name (prefix match)
+    if (creatureLower.startsWith(cleanName)) {
+      candidates.push({
+        creature,
+        score: 100, // Highest priority for prefix matches
+        matchType: 'prefix',
+      });
+    } else if (creatureLower.includes(cleanName)) {
+      // Check if truncated name is contained in creature name
+      candidates.push({
+        creature,
+        score: 50, // Medium priority for substring matches
+        matchType: 'substring',
+      });
+    } else {
+      // Calculate similarity for fuzzy matches
+      const similarity = calculateSimilarity(cleanName, creatureLower);
+      if (similarity >= 0.6) {
+        candidates.push({
+          creature,
+          score: similarity * 30, // Lower priority, scaled by similarity
+          matchType: 'fuzzy',
+        });
+      }
+    }
+  }
+
+  // Sort by score (descending) and limit to maxCandidates
+  return candidates
+    .sort((a, b) => b.score - a.score)
+    .slice(0, maxCandidates)
+    .map((c) => c.creature);
+};
