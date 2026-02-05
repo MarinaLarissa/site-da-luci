@@ -407,15 +407,18 @@ export const ResistanceValue = styled.span`
 `;
 
 export const KillsSection = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   padding: ${({ theme }) => theme.spacing.sm};
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
   border-radius: ${({ theme }) => theme.radius.sm};
   border: 1px solid rgba(102, 126, 234, 0.1);
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.md};
+  flex-wrap: wrap;
 
   /* Prevent text wrapping */
   ${Stat} {
     white-space: nowrap;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 `;

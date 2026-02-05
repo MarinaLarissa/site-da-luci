@@ -189,6 +189,34 @@ const CreatureCard = ({
           </Stat>
         </CardStatsRow>
 
+        {/* Kills tracking section - logo após dificuldade/localização */}
+        {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
+          <KillsSection>
+            {creature.currentKills != null && creature.killsToComplete && (
+              <Stat>
+                <StatIcon>🎯</StatIcon>
+                {creature.currentKills} / {creature.killsToComplete} kills
+              </Stat>
+            )}
+            {creature.currentKills == null && creature.killsToComplete && (
+              <Stat>
+                <StatIcon>🎯</StatIcon>
+                {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
+              </Stat>
+            )}
+            {creature.bestiaryStage && (
+              <Stat>
+                <StatIcon>📊</StatIcon>
+                {creature.bestiaryStageComplete ? (
+                  <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
+                ) : (
+                  <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
+                )}
+              </Stat>
+            )}
+          </KillsSection>
+        )}
+
         {/* Linha 4: Resistências em 3 colunas */}
         <CardDetails>
           {/* Coluna 1: Primeiras resistências */}
@@ -201,37 +229,9 @@ const CreatureCard = ({
             {resistancesCol2.map(renderResistanceItem)}
           </ResistancesColumn>
 
-          {/* Coluna 3: Últimas resistências + Kills */}
+          {/* Coluna 3: Últimas resistências */}
           <ResistancesColumn>
             {resistancesCol3.map(renderResistanceItem)}
-
-            {/* Kills tracking section */}
-            {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
-              <KillsSection>
-                {creature.currentKills != null && creature.killsToComplete && (
-                  <Stat>
-                    <StatIcon>🎯</StatIcon>
-                    {creature.currentKills} / {creature.killsToComplete} kills
-                  </Stat>
-                )}
-                {creature.currentKills == null && creature.killsToComplete && (
-                  <Stat>
-                    <StatIcon>🎯</StatIcon>
-                    {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
-                  </Stat>
-                )}
-                {creature.bestiaryStage && (
-                  <Stat>
-                    <StatIcon>📊</StatIcon>
-                    {creature.bestiaryStageComplete ? (
-                      <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
-                    ) : (
-                      <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
-                    )}
-                  </Stat>
-                )}
-              </KillsSection>
-            )}
           </ResistancesColumn>
         </CardDetails>
       </CardTop>
