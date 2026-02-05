@@ -136,14 +136,9 @@ export const SessionPlannerSection = styled.div`
 `;
 
 export const ContentGrid = styled.div`
-  display: grid;
-  grid-template-columns: 400px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.lg};
-  align-items: start;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 export const FilterSection = styled.aside`
