@@ -130,18 +130,16 @@ export const ScreenshotToggleButton = styled.button`
   }
 `;
 
-// Session Planner Section (sticky no topo)
+// Session Planner Section (NOT sticky - scrolls with content)
 export const SessionPlannerSection = styled.div`
-  position: sticky;
-  top: ${({ theme }) => theme.spacing.md};
-  z-index: 10;
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
 export const ContentGrid = styled.div`
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 400px 1fr;
   gap: ${({ theme }) => theme.spacing.lg};
+  align-items: start;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -149,8 +147,10 @@ export const ContentGrid = styled.div`
 `;
 
 export const FilterSection = styled.aside`
+  margin-top: ${({ theme }) => theme.spacing.lg};
+
   @media (max-width: 1024px) {
-    order: 2;
+    margin-top: ${({ theme }) => theme.spacing.md};
   }
 `;
 

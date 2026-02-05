@@ -111,7 +111,7 @@ const CreatureCard = ({
   const displayStatus = calculateDisplayStatus({
     isCompleted,
     currentKills: creature.currentKills,
-    totalKills: creature.occurrence || creature.killsToComplete || 0,
+    totalKills: creature.killsToComplete || 0,
   });
 
   return (
@@ -199,10 +199,10 @@ const CreatureCard = ({
           {/* Kills tracking section */}
           {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
             <KillsSection>
-              {creature.currentKills != null && (
+              {creature.currentKills != null && creature.killsToComplete && (
                 <Stat>
                   <StatIcon>🎯</StatIcon>
-                  {creature.currentKills} / {creature.killsToComplete || '?'} kills
+                  {creature.currentKills} / {creature.killsToComplete} kills
                 </Stat>
               )}
               {creature.currentKills == null && creature.killsToComplete && (

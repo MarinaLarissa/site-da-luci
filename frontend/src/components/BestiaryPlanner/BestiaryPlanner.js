@@ -424,48 +424,50 @@ const BestiaryPlanner = () => {
         )}
       </ScreenshotSection>
 
-      {/* Session Planner (Hunt do Dia) - Sticky no topo */}
-      <SessionPlannerSection>
-        <SessionPlanner
-          creatures={sessionPlanCreatures}
-          characterId={character.id}
-          onRemoveCreature={handleRemoveFromPlan}
-          onClearPlan={handleClearPlan}
-          onCompleteCreature={handleCompleteCreature}
-          onEditHours={handleEditHours}
-        />
-      </SessionPlannerSection>
-
-      {/* Main Content Grid */}
+      {/* Main Content Grid - Session Planner + Suggestions lado a lado */}
       <ContentGrid>
-        <FilterSection>
-          <FilterHeader>
-            <FilterTitle>{t('bestiaryPlanner.filters.title')}</FilterTitle>
-            <FilterToggle onClick={toggleFiltersCollapsed}>
-              {isFiltersCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
-            </FilterToggle>
-          </FilterHeader>
+        {/* Session Planner (Hunt do Dia) - Coluna esquerda */}
+        <SessionPlannerSection>
+          <SessionPlanner
+            creatures={sessionPlanCreatures}
+            characterId={character.id}
+            onRemoveCreature={handleRemoveFromPlan}
+            onClearPlan={handleClearPlan}
+            onCompleteCreature={handleCompleteCreature}
+            onEditHours={handleEditHours}
+          />
 
-          {!isFiltersCollapsed && (
-            <>
-              <FilterPanel
-                filters={pendingFilters || filters}
-                onUpdateFilters={handlePendingFilterChange}
-                onResetFilters={handleClearFilters}
-                totalResults={suggestions.length}
-              />
-              <FilterActions>
-                <FilterButton $variant="primary" onClick={handleApplyFilters} disabled={!pendingFilters}>
-                  {t('bestiaryPlanner.filters.apply')}
-                </FilterButton>
-                <FilterButton onClick={handleClearFilters}>
-                  {t('bestiaryPlanner.filters.clear')}
-                </FilterButton>
-              </FilterActions>
-            </>
-          )}
-        </FilterSection>
+          {/* Filtros abaixo da Hunt do Dia */}
+          <FilterSection>
+            <FilterHeader>
+              <FilterTitle>{t('bestiaryPlanner.filters.title')}</FilterTitle>
+              <FilterToggle onClick={toggleFiltersCollapsed}>
+                {isFiltersCollapsed ? t('bestiaryPlanner.filters.show') : t('bestiaryPlanner.filters.hide')}
+              </FilterToggle>
+            </FilterHeader>
 
+            {!isFiltersCollapsed && (
+              <>
+                <FilterPanel
+                  filters={pendingFilters || filters}
+                  onUpdateFilters={handlePendingFilterChange}
+                  onResetFilters={handleClearFilters}
+                  totalResults={suggestions.length}
+                />
+                <FilterActions>
+                  <FilterButton $variant="primary" onClick={handleApplyFilters} disabled={!pendingFilters}>
+                    {t('bestiaryPlanner.filters.apply')}
+                  </FilterButton>
+                  <FilterButton onClick={handleClearFilters}>
+                    {t('bestiaryPlanner.filters.clear')}
+                  </FilterButton>
+                </FilterActions>
+              </>
+            )}
+          </FilterSection>
+        </SessionPlannerSection>
+
+        {/* Suggestions - Coluna direita */}
         <ResultsSection>
           <SuggestionList
             suggestions={suggestions}

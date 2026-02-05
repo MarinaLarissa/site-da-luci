@@ -9,12 +9,10 @@ export const PlannerPanel = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
   height: fit-content;
-  position: sticky;
-  top: ${({ theme }) => theme.spacing.lg};
-  max-width: 280px;
+  width: 100%;
 
   @media (max-width: 1024px) {
-    max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -59,7 +57,7 @@ export const PlannerList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xs};
-  max-height: 200px;
+  max-height: 400px;
   overflow-y: auto;
 
   /* Custom scrollbar */

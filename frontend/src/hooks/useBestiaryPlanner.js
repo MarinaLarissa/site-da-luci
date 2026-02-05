@@ -47,6 +47,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const [character, setCharacter] = useState(null);
   const [completedCreatureIds, setCompletedCreatureIds] = useState([]);
   const [settings, setSettings] = useState({ rapidRespawnActive: false, preferredRegions: [] });
+  const [killsUpdateTrigger, setKillsUpdateTrigger] = useState(0);
   const [filters, setFilters] = useState({
     difficulty: [], // EASY, MEDIUM, HARD
     region: [],
@@ -77,6 +78,8 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
       const characterId = character.id;
       const completed = storageService.getCompletedCreatures(characterId);
       setCompletedCreatureIds(completed);
+      // Trigger kills update to refresh currentKills in suggestions
+      setKillsUpdateTrigger(prev => prev + 1);
     }
   }, [character, storageService]);
 
@@ -160,7 +163,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         return {
           ...creature,
           currentKills,
-          killsToComplete: creature.occurrence,
+          killsToComplete: creature.killsToComplete,
           efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
           isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
         };
@@ -184,7 +187,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         // If both are equal, sort by name (tertiary)
         return a.name.localeCompare(b.name);
       });
-  }, [filteredCreatures, settings, character, filters]);
+  }, [filteredCreatures, settings, character, filters, completedCreatureIds, killsUpdateTrigger]);
 
   // Get top N suggestions
   const getTopSuggestions = useCallback(
