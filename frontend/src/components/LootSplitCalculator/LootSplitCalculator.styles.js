@@ -10,7 +10,20 @@ export const LootSplitCalculatorContainer = styled.div`
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.xl};
 
-  /* Responsive */
+  /* Responsive - Expand on larger screens */
+  @media (min-width: 1400px) {
+    max-width: 1400px;
+  }
+
+  @media (min-width: 1600px) {
+    max-width: 1600px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1800px;
+  }
+
+  /* Responsive - Smaller screens */
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacing.lg};
   }

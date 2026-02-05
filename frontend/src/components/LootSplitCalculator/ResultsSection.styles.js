@@ -11,6 +11,12 @@ export const ResultsSectionContainer = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   border: 1px solid ${({ theme }) => theme.colors.accent.goldLight};
   margin-top: ${({ theme }) => theme.spacing.xl};
+  width: 100%;
+
+  /* Responsive - Expand padding on larger screens */
+  @media (min-width: 1400px) {
+    padding: ${({ theme }) => theme.spacing.xxl};
+  }
 `;
 
 export const ResultsSectionSummaryGrid = styled.div`

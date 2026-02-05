@@ -136,6 +136,26 @@ const theme = {
     fast: '0.2s ease',
     normal: '0.3s ease',
   },
+
+  // Container widths - Responsive max-width system
+  // Use these values for page containers to expand on larger screens
+  containers: {
+    sm: '768px',      // Mobile breakpoint
+    md: '1200px',     // Default max-width (tablets, small desktops)
+    lg: '1400px',     // Large screens (1400px+)
+    xl: '1600px',     // Extra large screens (1600px+)
+    xxl: '1800px',    // Ultra-wide screens (1920px+)
+  },
+
+  // Breakpoints for responsive design
+  breakpoints: {
+    mobile: '768px',
+    tablet: '1024px',
+    desktop: '1200px',
+    large: '1400px',
+    xlarge: '1600px',
+    ultrawide: '1920px',
+  },
 };
 
 export default theme;

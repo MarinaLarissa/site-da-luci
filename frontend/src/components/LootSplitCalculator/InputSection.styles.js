@@ -14,8 +14,14 @@ export const InputSectionContainer = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   border: 1px solid ${({ theme }) => theme.colors.border.light};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
+  width: 100%;
 
-  /* Responsive */
+  /* Responsive - Expand padding on larger screens */
+  @media (min-width: 1400px) {
+    padding: ${({ theme }) => theme.spacing.xxl};
+  }
+
+  /* Responsive - Smaller screens */
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacing.lg};
   }
