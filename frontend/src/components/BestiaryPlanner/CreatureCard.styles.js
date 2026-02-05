@@ -94,14 +94,16 @@ export const RapidBadge = styled.div`
 `;
 
 export const CardTop = styled.div`
-  display: grid;
-  grid-template-columns: 64px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
+`;
 
-  /* Mobile: stack vertically */
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+export const CardImageRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const CreatureImage = styled.img`
@@ -112,42 +114,55 @@ export const CreatureImage = styled.img`
   border-radius: ${({ theme }) => theme.radius.sm};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
   padding: ${({ theme }) => theme.spacing.xs};
-
-  /* Grid positioning */
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+  flex-shrink: 0;
 
   &[src=''] {
     display: none;
   }
 
-  /* Mobile: center */
+  /* Mobile: smaller */
   @media (max-width: 768px) {
-    margin: 0 auto;
+    width: 48px;
+    height: 48px;
   }
 `;
 
-export const CreatureInfo = styled.div`
-  /* Grid positioning - header info next to image */
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  min-width: 0;
+export const CardActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-left: auto;
+`;
 
-  /* Mobile: full width */
-  @media (max-width: 768px) {
-    grid-column: 1 / 2;
-  }
+export const CreatureName = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text.primary};
+  margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+`;
+
+export const CardStatsRow = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  flex-wrap: wrap;
+  align-items: center;
 `;
 
 export const CardDetails = styled.div`
-  /* Grid positioning - details span both columns below */
-  grid-column: 1 / -1;
-
-  /* Two column layout for details */
+  /* Three column layout for resistances and kills */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing.md};
-  margin-top: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+
+  /* Tablet: 2 columns */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* Mobile: single column */
   @media (max-width: 768px) {
@@ -165,19 +180,6 @@ export const CardHeader = styled.div`
   min-height: 32px;
 `;
 
-export const CreatureName = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.text.primary};
-  margin: 0;
-  flex: 1;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  min-width: 0;
-  padding-right: ${({ theme }) => theme.spacing.sm};
-`;
-
 export const CharmPointsBadge = styled.div`
   background: ${({ theme }) => theme.gradients.primary};
   color: ${({ theme }) => theme.colors.bg.primary};
@@ -189,12 +191,7 @@ export const CharmPointsBadge = styled.div`
   margin-left: ${({ theme }) => theme.spacing.sm};
 `;
 
-export const StatsRow = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  flex-wrap: wrap;
-`;
+// StatsRow renamed to CardStatsRow (defined above)
 
 export const Stat = styled.div`
   display: flex;
@@ -371,10 +368,16 @@ export const EditButton = styled.button`
   }
 `;
 
+export const ResistancesColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
+`;
+
 export const ResistancesRow = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   flex-wrap: wrap;
 `;
 

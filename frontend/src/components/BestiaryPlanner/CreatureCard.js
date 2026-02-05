@@ -16,24 +16,20 @@ import {
   StatusBadge,
   RapidBadge,
   CardTop,
+  CardImageRow,
   CreatureImage,
-  CreatureInfo,
-  CardDetails,
-  CardHeader,
+  CardActions,
   CreatureName,
+  CardStatsRow,
+  CardDetails,
   CharmPointsBadge,
-  StatsRow,
   Stat,
   StatIcon,
   DifficultyBadge,
-  LocationSection,
-  LocationLabel,
-  LocationList,
-  LocationChip,
   RegionBadge,
   PlanButton,
   EditButton,
-  ResistancesRow,
+  ResistancesColumn,
   ResistanceItem,
   ResistanceIcon,
   ResistanceValue,
@@ -84,29 +80,24 @@ const CreatureCard = ({
     e.target.onerror = null; // Prevent infinite loop
   };
 
-  // Helper to render elemental resistances
-  const renderResistances = () => {
-    if (!creature.elementalResistances) return null;
+  // Helper to get all resistances
+  const getAllResistances = () => {
+    if (!creature.elementalResistances) return [];
 
     // Show ALL elements in fixed order (physical, fire, ice, energy, earth, holy, death)
     const elementOrder = ['physical', 'fire', 'ice', 'energy', 'earth', 'holy', 'death'];
-    const allResistances = elementOrder
+    return elementOrder
       .map(element => [element, creature.elementalResistances[element] ?? 100])
       .filter(([_, value]) => value != null);
-
-    if (allResistances.length === 0) return null;
-
-    return (
-      <ResistancesRow>
-        {allResistances.map(([element, value]) => (
-          <ResistanceItem key={element}>
-            <ResistanceIcon>{ELEMENT_ICONS[element] || '🛡️'}</ResistanceIcon>
-            <ResistanceValue $value={value}>{value}%</ResistanceValue>
-          </ResistanceItem>
-        ))}
-      </ResistancesRow>
-    );
   };
+
+  // Helper to render a single resistance item
+  const renderResistanceItem = ([element, value]) => (
+    <ResistanceItem key={element}>
+      <ResistanceIcon>{ELEMENT_ICONS[element] || '🛡️'}</ResistanceIcon>
+      <ResistanceValue $value={value}>{value}%</ResistanceValue>
+    </ResistanceItem>
+  );
 
   // Calculate display status
   const displayStatus = calculateDisplayStatus({
@@ -114,6 +105,13 @@ const CreatureCard = ({
     currentKills: creature.currentKills,
     totalKills: creature.killsToComplete || 0,
   });
+
+  // Get all resistances and split into 3 columns
+  const allResistances = getAllResistances();
+  const resistancesPerColumn = Math.ceil(allResistances.length / 3);
+  const resistancesCol1 = allResistances.slice(0, resistancesPerColumn);
+  const resistancesCol2 = allResistances.slice(resistancesPerColumn, resistancesPerColumn * 2);
+  const resistancesCol3 = allResistances.slice(resistancesPerColumn * 2);
 
   return (
     <Card $completed={isCompleted} onClick={() => onToggleComplete(creature.id)}>
@@ -137,69 +135,75 @@ const CreatureCard = ({
       )}
 
       <CardTop>
-        {creature.imageUrl && (
-          <CreatureImage
-            src={getImageUrl(creature.imageUrl)}
-            alt={creature.name}
-            loading="lazy"
-            onError={handleImageError}
-          />
-        )}
-
-        <CreatureInfo>
-          <CardHeader>
-            <CreatureName>{creature.name}</CreatureName>
-            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              {onEditKills && (
-                <EditButton
-                  onClick={handleEditClick}
-                  aria-label={t('bestiaryPlanner.creature.editKills')}
-                  title={t('bestiaryPlanner.creature.editKills')}
-                >
-                  ✎
-                </EditButton>
-              )}
-              {onTogglePlan && (
-                <PlanButton
-                  onClick={handlePlanClick}
-                  $isInPlan={isInPlan}
-                  aria-label={
-                    isInPlan
-                      ? t('bestiaryPlanner.sessionPlanner.removeFromPlan')
-                      : t('bestiaryPlanner.sessionPlanner.addToPlan')
-                  }
-                >
-                  {isInPlan ? '✓' : '+'}
-                </PlanButton>
-              )}
-              <CharmPointsBadge>{creature.charmPoints} CP</CharmPointsBadge>
-            </div>
-          </CardHeader>
-
-          <StatsRow>
-            <Stat>
-              <StatIcon>⚔️</StatIcon>
-              <DifficultyBadge $difficulty={creature.difficulty}>
-                {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
-              </DifficultyBadge>
-            </Stat>
-            <Stat>
-              <StatIcon>📍</StatIcon>
-              <RegionBadge>{creature.region}</RegionBadge>
-            </Stat>
-            {creature.hitpoints && (
-              <Stat>
-                <StatIcon>❤️</StatIcon>
-                {creature.hitpoints.toLocaleString()} HP
-              </Stat>
+        {/* Linha 1: Imagem + Botões */}
+        <CardImageRow>
+          {creature.imageUrl && (
+            <CreatureImage
+              src={getImageUrl(creature.imageUrl)}
+              alt={creature.name}
+              loading="lazy"
+              onError={handleImageError}
+            />
+          )}
+          <CardActions>
+            {onEditKills && (
+              <EditButton
+                onClick={handleEditClick}
+                aria-label={t('bestiaryPlanner.creature.editKills')}
+                title={t('bestiaryPlanner.creature.editKills')}
+              >
+                ✎
+              </EditButton>
             )}
-          </StatsRow>
-        </CreatureInfo>
+            {onTogglePlan && (
+              <PlanButton
+                onClick={handlePlanClick}
+                $isInPlan={isInPlan}
+                aria-label={
+                  isInPlan
+                    ? t('bestiaryPlanner.sessionPlanner.removeFromPlan')
+                    : t('bestiaryPlanner.sessionPlanner.addToPlan')
+                }
+              >
+                {isInPlan ? '✓' : '+'}
+              </PlanButton>
+            )}
+            <CharmPointsBadge>{creature.charmPoints} CP</CharmPointsBadge>
+          </CardActions>
+        </CardImageRow>
 
-        {/* Details in two columns below */}
+        {/* Linha 2: Nome */}
+        <CreatureName>{creature.name}</CreatureName>
+
+        {/* Linha 3: Dificuldade + Localização */}
+        <CardStatsRow>
+          <Stat>
+            <StatIcon>⚔️</StatIcon>
+            <DifficultyBadge $difficulty={creature.difficulty}>
+              {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
+            </DifficultyBadge>
+          </Stat>
+          <Stat>
+            <StatIcon>📍</StatIcon>
+            <RegionBadge>{creature.region}</RegionBadge>
+          </Stat>
+        </CardStatsRow>
+
+        {/* Linha 4: Resistências em 3 colunas */}
         <CardDetails>
-          <div>
-            {renderResistances()}
+          {/* Coluna 1: Primeiras resistências */}
+          <ResistancesColumn>
+            {resistancesCol1.map(renderResistanceItem)}
+          </ResistancesColumn>
+
+          {/* Coluna 2: Resistências do meio */}
+          <ResistancesColumn>
+            {resistancesCol2.map(renderResistanceItem)}
+          </ResistancesColumn>
+
+          {/* Coluna 3: Últimas resistências + Kills */}
+          <ResistancesColumn>
+            {resistancesCol3.map(renderResistanceItem)}
 
             {/* Kills tracking section */}
             {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
@@ -228,21 +232,7 @@ const CreatureCard = ({
                 )}
               </KillsSection>
             )}
-          </div>
-
-          <div>
-            <LocationSection>
-              <LocationLabel>{t('bestiaryPlanner.creature.locations')}</LocationLabel>
-              <LocationList>
-                {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, idx) => (
-                  <LocationChip key={idx}>{location}</LocationChip>
-                ))}
-                {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
-                  <LocationChip>+{creature.locations.length - MAX_VISIBLE_LOCATIONS}</LocationChip>
-                )}
-              </LocationList>
-            </LocationSection>
-          </div>
+          </ResistancesColumn>
         </CardDetails>
       </CardTop>
     </Card>
