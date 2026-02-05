@@ -15,7 +15,7 @@ import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
 import Toast from './Toast';
 import KillCountModal from './KillCountModal';
-import { markCreaturesCompleted, importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
+import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
   toggleCreatureInPlan,
@@ -23,7 +23,7 @@ import {
   isInSessionPlan,
   updateCreatureHours,
 } from '../../services/sessionPlannerStorage';
-import { addTodayCompletion } from '../../services/dailyProgressStorage';
+import { addTodayCompletion, clearDailyProgress } from '../../services/dailyProgressStorage';
 import { BESTIARY_DATA } from '../../data/bestiary';
 import {
   PlannerContainer,
@@ -146,6 +146,7 @@ const BestiaryPlanner = () => {
     if (!character) return;
 
     clearSessionPlan(character.id);
+    clearDailyProgress(character.id); // Also clear "Completed Today"
     setSessionPlanCreatures([]);
   };
 

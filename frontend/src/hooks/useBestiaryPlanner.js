@@ -153,11 +153,18 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     const hasRapidFilter = filters.respawnCategory.includes('rapid');
 
     return filteredCreatures
-      .map((creature) => ({
-        ...creature,
-        efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
-        isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
-      }))
+      .map((creature) => {
+        // Get current kills for this creature
+        const currentKills = character ? bestiaryStorageDefault.getCreatureKills(character.id, creature.id) : 0;
+
+        return {
+          ...creature,
+          currentKills,
+          killsToComplete: creature.occurrence,
+          efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
+          isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
+        };
+      })
       .sort((a, b) => {
         // When rapid filter is active, prioritize rapid creatures
         if (hasRapidFilter) {

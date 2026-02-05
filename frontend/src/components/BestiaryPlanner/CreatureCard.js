@@ -13,7 +13,6 @@ import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
 import { calculateDisplayStatus, getStatusColor, getStatusI18nKey, BestiaryStatus } from '../../utils/bestiaryStatusUtils';
 import {
   Card,
-  CompletedBadge,
   StatusBadge,
   RapidBadge,
   CardTop,
@@ -117,7 +116,7 @@ const CreatureCard = ({
 
   return (
     <Card $completed={isCompleted} onClick={() => onToggleComplete(creature.id)}>
-      {/* Status Badge */}
+      {/* Status Badge - Only show for Complete or In Progress */}
       {displayStatus.status === BestiaryStatus.COMPLETE && (
         <StatusBadge $color={getStatusColor(displayStatus.status)}>
           ✓ {t(getStatusI18nKey(displayStatus.status))}
@@ -128,11 +127,7 @@ const CreatureCard = ({
           {t(getStatusI18nKey(displayStatus.status), { stage: displayStatus.stage })}
         </StatusBadge>
       )}
-      {displayStatus.status === BestiaryStatus.UNKNOWN && (
-        <StatusBadge $color={getStatusColor(displayStatus.status)}>
-          ? {t(getStatusI18nKey(displayStatus.status))}
-        </StatusBadge>
-      )}
+      {/* Unknown badge removed - not useful for users */}
 
       {creature.isRapidRecommended && (
         <RapidBadge>
