@@ -136,8 +136,6 @@ export const SessionPlannerSection = styled.div`
   top: ${({ theme }) => theme.spacing.md};
   z-index: 10;
   margin-bottom: ${({ theme }) => theme.spacing.xl};
-  background-color: ${({ theme }) => theme.colors.bg.primary};
-  padding-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const ContentGrid = styled.div`

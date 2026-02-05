@@ -119,6 +119,22 @@ const detectBestiaryStage = (line) => {
 const extractCreatureNames = (text) => {
   if (!text) return [];
 
+  // UI keywords to ignore (Cyclopedia/Bestiary interface elements)
+  const UI_KEYWORDS_BLACKLIST = [
+    'bestiary',
+    'cyclopedia',
+    'type to search',
+    'bestiary tracker',
+    'back',
+    'close',
+    'search',
+    'tracker',
+    'filter',
+    'sort',
+    'view',
+    'settings',
+  ];
+
   const lines = text.split('\n').map((line) => line.trim()).filter(Boolean);
   const potentialCreatures = [];
 
@@ -127,6 +143,12 @@ const extractCreatureNames = (text) => {
     if (line.length < 3) continue;
     if (/^\d+$/.test(line)) continue; // Skip pure numbers
     if (/^[^a-zA-Z]+$/.test(line)) continue; // Skip lines without letters
+
+    // Skip UI keywords (case-insensitive)
+    const lowerLine = line.toLowerCase();
+    if (UI_KEYWORDS_BLACKLIST.some(keyword => lowerLine === keyword || lowerLine.startsWith(keyword + ' '))) {
+      continue;
+    }
 
     // Detect stage information
     const stageInfo = detectBestiaryStage(line);

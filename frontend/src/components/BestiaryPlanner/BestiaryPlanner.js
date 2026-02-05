@@ -81,8 +81,6 @@ const BestiaryPlanner = () => {
     resetFilters,
     toggleCreatureCompletion,
     isCreatureCompleted,
-    getTotalRemainingTime,
-    getAverageCharmPointsPerHour,
     refreshProgress,
     reloadCharacter,
   } = useBestiaryPlanner();
@@ -122,9 +120,6 @@ const BestiaryPlanner = () => {
       </PlannerContainer>
     );
   }
-
-  const totalRemainingTime = getTotalRemainingTime();
-  const avgCharmPointsPerHour = getAverageCharmPointsPerHour();
 
   // Handle screenshot import
   const handleCreaturesImported = (creatureIds) => {
@@ -456,8 +451,6 @@ const BestiaryPlanner = () => {
                 onUpdateFilters={handlePendingFilterChange}
                 onResetFilters={handleClearFilters}
                 totalResults={suggestions.length}
-                avgCharmPointsPerHour={avgCharmPointsPerHour}
-                totalRemainingTime={totalRemainingTime}
               />
               <FilterActions>
                 <FilterButton $variant="primary" onClick={handleApplyFilters} disabled={!pendingFilters}>

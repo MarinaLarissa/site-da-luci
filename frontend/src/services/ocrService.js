@@ -1,30 +1,59 @@
 /**
  * OCR Service
- * Processes bestiary screenshots using Tesseract.js
+ * Processes bestiary screenshots using OCR.space API
+ *
+ * OCR.space is much better for small text like Tibia UI compared to Tesseract.js
+ * Free tier: 25,000 requests/month
  */
 
-import { createWorker } from 'tesseract.js';
+// OCR.space API configuration
+const OCR_SPACE_API_KEY = 'K87899142388957'; // Free API key (public use)
+const OCR_SPACE_URL = 'https://api.ocr.space/parse/image';
 
 /**
- * Initialize Tesseract worker
- * @returns {Promise<Worker>}
+ * Call OCR.space API to extract text from image
+ * @param {string} base64Image - Base64 encoded image
+ * @returns {Promise<{text: string, confidence: number}>}
  */
-const initializeWorker = async () => {
-  const worker = await createWorker('eng', 1, {
-    logger: (m) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[OCR]', m);
-      }
-    },
+const callOcrSpaceApi = async (base64Image) => {
+  const formData = new FormData();
+  // OCR.space expects the FULL base64 string WITH prefix (data:image/png;base64,...)
+  formData.append('base64Image', base64Image);
+  formData.append('apikey', OCR_SPACE_API_KEY);
+  formData.append('language', 'eng');
+  formData.append('isOverlayRequired', 'false');
+  formData.append('detectOrientation', 'true');
+  formData.append('scale', 'true'); // Auto-scale for better accuracy
+  formData.append('OCREngine', '2'); // Engine 2 is better for small text
+
+  const response = await fetch(OCR_SPACE_URL, {
+    method: 'POST',
+    body: formData,
   });
 
-  // Configure for better accuracy on game UI
-  await worker.setParameters({
-    tessedit_pageseg_mode: '11', // Sparse text. Find as much text as possible
-    tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ()-/✓✔',
-  });
+  if (!response.ok) {
+    throw new Error(`OCR API error: ${response.statusText}`);
+  }
 
-  return worker;
+  const result = await response.json();
+
+  if (result.IsErroredOnProcessing) {
+    throw new Error(result.ErrorMessage?.[0] || 'OCR processing failed');
+  }
+
+  if (!result.ParsedResults || result.ParsedResults.length === 0) {
+    throw new Error('No text found in image');
+  }
+
+  const parsedText = result.ParsedResults[0];
+
+  return {
+    text: parsedText.ParsedText || '',
+    confidence: parsedText.TextOverlay?.Lines?.reduce((sum, line) => {
+      const lineConf = line.Words?.reduce((s, w) => s + (w.WordConfidence || 0), 0) || 0;
+      return sum + lineConf / (line.Words?.length || 1);
+    }, 0) / (parsedText.TextOverlay?.Lines?.length || 1) || 0,
+  };
 };
 
 /**
@@ -69,43 +98,74 @@ const hasColorInRegion = (imageData, x, y, width, height) => {
  * Preprocess image for better OCR accuracy
  * @param {File} imageFile - The image file to process
  * @param {boolean} detectColor - Whether to detect colored creatures (default: false)
+ * @param {boolean} cropToCreatureList - Whether to crop to creature list area (default: true)
  * @returns {Promise<{processedImage: string, originalImageData?: ImageData}>} - Processed image data
  */
-const preprocessImage = async (imageFile, detectColor = false) => {
+const preprocessImage = async (imageFile, detectColor = false, cropToCreatureList = true) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
     img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
+      // Calculate crop dimensions for creature list area
+      // The creature grid is in the center of the Cyclopedia/Bestiary window
+      // Focus on the area with creature icons and names
+      let cropX = 0;
+      let cropY = 0;
+      let cropWidth = img.width;
+      let cropHeight = img.height;
 
-      // Draw original image
-      ctx.drawImage(img, 0, 0);
+      if (cropToCreatureList) {
+        // Crop PRECISELY to the bestiary window (based on typical Tibia UI layout)
+        // Width: ~67% of screen (exact bestiary window width)
+        cropWidth = Math.floor(img.width * 0.67);
+        // Start at 24% from left (bestiary window left edge)
+        cropX = Math.floor(img.width * 0.24);
 
-      // Get image data
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const originalImageData = detectColor ?
-        ctx.getImageData(0, 0, canvas.width, canvas.height) : null;
-      const data = imageData.data;
-
-      // Convert to grayscale and increase contrast for OCR
-      for (let i = 0; i < data.length; i += 4) {
-        const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-
-        // Increase contrast (simple threshold)
-        const threshold = 128;
-        const value = avg > threshold ? 255 : 0;
-
-        data[i] = value;     // R
-        data[i + 1] = value; // G
-        data[i + 2] = value; // B
+        // Height: Bestiary window from top menu to bottom (64% of height)
+        // Start at 20% from top (skip top game UI)
+        cropY = Math.floor(img.height * 0.20);
+        // Use 64% of height (bestiary window height)
+        cropHeight = Math.floor(img.height * 0.64);
       }
 
-      ctx.putImageData(imageData, 0, 0);
+      // Apply 150% zoom to improve OCR accuracy while keeping file size under 1MB
+      // OCR.space free tier has 1024 KB limit
+      const zoomFactor = cropToCreatureList ? 1.5 : 1.0;
+      const finalWidth = Math.floor(cropWidth * zoomFactor);
+      const finalHeight = Math.floor(cropHeight * zoomFactor);
+
+      canvas.width = finalWidth;
+      canvas.height = finalHeight;
+
+      // Draw cropped and zoomed image with high quality
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(
+        img,
+        cropX, cropY, cropWidth, cropHeight,  // Source rectangle (crop area)
+        0, 0, finalWidth, finalHeight          // Destination rectangle (zoomed)
+      );
+
+      // For color detection, save original image data
+      const originalImageData = detectColor ?
+        ctx.getImageData(0, 0, canvas.width, canvas.height) : null;
+
+      // OCR.space works better with original colors, so no grayscale/contrast
+      // Use JPEG with 92% quality to reduce file size (much smaller than PNG)
+      // OCR.space free tier limit: 1024 KB
+      let processedImage = canvas.toDataURL('image/jpeg', 0.92);
+
+      // If still too large, reduce quality further
+      const base64Length = processedImage.length * 0.75; // Approximate byte size
+      if (base64Length > 1024 * 1024) {
+        // Try 85% quality
+        processedImage = canvas.toDataURL('image/jpeg', 0.85);
+      }
+
       resolve({
-        processedImage: canvas.toDataURL('image/png'),
+        processedImage,
         originalImageData,
       });
     };
@@ -120,43 +180,40 @@ const preprocessImage = async (imageFile, detectColor = false) => {
  * @param {File} imageFile - The screenshot image file
  * @param {Function} onProgress - Progress callback (optional)
  * @param {boolean} detectColor - Whether to detect colored creatures (default: true)
+ * @param {boolean} cropToCreatureList - Whether to crop to creature list area (default: true)
  * @returns {Promise<{success: boolean, text?: string, confidence?: number, originalImageData?: ImageData, error?: string}>}
  */
-export const extractTextFromImage = async (imageFile, onProgress, detectColor = true) => {
-  let worker;
-
+export const extractTextFromImage = async (imageFile, onProgress, detectColor = true, cropToCreatureList = true) => {
   try {
     // Validate file
     if (!imageFile || !imageFile.type.startsWith('image/')) {
       return { success: false, error: 'Invalid image file' };
     }
 
-    // Preprocess image for better OCR
-    const { processedImage, originalImageData } = await preprocessImage(imageFile, detectColor);
+    // Report progress (preprocessing)
+    if (onProgress) onProgress(25);
 
-    // Initialize worker
-    worker = await initializeWorker();
+    // Preprocess image for better OCR (crop and zoom)
+    const { processedImage, originalImageData } = await preprocessImage(imageFile, detectColor, cropToCreatureList);
 
-    // Perform OCR
-    // Note: onProgress callback is handled in initializeWorker's global logger
-    // to avoid Worker cloning issues
-    const { data } = await worker.recognize(processedImage);
+    // Report progress (calling API)
+    if (onProgress) onProgress(50);
 
-    // Terminate worker
-    await worker.terminate();
+    // Perform OCR using OCR.space API
+    const { text, confidence } = await callOcrSpaceApi(processedImage);
+
+    // Report progress (complete)
+    if (onProgress) onProgress(100);
 
     return {
       success: true,
-      text: data.text,
-      confidence: data.confidence,
+      text,
+      confidence,
       originalImageData,
+      processedImage, // Include cropped image for preview
     };
   } catch (error) {
     console.error('OCR Error:', error);
-
-    if (worker) {
-      await worker.terminate();
-    }
 
     return {
       success: false,
@@ -169,14 +226,31 @@ export const extractTextFromImage = async (imageFile, onProgress, detectColor = 
  * Validate if image looks like a Tibia bestiary screenshot
  * Basic heuristics based on common UI elements
  * @param {string} text - OCR extracted text
+ * @param {boolean} isCropped - Whether image was cropped to creature area
  * @returns {boolean}
  */
-export const validateBestiaryScreenshot = (text) => {
+export const validateBestiaryScreenshot = (text, isCropped = false) => {
   if (!text) return false;
 
   const lowerText = text.toLowerCase();
 
-  // Common bestiary UI elements
+  // If cropped, look for progress patterns (1/3, 2/3, etc.) and creature indicators
+  if (isCropped) {
+    // Progress pattern: X/3 or X / 3 (common in bestiary)
+    const progressPattern = /\d+\s*\/\s*3/;
+    const hasProgress = progressPattern.test(text);
+
+    // Unknown creatures indicator
+    const hasUnknown = lowerText.includes('unknown') || text.includes('?');
+
+    // Any text at all (cropped area should have creature names)
+    const hasText = text.trim().length > 10;
+
+    // Accept if has progress markers OR unknown markers OR substantial text
+    return hasProgress || hasUnknown || hasText;
+  }
+
+  // Original validation for full screenshots
   const bestiaryKeywords = [
     'bestiary',
     'creature',

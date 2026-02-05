@@ -39,6 +39,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const { t } = useTranslation();
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [croppedPreview, setCroppedPreview] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [ocrResults, setOcrResults] = useState(null);
@@ -85,10 +86,11 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setIsProcessing(true);
     setProgress(0);
     setError(null);
+    setCroppedPreview(null);
 
     try {
-      // Extract text from image (with color detection)
-      const result = await extractTextFromImage(imageFile, setProgress, true);
+      // Extract text from image (with color detection and precise crop)
+      const result = await extractTextFromImage(imageFile, setProgress, true, true);
 
       if (!result.success) {
         setError(result.error || t('bestiaryPlanner.screenshot.ocrFailed'));
@@ -96,8 +98,24 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
         return;
       }
 
-      // Validate screenshot
-      if (!validateBestiaryScreenshot(result.text)) {
+      // Save cropped image preview (for debugging)
+      if (result.processedImage) {
+        setCroppedPreview(result.processedImage);
+      }
+
+      // Debug: Log OCR text in development
+      if (process.env.NODE_ENV === 'development') {
+        console.log('=== OCR DEBUG ===');
+        console.log('Extracted text:', result.text);
+        console.log('Confidence:', result.confidence);
+        console.log('Text length:', result.text.length);
+      }
+
+      // Validate screenshot (isCropped = true with precise crop)
+      if (!validateBestiaryScreenshot(result.text, true)) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Validation failed for text:', result.text);
+        }
         setError(t('bestiaryPlanner.screenshot.notBestiaryScreenshot'));
         setIsProcessing(false);
         return;
@@ -105,6 +123,12 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
 
       // Parse creatures with stage detection
       const parsed = parseOcrText(result.text, 0.75);
+
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Parsed results:', parsed);
+        console.log('Matched creatures:', parsed.matched.length);
+        console.log('Unmatched:', parsed.unmatched.length);
+      }
 
       setOcrResults({
         matched: parsed.matched,
@@ -148,6 +172,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const handleClear = () => {
     setImageFile(null);
     setImagePreview(null);
+    setCroppedPreview(null);
     setOcrResults(null);
     setError(null);
     setProgress(0);
@@ -198,6 +223,15 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
       )}
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
+
+      {croppedPreview && process.env.NODE_ENV === 'development' && (
+        <div style={{ marginTop: '1rem', padding: '1rem', border: '2px dashed #4b5563', borderRadius: '8px' }}>
+          <p style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>
+            🔍 Preview da área processada (cropped + zoom 200%):
+          </p>
+          <PreviewImage src={croppedPreview} alt="Cropped preview" style={{ maxHeight: '300px' }} />
+        </div>
+      )}
 
       {ocrResults && (
         <ResultsContainer>

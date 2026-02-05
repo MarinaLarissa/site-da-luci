@@ -446,11 +446,13 @@
     },
     "creature": {
       "completed": "Completo",
+      "complete": "Completo",
       "efficiency": "Eficiência",
       "locations": "Localizações",
       "rapidRecommended": "Rapid Recomendado",
       "editKills": "Editar progresso",
-      "toComplete": "para completar"
+      "toComplete": "para completar",
+      "progress": "progresso"
     },
     "suggestions": {
       "title": "Sugestões de Criaturas",

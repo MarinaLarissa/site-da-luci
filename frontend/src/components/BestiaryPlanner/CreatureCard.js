@@ -171,12 +171,18 @@ const CreatureCard = ({
               <StatIcon>📍</StatIcon>
               <RegionBadge>{creature.region}</RegionBadge>
             </Stat>
+            {creature.hitpoints && (
+              <Stat>
+                <StatIcon>❤️</StatIcon>
+                {creature.hitpoints.toLocaleString()} HP
+              </Stat>
+            )}
           </StatsRow>
 
           {renderResistances()}
 
           {/* Kills tracking section */}
-          {(creature.currentKills != null || creature.killsToComplete) && (
+          {(creature.currentKills != null || creature.killsToComplete || creature.bestiaryStage) && (
             <KillsSection>
               {creature.currentKills != null && (
                 <Stat>
@@ -188,6 +194,16 @@ const CreatureCard = ({
                 <Stat>
                   <StatIcon>🎯</StatIcon>
                   {creature.killsToComplete} kills {t('bestiaryPlanner.creature.toComplete')}
+                </Stat>
+              )}
+              {creature.bestiaryStage && (
+                <Stat>
+                  <StatIcon>📊</StatIcon>
+                  {creature.bestiaryStageComplete ? (
+                    <span style={{ color: '#10b981' }}>✓ 3/3 {t('bestiaryPlanner.creature.complete')}</span>
+                  ) : (
+                    <span>{creature.bestiaryStage}/3 {t('bestiaryPlanner.creature.progress')}</span>
+                  )}
                 </Stat>
               )}
             </KillsSection>
@@ -231,6 +247,7 @@ CreatureCard.propTypes = {
     locations: PropTypes.arrayOf(PropTypes.string).isRequired,
     imageUrl: PropTypes.string,
     isRapidRecommended: PropTypes.bool,
+    hitpoints: PropTypes.number,
     elementalResistances: PropTypes.shape({
       physical: PropTypes.number,
       fire: PropTypes.number,
@@ -242,6 +259,8 @@ CreatureCard.propTypes = {
     }),
     currentKills: PropTypes.number,
     killsToComplete: PropTypes.number,
+    bestiaryStage: PropTypes.number, // 1, 2, or 3 (from OCR or manual)
+    bestiaryStageComplete: PropTypes.bool, // true if stage 3 (complete)
   }).isRequired,
   onToggleComplete: PropTypes.func.isRequired,
   isCompleted: PropTypes.bool.isRequired,

@@ -37,8 +37,6 @@ const FilterPanel = ({
   onUpdateFilters,
   onResetFilters,
   totalResults,
-  avgCharmPointsPerHour,
-  totalRemainingTime,
 }) => {
   const { t } = useTranslation();
 
@@ -177,61 +175,11 @@ const FilterPanel = ({
         </RangeInputGroup>
       </FilterGroup>
 
-      {/* Max Estimated Hours */}
-      <FilterGroup>
-        <FilterLabel>
-          {t('bestiaryPlanner.filters.maxHours')}: <RangeValue>{filters.maxEstimatedHours}h</RangeValue>
-        </FilterLabel>
-        <RangeInputGroup>
-          <RangeInput
-            type="range"
-            min="1"
-            max="10"
-            step="0.5"
-            value={filters.maxEstimatedHours}
-            onChange={(e) => onUpdateFilters({ maxEstimatedHours: Number(e.target.value) })}
-          />
-        </RangeInputGroup>
-      </FilterGroup>
-
-      {/* Level Range */}
-      <FilterGroup>
-        <FilterLabel>
-          {t('bestiaryPlanner.filters.levelRange')}: <RangeValue>{filters.minRecommendedLevel} - {filters.maxRecommendedLevel}</RangeValue>
-        </FilterLabel>
-        <RangeInputGroup>
-          <RangeInput
-            type="range"
-            min="0"
-            max="500"
-            step="10"
-            value={filters.minRecommendedLevel}
-            onChange={(e) => onUpdateFilters({ minRecommendedLevel: Number(e.target.value) })}
-          />
-          <RangeInput
-            type="range"
-            min="0"
-            max="500"
-            step="10"
-            value={filters.maxRecommendedLevel}
-            onChange={(e) => onUpdateFilters({ maxRecommendedLevel: Number(e.target.value) })}
-          />
-        </RangeInputGroup>
-      </FilterGroup>
-
       {/* Results Summary */}
       <ResultsSummary>
         <SummaryItem>
           <SummaryLabel>{t('bestiaryPlanner.filters.results')}</SummaryLabel>
           <SummaryValue>{totalResults}</SummaryValue>
-        </SummaryItem>
-        <SummaryItem>
-          <SummaryLabel>{t('bestiaryPlanner.filters.avgCharmPoints')}</SummaryLabel>
-          <SummaryValue>{avgCharmPointsPerHour.toFixed(1)} / h</SummaryValue>
-        </SummaryItem>
-        <SummaryItem>
-          <SummaryLabel>{t('bestiaryPlanner.filters.totalTime')}</SummaryLabel>
-          <SummaryValue>{Math.round(totalRemainingTime)}h</SummaryValue>
         </SummaryItem>
       </ResultsSummary>
     </Panel>

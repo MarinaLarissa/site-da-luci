@@ -47,7 +47,6 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
 
   // Calculate totals
   const totalCharmPoints = creatures.reduce((sum, c) => sum + (c.charmPoints || 0), 0);
-  const totalHours = creatures.reduce((sum, c) => sum + (c.estimatedHours || 0), 0);
 
   return (
     <PlannerPanel>
@@ -75,7 +74,7 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
                 <CreatureInfo onClick={() => onCompleteCreature?.(creature.id)}>
                   <CreatureName>{creature.name}</CreatureName>
                   <CreatureStats>
-                    {creature.charmPoints} CP • {creature.estimatedHours}h
+                    {creature.charmPoints} CP
                   </CreatureStats>
                 </CreatureInfo>
                 <ItemActions>
@@ -111,10 +110,6 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
             <StatItem>
               <StatLabel>{t('bestiaryPlanner.sessionPlanner.totalCharmPoints')}</StatLabel>
               <StatValue>{totalCharmPoints} CP</StatValue>
-            </StatItem>
-            <StatItem>
-              <StatLabel>{t('bestiaryPlanner.sessionPlanner.totalTime')}</StatLabel>
-              <StatValue>{totalHours.toFixed(1)}h</StatValue>
             </StatItem>
           </StatsFooter>
         </>

@@ -11,6 +11,7 @@
  * - respawnCategory: string (normal, rapid, rare)
  * - locations: array<string> (spawn locations)
  * - region: string (geographical region)
+ * - hitpoints: number (optional - creature HP/life)
  * - elementalResistances: object {
  *     physical: number (100 = neutral, <100 = resistant, >100 = weak),
  *     fire: number,
@@ -27,6 +28,8 @@
  * - estimatedHours: number (imprecise, should not be displayed)
  * - recommendedLevel: number (imprecise, should not be displayed)
  */
+
+import { filterValidBestiaryCreatures } from './excludedFromBestiary';
 
 export const DIFFICULTY = {
   HARMLESS: 'HARMLESS',
@@ -13991,3 +13994,9 @@ export const BESTIARY_DATA = [
     "killsToComplete": 500
   }
 ];
+
+/**
+ * Filtered bestiary data - excludes creatures that are not part of the official bestiary
+ * Use this for the Bestiary Planner to ensure accurate tracking
+ */
+export const VALID_BESTIARY_DATA = filterValidBestiaryCreatures(BESTIARY_DATA);

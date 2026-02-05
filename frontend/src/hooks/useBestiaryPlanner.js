@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { BESTIARY_DATA } from '../data/bestiary';
+import { BESTIARY_DATA, VALID_BESTIARY_DATA } from '../data/bestiary';
 import * as bestiaryStorageDefault from '../services/bestiaryStorage';
 
 /**
@@ -52,9 +52,6 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     region: [],
     respawnCategory: [],
     minCharmPoints: 0,
-    maxEstimatedHours: 10,
-    minRecommendedLevel: 0,
-    maxRecommendedLevel: 500,
     searchTerm: '',
     showCompleted: false, // Show only completed creatures
   });
@@ -97,14 +94,14 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     setSettings(loadedSettings);
   }, [storageService]);
 
-  // Get incomplete creatures
+  // Get incomplete creatures (using filtered data without excluded creatures)
   const incompleteCreatures = useMemo(() => {
-    return BESTIARY_DATA.filter((c) => !completedCreatureIds.includes(c.id));
+    return VALID_BESTIARY_DATA.filter((c) => !completedCreatureIds.includes(c.id));
   }, [completedCreatureIds]);
 
-  // Get completed creatures
+  // Get completed creatures (using filtered data without excluded creatures)
   const completedCreatures = useMemo(() => {
-    return BESTIARY_DATA.filter((c) => completedCreatureIds.includes(c.id));
+    return VALID_BESTIARY_DATA.filter((c) => completedCreatureIds.includes(c.id));
   }, [completedCreatureIds]);
 
   // Apply filters
@@ -133,19 +130,6 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
 
       // Charm points filter
       if (creature.charmPoints < filters.minCharmPoints) {
-        return false;
-      }
-
-      // Estimated hours filter
-      if (creature.estimatedHours > filters.maxEstimatedHours) {
-        return false;
-      }
-
-      // Level range filter
-      if (
-        creature.recommendedLevel < filters.minRecommendedLevel ||
-        creature.recommendedLevel > filters.maxRecommendedLevel
-      ) {
         return false;
       }
 
@@ -228,30 +212,28 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
       region: [],
       respawnCategory: [],
       minCharmPoints: 0,
-      maxEstimatedHours: 10,
-      minRecommendedLevel: 0,
-      maxRecommendedLevel: 500,
       searchTerm: '',
       showCompleted: false,
     });
   }, []);
 
-  // Get progress statistics
+  // Get progress statistics (using filtered data without excluded creatures)
   const progress = useMemo(() => {
     if (!character) {
       return {
         completed: 0,
-        total: BESTIARY_DATA.length,
+        total: VALID_BESTIARY_DATA.length,
         percentage: 0,
         charmPointsEarned: 0,
         charmPointsRemaining: 0,
       };
     }
 
-    return storageService.getCharacterProgress(character.id, BESTIARY_DATA);
+    return storageService.getCharacterProgress(character.id, VALID_BESTIARY_DATA);
   }, [character, completedCreatureIds, storageService]);
 
   // Get creature by ID (pure function, no need for useCallback)
+  // Note: Still uses full BESTIARY_DATA to allow looking up excluded creatures if needed
   const getCreatureById = (creatureId) => {
     return BESTIARY_DATA.find((c) => c.id === creatureId);
   };

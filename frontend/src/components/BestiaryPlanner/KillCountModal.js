@@ -22,6 +22,8 @@ import {
   FormGroup,
   Label,
   Input,
+  QuickAddButtonGroup,
+  QuickAddButton,
   ProgressInfo,
   ProgressBar,
   ProgressFill,
@@ -79,6 +81,11 @@ const KillCountModal = ({ isOpen, onClose, creature, currentKills = 0, onSave })
     }
   };
 
+  const handleQuickAdd = (amount) => {
+    const newKills = Math.min(kills + amount, maxKills);
+    setKills(newKills);
+  };
+
   return (
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
@@ -117,6 +124,20 @@ const KillCountModal = ({ isOpen, onClose, creature, currentKills = 0, onSave })
                 onChange={(e) => handleChange(e.target.value)}
                 autoFocus
               />
+              <QuickAddButtonGroup>
+                <QuickAddButton type="button" onClick={() => handleQuickAdd(50)}>
+                  +50
+                </QuickAddButton>
+                <QuickAddButton type="button" onClick={() => handleQuickAdd(100)}>
+                  +100
+                </QuickAddButton>
+                <QuickAddButton type="button" onClick={() => handleQuickAdd(200)}>
+                  +200
+                </QuickAddButton>
+                <QuickAddButton type="button" onClick={() => handleQuickAdd(500)}>
+                  +500
+                </QuickAddButton>
+              </QuickAddButtonGroup>
             </FormGroup>
 
             <ProgressInfo>

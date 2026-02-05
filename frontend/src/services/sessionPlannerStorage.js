@@ -13,6 +13,8 @@
  * }
  */
 
+import { isExcludedFromBestiary } from '../data/excludedFromBestiary';
+
 const STORAGE_KEY = 'luci_session_plans';
 
 /**
@@ -146,7 +148,7 @@ export const isInSessionPlan = (characterId, creatureId) => {
  * Get session plan with full creature data
  * @param {string} characterId - Character ID
  * @param {Array} allCreatures - All creatures from BESTIARY_DATA
- * @returns {Array} - Creatures with full data (with custom hours if set)
+ * @returns {Array} - Creatures with full data (with custom hours if set), excluding creatures not in bestiary
  */
 export const getSessionPlanWithData = (characterId, allCreatures) => {
   const creatureIds = getSessionPlan(characterId);
@@ -155,6 +157,11 @@ export const getSessionPlanWithData = (characterId, allCreatures) => {
 
   return creatureIds
     .map((id) => {
+      // Filter out creatures excluded from bestiary
+      if (isExcludedFromBestiary(id)) {
+        return null;
+      }
+
       const creature = allCreatures.find((c) => c.id === id);
       if (!creature) return null;
 
@@ -164,7 +171,7 @@ export const getSessionPlanWithData = (characterId, allCreatures) => {
         estimatedHours: customHours[id] !== undefined ? customHours[id] : creature.estimatedHours,
       };
     })
-    .filter(Boolean); // Remove undefined if creature not found
+    .filter(Boolean); // Remove undefined if creature not found or excluded
 };
 
 /**
