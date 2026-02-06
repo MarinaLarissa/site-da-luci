@@ -75,6 +75,8 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
   const [manualSearchQuery, setManualSearchQuery] = useState('');
   const [manualSearchResults, setManualSearchResults] = useState([]);
+  const [manualSearchStage, setManualSearchStage] = useState(null);  // null, 1, 2, or 3
+  const [manualSearchIsComplete, setManualSearchIsComplete] = useState(false);
 
   // OCR with retry hook (single image)
   const {
@@ -450,18 +452,48 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     }
   }, []);
 
+  // Handle updating stage of a matched creature
+  const handleUpdateMatchedStage = useCallback((index, newStage, newIsComplete) => {
+    if (!ocrResults) return;
+
+    const updatedMatched = [...ocrResults.matched];
+    const match = updatedMatched[index];
+
+    // Recalculate minimumKills with new stage
+    const minimumKills = newStage
+      ? calculateMinimumKills(newStage, match.creature.occurrence)
+      : null;
+
+    updatedMatched[index] = {
+      ...match,
+      stage: newStage,
+      isComplete: newIsComplete || newStage === 3,
+      minimumKills,
+    };
+
+    setOcrResults({
+      ...ocrResults,
+      matched: updatedMatched,
+    });
+  }, [ocrResults]);
+
   // Handle adding a creature manually
   const handleAddManualCreature = useCallback((selectedCreature) => {
     if (!ocrResults) return;
+
+    // Calculate minimumKills based on stage
+    const minimumKills = manualSearchStage
+      ? calculateMinimumKills(manualSearchStage, selectedCreature.occurrence)
+      : null;
 
     // Add to matched list
     const newMatch = {
       creature: selectedCreature,
       similarity: 1.0,
       originalText: `Manual: ${selectedCreature.name}`,
-      stage: null,
-      isComplete: false,
-      minimumKills: null,
+      stage: manualSearchStage,
+      isComplete: manualSearchIsComplete || manualSearchStage === 3,
+      minimumKills,
     };
 
     setOcrResults({
@@ -470,10 +502,12 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
       totalFound: ocrResults.totalFound + 1,
     });
 
-    // Clear search
+    // Clear search and reset stage
     setManualSearchQuery('');
     setManualSearchResults([]);
-  }, [ocrResults]);
+    setManualSearchStage(null);
+    setManualSearchIsComplete(false);
+  }, [ocrResults, manualSearchStage, manualSearchIsComplete]);
 
   return (
     <>
@@ -682,28 +716,86 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
               <MatchedList>
                 {ocrResults.matched.map((match, index) => (
                   <MatchedItem key={index}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', flex: 1 }}>
-                      <CreatureName>{match.creature.name}</CreatureName>
-                      {match.stage && (
-                        <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
-                          {match.isComplete ? (
-                            <span style={{ color: '#10b981' }}>
-                              ✓ {t('bestiaryPlanner.screenshot.complete')}
-                            </span>
-                          ) : (
-                            <span>
-                              {t('bestiaryPlanner.screenshot.stage', { stage: match.stage })}
-                              {match.minimumKills !== null && (
-                                <> • {t('bestiaryPlanner.screenshot.minKills', { kills: match.minimumKills })}</>
-                              )}
-                            </span>
-                          )}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <CreatureName>{match.creature.name}</CreatureName>
+                        <SimilarityBadge $similarity={match.similarity}>
+                          {Math.round(match.similarity * 100)}%
+                        </SimilarityBadge>
+                      </div>
+
+                      {/* Stage Display and Edit Buttons */}
+                      <div style={{ display: 'flex', gap: '0.375rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginRight: '0.25rem' }}>
+                          {t('bestiaryPlanner.screenshot.stage', { defaultValue: 'Estágio:', stage: '' })}
                         </span>
-                      )}
+                        <button
+                          onClick={() => handleUpdateMatchedStage(index, null, false)}
+                          style={{
+                            padding: '0.25rem 0.5rem',
+                            fontSize: '0.625rem',
+                            border: `1px solid ${match.stage === null ? '#667eea' : '#4b5563'}`,
+                            borderRadius: '0.25rem',
+                            backgroundColor: match.stage === null ? '#667eea' : 'transparent',
+                            color: match.stage === null ? '#fff' : '#9ca3af',
+                            cursor: 'pointer',
+                            fontWeight: match.stage === null ? '600' : '400',
+                          }}
+                        >
+                          ?
+                        </button>
+                        <button
+                          onClick={() => handleUpdateMatchedStage(index, 1, false)}
+                          style={{
+                            padding: '0.25rem 0.5rem',
+                            fontSize: '0.625rem',
+                            border: `1px solid ${match.stage === 1 ? '#667eea' : '#4b5563'}`,
+                            borderRadius: '0.25rem',
+                            backgroundColor: match.stage === 1 ? '#667eea' : 'transparent',
+                            color: match.stage === 1 ? '#fff' : '#9ca3af',
+                            cursor: 'pointer',
+                            fontWeight: match.stage === 1 ? '600' : '400',
+                          }}
+                        >
+                          1/3
+                        </button>
+                        <button
+                          onClick={() => handleUpdateMatchedStage(index, 2, false)}
+                          style={{
+                            padding: '0.25rem 0.5rem',
+                            fontSize: '0.625rem',
+                            border: `1px solid ${match.stage === 2 ? '#667eea' : '#4b5563'}`,
+                            borderRadius: '0.25rem',
+                            backgroundColor: match.stage === 2 ? '#667eea' : 'transparent',
+                            color: match.stage === 2 ? '#fff' : '#9ca3af',
+                            cursor: 'pointer',
+                            fontWeight: match.stage === 2 ? '600' : '400',
+                          }}
+                        >
+                          2/3
+                        </button>
+                        <button
+                          onClick={() => handleUpdateMatchedStage(index, 3, true)}
+                          style={{
+                            padding: '0.25rem 0.5rem',
+                            fontSize: '0.625rem',
+                            border: `1px solid ${match.stage === 3 ? '#10b981' : '#4b5563'}`,
+                            borderRadius: '0.25rem',
+                            backgroundColor: match.stage === 3 ? '#10b981' : 'transparent',
+                            color: match.stage === 3 ? '#fff' : '#9ca3af',
+                            cursor: 'pointer',
+                            fontWeight: match.stage === 3 ? '600' : '400',
+                          }}
+                        >
+                          ✓
+                        </button>
+                        {match.minimumKills !== null && (
+                          <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginLeft: '0.25rem' }}>
+                            • {t('bestiaryPlanner.screenshot.minKills', { kills: match.minimumKills })}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <SimilarityBadge $similarity={match.similarity}>
-                      {Math.round(match.similarity * 100)}%
-                    </SimilarityBadge>
                   </MatchedItem>
                 ))}
               </MatchedList>
@@ -735,6 +827,86 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
                     color: '#fff',
                   }}
                 />
+
+                {/* Stage Selector */}
+                <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.875rem', color: '#9ca3af' }}>
+                    {t('bestiaryPlanner.screenshot.selectStage', { defaultValue: 'Progresso:' })}
+                  </span>
+                  <button
+                    onClick={() => {
+                      setManualSearchStage(null);
+                      setManualSearchIsComplete(false);
+                    }}
+                    style={{
+                      padding: '0.375rem 0.75rem',
+                      fontSize: '0.875rem',
+                      border: `2px solid ${manualSearchStage === null ? '#667eea' : '#4b5563'}`,
+                      borderRadius: '0.375rem',
+                      backgroundColor: manualSearchStage === null ? '#667eea' : '#1f2937',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontWeight: manualSearchStage === null ? '600' : '400',
+                    }}
+                  >
+                    {t('bestiaryPlanner.screenshot.unknown', { defaultValue: 'Desconhecido' })}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setManualSearchStage(1);
+                      setManualSearchIsComplete(false);
+                    }}
+                    style={{
+                      padding: '0.375rem 0.75rem',
+                      fontSize: '0.875rem',
+                      border: `2px solid ${manualSearchStage === 1 ? '#667eea' : '#4b5563'}`,
+                      borderRadius: '0.375rem',
+                      backgroundColor: manualSearchStage === 1 ? '#667eea' : '#1f2937',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontWeight: manualSearchStage === 1 ? '600' : '400',
+                    }}
+                  >
+                    1/3
+                  </button>
+                  <button
+                    onClick={() => {
+                      setManualSearchStage(2);
+                      setManualSearchIsComplete(false);
+                    }}
+                    style={{
+                      padding: '0.375rem 0.75rem',
+                      fontSize: '0.875rem',
+                      border: `2px solid ${manualSearchStage === 2 ? '#667eea' : '#4b5563'}`,
+                      borderRadius: '0.375rem',
+                      backgroundColor: manualSearchStage === 2 ? '#667eea' : '#1f2937',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontWeight: manualSearchStage === 2 ? '600' : '400',
+                    }}
+                  >
+                    2/3
+                  </button>
+                  <button
+                    onClick={() => {
+                      setManualSearchStage(3);
+                      setManualSearchIsComplete(true);
+                    }}
+                    style={{
+                      padding: '0.375rem 0.75rem',
+                      fontSize: '0.875rem',
+                      border: `2px solid ${manualSearchStage === 3 ? '#10b981' : '#4b5563'}`,
+                      borderRadius: '0.375rem',
+                      backgroundColor: manualSearchStage === 3 ? '#10b981' : '#1f2937',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontWeight: manualSearchStage === 3 ? '600' : '400',
+                    }}
+                  >
+                    ✓ {t('bestiaryPlanner.screenshot.complete', { defaultValue: 'Completo' })}
+                  </button>
+                </div>
+
                 {manualSearchResults.length > 0 && (
                   <div style={{
                     marginTop: '0.5rem',

@@ -34,7 +34,6 @@ import {
   Stat,
   StatIcon,
   DifficultyBadge,
-  RegionBadge,
   ResistancesColumn,
   ResistanceItem,
   ResistanceIcon,
@@ -189,10 +188,6 @@ const CreatureCard = ({
             <DifficultyBadge $difficulty={creature.difficulty}>
               {t(`bestiaryPlanner.difficulty.${creature.difficulty.toLowerCase()}`)}
             </DifficultyBadge>
-          </Stat>
-          <Stat>
-            <StatIcon>📍</StatIcon>
-            <RegionBadge>{creature.region}</RegionBadge>
           </Stat>
         </CardStatsRow>
 

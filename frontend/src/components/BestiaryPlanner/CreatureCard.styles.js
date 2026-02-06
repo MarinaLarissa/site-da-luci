@@ -141,6 +141,7 @@ export const CardActions = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
   margin-left: auto;
+  margin-right: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
