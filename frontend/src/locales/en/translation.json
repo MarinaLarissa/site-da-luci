@@ -615,6 +615,8 @@
       "confirmImport": "Mark {{count}} creature as completed",
       "confirmImport_plural": "Mark {{count}} creatures as completed",
       "unmatchedTitle": "Could not identify:",
+      "unmatchedInfo": "{{count}} creature(s) not identified in the image",
+      "manualSearchPlaceholder": "Type creature name to add manually...",
       "tryAnother": "Try Another Screenshot",
       "complete": "Complete",
       "stage": "Stage {{stage}}/3",

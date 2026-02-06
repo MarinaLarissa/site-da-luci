@@ -615,6 +615,8 @@
       "confirmImport": "Marcar {{count}} criatura como completa",
       "confirmImport_plural": "Marcar {{count}} criaturas como completas",
       "unmatchedTitle": "Não foi possível identificar:",
+      "unmatchedInfo": "{{count}} criatura(s) não identificada(s) na imagem",
+      "manualSearchPlaceholder": "Digite o nome da criatura para adicionar...",
       "tryAnother": "Tentar Outro Screenshot",
       "complete": "Completo",
       "stage": "Estágio {{stage}}/3",

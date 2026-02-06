@@ -11,6 +11,7 @@ import { calculateMinimumKills } from '../../utils/bestiaryStages';
 import { useOcrWithRetry } from '../../hooks/useOcrWithRetry';
 import useMultipleOcrProcessing from '../../hooks/useMultipleOcrProcessing';
 import AutocompleteModal from './AutocompleteModal';
+import { BESTIARY_DATA } from '../../data/bestiary';
 import ImageQualityValidator from './ScreenshotImport/ImageQualityValidator';
 import CropPreviewModal from './ScreenshotImport/CropPreviewModal';
 import {
@@ -72,6 +73,8 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [autocompleteQueue, setAutocompleteQueue] = useState([]);
   const [currentAutocomplete, setCurrentAutocomplete] = useState(null);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
+  const [manualSearchQuery, setManualSearchQuery] = useState('');
+  const [manualSearchResults, setManualSearchResults] = useState([]);
 
   // OCR with retry hook (single image)
   const {
@@ -433,6 +436,45 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setCurrentAutocomplete(null);
   };
 
+  // Handle manual search input change
+  const handleManualSearchChange = useCallback((e) => {
+    const query = e.target.value;
+    setManualSearchQuery(query);
+
+    if (query.trim().length >= 2) {
+      // Fuzzy search in BESTIARY_DATA
+      const results = findAutocompleteCandidates(query, 10); // Max 10 results
+      setManualSearchResults(results);
+    } else {
+      setManualSearchResults([]);
+    }
+  }, []);
+
+  // Handle adding a creature manually
+  const handleAddManualCreature = useCallback((selectedCreature) => {
+    if (!ocrResults) return;
+
+    // Add to matched list
+    const newMatch = {
+      creature: selectedCreature,
+      similarity: 1.0,
+      originalText: `Manual: ${selectedCreature.name}`,
+      stage: null,
+      isComplete: false,
+      minimumKills: null,
+    };
+
+    setOcrResults({
+      ...ocrResults,
+      matched: [...ocrResults.matched, newMatch],
+      totalFound: ocrResults.totalFound + 1,
+    });
+
+    // Clear search
+    setManualSearchQuery('');
+    setManualSearchResults([]);
+  }, [ocrResults]);
+
   return (
     <>
       {/* Autocomplete Modal */}
@@ -676,17 +718,54 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
 
           {ocrResults.unmatched.length > 0 && (
             <UnmatchedList>
-              <p>{t('bestiaryPlanner.screenshot.unmatchedTitle')}</p>
-              {ocrResults.unmatched.map((unmatchedData, index) => (
-                <UnmatchedItem key={index}>
-                  {unmatchedData.name}
-                  {unmatchedData.stage && (
-                    <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginLeft: '0.5rem' }}>
-                      ({unmatchedData.isComplete ? '✓' : `${unmatchedData.stage}/3`})
-                    </span>
-                  )}
-                </UnmatchedItem>
-              ))}
+              <p>{t('bestiaryPlanner.screenshot.unmatchedInfo', { count: ocrResults.unmatched.length })}</p>
+              <div style={{ marginTop: '1rem' }}>
+                <input
+                  type="text"
+                  placeholder={t('bestiaryPlanner.screenshot.manualSearchPlaceholder')}
+                  value={manualSearchQuery}
+                  onChange={handleManualSearchChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    fontSize: '1rem',
+                    border: '1px solid #4b5563',
+                    borderRadius: '0.375rem',
+                    backgroundColor: '#1f2937',
+                    color: '#fff',
+                  }}
+                />
+                {manualSearchResults.length > 0 && (
+                  <div style={{
+                    marginTop: '0.5rem',
+                    maxHeight: '200px',
+                    overflowY: 'auto',
+                    border: '1px solid #4b5563',
+                    borderRadius: '0.375rem',
+                    backgroundColor: '#1f2937',
+                  }}>
+                    {manualSearchResults.map((creature) => (
+                      <div
+                        key={creature.id}
+                        onClick={() => handleAddManualCreature(creature)}
+                        style={{
+                          padding: '0.75rem',
+                          cursor: 'pointer',
+                          borderBottom: '1px solid #374151',
+                          transition: 'background 0.2s',
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#374151'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                      >
+                        {creature.name}
+                        <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginLeft: '0.5rem' }}>
+                          {creature.charmPoints} CP
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </UnmatchedList>
           )}
 
