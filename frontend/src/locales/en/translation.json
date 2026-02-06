@@ -530,10 +530,43 @@
       "completedToday": "Bestiaries",
       "pointsEarned": "Points Earned"
     },
+    "actions": {
+      "complete": "Mark as complete",
+      "uncomplete": "Unmark as complete",
+      "addToPlan": "Add to plan",
+      "removeFromPlan": "Remove from plan",
+      "editKills": "Edit kills",
+      "undo": "Undo"
+    },
+    "shortcuts": {
+      "complete": "Enter",
+      "edit": "E",
+      "plan": "P",
+      "undo": "Ctrl+Z"
+    },
     "toast": {
       "completed": {
         "title": "Bestiary Completed!",
         "message": "{{name}} completed! +{{charmPoints}} Charm Points"
+      },
+      "uncompleted": {
+        "title": "Creature Unmarked",
+        "message": "{{name}} unmarked as complete"
+      },
+      "addedToPlan": {
+        "title": "Added to Plan",
+        "message": "{{name}} added to hunt plan"
+      },
+      "removedFromPlan": {
+        "title": "Removed from Plan",
+        "message": "{{name}} removed from plan"
+      },
+      "killsUpdated": {
+        "title": "Kills Updated",
+        "message": "{{name}}: {{kills}} kills"
+      },
+      "actionPerformed": {
+        "title": "Action Performed"
       },
       "invalidHours": {
         "title": "Invalid Value",

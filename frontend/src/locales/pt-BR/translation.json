@@ -530,10 +530,43 @@
       "completedToday": "Bestiários",
       "pointsEarned": "Pontos Ganhos"
     },
+    "actions": {
+      "complete": "Marcar como completo",
+      "uncomplete": "Desmarcar como completo",
+      "addToPlan": "Adicionar ao plano",
+      "removeFromPlan": "Remover do plano",
+      "editKills": "Editar kills",
+      "undo": "Desfazer"
+    },
+    "shortcuts": {
+      "complete": "Enter",
+      "edit": "E",
+      "plan": "P",
+      "undo": "Ctrl+Z"
+    },
     "toast": {
       "completed": {
         "title": "Bestiary Completado!",
         "message": "{{name}} completado! +{{charmPoints}} Charm Points"
+      },
+      "uncompleted": {
+        "title": "Criatura Desmarcada",
+        "message": "{{name}} desmarcada como completa"
+      },
+      "addedToPlan": {
+        "title": "Adicionado ao Plano",
+        "message": "{{name}} adicionada ao plano de hunt"
+      },
+      "removedFromPlan": {
+        "title": "Removido do Plano",
+        "message": "{{name}} removida do plano"
+      },
+      "killsUpdated": {
+        "title": "Kills Atualizados",
+        "message": "{{name}}: {{kills}} kills"
+      },
+      "actionPerformed": {
+        "title": "Ação Realizada"
       },
       "invalidHours": {
         "title": "Valor Inválido",

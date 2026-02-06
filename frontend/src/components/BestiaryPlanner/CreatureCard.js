@@ -4,13 +4,20 @@
  *
  * Performance: Memoized to prevent unnecessary re-renders
  * when parent updates but props haven't changed
+ *
+ * Feature 2 Update (Quick Actions Inline):
+ * - Removed click handler from card (no longer toggles completion on click)
+ * - Integrated CreatureCardActions component for explicit action buttons
+ * - Added keyboard shortcuts support
  */
 
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
 import { calculateDisplayStatus, getStatusColor, getStatusI18nKey, BestiaryStatus } from '../../utils/bestiaryStatusUtils';
+import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
+import CreatureCardActions from './CreatureCardActions';
 import {
   Card,
   StatusBadge,
@@ -27,8 +34,6 @@ import {
   StatIcon,
   DifficultyBadge,
   RegionBadge,
-  PlanButton,
-  EditButton,
   ResistancesColumn,
   ResistanceItem,
   ResistanceIcon,
@@ -66,16 +71,16 @@ const CreatureCard = ({
   onEditKills,
 }) => {
   const { t } = useTranslation();
+  const cardRef = useRef(null);
 
-  const handlePlanClick = (e) => {
-    e.stopPropagation(); // Prevent card click
-    onTogglePlan?.(creature.id);
-  };
-
-  const handleEditClick = (e) => {
-    e.stopPropagation(); // Prevent card click
-    onEditKills?.(creature.id);
-  };
+  // Keyboard shortcuts (Enter = complete, E = edit, P = plan)
+  useKeyboardShortcuts({
+    onComplete: () => onToggleComplete(creature.id),
+    onEdit: onEditKills ? () => onEditKills(creature.id) : null,
+    onPlan: onTogglePlan ? () => onTogglePlan(creature.id) : null,
+    enabled: true,
+    cardRef,
+  });
 
   const handleImageError = (e) => {
     // Log for debugging
@@ -121,7 +126,7 @@ const CreatureCard = ({
   const resistancesCol3 = allResistances.slice(resistancesPerColumn * 2);
 
   return (
-    <Card $completed={isCompleted} onClick={() => onToggleComplete(creature.id)}>
+    <Card ref={cardRef} $completed={isCompleted} tabIndex={0}>
       {/* Status Badge - Only show for Complete or In Progress */}
       {displayStatus.status === BestiaryStatus.COMPLETE && (
         <StatusBadge $color={getStatusColor(displayStatus.status)}>
@@ -142,7 +147,7 @@ const CreatureCard = ({
       )}
 
       <CardTop>
-        {/* Linha 1: Imagem + Botões */}
+        {/* Linha 1: Imagem + Actions */}
         <CardImageRow>
           {creature.imageUrl && (
             <CreatureImage
@@ -153,29 +158,14 @@ const CreatureCard = ({
             />
           )}
           <CardActions>
-            {onEditKills && (
-              <EditButton
-                onClick={handleEditClick}
-                aria-label={t('bestiaryPlanner.creature.editKills')}
-                title={t('bestiaryPlanner.creature.editKills')}
-              >
-                ✎
-              </EditButton>
-            )}
-            {onTogglePlan && (
-              <PlanButton
-                onClick={handlePlanClick}
-                $isInPlan={isInPlan}
-                aria-label={
-                  isInPlan
-                    ? t('bestiaryPlanner.sessionPlanner.removeFromPlan')
-                    : t('bestiaryPlanner.sessionPlanner.addToPlan')
-                }
-              >
-                {isInPlan ? '✓' : '+'}
-              </PlanButton>
-            )}
             <CharmPointsBadge>{creature.charmPoints} CP</CharmPointsBadge>
+            <CreatureCardActions
+              onComplete={() => onToggleComplete(creature.id)}
+              onEdit={onEditKills ? () => onEditKills(creature.id) : null}
+              onPlan={onTogglePlan ? () => onTogglePlan(creature.id) : null}
+              isCompleted={isCompleted}
+              isInPlan={isInPlan}
+            />
           </CardActions>
         </CardImageRow>
 

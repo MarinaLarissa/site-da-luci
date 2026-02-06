@@ -1,11 +1,18 @@
 /**
  * BestiaryPlanner Component
  * Main component for the bestiary planning feature
+ *
+ * Feature 2 Update (Quick Actions Inline):
+ * - Integrated useUndoAction hook for action history
+ * - Replaced Toast with UndoToast component
+ * - Added keyboard shortcuts support (Ctrl+Z for undo)
  */
 
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBestiaryPlanner } from '../../hooks/useBestiaryPlanner';
+import { useUndoAction } from '../../hooks/useUndoAction';
+import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import FilterPanel from './FilterPanel';
 import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
@@ -13,7 +20,7 @@ import CharacterDrawer from './CharacterDrawer';
 import SyncStatus from './SyncStatus';
 import ScreenshotImport from './ScreenshotImport';
 import SessionPlanner from './SessionPlanner';
-import Toast from './Toast';
+import UndoToast from './UndoToast';
 import KillCountModal from './KillCountModal';
 import FirstTimeTutorial from './FirstTimeTutorial';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
@@ -71,8 +78,6 @@ const BestiaryPlanner = () => {
   const [isFiltersCollapsed, setIsFiltersCollapsed] = useState(true); // Collapsed by default
   const [isSessionPlannerCollapsed, setIsSessionPlannerCollapsed] = useState(true); // Collapsed by default
   const [pendingFilters, setPendingFilters] = useState(null);
-  const [toast, setToast] = useState(null);
-  const [toastClosing, setToastClosing] = useState(false);
   const [isKillCountModalOpen, setIsKillCountModalOpen] = useState(false);
   const [selectedCreatureForEdit, setSelectedCreatureForEdit] = useState(null);
   const [characterToEdit, setCharacterToEdit] = useState(null);
@@ -89,6 +94,20 @@ const BestiaryPlanner = () => {
     refreshProgress,
     reloadCharacter,
   } = useBestiaryPlanner();
+
+  // Undo functionality
+  const {
+    performAction,
+    undo,
+    canUndo,
+    getMostRecentAction,
+  } = useUndoAction(character?.id);
+
+  // Global keyboard shortcut for undo (Ctrl+Z)
+  useKeyboardShortcuts({
+    onUndo: canUndo ? undo : null,
+    enabled: true,
+  });
 
   // Load session plan creatures
   useEffect(() => {
@@ -142,9 +161,29 @@ const BestiaryPlanner = () => {
   const handleTogglePlan = (creatureId) => {
     if (!character) return;
 
+    const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
+    if (!creature) return;
+
+    const wasInPlan = isInSessionPlan(character.id, creatureId);
+
     toggleCreatureInPlan(character.id, creatureId);
     const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
     setSessionPlanCreatures(updatedPlan);
+
+    // Add to undo stack
+    performAction({
+      type: wasInPlan ? 'unplan' : 'plan',
+      data: {
+        creatureId,
+        creatureName: creature.name,
+      },
+      undo: () => {
+        // Undo: Toggle plan back
+        toggleCreatureInPlan(character.id, creatureId);
+        const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+        setSessionPlanCreatures(updatedPlan);
+      },
+    });
   };
 
   const handleClearPlan = () => {
@@ -178,11 +217,7 @@ const BestiaryPlanner = () => {
 
     // Validate input
     if (isNaN(parsedHours) || parsedHours <= 0) {
-      showToast({
-        type: 'error',
-        title: t('bestiaryPlanner.toast.invalidHours.title'),
-        message: t('bestiaryPlanner.toast.invalidHours.message'),
-      });
+      alert(t('bestiaryPlanner.toast.invalidHours.message'));
       return;
     }
 
@@ -192,16 +227,6 @@ const BestiaryPlanner = () => {
     // Reload session plan to reflect changes
     const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
     setSessionPlanCreatures(updatedPlan);
-
-    // Show success toast
-    showToast({
-      type: 'success',
-      title: t('bestiaryPlanner.toast.hoursUpdated.title'),
-      message: t('bestiaryPlanner.toast.hoursUpdated.message', {
-        name: creatureName,
-        hours: parsedHours,
-      }),
-    });
   };
 
   // Handle character switching
@@ -246,47 +271,59 @@ const BestiaryPlanner = () => {
       addTodayCompletion(character.id, creature);
 
       // Remove from session plan if it's there
-      if (isInSessionPlan(character.id, creatureId)) {
+      const wasInPlan = isInSessionPlan(character.id, creatureId);
+      if (wasInPlan) {
         toggleCreatureInPlan(character.id, creatureId);
         const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
         setSessionPlanCreatures(updatedPlan);
       }
 
-      // Show success toast
-      showToast({
-        type: 'success',
-        title: t('bestiaryPlanner.toast.completed.title'),
-        message: t('bestiaryPlanner.toast.completed.message', {
-          name: creature.name,
+      // Add to undo stack
+      performAction({
+        type: 'complete',
+        data: {
+          creatureId,
+          creatureName: creature.name,
           charmPoints: creature.charmPoints,
-        }),
+          wasInPlan,
+        },
+        undo: () => {
+          // Undo: Toggle back to incomplete
+          toggleCreatureCompletion(creatureId);
+
+          // Re-add to plan if it was there
+          if (wasInPlan) {
+            toggleCreatureInPlan(character.id, creatureId);
+            const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+            setSessionPlanCreatures(updatedPlan);
+          }
+
+          refreshProgress();
+        },
       });
     } else {
       // Was completed, now is NOT completed
-      // Show toast about uncompleting
-      showToast({
-        type: 'info',
-        title: t('bestiaryPlanner.toast.uncompleted.title', { defaultValue: 'Criatura Desmarcada' }),
-        message: t('bestiaryPlanner.toast.uncompleted.message', {
-          name: creature.name,
-          defaultValue: `${creature.name} desmarcada como completa`,
-        }),
+      // Add to undo stack
+      performAction({
+        type: 'uncomplete',
+        data: {
+          creatureId,
+          creatureName: creature.name,
+        },
+        undo: () => {
+          // Undo: Toggle back to completed
+          toggleCreatureCompletion(creatureId);
+          addTodayCompletion(character.id, creature);
+          refreshProgress();
+        },
       });
     }
   };
 
-  const showToast = (toastData) => {
-    setToast(toastData);
-    setToastClosing(false);
-
-    // Auto-hide after 5 seconds
-    setTimeout(() => {
-      setToastClosing(true);
-      setTimeout(() => {
-        setToast(null);
-        setToastClosing(false);
-      }, 300); // Wait for animation
-    }, 5000);
+  // Close toast callback
+  const handleCloseToast = () => {
+    // Toast will auto-close, no state management needed
+    // UndoToast manages its own lifecycle
   };
 
   // Handle filter changes (pending mode)
@@ -345,14 +382,18 @@ const BestiaryPlanner = () => {
       if (creature) {
         addTodayCompletion(character.id, creature);
 
-        // Show success toast
-        showToast({
-          type: 'success',
-          title: t('bestiaryPlanner.toast.completed.title'),
-          message: t('bestiaryPlanner.toast.completed.message', {
-            name: creature.name,
+        // Add to undo stack
+        performAction({
+          type: 'complete',
+          data: {
+            creatureId,
+            creatureName: creature.name,
             charmPoints: creature.charmPoints,
-          }),
+          },
+          undo: () => {
+            toggleCreatureCompletion(creatureId);
+            refreshProgress();
+          },
         });
       }
     }
@@ -550,8 +591,14 @@ const BestiaryPlanner = () => {
         character={characterToEdit}
       />
 
-      {/* Toast notification */}
-      {toast && <Toast {...toast} isClosing={toastClosing} />}
+      {/* Undo Toast notification */}
+      {canUndo && (
+        <UndoToast
+          action={getMostRecentAction()}
+          onUndo={undo}
+          onClose={handleCloseToast}
+        />
+      )}
 
       {/* Character Drawer */}
       <CharacterDrawer
