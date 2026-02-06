@@ -518,7 +518,7 @@
       "gotIt": "Got it!"
     },
     "sessionPlanner": {
-      "title": "Today's Hunt",
+      "title": "Bestiary Planner",
       "clearButton": "Clear",
       "emptyState": "No creatures selected. Click the + button on cards to add creatures to today's hunt.",
       "removeAria": "Remove {{name}} from plan",

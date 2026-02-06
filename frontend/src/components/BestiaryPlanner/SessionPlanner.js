@@ -18,7 +18,6 @@ import {
   CreatureName,
   CreatureStats,
   ItemActions,
-  EditButton,
   RemoveButton,
   EmptyState,
   EmptyIcon,
@@ -33,7 +32,7 @@ import {
   TodayCreatureItem,
 } from './SessionPlanner.styles';
 
-const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan, onCompleteCreature, onEditHours }) => {
+const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan, onCompleteCreature }) => {
   const { t } = useTranslation();
   const [todayStats, setTodayStats] = useState({ count: 0, totalCharmPoints: 0, creatures: [] });
 
@@ -78,16 +77,6 @@ const SessionPlanner = ({ creatures, characterId, onRemoveCreature, onClearPlan,
                   </CreatureStats>
                 </CreatureInfo>
                 <ItemActions>
-                  <EditButton
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onEditHours?.(creature.id, creature.name, creature.estimatedHours);
-                    }}
-                    aria-label={t('bestiaryPlanner.sessionPlanner.editHoursAria', { name: creature.name })}
-                    title="Edit hours"
-                  >
-                    ✎
-                  </EditButton>
                   <RemoveButton
                     onClick={(e) => {
                       e.stopPropagation();

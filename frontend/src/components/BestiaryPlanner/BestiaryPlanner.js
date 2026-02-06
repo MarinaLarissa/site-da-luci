@@ -34,7 +34,6 @@ import {
   toggleCreatureInPlan,
   clearSessionPlan,
   isInSessionPlan,
-  updateCreatureHours,
 } from '../../services/sessionPlannerStorage';
 import { addTodayCompletion, clearDailyProgress } from '../../services/dailyProgressStorage';
 import { BESTIARY_DATA } from '../../data/bestiary';
@@ -222,32 +221,6 @@ const BestiaryPlanner = () => {
     setSessionPlanCreatures(updatedPlan);
   };
 
-  const handleEditHours = (creatureId, creatureName, currentHours) => {
-    if (!character) return;
-
-    const newHours = prompt(
-      t('bestiaryPlanner.sessionPlanner.editHoursPrompt', { name: creatureName }),
-      currentHours
-    );
-
-    // User cancelled or entered empty value
-    if (newHours === null || newHours.trim() === '') return;
-
-    const parsedHours = parseFloat(newHours);
-
-    // Validate input
-    if (isNaN(parsedHours) || parsedHours <= 0) {
-      alert(t('bestiaryPlanner.toast.invalidHours.message'));
-      return;
-    }
-
-    // Update hours in storage
-    updateCreatureHours(character.id, creatureId, parsedHours);
-
-    // Reload session plan to reflect changes
-    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
-    setSessionPlanCreatures(updatedPlan);
-  };
 
   // Handle character switching
   const handleCharacterChange = () => {
@@ -675,7 +648,6 @@ const BestiaryPlanner = () => {
                 onRemoveCreature={handleRemoveFromPlan}
                 onClearPlan={handleClearPlan}
                 onCompleteCreature={handleCompleteCreature}
-                onEditHours={handleEditHours}
               />
             )}
           </FilterSection>

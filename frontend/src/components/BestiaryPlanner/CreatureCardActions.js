@@ -92,7 +92,7 @@ const CreatureCardActions = ({
               : t('bestiaryPlanner.sessionPlanner.addToPlan')
           }
         >
-          {isInPlan ? '✓' : '+'}
+          {isInPlan ? '×' : '+'}
           <ActionTooltip>
             {isInPlan
               ? t('bestiaryPlanner.actions.removeFromPlan', { defaultValue: 'Remover do plano' })
