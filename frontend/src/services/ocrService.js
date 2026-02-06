@@ -7,7 +7,7 @@
  */
 
 // OCR.space API configuration
-const OCR_SPACE_API_KEY = 'K87899142388957'; // Free API key (public use)
+const OCR_SPACE_API_KEY = process.env.REACT_APP_OCR_SPACE_API_KEY || '';
 const OCR_SPACE_URL = 'https://api.ocr.space/parse/image';
 
 // Quality thresholds (exported for use by components)
