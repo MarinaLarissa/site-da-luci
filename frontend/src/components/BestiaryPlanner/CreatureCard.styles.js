@@ -26,6 +26,15 @@ export const Card = styled.div`
       opacity: 0.8;
     }
   `}
+
+  ${({ $selected, theme }) =>
+    $selected &&
+    `
+    border-color: ${theme.colors.accent.primary};
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    box-shadow: 0 0 0 2px ${theme.colors.accent.primary};
+    transform: scale(0.98);
+  `}
 `;
 
 export const CompletedBadge = styled.div`

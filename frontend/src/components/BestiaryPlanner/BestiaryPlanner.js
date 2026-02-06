@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { useBestiaryPlanner } from '../../hooks/useBestiaryPlanner';
 import { useUndoAction } from '../../hooks/useUndoAction';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
+import { useBulkSelection } from '../../hooks/useBulkSelection';
 import FilterPanel from './FilterPanel';
 import SuggestionList from './SuggestionList';
 import CharacterModal from './CharacterModal';
@@ -23,6 +24,8 @@ import SessionPlanner from './SessionPlanner';
 import UndoToast from './UndoToast';
 import KillCountModal from './KillCountModal';
 import FirstTimeTutorial from './FirstTimeTutorial';
+import BulkActionsBar from './BulkActionsBar';
+import BulkConfirmationModal from './BulkConfirmationModal';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import {
   getSessionPlanWithData,
@@ -81,6 +84,7 @@ const BestiaryPlanner = () => {
   const [isKillCountModalOpen, setIsKillCountModalOpen] = useState(false);
   const [selectedCreatureForEdit, setSelectedCreatureForEdit] = useState(null);
   const [characterToEdit, setCharacterToEdit] = useState(null);
+  const [bulkModalConfig, setBulkModalConfig] = useState(null);
 
   const {
     character,
@@ -108,6 +112,19 @@ const BestiaryPlanner = () => {
     onUndo: canUndo ? undo : null,
     enabled: true,
   });
+
+  // Bulk selection
+  const {
+    selectionMode,
+    selectedCount,
+    toggleSelection,
+    selectFiltered,
+    selectNone,
+    enterSelectionMode,
+    exitSelectionMode,
+    isSelected,
+    getSelectedIds,
+  } = useBulkSelection(character?.id);
 
   // Load session plan creatures
   useEffect(() => {
@@ -412,6 +429,117 @@ const BestiaryPlanner = () => {
     setSelectedCreatureForEdit(null);
   };
 
+  // Bulk Actions Handlers
+  const handleBulkMarkComplete = () => {
+    const selectedCreatures = BESTIARY_DATA.filter((c) => getSelectedIds().includes(c.id));
+
+    setBulkModalConfig({
+      title: t('bestiaryPlanner.bulkActions.confirmComplete.title'),
+      description: t('bestiaryPlanner.bulkActions.confirmComplete.description', { count: selectedCount }),
+      creatures: selectedCreatures,
+      confirmText: t('bestiaryPlanner.bulkActions.markComplete'),
+      confirmVariant: 'complete',
+      onConfirm: () => {
+        getSelectedIds().forEach((creatureId) => {
+          const creature = BESTIARY_DATA.find((c) => c.id === creatureId);
+          if (creature && !isCreatureCompleted(creatureId)) {
+            toggleCreatureCompletion(creatureId);
+            addTodayCompletion(character.id, creature);
+
+            // Remove from session plan if it's there
+            if (isInSessionPlan(character.id, creatureId)) {
+              toggleCreatureInPlan(character.id, creatureId);
+            }
+          }
+        });
+
+        refreshProgress();
+        const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+        setSessionPlanCreatures(updatedPlan);
+        exitSelectionMode();
+        setBulkModalConfig(null);
+      },
+    });
+  };
+
+  const handleBulkAddToPlan = () => {
+    const selectedCreatures = BESTIARY_DATA.filter((c) => getSelectedIds().includes(c.id));
+
+    setBulkModalConfig({
+      title: t('bestiaryPlanner.bulkActions.confirmAddToPlan.title'),
+      description: t('bestiaryPlanner.bulkActions.confirmAddToPlan.description', { count: selectedCount }),
+      creatures: selectedCreatures,
+      confirmText: t('bestiaryPlanner.bulkActions.addToPlan'),
+      confirmVariant: 'plan',
+      onConfirm: () => {
+        getSelectedIds().forEach((creatureId) => {
+          if (!isInSessionPlan(character.id, creatureId)) {
+            toggleCreatureInPlan(character.id, creatureId);
+          }
+        });
+
+        const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+        setSessionPlanCreatures(updatedPlan);
+        exitSelectionMode();
+        setBulkModalConfig(null);
+      },
+    });
+  };
+
+  const handleBulkRemove = () => {
+    const selectedCreatures = BESTIARY_DATA.filter((c) => getSelectedIds().includes(c.id));
+
+    setBulkModalConfig({
+      title: t('bestiaryPlanner.bulkActions.confirmRemove.title'),
+      description: t('bestiaryPlanner.bulkActions.confirmRemove.description', { count: selectedCount }),
+      creatures: selectedCreatures,
+      confirmText: t('bestiaryPlanner.bulkActions.remove'),
+      confirmVariant: 'remove',
+      onConfirm: () => {
+        getSelectedIds().forEach((creatureId) => {
+          // Mark as incomplete (remove completion)
+          if (isCreatureCompleted(creatureId)) {
+            toggleCreatureCompletion(creatureId);
+          }
+          // Remove from plan if in plan
+          if (isInSessionPlan(character.id, creatureId)) {
+            toggleCreatureInPlan(character.id, creatureId);
+          }
+        });
+
+        refreshProgress();
+        const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+        setSessionPlanCreatures(updatedPlan);
+        exitSelectionMode();
+        setBulkModalConfig(null);
+      },
+    });
+  };
+
+  const handleBulkExport = () => {
+    const selectedCreatures = BESTIARY_DATA.filter((c) => getSelectedIds().includes(c.id));
+
+    // Generate CSV
+    const csvHeader = 'Name,Charm Points,Difficulty,Region,Recommended Level,Estimated Hours\n';
+    const csvRows = selectedCreatures
+      .map((c) => `"${c.name}",${c.charmPoints},"${c.difficulty}","${c.region}",${c.recommendedLevel},${c.estimatedHours}`)
+      .join('\n');
+    const csvContent = csvHeader + csvRows;
+
+    // Download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `bestiary-selection-${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+
+    exitSelectionMode();
+  };
+
+  const handleBulkCancel = () => {
+    exitSelectionMode();
+  };
+
   return (
     <PlannerContainer>
       <Header>
@@ -554,6 +682,10 @@ const BestiaryPlanner = () => {
                   onUpdateFilters={handlePendingFilterChange}
                   onResetFilters={handleClearFilters}
                   totalResults={suggestions.length}
+                  onSelectAllFiltered={() => {
+                    enterSelectionMode();
+                    selectFiltered(suggestions);
+                  }}
                 />
                 <FilterActions>
                   <FilterButton $variant="primary" onClick={handleApplyFilters} disabled={!pendingFilters}>
@@ -578,6 +710,12 @@ const BestiaryPlanner = () => {
             isCreatureInPlan={(creatureId) => isInSessionPlan(character.id, creatureId)}
             isCreatureCompleted={isCreatureCompleted}
             character={character}
+            selectionMode={selectionMode}
+            isCreatureSelected={isSelected}
+            onToggleSelection={toggleSelection}
+            onSelectAll={() => selectFiltered(suggestions)}
+            onSelectNone={selectNone}
+            onEnterSelectionMode={enterSelectionMode}
           />
         </ResultsSection>
       </ContentGrid>
@@ -623,6 +761,32 @@ const BestiaryPlanner = () => {
 
       {/* First Time Tutorial */}
       <FirstTimeTutorial />
+
+      {/* Bulk Actions Bar */}
+      {selectionMode && (
+        <BulkActionsBar
+          selectedCount={selectedCount}
+          onMarkComplete={handleBulkMarkComplete}
+          onAddToPlan={handleBulkAddToPlan}
+          onRemove={handleBulkRemove}
+          onExport={handleBulkExport}
+          onCancel={handleBulkCancel}
+        />
+      )}
+
+      {/* Bulk Confirmation Modal */}
+      {bulkModalConfig && (
+        <BulkConfirmationModal
+          isOpen={!!bulkModalConfig}
+          onClose={() => setBulkModalConfig(null)}
+          onConfirm={bulkModalConfig.onConfirm}
+          title={bulkModalConfig.title}
+          description={bulkModalConfig.description}
+          creatures={bulkModalConfig.creatures}
+          confirmText={bulkModalConfig.confirmText}
+          confirmVariant={bulkModalConfig.confirmVariant}
+        />
+      )}
     </PlannerContainer>
   );
 };

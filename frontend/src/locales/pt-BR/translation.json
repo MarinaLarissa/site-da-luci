@@ -649,6 +649,39 @@
         "retrying": "Tentando novamente em {{seconds}}s",
         "failed": "OCR falhou após {{count}} tentativas"
       }
+    },
+    "bulkActions": {
+      "selected": "{{count}} selecionada",
+      "selected_plural": "{{count}} selecionadas",
+      "markComplete": "Marcar como Completo",
+      "addToPlan": "Adicionar ao Plano",
+      "remove": "Remover",
+      "export": "Exportar",
+      "cancel": "Cancelar",
+      "cancelAction": "Cancelar",
+      "andMore": "e mais {{count}} criatura...",
+      "andMore_plural": "e mais {{count}} criaturas...",
+      "confirmComplete": {
+        "title": "Confirmar Conclusão em Massa",
+        "description": "Você está prestes a marcar {{count}} criatura como completa. Esta ação não pode ser desfeita.",
+        "description_plural": "Você está prestes a marcar {{count}} criaturas como completas. Esta ação não pode ser desfeita."
+      },
+      "confirmAddToPlan": {
+        "title": "Confirmar Adição ao Plano",
+        "description": "Adicionar {{count}} criatura ao plano de hunt?",
+        "description_plural": "Adicionar {{count}} criaturas ao plano de hunt?"
+      },
+      "confirmRemove": {
+        "title": "Confirmar Remoção",
+        "description": "Remover {{count}} criatura (desmarcar conclusão e remover do plano)?",
+        "description_plural": "Remover {{count}} criaturas (desmarcar conclusão e remover do plano)?"
+      }
+    },
+    "selection": {
+      "enterMode": "Modo Seleção",
+      "selectAll": "Selecionar Tudo",
+      "selectNone": "Desmarcar Tudo",
+      "selectAllFiltered": "Selecionar Filtradas"
     }
   },
   "imbuementCalculator": {

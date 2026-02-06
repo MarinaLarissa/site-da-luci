@@ -18,6 +18,7 @@ import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
 import { calculateDisplayStatus, getStatusColor, getStatusI18nKey, BestiaryStatus } from '../../utils/bestiaryStatusUtils';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import CreatureCardActions from './CreatureCardActions';
+import SelectionCheckbox from './SelectionCheckbox';
 import {
   Card,
   StatusBadge,
@@ -69,6 +70,9 @@ const CreatureCard = ({
   onTogglePlan,
   isInPlan,
   onEditKills,
+  selectionMode,
+  isSelected,
+  onToggleSelection,
 }) => {
   const { t } = useTranslation();
   const cardRef = useRef(null);
@@ -126,7 +130,18 @@ const CreatureCard = ({
   const resistancesCol3 = allResistances.slice(resistancesPerColumn * 2);
 
   return (
-    <Card ref={cardRef} $completed={isCompleted} tabIndex={0}>
+    <Card ref={cardRef} $completed={isCompleted} $selected={isSelected} tabIndex={0}>
+      {/* Selection Checkbox (visible only in selection mode) */}
+      {selectionMode && (
+        <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', zIndex: 10 }}>
+          <SelectionCheckbox
+            checked={isSelected}
+            onChange={() => onToggleSelection?.(creature.id)}
+            ariaLabel={`Select ${creature.name}`}
+          />
+        </div>
+      )}
+
       {/* Status Badge - Only show for Complete or In Progress */}
       {displayStatus.status === BestiaryStatus.COMPLETE && (
         <StatusBadge $color={getStatusColor(displayStatus.status)}>
@@ -260,13 +275,15 @@ const CreatureCard = ({
 };
 
 // Custom comparison function for memo
-// Only re-render if creature id, isCompleted, isInPlan, or isRapidRecommended changed
+// Only re-render if creature id, isCompleted, isInPlan, isRapidRecommended, or selection changed
 const areEqual = (prevProps, nextProps) => {
   return (
     prevProps.creature.id === nextProps.creature.id &&
     prevProps.isCompleted === nextProps.isCompleted &&
     prevProps.isInPlan === nextProps.isInPlan &&
-    prevProps.creature.isRapidRecommended === nextProps.creature.isRapidRecommended
+    prevProps.creature.isRapidRecommended === nextProps.creature.isRapidRecommended &&
+    prevProps.selectionMode === nextProps.selectionMode &&
+    prevProps.isSelected === nextProps.isSelected
   );
 };
 
@@ -300,12 +317,18 @@ CreatureCard.propTypes = {
   onTogglePlan: PropTypes.func,
   isInPlan: PropTypes.bool,
   onEditKills: PropTypes.func,
+  selectionMode: PropTypes.bool,
+  isSelected: PropTypes.bool,
+  onToggleSelection: PropTypes.func,
 };
 
 CreatureCard.defaultProps = {
   onTogglePlan: null,
   isInPlan: false,
   onEditKills: null,
+  selectionMode: false,
+  isSelected: false,
+  onToggleSelection: null,
 };
 
 export default memo(CreatureCard, areEqual);

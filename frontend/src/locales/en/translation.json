@@ -423,7 +423,8 @@
       "show": "Show",
       "hide": "Hide",
       "apply": "Apply Filters",
-      "clear": "Clear Filters"
+      "clear": "Clear Filters",
+      "selectAllFiltered": "Select All Filtered"
     },
     "difficulty": {
       "harmless": "Harmless",
@@ -649,6 +650,39 @@
         "retrying": "Retrying in {{seconds}}s",
         "failed": "OCR failed after {{count}} attempts"
       }
+    },
+    "bulkActions": {
+      "selected": "{{count}} selected",
+      "selected_plural": "{{count}} selected",
+      "markComplete": "Mark Complete",
+      "addToPlan": "Add to Plan",
+      "remove": "Remove",
+      "export": "Export",
+      "cancel": "Cancel",
+      "cancelAction": "Cancel",
+      "andMore": "and {{count}} more creature...",
+      "andMore_plural": "and {{count}} more creatures...",
+      "confirmComplete": {
+        "title": "Confirm Bulk Completion",
+        "description": "You are about to mark {{count}} creature as complete. This action cannot be undone.",
+        "description_plural": "You are about to mark {{count}} creatures as complete. This action cannot be undone."
+      },
+      "confirmAddToPlan": {
+        "title": "Confirm Add to Plan",
+        "description": "Add {{count}} creature to hunt plan?",
+        "description_plural": "Add {{count}} creatures to hunt plan?"
+      },
+      "confirmRemove": {
+        "title": "Confirm Removal",
+        "description": "Remove {{count}} creature (unmark completion and remove from plan)?",
+        "description_plural": "Remove {{count}} creatures (unmark completion and remove from plan)?"
+      }
+    },
+    "selection": {
+      "enterMode": "Selection Mode",
+      "selectAll": "Select All",
+      "selectNone": "Select None",
+      "selectAllFiltered": "Select All Filtered"
     }
   },
   "imbuementCalculator": {

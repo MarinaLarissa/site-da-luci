@@ -11,6 +11,8 @@ export const ListHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${({ theme }) => theme.spacing.md};
+  flex-wrap: wrap;
+  gap: 1rem;
 `;
 
 export const ListTitle = styled.h2`

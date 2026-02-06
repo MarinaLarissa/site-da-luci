@@ -37,6 +37,7 @@ const FilterPanel = ({
   onUpdateFilters,
   onResetFilters,
   totalResults,
+  onSelectAllFiltered,
 }) => {
   const { t } = useTranslation();
 
@@ -175,6 +176,13 @@ const FilterPanel = ({
           <SummaryValue>{totalResults}</SummaryValue>
         </SummaryItem>
       </ResultsSummary>
+
+      {/* Select All Filtered */}
+      {onSelectAllFiltered && totalResults > 0 && (
+        <ResetButton onClick={onSelectAllFiltered} style={{ marginTop: '1rem' }}>
+          {t('bestiaryPlanner.filters.selectAllFiltered')}
+        </ResetButton>
+      )}
     </Panel>
   );
 };
