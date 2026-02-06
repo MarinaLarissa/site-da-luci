@@ -142,12 +142,7 @@ const CreatureCard = ({
         </div>
       )}
 
-      {/* Status Badge - Only show for Complete or In Progress */}
-      {displayStatus.status === BestiaryStatus.COMPLETE && (
-        <StatusBadge $color={getStatusColor(displayStatus.status)}>
-          ✓ {t(getStatusI18nKey(displayStatus.status))}
-        </StatusBadge>
-      )}
+      {/* Status Badge - Only show for In Progress (Complete is now shown via action button) */}
       {displayStatus.status === BestiaryStatus.IN_PROGRESS && (
         <StatusBadge $color={getStatusColor(displayStatus.status)}>
           {t(getStatusI18nKey(displayStatus.status), { stage: displayStatus.stage })}
