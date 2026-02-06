@@ -683,6 +683,74 @@
       "selectAll": "Select All",
       "selectNone": "Select None",
       "selectAllFiltered": "Select All Filtered"
+    },
+    "progressHistory": {
+      "button": "Progress History",
+      "title": "Progress History",
+      "tabs": {
+        "charts": "Charts",
+        "timeline": "Timeline",
+        "statistics": "Statistics",
+        "export": "Export"
+      },
+      "chart": {
+        "title": "Charm Points Over Time",
+        "periods": {
+          "7d": "7 Days",
+          "30d": "30 Days",
+          "3m": "3 Months",
+          "all": "All"
+        },
+        "total": "Total",
+        "dailyAverage": "Daily Average",
+        "loading": "Loading chart...",
+        "noData": "No data available for this period"
+      },
+      "timeline": {
+        "title": "Completions Timeline",
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "loadMore": "Load More",
+        "noData": "No completions recorded yet",
+        "completions": "completions"
+      },
+      "statistics": {
+        "title": "Statistics",
+        "subtitle": "Based on last 30 days",
+        "dailyAverage": "Daily Average",
+        "dailyAverageUnit": "completions/day",
+        "maxStreak": "Max Streak",
+        "maxStreakUnit": "consecutive days",
+        "currentStreak": "Current Streak",
+        "mostProductiveDay": "Most Productive Day",
+        "projection": "Completion Projection",
+        "projectionUnit": "days remaining",
+        "totalCharmPoints": "Total Charm Points",
+        "totalCharmPointsUnit": "CP accumulated",
+        "weeklyComparison": "Weekly Comparison",
+        "weeklyComparisonUnit": "vs last week",
+        "noData": "Insufficient data for statistics"
+      },
+      "export": {
+        "title": "Export History",
+        "subtitle": "Backup your progress data",
+        "period": "Period",
+        "format": "Format",
+        "preview": "Preview (first 5 lines)",
+        "exportButton": "Export ({{count}} completions)",
+        "periods": {
+          "7d": "Last 7 days",
+          "30d": "Last 30 days",
+          "3m": "Last 3 months",
+          "all": "All"
+        },
+        "formats": {
+          "csv": "CSV",
+          "json": "JSON"
+        },
+        "success": "File exported successfully!",
+        "error": "Error exporting file"
+      }
     }
   },
   "imbuementCalculator": {

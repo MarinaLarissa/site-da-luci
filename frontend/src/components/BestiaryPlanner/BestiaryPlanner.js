@@ -26,7 +26,9 @@ import KillCountModal from './KillCountModal';
 import FirstTimeTutorial from './FirstTimeTutorial';
 import BulkActionsBar from './BulkActionsBar';
 import BulkConfirmationModal from './BulkConfirmationModal';
+import ProgressHistory from './ProgressHistory';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
+import { saveCompletion } from '../../services/progressHistoryStorage';
 import {
   getSessionPlanWithData,
   toggleCreatureInPlan,
@@ -85,6 +87,7 @@ const BestiaryPlanner = () => {
   const [selectedCreatureForEdit, setSelectedCreatureForEdit] = useState(null);
   const [characterToEdit, setCharacterToEdit] = useState(null);
   const [bulkModalConfig, setBulkModalConfig] = useState(null);
+  const [isProgressHistoryOpen, setIsProgressHistoryOpen] = useState(false);
 
   const {
     character,
@@ -286,6 +289,13 @@ const BestiaryPlanner = () => {
       // Was NOT completed, now IS completed
       // Add to today's completions
       addTodayCompletion(character.id, creature);
+
+      // Feature 4: Save to progress history storage (long-term tracking)
+      saveCompletion(character.id, {
+        id: creature.id,
+        name: creature.name,
+        charmPoints: creature.charmPoints,
+      });
 
       // Remove from session plan if it's there
       const wasInPlan = isInSessionPlan(character.id, creatureId);
@@ -545,32 +555,57 @@ const BestiaryPlanner = () => {
       <Header>
         <HeaderTop>
           <HeaderContent>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <Title>{t('bestiaryPlanner.title')}</Title>
               {character && (
-                <button
-                  onClick={() => setIsCharacterDrawerOpen(true)}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    background: 'transparent',
-                    border: '1px solid #374151',
-                    borderRadius: '0.375rem',
-                    color: '#9ca3af',
-                    fontSize: '0.875rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.borderColor = '#667eea';
-                    e.target.style.color = '#667eea';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.borderColor = '#374151';
-                    e.target.style.color = '#9ca3af';
-                  }}
-                >
-                  👤 {character.name}
-                </button>
+                <>
+                  <button
+                    onClick={() => setIsCharacterDrawerOpen(true)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      background: 'transparent',
+                      border: '1px solid #374151',
+                      borderRadius: '0.375rem',
+                      color: '#9ca3af',
+                      fontSize: '0.875rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.borderColor = '#667eea';
+                      e.target.style.color = '#667eea';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.color = '#9ca3af';
+                    }}
+                  >
+                    👤 {character.name}
+                  </button>
+                  <button
+                    onClick={() => setIsProgressHistoryOpen(true)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      background: 'transparent',
+                      border: '1px solid #374151',
+                      borderRadius: '0.375rem',
+                      color: '#9ca3af',
+                      fontSize: '0.875rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.borderColor = '#667eea';
+                      e.target.style.color = '#667eea';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.color = '#9ca3af';
+                    }}
+                  >
+                    📊 {t('bestiaryPlanner.progressHistory.button')}
+                  </button>
+                </>
               )}
             </div>
             <Subtitle>{t('bestiaryPlanner.subtitle')}</Subtitle>
@@ -785,6 +820,15 @@ const BestiaryPlanner = () => {
           creatures={bulkModalConfig.creatures}
           confirmText={bulkModalConfig.confirmText}
           confirmVariant={bulkModalConfig.confirmVariant}
+        />
+      )}
+
+      {/* Progress History Modal (Feature 4) */}
+      {character && (
+        <ProgressHistory
+          isOpen={isProgressHistoryOpen}
+          onClose={() => setIsProgressHistoryOpen(false)}
+          characterId={character.id}
         />
       )}
     </PlannerContainer>

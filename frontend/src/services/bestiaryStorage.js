@@ -2,6 +2,9 @@
  * Bestiary Storage Service
  * Handles localStorage persistence for bestiary progress per character
  *
+ * Feature 4 Update (Progress History):
+ * - Integrated with progressHistoryStorage for long-term tracking
+ *
  * Storage structure:
  * {
  *   version: '1.0',

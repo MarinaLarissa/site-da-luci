@@ -423,7 +423,8 @@
       "show": "Mostrar",
       "hide": "Esconder",
       "apply": "Aplicar Filtros",
-      "clear": "Limpar Filtros"
+      "clear": "Limpar Filtros",
+      "selectAllFiltered": "Selecionar Filtrados"
     },
     "difficulty": {
       "harmless": "Inofensivo",
@@ -682,6 +683,74 @@
       "selectAll": "Selecionar Tudo",
       "selectNone": "Desmarcar Tudo",
       "selectAllFiltered": "Selecionar Filtradas"
+    },
+    "progressHistory": {
+      "button": "Histórico de Progresso",
+      "title": "Histórico de Progresso",
+      "tabs": {
+        "charts": "Gráficos",
+        "timeline": "Timeline",
+        "statistics": "Estatísticas",
+        "export": "Exportar"
+      },
+      "chart": {
+        "title": "Charm Points ao Longo do Tempo",
+        "periods": {
+          "7d": "7 Dias",
+          "30d": "30 Dias",
+          "3m": "3 Meses",
+          "all": "Todos"
+        },
+        "total": "Total",
+        "dailyAverage": "Média Diária",
+        "loading": "Carregando gráfico...",
+        "noData": "Nenhum dado disponível para este período"
+      },
+      "timeline": {
+        "title": "Timeline de Completions",
+        "today": "Hoje",
+        "yesterday": "Ontem",
+        "loadMore": "Carregar Mais",
+        "noData": "Nenhuma completion registrada ainda",
+        "completions": "completions"
+      },
+      "statistics": {
+        "title": "Estatísticas",
+        "subtitle": "Baseado nos últimos 30 dias",
+        "dailyAverage": "Média Diária",
+        "dailyAverageUnit": "completions/dia",
+        "maxStreak": "Maior Streak",
+        "maxStreakUnit": "dias consecutivos",
+        "currentStreak": "Streak Atual",
+        "mostProductiveDay": "Dia Mais Produtivo",
+        "projection": "Projeção de Conclusão",
+        "projectionUnit": "dias restantes",
+        "totalCharmPoints": "Total de Charm Points",
+        "totalCharmPointsUnit": "CP acumulados",
+        "weeklyComparison": "Comparação Semanal",
+        "weeklyComparisonUnit": "vs semana passada",
+        "noData": "Dados insuficientes para estatísticas"
+      },
+      "export": {
+        "title": "Exportar Histórico",
+        "subtitle": "Faça backup dos seus dados de progresso",
+        "period": "Período",
+        "format": "Formato",
+        "preview": "Preview (primeiras 5 linhas)",
+        "exportButton": "Exportar ({{count}} completions)",
+        "periods": {
+          "7d": "Últimos 7 dias",
+          "30d": "Últimos 30 dias",
+          "3m": "Últimos 3 meses",
+          "all": "Todos"
+        },
+        "formats": {
+          "csv": "CSV",
+          "json": "JSON"
+        },
+        "success": "Arquivo exportado com sucesso!",
+        "error": "Erro ao exportar arquivo"
+      }
     }
   },
   "imbuementCalculator": {

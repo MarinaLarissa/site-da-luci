@@ -1,6 +1,10 @@
 /**
  * Daily Progress Storage Service
  * Tracks bestiary completions per day for progress statistics
+ *
+ * Feature 4 Update (Progress History):
+ * - Extended retention from 7 days to 1 year
+ * - Added getHistoricalData() for long-term queries
  */
 
 const STORAGE_KEY_PREFIX = 'daily_bestiary_progress_';
@@ -85,7 +89,8 @@ export const addTodayCompletion = (characterId, creatureData) => {
 };
 
 /**
- * Clean old data (keep only last 7 days)
+ * Clean old data (keep only last 1 year instead of 7 days)
+ * MODIFIED for Feature 4: Progress History
  */
 const cleanOldData = (characterId) => {
   try {
@@ -95,14 +100,14 @@ const cleanOldData = (characterId) => {
     if (!data) return;
 
     const parsed = JSON.parse(data);
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
-    // Filter out old entries
+    // Filter out old entries (> 1 year)
     const filtered = {};
     Object.keys(parsed).forEach((dateKey) => {
       const date = new Date(dateKey);
-      if (date >= sevenDaysAgo) {
+      if (date >= oneYearAgo) {
         filtered[dateKey] = parsed[dateKey];
       }
     });
@@ -137,5 +142,43 @@ export const clearDailyProgress = (characterId) => {
   } catch (error) {
     console.error('Error clearing daily progress:', error);
     return false;
+  }
+};
+
+/**
+ * Get historical data for specified number of days
+ * ADDED for Feature 4: Progress History
+ * @param {string} characterId - Character UUID
+ * @param {number} days - Number of days to retrieve (default: 365)
+ * @returns {Array} - Array of { date, completions }
+ */
+export const getHistoricalData = (characterId, days = 365) => {
+  try {
+    const key = getStorageKey(characterId);
+    const data = localStorage.getItem(key);
+
+    if (!data) {
+      return [];
+    }
+
+    const parsed = JSON.parse(data);
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - days);
+
+    // Filter entries within specified days
+    const filtered = Object.entries(parsed)
+      .filter(([dateKey]) => {
+        const date = new Date(dateKey);
+        return date >= cutoffDate;
+      })
+      .sort(([dateA], [dateB]) => new Date(dateB) - new Date(dateA)); // Sort descending
+
+    return filtered.map(([date, completions]) => ({
+      date,
+      completions,
+    }));
+  } catch (error) {
+    console.error('Error reading historical data:', error);
+    return [];
   }
 };
