@@ -9,6 +9,7 @@ import { validateBestiaryScreenshot, preprocessWithQualityCheck } from '../../se
 import { parseOcrText, isTruncatedName, findAutocompleteCandidates } from '../../utils/bestiaryOcrParser';
 import { calculateMinimumKills } from '../../utils/bestiaryStages';
 import { useOcrWithRetry } from '../../hooks/useOcrWithRetry';
+import useMultipleOcrProcessing from '../../hooks/useMultipleOcrProcessing';
 import AutocompleteModal from './AutocompleteModal';
 import ImageQualityValidator from './ScreenshotImport/ImageQualityValidator';
 import CropPreviewModal from './ScreenshotImport/CropPreviewModal';
@@ -37,16 +38,31 @@ import {
   UnmatchedList,
   UnmatchedItem,
   ErrorMessage,
+  ImageGrid,
+  ImageItem,
+  ImageProgress,
+  StatusIcon,
+  ImageFileName,
+  GlobalProgressContainer,
+  GlobalProgressText,
+  ErrorSummary,
+  ErrorTitle,
+  ErrorList,
+  ErrorItem,
+  ErrorFileName,
+  ErrorMessageText,
 } from './ScreenshotImport.styles';
 
 const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const { t } = useTranslation();
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreviews, setImagePreviews] = useState([]); // Multiple previews
   const [croppedPreview, setCroppedPreview] = useState(null);
   const [cropRegion, setCropRegion] = useState(null);
   const [ocrResults, setOcrResults] = useState(null);
   const [error, setError] = useState(null);
+  const [isMultipleMode, setIsMultipleMode] = useState(false);
 
   // New workflow states
   const [showQualityCheck, setShowQualityCheck] = useState(false);
@@ -57,7 +73,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [currentAutocomplete, setCurrentAutocomplete] = useState(null);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
 
-  // OCR with retry hook
+  // OCR with retry hook (single image)
   const {
     processOcr,
     isProcessing,
@@ -73,6 +89,39 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     onError: (err, retry) => {
       if (process.env.NODE_ENV === 'development') {
         console.warn(`OCR Attempt ${retry + 1} failed:`, err.message);
+      }
+    },
+  });
+
+  // Multiple OCR processing hook
+  const {
+    processMultiple,
+    isProcessing: isProcessingMultiple,
+    globalProgress,
+    results: multipleResults,
+    imageStatuses,
+    cancel: cancelMultiple,
+  } = useMultipleOcrProcessing({
+    maxParallel: 3,
+    onProgress: (progress, statuses) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Multiple OCR Progress: ${progress}%`);
+      }
+    },
+    onComplete: (consolidated) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Multiple OCR Complete:', consolidated);
+      }
+      // Set consolidated results
+      setOcrResults({
+        matched: consolidated.matched,
+        unmatched: consolidated.unmatched,
+        totalFound: consolidated.totalFound,
+      });
+    },
+    onError: (errors) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Multiple OCR Errors:', errors);
       }
     },
   });
@@ -102,19 +151,62 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     reader.readAsDataURL(file);
   }, [t]);
 
+  // Handle multiple files
+  const handleMultipleFiles = useCallback((files) => {
+    // Validate all files are images
+    const invalidFiles = files.filter(file => !file.type.startsWith('image/'));
+    if (invalidFiles.length > 0) {
+      setError(t('bestiaryPlanner.screenshot.invalidFile'));
+      return;
+    }
+
+    setIsMultipleMode(true);
+    setError(null);
+    setOcrResults(null);
+
+    // Create previews for all images
+    const previewPromises = files.map(file => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          resolve({
+            file: file,
+            preview: e.target.result,
+            id: `${file.name}_${file.size}_${file.lastModified}`,
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(previewPromises).then(previews => {
+      setImagePreviews(previews);
+      // Auto-start processing
+      processMultiple(files);
+    });
+  }, [t, processMultiple]);
+
   // Handle file drop
   const handleDrop = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const file = e.dataTransfer.files[0];
-    handleFile(file);
-  }, [handleFile]);
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length > 1) {
+      handleMultipleFiles(files);
+    } else if (files.length === 1) {
+      handleFile(files[0]);
+    }
+  }, [handleFile, handleMultipleFiles]);
 
   // Handle file selection
   const handleFileSelect = (e) => {
-    const file = e.target.files[0];
-    handleFile(file);
+    const files = Array.from(e.target.files);
+    if (files.length > 1) {
+      handleMultipleFiles(files);
+    } else if (files.length === 1) {
+      handleFile(files[0]);
+    }
   };
 
   // Handle quality check proceed (show crop preview)
@@ -265,19 +357,24 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   };
 
   // Clear upload
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setImageFile(null);
     setImagePreview(null);
+    setImagePreviews([]);
     setCroppedPreview(null);
     setCropRegion(null);
     setOcrResults(null);
     setError(null);
+    setIsMultipleMode(false);
     setShowQualityCheck(false);
     setShowCropPreview(false);
     setAutocompleteQueue([]);
     setCurrentAutocomplete(null);
     setIsAutocompleteOpen(false);
-  };
+    if (isProcessingMultiple) {
+      cancelMultiple();
+    }
+  }, [isProcessingMultiple, cancelMultiple]);
 
   // Handle autocomplete selection
   const handleAutocompleteSelect = (selectedCreature) => {
@@ -364,13 +461,103 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
             id="screenshot-input"
             type="file"
             accept="image/*"
+            multiple
             style={{ display: 'none' }}
             onChange={handleFileSelect}
           />
         </UploadZone>
       )}
 
-      {imagePreview && !ocrResults && (
+      {/* Multiple Images Mode */}
+      {isMultipleMode && imagePreviews.length > 0 && (
+        <>
+          <div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+              {t('bestiaryPlanner.screenshot.multipleUpload')}
+            </h3>
+
+            {/* Global Progress */}
+            {isProcessingMultiple && (
+              <GlobalProgressContainer>
+                <GlobalProgressText>
+                  {t('bestiaryPlanner.screenshot.processingMultiple', {
+                    current: Array.from(imageStatuses.values()).filter(s => s.status === 'completed').length,
+                    total: imagePreviews.length,
+                  })}
+                </GlobalProgressText>
+                <ProgressBar>
+                  <ProgressFill $progress={globalProgress} />
+                  <ProgressText>{globalProgress}%</ProgressText>
+                </ProgressBar>
+              </GlobalProgressContainer>
+            )}
+
+            {/* Image Grid */}
+            <ImageGrid>
+              {imagePreviews.map((preview, index) => {
+                const status = imageStatuses.get(preview.id);
+                const statusType = status?.status || 'queued';
+                const statusProgress = status?.progress || 0;
+
+                return (
+                  <ImageItem key={preview.id} $status={statusType}>
+                    <img src={preview.preview} alt={`Preview ${index + 1}`} />
+
+                    {/* Status Icon */}
+                    <StatusIcon>
+                      {statusType === 'completed' && '✅'}
+                      {statusType === 'error' && '❌'}
+                      {statusType === 'processing' && '🔄'}
+                      {statusType === 'queued' && '⏳'}
+                    </StatusIcon>
+
+                    {/* Progress Bar */}
+                    {(statusType === 'processing' || statusType === 'completed') && (
+                      <ImageProgress $progress={statusProgress} />
+                    )}
+
+                    {/* File Name */}
+                    <ImageFileName title={preview.file.name}>
+                      {preview.file.name}
+                    </ImageFileName>
+                  </ImageItem>
+                );
+              })}
+            </ImageGrid>
+
+            {/* Error Summary */}
+            {multipleResults.some(r => !r.success && !r.cancelled) && !isProcessingMultiple && (
+              <ErrorSummary>
+                <ErrorTitle>
+                  ⚠️ {multipleResults.filter(r => !r.success && !r.cancelled).length} {t('bestiaryPlanner.screenshot.imageStatus.error')}
+                </ErrorTitle>
+                <ErrorList>
+                  {multipleResults
+                    .filter(r => !r.success && !r.cancelled)
+                    .map((result, index) => (
+                      <ErrorItem key={index}>
+                        <ErrorFileName>{result.fileName}:</ErrorFileName>
+                        <ErrorMessageText>{result.error}</ErrorMessageText>
+                      </ErrorItem>
+                    ))}
+                </ErrorList>
+              </ErrorSummary>
+            )}
+
+            {/* Clear Button */}
+            {!isProcessingMultiple && (
+              <PreviewActions>
+                <ClearButton onClick={handleClear}>
+                  {t('bestiaryPlanner.screenshot.clearButton')}
+                </ClearButton>
+              </PreviewActions>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* Single Image Mode */}
+      {!isMultipleMode && imagePreview && !ocrResults && (
         <>
           <PreviewContainer>
             <PreviewImage src={imagePreview} alt="Screenshot preview" />

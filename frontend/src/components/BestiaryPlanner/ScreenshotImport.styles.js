@@ -239,3 +239,146 @@ export const ErrorMessage = styled.div`
   color: #ef4444;
   font-weight: 600;
 `;
+
+// Multiple images grid styles
+export const ImageGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: ${({ theme }) => theme.spacing.md};
+  margin: ${({ theme }) => theme.spacing.md} 0;
+`;
+
+export const ImageItem = styled.div`
+  position: relative;
+  aspect-ratio: 1;
+  border: 2px solid ${({ $status, theme }) => {
+    if ($status === 'completed') return '#10b981';
+    if ($status === 'error') return '#ef4444';
+    if ($status === 'processing') return theme.colors.accent.primary;
+    return theme.colors.bg.secondary;
+  }};
+  border-radius: ${({ theme }) => theme.radius.md};
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.colors.bg.hover};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: ${({ $status }) => ($status === 'completed' ? 0.7 : 1)};
+  }
+`;
+
+export const ImageProgress = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: ${({ $progress }) => $progress}%;
+    background: ${({ theme }) => theme.colors.accent.primary};
+    transition: width 0.3s ease;
+  }
+`;
+
+export const StatusIcon = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+`;
+
+export const ImageFileName = styled.div`
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.625rem;
+  color: ${({ theme }) => theme.colors.text.primary};
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.25rem;
+  border-radius: ${({ theme }) => theme.radius.sm};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+export const GlobalProgressContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ theme }) => theme.colors.bg.hover};
+  border-radius: ${({ theme }) => theme.radius.md};
+`;
+
+export const GlobalProgressText = styled.div`
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text.secondary};
+  text-align: center;
+`;
+
+export const ErrorSummary = styled.div`
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: #ef444420;
+  border: 1px solid #ef4444;
+  border-radius: ${({ theme }) => theme.radius.md};
+  margin-top: ${({ theme }) => theme.spacing.md};
+`;
+
+export const ErrorTitle = styled.div`
+  font-weight: 600;
+  color: #ef4444;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-size: 0.875rem;
+`;
+
+export const ErrorList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+`;
+
+export const ErrorItem = styled.div`
+  font-size: 0.75rem;
+  color: #ef4444;
+  padding: ${({ theme }) => theme.spacing.xs};
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: ${({ theme }) => theme.radius.sm};
+`;
+
+export const ErrorFileName = styled.span`
+  font-weight: 600;
+  margin-right: ${({ theme }) => theme.spacing.xs};
+`;
+
+export const ErrorMessageText = styled.span`
+  color: ${({ theme }) => theme.colors.text.muted};
+`;
+
+export const RetryButton = styled.button`
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: ${({ theme }) => theme.radius.md};
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+`;

@@ -649,7 +649,18 @@
         "attempting": "Tentativa {{current}} de {{max}}",
         "retrying": "Tentando novamente em {{seconds}}s",
         "failed": "OCR falhou após {{count}} tentativas"
-      }
+      },
+      "multipleUpload": "Upload Múltiplo",
+      "processingMultiple": "Processando {{current}} de {{total}} imagens...",
+      "globalProgress": "Progresso Global",
+      "imageStatus": {
+        "queued": "Na fila",
+        "processing": "Processando...",
+        "completed": "Concluído",
+        "error": "Erro"
+      },
+      "retryFailed": "Tentar Novamente",
+      "consolidating": "Consolidando resultados..."
     },
     "bulkActions": {
       "selected": "{{count}} selecionada",
