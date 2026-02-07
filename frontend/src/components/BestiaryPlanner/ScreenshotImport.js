@@ -11,7 +11,8 @@ import { calculateMinimumKills } from '../../utils/bestiaryStages';
 import { useOcrWithRetry } from '../../hooks/useOcrWithRetry';
 import useMultipleOcrProcessing from '../../hooks/useMultipleOcrProcessing';
 import AutocompleteModal from './AutocompleteModal';
-import { BESTIARY_DATA } from '../../data/bestiary';
+// TODO: Manual search functionality - import needed when implemented
+// import { BESTIARY_DATA } from '../../data/bestiary';
 import ImageQualityValidator from './ScreenshotImport/ImageQualityValidator';
 import CropPreviewModal from './ScreenshotImport/CropPreviewModal';
 import {

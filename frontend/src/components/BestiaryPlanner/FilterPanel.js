@@ -12,18 +12,11 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { DIFFICULTY, RESPAWN_CATEGORY, BESTIARY_DATA } from '../../data/bestiary';
 import {
   Panel,
-  PanelHeader,
-  PanelTitle,
-  ResetButton,
   FilterGroup,
   FilterLabel,
   SearchInput,
-  CheckboxGroup,
   CheckboxLabel,
   Checkbox,
-  RangeInputGroup,
-  RangeInput,
-  RangeValue,
   ResultsSummary,
   SummaryItem,
   SummaryLabel,
@@ -33,7 +26,14 @@ import {
   Select,
 } from './FilterPanel.styles';
 
-// Charm Points values (fixed)
+/**
+ * Charm Points Filter - Fixed Values
+ *
+ * Changed from range slider (0-50) to multi-select checkboxes with fixed values.
+ * Reason: In Tibia, charm points are only awarded in specific amounts (1, 5, 10, 15, 25, 50).
+ * The previous range slider allowed selection of non-existent values (e.g., 7, 12, 23).
+ * Multi-select provides better UX by showing only valid charm point values.
+ */
 const CHARM_POINTS_VALUES = [1, 5, 10, 15, 25, 50];
 
 const FilterPanel = ({

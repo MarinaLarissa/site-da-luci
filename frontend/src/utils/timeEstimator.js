@@ -143,10 +143,12 @@ export const calculateEfficiencyScore = (charmPoints, estimatedHours, modifiers 
   return parseFloat(baseScore.toFixed(2));
 };
 
-export default {
+const timeEstimatorUtils = {
   calculateKillsPerMinute,
   estimateTimeToComplete,
   formatDuration,
   calculateTotalTime,
   calculateEfficiencyScore,
 };
+
+export default timeEstimatorUtils;

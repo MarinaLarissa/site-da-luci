@@ -46,6 +46,12 @@ export const RESPAWN_CATEGORY = {
   RARE: 'rare',
 };
 
+/**
+ * @deprecated REGIONS constant is no longer used.
+ * Replaced by specific spawn locations extracted from creature.locations array.
+ * FilterPanel now uses getAllLocations() to extract unique spawn locations.
+ * Kept for backward compatibility only - may be removed in future versions.
+ */
 export const REGIONS = {
   MAINLAND: 'Mainland',
   VENORE: 'Venore',
