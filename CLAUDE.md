@@ -33,52 +33,103 @@ const API_KEY = process.env.REACT_APP_OCR_SPACE_API_KEY || '';
 ```
 
 ### GR-3: Compact Log Format
-Logs for this project MUST use the compact format (~50 lines max). DO NOT include:
+Logs for this project MUST use the compact format (~50-80 lines max). DO NOT include:
 - "Workflow Compliance" sections (always self-execution, always compliant)
 - "Token Optimization (Phase 1.5)" sections (always N/A)
 - "Chain-of-Verification" sections (always N/A for self-execution)
 - "STOP-BEFORE-EDIT Guardrail" details (always permitted for React projects)
 - Full JSON "Raw Data" blocks
 - "Next Steps" or "Future Enhancements" (use BACKLOG.md instead)
+- Excessive emojis (use only ✅ ❌ ⚠️ for status indicators)
+- ASCII art or visual diagrams (describe in text instead)
+- Speculative "MELHORIAS FUTURAS" sections
 
-**Compact Log Template**:
-```markdown
-# Session Log - [YYYY-MM-DD HH:MM]
+**Templates:**
+- Single feature: `.claude/templates/COMPACT_LOG_TEMPLATE.md`
+- Multi-feature session: `.claude/templates/SESSION_LOG_TEMPLATE.md`
 
-## Summary
-**Task**: [description] | **Duration**: Xmin | **Result**: SUCCESS/FAILED
+**Required sections:**
+1. Summary (type, duration, impact)
+2. Changes (table format)
+3. Tests (MUST include actual results, not just plans)
+4. Metrics (use `npm run log-metrics` if available)
 
-## Changes
-| File | Action | Description |
-|------|--------|-------------|
-| path/to/file.js | Modified | Brief description |
+**Optional sections** (only if relevant):
+- Context (problem/solution)
+- Risks & Mitigations
+- Next Steps (only concrete follow-ups)
 
-## Issues (P0/P1 only)
-- [issue description and resolution, if any]
-
-## Metrics
-Files: X created, Y modified | Build: PASSED/FAILED | Errors: N
-```
-
-### GR-4: One Task = One Log
-DO NOT create multiple log files for the same work. Rules:
-- One session of work = one log file
-- If multiple small tasks in one session, combine into a single log
+### GR-4: Session-Based Logging
+DO NOT create multiple log files for the same work session. Rules:
+- **One work session = one log file** (~1-2 hours of related work)
+- If multiple features/fixes in same session, use SESSION_LOG_TEMPLATE.md
+- Group related tasks (e.g., "Bestiary Filter Overhaul" not 5 separate filter logs)
 - NEVER create both "session-log" AND "architect-report" for the same work
 - Log location: `site-da-luci/.claude/logs/`
+- Naming: `[feature-name]-YYYY-MM-DD.md` or `session-YYYY-MM-DD-HHmm.md`
 
-### GR-5: Factual Logs Only
+**Benefits:**
+- Full context in one place (easier to review)
+- Fewer files to manage (reduces clutter)
+- Better understanding of related changes
+
+### GR-5: Test-Before-Log Validation
+Logs MUST include actual test results, not test plans.
+
+**Workflow:**
+1. Implement feature/fix
+2. **Run tests:** `npm test` (unit + integration)
+3. **Verify manually:** Check that feature works as expected
+4. **Collect metrics:** `npm run log-metrics` (if available)
+5. **THEN write log** with actual results
+
+**Log format:**
+```markdown
+## Tests
+✅ Unit tests: 74/74 passing
+✅ Integration: 12/12 passing
+✅ Manual verification:
+  - [x] Feature works as expected
+  - [x] No regressions detected
+  - [x] Performance acceptable
+```
+
+**NEVER:**
+- Create logs with unchecked test checkboxes `[ ]`
+- Write "Tests needed" or "Recommended tests" sections
+- Log changes that haven't been validated
+
+**Why:** Prevents logging broken changes, ensures quality
+
+### GR-6: Factual Logs Only
 Logs document what WAS done, not what COULD be done.
-- NO "Next Steps" sections
+- NO "Next Steps" sections (unless concrete follow-ups)
 - NO "Future Enhancements" sections
 - NO "Recommended Tests" sections (tests should be done, not suggested)
 - Improvement ideas go to `BACKLOG.md` instead
 
-### GR-6: BACKLOG.md for Improvement Proposals
+### GR-7: BACKLOG.md for Improvement Proposals
 When any agent or session identifies an improvement opportunity:
 1. Add it to `BACKLOG.md` with the required format
 2. Do NOT add it to log files
 3. Include enough context for any future session to implement it
+
+### GR-8: Minimal Emoji Usage
+Use emojis ONLY for status indicators in logs:
+- ✅ Success/Passed/Complete
+- ❌ Failure/Error/Blocked
+- ⚠️ Warning/Partial/Caution
+
+**DO NOT use decorative emojis:**
+- ❌ Section headers: `## 📝 OBJETIVO`, `## 🎨 VISUAL`, `## 🧪 TESTS`
+- ❌ Bullets: `- 🚀 Feature`, `- 💡 Idea`, `- 🔧 Fix`
+- ❌ Emphasis: `**🎯 GOAL**`, `**💪 DONE**`
+
+**Use plain text instead:**
+- ✅ `## Objective`, `## Visual Behavior`, `## Tests`
+- ✅ `- Feature:`, `- Idea:`, `- Fix:`
+
+**Why:** Reduces token usage, improves searchability, maintains professionalism
 
 ## Coding Conventions
 - **Language**: JavaScript (ES6+), no TypeScript
