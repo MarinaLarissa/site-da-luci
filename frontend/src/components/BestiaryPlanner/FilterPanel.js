@@ -9,7 +9,7 @@
 import { memo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from '../../hooks/useDebounce';
-import { DIFFICULTY, REGIONS, RESPAWN_CATEGORY } from '../../data/bestiary';
+import { DIFFICULTY, RESPAWN_CATEGORY, BESTIARY_DATA } from '../../data/bestiary';
 import {
   Panel,
   PanelHeader,
@@ -30,7 +30,11 @@ import {
   SummaryValue,
   MultiSelect,
   MultiSelectChip,
+  Select,
 } from './FilterPanel.styles';
+
+// Charm Points values (fixed)
+const CHARM_POINTS_VALUES = [1, 5, 10, 15, 25, 50];
 
 const FilterPanel = ({
   filters,
@@ -64,12 +68,44 @@ const FilterPanel = ({
     onUpdateFilters({ difficulty: newDifficulty });
   };
 
-  const handleRegionToggle = (region) => {
-    const newRegions = filters.region.includes(region)
-      ? filters.region.filter((r) => r !== region)
-      : [...filters.region, region];
-    onUpdateFilters({ region: newRegions });
+  const handleCharmPointsToggle = (value) => {
+    // Toggle charm point value selection
+    const currentValues = filters.charmPointsFilter || [];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter((v) => v !== value)
+      : [...currentValues, value].sort((a, b) => a - b);
+    onUpdateFilters({ charmPointsFilter: newValues });
   };
+
+  // Get all unique locations from bestiary data
+  const getAllLocations = () => {
+    const locationsSet = new Set();
+    BESTIARY_DATA.forEach(creature => {
+      if (creature.locations && Array.isArray(creature.locations)) {
+        creature.locations.forEach(loc => {
+          if (!loc || loc === 'Unknown' || loc.trim() === '') return;
+
+          let cleanedLoc = loc.trim();
+
+          // Replace generic locations with specific names
+          if (cleanedLoc.toLowerCase() === 'all over tibia') {
+            return; // Skip "All over tibia"
+          }
+          if (cleanedLoc.toLowerCase() === 'all over tiquanda') {
+            cleanedLoc = 'Tiquanda';
+          }
+          if (cleanedLoc.toLowerCase() === 'all over zao') {
+            cleanedLoc = 'Zao';
+          }
+
+          locationsSet.add(cleanedLoc);
+        });
+      }
+    });
+    return Array.from(locationsSet).sort();
+  };
+
+  const availableLocations = getAllLocations();
 
   const handleRespawnCategoryToggle = (category) => {
     const newCategories = filters.respawnCategory.includes(category)
@@ -135,38 +171,46 @@ const FilterPanel = ({
         </MultiSelect>
       </FilterGroup>
 
-      {/* Regions */}
+      {/* Localização (Single Select Dropdown) */}
       <FilterGroup>
-        <FilterLabel>{t('bestiaryPlanner.filters.region')}</FilterLabel>
-        <CheckboxGroup style={{ maxHeight: '300px', overflowY: 'auto' }}>
-          {Object.values(REGIONS).map((region) => (
-            <CheckboxLabel key={region}>
-              <Checkbox
-                type="checkbox"
-                checked={filters.region.includes(region)}
-                onChange={() => handleRegionToggle(region)}
-              />
-              {region}
-            </CheckboxLabel>
+        <FilterLabel>{t('bestiaryPlanner.filters.location', 'Localização')}</FilterLabel>
+        <Select
+          value={filters.location || ''}
+          onChange={(e) => {
+            onUpdateFilters({ location: e.target.value });
+          }}
+        >
+          <option value="">-- Select --</option>
+          {availableLocations.map((location) => (
+            <option key={location} value={location}>
+              {location}
+            </option>
           ))}
-        </CheckboxGroup>
+        </Select>
       </FilterGroup>
 
-      {/* Min Charm Points */}
+      {/* Charm Points (Checkboxes) */}
       <FilterGroup>
-        <FilterLabel>
-          {t('bestiaryPlanner.filters.minCharmPoints')}: <RangeValue>{filters.minCharmPoints}</RangeValue>
-        </FilterLabel>
-        <RangeInputGroup>
-          <RangeInput
-            type="range"
-            min="0"
-            max="50"
-            step="5"
-            value={filters.minCharmPoints}
-            onChange={(e) => onUpdateFilters({ minCharmPoints: Number(e.target.value) })}
-          />
-        </RangeInputGroup>
+        <FilterLabel>{t('bestiaryPlanner.filters.charmPoints', 'Charm Points')}</FilterLabel>
+        <MultiSelect style={{ flexWrap: 'wrap' }}>
+          {CHARM_POINTS_VALUES.map((value) => {
+            const currentValues = filters.charmPointsFilter || [];
+            return (
+              <MultiSelectChip
+                key={value}
+                $selected={currentValues.includes(value)}
+                onClick={() => handleCharmPointsToggle(value)}
+              >
+                {value} CP
+              </MultiSelectChip>
+            );
+          })}
+        </MultiSelect>
+        {filters.charmPointsFilter && filters.charmPointsFilter.length > 0 && (
+          <div style={{ fontSize: '0.75rem', marginTop: '0.25rem', color: '#9ca3af' }}>
+            Showing: {filters.charmPointsFilter.join(', ')} CP
+          </div>
+        )}
       </FilterGroup>
 
       {/* Results Summary */}
@@ -176,13 +220,6 @@ const FilterPanel = ({
           <SummaryValue>{totalResults}</SummaryValue>
         </SummaryItem>
       </ResultsSummary>
-
-      {/* Select All Filtered */}
-      {onSelectAllFiltered && totalResults > 0 && (
-        <ResetButton onClick={onSelectAllFiltered} style={{ marginTop: '1rem' }}>
-          {t('bestiaryPlanner.filters.selectAllFiltered')}
-        </ResetButton>
-      )}
     </Panel>
   );
 };

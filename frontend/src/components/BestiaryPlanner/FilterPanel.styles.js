@@ -5,7 +5,27 @@ export const Panel = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   padding: ${({ theme }) => theme.spacing.lg};
   border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
-  /* position: sticky removido - painel scrolls naturalmente */
+  max-height: 70vh;
+  overflow-y: auto;
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.bg.primary};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.bg.secondary};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.accent.primary};
+  }
 `;
 
 export const PanelHeader = styled.div`
@@ -75,6 +95,34 @@ export const SearchInput = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text.muted};
+  }
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.sm};
+  background-color: ${({ theme }) => theme.colors.bg.primary};
+  border: 1px solid ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: ${({ theme }) => theme.radius.md};
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.accent.primary};
+  }
+
+  option {
+    background-color: ${({ theme }) => theme.colors.bg.card};
+    color: ${({ theme }) => theme.colors.text.primary};
+    padding: ${({ theme }) => theme.spacing.sm};
+
+    &:checked {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
   }
 `;
 

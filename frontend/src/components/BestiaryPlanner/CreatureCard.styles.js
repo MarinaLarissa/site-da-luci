@@ -141,8 +141,6 @@ export const CardActions = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
   margin-left: auto;
-  margin-right: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 export const CreatureName = styled.h3`
@@ -304,7 +302,18 @@ export const LocationMore = styled.span`
   font-weight: 600;
   white-space: nowrap;
   flex-shrink: 0;
-  cursor: help;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.accent.secondary};
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 export const LocationTooltip = styled.div`

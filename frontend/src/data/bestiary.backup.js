@@ -71,7 +71,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -95,7 +94,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -119,7 +117,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 325,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -193,7 +190,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -217,7 +213,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 65,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -241,7 +236,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 10000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -265,7 +259,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 15,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -289,7 +282,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 5000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -313,7 +305,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -337,7 +328,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 110,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -409,7 +399,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 100000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -433,7 +422,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -457,7 +445,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 13000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -481,7 +468,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -505,7 +491,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 10,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -529,7 +514,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -553,7 +537,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 360000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -577,7 +560,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -601,7 +583,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -625,7 +606,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -649,7 +629,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -673,7 +652,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -722,7 +700,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 8100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -746,7 +723,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -795,7 +771,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 660000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -819,7 +794,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -868,7 +842,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -892,7 +865,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -916,7 +888,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -940,7 +911,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 305,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -964,7 +934,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 145,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -988,7 +957,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1012,7 +980,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 135,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1086,7 +1053,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1110,7 +1076,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 30,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1159,7 +1124,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 4000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1183,7 +1147,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1207,7 +1170,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 500,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -1231,7 +1193,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 465,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1255,7 +1216,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 4200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1302,7 +1262,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1326,7 +1285,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 20,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1350,7 +1308,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1374,7 +1331,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 9000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1444,7 +1400,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1468,7 +1423,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 31700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1492,7 +1446,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 10500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1589,7 +1542,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1636,7 +1588,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 820,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1752,7 +1703,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 330,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1776,7 +1726,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 2430,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1825,7 +1774,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 9200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1849,7 +1797,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 25,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1898,7 +1845,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 10000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -1993,7 +1939,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 260,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2063,7 +2008,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 24000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2181,7 +2125,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 25000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2205,7 +2148,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 18000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2229,7 +2171,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1225,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2253,7 +2194,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 2350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2277,7 +2217,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 27000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2301,7 +2240,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2325,7 +2263,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 275,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2372,7 +2309,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2396,7 +2332,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 32000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2420,7 +2355,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2444,7 +2378,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 9600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2468,7 +2401,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 29,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2492,7 +2424,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5690,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2516,7 +2447,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6560,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2540,7 +2470,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6840,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2564,7 +2493,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 18000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2588,7 +2516,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 10000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2612,7 +2539,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2636,7 +2562,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 2,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -2660,7 +2585,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 2,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -2699,7 +2623,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 2,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -2723,7 +2646,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 444,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2747,7 +2669,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 75,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2771,7 +2692,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2795,7 +2715,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2819,7 +2738,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 30000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2843,7 +2761,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 255,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2867,7 +2784,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2891,7 +2807,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2965,7 +2880,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -2989,7 +2903,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 4500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3013,7 +2926,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 30,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3037,7 +2949,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 30,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3061,7 +2972,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3085,7 +2995,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 70,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3109,7 +3018,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3133,7 +3041,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 68,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3157,7 +3064,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 84,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3229,7 +3135,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 28,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3253,7 +3158,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 15,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3277,7 +3181,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 70,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -3301,7 +3204,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3325,7 +3227,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 2350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3349,7 +3250,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 40000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3373,7 +3273,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 625,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3397,7 +3296,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 9400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3421,7 +3319,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 28000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3470,7 +3367,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 65,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3494,7 +3390,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3518,7 +3413,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3542,7 +3436,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3566,7 +3459,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 29600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3590,7 +3482,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3614,7 +3505,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 30,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3638,7 +3528,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 45,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3687,7 +3576,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3711,7 +3599,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3735,7 +3622,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 27000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3782,7 +3668,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3806,7 +3691,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 55,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3830,7 +3714,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 9150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3879,7 +3762,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3903,7 +3785,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3927,7 +3808,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3951,7 +3831,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3975,7 +3854,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 5800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -3999,7 +3877,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARMLESS",
     "officialDifficulty": "HARMLESS",
-    "hitpoints": 76,
     "respawnCategory": "rare",
     "locations": [
       "Unknown"
@@ -4023,7 +3900,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 27000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4047,7 +3923,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4096,7 +3971,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4120,7 +3994,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4144,7 +4017,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 25000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4168,7 +4040,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 185,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4192,7 +4063,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 30000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4216,7 +4086,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 14000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4265,7 +4134,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4289,7 +4157,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4313,7 +4180,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4337,7 +4203,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 750,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4361,7 +4226,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 570,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4385,7 +4249,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 975,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4409,7 +4272,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4433,7 +4295,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1650,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4457,7 +4318,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 4300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4481,7 +4341,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4505,7 +4364,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 20000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4529,7 +4387,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3900,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4553,7 +4410,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 260,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4577,7 +4433,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 325,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4601,7 +4456,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 435,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4625,7 +4479,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 13500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4649,7 +4502,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4673,7 +4525,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 260,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4720,7 +4571,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 225,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4744,7 +4594,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4768,7 +4617,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4792,7 +4640,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 325,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4816,7 +4663,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 6500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4865,7 +4711,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4889,7 +4734,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 32200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4913,7 +4757,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 27500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4937,7 +4780,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 30150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4961,7 +4803,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 31550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -4985,7 +4826,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 29700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5009,7 +4849,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 2900,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5058,7 +4897,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5082,7 +4920,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5106,7 +4943,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5153,7 +4989,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 380,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5177,7 +5012,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5201,7 +5035,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1900,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5225,7 +5058,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5249,7 +5081,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 240,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5273,7 +5104,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 850,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5297,7 +5127,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 4500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5321,7 +5150,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5345,7 +5173,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 190,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5444,7 +5271,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 3650,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5468,7 +5294,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 8200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5492,7 +5317,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6900,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5516,7 +5340,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 360,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5540,7 +5363,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5564,7 +5386,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5613,7 +5434,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1950,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5637,7 +5457,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5709,7 +5528,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 173,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5758,7 +5576,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "CHALLENGING",
     "officialDifficulty": "CHALLENGING",
-    "hitpoints": 26000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5807,7 +5624,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 405,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5831,7 +5647,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 125,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5855,7 +5670,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6180,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -5954,7 +5768,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6003,7 +5816,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 45,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6027,7 +5839,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 310,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6051,7 +5862,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6075,7 +5885,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 90,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6099,7 +5908,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 380,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6123,7 +5931,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 245,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6147,7 +5954,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6171,7 +5977,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 135,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6195,7 +6000,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 85,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6219,7 +6023,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6243,7 +6046,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6267,7 +6069,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 650,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6291,7 +6092,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6315,7 +6115,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 670,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6339,7 +6138,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 850,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6363,7 +6161,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 320,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6387,7 +6184,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6411,7 +6207,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 220,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6435,7 +6230,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6459,7 +6253,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 160,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6508,7 +6301,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6582,7 +6374,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6631,7 +6422,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6655,7 +6445,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6679,7 +6468,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6778,7 +6566,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 125,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6827,7 +6614,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6851,7 +6637,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 25,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 280,
     "estimatedHours": 3,
     "respawnCategory": "normal",
     "locations": [
@@ -6929,7 +6714,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 25,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6953,7 +6737,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 480,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -6977,7 +6760,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 22,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7101,7 +6883,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 55,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7125,7 +6906,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 280,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7149,7 +6929,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 245,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7198,7 +6977,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 295,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7247,7 +7025,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 120,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7271,7 +7048,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7370,7 +7146,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7419,7 +7194,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 185,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7568,7 +7342,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 75,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7592,7 +7365,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 30,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 50,
     "estimatedHours": 1,
     "respawnCategory": "rare",
     "locations": [
@@ -7618,7 +7390,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7642,7 +7413,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7691,7 +7461,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7715,7 +7484,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7739,7 +7507,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 240,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7763,7 +7530,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 720,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7787,7 +7553,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 165,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7811,7 +7576,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7835,7 +7599,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 330,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7859,7 +7622,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 25,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7883,7 +7645,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7907,7 +7668,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 6500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -7956,7 +7716,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 340,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8005,7 +7764,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 7500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8029,7 +7787,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 85,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8053,7 +7810,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 505,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8127,7 +7883,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8151,7 +7906,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8200,7 +7954,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 650,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8224,7 +7977,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 50,
     "difficulty": "EASY",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1630,
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
@@ -8276,7 +8028,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 655,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8325,7 +8076,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 50,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8349,7 +8099,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 230,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8373,7 +8122,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 950,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8397,7 +8145,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 350,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8471,7 +8218,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 55,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8495,7 +8241,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8519,7 +8264,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 205,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8593,7 +8337,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 255,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8617,7 +8360,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8716,7 +8458,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 880,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8740,7 +8481,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8764,7 +8504,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 90,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8888,7 +8627,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 6250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -8962,7 +8700,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 325,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9036,7 +8773,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 750,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9085,7 +8821,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 325,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9159,7 +8894,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 680,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9208,7 +8942,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1330,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9232,7 +8965,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9256,7 +8988,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9280,7 +9011,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9319,7 +9049,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9393,7 +9122,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9417,7 +9145,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9441,7 +9168,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9465,7 +9191,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9489,7 +9214,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 2600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9513,7 +9237,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9602,7 +9325,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 185,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9626,7 +9348,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9650,7 +9371,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 155,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9749,7 +9469,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9773,7 +9492,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9897,7 +9615,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9921,7 +9638,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9945,7 +9661,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 580,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9969,7 +9684,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -9993,7 +9707,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 400,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10017,7 +9730,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10041,7 +9753,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10264,7 +9975,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10288,7 +9998,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 70,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10312,7 +10021,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 210,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10461,7 +10169,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10485,7 +10192,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 235,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10509,7 +10215,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 180,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10533,7 +10238,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 115,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10557,7 +10261,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 105,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10581,7 +10284,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 950,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10605,7 +10307,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 125,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10629,7 +10330,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10728,7 +10428,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10777,7 +10476,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 25,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10826,7 +10524,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 620,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10850,7 +10547,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 25,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -10999,7 +10695,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 675,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11048,7 +10743,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 275,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11097,7 +10791,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 190,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11196,7 +10889,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 85,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11245,7 +10937,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 390,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11294,7 +10985,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11318,7 +11008,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11367,7 +11056,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11391,7 +11079,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11415,7 +11102,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 220,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11464,7 +11150,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 775,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11513,7 +11198,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 890,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11537,7 +11221,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 15,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11561,7 +11244,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 50,
     "difficulty": "EASY",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1800,
     "estimatedHours": 1,
     "respawnCategory": "normal",
     "locations": [
@@ -11588,7 +11270,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 20,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11637,7 +11318,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11661,7 +11341,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11685,7 +11364,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11709,7 +11387,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2800,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11733,7 +11410,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3250,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11757,7 +11433,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11781,7 +11456,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 420,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11805,7 +11479,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 260,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11879,7 +11552,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -11953,7 +11625,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 900,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12002,7 +11673,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12026,7 +11696,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 45,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12125,7 +11794,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12149,7 +11817,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12173,7 +11840,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12197,7 +11863,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 555,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12221,7 +11886,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12245,7 +11909,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12269,7 +11932,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12293,7 +11955,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 20,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12392,7 +12053,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 65,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12416,7 +12076,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 20,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12465,7 +12124,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 255,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12614,7 +12272,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 5000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12663,7 +12320,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12712,7 +12368,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12736,7 +12391,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 20,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12860,7 +12514,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 270,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12884,7 +12537,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 3000,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -12958,7 +12610,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 80,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13007,7 +12658,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 460,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13056,7 +12706,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 150,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13105,7 +12754,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 320,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13179,7 +12827,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13203,7 +12850,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 75,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13252,7 +12898,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 475,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13326,7 +12971,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 75,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13350,7 +12994,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 60,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13374,7 +13017,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 210,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13423,7 +13065,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 2500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13447,7 +13088,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 450,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13496,7 +13136,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 355,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13520,7 +13159,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 65,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13544,7 +13182,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13568,7 +13205,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 190,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13667,7 +13303,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1700,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13691,7 +13326,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "HARD",
     "officialDifficulty": "HARD",
-    "hitpoints": 1600,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13715,7 +13349,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 850,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13789,7 +13422,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 140,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13838,7 +13470,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 35,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -13912,7 +13543,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 550,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14011,7 +13641,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 260,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14035,7 +13664,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1200,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14059,7 +13687,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "TRIVIAL",
     "officialDifficulty": "TRIVIAL",
-    "hitpoints": 75,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14183,7 +13810,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "EASY",
     "officialDifficulty": "EASY",
-    "hitpoints": 300,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14257,7 +13883,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 1100,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14281,7 +13906,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 795,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14305,7 +13929,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 950,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"
@@ -14354,7 +13977,6 @@ export const BESTIARY_DATA = [
     "charmPoints": 5,
     "difficulty": "MEDIUM",
     "officialDifficulty": "MEDIUM",
-    "hitpoints": 500,
     "respawnCategory": "normal",
     "locations": [
       "Unknown"

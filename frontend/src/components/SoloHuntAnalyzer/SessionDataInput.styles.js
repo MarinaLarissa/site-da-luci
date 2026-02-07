@@ -9,20 +9,7 @@ import styled from 'styled-components';
 // ETAPA 33-35: Migrated to shared Typography and ButtonGroup components
 export { SectionTitle, SectionDescription } from '../common/styled';
 export { ButtonGroup as SessionDataInputActions } from '../common/styled';
-
-// ETAPA 31: Migrated to theme tokens
-export const SessionDataInputContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.bg.card};
-  padding: ${({ theme }) => theme.spacing.xl};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  border: 1px solid ${({ theme }) => theme.colors.border.light};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.lg};
-  }
-`;
+export { InputCard as SessionDataInputContainer } from '../common/styled';
 
 // SessionTextarea removed - now using shared Textarea component from common/styled
 // SessionDataInputActions removed - now using shared ButtonGroup (aliased above)

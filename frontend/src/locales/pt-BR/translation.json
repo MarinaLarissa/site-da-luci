@@ -512,9 +512,10 @@
     },
     "tutorial": {
       "title": "💡 Dica",
-      "clickToComplete": "🖱️ Clique em um card de criatura para marcar como completada no bestiário",
-      "clickToUncomplete": "🔄 Clique novamente para desmarcar",
-      "useFilters": "🔍 Use os filtros para ver apenas as criaturas completadas e gerenciar seu progresso",
+      "actionButtons": "🎯 Use os botões no card: ✓ (completar), + (adicionar ao plano), ✎ (editar kills)",
+      "keyboardShortcuts": "⌨️ Atalhos: Enter (completar), P (plano), E (editar) quando o card estiver em foco",
+      "screenshotImport": "📷 Importe screenshots do bestiário para atualizar progresso automaticamente via OCR",
+      "useFilters": "🔍 Use os filtros para refinar sugestões e gerenciar seu progresso",
       "gotIt": "Entendi!"
     },
     "sessionPlanner": {

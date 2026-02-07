@@ -30,38 +30,47 @@ const BulkActionsBar = ({
 }) => {
   const { t } = useTranslation();
 
-  if (selectedCount === 0) {
-    return null;
-  }
-
   return (
     <BarContainer>
       <BarContent>
-        <SelectedCount>
-          {t('bestiaryPlanner.bulkActions.selected', { count: selectedCount })}
-        </SelectedCount>
+        {selectedCount === 0 ? (
+          // No selection - show helper text
+          <SelectedCount>
+            👆 {t('bestiaryPlanner.bulkActions.clickToSelect', 'Click creatures to select')}
+          </SelectedCount>
+        ) : (
+          // Has selection - show count and actions
+          <>
+            <SelectedCount>
+              {t('bestiaryPlanner.bulkActions.selected', { count: selectedCount })}
+            </SelectedCount>
 
-        <ActionsGroup>
-          <ActionButton onClick={onMarkComplete} $variant="complete">
-            ✓ {t('bestiaryPlanner.bulkActions.markComplete')}
-          </ActionButton>
+            <ActionsGroup>
+              <ActionButton onClick={onMarkComplete} $variant="complete">
+                ✓ {t('bestiaryPlanner.bulkActions.markComplete')}
+              </ActionButton>
 
-          <ActionButton onClick={onAddToPlan} $variant="plan">
-            + {t('bestiaryPlanner.bulkActions.addToPlan')}
-          </ActionButton>
+              <ActionButton onClick={onAddToPlan} $variant="plan">
+                + {t('bestiaryPlanner.bulkActions.addToPlan')}
+              </ActionButton>
 
-          <ActionButton onClick={onRemove} $variant="remove">
-            🗑️ {t('bestiaryPlanner.bulkActions.remove')}
-          </ActionButton>
+              <ActionButton onClick={onRemove} $variant="remove">
+                🗑️ {t('bestiaryPlanner.bulkActions.remove')}
+              </ActionButton>
 
-          <ActionButton onClick={onExport} $variant="export">
-            📥 {t('bestiaryPlanner.bulkActions.export')}
-          </ActionButton>
+              <ActionButton onClick={onExport} $variant="export">
+                📥 {t('bestiaryPlanner.bulkActions.export')}
+              </ActionButton>
+            </ActionsGroup>
+          </>
+        )}
 
-          <CancelButton onClick={onCancel}>
-            {t('bestiaryPlanner.bulkActions.cancel')}
-          </CancelButton>
-        </ActionsGroup>
+        {/* Exit button always visible */}
+        <CancelButton onClick={onCancel}>
+          {selectedCount === 0
+            ? t('bestiaryPlanner.bulkActions.exitSelectionMode', 'Exit Selection Mode')
+            : t('bestiaryPlanner.bulkActions.cancel', 'Cancel')}
+        </CancelButton>
       </BarContent>
     </BarContainer>
   );

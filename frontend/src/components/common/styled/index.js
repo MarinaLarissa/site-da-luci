@@ -8,3 +8,7 @@ export { SectionTitle, SectionDescription, PageTitle, PageDescription } from './
 export { Card, CardHeader, CardBody, CardFooter } from './Card';
 export { ButtonGroup } from './ButtonGroup';
 export { ModalOverlay, ModalContent, ModalHeader, ModalTitle, ModalBody, ModalFooter, ModalCloseButton } from './Modal';
+export { InputCard } from './InputCard';
+export { PageContainer } from './PageContainer';
+export { PageHeader, PageHeaderTitle, PageHeaderDescription } from './PageHeader';
+export { FloatingHistoryButton, FloatingHistoryButtonIcon, FloatingHistoryButtonText } from './FloatingHistoryButton';

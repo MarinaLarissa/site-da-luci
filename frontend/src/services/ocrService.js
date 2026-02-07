@@ -139,9 +139,9 @@ const preprocessImage = async (imageFile, detectColor = false, cropToCreatureLis
         cropHeight = Math.floor(img.height * 0.64);
       }
 
-      // Apply 150% zoom to improve OCR accuracy while keeping file size under 1MB
+      // Apply 200% zoom to improve OCR accuracy for small text (stages like "1/3")
       // OCR.space free tier has 1024 KB limit
-      const zoomFactor = cropToCreatureList ? 1.5 : 1.0;
+      const zoomFactor = cropToCreatureList ? 2.0 : 1.0;
       const finalWidth = Math.floor(cropWidth * zoomFactor);
       const finalHeight = Math.floor(cropHeight * zoomFactor);
 

@@ -693,7 +693,7 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
       {croppedPreview && process.env.NODE_ENV === 'development' && (
         <div style={{ marginTop: '1rem', padding: '1rem', border: '2px dashed #4b5563', borderRadius: '8px' }}>
           <p style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>
-            🔍 Preview da área processada (cropped + zoom 200%):
+            🔍 Preview da área processada (cropped + zoom 2.0x):
           </p>
           <PreviewImage src={croppedPreview} alt="Cropped preview" style={{ maxHeight: '300px' }} />
         </div>
@@ -808,138 +808,6 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
             </>
           )}
 
-          {ocrResults.unmatched.length > 0 && (
-            <UnmatchedList>
-              <p>{t('bestiaryPlanner.screenshot.unmatchedInfo', { count: ocrResults.unmatched.length })}</p>
-              <div style={{ marginTop: '1rem' }}>
-                <input
-                  type="text"
-                  placeholder={t('bestiaryPlanner.screenshot.manualSearchPlaceholder')}
-                  value={manualSearchQuery}
-                  onChange={handleManualSearchChange}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem',
-                    fontSize: '1rem',
-                    border: '1px solid #4b5563',
-                    borderRadius: '0.375rem',
-                    backgroundColor: '#1f2937',
-                    color: '#fff',
-                  }}
-                />
-
-                {/* Stage Selector */}
-                <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.875rem', color: '#9ca3af' }}>
-                    {t('bestiaryPlanner.screenshot.selectStage', { defaultValue: 'Progresso:' })}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setManualSearchStage(null);
-                      setManualSearchIsComplete(false);
-                    }}
-                    style={{
-                      padding: '0.375rem 0.75rem',
-                      fontSize: '0.875rem',
-                      border: `2px solid ${manualSearchStage === null ? '#667eea' : '#4b5563'}`,
-                      borderRadius: '0.375rem',
-                      backgroundColor: manualSearchStage === null ? '#667eea' : '#1f2937',
-                      color: '#fff',
-                      cursor: 'pointer',
-                      fontWeight: manualSearchStage === null ? '600' : '400',
-                    }}
-                  >
-                    {t('bestiaryPlanner.screenshot.unknown', { defaultValue: 'Desconhecido' })}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setManualSearchStage(1);
-                      setManualSearchIsComplete(false);
-                    }}
-                    style={{
-                      padding: '0.375rem 0.75rem',
-                      fontSize: '0.875rem',
-                      border: `2px solid ${manualSearchStage === 1 ? '#667eea' : '#4b5563'}`,
-                      borderRadius: '0.375rem',
-                      backgroundColor: manualSearchStage === 1 ? '#667eea' : '#1f2937',
-                      color: '#fff',
-                      cursor: 'pointer',
-                      fontWeight: manualSearchStage === 1 ? '600' : '400',
-                    }}
-                  >
-                    1/3
-                  </button>
-                  <button
-                    onClick={() => {
-                      setManualSearchStage(2);
-                      setManualSearchIsComplete(false);
-                    }}
-                    style={{
-                      padding: '0.375rem 0.75rem',
-                      fontSize: '0.875rem',
-                      border: `2px solid ${manualSearchStage === 2 ? '#667eea' : '#4b5563'}`,
-                      borderRadius: '0.375rem',
-                      backgroundColor: manualSearchStage === 2 ? '#667eea' : '#1f2937',
-                      color: '#fff',
-                      cursor: 'pointer',
-                      fontWeight: manualSearchStage === 2 ? '600' : '400',
-                    }}
-                  >
-                    2/3
-                  </button>
-                  <button
-                    onClick={() => {
-                      setManualSearchStage(3);
-                      setManualSearchIsComplete(true);
-                    }}
-                    style={{
-                      padding: '0.375rem 0.75rem',
-                      fontSize: '0.875rem',
-                      border: `2px solid ${manualSearchStage === 3 ? '#10b981' : '#4b5563'}`,
-                      borderRadius: '0.375rem',
-                      backgroundColor: manualSearchStage === 3 ? '#10b981' : '#1f2937',
-                      color: '#fff',
-                      cursor: 'pointer',
-                      fontWeight: manualSearchStage === 3 ? '600' : '400',
-                    }}
-                  >
-                    ✓ {t('bestiaryPlanner.screenshot.complete', { defaultValue: 'Completo' })}
-                  </button>
-                </div>
-
-                {manualSearchResults.length > 0 && (
-                  <div style={{
-                    marginTop: '0.5rem',
-                    maxHeight: '200px',
-                    overflowY: 'auto',
-                    border: '1px solid #4b5563',
-                    borderRadius: '0.375rem',
-                    backgroundColor: '#1f2937',
-                  }}>
-                    {manualSearchResults.map((creature) => (
-                      <div
-                        key={creature.id}
-                        onClick={() => handleAddManualCreature(creature)}
-                        style={{
-                          padding: '0.75rem',
-                          cursor: 'pointer',
-                          borderBottom: '1px solid #374151',
-                          transition: 'background 0.2s',
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#374151'}
-                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                      >
-                        {creature.name}
-                        <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginLeft: '0.5rem' }}>
-                          {creature.charmPoints} CP
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </UnmatchedList>
-          )}
 
           <ClearButton onClick={handleClear}>
             {t('bestiaryPlanner.screenshot.tryAnother')}

@@ -11,7 +11,7 @@
  * - Added keyboard shortcuts support
  */
 
-import { memo, useRef } from 'react';
+import { memo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl, PLACEHOLDER_IMAGE } from '../../utils/imageUtils';
@@ -44,8 +44,6 @@ import {
   LocationList,
   LocationChip,
   LocationMore,
-  LocationTooltip,
-  TooltipLocationList,
 } from './CreatureCard.styles';
 
 // Constants
@@ -75,6 +73,7 @@ const CreatureCard = ({
 }) => {
   const { t } = useTranslation();
   const cardRef = useRef(null);
+  const [showAllLocations, setShowAllLocations] = useState(false);
 
   // Keyboard shortcuts (Enter = complete, E = edit, P = plan)
   useKeyboardShortcuts({
@@ -216,6 +215,13 @@ const CreatureCard = ({
                 )}
               </Stat>
             )}
+            {/* HP Display */}
+            {creature.hitpoints && (
+              <Stat>
+                <StatIcon>❤️</StatIcon>
+                {creature.hitpoints.toLocaleString()} HP
+              </Stat>
+            )}
           </KillsSection>
         )}
 
@@ -234,28 +240,31 @@ const CreatureCard = ({
           </ResistancesColumn>
         </CardDetails>
 
-        {/* Locations - horizontal single line with tooltip */}
+        {/* Locations - expandable on click */}
         {creature.locations && creature.locations.length > 0 && (
           <LocationSection>
             <LocationLabel>📍</LocationLabel>
             <LocationList>
-              {creature.locations.slice(0, MAX_VISIBLE_LOCATIONS).map((location, index) => (
+              {(showAllLocations
+                ? creature.locations
+                : creature.locations.slice(0, MAX_VISIBLE_LOCATIONS)
+              ).map((location, index) => (
                 <LocationChip key={index}>{location}</LocationChip>
               ))}
             </LocationList>
             {creature.locations.length > MAX_VISIBLE_LOCATIONS && (
-              <>
-                <LocationMore title={creature.locations.slice(MAX_VISIBLE_LOCATIONS).join(', ')}>
-                  +{creature.locations.length - MAX_VISIBLE_LOCATIONS}
-                </LocationMore>
-                <LocationTooltip>
-                  <TooltipLocationList>
-                    {creature.locations.slice(MAX_VISIBLE_LOCATIONS).map((location, index) => (
-                      <div key={index}>• {location}</div>
-                    ))}
-                  </TooltipLocationList>
-                </LocationTooltip>
-              </>
+              <LocationMore
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card interactions
+                  setShowAllLocations(!showAllLocations);
+                }}
+                title={showAllLocations ? 'Click to show less' : 'Click to show all locations'}
+              >
+                {showAllLocations
+                  ? '▲ Show Less'
+                  : `▼ +${creature.locations.length - MAX_VISIBLE_LOCATIONS} more`
+                }
+              </LocationMore>
             )}
           </LocationSection>
         )}

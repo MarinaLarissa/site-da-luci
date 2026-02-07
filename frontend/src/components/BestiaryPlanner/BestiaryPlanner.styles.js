@@ -1,24 +1,14 @@
 import styled from 'styled-components';
+import { PageContainer, PageHeaderTitle, PageHeaderDescription } from '../common/styled';
 
-export const PlannerContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing.lg};
-  max-width: 1600px;
-  margin: 0 auto;
+// Shared components
+export const PlannerContainer = PageContainer;
+export const Title = PageHeaderTitle;
+export const Subtitle = PageHeaderDescription;
 
-  /* Responsive - Expand on larger screens */
-  @media (min-width: 1920px) {
-    max-width: 1850px;
-    padding: ${({ theme }) => theme.spacing.xl};
-  }
-
-  /* Responsive - Smaller screens */
-  @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.md};
-  }
-`;
-
+// BestiaryPlanner-specific header structure (has settings button)
 export const Header = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.xxl};
 `;
 
 export const HeaderTop = styled.div`
@@ -36,26 +26,6 @@ export const HeaderTop = styled.div`
 
 export const HeaderContent = styled.div`
   flex: 1;
-`;
-
-export const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
-  background: ${({ theme }) => theme.gradients.primary};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
-export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.text.secondary};
-  font-size: 1rem;
-  line-height: 1.6;
 `;
 
 export const ProgressBar = styled.div`

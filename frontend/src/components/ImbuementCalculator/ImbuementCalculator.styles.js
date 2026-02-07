@@ -8,6 +8,7 @@ import styled, { keyframes } from 'styled-components';
 // ETAPA 33-36: Migrated to shared Typography and Modal components
 export { PageTitle, PageDescription, SectionTitle, SectionDescription } from '../common/styled';
 export { ModalOverlay, ModalContent, ModalFooter as ModalActions } from '../common/styled';
+export { PageContainer as ImbuementCalculatorContainer } from '../common/styled';
 
 /* Animations */
 const slideDown = keyframes`
@@ -29,24 +30,6 @@ const fadeIn = keyframes`
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-`;
-
-/* Main Container */
-export const ImbuementCalculatorContainer = styled.div`
-  padding: 16px;
-  max-width: 1600px;
-  margin: 0 auto;
-
-  /* Responsive - Expand on larger screens */
-  @media (min-width: 1920px) {
-    max-width: 1850px;
-    padding: 24px;
-  }
-
-  /* Responsive - Smaller screens */
-  @media (max-width: 768px) {
-    padding: 16px;
   }
 `;
 

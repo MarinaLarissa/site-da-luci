@@ -50,16 +50,24 @@ const FirstTimeTutorial = () => {
 
         <TutorialStep>
           <TutorialText>
-            {t('bestiaryPlanner.tutorial.clickToComplete', {
-              defaultValue: '🖱️ Clique em um card de criatura para marcar como completada no bestiário',
+            {t('bestiaryPlanner.tutorial.actionButtons', {
+              defaultValue: '🎯 Use os botões no card: ✓ (completar), + (adicionar ao plano), ✎ (editar kills)',
             })}
           </TutorialText>
         </TutorialStep>
 
         <TutorialStep>
           <TutorialText>
-            {t('bestiaryPlanner.tutorial.clickToUncomplete', {
-              defaultValue: '🔄 Clique novamente para desmarcar',
+            {t('bestiaryPlanner.tutorial.keyboardShortcuts', {
+              defaultValue: '⌨️ Atalhos: Enter (completar), P (plano), E (editar) quando o card estiver em foco',
+            })}
+          </TutorialText>
+        </TutorialStep>
+
+        <TutorialStep>
+          <TutorialText>
+            {t('bestiaryPlanner.tutorial.screenshotImport', {
+              defaultValue: '📷 Importe screenshots do bestiário para atualizar progresso automaticamente via OCR',
             })}
           </TutorialText>
         </TutorialStep>
@@ -67,7 +75,7 @@ const FirstTimeTutorial = () => {
         <TutorialStep>
           <TutorialText>
             {t('bestiaryPlanner.tutorial.useFilters', {
-              defaultValue: '🔍 Use os filtros acima para ver apenas as criaturas completadas e gerenciar seu progresso',
+              defaultValue: '🔍 Use os filtros para refinar sugestões e gerenciar seu progresso',
             })}
           </TutorialText>
         </TutorialStep>

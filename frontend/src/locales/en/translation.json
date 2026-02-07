@@ -512,9 +512,10 @@
     },
     "tutorial": {
       "title": "💡 Tip",
-      "clickToComplete": "🖱️ Click on a creature card to mark it as completed in the bestiary",
-      "clickToUncomplete": "🔄 Click again to unmark",
-      "useFilters": "🔍 Use the filters to see only completed creatures and manage your progress",
+      "actionButtons": "🎯 Use the buttons on the card: ✓ (complete), + (add to plan), ✎ (edit kills)",
+      "keyboardShortcuts": "⌨️ Shortcuts: Enter (complete), P (plan), E (edit) when card is focused",
+      "screenshotImport": "📷 Import bestiary screenshots to automatically update progress via OCR",
+      "useFilters": "🔍 Use filters to refine suggestions and manage your progress",
       "gotIt": "Got it!"
     },
     "sessionPlanner": {

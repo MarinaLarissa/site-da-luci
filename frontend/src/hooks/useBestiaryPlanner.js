@@ -6,37 +6,41 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { BESTIARY_DATA, VALID_BESTIARY_DATA } from '../data/bestiary';
 import * as bestiaryStorageDefault from '../services/bestiaryStorage';
+import { estimateTimeToComplete, calculateEfficiencyScore as calculateEfficiencyScoreUtil } from '../utils/timeEstimator';
 
 /**
- * Efficiency calculation
- * Score = (charmPoints / estimatedHours) * modifiers
+ * Efficiency calculation (HP-based)
+ * Score = (charmPoints / estimatedHours_HP) * modifiers
+ *
+ * Uses HP-based time estimation (TibiaRoute formula) instead of generic estimatedHours
+ * This provides much more accurate efficiency scores.
  *
  * Modifiers:
  * - Rapid respawn active: +30% for creatures with rapid respawn category
  * - Preferred region: +20%
  * - Lower level recommendation (character level > recommended level + 50): +10%
  */
-const calculateEfficiencyScore = (creature, settings, characterLevel) => {
-  const baseScore = creature.charmPoints / creature.estimatedHours;
+const calculateEfficiencyScore = (creature, settings, characterLevel, currentKills = 0) => {
+  // Calculate time estimate using HP-based formula
+  const timeEstimate = estimateTimeToComplete(creature, currentKills);
+  const estimatedHours = timeEstimate.hours;
 
-  let modifier = 1.0;
-
-  // Rapid respawn bonus
-  if (settings?.rapidRespawnActive && creature.respawnCategory === 'rapid') {
-    modifier += 0.3;
+  // Fallback to old calculation if no time estimate available
+  if (!estimatedHours || estimatedHours <= 0) {
+    // Use deprecated estimatedHours if available, otherwise default to 5 hours
+    const fallbackHours = creature.estimatedHours || 5;
+    return (creature.charmPoints / fallbackHours) * 0.5; // Penalize unknown estimates
   }
 
-  // Preferred region bonus
-  if (settings?.preferredRegions?.includes(creature.region)) {
-    modifier += 0.2;
-  }
+  // Build modifiers object
+  const modifiers = {
+    rapidRespawn: settings?.rapidRespawnActive && creature.respawnCategory === 'rapid',
+    preferredRegion: settings?.preferredRegions?.includes(creature.region),
+    overleveled: characterLevel > (creature.recommendedLevel || 0) + 50,
+  };
 
-  // Over-leveled bonus (easier kills)
-  if (characterLevel > creature.recommendedLevel + 50) {
-    modifier += 0.1;
-  }
-
-  return baseScore * modifier;
+  // Use utility function with HP-based calculation
+  return calculateEfficiencyScoreUtil(creature.charmPoints, estimatedHours, modifiers);
 };
 
 /**
@@ -50,9 +54,10 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const [killsUpdateTrigger, setKillsUpdateTrigger] = useState(0);
   const [filters, setFilters] = useState({
     difficulty: [], // EASY, MEDIUM, HARD
-    region: [],
+    location: '', // Single location filter (string, not array)
     respawnCategory: [],
-    minCharmPoints: 0,
+    minCharmPoints: 0, // Legacy - kept for backwards compatibility
+    charmPointsFilter: [], // New: array of specific CP values to filter
     searchTerm: '',
     showCompleted: false, // Show only completed creatures
   });
@@ -118,9 +123,26 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         return false;
       }
 
-      // Region filter
-      if (filters?.region?.length > 0 && !filters.region.includes(creature.region)) {
-        return false;
+      // Location filter (check if creature spawns in the selected location)
+      if (filters?.location && filters.location !== '') {
+        const hasMatchingLocation = creature.locations.some(loc => {
+          // Normalize both for comparison
+          const normalizedCreatureLoc = loc.trim();
+          const normalizedFilterLoc = filters.location.trim();
+
+          // Handle special replacements
+          if (normalizedCreatureLoc.toLowerCase() === 'all over tiquanda') {
+            return normalizedFilterLoc === 'Tiquanda';
+          }
+          if (normalizedCreatureLoc.toLowerCase() === 'all over zao') {
+            return normalizedFilterLoc === 'Zao';
+          }
+
+          return normalizedCreatureLoc === normalizedFilterLoc;
+        });
+        if (!hasMatchingLocation) {
+          return false;
+        }
       }
 
       // Respawn category filter
@@ -131,8 +153,14 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         return false;
       }
 
-      // Charm points filter
-      if (creature.charmPoints < (filters?.minCharmPoints || 0)) {
+      // Charm points filter (new checkbox-based)
+      if (filters?.charmPointsFilter && filters.charmPointsFilter.length > 0) {
+        if (!filters.charmPointsFilter.includes(creature.charmPoints)) {
+          return false;
+        }
+      }
+      // Legacy min charm points filter (fallback)
+      else if (creature.charmPoints < (filters?.minCharmPoints || 0)) {
         return false;
       }
 
@@ -164,7 +192,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
           ...creature,
           currentKills,
           killsToComplete: creature.killsToComplete,
-          efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel),
+          efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel, currentKills),
           isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
         };
       })
@@ -229,9 +257,10 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const resetFilters = useCallback(() => {
     setFilters({
       difficulty: [],
-      region: [],
+      location: '',
       respawnCategory: [],
       minCharmPoints: 0,
+      charmPointsFilter: [],
       searchTerm: '',
       showCompleted: false,
     });
