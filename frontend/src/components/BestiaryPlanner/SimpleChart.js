@@ -25,7 +25,7 @@ const SimpleChart = ({
   const [tooltip, setTooltip] = useState(null);
 
   // Calculate scales and points
-  const { points, gridLines, maxValue } = useMemo(() => {
+  const { points, gridLines } = useMemo(() => {
     if (data.length === 0) {
       return { points: [], gridLines: [], maxValue: 0 };
     }

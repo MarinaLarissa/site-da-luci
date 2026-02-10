@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import {
   getCompletionsByPeriod,
   getStatistics,
-  getHistoricalData,
 } from '../services/progressHistoryStorage';
 import {
   aggregateByDay,
@@ -83,7 +82,7 @@ export const useProgressData = (characterId, period = '30d') => {
 
     const daysPeriod = period === '7d' ? 7 : period === '30d' ? 30 : period === '3m' ? 90 : 365;
     return getStatistics(characterId, daysPeriod);
-  }, [characterId, period, rawData]);
+  }, [characterId, period]);
 
   // Refetch function
   const refetch = () => {

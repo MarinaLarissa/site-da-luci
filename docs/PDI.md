@@ -17,7 +17,7 @@
 ### 1. Technology Stack (Mandatory)
 - **Frontend:** HTML, CSS, JavaScript, React
 - **Backend:** Node.js
-- **Database:** NoSQL (MongoDB Atlas)
+- **Database:** Supabase (PostgreSQL) + localStorage fallback
 - **Architecture:** Layered architecture + design patterns
 - **Code Structure:** Multiple files and layers (NO monolithic files)
 - **Testing:** TDD with Cypress (E2E) + Jest (Unit/Integration)
@@ -305,21 +305,20 @@ PLAYER B must execute:
 
 ## FUTURE FEATURES (For Planning)
 
-### User Authentication
+### User Authentication (Implemented)
 - Save session history per user
-- Login with email/password or OAuth
-- MongoDB schema includes `userId` field
+- Login with email/password via Supabase Auth
+- Supabase tables include `user_id` field
 
 ### Session History
 - List past hunting sessions
 - Filter by date, player, profit range
 - Export to CSV/Excel
 
-### Additional Tools (Expansion)
-- Damage Calculator
-- Best Spawn Finder
-- Charm Tracker
-- Boss Checker
+### Additional Tools (Implemented)
+- Solo Hunt Analyzer (route: `/solo-hunt`)
+- Imbuement Calculator (route: `/imbuement-calc`)
+- Bestiary Planner with OCR import (route: `/bestiary-planner`)
 
 ### Multi-Game Support
 - Abstract parser interface: `IGameLootParser`
@@ -339,16 +338,14 @@ PLAYER B must execute:
 ### Backend (Render)
 - Free tier web service
 - Auto-deploy from Git push
-- Environment variables for MongoDB connection
+- Environment variables for Supabase connection
 - Health check endpoint: `/api/health`
 
-### Database (MongoDB Atlas)
-- Free tier (M0)
-- Cluster name: site-da-luci-prod
-- Database name: tibia-tools
-- Collections:
-  - `sessions` (for future session history)
-  - `users` (for future authentication)
+### Database (Supabase)
+- Free tier
+- Auth: Supabase Auth (email/password)
+- Storage: Supabase PostgreSQL + localStorage fallback
+- Frontend connects via `@supabase/supabase-js`
 
 ### CI/CD (GitHub Actions)
 - Run tests on pull request
@@ -393,5 +390,5 @@ PLAYER B must execute:
 
 ---
 
-**Last Updated:** 2025-12-26
-**Version:** 1.0
+**Last Updated:** 2026-02-10
+**Version:** 2.0

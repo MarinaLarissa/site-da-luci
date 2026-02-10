@@ -111,9 +111,10 @@ export const getStatusI18nKey = (status) => {
   }
 };
 
-export default {
+const bestiaryStatusUtilsDefault = {
   BestiaryStatus,
   calculateDisplayStatus,
   getStatusColor,
   getStatusI18nKey,
 };
+export default bestiaryStatusUtilsDefault;

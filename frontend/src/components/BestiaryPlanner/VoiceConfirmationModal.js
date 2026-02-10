@@ -44,7 +44,7 @@ const VoiceConfirmationModal = ({ isOpen, onClose, onConfirm, parsedResult }) =>
 
   if (!isOpen || !parsedResult) return null;
 
-  const { action, matches, rawTranscript } = parsedResult;
+  const { action, rawTranscript } = parsedResult;
 
   const handleRemoveMatch = (index) => {
     setSelectedMatches((prev) => prev.filter((_, i) => i !== index));

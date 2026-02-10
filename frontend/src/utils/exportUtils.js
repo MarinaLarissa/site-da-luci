@@ -145,7 +145,7 @@ export const exportToJSON = (completions) => {
   return downloadFile(jsonContent, filename, 'application/json');
 };
 
-export default {
+const exportUtilsDefault = {
   generateCSV,
   formatDataForExport,
   downloadFile,
@@ -153,3 +153,4 @@ export default {
   exportToCSV,
   exportToJSON,
 };
+export default exportUtilsDefault;

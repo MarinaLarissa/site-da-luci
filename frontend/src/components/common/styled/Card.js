@@ -115,4 +115,5 @@ export const CardFooter = styled.div`
   }
 `;
 
-export default { Card, CardHeader, CardBody, CardFooter };
+const CardComponents = { Card, CardHeader, CardBody, CardFooter };
+export default CardComponents;

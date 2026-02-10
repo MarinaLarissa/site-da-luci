@@ -335,7 +335,7 @@ export const clearHistory = (characterId) => {
   }
 };
 
-export default {
+const progressHistoryStorageDefault = {
   saveCompletion,
   getCompletionsByPeriod,
   calculateStreak,
@@ -343,3 +343,4 @@ export default {
   getHistoricalData,
   clearHistory,
 };
+export default progressHistoryStorageDefault;

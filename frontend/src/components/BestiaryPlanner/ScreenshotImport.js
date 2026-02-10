@@ -37,8 +37,6 @@ import {
   CreatureName,
   SimilarityBadge,
   ConfirmButton,
-  UnmatchedList,
-  UnmatchedItem,
   ErrorMessage,
   ImageGrid,
   ImageItem,
@@ -74,10 +72,6 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
   const [autocompleteQueue, setAutocompleteQueue] = useState([]);
   const [currentAutocomplete, setCurrentAutocomplete] = useState(null);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
-  const [manualSearchQuery, setManualSearchQuery] = useState('');
-  const [manualSearchResults, setManualSearchResults] = useState([]);
-  const [manualSearchStage, setManualSearchStage] = useState(null);  // null, 1, 2, or 3
-  const [manualSearchIsComplete, setManualSearchIsComplete] = useState(false);
 
   // OCR with retry hook (single image)
   const {
@@ -439,20 +433,6 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
     setCurrentAutocomplete(null);
   };
 
-  // Handle manual search input change
-  const handleManualSearchChange = useCallback((e) => {
-    const query = e.target.value;
-    setManualSearchQuery(query);
-
-    if (query.trim().length >= 2) {
-      // Fuzzy search in BESTIARY_DATA
-      const results = findAutocompleteCandidates(query, 10); // Max 10 results
-      setManualSearchResults(results);
-    } else {
-      setManualSearchResults([]);
-    }
-  }, []);
-
   // Handle updating stage of a matched creature
   const handleUpdateMatchedStage = useCallback((index, newStage, newIsComplete) => {
     if (!ocrResults) return;
@@ -477,38 +457,6 @@ const ScreenshotImport = ({ characterId, onCreaturesImported }) => {
       matched: updatedMatched,
     });
   }, [ocrResults]);
-
-  // Handle adding a creature manually
-  const handleAddManualCreature = useCallback((selectedCreature) => {
-    if (!ocrResults) return;
-
-    // Calculate minimumKills based on stage
-    const minimumKills = manualSearchStage
-      ? calculateMinimumKills(manualSearchStage, selectedCreature.occurrence)
-      : null;
-
-    // Add to matched list
-    const newMatch = {
-      creature: selectedCreature,
-      similarity: 1.0,
-      originalText: `Manual: ${selectedCreature.name}`,
-      stage: manualSearchStage,
-      isComplete: manualSearchIsComplete || manualSearchStage === 3,
-      minimumKills,
-    };
-
-    setOcrResults({
-      ...ocrResults,
-      matched: [...ocrResults.matched, newMatch],
-      totalFound: ocrResults.totalFound + 1,
-    });
-
-    // Clear search and reset stage
-    setManualSearchQuery('');
-    setManualSearchResults([]);
-    setManualSearchStage(null);
-    setManualSearchIsComplete(false);
-  }, [ocrResults, manualSearchStage, manualSearchIsComplete]);
 
   return (
     <>

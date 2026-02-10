@@ -155,7 +155,7 @@ export const ModalCloseButton = styled.button`
   }
 `;
 
-export default {
+const ModalComponents = {
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -164,3 +164,4 @@ export default {
   ModalFooter,
   ModalCloseButton
 };
+export default ModalComponents;

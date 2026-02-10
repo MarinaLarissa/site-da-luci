@@ -148,10 +148,11 @@ export const getPeriodDates = (period) => {
   return { startDate, endDate };
 };
 
-export default {
+const chartDataUtilsDefault = {
   aggregateByDay,
   fillMissingDates,
   calculateMovingAverage,
   calculateTrend,
   getPeriodDates,
 };
+export default chartDataUtilsDefault;

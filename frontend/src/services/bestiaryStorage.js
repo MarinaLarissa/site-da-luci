@@ -530,7 +530,7 @@ export const clearBestiaryData = () => {
   localStorage.removeItem(STORAGE_KEY);
 };
 
-export default {
+const bestiaryStorageDefault = {
   loadBestiaryData,
   saveBestiaryData,
   createCharacter,
@@ -555,3 +555,4 @@ export default {
   importBestiaryData,
   clearBestiaryData,
 };
+export default bestiaryStorageDefault;

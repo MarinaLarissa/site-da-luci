@@ -75,10 +75,11 @@ export const calculatePercentage = (kills, totalKills) => {
   return Math.min(100, Math.round((kills / totalKills) * 100));
 };
 
-export default {
+const bestiaryStagesDefault = {
   calculateStageFromKills,
   calculateMinimumKills,
   isBestiaryComplete,
   getStageDisplayKey,
   calculatePercentage,
 };
+export default bestiaryStagesDefault;

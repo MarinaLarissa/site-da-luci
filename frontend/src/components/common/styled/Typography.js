@@ -129,4 +129,5 @@ export const PageDescription = styled.p`
   }
 `;
 
-export default { SectionTitle, SectionDescription, PageTitle, PageDescription };
+const TypographyComponents = { SectionTitle, SectionDescription, PageTitle, PageDescription };
+export default TypographyComponents;

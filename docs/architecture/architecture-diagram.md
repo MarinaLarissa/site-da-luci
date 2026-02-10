@@ -4,13 +4,14 @@
 
 ```mermaid
 graph TB
-    subgraph "Frontend (Phase 3 - Pending)"
+    subgraph "Frontend (React SPA - GitHub Pages)"
         UI[React UI Components]
         Hooks[Custom Hooks]
-        Services[API Services]
+        Services[Services Layer]
+        Storage[localStorage + Supabase]
     end
 
-    subgraph "Backend (Phase 1 Complete / Phase 2 Pending)"
+    subgraph "Backend (Render - Express)"
         subgraph "Presentation Layer"
             Routes[Express Routes]
             Controllers[Controllers]
@@ -32,14 +33,21 @@ graph TB
 
         subgraph "Infrastructure Layer"
             Parser[TibiaLootParser]
-            MongoDB[(MongoDB Atlas)]
             Config[Configuration]
         end
+    end
+
+    subgraph "External Services"
+        Supabase[(Supabase - Auth + DB)]
+        OCR[OCR.space API]
     end
 
     UI -->|HTTP Requests| Routes
     Hooks -->|State Management| UI
     Services -->|Axios| Routes
+    Services -->|Auth + Sync| Supabase
+    Services -->|Screenshot Parse| OCR
+    Storage -->|Persist| Services
 
     Routes --> Controllers
     Controllers --> Validators
@@ -52,12 +60,10 @@ graph TB
     UC2 --> UC1
     UC2 --> LootSession
 
-    Parser -.->|Future| MongoDB
-    Config -.->|Future| MongoDB
-
     style UI fill:#4fc3f7
     style Hooks fill:#81c784
     style Services fill:#ffb74d
+    style Storage fill:#fff176
     style Routes fill:#e57373
     style Controllers fill:#ba68c8
     style UC1 fill:#ffd54f
@@ -66,7 +72,42 @@ graph TB
     style LootSession fill:#a5d6a7
     style Transfer fill:#a5d6a7
     style Parser fill:#ce93d8
-    style MongoDB fill:#90caf9
+    style Supabase fill:#90caf9
+    style OCR fill:#ef9a9a
+```
+
+## Frontend Features (All Implemented)
+
+```mermaid
+graph TB
+    App[App.js - HashRouter]
+
+    App --> LS[Loot Split Calculator<br/>/loot-split]
+    App --> SH[Solo Hunt Analyzer<br/>/solo-hunt]
+    App --> IC[Imbuement Calculator<br/>/imbuement-calc]
+    App --> BP[Bestiary Planner<br/>/bestiary-planner]
+
+    LS --> LSCalc[Session Parser + Transfer Algorithm]
+    LS --> LSHist[Hunt History - localStorage]
+
+    SH --> SHCalc[Solo Profit Calculator]
+    SH --> SHGT[Gold Token Price - shared state]
+
+    IC --> ICCalc[Imbuement Cost Calculator]
+    IC --> ICGT[Gold Token Price - shared state]
+
+    BP --> BPData[900+ Creatures Database]
+    BP --> BPOCR[OCR Screenshot Import]
+    BP --> BPSync[Supabase Cloud Sync]
+    BP --> BPFilter[Filters - Location, Difficulty, etc]
+
+    SHGT -.->|shared| ICGT
+
+    style App fill:#4fc3f7
+    style LS fill:#81c784
+    style SH fill:#ffb74d
+    style IC fill:#ce93d8
+    style BP fill:#ffd54f
 ```
 
 ## Layer Dependencies (Clean Architecture)
@@ -86,7 +127,7 @@ graph LR
 
 **Key Principle**: Dependencies always point INWARD. Domain Layer has ZERO dependencies.
 
-## Loot Split Calculator Flow (Phase 1)
+## Loot Split Calculator Flow
 
 ```mermaid
 sequenceDiagram
@@ -112,45 +153,7 @@ sequenceDiagram
     Controller-->>User: 200 OK<br/>JSON response
 ```
 
-## Data Flow Architecture
-
-```mermaid
-flowchart TD
-    A[TIBIA Client Data] -->|Paste| B[Frontend Input]
-    B -->|HTTP POST| C[Express Route]
-    C --> D[Validator Middleware]
-    D -->|Valid| E[Controller]
-    D -->|Invalid| F[Error Response]
-
-    E --> G[ParseLootSessionUseCase]
-    G --> H[TibiaLootParser]
-    H --> I{Valid Format?}
-    I -->|Yes| J[Create Domain Entities]
-    I -->|No| K[Parse Error]
-
-    J --> L[CalculateLootSplitUseCase]
-    L --> M[Calculate Fair Share]
-    M --> N[Classify Players]
-    N --> O[Greedy Algorithm]
-    O --> P[Generate Transfers]
-
-    P --> Q[Format Response]
-    Q --> R[JSON to Frontend]
-    R --> S[Display Results]
-
-    K --> F
-    F --> S
-
-    style A fill:#e3f2fd
-    style B fill:#fff3e0
-    style J fill:#f1f8e9
-    style L fill:#fce4ec
-    style O fill:#e0f2f1
-    style S fill:#c8e6c9
-    style F fill:#ffcdd2
-```
-
-## Domain Model (Phase 1 Complete)
+## Domain Model
 
 ```mermaid
 classDiagram
@@ -217,94 +220,7 @@ classDiagram
     TibiaLootParser ..> LootSession
 ```
 
-## Algorithm Visualization (Greedy Two-Pointer)
-
-```mermaid
-flowchart TD
-    Start([Start: LootSession]) --> Filter[Filter Active Players]
-    Filter --> CalcShare[Calculate Fair Share<br/>totalBalance / activePlayers]
-    CalcShare --> CalcDiff[Calculate Differences<br/>netBalance - fairShare]
-
-    CalcDiff --> Split{Split Players}
-    Split -->|difference > 0| Creditors[Creditors Array<br/>Sort DESC]
-    Split -->|difference < 0| Debtors[Debtors Array<br/>Sort ASC]
-
-    Creditors --> TwoPointer[Two-Pointer Algorithm]
-    Debtors --> TwoPointer
-
-    TwoPointer --> Match[Match Largest<br/>Creditor + Debtor]
-    Match --> CalcAmount[amountToTransfer =<br/>min(abs(debtor), creditor)]
-    CalcAmount --> CreateTransfer[Create Transfer Object<br/>from: creditor<br/>to: debtor<br/>amount: rounded]
-
-    CreateTransfer --> UpdateDiff[Update Differences<br/>debtor += amount<br/>creditor -= amount]
-    UpdateDiff --> CheckZero{Difference = 0?}
-
-    CheckZero -->|Debtor = 0| IncDebtor[debtorIndex++]
-    CheckZero -->|Creditor = 0| IncCreditor[creditorIndex++]
-    CheckZero -->|Both = 0| IncBoth[Both indexes++]
-
-    IncDebtor --> MorePlayers{More Players?}
-    IncCreditor --> MorePlayers
-    IncBoth --> MorePlayers
-
-    MorePlayers -->|Yes| Match
-    MorePlayers -->|No| Sort[Sort Transfers<br/>by amount DESC]
-    Sort --> Group[Group by Sender]
-    Group --> End([Return Transfers])
-
-    style Start fill:#4caf50
-    style Filter fill:#81c784
-    style CalcShare fill:#aed581
-    style Split fill:#ffeb3b
-    style Creditors fill:#ff9800
-    style Debtors fill:#f44336
-    style TwoPointer fill:#9c27b0
-    style CreateTransfer fill:#2196f3
-    style End fill:#4caf50
-```
-
-## Test Architecture (TDD - Phase 1)
-
-```mermaid
-graph TB
-    subgraph "Unit Tests (80%)"
-        UT1[Player.test.js<br/>18 tests]
-        UT2[LootSession.test.js<br/>8 tests]
-        UT3[Transfer.test.js<br/>5 tests]
-        UT4[TibiaLootParser.test.js<br/>9 tests]
-        UT5[CalculateLootSplitUseCase.test.js<br/>15 tests]
-        UT6[ParseLootSessionUseCase.test.js<br/>7 tests]
-    end
-
-    subgraph "Integration Tests (15% - Phase 2)"
-        IT1[API Endpoints<br/>Supertest]
-        IT2[Database Integration<br/>MongoDB Memory Server]
-    end
-
-    subgraph "E2E Tests (5% - Phase 3)"
-        E2E1[Full User Flow<br/>Cypress]
-    end
-
-    UT1 --> Domain[Domain Layer]
-    UT2 --> Domain
-    UT3 --> Domain
-    UT4 --> Infra[Infrastructure Layer]
-    UT5 --> App[Application Layer]
-    UT6 --> App
-
-    IT1 -.->|Phase 2| Pres[Presentation Layer]
-    IT2 -.->|Phase 2| Infra
-
-    E2E1 -.->|Phase 3| Frontend[React Frontend]
-
-    style Domain fill:#a5d6a7
-    style Infra fill:#ce93d8
-    style App fill:#ffd54f
-    style Pres fill:#ba68c8
-    style Frontend fill:#4fc3f7
-```
-
-## Deployment Architecture (Phase 4 - Future)
+## Deployment Architecture
 
 ```mermaid
 graph TB
@@ -312,76 +228,72 @@ graph TB
         Browser[Web Browser]
     end
 
-    subgraph "CDN / GitHub Pages"
+    subgraph "GitHub Pages"
         StaticFiles[React Static Files<br/>HTML, CSS, JS]
     end
 
     subgraph "Render (Backend)"
-        API[Express API<br/>Node.js 20+]
+        API[Express API<br/>Node.js]
         ENV[Environment Config]
     end
 
-    subgraph "MongoDB Atlas"
-        DB[(MongoDB Database)]
-        Collections[Sessions Collection<br/>Users Collection]
-    end
-
-    subgraph "CI/CD - GitHub Actions"
-        Tests[Run Tests]
-        Build[Build Frontend]
-        Deploy[Deploy to Render + GH Pages]
+    subgraph "Supabase"
+        Auth[Auth Service]
+        DB[(PostgreSQL)]
     end
 
     Browser -->|HTTPS| StaticFiles
     Browser -->|API Calls| API
+    Browser -->|Auth + Data| Auth
     API --> ENV
-    API --> DB
-    DB --> Collections
-
-    Tests --> Build
-    Build --> Deploy
+    Auth --> DB
 
     style Browser fill:#4fc3f7
     style StaticFiles fill:#81c784
     style API fill:#ba68c8
+    style Auth fill:#ffb74d
     style DB fill:#90caf9
-    style Tests fill:#ffb74d
 ```
 
-## Future Scalability (Multi-Game Support)
+## Test Architecture
 
 ```mermaid
 graph TB
-    subgraph "Game-Agnostic Core"
-        Parser[IGameLootParser<br/>Interface]
-        Factory[ParserFactory]
-        SharedCalc[Shared Calculation Logic]
+    subgraph "Unit Tests (Jest + RTL)"
+        UT1[BestiaryPlanner.test.js]
+        UT2[useBestiaryPlanner.test.js]
+        UT3[bestiaryStorage.test.js]
+        UT4[AuthContext.test.js]
+        UT5[DataPersistence.test.js]
+        UT6[PageComponents.test.js]
+        UT7[imageUtils.test.js]
     end
 
-    subgraph "Game-Specific Implementations"
-        TibiaParser[TibiaLootParser]
-        WoWParser[WoWLootParser]
-        FFXIVParser[FFXIVLootParser]
+    subgraph "E2E Tests (Cypress)"
+        E2E1[loot-split-calculator.cy.js<br/>11 tests]
+        E2E2[bestiary-planner.cy.js]
+        E2E3[navigation.cy.js]
     end
 
-    Factory -->|creates| TibiaParser
-    Factory -->|creates| WoWParser
-    Factory -->|creates| FFXIVParser
+    UT1 --> Components[Components]
+    UT2 --> HooksLayer[Hooks]
+    UT3 --> ServicesLayer[Services]
+    UT4 --> Contexts[Contexts]
+    UT5 --> ServicesLayer
+    UT6 --> Components
 
-    TibiaParser -->|implements| Parser
-    WoWParser -->|implements| Parser
-    FFXIVParser -->|implements| Parser
+    E2E1 --> Frontend[Full App]
+    E2E2 --> Frontend
+    E2E3 --> Frontend
 
-    Parser --> SharedCalc
-
-    style Parser fill:#ffd54f
-    style Factory fill:#ba68c8
-    style SharedCalc fill:#a5d6a7
-    style TibiaParser fill:#81c784
+    style Components fill:#4fc3f7
+    style HooksLayer fill:#81c784
+    style ServicesLayer fill:#ffb74d
+    style Contexts fill:#ce93d8
+    style Frontend fill:#ffd54f
 ```
 
 ---
 
-**Generated**: 2025-12-26
-**Phase**: 1 Complete (Backend Foundation)
-**Next**: Phase 2 (Backend API)
+**Last Updated**: 2026-02-10
+**Status**: Frontend complete (4 tools), Backend foundation complete, Supabase integrated

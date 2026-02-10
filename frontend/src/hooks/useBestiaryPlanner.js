@@ -51,7 +51,6 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const [character, setCharacter] = useState(null);
   const [completedCreatureIds, setCompletedCreatureIds] = useState([]);
   const [settings, setSettings] = useState({ rapidRespawnActive: false, preferredRegions: [] });
-  const [killsUpdateTrigger, setKillsUpdateTrigger] = useState(0);
   const [filters, setFilters] = useState({
     difficulty: [], // EASY, MEDIUM, HARD
     location: '', // Single location filter (string, not array)
@@ -83,8 +82,6 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
       const characterId = character.id;
       const completed = storageService.getCompletedCreatures(characterId);
       setCompletedCreatureIds(completed);
-      // Trigger kills update to refresh currentKills in suggestions
-      setKillsUpdateTrigger(prev => prev + 1);
     }
   }, [character, storageService]);
 
@@ -215,7 +212,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         // If both are equal, sort by name (tertiary)
         return a.name.localeCompare(b.name);
       });
-  }, [filteredCreatures, settings, character, filters, completedCreatureIds, killsUpdateTrigger]);
+  }, [filteredCreatures, settings, character, filters]);
 
   // Get top N suggestions
   const getTopSuggestions = useCallback(
@@ -279,7 +276,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     }
 
     return storageService.getCharacterProgress(character.id, VALID_BESTIARY_DATA);
-  }, [character, completedCreatureIds, storageService]);
+  }, [character, storageService]);
 
   // Get creature by ID (pure function, no need for useCallback)
   // Note: Still uses full BESTIARY_DATA to allow looking up excluded creatures if needed
