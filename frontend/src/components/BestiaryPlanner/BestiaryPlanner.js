@@ -27,6 +27,8 @@ import FirstTimeTutorial from './FirstTimeTutorial';
 import BulkActionsBar from './BulkActionsBar';
 import BulkConfirmationModal from './BulkConfirmationModal';
 import ProgressHistory from './ProgressHistory';
+import VoiceInput from './VoiceInput';
+import VoiceConfirmationModal from './VoiceConfirmationModal';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import { saveCompletion } from '../../services/progressHistoryStorage';
 import {
@@ -87,6 +89,8 @@ const BestiaryPlanner = () => {
   const [characterToEdit, setCharacterToEdit] = useState(null);
   const [bulkModalConfig, setBulkModalConfig] = useState(null);
   const [isProgressHistoryOpen, setIsProgressHistoryOpen] = useState(false);
+  const [isVoiceInputOpen, setIsVoiceInputOpen] = useState(false);
+  const [voiceConfirmationData, setVoiceConfirmationData] = useState(null);
 
   const {
     character,
@@ -523,6 +527,90 @@ const BestiaryPlanner = () => {
     exitSelectionMode();
   };
 
+  // Voice Input Handlers
+  const handleVoiceRecognized = (parsedResult) => {
+    // Close voice input modal
+    setIsVoiceInputOpen(false);
+
+    // Open confirmation modal with parsed results
+    setVoiceConfirmationData(parsedResult);
+  };
+
+  const handleVoiceConfirm = (confirmedData) => {
+    if (!character) return;
+
+    const { action, matches } = confirmedData;
+
+    // Process each confirmed match
+    matches.forEach((match) => {
+      const creatureId = match.creature.id;
+
+      switch (action) {
+        case 'complete':
+          // Mark as complete if not already completed
+          if (!isCreatureCompleted(creatureId)) {
+            toggleCreatureCompletion(creatureId);
+            addTodayCompletion(character.id, match.creature);
+
+            // Save to progress history
+            saveCompletion(character.id, {
+              id: match.creature.id,
+              name: match.creature.name,
+              charmPoints: match.creature.charmPoints,
+            });
+
+            // Remove from session plan if it's there
+            if (isInSessionPlan(character.id, creatureId)) {
+              toggleCreatureInPlan(character.id, creatureId);
+            }
+          }
+          break;
+
+        case 'updateKills':
+          // Update kill count
+          if (match.killCount) {
+            updateCreatureKills(character.id, creatureId, match.killCount, match.creature.occurrence);
+
+            // If kills reach the max, also complete the creature
+            if (match.killCount >= match.creature.occurrence) {
+              if (!isCreatureCompleted(creatureId)) {
+                toggleCreatureCompletion(creatureId);
+                addTodayCompletion(character.id, match.creature);
+
+                // Remove from session plan
+                if (isInSessionPlan(character.id, creatureId)) {
+                  toggleCreatureInPlan(character.id, creatureId);
+                }
+              }
+            }
+          }
+          break;
+
+        case 'remove':
+          // Mark as incomplete (remove completion)
+          if (isCreatureCompleted(creatureId)) {
+            toggleCreatureCompletion(creatureId);
+          }
+          // Remove from plan if in plan
+          if (isInSessionPlan(character.id, creatureId)) {
+            toggleCreatureInPlan(character.id, creatureId);
+          }
+          break;
+
+        default:
+          console.warn('Unknown voice action:', action);
+      }
+    });
+
+    // Refresh progress and session plan
+    refreshProgress();
+    const updatedPlan = getSessionPlanWithData(character.id, BESTIARY_DATA);
+    setSessionPlanCreatures(updatedPlan);
+
+    // Close confirmation modal
+    setVoiceConfirmationData(null);
+  };
+
   return (
     <PlannerContainer>
       <Header>
@@ -615,11 +703,16 @@ const BestiaryPlanner = () => {
         </ProgressBarTrack>
       </ProgressBar>
 
-      {/* Screenshot Import */}
+      {/* Screenshot Import & Voice Input */}
       <ScreenshotSection>
-        <ScreenshotToggleButton onClick={() => setShowScreenshotImport(!showScreenshotImport)}>
-          📷 {showScreenshotImport ? t('bestiaryPlanner.screenshot.hide') : t('bestiaryPlanner.screenshot.show')}
-        </ScreenshotToggleButton>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <ScreenshotToggleButton onClick={() => setShowScreenshotImport(!showScreenshotImport)}>
+            📷 {showScreenshotImport ? t('bestiaryPlanner.screenshot.hide') : t('bestiaryPlanner.screenshot.show')}
+          </ScreenshotToggleButton>
+          <ScreenshotToggleButton onClick={() => setIsVoiceInputOpen(true)}>
+            🎤 {t('bestiaryPlanner.voiceInput.button')}
+          </ScreenshotToggleButton>
+        </div>
         {showScreenshotImport && (
           <ScreenshotImport
             characterId={character.id}
@@ -803,6 +896,41 @@ const BestiaryPlanner = () => {
           characterId={character.id}
         />
       )}
+
+      {/* Voice Input Modal */}
+      {isVoiceInputOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: '1rem',
+          }}
+          onClick={() => setIsVoiceInputOpen(false)}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <VoiceInput
+              onClose={() => setIsVoiceInputOpen(false)}
+              onRecognized={handleVoiceRecognized}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Voice Confirmation Modal */}
+      <VoiceConfirmationModal
+        isOpen={!!voiceConfirmationData}
+        onClose={() => setVoiceConfirmationData(null)}
+        onConfirm={handleVoiceConfirm}
+        parsedResult={voiceConfirmationData}
+      />
     </PlannerContainer>
   );
 };

@@ -698,6 +698,49 @@
       "selectNone": "Desmarcar Tudo",
       "selectAllFiltered": "Selecionar Filtradas"
     },
+    "voiceInput": {
+      "button": "Voice Input",
+      "title": "Voice Input - Reconhecimento de Voz",
+      "listening": "Ouvindo... Fale agora",
+      "clickToStart": "Clique para começar a gravar",
+      "transcript": "Transcrição",
+      "noTranscript": "Aguardando fala...",
+      "cancel": "Cancelar",
+      "clear": "Limpar",
+      "process": "Processar",
+      "close": "Fechar",
+      "error": "Erro",
+      "unsupported": {
+        "title": "Navegador Não Suportado",
+        "description": "Seu navegador não suporta reconhecimento de voz.",
+        "browsers": "Navegadores compatíveis"
+      },
+      "examples": {
+        "title": "Exemplos de comandos:",
+        "complete": "\"Completei dragon, dragon lord, wyrm\"",
+        "kills": "\"Dragon 250 kills, Dragon Lord 180 kills\""
+      },
+      "actions": {
+        "complete": "Marcar como Completo",
+        "updateKills": "Atualizar Quantidade de Kills",
+        "remove": "Remover",
+        "unknown": "Ação Desconhecida"
+      },
+      "confirmModal": {
+        "title": "Confirmar Criaturas Reconhecidas",
+        "confidence": "confiança",
+        "cancel": "Cancelar",
+        "confirm": "Confirmar",
+        "lowConfidence": {
+          "title": "Baixa Confiança",
+          "description": "Algumas criaturas foram reconhecidas com baixa confiança. Verifique se estão corretas."
+        },
+        "noCreatures": {
+          "title": "Nenhuma Criatura Reconhecida",
+          "description": "Não foi possível identificar criaturas na sua fala. Tente novamente."
+        }
+      }
+    },
     "progressHistory": {
       "button": "Histórico de Progresso",
       "title": "Histórico de Progresso",

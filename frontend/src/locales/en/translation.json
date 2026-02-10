@@ -698,6 +698,49 @@
       "selectNone": "Select None",
       "selectAllFiltered": "Select All Filtered"
     },
+    "voiceInput": {
+      "button": "Voice Input",
+      "title": "Voice Input - Speech Recognition",
+      "listening": "Listening... Speak now",
+      "clickToStart": "Click to start recording",
+      "transcript": "Transcript",
+      "noTranscript": "Waiting for speech...",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "process": "Process",
+      "close": "Close",
+      "error": "Error",
+      "unsupported": {
+        "title": "Browser Not Supported",
+        "description": "Your browser does not support speech recognition.",
+        "browsers": "Compatible browsers"
+      },
+      "examples": {
+        "title": "Example commands:",
+        "complete": "\"I completed dragon, dragon lord, wyrm\"",
+        "kills": "\"Dragon 250 kills, Dragon Lord 180 kills\""
+      },
+      "actions": {
+        "complete": "Mark as Complete",
+        "updateKills": "Update Kill Count",
+        "remove": "Remove",
+        "unknown": "Unknown Action"
+      },
+      "confirmModal": {
+        "title": "Confirm Recognized Creatures",
+        "confidence": "confidence",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "lowConfidence": {
+          "title": "Low Confidence",
+          "description": "Some creatures were recognized with low confidence. Please verify they are correct."
+        },
+        "noCreatures": {
+          "title": "No Creatures Recognized",
+          "description": "Could not identify any creatures from your speech. Please try again."
+        }
+      }
+    },
     "progressHistory": {
       "button": "Progress History",
       "title": "Progress History",
