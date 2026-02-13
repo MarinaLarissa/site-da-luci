@@ -70,7 +70,7 @@ const AutocompleteModal = ({
               >
                 <CandidateName>{candidate.name}</CandidateName>
                 <CandidateInfo>
-                  {candidate.region} • {candidate.charmPoints} CP
+                  {candidate.difficulty} • {candidate.charmPoints} CP
                 </CandidateInfo>
               </CandidateItem>
             ))}

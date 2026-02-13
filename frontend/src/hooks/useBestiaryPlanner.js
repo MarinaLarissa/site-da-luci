@@ -10,37 +10,17 @@ import { estimateTimeToComplete, calculateEfficiencyScore as calculateEfficiency
 
 /**
  * Efficiency calculation (HP-based)
- * Score = (charmPoints / estimatedHours_HP) * modifiers
- *
- * Uses HP-based time estimation (TibiaRoute formula) instead of generic estimatedHours
- * This provides much more accurate efficiency scores.
- *
- * Modifiers:
- * - Rapid respawn active: +30% for creatures with rapid respawn category
- * - Preferred region: +20%
- * - Lower level recommendation (character level > recommended level + 50): +10%
+ * Score = charmPoints / estimatedHours_HP
  */
 const calculateEfficiencyScore = (creature, settings, characterLevel, currentKills = 0) => {
-  // Calculate time estimate using HP-based formula
   const timeEstimate = estimateTimeToComplete(creature, currentKills);
   const estimatedHours = timeEstimate.hours;
 
-  // Fallback to old calculation if no time estimate available
   if (!estimatedHours || estimatedHours <= 0) {
-    // Use deprecated estimatedHours if available, otherwise default to 5 hours
-    const fallbackHours = creature.estimatedHours || 5;
-    return (creature.charmPoints / fallbackHours) * 0.5; // Penalize unknown estimates
+    return (creature.charmPoints / 5) * 0.5;
   }
 
-  // Build modifiers object
-  const modifiers = {
-    rapidRespawn: settings?.rapidRespawnActive && creature.respawnCategory === 'rapid',
-    preferredRegion: settings?.preferredRegions?.includes(creature.region),
-    overleveled: characterLevel > (creature.recommendedLevel || 0) + 50,
-  };
-
-  // Use utility function with HP-based calculation
-  return calculateEfficiencyScoreUtil(creature.charmPoints, estimatedHours, modifiers);
+  return calculateEfficiencyScoreUtil(creature.charmPoints, estimatedHours);
 };
 
 /**
@@ -50,11 +30,11 @@ const calculateEfficiencyScore = (creature, settings, characterLevel, currentKil
 export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   const [character, setCharacter] = useState(null);
   const [completedCreatureIds, setCompletedCreatureIds] = useState([]);
-  const [settings, setSettings] = useState({ rapidRespawnActive: false, preferredRegions: [] });
+  const [settings, setSettings] = useState({});
   const [filters, setFilters] = useState({
     difficulty: [], // EASY, MEDIUM, HARD
     location: '', // Single location filter (string, not array)
-    respawnCategory: [],
+    creatureCategory: [],
     minCharmPoints: 0, // Legacy - kept for backwards compatibility
     charmPointsFilter: [], // New: array of specific CP values to filter
     searchTerm: '',
@@ -142,10 +122,10 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         }
       }
 
-      // Respawn category filter
+      // Creature category filter (normal/rare)
       if (
-        filters?.respawnCategory?.length > 0 &&
-        !filters.respawnCategory.includes(creature.respawnCategory)
+        filters?.creatureCategory?.length > 0 &&
+        !filters.creatureCategory.includes(creature.creatureCategory)
       ) {
         return false;
       }
@@ -178,11 +158,9 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
   // Calculate suggestions (sorted by efficiency)
   const suggestions = useMemo(() => {
     const characterLevel = character?.level || 100;
-    const hasRapidFilter = filters?.respawnCategory?.includes('rapid') || false;
 
     return filteredCreatures
       .map((creature) => {
-        // Get current kills for this creature
         const currentKills = character ? bestiaryStorageDefault.getCreatureKills(character.id, creature.id) : 0;
 
         return {
@@ -190,15 +168,9 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
           currentKills,
           killsToComplete: creature.killsToComplete,
           efficiencyScore: calculateEfficiencyScore(creature, settings, characterLevel, currentKills),
-          isRapidRecommended: hasRapidFilter && creature.respawnCategory === 'rapid',
         };
       })
       .sort((a, b) => {
-        // When rapid filter is active, prioritize rapid creatures
-        if (hasRapidFilter) {
-          if (a.isRapidRecommended && !b.isRapidRecommended) return -1;
-          if (!a.isRapidRecommended && b.isRapidRecommended) return 1;
-        }
         // Sort by efficiency score (primary)
         const efficiencyDiff = b.efficiencyScore - a.efficiencyScore;
         if (Math.abs(efficiencyDiff) > 0.01) {
@@ -255,7 +227,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     setFilters({
       difficulty: [],
       location: '',
-      respawnCategory: [],
+      creatureCategory: [],
       minCharmPoints: 0,
       charmPointsFilter: [],
       searchTerm: '',
@@ -292,9 +264,12 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     [completedCreatureIds]
   );
 
-  // Get time to complete all remaining
+  // Get time to complete all remaining (HP-based)
   const getTotalRemainingTime = useCallback(() => {
-    return incompleteCreatures.reduce((sum, c) => sum + c.estimatedHours, 0);
+    return incompleteCreatures.reduce((sum, c) => {
+      const estimate = estimateTimeToComplete(c, 0);
+      return sum + (estimate.hours || 0);
+    }, 0);
   }, [incompleteCreatures]);
 
   // Get charm points per hour for remaining
@@ -302,7 +277,10 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
     if (incompleteCreatures.length === 0) return null;
 
     const totalCharmPoints = incompleteCreatures.reduce((sum, c) => sum + c.charmPoints, 0);
-    const totalHours = incompleteCreatures.reduce((sum, c) => sum + c.estimatedHours, 0);
+    const totalHours = incompleteCreatures.reduce((sum, c) => {
+      const estimate = estimateTimeToComplete(c, 0);
+      return sum + (estimate.hours || 0);
+    }, 0);
 
     return totalHours > 0 ? totalCharmPoints / totalHours : null;
   }, [incompleteCreatures]);

@@ -165,11 +165,7 @@ export const getSessionPlanWithData = (characterId, allCreatures) => {
       const creature = allCreatures.find((c) => c.id === id);
       if (!creature) return null;
 
-      // Override estimatedHours with custom value if exists
-      return {
-        ...creature,
-        estimatedHours: customHours[id] !== undefined ? customHours[id] : creature.estimatedHours,
-      };
+      return { ...creature };
     })
     .filter(Boolean); // Remove undefined if creature not found or excluded
 };
@@ -186,7 +182,7 @@ export const getSessionPlanStats = (characterId, allCreatures) => {
   return {
     totalCreatures: creatures.length,
     totalCharmPoints: creatures.reduce((sum, c) => sum + (c.charmPoints || 0), 0),
-    totalHours: creatures.reduce((sum, c) => sum + (c.estimatedHours || 0), 0),
+    totalHours: 0,
   };
 };
 

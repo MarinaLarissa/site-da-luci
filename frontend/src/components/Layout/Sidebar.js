@@ -77,12 +77,12 @@ export default function Sidebar() {
           </SidebarNavLabel>
         </SidebarNavItem>
         <SidebarNavItem $disabled>
-          <SidebarNavIcon>📊</SidebarNavIcon>
-          <SidebarNavLabel>{t('sidebar.nav.statistics')}</SidebarNavLabel>
+          <SidebarNavIcon>🛡️</SidebarNavIcon>
+          <SidebarNavLabel>{t('sidebar.nav.characterBuilder')}</SidebarNavLabel>
         </SidebarNavItem>
         <SidebarNavItem $disabled>
-          <SidebarNavIcon>👥</SidebarNavIcon>
-          <SidebarNavLabel>{t('sidebar.nav.partyAnalyzer')}</SidebarNavLabel>
+          <SidebarNavIcon>🎡</SidebarNavIcon>
+          <SidebarNavLabel>{t('sidebar.nav.wheelPlanner')}</SidebarNavLabel>
         </SidebarNavItem>
       </SidebarNav>
 

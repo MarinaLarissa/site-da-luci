@@ -10,8 +10,8 @@
       "soloHunt": "Solo Hunt Analyzer",
       "imbuementCalc": "Imbuement Efficiency Calculator",
       "bestiaryPlanner": "Bestiary Planner",
-      "statistics": "Statistics (Coming Soon)",
-      "partyAnalyzer": "Party Analyzer (Coming Soon)"
+      "characterBuilder": "Character Set Builder (Coming Soon)",
+      "wheelPlanner": "Wheel of Destiny Planner (Coming Soon)"
     },
     "footer": "Made for TIBIA players"
   },
@@ -412,8 +412,7 @@
       "searchPlaceholder": "Name or location...",
       "showCompleted": "Show Completed",
       "difficulty": "Difficulty",
-      "respawnCategory": "Respawn",
-      "region": "Region",
+      "creatureCategory": "Category",
       "minCharmPoints": "Min. Charm Points",
       "maxHours": "Max. Hours",
       "levelRange": "Recommended Level",
@@ -434,9 +433,8 @@
       "hard": "Hard",
       "challenging": "Challenging"
     },
-    "respawnCategory": {
+    "creatureCategory": {
       "normal": "Normal",
-      "rapid": "Rapid",
       "rare": "Rare"
     },
     "vocations": {

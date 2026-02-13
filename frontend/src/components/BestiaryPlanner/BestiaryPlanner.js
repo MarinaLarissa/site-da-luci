@@ -507,9 +507,9 @@ const BestiaryPlanner = () => {
     const selectedCreatures = BESTIARY_DATA.filter((c) => getSelectedIds().includes(c.id));
 
     // Generate CSV
-    const csvHeader = 'Name,Charm Points,Difficulty,Region,Recommended Level,Estimated Hours\n';
+    const csvHeader = 'Name,Charm Points,Difficulty,Kills To Complete\n';
     const csvRows = selectedCreatures
-      .map((c) => `"${c.name}",${c.charmPoints},"${c.difficulty}","${c.region}",${c.recommendedLevel},${c.estimatedHours}`)
+      .map((c) => `"${c.name}",${c.charmPoints},"${c.difficulty}",${c.killsToComplete}`)
       .join('\n');
     const csvContent = csvHeader + csvRows;
 

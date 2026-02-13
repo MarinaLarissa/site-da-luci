@@ -2,10 +2,10 @@
  * E2E tests for Loot Split Calculator
  *
  * Test Coverage:
- * - P0: Happy path - Calculate split correctly for valid session data
- * - P0: Validation - Handle empty input gracefully
- * - P1: Edge cases - Load example data
- * - P1: I18n - Verify PT-BR and EN translations
+ * Happy path - Calculate split correctly for valid session data
+ * Validation - Handle empty input gracefully
+ * Edge cases - Load example data
+ * I18n - Verify PT-BR and EN translations
  */
 
 describe('Loot Split Calculator', () => {

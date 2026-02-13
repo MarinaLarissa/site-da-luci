@@ -10,8 +10,8 @@
       "soloHunt": "Analisador de Caçada Solo",
       "imbuementCalc": "Calculadora de Eficiência de Imbuement",
       "bestiaryPlanner": "Planejador de Bestiary",
-      "statistics": "Estatísticas (Em Breve)",
-      "partyAnalyzer": "Analisador de Party (Em Breve)"
+      "characterBuilder": "Montador de Set (Em Breve)",
+      "wheelPlanner": "Planejador de Wheel of Destiny (Em Breve)"
     },
     "footer": "Feito para jogadores de TIBIA"
   },
@@ -412,8 +412,7 @@
       "searchPlaceholder": "Nome ou localização...",
       "showCompleted": "Mostrar Completados",
       "difficulty": "Dificuldade",
-      "respawnCategory": "Respawn",
-      "region": "Região",
+      "creatureCategory": "Categoria",
       "minCharmPoints": "Min. Charm Points",
       "maxHours": "Máx. Horas",
       "levelRange": "Nível Recomendado",
@@ -434,9 +433,8 @@
       "hard": "Difícil",
       "challenging": "Desafiador"
     },
-    "respawnCategory": {
+    "creatureCategory": {
       "normal": "Normal",
-      "rapid": "Rápido",
       "rare": "Raro"
     },
     "vocations": {

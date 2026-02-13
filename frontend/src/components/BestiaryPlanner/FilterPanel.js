@@ -9,7 +9,7 @@
 import { memo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from '../../hooks/useDebounce';
-import { DIFFICULTY, RESPAWN_CATEGORY, BESTIARY_DATA } from '../../data/bestiary';
+import { DIFFICULTY, CREATURE_CATEGORY, BESTIARY_DATA } from '../../data/bestiary';
 import {
   Panel,
   FilterGroup,
@@ -107,11 +107,11 @@ const FilterPanel = ({
 
   const availableLocations = getAllLocations();
 
-  const handleRespawnCategoryToggle = (category) => {
-    const newCategories = filters.respawnCategory.includes(category)
-      ? filters.respawnCategory.filter((c) => c !== category)
-      : [...filters.respawnCategory, category];
-    onUpdateFilters({ respawnCategory: newCategories });
+  const handleCreatureCategoryToggle = (category) => {
+    const newCategories = filters.creatureCategory.includes(category)
+      ? filters.creatureCategory.filter((c) => c !== category)
+      : [...filters.creatureCategory, category];
+    onUpdateFilters({ creatureCategory: newCategories });
   };
 
   return (
@@ -155,17 +155,17 @@ const FilterPanel = ({
         </MultiSelect>
       </FilterGroup>
 
-      {/* Respawn Category */}
+      {/* Creature Category */}
       <FilterGroup>
-        <FilterLabel>{t('bestiaryPlanner.filters.respawnCategory')}</FilterLabel>
+        <FilterLabel>{t('bestiaryPlanner.filters.creatureCategory')}</FilterLabel>
         <MultiSelect>
-          {Object.values(RESPAWN_CATEGORY).map((category) => (
+          {Object.values(CREATURE_CATEGORY).map((category) => (
             <MultiSelectChip
               key={category}
-              $selected={filters.respawnCategory.includes(category)}
-              onClick={() => handleRespawnCategoryToggle(category)}
+              $selected={filters.creatureCategory.includes(category)}
+              onClick={() => handleCreatureCategoryToggle(category)}
             >
-              {t(`bestiaryPlanner.respawnCategory.${category}`)}
+              {t(`bestiaryPlanner.creatureCategory.${category}`)}
             </MultiSelectChip>
           ))}
         </MultiSelect>

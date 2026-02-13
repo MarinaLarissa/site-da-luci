@@ -16,7 +16,7 @@
  */
 
 export const EXCLUDED_CREATURE_IDS = [
-  // Low-value creatures: 5 Charm Points, 500 kills (192 total)
+  // Low-value creatures: 5 Charm Points, 500 kills (190 total)
   'acid-blob', // 5 CP, 500 kills
   'albino-dragon', // 5 CP, 500 kills
   'alchemistical-container', // 5 CP, 500 kills
@@ -202,9 +202,7 @@ export const EXCLUDED_CREATURE_IDS = [
   'vicious-manbat', // 5 CP, 500 kills
   'wailing-widow', // 5 CP, 500 kills
   'water-elemental', // 5 CP, 500 kills
-  'white-deer', // 5 CP, 500 kills
   'wiggler', // 5 CP, 500 kills
-  'wisp', // 5 CP, 500 kills
   'worm-priestess', // 5 CP, 500 kills
   'wyvern', // 5 CP, 500 kills
   'yeti', // 5 CP, 500 kills

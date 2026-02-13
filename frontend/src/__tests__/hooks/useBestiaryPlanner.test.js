@@ -144,7 +144,6 @@ describe('useBestiaryPlanner', () => {
       const { result } = renderHook(() => useBestiaryPlanner(mockStorage));
 
       // Find a creature and check its efficiency score
-      // Base score = charmPoints / estimatedHours
       const suggestions = result.current.suggestions;
       expect(suggestions.length).toBeGreaterThan(0);
 
@@ -153,112 +152,6 @@ describe('useBestiaryPlanner', () => {
         expect(creature).toHaveProperty('efficiencyScore');
         expect(creature.efficiencyScore).toBeGreaterThan(0);
       });
-    });
-
-    it('should apply rapid respawn bonus (+30%)', () => {
-      const mockChar = createMockCharacter({ level: 100 });
-      const mockStorageWithoutRapid = createMockStorageService({
-        activeCharacter: mockChar.id,
-        characters: { [mockChar.id]: mockChar },
-        settings: { rapidRespawnActive: false, preferredRegions: [] },
-      });
-      const mockStorageWithRapid = createMockStorageService({
-        activeCharacter: mockChar.id,
-        characters: { [mockChar.id]: mockChar },
-        settings: { rapidRespawnActive: true, preferredRegions: [] },
-      });
-
-      const { result: resultWithout } = renderHook(() =>
-        useBestiaryPlanner(mockStorageWithoutRapid)
-      );
-      const { result: resultWith } = renderHook(() => useBestiaryPlanner(mockStorageWithRapid));
-
-      // Find a rapid respawn creature
-      const rapidCreatureWithout = resultWithout.current.suggestions.find(
-        (c) => c.respawnCategory === 'rapid'
-      );
-      const rapidCreatureWith = resultWith.current.suggestions.find(
-        (c) => c.id === rapidCreatureWithout?.id
-      );
-
-      // Ensure rapid creature exists
-      expect(rapidCreatureWithout).toBeDefined();
-      expect(rapidCreatureWith).toBeDefined();
-
-      // With rapid respawn active, score should be ~30% higher
-      expect(rapidCreatureWith.efficiencyScore).toBeGreaterThan(
-        rapidCreatureWithout.efficiencyScore
-      );
-    });
-
-    it('should apply preferred region bonus (+20%)', () => {
-      const mockChar = createMockCharacter({ level: 100 });
-      const mockStorageWithoutRegion = createMockStorageService({
-        activeCharacter: mockChar.id,
-        characters: { [mockChar.id]: mockChar },
-        settings: { rapidRespawnActive: false, preferredRegions: [] },
-      });
-      const mockStorageWithRegion = createMockStorageService({
-        activeCharacter: mockChar.id,
-        characters: { [mockChar.id]: mockChar },
-        settings: { rapidRespawnActive: false, preferredRegions: ['Zao'] },
-      });
-
-      const { result: resultWithout } = renderHook(() =>
-        useBestiaryPlanner(mockStorageWithoutRegion)
-      );
-      const { result: resultWith } = renderHook(() => useBestiaryPlanner(mockStorageWithRegion));
-
-      // Find a Zao creature
-      const zaoCreatureWithout = resultWithout.current.suggestions.find((c) => c.region === 'Zao');
-      const zaoCreatureWith = resultWith.current.suggestions.find(
-        (c) => c.id === zaoCreatureWithout?.id
-      );
-
-      // Ensure Zao creature exists
-      expect(zaoCreatureWithout).toBeDefined();
-      expect(zaoCreatureWith).toBeDefined();
-
-      // With preferred region, score should be ~20% higher
-      expect(zaoCreatureWith.efficiencyScore).toBeGreaterThan(
-        zaoCreatureWithout.efficiencyScore
-      );
-    });
-
-    it('should apply over-leveled bonus (+10%) when 50+ levels above recommended', () => {
-      const lowLevelChar = createMockCharacter({ level: 50 });
-      const highLevelChar = createMockCharacter({ id: 'high-level', level: 200 });
-
-      const mockStorageLowLevel = createMockStorageService({
-        activeCharacter: lowLevelChar.id,
-        characters: { [lowLevelChar.id]: lowLevelChar },
-        settings: { rapidRespawnActive: false, preferredRegions: [] },
-      });
-      const mockStorageHighLevel = createMockStorageService({
-        activeCharacter: highLevelChar.id,
-        characters: { [highLevelChar.id]: highLevelChar },
-        settings: { rapidRespawnActive: false, preferredRegions: [] },
-      });
-
-      const { result: resultLow } = renderHook(() => useBestiaryPlanner(mockStorageLowLevel));
-      const { result: resultHigh } = renderHook(() => useBestiaryPlanner(mockStorageHighLevel));
-
-      // Find a low-level creature (e.g., recommended level 50)
-      const lowLevelCreatureLow = resultLow.current.suggestions.find(
-        (c) => c.recommendedLevel <= 50
-      );
-      const lowLevelCreatureHigh = resultHigh.current.suggestions.find(
-        (c) => c.id === lowLevelCreatureLow?.id
-      );
-
-      // Ensure low level creature exists
-      expect(lowLevelCreatureLow).toBeDefined();
-      expect(lowLevelCreatureHigh).toBeDefined();
-
-      // High level character should have higher score due to over-leveled bonus
-      expect(lowLevelCreatureHigh.efficiencyScore).toBeGreaterThan(
-        lowLevelCreatureLow.efficiencyScore
-      );
     });
 
     it('should sort suggestions by efficiency score (highest first)', () => {
@@ -305,27 +198,15 @@ describe('useBestiaryPlanner', () => {
       });
     });
 
-    it('should filter by region', () => {
+    it('should filter by creature category', () => {
       const { result } = renderHook(() => useBestiaryPlanner(mockStorage));
 
       act(() => {
-        result.current.updateFilters({ region: ['Zao'] });
+        result.current.updateFilters({ creatureCategory: ['rare'] });
       });
 
       result.current.filteredCreatures.forEach((creature) => {
-        expect(creature.region).toBe('Zao');
-      });
-    });
-
-    it('should filter by respawn category', () => {
-      const { result } = renderHook(() => useBestiaryPlanner(mockStorage));
-
-      act(() => {
-        result.current.updateFilters({ respawnCategory: ['rapid'] });
-      });
-
-      result.current.filteredCreatures.forEach((creature) => {
-        expect(creature.respawnCategory).toBe('rapid');
+        expect(creature.creatureCategory).toBe('rare');
       });
     });
 
@@ -338,34 +219,6 @@ describe('useBestiaryPlanner', () => {
 
       result.current.filteredCreatures.forEach((creature) => {
         expect(creature.charmPoints).toBeGreaterThanOrEqual(15);
-      });
-    });
-
-    it('should filter by maximum estimated hours', () => {
-      const { result } = renderHook(() => useBestiaryPlanner(mockStorage));
-
-      act(() => {
-        result.current.updateFilters({ maxEstimatedHours: 2 });
-      });
-
-      result.current.filteredCreatures.forEach((creature) => {
-        expect(creature.estimatedHours).toBeLessThanOrEqual(2);
-      });
-    });
-
-    it('should filter by level range', () => {
-      const { result } = renderHook(() => useBestiaryPlanner(mockStorage));
-
-      act(() => {
-        result.current.updateFilters({
-          minRecommendedLevel: 50,
-          maxRecommendedLevel: 100,
-        });
-      });
-
-      result.current.filteredCreatures.forEach((creature) => {
-        expect(creature.recommendedLevel).toBeGreaterThanOrEqual(50);
-        expect(creature.recommendedLevel).toBeLessThanOrEqual(100);
       });
     });
 
@@ -414,14 +267,12 @@ describe('useBestiaryPlanner', () => {
         result.current.updateFilters({
           difficulty: ['EASY'],
           minCharmPoints: 5,
-          maxEstimatedHours: 2,
         });
       });
 
       result.current.filteredCreatures.forEach((creature) => {
         expect(creature.difficulty).toBe('EASY');
         expect(creature.charmPoints).toBeGreaterThanOrEqual(5);
-        expect(creature.estimatedHours).toBeLessThanOrEqual(2);
       });
     });
   });

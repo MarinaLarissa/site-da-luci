@@ -121,26 +121,15 @@ export const calculateTotalTime = (creatures, progressData = {}) => {
 
 /**
  * Calculate efficiency score based on time estimates
- * Replaces generic estimatedHours with HP-based calculation
  * @param {number} charmPoints - CP reward
- * @param {number} estimatedHours - Estimated hours to complete
- * @param {Object} modifiers - Optional efficiency modifiers
- * @param {boolean} modifiers.rapidRespawn - +30% efficiency
- * @param {boolean} modifiers.preferredRegion - +20% efficiency
- * @param {boolean} modifiers.overleveled - +10% efficiency
+ * @param {number} estimatedHours - Estimated hours to complete (HP-based)
  * @returns {number} - Efficiency score (higher = better)
  */
-export const calculateEfficiencyScore = (charmPoints, estimatedHours, modifiers = {}) => {
+export const calculateEfficiencyScore = (charmPoints, estimatedHours) => {
   if (!estimatedHours || estimatedHours <= 0) return 0;
 
-  let baseScore = charmPoints / estimatedHours;
-
-  // Apply modifiers
-  if (modifiers.rapidRespawn) baseScore *= 1.3;
-  if (modifiers.preferredRegion) baseScore *= 1.2;
-  if (modifiers.overleveled) baseScore *= 1.1;
-
-  return parseFloat(baseScore.toFixed(2));
+  const score = charmPoints / estimatedHours;
+  return parseFloat(score.toFixed(2));
 };
 
 const timeEstimatorUtils = {
