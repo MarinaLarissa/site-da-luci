@@ -184,7 +184,7 @@ export const useBestiaryPlanner = (storageService = bestiaryStorageDefault) => {
         // If both are equal, sort by name (tertiary)
         return a.name.localeCompare(b.name);
       });
-  }, [filteredCreatures, settings, character, filters]);
+  }, [filteredCreatures, settings, character]);
 
   // Get top N suggestions
   const getTopSuggestions = useCallback(

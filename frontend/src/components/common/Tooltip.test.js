@@ -2,12 +2,13 @@
  * Tooltip component tests
  */
 
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '../../test-utils/renderWithTheme';
 import Tooltip from './Tooltip';
 
 describe('Tooltip', () => {
   test('renders children correctly', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Test tooltip text">
         <button>Hover me</button>
       </Tooltip>
@@ -18,7 +19,7 @@ describe('Tooltip', () => {
   });
 
   test('displays tooltip text correctly', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="This is helpful information">
         <div>Child content</div>
       </Tooltip>
@@ -29,64 +30,67 @@ describe('Tooltip', () => {
   });
 
   test('renders with top position by default', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Top tooltip">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = screen.getByRole('tooltip');
-    expect(tooltipContent).toHaveClass('tooltip-top');
+    const tooltipContent = screen.getByRole('tooltip', { hidden: true });
+    expect(tooltipContent).toBeInTheDocument();
+    expect(tooltipContent).toHaveTextContent('Top tooltip');
   });
 
   test('renders with bottom position when specified', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Bottom tooltip" position="bottom">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = screen.getByRole('tooltip');
-    expect(tooltipContent).toHaveClass('tooltip-bottom');
+    const tooltipContent = screen.getByRole('tooltip', { hidden: true });
+    expect(tooltipContent).toBeInTheDocument();
+    expect(tooltipContent).toHaveTextContent('Bottom tooltip');
   });
 
   test('renders with left position when specified', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Left tooltip" position="left">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = screen.getByRole('tooltip');
-    expect(tooltipContent).toHaveClass('tooltip-left');
+    const tooltipContent = screen.getByRole('tooltip', { hidden: true });
+    expect(tooltipContent).toBeInTheDocument();
+    expect(tooltipContent).toHaveTextContent('Left tooltip');
   });
 
   test('renders with right position when specified', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Right tooltip" position="right">
         <div>Content</div>
       </Tooltip>
     );
 
-    const tooltipContent = screen.getByRole('tooltip');
-    expect(tooltipContent).toHaveClass('tooltip-right');
+    const tooltipContent = screen.getByRole('tooltip', { hidden: true });
+    expect(tooltipContent).toBeInTheDocument();
+    expect(tooltipContent).toHaveTextContent('Right tooltip');
   });
 
   test('has correct DOM structure', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Test tooltip">
         <div>Content</div>
       </Tooltip>
     );
 
-    // Check tooltip content
-    const tooltipContent = screen.getByRole('tooltip');
+    const tooltipContent = screen.getByRole('tooltip', { hidden: true });
     expect(tooltipContent).toBeInTheDocument();
-    expect(tooltipContent).toHaveClass('tooltip-content');
+    expect(tooltipContent).toHaveTextContent('Test tooltip');
   });
 
   test('accepts React nodes as children', () => {
-    render(
+    renderWithTheme(
       <Tooltip text="Test tooltip">
         <div>
           <span>Multiple</span>

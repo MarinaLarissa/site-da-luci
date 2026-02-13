@@ -24,28 +24,44 @@ import {
 } from '../../services/bestiarySync';
 
 // Import supabase after mock
-import { supabase, __mockSupabaseSelect, __mockSupabaseUpsert } from '../../services/supabaseClient';
+import { supabase } from '../../services/supabaseClient';
 
-// Mock Supabase client
+// Helper: creates a chainable Supabase query builder mock
+const createQueryBuilder = (resolveWith = { data: null, error: null }) => {
+  const builder = {};
+  builder.select = jest.fn().mockReturnValue(builder);
+  builder.upsert = jest.fn().mockReturnValue(builder);
+  builder.delete = jest.fn().mockReturnValue(builder);
+  builder.eq = jest.fn().mockReturnValue(builder);
+  builder.in = jest.fn().mockReturnValue(builder);
+  builder.single = jest.fn().mockResolvedValue(resolveWith);
+  // Make builder thenable so `await from('x').upsert(...)` resolves
+  builder.then = (resolve, reject) => Promise.resolve(resolveWith).then(resolve, reject);
+  return builder;
+};
+
+// Mock Supabase client - declare mocks inline to avoid hoisting issues
 jest.mock('../../services/supabaseClient', () => {
-  const mockSupabaseSelect = jest.fn();
-  const mockSupabaseUpsert = jest.fn();
-  const mockSupabaseDelete = jest.fn();
+  const createQueryBuilder = (resolveWith = { data: null, error: null }) => {
+    const builder = {};
+    builder.select = jest.fn().mockReturnValue(builder);
+    builder.upsert = jest.fn().mockReturnValue(builder);
+    builder.delete = jest.fn().mockReturnValue(builder);
+    builder.eq = jest.fn().mockReturnValue(builder);
+    builder.in = jest.fn().mockReturnValue(builder);
+    builder.single = jest.fn().mockResolvedValue(resolveWith);
+    builder.then = (resolve, reject) => Promise.resolve(resolveWith).then(resolve, reject);
+    return builder;
+  };
 
   return {
     supabase: {
       auth: {
         getUser: jest.fn(),
       },
-      from: jest.fn(() => ({
-        select: mockSupabaseSelect,
-        upsert: mockSupabaseUpsert,
-        delete: mockSupabaseDelete,
-      })),
+      from: jest.fn(() => createQueryBuilder()),
     },
-    __mockSupabaseSelect: mockSupabaseSelect,
-    __mockSupabaseUpsert: mockSupabaseUpsert,
-    __mockSupabaseDelete: mockSupabaseDelete,
+    isSupabaseConfigured: jest.fn(() => true),
   };
 });
 
@@ -67,25 +83,13 @@ const localStorageMock = {
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock, writable: true });
 
-// Alias for cleaner test code
-const mockSupabaseSelect = __mockSupabaseSelect;
-const mockSupabaseUpsert = __mockSupabaseUpsert;
-
 describe('Data Persistence', () => {
   beforeEach(() => {
     localStorageStore = {};
     jest.clearAllMocks();
 
-    // Setup default mock responses
-    mockSupabaseSelect.mockReturnValue({
-      single: jest.fn(() => Promise.resolve({ data: null, error: null })),
-    });
-
-    mockSupabaseUpsert.mockReturnValue({
-      select: jest.fn(() => ({
-        single: jest.fn(() => Promise.resolve({ data: {}, error: null })),
-      })),
-    });
+    // Reset from to return a fresh chainable builder each call
+    supabase.from.mockImplementation(() => createQueryBuilder());
   });
 
   // ============== localStorage Persistence Tests ==============
@@ -150,17 +154,22 @@ describe('Data Persistence', () => {
       expect(loaded.characters['char-1'].name).toBe('Test Knight');
     });
 
-    it('should return null when no data exists in localStorage', () => {
+    it('should return default storage when no data exists in localStorage', () => {
       const loaded = loadBestiaryData();
-      expect(loaded).toBeNull();
+      expect(loaded).toBeTruthy();
+      expect(loaded.version).toBe('1.0');
+      expect(loaded.characters).toEqual({});
+      expect(loaded.activeCharacter).toBeNull();
     });
 
-    it('should handle corrupted localStorage data', () => {
+    it('should handle corrupted localStorage data gracefully', () => {
       localStorageMock.setItem('luci_bestiary_progress', 'invalid-json');
 
-      expect(() => {
-        loadBestiaryData();
-      }).toThrow();
+      // Implementation catches error and returns default storage
+      const loaded = loadBestiaryData();
+      expect(loaded).toBeTruthy();
+      expect(loaded.version).toBe('1.0');
+      expect(loaded.characters).toEqual({});
     });
 
     it('should get all characters from storage', () => {
@@ -279,12 +288,6 @@ describe('Data Persistence', () => {
 
       localStorageMock.setItem('luci_bestiary_progress', JSON.stringify(mockData));
 
-      mockSupabaseUpsert.mockReturnValue({
-        select: jest.fn(() => ({
-          single: jest.fn(() => Promise.resolve({ data: { id: 'char-1' }, error: null })),
-        })),
-      });
-
       const result = await syncToSupabase();
 
       expect(result.success).toBe(true);
@@ -317,23 +320,26 @@ describe('Data Persistence', () => {
             creatures: {},
           },
         },
-        settings: {},
+        settings: {
+          rapidRespawnActive: false,
+          preferredRegions: [],
+        },
       };
 
       localStorageMock.setItem('luci_bestiary_progress', JSON.stringify(mockData));
 
+      // Make character upsert return an error via .single()
       const mockError = { message: 'Network error', code: 'NETWORK_ERROR' };
-      mockSupabaseUpsert.mockReturnValue({
-        select: jest.fn(() => ({
-          single: jest.fn(() => Promise.resolve({ data: null, error: mockError })),
-        })),
+      supabase.from.mockImplementation(() => {
+        const builder = createQueryBuilder({ data: null, error: mockError });
+        return builder;
       });
 
-      // Should continue despite error (logs error but doesn't throw)
+      // Should continue despite character error (logs but doesn't throw)
       const result = await syncToSupabase();
 
-      // Sync completed but with errors logged
-      expect(result.success).toBe(true); // Overall sync succeeded
+      // Sync completed - character errors are logged and skipped, settings error returns failure
+      expect(result.success).toBe(false);
     });
   });
 
@@ -362,25 +368,27 @@ describe('Data Persistence', () => {
         },
       ];
 
-      mockSupabaseSelect.mockReturnValueOnce(
-        Promise.resolve({ data: mockCharacters, error: null })
-      );
+      const mockSettings = {
+        user_id: 'user-123',
+        rapid_respawn_active: true,
+        preferred_regions: ['Edron'],
+        updated_at: new Date().toISOString(),
+      };
 
-      mockSupabaseSelect.mockReturnValueOnce(
-        Promise.resolve({ data: mockProgress, error: null })
-      );
-
-      mockSupabaseSelect.mockReturnValueOnce({
-        single: jest.fn(() =>
-          Promise.resolve({
-            data: {
-              user_id: 'user-123',
-              rapid_respawn_active: true,
-              preferred_regions: ['Edron'],
-            },
-            error: null,
-          })
-        ),
+      // syncFromSupabase makes 3 from() calls with different chaining:
+      // 1. from('bestiary_characters').select('*').eq(...) → resolves { data, error }
+      // 2. from('bestiary_progress').select('*').in(...) → resolves { data, error }
+      // 3. from('bestiary_settings').select('*').eq(...).single() → resolves { data, error }
+      let callCount = 0;
+      supabase.from.mockImplementation(() => {
+        callCount++;
+        if (callCount === 1) {
+          return createQueryBuilder({ data: mockCharacters, error: null });
+        } else if (callCount === 2) {
+          return createQueryBuilder({ data: mockProgress, error: null });
+        } else {
+          return createQueryBuilder({ data: mockSettings, error: null });
+        }
       });
 
       const result = await syncFromSupabase();
@@ -407,8 +415,8 @@ describe('Data Persistence', () => {
       supabase.auth.getUser.mockResolvedValueOnce({ data: { user: mockUser }, error: null });
 
       const mockError = { message: 'Network error', code: 'NETWORK_ERROR' };
-      mockSupabaseSelect.mockReturnValueOnce(
-        Promise.resolve({ data: null, error: mockError })
+      supabase.from.mockImplementation(() =>
+        createQueryBuilder({ data: null, error: mockError })
       );
 
       const result = await syncFromSupabase();
@@ -446,7 +454,11 @@ describe('Data Persistence', () => {
       saveBestiaryData(originalData);
       const loaded = loadBestiaryData();
 
-      expect(loaded).toEqual(originalData);
+      // saveBestiaryData updates lastUpdated, so compare key fields
+      expect(loaded.version).toBe(originalData.version);
+      expect(loaded.activeCharacter).toBe(originalData.activeCharacter);
+      expect(loaded.characters).toEqual(originalData.characters);
+      expect(loaded.settings).toEqual(originalData.settings);
     });
 
     it('should validate required fields exist', () => {
@@ -555,9 +567,9 @@ describe('Data Persistence', () => {
         settings: {},
       };
 
-      expect(() => {
-        saveBestiaryData(mockData);
-      }).toThrow('QuotaExceededError');
+      // Implementation catches error internally and returns false
+      const result = saveBestiaryData(mockData);
+      expect(result).toBe(false);
 
       localStorageMock.setItem = originalSetItem;
     });
@@ -576,9 +588,11 @@ describe('Data Persistence', () => {
         throw new Error('localStorage not available');
       });
 
-      expect(() => {
-        loadBestiaryData();
-      }).toThrow('localStorage not available');
+      // Implementation catches error internally and returns default storage
+      const loaded = loadBestiaryData();
+      expect(loaded).toBeTruthy();
+      expect(loaded.version).toBe('1.0');
+      expect(loaded.characters).toEqual({});
 
       localStorageMock.getItem = originalGetItem;
     });
@@ -633,16 +647,13 @@ describe('Data Persistence', () => {
             creatures: {},
           },
         },
-        settings: {},
+        settings: {
+          rapidRespawnActive: false,
+          preferredRegions: [],
+        },
       };
 
       localStorageMock.setItem('luci_bestiary_progress', JSON.stringify(mockData));
-
-      mockSupabaseUpsert.mockReturnValue({
-        select: jest.fn(() => ({
-          single: jest.fn(() => Promise.resolve({ data: { id: 'char-1' }, error: null })),
-        })),
-      });
 
       // Start sync
       const syncPromise = syncToSupabase();

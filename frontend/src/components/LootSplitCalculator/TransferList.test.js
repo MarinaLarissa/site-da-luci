@@ -2,7 +2,8 @@
  * TransferList component tests
  */
 
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { renderWithTheme } from '../../test-utils/renderWithTheme';
 import TransferList from './TransferList';
 
 // Mock react-i18next
@@ -47,20 +48,20 @@ describe('TransferList', () => {
   });
 
   test('renders empty state when no transfers', () => {
-    render(<TransferList transfers={[]} copyableText="" />);
+    renderWithTheme(<TransferList transfers={[]} copyableText="" />);
 
     expect(screen.getByText('Transfers')).toBeInTheDocument();
     expect(screen.getByText('No transfers needed! All players are balanced.')).toBeInTheDocument();
   });
 
   test('renders empty state when transfers is null', () => {
-    render(<TransferList transfers={null} copyableText="" />);
+    renderWithTheme(<TransferList transfers={null} copyableText="" />);
 
     expect(screen.getByText('No transfers needed! All players are balanced.')).toBeInTheDocument();
   });
 
   test('renders list of transfers correctly', () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     expect(screen.getByText('Player A')).toBeInTheDocument();
     expect(screen.getByText('Player B')).toBeInTheDocument();
@@ -71,7 +72,7 @@ describe('TransferList', () => {
   });
 
   test('displays copyable TIBIA commands', () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     expect(screen.getByText('TIBIA Commands:')).toBeInTheDocument();
 
@@ -81,7 +82,7 @@ describe('TransferList', () => {
   });
 
   test('copies transfer to clipboard when clicked', async () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const transferItems = screen.getAllByRole('button');
     fireEvent.click(transferItems[0]);
@@ -92,7 +93,7 @@ describe('TransferList', () => {
   });
 
   test('shows copied indicator after click', async () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const transferItems = screen.getAllByRole('button');
     fireEvent.click(transferItems[0]);
@@ -103,7 +104,7 @@ describe('TransferList', () => {
   });
 
   test('supports keyboard navigation with Enter key', async () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const transferItems = screen.getAllByRole('button');
     fireEvent.keyDown(transferItems[0], { key: 'Enter' });
@@ -114,7 +115,7 @@ describe('TransferList', () => {
   });
 
   test('supports keyboard navigation with Space key', async () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const transferItems = screen.getAllByRole('button');
     fireEvent.keyDown(transferItems[1], { key: ' ' });
@@ -125,7 +126,7 @@ describe('TransferList', () => {
   });
 
   test('has correct accessibility attributes', () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const transferItems = screen.getAllByRole('button');
 
@@ -137,7 +138,7 @@ describe('TransferList', () => {
   });
 
   test('renders transfer arrow between from and to players', () => {
-    render(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
+    renderWithTheme(<TransferList transfers={mockTransfers} copyableText={mockCopyableText} />);
 
     const arrows = screen.getAllByText('→');
     expect(arrows).toHaveLength(mockTransfers.length);

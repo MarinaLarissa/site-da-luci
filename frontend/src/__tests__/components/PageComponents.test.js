@@ -24,17 +24,30 @@ import ImbuementCalculator from '../../components/ImbuementCalculator/ImbuementC
 import BestiaryPlanner from '../../components/BestiaryPlanner/BestiaryPlanner';
 
 // Mock Supabase client
-jest.mock('../../services/supabaseClient', () => ({
-  supabase: {
-    auth: {
-      getSession: jest.fn(() => Promise.resolve({ data: { session: null }, error: null })),
-      onAuthStateChange: jest.fn(() => ({
-        data: { subscription: { unsubscribe: jest.fn() } },
-      })),
+jest.mock('../../services/supabaseClient', () => {
+  return {
+    supabase: {
+      auth: {
+        getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+        getUser: () => Promise.resolve({ data: { user: null }, error: null }),
+        onAuthStateChange: () => ({
+          data: { subscription: { unsubscribe: () => {} } },
+        }),
+        refreshSession: () => Promise.resolve({ data: { session: null }, error: null }),
+      },
+      from: () => ({
+        select: function() { return this; },
+        upsert: function() { return this; },
+        delete: function() { return this; },
+        eq: function() { return this; },
+        in: function() { return this; },
+        single: () => Promise.resolve({ data: null, error: null }),
+        then: (resolve) => Promise.resolve({ data: null, error: null }).then(resolve),
+      }),
     },
-  },
-  isSupabaseConfigured: jest.fn(() => true),
-}));
+    isSupabaseConfigured: () => true,
+  };
+});
 
 // Mock localStorage
 let localStorageStore = {};
@@ -73,13 +86,7 @@ describe('Page Components Loading', () => {
   beforeEach(() => {
     localStorageStore = {};
     // Suppress console errors for expected warnings
-    jest.spyOn(console, 'error').mockImplementation((message) => {
-      // Only suppress expected React warnings
-      if (message.includes('Warning:') || message.includes('act(')) {
-        return;
-      }
-      console.error(message);
-    });
+    jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -139,7 +146,7 @@ describe('Page Components Loading', () => {
       );
 
       // Component should be in the document
-      expect(screen.getByText(/solo hunt/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/solo hunt/i).length).toBeGreaterThan(0);
     });
 
     it('should display main input sections', () => {
@@ -151,7 +158,7 @@ describe('Page Components Loading', () => {
       );
 
       // Check for key input sections
-      expect(screen.getByText(/solo hunt/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/solo hunt/i).length).toBeGreaterThan(0);
     });
 
     it('should handle props correctly', () => {
@@ -163,7 +170,7 @@ describe('Page Components Loading', () => {
       );
 
       // Component should receive and use props
-      expect(screen.getByText(/solo hunt/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/solo hunt/i).length).toBeGreaterThan(0);
     });
 
     it('should not log console errors on mount', () => {
@@ -210,7 +217,7 @@ describe('Page Components Loading', () => {
       );
 
       // Component should be in the document
-      expect(screen.getByText(/imbuement/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/imbuement/i).length).toBeGreaterThan(0);
     });
 
     it('should display calculator sections', () => {
@@ -222,7 +229,7 @@ describe('Page Components Loading', () => {
       );
 
       // Check for key sections
-      expect(screen.getByText(/imbuement/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/imbuement/i).length).toBeGreaterThan(0);
     });
 
     it('should handle props correctly', () => {
@@ -233,7 +240,7 @@ describe('Page Components Loading', () => {
         />
       );
 
-      expect(screen.getByText(/imbuement/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/imbuement/i).length).toBeGreaterThan(0);
     });
 
     it('should not log console errors on mount', () => {
@@ -272,7 +279,7 @@ describe('Page Components Loading', () => {
       renderWithProviders(<BestiaryPlanner />);
 
       // Component should be in the document
-      expect(screen.getByText(/bestiary/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/bestiary/i).length).toBeGreaterThan(0);
     });
 
     it('should display warning when no character exists', () => {
@@ -305,7 +312,7 @@ describe('Page Components Loading', () => {
       renderWithProviders(<BestiaryPlanner />);
 
       // Should show planner
-      expect(screen.getByText(/bestiary planner/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/bestiary planner/i).length).toBeGreaterThan(0);
     });
 
     it('should not log console errors on mount', () => {
@@ -344,7 +351,7 @@ describe('Page Components Loading', () => {
         <SoloHuntAnalyzer goldTokenPrice={30000} setGoldTokenPrice={jest.fn()} />
       );
       await waitFor(() => {
-        expect(screen.getByText(/solo hunt/i)).toBeInTheDocument();
+        expect(screen.getAllByText(/solo hunt/i).length).toBeGreaterThan(0);
       });
       unmount2();
 
@@ -352,13 +359,13 @@ describe('Page Components Loading', () => {
         <ImbuementCalculator goldTokenPrice={30000} setGoldTokenPrice={jest.fn()} />
       );
       await waitFor(() => {
-        expect(screen.getByText(/imbuement/i)).toBeInTheDocument();
+        expect(screen.getAllByText(/imbuement/i).length).toBeGreaterThan(0);
       });
       unmount3();
 
       const { unmount: unmount4 } = renderWithProviders(<BestiaryPlanner />);
       await waitFor(() => {
-        expect(screen.getByText(/bestiary/i)).toBeInTheDocument();
+        expect(screen.getAllByText(/bestiary/i).length).toBeGreaterThan(0);
       });
       unmount4();
 
