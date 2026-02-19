@@ -8,6 +8,14 @@ export const ActionsContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
+
+  /* At smaller resolutions (≤1199px), limit to 2 buttons per row so
+     the Edit button wraps below the Add button instead of overflowing */
+  @media (max-width: 1199px) {
+    max-width: 96px; /* 2 × 44px buttons + 1 × 8px gap */
+    align-items: flex-start;
+  }
 `;
 
 // Tooltip component (defined before ActionButton to avoid use-before-define warning)

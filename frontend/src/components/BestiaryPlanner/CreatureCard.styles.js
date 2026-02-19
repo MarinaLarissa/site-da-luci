@@ -113,6 +113,11 @@ export const CardImageRow = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
+
+  /* Align to top when action buttons wrap to 2 rows */
+  @media (max-width: 1199px) {
+    align-items: flex-start;
+  }
 `;
 
 export const CreatureImage = styled.img`
@@ -141,6 +146,11 @@ export const CardActions = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
   margin-left: auto;
+
+  /* When action buttons wrap to 2 rows, align everything to top */
+  @media (max-width: 1199px) {
+    align-items: flex-start;
+  }
 `;
 
 export const CreatureName = styled.h3`
