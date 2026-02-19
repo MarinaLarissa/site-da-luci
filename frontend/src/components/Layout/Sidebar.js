@@ -76,13 +76,27 @@ export default function Sidebar() {
             {t('sidebar.nav.bestiaryPlanner')}
           </SidebarNavLabel>
         </SidebarNavItem>
-        <SidebarNavItem $disabled>
+        <SidebarNavItem
+          as={Link}
+          to={ROUTES.CHARACTER_SET_BUILDER}
+          $active={activePage === ROUTES.CHARACTER_SET_BUILDER}
+          data-cy="sidebar-nav-character-builder"
+        >
           <SidebarNavIcon>🛡️</SidebarNavIcon>
-          <SidebarNavLabel>{t('sidebar.nav.characterBuilder')}</SidebarNavLabel>
+          <SidebarNavLabel $active={activePage === ROUTES.CHARACTER_SET_BUILDER}>
+            {t('sidebar.nav.characterBuilder')}
+          </SidebarNavLabel>
         </SidebarNavItem>
-        <SidebarNavItem $disabled>
+        <SidebarNavItem
+          as={Link}
+          to={ROUTES.WHEEL_PLANNER}
+          $active={activePage === ROUTES.WHEEL_PLANNER}
+          data-cy="sidebar-nav-wheel-planner"
+        >
           <SidebarNavIcon>🎡</SidebarNavIcon>
-          <SidebarNavLabel>{t('sidebar.nav.wheelPlanner')}</SidebarNavLabel>
+          <SidebarNavLabel $active={activePage === ROUTES.WHEEL_PLANNER}>
+            {t('sidebar.nav.wheelPlanner')}
+          </SidebarNavLabel>
         </SidebarNavItem>
       </SidebarNav>
 

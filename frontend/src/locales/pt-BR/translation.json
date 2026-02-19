@@ -10,8 +10,8 @@
       "soloHunt": "Analisador de Caçada Solo",
       "imbuementCalc": "Calculadora de Eficiência de Imbuement",
       "bestiaryPlanner": "Planejador de Bestiary",
-      "characterBuilder": "Montador de Set (Em Breve)",
-      "wheelPlanner": "Planejador de Wheel of Destiny (Em Breve)"
+      "characterBuilder": "Montador de Set",
+      "wheelPlanner": "Planejador de Wheel of Destiny"
     },
     "footer": "Feito para jogadores de TIBIA"
   },
@@ -858,6 +858,127 @@
         "hybrid2": "Basic e Intricate com GT + Powerful no market"
       },
       "totalCost": "Custo Total"
+    }
+  },
+  "wheelPlanner": {
+    "title": "Planejador de Roda do Destino",
+    "subtitle": "Planeje sua build da Roda do Destino e compare diferentes configurações",
+    "noCharacter": "Por favor, crie um personagem no Planejador de Bestiário primeiro para usar o Planejador de Roda.",
+    "editor": {
+      "title": "Editor de Build",
+      "buildName": "Nome da Build",
+      "namePlaceholder": "Digite o nome da build...",
+      "vocation": "Vocação",
+      "totalPoints": "Pontos Totais",
+      "promotionPoints": "Pontos de Promoção"
+    },
+    "points": {
+      "total": "Total",
+      "used": "Usado",
+      "available": "Disponível",
+      "pts": "pts"
+    },
+    "domains": {
+      "combat": "Combate",
+      "healing": "Cura",
+      "support": "Suporte",
+      "fortune": "Fortuna"
+    },
+    "stats": {
+      "title": "Atributos",
+      "empty": "Nenhum atributo para exibir",
+      "hp": "HP",
+      "mana": "Mana",
+      "damage": "Dano",
+      "healing": "Cura",
+      "resistances": "Resistências",
+      "spells": "Feitiços Desbloqueados"
+    },
+    "resistances": {
+      "physical": "Físico",
+      "fire": "Fogo",
+      "ice": "Gelo",
+      "energy": "Energia",
+      "earth": "Terra",
+      "holy": "Sagrado",
+      "death": "Morte"
+    },
+    "builds": {
+      "title": "Builds Salvas",
+      "empty": "Nenhuma build salva ainda. Salve sua primeira build para começar!",
+      "duplicate": "Duplicar",
+      "delete": "Excluir",
+      "confirmDelete": "Clique novamente para confirmar"
+    },
+    "actions": {
+      "title": "Ações",
+      "save": "Salvar Build",
+      "saving": "Salvando...",
+      "reset": "Resetar",
+      "new": "Nova Build",
+      "compare": "Comparar Builds",
+      "importExport": "Importar/Exportar",
+      "copy": "Copiar Código"
+    },
+    "messages": {
+      "saved": "Build salva com sucesso!",
+      "deleted": "Build excluída",
+      "duplicated": "Build duplicada"
+    },
+    "visualization": {
+      "noPerks": "Nenhum perk disponível para esta vocação"
+    },
+    "compare": {
+      "title": "Comparar Builds",
+      "selectTwo": "Por favor, selecione duas builds para comparar",
+      "build1": "Build 1",
+      "build2": "Build 2",
+      "basic": "Atributos Básicos"
+    },
+    "importExport": {
+      "title": "Importar/Exportar",
+      "export": "Exportar",
+      "import": "Importar",
+      "exportInfo": "Exporte suas builds como JSON para compartilhar com outros ou fazer backup. Você pode exportar todas as builds ou apenas a atual.",
+      "importInfo": "Cole os dados JSON abaixo para importar builds. Certifique-se de que o formato JSON está correto. Isso adicionará builds à sua coleção existente (até 10 no total).",
+      "exportAll": "Exportar Todas as Builds",
+      "exportCurrent": "Exportar Build Atual",
+      "jsonData": "Dados JSON",
+      "clickExport": "Clique em exportar para gerar JSON...",
+      "copy": "Copiar para Área de Transferência",
+      "pasteJson": "Colar Dados JSON",
+      "pastePlaceholder": "Cole os dados JSON aqui...",
+      "importButton": "Importar Builds",
+      "clear": "Limpar",
+      "exportSuccess": "Builds exportadas com sucesso!",
+      "copied": "Copiado para área de transferência!",
+      "copyError": "Falha ao copiar para área de transferência",
+      "pasteFirst": "Por favor, cole os dados JSON primeiro",
+      "importSuccess": "{{count}} build(s) importada(s) com sucesso!",
+      "noCurrentBuild": "Nenhuma build atual para exportar",
+      "currentExported": "Build atual exportada!",
+      "copyCodeSuccess": "Código copiado: {{code}}"
+    }
+  },
+  "characterSetBuilder": {
+    "title": "Montador de Set",
+    "subtitle": "Monte e salve sets de equipamentos para o seu personagem",
+    "noCharacter": "Nenhum personagem selecionado. Crie um personagem no Bestiary Planner primeiro.",
+    "clearAll": "Limpar Tudo",
+    "newSet": "Novo Set",
+    "save": "Salvar",
+    "update": "Atualizar",
+    "equipment": "Equipamentos",
+    "savedSets": "Sets Salvos",
+    "setStats": "Stats do Set",
+    "itemBrowser": "Itens",
+    "searchPlaceholder": "Buscar itens...",
+    "noItems": "Nenhum item encontrado",
+    "equip": "Equipar",
+    "messages": {
+      "saved": "Set salvo com sucesso!",
+      "deleted": "Set deletado.",
+      "duplicated": "Set duplicado."
     }
   }
 }

@@ -8,6 +8,8 @@ export const ROUTES = {
   SOLO_HUNT: '/solo-hunt',
   IMBUEMENT_CALC: '/imbuement-calc',
   BESTIARY_PLANNER: '/bestiary-planner',
+  CHARACTER_SET_BUILDER: '/character-set-builder',
+  WHEEL_PLANNER: '/wheel-planner',
 };
 
 /**

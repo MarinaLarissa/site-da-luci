@@ -22,6 +22,8 @@ const LootSplitCalculator = lazy(() => import('./components/LootSplitCalculator/
 const SoloHuntAnalyzer = lazy(() => import('./components/SoloHuntAnalyzer/SoloHuntAnalyzer'));
 const ImbuementCalculator = lazy(() => import('./components/ImbuementCalculator/ImbuementCalculator'));
 const BestiaryPlanner = lazy(() => import('./components/BestiaryPlanner').then(module => ({ default: module.BestiaryPlanner })));
+const CharacterSetBuilder = lazy(() => import('./components/CharacterSetBuilder/CharacterSetBuilder'));
+const WheelPlanner = lazy(() => import('./components/WheelPlanner/WheelPlanner'));
 const LoginModal = lazy(() => import('./components/Auth').then(module => ({ default: module.LoginModal })));
 
 function App() {
@@ -124,6 +126,10 @@ function App() {
               />
 
               <Route path={ROUTES.BESTIARY_PLANNER} element={<BestiaryPlanner />} />
+
+              <Route path={ROUTES.CHARACTER_SET_BUILDER} element={<CharacterSetBuilder />} />
+
+              <Route path={ROUTES.WHEEL_PLANNER} element={<WheelPlanner />} />
 
               {/* Catch-all 404 - redirect to default */}
               <Route path="*" element={<Navigate to={DEFAULT_ROUTE} replace />} />

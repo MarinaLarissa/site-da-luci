@@ -10,8 +10,8 @@
       "soloHunt": "Solo Hunt Analyzer",
       "imbuementCalc": "Imbuement Efficiency Calculator",
       "bestiaryPlanner": "Bestiary Planner",
-      "characterBuilder": "Character Set Builder (Coming Soon)",
-      "wheelPlanner": "Wheel of Destiny Planner (Coming Soon)"
+      "characterBuilder": "Character Set Builder",
+      "wheelPlanner": "Wheel of Destiny Planner"
     },
     "footer": "Made for TIBIA players"
   },
@@ -858,6 +858,127 @@
         "hybrid2": "Basic and Intricate with GT + Powerful on market"
       },
       "totalCost": "Total Cost"
+    }
+  },
+  "wheelPlanner": {
+    "title": "Wheel of Destiny Planner",
+    "subtitle": "Plan your Wheel of Destiny build and compare different configurations",
+    "noCharacter": "Please create a character in the Bestiary Planner first to use the Wheel Planner.",
+    "editor": {
+      "title": "Build Editor",
+      "buildName": "Build Name",
+      "namePlaceholder": "Enter build name...",
+      "vocation": "Vocation",
+      "totalPoints": "Total Points",
+      "promotionPoints": "Promotion Points"
+    },
+    "points": {
+      "total": "Total",
+      "used": "Used",
+      "available": "Available",
+      "pts": "pts"
+    },
+    "domains": {
+      "combat": "Combat",
+      "healing": "Healing",
+      "support": "Support",
+      "fortune": "Fortune"
+    },
+    "stats": {
+      "title": "Stats",
+      "empty": "No stats to display",
+      "hp": "HP",
+      "mana": "Mana",
+      "damage": "Damage",
+      "healing": "Healing",
+      "resistances": "Resistances",
+      "spells": "Unlocked Spells"
+    },
+    "resistances": {
+      "physical": "Physical",
+      "fire": "Fire",
+      "ice": "Ice",
+      "energy": "Energy",
+      "earth": "Earth",
+      "holy": "Holy",
+      "death": "Death"
+    },
+    "builds": {
+      "title": "Saved Builds",
+      "empty": "No saved builds yet. Save your first build to get started!",
+      "duplicate": "Duplicate",
+      "delete": "Delete",
+      "confirmDelete": "Click again to confirm"
+    },
+    "actions": {
+      "title": "Actions",
+      "save": "Save Build",
+      "saving": "Saving...",
+      "reset": "Reset",
+      "new": "New Build",
+      "compare": "Compare Builds",
+      "importExport": "Import/Export",
+      "copy": "Copy Code"
+    },
+    "messages": {
+      "saved": "Build saved successfully!",
+      "deleted": "Build deleted",
+      "duplicated": "Build duplicated"
+    },
+    "visualization": {
+      "noPerks": "No perks available for this vocation"
+    },
+    "compare": {
+      "title": "Compare Builds",
+      "selectTwo": "Please select two builds to compare",
+      "build1": "Build 1",
+      "build2": "Build 2",
+      "basic": "Basic Stats"
+    },
+    "importExport": {
+      "title": "Import/Export",
+      "export": "Export",
+      "import": "Import",
+      "exportInfo": "Export your builds as JSON to share with others or backup. You can export all builds or just the current one.",
+      "importInfo": "Paste JSON data below to import builds. Make sure the JSON format is correct. This will add builds to your existing collection (up to 10 total).",
+      "exportAll": "Export All Builds",
+      "exportCurrent": "Export Current Build",
+      "jsonData": "JSON Data",
+      "clickExport": "Click export to generate JSON...",
+      "copy": "Copy to Clipboard",
+      "pasteJson": "Paste JSON Data",
+      "pastePlaceholder": "Paste JSON data here...",
+      "importButton": "Import Builds",
+      "clear": "Clear",
+      "exportSuccess": "Builds exported successfully!",
+      "copied": "Copied to clipboard!",
+      "copyError": "Failed to copy to clipboard",
+      "pasteFirst": "Please paste JSON data first",
+      "importSuccess": "Successfully imported {{count}} build(s)!",
+      "noCurrentBuild": "No current build to export",
+      "currentExported": "Current build exported!",
+      "copyCodeSuccess": "Code copied: {{code}}"
+    }
+  },
+  "characterSetBuilder": {
+    "title": "Character Set Builder",
+    "subtitle": "Assemble and save equipment sets for your character",
+    "noCharacter": "No character selected. Please create a character in the Bestiary Planner first.",
+    "clearAll": "Clear All",
+    "newSet": "New Set",
+    "save": "Save",
+    "update": "Update",
+    "equipment": "Equipment",
+    "savedSets": "Saved Sets",
+    "setStats": "Set Stats",
+    "itemBrowser": "Item Browser",
+    "searchPlaceholder": "Search items...",
+    "noItems": "No items found",
+    "equip": "Equip",
+    "messages": {
+      "saved": "Set saved successfully!",
+      "deleted": "Set deleted.",
+      "duplicated": "Set duplicated."
     }
   }
 }
