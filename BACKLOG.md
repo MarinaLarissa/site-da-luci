@@ -27,48 +27,42 @@ Copie o template abaixo e preencha:
 
 ## Itens Pendentes
 
-### [B-003] Implementar rate limiting e cache local para OCR.space
-- **Prioridade**: P3
-- **Tipo**: Feature
-- **Origem**: Session logs 2026-02-05
-- **Contexto**: OCR.space free tier tem limite de 25k requests/mes. Nao ha cache local nem alerta quando proximo do limite. Reprocessar a mesma imagem gasta uma request desnecessaria.
-- **Implementacao**:
-  1. Adicionar hash da imagem (canvas.toDataURL checksum) antes de enviar
-  2. Armazenar resultado em localStorage com key = hash
-  3. Se hash ja existe, retornar resultado do cache
-  4. Opcional: contador de requests no localStorage com reset mensal
-- **Arquivos**: `frontend/src/services/ocrService.js`
-- **Status**: Pendente
-
-### [B-004] Wheel of Destiny Planner
-- **Prioridade**: P1
-- **Tipo**: Feature
-- **Origem**: Sessao 2026-02-12, solicitacao do usuario
-- **Contexto**: Nova pagina para planejar Wheel of Destiny. Funcionalidades: import de configuracao, copy to clipboard, salvar ate 10 modelos nomeados de wheel, adicionar gemas especificas. Usar como referencia sites que ja implementam essa funcionalidade.
-- **Implementacao**:
-  1. Pesquisar sites de referencia (TibiaWiki, TibiaPal, etc.)
-  2. Criar pagina/componente WheelOfDestinyPlanner
-  3. Implementar visualizacao da wheel
-  4. Implementar sistema de drag & drop para gemas
-  5. Implementar import/export (JSON ou texto)
-  6. Implementar copy to clipboard
-  7. Implementar salvamento de ate 10 modelos nomeados (localStorage/Supabase)
-- **Arquivos**: Novos componentes em `frontend/src/components/WheelPlanner/`
-- **Status**: Pendente
 
 ### [B-005] Character Set Builder (drag & drop)
 - **Prioridade**: P1
 - **Tipo**: Feature
 - **Origem**: Sessao 2026-02-12, solicitacao do usuario
-- **Contexto**: Pagina para montar o character com set de equipamentos via drag and drop. Substituira o "Statistics (Coming soon)" na navegacao.
-- **Implementacao**:
-  1. Criar componente CharacterSetBuilder
-  2. Implementar grid de slots de equipamento (helmet, armor, legs, boots, etc.)
-  3. Implementar drag & drop de itens para slots
-  4. Calcular e exibir stats totais do set
-  5. Integrar com dados de items do Tibia
-- **Arquivos**: Novos componentes em `frontend/src/components/CharacterBuilder/`
-- **Status**: Pendente
+- **Concluido em**: 2026-02-16
+- **Resultado**: ✅ Implementado Character Set Builder completo com drag & drop, paper doll layout, item browser, stats panel e gerenciamento de sets salvos.
+- **Funcionalidades implementadas**:
+  ✅ Grid de equipamentos em layout paper doll (head/body/legs/feet/weapon/offhand/ring/amulet/backpack)
+  ✅ Drag & drop de itens do browser para os slots
+  ✅ Botão Equip para equipar sem drag & drop
+  ✅ Item browser com busca por nome e filtro por slot
+  ✅ Filtro automático por vocação do personagem ativo
+  ✅ Cálculo e exibição de stats totais (armor, attack, defense, speed, HP, mana, mlevel, etc.)
+  ✅ Salvar até 10 sets por personagem (localStorage)
+  ✅ CRUD completo (criar, carregar, atualizar, deletar, duplicar)
+  ✅ i18n completo (PT-BR + EN)
+  ✅ Integra com personagem ativo do Bestiary Planner
+  ✅ Sidebar habilitada (removido disabled + (Coming Soon))
+- **Arquivos criados**:
+  - `frontend/src/data/equipment.js` - database de ~80 itens com stats
+  - `frontend/src/services/characterSetStorage.js` - persistência localStorage + Joi validation
+  - `frontend/src/hooks/useCharacterSetBuilder.js` - hook de state management
+  - `frontend/src/components/CharacterSetBuilder/CharacterSetBuilder.js` - componente principal
+  - `frontend/src/components/CharacterSetBuilder/CharacterSetBuilder.styles.js` - styled-components
+  - `frontend/src/components/CharacterSetBuilder/EquipmentGrid.js` - paper doll com drag & drop
+  - `frontend/src/components/CharacterSetBuilder/ItemBrowser.js` - browser de itens
+  - `frontend/src/components/CharacterSetBuilder/SetStatsPanel.js` - painel de stats
+  - `frontend/src/components/CharacterSetBuilder/SetManager.js` - gerenciador de sets
+- **Arquivos modificados**:
+  - `frontend/src/routes/index.js` - adicionada rota CHARACTER_SET_BUILDER
+  - `frontend/src/App.js` - lazy import + Route
+  - `frontend/src/components/Layout/Sidebar.js` - link ativado
+  - `frontend/src/locales/en/translation.json` - traduções EN
+  - `frontend/src/locales/pt-BR/translation.json` - traduções PT-BR
+- **Status**: Concluido
 
 ### [B-006] Mapa Interativo de Spawns (Tiles Tibia)
 - **Prioridade**: P1
@@ -125,6 +119,62 @@ Copie o template abaixo e preencha:
 ---
 
 ## Itens Concluidos
+
+### [B-003] Implementar rate limiting e cache local para OCR.space
+- **Prioridade**: P3
+- **Tipo**: Feature
+- **Origem**: Session logs 2026-02-05
+- **Concluido em**: 2026-02-16
+- **Resultado**: Implementado cache localStorage por fingerprint de imagem e contador mensal de requests com aviso ao atingir 80% do limite (20k/25k).
+- **Funcionalidades implementadas**:
+  - `generateImageHash(base64Image)` - fingerprint djb2-style via amostragem de ~200 posicoes do base64 (O(1) em relacao ao tamanho)
+  - `getCachedResult(hash)` / `setCachedResult(hash, result)` - cache localStorage com key `ocr_cache_{hash}`
+  - `getMonthlyRequestCount()` - contador mensal com key `ocr_requests_{YYYY-MM}` (reset automatico a cada mes pelo prefixo de data)
+  - `getUsageStatus()` - retorna `{ nearLimit, count, limit, threshold }` (exportado para uso por componentes)
+  - `incrementRequestCounter()` - incrementa contador apenas em chamadas reais a API (nao em cache hits)
+  - Warning `console.warn` automatico quando count >= 20.000 antes de cada chamada real
+  - `fromCache: boolean` no retorno de `callOcrSpaceApi` para rastreabilidade
+- **Arquivos modificados**: `frontend/src/services/ocrService.js`
+- **Novos exports**: `getMonthlyRequestCount`, `getUsageStatus`
+- **Status**: Concluido
+
+### [B-004] Wheel of Destiny Planner
+- **Prioridade**: P1
+- **Tipo**: Feature
+- **Origem**: Sessao 2026-02-12, solicitacao do usuario
+- **Concluido em**: 2026-02-13
+- **Resultado**: ✅ Implementado Wheel of Destiny Planner completo com funcionalidades avançadas. Diferenciais: comparação lado-a-lado de builds (nenhum planner existente tem), diff visual de resistências (color-coded), salvamento de até 10 builds, i18n completo (PT-BR + EN), import/export JSON, copy to clipboard.
+- **Principais componentes criados**:
+  - `frontend/src/data/wheelData.js` - estrutura de dados (domínios, perks, vocações, cálculo de stats)
+  - `frontend/src/services/wheelStorage.js` - persistência (localStorage, max 10 builds, import/export)
+  - `frontend/src/hooks/useWheelPlanner.js` - hook principal (state management, CRUD builds)
+  - `frontend/src/components/WheelPlanner/WheelPlanner.js` - componente raiz
+  - `frontend/src/components/WheelPlanner/WheelVisualization.js` - visualização de perks por domínio
+  - `frontend/src/components/WheelPlanner/StatsPanel.js` - painel de stats e resistências
+  - `frontend/src/components/WheelPlanner/BuildManager.js` - gerenciador de builds salvos
+  - `frontend/src/components/WheelPlanner/CompareModal.js` - **DIFERENCIAL**: comparação lado-a-lado
+  - `frontend/src/components/WheelPlanner/ImportExportPanel.js` - import/export JSON
+- **Arquivos modificados**:
+  - `frontend/src/routes/index.js` - adicionada rota WHEEL_PLANNER
+  - `frontend/src/App.js` - adicionada rota e lazy loading
+  - `frontend/src/components/Layout/Sidebar.js` - ativado link (removido disabled)
+  - `frontend/src/locales/en/translation.json` - traduções EN
+  - `frontend/src/locales/pt-BR/translation.json` - traduções PT-BR
+- **Funcionalidades implementadas**:
+  ✅ Seleção de vocação (Knight, Paladin, Sorcerer, Druid)
+  ✅ Sistema de pontos (total, usado, disponível)
+  ✅ 4 domínios (Combat, Healing, Support, Fortune) com perks específicos
+  ✅ 3 tipos de perks (Dedication, Conviction, Revelation)
+  ✅ Cálculo automático de stats (HP, Mana, Resistências, Damage, Healing)
+  ✅ Salvamento de até 10 builds nomeados (localStorage)
+  ✅ CRUD completo (Create, Read, Update, Delete, Duplicate)
+  ✅ **Comparação lado-a-lado de 2 builds** (DIFERENCIAL - nenhum planner tem)
+  ✅ Diff visual de resistências (verde=melhor, vermelho=pior, amarelo=igual)
+  ✅ Import/Export JSON (compartilhamento fácil)
+  ✅ Copy to clipboard
+  ✅ i18n completo (PT-BR + EN)
+  ✅ Integração com character system (Bestiary Planner)
+- **Status**: Concluido
 
 ### [B-002] Adicionar ESLint rule para prevenir hooks condicionais
 - **Prioridade**: P3
