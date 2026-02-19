@@ -10,6 +10,123 @@
 const OCR_SPACE_API_KEY = process.env.REACT_APP_OCR_SPACE_API_KEY || '';
 const OCR_SPACE_URL = 'https://api.ocr.space/parse/image';
 
+// Cache and rate limiting configuration
+const OCR_MONTHLY_LIMIT = 25000;
+const OCR_WARNING_THRESHOLD = 20000; // 80% of monthly limit
+
+/**
+ * Generate a lightweight fingerprint from a base64 image string.
+ * Uses a combination of length, sampled char codes, and a simple hash
+ * to create a stable identifier without processing the full base64.
+ * @param {string} base64Image - Full base64 image string (including data: prefix)
+ * @returns {string} - Hex fingerprint string
+ */
+const generateImageHash = (base64Image) => {
+  const str = base64Image;
+  const len = str.length;
+
+  // Sample ~200 positions spread across the string for a stable fingerprint
+  const sampleCount = 200;
+  const step = Math.max(1, Math.floor(len / sampleCount));
+  let hash = len; // Include length in hash to distinguish differently-sized images
+
+  for (let i = 0; i < len; i += step) {
+    const code = str.charCodeAt(i);
+    // djb2-style hash: hash * 31 + charCode (using bitwise for performance)
+    hash = ((hash << 5) - hash + code) | 0;
+  }
+
+  // Convert to unsigned hex string
+  return (hash >>> 0).toString(16).padStart(8, '0') + '_' + len.toString(36);
+};
+
+/**
+ * Get the current month key for request counting (format: YYYY-MM)
+ * @returns {string}
+ */
+const getCurrentMonthKey = () => {
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  return `${yyyy}-${mm}`;
+};
+
+/**
+ * Get the localStorage key for the current month's request counter
+ * @returns {string}
+ */
+const getRequestCounterKey = () => `ocr_requests_${getCurrentMonthKey()}`;
+
+/**
+ * Get the number of OCR API requests made this month
+ * @returns {number}
+ */
+export const getMonthlyRequestCount = () => {
+  try {
+    const count = localStorage.getItem(getRequestCounterKey());
+    return count ? parseInt(count, 10) : 0;
+  } catch {
+    return 0;
+  }
+};
+
+/**
+ * Increment the monthly request counter by 1
+ */
+const incrementRequestCounter = () => {
+  try {
+    const key = getRequestCounterKey();
+    const current = getMonthlyRequestCount();
+    localStorage.setItem(key, String(current + 1));
+  } catch {
+    // localStorage unavailable - silently ignore
+  }
+};
+
+/**
+ * Check if the monthly usage is at or above the warning threshold
+ * @returns {{ nearLimit: boolean, count: number, limit: number, threshold: number }}
+ */
+export const getUsageStatus = () => {
+  const count = getMonthlyRequestCount();
+  return {
+    nearLimit: count >= OCR_WARNING_THRESHOLD,
+    count,
+    limit: OCR_MONTHLY_LIMIT,
+    threshold: OCR_WARNING_THRESHOLD,
+  };
+};
+
+/**
+ * Retrieve a cached OCR result for the given image hash, if it exists
+ * @param {string} hash - Image fingerprint from generateImageHash
+ * @returns {{ text: string, confidence: number } | null}
+ */
+const getCachedResult = (hash) => {
+  try {
+    const key = `ocr_cache_${hash}`;
+    const cached = localStorage.getItem(key);
+    if (!cached) return null;
+    return JSON.parse(cached);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Store an OCR result in localStorage cache
+ * @param {string} hash - Image fingerprint
+ * @param {{ text: string, confidence: number }} result - OCR result to cache
+ */
+const setCachedResult = (hash, result) => {
+  try {
+    const key = `ocr_cache_${hash}`;
+    localStorage.setItem(key, JSON.stringify(result));
+  } catch {
+    // localStorage quota exceeded or unavailable - silently ignore
+  }
+};
+
 // Quality thresholds (exported for use by components)
 export const QUALITY_THRESHOLDS = {
   MIN_RESOLUTION: { width: 800, height: 600 },
@@ -20,11 +137,43 @@ export const QUALITY_THRESHOLDS = {
 };
 
 /**
- * Call OCR.space API to extract text from image
- * @param {string} base64Image - Base64 encoded image
- * @returns {Promise<{text: string, confidence: number}>}
+ * Call OCR.space API to extract text from image.
+ * Uses localStorage cache to avoid duplicate requests for the same image.
+ * Tracks monthly request count and warns when near the free-tier limit.
+ * @param {string} base64Image - Base64 encoded image (with data: prefix)
+ * @returns {Promise<{text: string, confidence: number, fromCache: boolean}>}
  */
 const callOcrSpaceApi = async (base64Image) => {
+  // Check cache first
+  const hash = generateImageHash(base64Image);
+  const cached = getCachedResult(hash);
+  if (cached) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[callOcrSpaceApi] Cache hit for hash ${hash}`);
+    }
+    return { ...cached, fromCache: true };
+  }
+
+  // Warn if approaching monthly limit before making the request
+  const usage = getUsageStatus();
+  if (usage.nearLimit) {
+    console.warn(
+      `[OCR] Monthly usage warning: ${usage.count}/${usage.limit} requests used this month. ` +
+      `Threshold is ${usage.threshold} (80%).`
+    );
+  }
+
+  return _callOcrSpaceApiRaw(base64Image, hash);
+};
+
+/**
+ * Internal: perform the actual HTTP call to OCR.space, cache the result,
+ * and increment the monthly counter.
+ * @param {string} base64Image
+ * @param {string} hash - Pre-computed image fingerprint
+ * @returns {Promise<{text: string, confidence: number, fromCache: boolean}>}
+ */
+const _callOcrSpaceApiRaw = async (base64Image, hash) => {
   const formData = new FormData();
   // OCR.space expects the FULL base64 string WITH prefix (data:image/png;base64,...)
   formData.append('base64Image', base64Image);
@@ -56,13 +205,24 @@ const callOcrSpaceApi = async (base64Image) => {
 
   const parsedText = result.ParsedResults[0];
 
-  return {
+  const ocrResult = {
     text: parsedText.ParsedText || '',
     confidence: parsedText.TextOverlay?.Lines?.reduce((sum, line) => {
       const lineConf = line.Words?.reduce((s, w) => s + (w.WordConfidence || 0), 0) || 0;
       return sum + lineConf / (line.Words?.length || 1);
     }, 0) / (parsedText.TextOverlay?.Lines?.length || 1) || 0,
   };
+
+  // Cache result and track usage
+  setCachedResult(hash, ocrResult);
+  incrementRequestCounter();
+
+  if (process.env.NODE_ENV === 'development') {
+    const newCount = getMonthlyRequestCount();
+    console.log(`[callOcrSpaceApi] API call made. Monthly count: ${newCount}/${OCR_MONTHLY_LIMIT}`);
+  }
+
+  return { ...ocrResult, fromCache: false };
 };
 
 /**
