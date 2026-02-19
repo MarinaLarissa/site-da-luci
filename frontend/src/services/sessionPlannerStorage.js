@@ -152,8 +152,6 @@ export const isInSessionPlan = (characterId, creatureId) => {
  */
 export const getSessionPlanWithData = (characterId, allCreatures) => {
   const creatureIds = getSessionPlan(characterId);
-  const plans = loadSessionPlans();
-  const customHours = plans[characterId]?.customHours || {};
 
   return creatureIds
     .map((id) => {
