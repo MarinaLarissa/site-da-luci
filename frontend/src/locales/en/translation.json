@@ -441,7 +441,8 @@
       "knight": "Knight",
       "paladin": "Paladin",
       "sorcerer": "Sorcerer",
-      "druid": "Druid"
+      "druid": "Druid",
+      "monk": "Monk"
     },
     "creature": {
       "completed": "Completed",

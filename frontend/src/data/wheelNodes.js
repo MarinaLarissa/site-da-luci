@@ -269,18 +269,16 @@ const QUADRANT_ORDER = ['bottomRight', 'bottomLeft', 'topLeft', 'topRight'];
 function buildRequires(circle, qi, pos) {
   if (circle === 1) return [];
 
-  const prevQi = (qi - 1 + 4) % 4;
-  const nextQi = (qi + 1) % 4;
-
   // c2: needs c1 of same quadrant (flatIdx = qi)
   if (circle === 2) return [qi];
 
-  // c3: needs adjacent c2 slices, including cross-quadrant at boundaries
+  // c3: needs same-quadrant c2 slices only.
+  // Cross-quadrant adjacency is intentionally limited to same-circle (c2→c2) unlocking;
+  // a maxed c2 in an adjacent quadrant must NOT unlock c3 nodes across quadrant boundaries.
   // c2 flat indices: 4 + qi*2 + pos
   if (circle === 3) {
     if (pos === 0) return [
       4 + qi * 2,             // same-quad c2 pos=0
-      4 + prevQi * 2 + 1,    // prev-quad c2 pos=1 (cross-quadrant left edge)
     ];
     if (pos === 1) return [
       4 + qi * 2,             // same-quad c2 pos=0
@@ -288,22 +286,19 @@ function buildRequires(circle, qi, pos) {
     ];
     if (pos === 2) return [
       4 + qi * 2 + 1,        // same-quad c2 pos=1
-      4 + nextQi * 2,        // next-quad c2 pos=0 (cross-quadrant right edge)
     ];
   }
 
-  // c4: needs adjacent c3 slices, including cross-quadrant at boundaries
+  // c4: needs same-quadrant c3 slices only (same reasoning as c3 above).
   // c3 flat indices: 12 + qi*3 + pos
   if (circle === 4) {
     if (pos === 0) return [
       12 + qi * 3,            // same-quad c3 pos=0
       12 + qi * 3 + 1,       // same-quad c3 pos=1
-      12 + prevQi * 3 + 2,   // prev-quad c3 pos=2 (cross-quadrant left edge)
     ];
     if (pos === 1) return [
       12 + qi * 3 + 1,       // same-quad c3 pos=1
       12 + qi * 3 + 2,       // same-quad c3 pos=2
-      12 + nextQi * 3,       // next-quad c3 pos=0 (cross-quadrant right edge)
     ];
   }
 

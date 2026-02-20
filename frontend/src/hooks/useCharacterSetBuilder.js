@@ -35,7 +35,8 @@ export const useCharacterSetBuilder = (characterId, characterVocation = '') => {
   useEffect(() => {
     if (!characterId) {
       setSavedSets([]);
-      setCurrentSet(null);
+      // No character: start with a blank guest set so the builder is usable
+      setCurrentSet(createNewSet(characterVocation));
       setHasUnsavedChanges(false);
       return;
     }

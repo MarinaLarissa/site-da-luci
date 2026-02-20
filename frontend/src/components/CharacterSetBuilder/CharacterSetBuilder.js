@@ -23,9 +23,6 @@ import {
   CardHeaderRow,
   CardSectionLabel,
   ActionBtn,
-  EmptyState,
-  EmptyStateIcon,
-  EmptyStateText,
 } from './CharacterSetBuilder.styles';
 
 export default function CharacterSetBuilder() {
@@ -59,21 +56,6 @@ export default function CharacterSetBuilder() {
     setActiveSlot(slotId === activeSlot ? null : slotId);
   };
 
-  if (!character) {
-    return (
-      <BuilderContainer>
-        <Header>
-          <Title>{t('characterSetBuilder.title')}</Title>
-          <Subtitle>{t('characterSetBuilder.subtitle')}</Subtitle>
-        </Header>
-        <EmptyState>
-          <EmptyStateIcon>🛡️</EmptyStateIcon>
-          <EmptyStateText>{t('characterSetBuilder.noCharacter')}</EmptyStateText>
-        </EmptyState>
-      </BuilderContainer>
-    );
-  }
-
   const equipment = currentSet?.equipment || {};
 
   return (
@@ -81,7 +63,9 @@ export default function CharacterSetBuilder() {
       <Header>
         <Title>{t('characterSetBuilder.title')}</Title>
         <Subtitle>
-          {character.name} · {character.vocation} · Level {character.level}
+          {character
+            ? `${character.name} · ${character.vocation} · Level ${character.level}`
+            : t('characterSetBuilder.subtitle')}
         </Subtitle>
       </Header>
 
@@ -105,7 +89,7 @@ export default function CharacterSetBuilder() {
 
           <ItemBrowser
             activeSlot={activeSlot}
-            vocation={character.vocation}
+            vocation={character?.vocation || ''}
             onEquip={equipItem}
           />
         </LeftColumn>

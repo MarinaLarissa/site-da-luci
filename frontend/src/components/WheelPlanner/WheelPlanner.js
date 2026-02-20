@@ -51,7 +51,7 @@ const WheelPlanner = () => {
   const [showImportExport, setShowImportExport] = useState(false);
   const [saveMessage, setSaveMessage] = useState(null);
 
-  // Get active character from bestiary storage
+  // Get active character from bestiary storage (optional — wheel planner works without it)
   useEffect(() => {
     const activeChar = getActiveCharacter();
     setCharacter(activeChar);
@@ -75,7 +75,7 @@ const WheelPlanner = () => {
     resetBuild,
     allocatePoints,
     setCurrentBuild,
-  } = useWheelPlanner(character?.id);
+  } = useWheelPlanner(character?.id ?? null);
 
   // Load a build directly from a decoded code (vocation + slicePoints)
   const handleLoadFromCode = useCallback((vocation, slicePoints) => {
@@ -122,25 +122,6 @@ const WheelPlanner = () => {
         setTimeout(() => setSaveMessage(null), 3000);
       });
   };
-
-  // Show warning if no character exists
-  if (!character) {
-    return (
-      <PlannerContainer>
-        <Header>
-          <Title>{t('wheelPlanner.title') || 'Wheel of Destiny Planner'}</Title>
-          <Subtitle>{t('wheelPlanner.subtitle') || 'Plan your Wheel of Destiny build'}</Subtitle>
-        </Header>
-
-        <EmptyState>
-          <EmptyStateIcon>⚠️</EmptyStateIcon>
-          <EmptyStateText>
-            {t('wheelPlanner.noCharacter') || 'Please create a character in the Bestiary Planner first to use the Wheel Planner.'}
-          </EmptyStateText>
-        </EmptyState>
-      </PlannerContainer>
-    );
-  }
 
   if (!currentBuild) {
     return (
@@ -308,7 +289,7 @@ const WheelPlanner = () => {
       {/* Import/Export Panel */}
       {showImportExport && (
         <ImportExportPanel
-          characterId={character.id}
+          characterId={character?.id ?? null}
           currentBuild={currentBuild}
           onClose={() => setShowImportExport(false)}
         />

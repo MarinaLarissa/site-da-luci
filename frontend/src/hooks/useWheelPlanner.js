@@ -37,7 +37,8 @@ export const useWheelPlanner = (characterId) => {
   useEffect(() => {
     if (!characterId) {
       setSavedBuilds([]);
-      setCurrentBuild(null);
+      // No character: start with a default unsaved build so the planner is usable
+      setCurrentBuild((prev) => prev ?? getDefaultBuild(VOCATIONS.KNIGHT, 'New Build'));
       return;
     }
     try {
@@ -114,7 +115,12 @@ export const useWheelPlanner = (characterId) => {
       if (delta > 0) {
         // Must be unlockable
         if (!isSliceUnlockable(slice, slicePoints)) return prev;
-        const add = Math.min(delta, available, slice.maxPoints - current);
+        // When total points are not configured (0), skip the available points cap
+        // and allow free allocation — the used counter still increases.
+        const uncapped = prev.points.total === 0;
+        const add = uncapped
+          ? Math.min(delta, slice.maxPoints - current)
+          : Math.min(delta, available, slice.maxPoints - current);
         if (add <= 0) return prev;
         const newVal = current + add;
         const newSP  = { ...slicePoints, [sliceId]: newVal };
