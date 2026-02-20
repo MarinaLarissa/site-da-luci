@@ -7,6 +7,7 @@
  *   Right  → WheelInfoPanel (Seleção + Informações + Gem Atelier)
  */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import TibiaWheel from './TibiaWheel';
 import WheelInfoPanel from './WheelInfoPanel';
@@ -65,6 +66,7 @@ const PanelWrapper = styled.div`
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const WheelVisualization = ({ build, onAllocatePoints }) => {
+  const { t } = useTranslation();
   const [selectedSliceId, setSelectedSliceId] = useState(null);
 
   if (!build) return null;
@@ -83,10 +85,10 @@ const WheelVisualization = ({ build, onAllocatePoints }) => {
     <Container>
       <WheelHeader>
         <VocationLabel>
-          Vocação: <strong>{vocation}</strong>
+          {t('wheelPlanner.visualization.vocationLabel')} <strong>{vocation}</strong>
         </VocationLabel>
         <PointsUsed>
-          Pontos usados: <strong>{used}</strong>/{total}
+          {t('wheelPlanner.visualization.pointsUsedLabel')} <strong>{used}</strong>/{total}
         </PointsUsed>
       </WheelHeader>
 

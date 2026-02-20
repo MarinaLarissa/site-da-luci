@@ -927,7 +927,9 @@
       "duplicated": "Build duplicada"
     },
     "visualization": {
-      "noPerks": "Nenhum perk disponível para esta vocação"
+      "noPerks": "Nenhum perk disponível para esta vocação",
+      "vocationLabel": "Vocação:",
+      "pointsUsedLabel": "Pontos usados:"
     },
     "compare": {
       "title": "Comparar Builds",
@@ -964,7 +966,6 @@
   "characterSetBuilder": {
     "title": "Montador de Set",
     "subtitle": "Monte e salve sets de equipamentos para o seu personagem",
-    "noCharacter": "Nenhum personagem selecionado. Crie um personagem no Bestiary Planner primeiro.",
     "clearAll": "Limpar Tudo",
     "newSet": "Novo Set",
     "save": "Salvar",
