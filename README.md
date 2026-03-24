@@ -1,481 +1,135 @@
-# Site da Luci 🎮
+# Site da Luci
 
-> Modern fullstack web application providing tools for TIBIA players
+> Web application with tools for TIBIA players — runs entirely in the browser.
 
-[![Phase](https://img.shields.io/badge/Phase-4%20Complete-success)](https://github.com)
-[![Tests](https://img.shields.io/badge/Tests-64%2F64%20Passing-brightgreen)](https://github.com)
-[![Coverage](https://img.shields.io/badge/Coverage-95.65%25-brightgreen)](https://github.com)
-[![i18n](https://img.shields.io/badge/i18n-198%20keys%20validated-success)](https://github.com)
+[![Tests](https://img.shields.io/badge/Tests-165%2F170%20Passing-brightgreen)](https://github.com)
+[![i18n](https://img.shields.io/badge/i18n-PT--BR%20%2B%20EN-success)](https://github.com)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#)
 [![Live](https://img.shields.io/badge/Live-GitHub%20Pages-blue)](https://marinalarissa.github.io/site-da-luci)
-[![API](https://img.shields.io/badge/API-Render-green)](https://site-da-luci-api.onrender.com/api/health)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/marinalarissa/site-da-luci/actions)
 
-## 📋 Project Overview
+## Live Application
 
-**Site da Luci** is a comprehensive web application designed to help TIBIA game players with various tools and calculators. The first tool is a **Loot Split Calculator** that fairly distributes hunting session profits among team members.
+**[https://marinalarissa.github.io/site-da-luci](https://marinalarissa.github.io/site-da-luci)**
 
-### 🌐 Live Application
+No backend required — all calculations run locally in the browser.
 
-- **Frontend**: [https://marinalarissa.github.io/site-da-luci](https://marinalarissa.github.io/site-da-luci)
-- **Backend API**: [https://site-da-luci-api.onrender.com](https://site-da-luci-api.onrender.com)
-- **API Health Check**: [https://site-da-luci-api.onrender.com/api/health](https://site-da-luci-api.onrender.com/api/health)
+## Features
 
-### Key Features
+- **Loot Split Calculator** — Fair distribution algorithm (greedy two-pointer). Parses native TIBIA client loot data and generates transfer commands.
+- **Solo Hunt Analyzer** — Individual hunt session analysis with custom item cost tracking (GP/GT/ST), TC metrics, and hunt history.
+- **Bestiary Planner** — Track charm progress across 652 creatures with OCR import.
+- **Wheel of Destiny Planner** — Build planner with side-by-side comparison.
+- **Character Set Builder** — Paper doll equipment builder with drag & drop.
+- **i18n** — Portuguese (pt-BR) and English.
 
-- ✅ **Loot Split Calculator**: Fair distribution algorithm using greedy two-pointer technique
-- ✅ **Solo Hunt Analyzer**: Individual hunt session analysis with item cost tracking
-- ✅ **i18n Support**: Multilingual (Portuguese/English) with automated validation
-- ✅ **Clean Architecture**: 4-layer architecture for scalability and maintainability
-- ✅ **TDD Approach**: 95.65% test coverage with comprehensive test suite (64 tests)
-- ✅ **TIBIA Format Support**: Parses native TIBIA client loot data
-- ✅ **React Frontend**: Modern UI with Material-UI components
-- ✅ **REST API**: Express backend with validation and error handling
-- ✅ **Deployed**: Frontend on GitHub Pages, Backend on Render
-- ✅ **CI/CD**: GitHub Actions with translation validation and linting
+## Architecture
 
-## 🏗️ Architecture
+Pure React SPA deployed on GitHub Pages (HashRouter). All business logic runs in the browser:
 
-This project follows **Clean Architecture** (Hexagonal Architecture) with strict layer separation:
+| Module | Calculation |
+|--------|-------------|
+| Loot Split | `services/lootSplitService.js` — parse + greedy two-pointer algorithm |
+| Solo Hunt | `services/soloHuntService.js` — proportional item cost calculation |
+| OCR | `services/ocrService.js` — calls OCR.space API directly from browser |
+| Auth | Supabase client (Google OAuth) |
+| Storage | localStorage (progress, history, builds, sets) |
 
-```mermaid
-graph TD
-    A[Presentation Layer<br/>Controllers, Routes, Validators] --> B[Application Layer<br/>Use Cases, Business Logic]
-    B --> C[Domain Layer<br/>Entities, Value Objects]
-    C --> D[Infrastructure Layer<br/>Database, Parsers, External Services]
-
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style C fill:#f0ffe1
-    style D fill:#ffe1f5
-```
-
-### Layer Responsibilities
-
-| Layer | Responsibility | Examples |
-|-------|---------------|----------|
-| **Presentation** | HTTP handling, request validation | Controllers, Routes, Middlewares |
-| **Application** | Business logic orchestration | Use Cases, DTOs |
-| **Domain** | Core business entities and rules | Player, LootSession, Transfer |
-| **Infrastructure** | External concerns | TibiaLootParser, MongoDB, APIs |
-
-## 🎯 Loot Split Algorithm
-
-The calculator uses a **greedy two-pointer algorithm** to minimize the number of transfers:
-
-```mermaid
-flowchart LR
-    A[Parse TIBIA Data] --> B[Calculate Fair Share]
-    B --> C[Classify Players<br/>Creditors vs Debtors]
-    C --> D[Sort by Difference]
-    D --> E[Match Largest<br/>Creditor + Debtor]
-    E --> F[Generate Transfer]
-    F --> G{More Players?}
-    G -->|Yes| E
-    G -->|No| H[Return Transfers]
-
-    style A fill:#e3f2fd
-    style B fill:#fff3e0
-    style C fill:#f1f8e9
-    style D fill:#fce4ec
-    style E fill:#e0f2f1
-    style F fill:#fff9c4
-    style H fill:#c8e6c9
-```
-
-### Example Calculation
-
-**Input** (3 players, 11.89kk total balance):
-- Lofi Shades: 11.94kk → **Creditor** (+7.98kk excess)
-- Luciana Burks: -104k → **Debtor** (needs 4.07kk)
-- Young Vex: 49k → **Debtor** (needs 3.91kk)
-
-**Output** (2 transfers only):
-```
-Lofi Shades transfer 4066247 to Luciana Burks
-Lofi Shades transfer 3912667 to Young Vex
-```
-
-## 📂 Project Structure
+## Project Structure
 
 ```
 site-da-luci/
-├── backend/                    # Node.js Express API
+├── frontend/                   # React SPA (Create React App)
 │   ├── src/
-│   │   ├── domain/            
-│   │   │   └── entities/      # Player, LootSession, Transfer
-│   │   ├── application/       
-│   │   │   └── use-cases/     # CalculateLootSplit, ParseLootSession
-│   │   ├── infrastructure/    
-│   │   │   └── parsers/       # TibiaLootParser
-│   │   └── presentation/      
-│   │       ├── controllers/
-│   │       ├── routes/
-│   │       └── validators/
-│   └── tests/
-│       └── unit/              
-│
-├── frontend/                   
-│   └── (React app with Create React App)
-│
+│   │   ├── components/         # UI components (per feature)
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── services/           # Business logic + external APIs
+│   │   ├── data/               # Static data (bestiary, equipment, wheel)
+│   │   └── locales/            # i18n translations (pt-BR, en)
+│   └── package.json
+├── backend/                    # Express API (kept for reference, not deployed)
 ├── docs/
-│   ├── architecture/
-│   │   └── clean-architecture.md
-│   └── decisions/
-│       └── ADR-001-loot-split-algorithm.md
-│
-└── README.md                   # You are here
+└── README.md
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js 20+
-- npm or yarn
-- Git
+- npm
 
-### Installation
+### Frontend Development
 
 ```bash
-# Clone the repository
-git clone https://github.com/marinalarissa/site-da-luci.git
-cd site-da-luci
-
-# Install root dependencies (husky, etc.)
-npm install
-
-# Install frontend dependencies
 cd frontend
 npm install
-
-# Install backend dependencies
-cd ../backend
-npm install
+npm start          # dev server on http://localhost:3000
+npm test           # run tests
+npm run build      # production build
+npm run deploy     # deploy to GitHub Pages
 ```
 
-### Development Workflow
+### Environment Variables
 
-#### Frontend Development
+Copy `frontend/.env.example` to `frontend/.env.local` and fill in:
 
 ```bash
-# From project root
-npm run frontend:dev       # Start dev server
-npm run frontend:build     # Build for production
-npm run frontend:lint      # Run ESLint
-npm run frontend:validate-i18n  # Validate translation keys
+REACT_APP_OCR_SPACE_API_KEY=   # OCR.space free tier key (25k requests/month)
+REACT_APP_AUTH_REDIRECT_URL=   # OAuth callback URL
+REACT_APP_SUPABASE_URL=        # Supabase project URL
+REACT_APP_SUPABASE_ANON_KEY=   # Supabase anon key
 ```
 
-#### Backend Development
-
-```bash
-# From project root
-npm run backend:dev        # Start dev server
-npm run backend:test       # Run tests
-npm run backend:coverage   # Generate coverage report
-```
+> Note: `REACT_APP_` variables are bundled into the JS build and visible to users. The OCR key is protected client-side only via monthly rate limiting in localStorage.
 
 ### Pre-Commit Hooks (Husky)
 
-This project uses **Husky** to automatically validate code before commits:
+Runs automatically on `git commit`:
+1. Translation key validation (ensures all i18n keys exist in both pt-BR and en)
+2. ESLint auto-fix on staged files
 
-✅ **Translation Validation**: Ensures all i18n keys exist in both pt-BR and en files
-✅ **ESLint Auto-Fix**: Automatically fixes linting issues on staged files
+## Loot Split Algorithm
 
-**First-time setup**:
-```bash
-# Husky hooks are automatically installed after npm install
-# If needed, run:
-npm run prepare
-```
+Uses a **greedy two-pointer algorithm** to minimize the number of transfers:
 
-**What happens on git commit**:
-1. 🔍 Validates 198 translation keys across pt-BR and en files
-2. 🧹 Runs ESLint --fix on staged .js/.jsx files
-3. ✅ Commits only if all checks pass
+1. Parse raw TIBIA loot text → extract players and session metadata
+2. Filter active players (damage > 0 OR healing > 0)
+3. Calculate fair share = total balance / active players
+4. Classify creditors (have excess) vs debtors (need money)
+5. Match largest creditor with largest debtor iteratively → generate transfers
 
-**To bypass hooks** (not recommended):
-```bash
-git commit --no-verify -m "message"
-```
-
-### Running Tests
-
-```bash
-# Backend unit and integration tests
-cd backend
-npm test
-
-# Expected output:
-# Test Suites: 9 passed, 9 total
-# Tests:       64 passed, 64 total
-# Coverage:    95.65%
-```
-
-## 🧪 Test Coverage
-
-| Component | Coverage | Tests |
-|-----------|----------|-------|
-| Domain Entities | 100% | 18 tests |
-| Application Use Cases | 98.5% | 22 tests |
-| Infrastructure Parsers | 95% | 9 tests |
-| Presentation API | 92% | 15 tests |
-| **Total** | **95.65%** | **64 tests** |
-
-## 📊 Development Progress
-
-### ✅ Phase 1: Backend Foundation (COMPLETE)
-
-- [x] Project setup with Clean Architecture
-- [x] Domain entities (Player, LootSession, Transfer)
-- [x] TibiaLootParser with regex validation
-- [x] CalculateLootSplitUseCase (greedy algorithm)
-- [x] ParseLootSessionUseCase (orchestration)
-- [x] Comprehensive test suite (49 tests)
-- [x] TDD compliance (tests first, code second)
-
-### ✅ Phase 2: Backend API (COMPLETE)
-
-- [x] Express server setup
-- [x] REST API endpoints (`POST /api/loot-split/calculate`)
-- [x] Request validation middleware
-- [x] Error handling middleware
-- [x] Integration tests with Supertest (15 tests)
-- [x] CORS configuration for production
-
-### ✅ Phase 3: Frontend (COMPLETE)
-
-- [x] React app with Create React App
-- [x] UI components (Sidebar, Calculator, TransferList)
-- [x] API service layer (Axios)
-- [x] Custom hooks (useLootSplit)
-- [x] Material-UI design system
-- [x] Responsive layout for all screen sizes
-
-### ✅ Phase 4: Deployment (COMPLETE)
-
-- [x] Backend deployment to Render
-- [x] Frontend deployment to GitHub Pages
-- [x] Environment configuration (.env files)
-- [x] CORS configuration for cross-origin requests
-- [x] Health check endpoint
-- [x] Deployment documentation (DEPLOY.md)
-
-## 🎮 How It Works
-
-### 1. User Input (TIBIA Format)
-
-User pastes loot data directly from TIBIA client:
+**Example** (3 players, 11.89kk total balance):
 
 ```
-Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53
-Session: 03:08h
-Loot Type: Leader
-Loot: 12,937,605
-Supplies: 1,051,291
-Balance: 11,886,314
+Lofi Shades:   11.94kk  → creditor (+7.98kk excess)
+Luciana Burks:  -104k   → debtor (needs 4.07kk)
+Young Vex:       +49k   → debtor (needs 3.91kk)
 
-Lofi Shades (Leader)
-  Loot: 12,120,799
-  Supplies: 179,781
-  Balance: 11,941,018
-  Damage: 17,660,082
-  Healing: 785,634
-
-Luciana Burks
-  Loot: 277,020
-  Supplies: 381,162
-  Balance: -104,142
-  Damage: 17,145,590
-  Healing: 9,169,753
-
-Young Vex
-  Loot: 539,786
-  Supplies: 490,348
-  Balance: 49,438
-  Damage: 18,737,566
-  Healing: 2,666,860
-```
-
-### 2. Processing
-
-- Parse session metadata (dates, duration, totals)
-- Extract player data (name, loot, supplies, balance, stats)
-- Filter active players (damage > 0 OR healing > 0)
-- Calculate fair share (total balance / active players)
-- Classify creditors (have excess) vs debtors (need money)
-- Run greedy two-pointer algorithm to minimize transfers
-
-### 3. Output
-
-```
-=== SESSION SUMMARY ===
-Total Profit: 11.89kk (11,886,314 gp)
-Fair Share: 3.96kk per player (3,962,105 gp)
-Session Duration: 03:08h
-Profit/Hour: 1.26kk per player (1,264,289 gp/h)
-
-=== TRANSFERS REQUIRED ===
-Lofi Shades must execute:
-
+Output (2 transfers only):
 transfer 4066247 to Luciana Burks
 transfer 3912667 to Young Vex
-
-[📋 Copy to Clipboard]
 ```
 
-## 🧪 Testing with Postman
+## Tech Stack
 
-You can test the API directly using Postman or curl:
+- **Framework**: React 19.2.3
+- **Routing**: React Router v6 (HashRouter)
+- **Styling**: styled-components
+- **Auth**: Supabase (Google OAuth)
+- **i18n**: i18next
+- **Testing**: Jest + React Testing Library + Cypress
+- **Build**: Create React App
+- **Hosting**: GitHub Pages
 
-### API Endpoint
-```
-POST https://site-da-luci-api.onrender.com/api/loot-split/calculate
-```
+## License
 
-### Request Headers
-```
-Content-Type: application/json
-```
+MIT — See [LICENSE](LICENSE) file for details.
 
-### Request Body (Example)
-```json
-{
-  "rawText": "Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53\nSession: 03:08h\nLoot Type: Leader\nLoot: 12,937,605\nSupplies: 1,051,291\nBalance: 11,886,314\n\nLofi Shades (Leader)\n  Loot: 12,120,799\n  Supplies: 179,781\n  Balance: 11,941,018\n  Damage: 17,660,082\n  Healing: 785,634\n\nLuciana Burks\n  Loot: 277,020\n  Supplies: 381,162\n  Balance: -104,142\n  Damage: 17,145,590\n  Healing: 9,169,753\n\nYoung Vex\n  Loot: 539,786\n  Supplies: 490,348\n  Balance: 49,438\n  Damage: 18,737,566\n  Healing: 2,666,860"
-}
-```
+## Author
 
-### Expected Response (200 OK)
-```json
-{
-  "success": true,
-  "data": {
-    "session": {
-      "startDate": "2025-12-25T17:48:04.000Z",
-      "endDate": "2025-12-25T20:56:53.000Z",
-      "duration": "03:08h",
-      "lootType": "Leader",
-      "totalLoot": 12937605,
-      "totalSupplies": 1051291,
-      "totalBalance": 11886314
-    },
-    "players": [
-      {
-        "name": "Lofi Shades",
-        "isLeader": true,
-        "loot": 12120799,
-        "supplies": 179781,
-        "balance": 11941018,
-        "damage": 17660082,
-        "healing": 785634
-      },
-      {
-        "name": "Luciana Burks",
-        "isLeader": false,
-        "loot": 277020,
-        "supplies": 381162,
-        "balance": -104142,
-        "damage": 17145590,
-        "healing": 9169753
-      },
-      {
-        "name": "Young Vex",
-        "isLeader": false,
-        "loot": 539786,
-        "supplies": 490348,
-        "balance": 49438,
-        "damage": 18737566,
-        "healing": 2666860
-      }
-    ],
-    "transfers": [
-      {
-        "from": "Lofi Shades",
-        "to": "Luciana Burks",
-        "amount": 4066247
-      },
-      {
-        "from": "Lofi Shades",
-        "to": "Young Vex",
-        "amount": 3912667
-      }
-    ],
-    "fairShare": 3962105
-  }
-}
-```
+**Marina Larissa Carpes Röhrig** — Personal Development Plan (PDI) project.
 
-### Using curl
-```bash
-curl -X POST https://site-da-luci-api.onrender.com/api/loot-split/calculate \
-  -H "Content-Type: application/json" \
-  -d '{"rawText":"Session data: From 2025-12-25, 17:48:04 to 2025-12-25, 20:56:53\nSession: 03:08h\nLoot Type: Leader\nLoot: 12,937,605\nSupplies: 1,051,291\nBalance: 11,886,314\n\nLofi Shades (Leader)\n  Loot: 12,120,799\n  Supplies: 179,781\n  Balance: 11,941,018\n  Damage: 17,660,082\n  Healing: 785,634\n\nLuciana Burks\n  Loot: 277,020\n  Supplies: 381,162\n  Balance: -104,142\n  Damage: 17,145,590\n  Healing: 9,169,753\n\nYoung Vex\n  Loot: 539,786\n  Supplies: 490,348\n  Balance: 49,438\n  Damage: 18,737,566\n  Healing: 2,666,860"}'
-```
-
-## 🛠️ Tech Stack
-
-### Backend
-- **Runtime**: Node.js 20+
-- **Framework**: Express
-- **Language**: JavaScript (ES6+)
-- **Testing**: Jest
-- **Database**: MongoDB Atlas (future)
-
-### Frontend (Phase 3)
-- **Framework**: React 18+
-- **Build Tool**: Create React App
-- **Styling**: TailwindCSS
-- **Testing**: Cypress (E2E), React Testing Library
-
-### DevOps & CI/CD
-- **CI Pipeline**: GitHub Actions
-  - Translation key validation (i18n)
-  - ESLint checks with auto-fix
-  - Backend test suite (64 tests)
-  - Frontend build validation
-- **Pre-Commit Hooks**: Husky + lint-staged
-- **Backend Hosting**: Render
-- **Frontend Hosting**: GitHub Pages
-- **Monitoring**: Health check endpoint
-
-## 📖 Documentation
-
-- [Business Rules (PDI)](docs/PDI.md) - Complete requirements and business logic
-- [Backend README](backend/README.md) - Backend API documentation
-- [Frontend README](frontend/README.md) - Frontend setup and development
-<!-- TODO: Add architecture and ADR documentation
-- [Clean Architecture Guide](docs/architecture/clean-architecture.md)
-- [ADR-001: Loot Split Algorithm](docs/decisions/ADR-001-loot-split-algorithm.md)
--->
-
-## 🎯 About This Project
-
-This is a **Personal Development Plan (PDI)** solo project focused on learning fullstack development with modern patterns and best practices.
-
-### Development Principles
-
-1. **TDD First**: Write tests BEFORE implementation
-2. **Clean Architecture**: Respect layer boundaries and dependency rules
-3. **Code Quality**: Comprehensive test coverage and consistent style
-4. **Modern Stack**: React, Express, Material-UI, Jest
-
-## 📝 License
-
-MIT License - See [LICENSE](LICENSE) file for details
-
-## 👨‍💻 Author
-
-**Marina Larissa Carpes Röhrig** - Personal Development Plan (PDI) project focused on fullstack development
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - TIBIA game by CipSoft
-- TIBIA game sprites used in this project are from [TibiaWiki Brasil](https://www.tibiawiki.com.br/wiki/)
-- Clean Architecture by Robert C. Martin
-- TDD methodology
-
----
-
-**Status**: 🟢 All Phases Complete | ✅ Deployed to Production
-
-**Last Updated**: 2025-01-08
+- TIBIA game sprites from [TibiaWiki Brasil](https://www.tibiawiki.com.br/wiki/)

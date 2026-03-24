@@ -165,16 +165,6 @@ class CalculateSoloHuntUseCase {
     const tcPerHour =
       huntDurationHours > 0 && tibiaCoinPrice > 0 ? tcTotal / huntDurationHours : 0;
 
-    // Debug logging (temporary - remove after debugging)
-    console.log('[CalculateSoloHuntUseCase] Debug metrics:', {
-      huntDurationHours,
-      adjustedBalance,
-      tibiaCoinPrice,
-      profitPerHour,
-      tcTotal,
-      tcPerHour,
-    });
-
     // Calculate Money Maked (real money earned from selling TC)
     // TC Sell Price is for 250 TC, so divide by 250 to get price per 1 TC
     const moneyMaked = tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0 ? (tibiaCoinSellPrice / 250) * tcTotal : 0;

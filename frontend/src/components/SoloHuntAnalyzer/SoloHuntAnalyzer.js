@@ -11,10 +11,9 @@ import ItemCostManager from './ItemCostManager';
 import ConfigurationManager from './ConfigurationManager';
 import SoloHuntResults from './SoloHuntResults';
 import HuntHistory from './HuntHistory';
-import LoadingSpinner from '../common/LoadingSpinner';
 import ErrorMessage from '../common/ErrorMessage';
 import { STORAGE_KEYS } from '../../utils/huntUtils';
-import { calculateSoloHunt } from '../../services/api';
+import { calculateSoloHunt } from '../../services/soloHuntService';
 import {
   SoloHuntAnalyzerContainer,
   SoloHuntAnalyzerHeader,
@@ -69,7 +68,6 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   const [tibiaCoinSellPrice, setTibiaCoinSellPrice] = useState(loadedPrices.tibiaCoinSellPrice);
 
   // UI state
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
   const [silverTokenError, setSilverTokenError] = useState(false);
@@ -220,63 +218,59 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
   };
 
   /**
-   * Calculate final results with item costs (Backend API)
-   * Uses centralized API service following Loot Split Calculator pattern
+   * Calculate final results with item costs (runs locally in browser)
    */
-  const handleCalculate = async () => {
+  const handleCalculate = () => {
     if (!parsedSession) {
       setError(t('soloHuntAnalyzer.errors.noSessionData'));
       return;
     }
 
+    // Coerce prices to numbers (state may be empty string from localStorage default)
+    const silverTokenNum = Number(silverTokenPrice) || 0;
+    const tibiaCoinNum = Number(tibiaCoinPrice) || 0;
+    const tibiaCoinSellNum = Number(tibiaCoinSellPrice) || 0;
+
     // Validate Silver Token price if Ring Bis is added
     const hasRingBis = customItems.some(item => RING_BIS_NAMES.includes(item.name));
-    if (hasRingBis && silverTokenPrice === 0) {
+    if (hasRingBis && silverTokenNum === 0) {
       setError(t('soloHuntAnalyzer.errors.missingSilverTokenPrice'));
       setSilverTokenError(true);
       return;
     }
 
     setSilverTokenError(false);
-    setLoading(true);
     setHasCalculated(true);
     setNeedsRecalculation(false);
 
     try {
-      // Call centralized API service (handles all error cases internally)
-      const data = await calculateSoloHunt(parsedSession, customItems, {
-        goldTokenPrice,
-        silverTokenPrice,
-        tibiaCoinPrice,
-        tibiaCoinSellPrice,
+      const data = calculateSoloHunt(parsedSession, customItems, {
+        goldTokenPrice: Number(goldTokenPrice) || 0,
+        silverTokenPrice: silverTokenNum,
+        tibiaCoinPrice: tibiaCoinNum,
+        tibiaCoinSellPrice: tibiaCoinSellNum,
       });
 
       if (!data.success) {
-        throw new Error(data.error || 'Invalid response from server');
+        throw new Error(data.error || 'Calculation failed');
       }
 
-      // Set results from backend
       setResults(data.data);
 
-      // Save to hunt history
       if (saveHuntToHistoryRef.current && data.data.huntData) {
         saveHuntToHistoryRef.current(data.data.huntData);
       }
 
       setError(null);
 
-      // Scroll to results section
       setTimeout(() => {
         if (resultsRef.current) {
           resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     } catch (err) {
-      console.error('Calculation error:', err);
       setError(t('soloHuntAnalyzer.errors.calculationError', { message: err.message }));
-      setHasCalculated(false); // Allow retry on error
-    } finally {
-      setLoading(false);
+      setHasCalculated(false);
     }
   };
 
@@ -363,7 +357,7 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
           <SoloHuntAnalyzerButton
             variant="primary"
             onClick={handleCalculate}
-            disabled={loading || hasCalculated}
+            disabled={hasCalculated}
             data-cy="solo-hunt-button-calculate"
           >
             {t('soloHuntAnalyzer.calculateButton')}
@@ -377,11 +371,8 @@ export default function SoloHuntAnalyzer({ goldTokenPrice, setGoldTokenPrice }) 
         </SoloHuntAnalyzerActionButtons>
       )}
 
-      {/* Loading state */}
-      {loading && <LoadingSpinner message={t('soloHuntAnalyzer.calculating')} />}
-
       {/* Results section */}
-      {!loading && results && (
+      {results && (
         <div ref={resultsRef}>
           <SoloHuntResults results={results} />
         </div>

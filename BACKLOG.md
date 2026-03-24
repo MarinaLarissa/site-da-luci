@@ -28,6 +28,28 @@ Copie o template abaixo e preencha:
 ## Itens Pendentes
 
 
+### [B-009] Testes unitários para lootSplitService e soloHuntService
+- **Prioridade**: P1
+- **Tipo**: Optimization
+- **Origem**: Reviewer 2026-03-24 (após migração backend→frontend)
+- **Contexto**: A lógica de cálculo migrada do backend não tem cobertura de testes no frontend. O backend tinha ~95% de coverage; agora esses cálculos rodam sem safety net. Testes cobrem o caminho crítico (calcular split, calcular solo hunt) que impacta diretamente o usuário.
+- **Implementacao**:
+  1. Criar `frontend/src/services/lootSplitService.test.js`:
+     - Happy path com input conhecido (exemplo do README) e output esperado
+     - Input vazio → throw com mensagem clara
+     - Input sem players → throw com mensagem clara
+     - Single player → transfers[] vazio
+     - Players com Profit/Waste → fairShare correto via totalNetBalance
+     - parseDurationToMinutes: "03:08h" = 188, "2h 30m" = 150, "01:30:30h" = 90 (aprox)
+  2. Criar `frontend/src/services/soloHuntService.test.js`:
+     - Happy path: session com customItems GP simples → adjustedBalance correto
+     - Item com itemDuration → custo proporcional à duração da hunt
+     - Item GT sem goldTokenPrice = 0 → throw
+     - Item ST sem silverTokenPrice = 0 → throw
+     - tibiaCoinPrice = 0 → tcTotal = 0 (sem erro)
+- **Arquivos**: `frontend/src/services/lootSplitService.test.js`, `frontend/src/services/soloHuntService.test.js`
+- **Status**: Pendente
+
 ### [B-005] Character Set Builder (drag & drop)
 - **Prioridade**: P1
 - **Tipo**: Feature

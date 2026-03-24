@@ -4,20 +4,19 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { calculateLootSplit } from '../services/api';
+import { calculateLootSplit } from '../services/lootSplitService';
 import { saveHunt } from '../services/huntHistory';
 
 export function useLootSplit(onHuntSaved = null) {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
 
   /**
    * Handle calculate button click
    */
-  const handleCalculate = async () => {
+  const handleCalculate = () => {
     // Reset previous state
     setError(null);
     setResults(null);
@@ -28,19 +27,12 @@ export function useLootSplit(onHuntSaved = null) {
       return;
     }
 
-    setLoading(true);
-
     try {
-      // Call API
-      const response = await calculateLootSplit(input);
+      const response = calculateLootSplit(input);
 
-      // Check if response is successful
       if (response.success) {
         setResults(response.data);
-        // Save to hunt history
         const saved = saveHunt(response.data, input);
-
-        // Trigger callback to refresh hunt list
         if (saved && onHuntSaved) {
           onHuntSaved();
         }
@@ -49,8 +41,6 @@ export function useLootSplit(onHuntSaved = null) {
       }
     } catch (err) {
       setError(err.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -103,7 +93,7 @@ Young Vex
   return {
     input,
     setInput,
-    loading,
+    loading: false,
     error,
     results,
     handleCalculate,
