@@ -51,43 +51,10 @@ jobs:
           path: ./frontend/build
           retention-days: 7
 
-  backend-tests:
-    name: Backend - Tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: 'backend/package-lock.json'
-
-      - name: Install dependencies
-        working-directory: ./backend
-        run: npm ci --ignore-scripts
-
-      - name: Run tests with coverage
-        working-directory: ./backend
-        run: npm run test:coverage
-        env:
-          CI: true
-
-      - name: Upload coverage reports
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-coverage
-          path: ./backend/coverage
-          retention-days: 7
-
   deployment-check:
     name: Deployment Readiness
     runs-on: ubuntu-latest
-    needs: [frontend-validation, backend-tests]
+    needs: [frontend-validation]
 
     steps:
       - name: Checkout repository
@@ -95,34 +62,24 @@ jobs:
 
       - name: Check deployment files
         run: |
-          echo "✅ Checking deployment configuration..."
+          echo "Checking deployment configuration..."
 
-          # Check frontend deployment
           if [ -f "frontend/package.json" ]; then
-            echo "✅ Frontend package.json found"
+            echo "Frontend package.json found"
           else
-            echo "❌ Frontend package.json missing"
+            echo "Frontend package.json missing"
             exit 1
           fi
 
-          # Check backend deployment
-          if [ -f "backend/package.json" ]; then
-            echo "✅ Backend package.json found"
-          else
-            echo "❌ Backend package.json missing"
-            exit 1
-          fi
-
-          echo "✅ All deployment files present"
+          echo "All deployment files present"
 
       - name: Summary
         run: |
-          echo "## 🎉 CI Pipeline Complete" >> $GITHUB_STEP_SUMMARY
+          echo "## CI Pipeline Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### ✅ Validations Passed" >> $GITHUB_STEP_SUMMARY
+          echo "### Validations Passed" >> $GITHUB_STEP_SUMMARY
           echo "- Translation keys validated (0 missing keys)" >> $GITHUB_STEP_SUMMARY
           echo "- ESLint checks completed" >> $GITHUB_STEP_SUMMARY
-          echo "- Backend tests passed" >> $GITHUB_STEP_SUMMARY
           echo "- Build successful" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Ready for deployment! 🚀**" >> $GITHUB_STEP_SUMMARY
+          echo "**Ready for deployment!**" >> $GITHUB_STEP_SUMMARY

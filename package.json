@@ -4,8 +4,7 @@
   "description": "TIBIA tools - Loot Split Calculator and more",
   "private": true,
   "workspaces": [
-    "frontend",
-    "backend"
+    "frontend"
   ],
   "scripts": {
     "prepare": "husky || true",
@@ -14,9 +13,6 @@
     "frontend:test": "cd frontend && npm test",
     "frontend:lint": "cd frontend && npm run lint",
     "frontend:validate-i18n": "cd frontend && npm run validate-i18n",
-    "backend:dev": "cd backend && npm run dev",
-    "backend:test": "cd backend && npm test",
-    "backend:coverage": "cd backend && npm run test:coverage",
     "cypress:open": "npx cypress open",
     "cypress:run": "npx cypress run"
   },
