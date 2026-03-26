@@ -27,6 +27,40 @@ Copie o template abaixo e preencha:
 
 ## Itens Pendentes
 
+### [B-010] Corrigir open redirect em AuthContext apos login
+- **Prioridade**: P1
+- **Tipo**: Security
+- **Origem**: Meta-Improver 2026-03-24
+- **Concluido em**: 2026-03-24
+- **Resultado**: ✅ Validacao adicionada: `savedPath.startsWith('/') && !savedPath.startsWith('//')`. Key removida do localStorage independente de validacao (evita acumulo de valores invalidos).
+- **Arquivos**: `frontend/src/contexts/AuthContext.js`
+- **Status**: Concluido
+
+### [B-011] Configurar Content Security Policy para GitHub Pages
+- **Prioridade**: P1
+- **Tipo**: Security
+- **Origem**: Meta-Improver 2026-03-24
+- **Concluido em**: 2026-03-24
+- **Resultado**: ✅ CSP adicionada via `<meta http-equiv="Content-Security-Policy">` em `index.html` (GitHub Pages nao suporta `_headers` — isso e especifico do Netlify). Diretivas: `default-src 'self'`, `script-src 'self' 'unsafe-inline'` (necessario para inline SPA redirect handler), `style-src 'self' 'unsafe-inline'` (styled-components), `connect-src` cobrindo Supabase e OCR.space, `object-src 'none'`, `base-uri 'self'`. Referrer-Policy adicionada via meta tag separada. Nota: `frame-ancestors` e `X-Frame-Options` requerem HTTP header — nao aplicaveis via GitHub Pages.
+- **Arquivos**: `frontend/public/index.html`
+- **Status**: Concluido
+
+### [B-012] Lazy-load dados do bestiary (317 KB)
+- **Prioridade**: P2
+- **Tipo**: Performance
+- **Origem**: Meta-Improver 2026-03-24
+- **Concluido em**: 2026-03-25
+- **Resultado**: ✅ Verificado — nao era necessario implementar. `BestiaryPlanner` ja usa `React.lazy()` em `App.js`, portanto `bestiary.js` (323 KB raw) ja e separado do bundle principal em tempo de build. Confirmado via `npm run build`: `main.js` = 171.69 KB gzip; bestiary fica no chunk 702 = 85.95 KB gzip. Nenhuma mudanca de codigo necessaria.
+- **Status**: Concluido
+
+### [B-013] Renomear moneyMaked → moneyEarned + migração localStorage
+- **Prioridade**: P2
+- **Tipo**: Cleanup
+- **Origem**: Session 2026-03-24 (residual risk identificado na migração backend→frontend)
+- **Concluido em**: 2026-03-25
+- **Resultado**: ✅ Renomeado `moneyMaked` → `moneyEarned` em todos os 4 arquivos afetados. Migracao automatica adicionada em `loadHistory()`: ao ler registros antigos com `moneyMaked`, renomeia o campo e persiste de volta ao localStorage sem interacao do usuario. Testes: 27/27 passando.
+- **Arquivos**: `frontend/src/services/soloHuntService.js`, `frontend/src/components/SoloHuntAnalyzer/SoloHuntResults.js`, `frontend/src/components/SoloHuntAnalyzer/HuntHistory.js`, `frontend/src/services/soloHuntService.test.js`
+- **Status**: Concluido
 
 ### [B-009] Testes unitários para lootSplitService e soloHuntService
 - **Prioridade**: P1
@@ -48,7 +82,9 @@ Copie o template abaixo e preencha:
      - Item ST sem silverTokenPrice = 0 → throw
      - tibiaCoinPrice = 0 → tcTotal = 0 (sem erro)
 - **Arquivos**: `frontend/src/services/lootSplitService.test.js`, `frontend/src/services/soloHuntService.test.js`
-- **Status**: Pendente
+- **Concluido em**: 2026-03-25
+- **Resultado**: ✅ Ambos os arquivos de teste já existiam e passando. `lootSplitService.test.js`: 25 testes (happy path, single player, Profit/Waste, duration formats, error cases, formatGold). `soloHuntService.test.js`: 27 testes (no items, GP flat, GP proporcional, GT, ST, TC metrics, huntData shape, error cases, duration formats). Total: 52/52 passando.
+- **Status**: Concluido
 
 ### [B-005] Character Set Builder (drag & drop)
 - **Prioridade**: P1
@@ -110,33 +146,19 @@ Copie o template abaixo e preencha:
 - **Prioridade**: P2
 - **Tipo**: Feature
 - **Origem**: Analise comparativa 2026-02-06. Aprovado pelo usuario como feature inovadora.
-- **Contexto**: Permitir gravar audio falando nomes de criaturas para preencher progresso. Ex: "Completei dragon, dragon lord, wyrm" marca como completas. Usa Web Speech API nativa (gratis, Chrome/Edge).
-- **Implementacao**:
-  1. Criar componente VoiceInput.js com Web Speech API (SpeechRecognition)
-  2. Suporte pt-BR e en-US
-  3. Parsing de patterns: "completei X, Y, Z" e "X N kills"
-  4. Fuzzy matching contra BESTIARY_DATA (Levenshtein distance)
-  5. Modal de confirmacao com confidence % antes de aplicar
-  6. Integrar botao ao lado do ScreenshotImport no BestiaryPlanner
-  7. Fallback: mensagem "Upgrade browser" para navegadores sem suporte
-- **Arquivos**: Novo `frontend/src/components/BestiaryPlanner/VoiceInput.js`
-- **Referencia**: `.claude/analises/plano-melhorias-bestiary-revisado-2026-02-06.md`
-- **Status**: Pendente
+- **Concluido em**: 2026-03-25
+- **Resultado**: ✅ Implementado completo. `VoiceInput.js` + `VoiceInput.styles.js` + `VoiceConfirmationModal.js` + `VoiceConfirmationModal.styles.js` + `useVoiceRecognition.js` (hook Web Speech API) + `voiceParser.js` (fuzzy matching + pattern parsing). Integrado em `BestiaryPlanner.js` com botao ao lado do ScreenshotImport. Suporte pt-BR e en-US. Fallback para browsers sem suporte. Modal de confirmacao com barra de confianca (%). Build: Compiled successfully.
+- **Arquivos**: `frontend/src/components/BestiaryPlanner/VoiceInput.js`, `VoiceConfirmationModal.js`, `frontend/src/hooks/useVoiceRecognition.js`, `frontend/src/utils/voiceParser.js`
+- **Status**: Concluido
 
 ### [B-008] Comparacao Lado-a-Lado de Criaturas
 - **Prioridade**: P2
 - **Tipo**: Feature
 - **Origem**: Analise comparativa TibiaRoute, 2026-02-06
-- **Contexto**: Permitir comparar ate 5 criaturas simultaneamente em tabela. Mostra HP, Charm Points, kills necessarios, resistencias (color-coded), locations (overlaps destacados) e efficiency score. Ajuda a decidir qual criatura completar primeiro.
-- **Implementacao**:
-  1. Adicionar botao "Compare" no CreatureCard (selection mode)
-  2. Criar CreatureComparisonModal com tabela comparativa
-  3. Exibir: HP, CP, difficulty, kills, resistencias, locations, efficiency
-  4. Destacar overlaps de locations entre criaturas selecionadas
-  5. Limitar a 2-5 criaturas por comparacao
-- **Arquivos**: Novo `frontend/src/components/BestiaryPlanner/CreatureComparisonModal.js`
-- **Referencia**: `.claude/analises/tibia-route-vs-bestiary-planner-2026-02-06.md`
-- **Status**: Pendente
+- **Concluido em**: 2026-03-25
+- **Resultado**: ✅ Implementado. Botao ⚖ em cada `CreatureCardActions`. Selecionar 2-5 criaturas exibe botao flutuante "Compare (N)". Modal mostra tabela: CP, Dificuldade, HP, Kills, CP/1k kills, resistencias (verde=resistente, vermelho=fraco), locais (locais compartilhados destacados em roxo). i18n pt-BR + en. Build: Compiled successfully. Testes: 28/28 passing.
+- **Arquivos**: `CreatureComparisonModal.js`, `CreatureComparisonModal.styles.js` (novos); `CreatureCardActions.js`, `CreatureCard.js`, `SuggestionList.js`, `BestiaryPlanner.js`, `locales/pt-BR/translation.json`, `locales/en/translation.json` (modificados)
+- **Status**: Concluido
 
 ---
 

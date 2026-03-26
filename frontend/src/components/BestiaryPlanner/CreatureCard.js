@@ -70,6 +70,9 @@ const CreatureCard = ({
   selectionMode,
   isSelected,
   onToggleSelection,
+  onToggleCompare,
+  isInComparison,
+  compareDisabled,
 }) => {
   const { t } = useTranslation();
   const cardRef = useRef(null);
@@ -171,8 +174,11 @@ const CreatureCard = ({
               onComplete={() => onToggleComplete(creature.id)}
               onEdit={onEditKills ? () => onEditKills(creature.id) : null}
               onPlan={onTogglePlan ? () => onTogglePlan(creature.id) : null}
+              onCompare={onToggleCompare ? () => onToggleCompare(creature) : null}
               isCompleted={isCompleted}
               isInPlan={isInPlan}
+              isInComparison={isInComparison}
+              compareDisabled={compareDisabled}
             />
           </CardActions>
         </CardImageRow>
@@ -282,7 +288,9 @@ const areEqual = (prevProps, nextProps) => {
     prevProps.isInPlan === nextProps.isInPlan &&
     prevProps.creature.isRapidRecommended === nextProps.creature.isRapidRecommended &&
     prevProps.selectionMode === nextProps.selectionMode &&
-    prevProps.isSelected === nextProps.isSelected
+    prevProps.isSelected === nextProps.isSelected &&
+    prevProps.isInComparison === nextProps.isInComparison &&
+    prevProps.compareDisabled === nextProps.compareDisabled
   );
 };
 
@@ -319,6 +327,9 @@ CreatureCard.propTypes = {
   selectionMode: PropTypes.bool,
   isSelected: PropTypes.bool,
   onToggleSelection: PropTypes.func,
+  onToggleCompare: PropTypes.func,
+  isInComparison: PropTypes.bool,
+  compareDisabled: PropTypes.bool,
 };
 
 CreatureCard.defaultProps = {
@@ -328,6 +339,9 @@ CreatureCard.defaultProps = {
   selectionMode: false,
   isSelected: false,
   onToggleSelection: null,
+  onToggleCompare: null,
+  isInComparison: false,
+  compareDisabled: false,
 };
 
 export default memo(CreatureCard, areEqual);

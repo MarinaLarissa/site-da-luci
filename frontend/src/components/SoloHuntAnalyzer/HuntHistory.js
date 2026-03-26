@@ -62,9 +62,22 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
       if (saved) {
         const parsed = JSON.parse(saved);
         // Validate and filter out corrupted entries
-        const validHunts = Array.isArray(parsed)
+        let validHunts = Array.isArray(parsed)
           ? parsed.filter(hunt => hunt && typeof hunt === 'object' && hunt.id)
           : [];
+        // Migrate: rename legacy moneyMaked → moneyEarned
+        let migrated = false;
+        validHunts = validHunts.map(hunt => {
+          if ('moneyMaked' in hunt) {
+            const { moneyMaked, ...rest } = hunt;
+            migrated = true;
+            return { ...rest, moneyEarned: moneyMaked };
+          }
+          return hunt;
+        });
+        if (migrated) {
+          localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(validHunts));
+        }
         setHuntHistory(validHunts);
       }
     } catch (error) {
@@ -365,11 +378,11 @@ export default function HuntHistory({ isOpen, onClose, onAddHunt }) {
                           <span className="value">{(hunt.tcPerHour || 0).toLocaleString(locale)} TC/h</span>
                         </SoloHuntHistoryDetailItem>
                       )}
-                      {hunt.moneyMaked !== null && hunt.moneyMaked !== undefined && (
+                      {hunt.moneyEarned !== null && hunt.moneyEarned !== undefined && (
                         <SoloHuntHistoryDetailItem>
                           <span className="label">💵 Money Earned:</span>
-                          <span className={hunt.moneyMaked >= 0 ? 'value positive' : 'value negative'}>
-                            ${(hunt.moneyMaked || 0).toFixed(2)}
+                          <span className={hunt.moneyEarned >= 0 ? 'value positive' : 'value negative'}>
+                            ${(hunt.moneyEarned || 0).toFixed(2)}
                           </span>
                         </SoloHuntHistoryDetailItem>
                       )}

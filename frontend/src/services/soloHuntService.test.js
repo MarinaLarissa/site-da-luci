@@ -55,9 +55,9 @@ describe('calculateSoloHunt — no custom items', () => {
     expect(data.tcTotal).toBe(0);
   });
 
-  test('moneyMaked is 0 when tibiaCoinSellPrice is 0', () => {
+  test('moneyEarned is 0 when tibiaCoinSellPrice is 0', () => {
     const { data } = calculateSoloHunt(makeParsedSession(), NO_ITEMS, NO_PRICES);
-    expect(data.moneyMaked).toBe(0);
+    expect(data.moneyEarned).toBe(0);
   });
 });
 
@@ -177,12 +177,12 @@ describe('calculateSoloHunt — TC metrics', () => {
     expect(data.tcPerHour).toBeCloseTo(expectedTcPerHour, 1);
   });
 
-  test('moneyMaked = (tibiaCoinSellPrice / 250) * tcTotal', () => {
+  test('moneyEarned = (tibiaCoinSellPrice / 250) * tcTotal', () => {
     const session = makeParsedSession();
     const { data } = calculateSoloHunt(session, NO_ITEMS, prices);
     const tcTotal = 9500000 / 500;
     const expected = (250 / 250) * tcTotal; // 19,000
-    expect(data.moneyMaked).toBeCloseTo(expected, 1);
+    expect(data.moneyEarned).toBeCloseTo(expected, 1);
   });
 
   test('huntData.tcTotal is floored integer', () => {

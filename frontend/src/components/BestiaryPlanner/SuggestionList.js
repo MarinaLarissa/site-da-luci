@@ -34,6 +34,9 @@ const SuggestionList = ({
   onSelectAll,
   onSelectNone,
   onEnterSelectionMode,
+  onToggleCompare,
+  isCreatureInComparison,
+  compareDisabled,
 }) => {
   const { t } = useTranslation();
   const [displayCount, setDisplayCount] = useState(20);
@@ -163,6 +166,9 @@ const SuggestionList = ({
             selectionMode={selectionMode}
             isSelected={isCreatureSelected?.(creature.id) || false}
             onToggleSelection={onToggleSelection}
+            onToggleCompare={onToggleCompare}
+            isInComparison={isCreatureInComparison?.(creature.id) || false}
+            compareDisabled={compareDisabled && !isCreatureInComparison?.(creature.id)}
           />
         ))}
       </CreatureGrid>
@@ -204,6 +210,9 @@ SuggestionList.propTypes = {
   onSelectAll: PropTypes.func,
   onSelectNone: PropTypes.func,
   onEnterSelectionMode: PropTypes.func,
+  onToggleCompare: PropTypes.func,
+  isCreatureInComparison: PropTypes.func,
+  compareDisabled: PropTypes.bool,
 };
 
 SuggestionList.defaultProps = {
@@ -217,6 +226,9 @@ SuggestionList.defaultProps = {
   onSelectAll: null,
   onSelectNone: null,
   onEnterSelectionMode: null,
+  onToggleCompare: null,
+  isCreatureInComparison: null,
+  compareDisabled: false,
 };
 
 export default SuggestionList;

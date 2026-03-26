@@ -697,6 +697,34 @@
       "selectNone": "Desmarcar Tudo",
       "selectAllFiltered": "Selecionar Filtradas"
     },
+    "compare": {
+      "title": "Comparando {{count}} criaturas",
+      "floatingButton": "⚖ Comparar ({{count}})",
+      "toggleButton": "Comparar",
+      "addToCompare": "Adicionar à comparação",
+      "removeFromCompare": "Remover da comparação",
+      "remove": "Remover",
+      "clearAll": "Limpar seleção",
+      "close": "Fechar",
+      "sharedLocationsHint": "Locais em destaque são compartilhados entre criaturas",
+      "rows": {
+        "charmPoints": "Charm Points",
+        "difficulty": "Dificuldade",
+        "hp": "HP",
+        "kills": "Kills p/ completar",
+        "efficiency": "CP / 1k kills",
+        "locations": "Locais"
+      },
+      "elements": {
+        "physical": "Físico",
+        "fire": "Fogo",
+        "ice": "Gelo",
+        "energy": "Energia",
+        "earth": "Terra",
+        "holy": "Sagrado",
+        "death": "Morte"
+      }
+    },
     "voiceInput": {
       "button": "Voice Input",
       "title": "Voice Input - Reconhecimento de Voz",

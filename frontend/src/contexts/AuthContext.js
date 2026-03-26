@@ -71,8 +71,8 @@ export const AuthProvider = ({ children }) => {
 
           // Check for saved redirect path
           const savedPath = localStorage.getItem('auth_redirect_path');
-          if (savedPath) {
-            localStorage.removeItem('auth_redirect_path');
+          localStorage.removeItem('auth_redirect_path');
+          if (savedPath && savedPath.startsWith('/') && !savedPath.startsWith('//')) {
             // Small delay to ensure state is updated
             setTimeout(() => {
               window.location.href = savedPath;

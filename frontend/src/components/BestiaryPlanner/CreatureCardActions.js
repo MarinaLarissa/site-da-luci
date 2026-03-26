@@ -21,8 +21,11 @@ const CreatureCardActions = ({
   onComplete,
   onEdit,
   onPlan,
+  onCompare,
   isCompleted,
   isInPlan,
+  isInComparison,
+  compareDisabled,
   disabled = false,
 }) => {
   const { t } = useTranslation();
@@ -46,6 +49,11 @@ const CreatureCardActions = ({
     if (!disabled && onPlan) {
       onPlan();
     }
+  };
+
+  const handleCompareClick = (e) => {
+    e.stopPropagation();
+    if (onCompare) onCompare();
   };
 
   return (
@@ -118,6 +126,24 @@ const CreatureCardActions = ({
           </ActionTooltip>
         </ActionButton>
       )}
+
+      {/* Compare Button */}
+      {onCompare && (
+        <ActionButton
+          onClick={handleCompareClick}
+          disabled={compareDisabled}
+          $variant={isInComparison ? 'primary' : 'default'}
+          aria-label={t('bestiaryPlanner.compare.toggleButton', { defaultValue: 'Comparar' })}
+          title={t('bestiaryPlanner.compare.toggleButton', { defaultValue: 'Comparar' })}
+        >
+          ⚖
+          <ActionTooltip>
+            {isInComparison
+              ? t('bestiaryPlanner.compare.removeFromCompare', { defaultValue: 'Remover da comparação' })
+              : t('bestiaryPlanner.compare.addToCompare', { defaultValue: 'Adicionar à comparação' })}
+          </ActionTooltip>
+        </ActionButton>
+      )}
     </ActionsContainer>
   );
 };
@@ -126,16 +152,22 @@ CreatureCardActions.propTypes = {
   onComplete: PropTypes.func.isRequired,
   onEdit: PropTypes.func,
   onPlan: PropTypes.func,
+  onCompare: PropTypes.func,
   isCompleted: PropTypes.bool,
   isInPlan: PropTypes.bool,
+  isInComparison: PropTypes.bool,
+  compareDisabled: PropTypes.bool,
   disabled: PropTypes.bool,
 };
 
 CreatureCardActions.defaultProps = {
   onEdit: null,
   onPlan: null,
+  onCompare: null,
   isCompleted: false,
   isInPlan: false,
+  isInComparison: false,
+  compareDisabled: false,
   disabled: false,
 };
 

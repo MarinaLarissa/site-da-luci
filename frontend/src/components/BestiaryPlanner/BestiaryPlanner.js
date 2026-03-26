@@ -29,6 +29,8 @@ import BulkConfirmationModal from './BulkConfirmationModal';
 import ProgressHistory from './ProgressHistory';
 import VoiceInput from './VoiceInput';
 import VoiceConfirmationModal from './VoiceConfirmationModal';
+import CreatureComparisonModal from './CreatureComparisonModal';
+import { CompareFloatingButton } from './CreatureComparisonModal.styles';
 import { importCreaturesWithProgress, updateCreatureKills, getCreatureKills, getActiveCharacter } from '../../services/bestiaryStorage';
 import { saveCompletion } from '../../services/progressHistoryStorage';
 import {
@@ -91,6 +93,28 @@ const BestiaryPlanner = () => {
   const [isProgressHistoryOpen, setIsProgressHistoryOpen] = useState(false);
   const [isVoiceInputOpen, setIsVoiceInputOpen] = useState(false);
   const [voiceConfirmationData, setVoiceConfirmationData] = useState(null);
+  const [compareCreatures, setCompareCreatures] = useState([]);
+  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+
+  const MAX_COMPARE = 5;
+
+  const handleToggleCompare = (creature) => {
+    setCompareCreatures((prev) => {
+      const exists = prev.some((c) => c.id === creature.id);
+      if (exists) return prev.filter((c) => c.id !== creature.id);
+      if (prev.length >= MAX_COMPARE) return prev;
+      return [...prev, creature];
+    });
+  };
+
+  const handleRemoveFromComparison = (creatureId) => {
+    setCompareCreatures((prev) => prev.filter((c) => c.id !== creatureId));
+  };
+
+  const handleClearComparison = () => {
+    setCompareCreatures([]);
+    setIsCompareModalOpen(false);
+  };
 
   const {
     character,
@@ -816,6 +840,9 @@ const BestiaryPlanner = () => {
             onSelectAll={() => selectFiltered(suggestions)}
             onSelectNone={selectNone}
             onEnterSelectionMode={enterSelectionMode}
+            onToggleCompare={handleToggleCompare}
+            isCreatureInComparison={(id) => compareCreatures.some((c) => c.id === id)}
+            compareDisabled={compareCreatures.length >= MAX_COMPARE}
           />
         </ResultsSection>
       </ContentGrid>
@@ -931,6 +958,22 @@ const BestiaryPlanner = () => {
         onConfirm={handleVoiceConfirm}
         parsedResult={voiceConfirmationData}
       />
+
+      {/* Creature Comparison Modal */}
+      <CreatureComparisonModal
+        isOpen={isCompareModalOpen}
+        onClose={() => setIsCompareModalOpen(false)}
+        creatures={compareCreatures}
+        onRemoveCreature={handleRemoveFromComparison}
+        onClearAll={handleClearComparison}
+      />
+
+      {/* Floating Compare Button */}
+      {compareCreatures.length >= 2 && !isCompareModalOpen && (
+        <CompareFloatingButton onClick={() => setIsCompareModalOpen(true)}>
+          ⚖ {t('bestiaryPlanner.compare.floatingButton', { count: compareCreatures.length })}
+        </CompareFloatingButton>
+      )}
     </PlannerContainer>
   );
 };

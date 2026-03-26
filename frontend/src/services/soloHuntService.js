@@ -141,7 +141,7 @@ export function calculateSoloHunt(parsedSession, customItems, prices) {
   const tcPerHour =
     huntDurationHours > 0 && tibiaCoinPrice > 0 ? tcTotal / huntDurationHours : 0;
 
-  const moneyMaked =
+  const moneyEarned =
     tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0
       ? (tibiaCoinSellPrice / 250) * tcTotal
       : 0;
@@ -166,7 +166,7 @@ export function calculateSoloHunt(parsedSession, customItems, prices) {
     suppliesPerHour,
     tcTotal,
     tcPerHour,
-    moneyMaked,
+    moneyEarned,
     huntData: {
       playerName: parsedSession.player.name,
       duration: parsedSession.duration,
@@ -179,9 +179,9 @@ export function calculateSoloHunt(parsedSession, customItems, prices) {
       tcTotal: tibiaCoinPrice > 0 ? Math.floor(tcTotal) : null,
       tcPerHour: tibiaCoinPrice > 0 ? Math.floor(tcPerHour) : null,
       tibiaCoinPrice: tibiaCoinPrice > 0 ? tibiaCoinPrice : null,
-      moneyMaked:
+      moneyEarned:
         tibiaCoinSellPrice > 0 && tibiaCoinPrice > 0
-          ? parseFloat(moneyMaked.toFixed(2))
+          ? parseFloat(moneyEarned.toFixed(2))
           : null,
       tibiaCoinSellPrice: tibiaCoinSellPrice > 0 ? tibiaCoinSellPrice : null,
     },

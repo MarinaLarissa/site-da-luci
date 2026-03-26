@@ -37,7 +37,7 @@ import {
 
 export default function SoloHuntResults({ results }) {
   const { t } = useTranslation();
-  const { session, costs, adjustedBalance, totalSupplies, profitPerHour, suppliesPerHour, tcTotal, tcPerHour, moneyMaked } = results;
+  const { session, costs, adjustedBalance, totalSupplies, profitPerHour, suppliesPerHour, tcTotal, tcPerHour, moneyEarned } = results;
   const { player } = session;
 
   return (
@@ -306,12 +306,12 @@ export default function SoloHuntResults({ results }) {
             </Tooltip>
           )}
 
-          {costs.tibiaCoinSellPrice > 0 && moneyMaked !== undefined && moneyMaked !== null && (
+          {costs.tibiaCoinSellPrice > 0 && moneyEarned !== undefined && moneyEarned !== null && (
             <Tooltip text="Real money profit from selling Tibia Coins (TC Total × TC Sell Price)" position="top">
               <SoloHuntResultsHighlightItem>
                 <SoloHuntResultsHighlightLabel>💵 Money Earned</SoloHuntResultsHighlightLabel>
-                <SoloHuntResultsHighlightValue $variant={moneyMaked >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-money-earned">
-                  ${moneyMaked.toFixed(2)}
+                <SoloHuntResultsHighlightValue $variant={moneyEarned >= 0 ? 'positive' : 'negative'} data-cy="solo-hunt-balance-money-earned">
+                  ${moneyEarned.toFixed(2)}
                 </SoloHuntResultsHighlightValue>
               </SoloHuntResultsHighlightItem>
             </Tooltip>
@@ -365,6 +365,6 @@ SoloHuntResults.propTypes = {
     suppliesPerHour: PropTypes.number.isRequired,
     tcTotal: PropTypes.number.isRequired,
     tcPerHour: PropTypes.number.isRequired,
-    moneyMaked: PropTypes.number,
+    moneyEarned: PropTypes.number,
   }).isRequired,
 };
